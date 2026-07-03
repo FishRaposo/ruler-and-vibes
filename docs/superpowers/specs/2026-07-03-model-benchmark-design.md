@@ -47,13 +47,14 @@ model-benchmark/
 │   └── business-planning/
 ├── rubrics/                  # <test-id>.md — runners must not read these
 ├── results/                  # dedicated outputs folder
-│   └── <model-name>/
+│   └── <run-id>/             # one run = model + reasoning effort + harness
+│       ├── meta.json         # { model, effort, harness, date } — required
 │       └── <test-id>/
 │           ├── (deliverable files: .md, .html, .svg, .js ...)
 │           └── REASONING.md  # required
 ├── report/
 │   ├── judgments/
-│   │   └── <model-name>/<test-id>.md   # judge's full written reasoning
+│   │   └── <run-id>/<test-id>.md   # judge's full written reasoning
 │   ├── data.js               # numeric scores + short notes (window.BENCH_DATA)
 │   └── index.html            # self-contained dark radar-chart report
 └── docs/superpowers/specs/   # this spec and future design docs
@@ -130,51 +131,69 @@ Scoring math:
 - Objective section score = mean of check scores (each 0 or 10).
 - Subjective section score = weighted mean of criteria (weights sum to 1).
 - Test total = `objective_weight × objective_score + subjective_weight × subjective_score` (0–10).
-- Category score = plain mean of the model's **attempted** tests in that
+- Category score = plain mean of the run's **attempted** tests in that
   category (0–10). Skipped tests don't count; coverage is reported.
 
 ## RUN.md protocol (model under test)
 
 The user opens any agent CLI (Claude Code with a chosen model, Codex, Gemini
-CLI, ...) in the repo and says: *"Follow RUN.md as `<model-name>`"*, optionally
+CLI, ...) in the repo and says: *"Follow RUN.md as `<run-id>`"*, optionally
 listing which tests/categories to run (default: all).
+
+A **run** is identified by model + reasoning effort + harness, because the
+same model can score differently at different efforts or in different
+harnesses. The run-id is a kebab-case slug the user picks (suggested form:
+`<model>--<effort>--<harness>`, e.g. `claude-fable-5--high--claude-code`).
 
 The protocol instructs the model to:
 
-1. Use the given `<model-name>` as its results folder slug (kebab-case).
-2. For each assigned test, read only `tests/<category>/<test-id>.md`.
-3. Create `results/<model-name>/<test-id>/` and write the exact deliverable
+1. Use the given `<run-id>` as its results folder slug (kebab-case).
+2. Write `results/<run-id>/meta.json` first, from values the user supplies
+   (or its own session context):
+
+   ```json
+   { "model": "claude-fable-5", "effort": "high",
+     "harness": "claude-code", "date": "2026-07-03" }
+   ```
+
+   `model` is required; `effort` and `harness` default to `"unspecified"`
+   when unknown.
+3. For each assigned test, read only `tests/<category>/<test-id>.md`.
+4. Create `results/<run-id>/<test-id>/` and write the exact deliverable
    files named by the test.
-4. Write `REASONING.md` in the same folder covering: approach chosen, key
+5. Write `REASONING.md` in the same folder covering: approach chosen, key
    decisions, trade-offs considered, and known limitations. This file is
    graded.
-5. **Never** read `rubrics/`, `report/`, or other models' `results/` folders.
-6. **Never** write outside `results/<model-name>/`.
-7. Overwriting its own previous results is allowed (re-runs replace).
+6. **Never** read `rubrics/`, `report/`, or other runs' `results/` folders.
+7. **Never** write outside `results/<run-id>/`.
+8. Overwriting its own previous results is allowed (re-runs replace).
 
 ## JUDGE.md protocol (evaluator model)
 
 Run in a separate session, ideally with the strongest model available. The
 protocol instructs the judge to:
 
-1. Enumerate `results/<model-name>/` folders (or judge only the models the
-   user names).
-2. For each model × test: read the deliverables, `REASONING.md`, and the
+1. Enumerate `results/<run-id>/` folders (or judge only the runs the user
+   names), reading each run's `meta.json`.
+2. For each run × test: read the deliverables, `REASONING.md`, and the
    test's rubric.
 3. Score every objective check (pass/fail with one-line evidence) and every
    subjective criterion (0–10 with a written justification citing concrete
    evidence from the output — no score without a comment).
-4. Write the full judgment to `report/judgments/<model-name>/<test-id>.md`:
+4. Write the full judgment to `report/judgments/<run-id>/<test-id>.md`:
    per-criterion scores, evidence, comments, and an overall verdict paragraph.
-5. Update `report/data.js`: add/replace that model's entry with per-criterion
-   numeric scores, a one-line note per test, and metadata (judge model name,
+5. Update `report/data.js`: add/replace that run's entry with the run's
+   `meta.json` fields (model, effort, harness, date), per-criterion numeric
+   scores, a one-line note per test, and judge metadata (judge model name,
    date — provided by the user or session context). Section scores and totals
    are NOT stored — the report page computes them from raw scores and weights,
    so the math lives in one place.
 6. Anti-bias rules: score strictly against the rubric; judge the output, not
    the model's reputation; missing deliverable → test total 0 with a note;
    missing `REASONING.md` → reasoning criterion 0.
-7. Re-judging a model replaces its previous entry and judgment files.
+7. Re-judging a run replaces its previous entry and judgment files.
+8. Missing or unreadable `meta.json` → judge asks the user for the run's
+   model/effort/harness before writing the `data.js` entry (never guesses).
 
 ## report/data.js format
 
@@ -183,8 +202,12 @@ A plain JS file (works from `file://`, no fetch):
 ```js
 window.BENCH_DATA = {
   updated: "2026-07-03",
-  models: {
-    "deepseek-v4": {
+  runs: {
+    "deepseek-v4--high--claude-code": {
+      model: "deepseek-v4",
+      effort: "high",
+      harness: "claude-code",
+      date: "2026-07-03",
       judgedBy: "claude-fable-5",
       judgedOn: "2026-07-03",
       tests: {
@@ -212,11 +235,13 @@ double-clicking the file.
 - **Dark theme** styled after the inspiration image (near-black background,
   neon model colors, light grid).
 - **SVG radar chart**: axes = categories that have at least one score in the
-  data; one colored polygon per model; legend with per-model toggle. A model
-  with no data in a category renders a gap/zero point with a visual partial
-  marker rather than faking coverage.
+  data; one colored polygon per **run**; legend with per-run toggle, labeled
+  `model (effort · harness)`. A run with no data in a category renders a
+  gap/zero point with a visual partial marker rather than faking coverage.
 - **View toggle**: Combined / Objective only / Subjective only — recomputes
   the radar and tables from raw criterion scores.
+- **Harness filter (optional toggle)**: filter the chart/tables to runs from
+  a specific harness (or effort); defaults to showing all runs.
 - **Score tables**: per category → per test → per criterion, showing
   pass/fail for objective checks, 0–10 for subjective, the one-line note, and
   coverage ("2/2" / "1/2 tests run").
@@ -232,6 +257,7 @@ double-clicking the file.
 | Missing deliverable file | Test total 0, judge notes why |
 | Missing `REASONING.md` | Reasoning criterion 0, rest scored normally |
 | Test skipped by runner | Excluded from category mean; coverage shows it |
+| Missing/unreadable `meta.json` | Judge asks the user for model/effort/harness before writing scores |
 | Category with no data for any model | Axis omitted from radar |
 | Malformed `data.js` entry | Skipped by the page with console warning |
 | Runner reads rubrics (detected by judge from output) | Judge notes it in the verdict |
@@ -242,8 +268,9 @@ double-clicking the file.
    sample model on 2–3 tests, then follows `JUDGE.md`, producing real entries
    in `data.js`.
 2. **Report check:** open `report/index.html` in the browser and verify the
-   radar, toggles, tables, and partial-coverage rendering against the sample
-   data plus a hand-written second model entry.
+   radar, toggles (view, run visibility, harness filter), tables, and
+   partial-coverage rendering against the sample data plus a hand-written
+   second run entry.
 3. **Protocol read-through:** confirm `RUN.md`/`JUDGE.md` are self-contained
    for an agent with zero context of this conversation.
 
