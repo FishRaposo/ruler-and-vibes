@@ -29,13 +29,14 @@ Two honest notes about current state:
   measured facet; until a facet reaches that, this protocol is how it
   gets there. (Category scores averaging several sibling constructs is a
   separate, existing kind of noise reduction — not the same thing.)
-- **Report-side aggregation is forthcoming.** The letter suffix in form
-  ids (below) is the hook the report *will* use to group forms with
-  their source facet and aggregate medians. Until that lands, a
-  registered form appears in the report as an ordinary extra test in its
-  category (it shifts the category mean), and you compute per-facet
-  medians yourself from `report/data.js`. Do not assume the report
-  medians anything today.
+- **The report aggregates by facet.** `report/index.html` strips the
+  letter suffix to group forms with their source facet, scores each
+  facet as the median of its scored forms (per view — objective,
+  subjective, combined), and averages facets into the category score.
+  The target runs-per-facet parameter is `RUNS_TARGET` near the top of
+  the report's config (default 3); facet summaries in the tables (shown
+  once ≥2 forms of a facet are scored) show "median X across k runs"
+  and note when k is under target.
 
 A form is only usable in a scored evaluation after it passes the
 **independent review gate** (below). No exceptions: an unreviewed form
@@ -50,6 +51,11 @@ on. The letter suffix (`b`, `c`, …) is load-bearing:
 - it marks the file as a generated form (curated tests never carry one);
 - stripping the letter yields the **facet id** (`story-01`) used to
   group a form with its source for aggregation.
+
+The report groups only a **single letter `b`–`z`** immediately after the
+two-digit number — a double letter (`story-01bb-…`) or a three-digit
+number falls outside the convention and is treated as its own separate
+facet, silently. Stay inside it (25 forms per facet is ample).
 
 The slug must be fresh — never reuse the source's slug, because the slug
 describes the scenario and the scenario must change. Files go in the

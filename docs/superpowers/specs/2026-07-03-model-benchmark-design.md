@@ -80,8 +80,10 @@ canary rules live in `2026-07-04-canary-registry.md` (regenerated from the
 shipped rubrics); the original 13-category expansion roster is preserved in
 `2026-07-04-expansion-roster.md`. Two documented run suites: Core (one
 representative test per category — 31 tests, listed in RUN.md) and Full.
-Category scores are means over attempted tests, so uneven per-category
-counts are safe by construction. New tests are
+Category scores are means over attempted facets (since 2026-07-04,
+parallel forms — ids like `story-01b-…` — collapse to their facet's
+median first; see `AUTHOR.md`), so uneven per-category counts are safe
+by construction. New tests are
 just new files.
 
 Section weights are per rubric: most tests use objective 0.5 /

@@ -2,7 +2,8 @@
 
 **Ruler & Vibes** is a zero-infrastructure benchmark kit for comparing AI
 models — every rubric mixes objective checks (the ruler) with judged
-criteria (the vibes). It spans **31 categories** and **214 tests** on an
+criteria (the vibes). It spans **31 categories** and **214 curated
+tests** (plus reviewed parallel forms — see `AUTHOR.md`) on an
 easy→hard difficulty ladder, grouped roughly as: reasoning (math & logic,
 causal reasoning, reasoning audit, theory of mind, algorithmic complexity,
 formal/regex patterns, temporal scheduling); software (coding, debugging,
@@ -52,9 +53,13 @@ report/index.html               the report page
 - Subjective criteria: 0–10 with mandatory written justification; every
   rubric grades **Reasoning quality** from the run's `REASONING.md`.
 - Test total = 0.5 × objective + 0.5 × subjective.
-- Category = mean of attempted tests only; coverage is shown honestly
-  (e.g. "1/2 tests run"). The report can show combined, objective-only,
-  or subjective-only views.
+- Parallel forms (ids like `story-01b-…`, see `AUTHOR.md`) collapse to
+  their facet's **median** — n distinct forms = n runs of one construct
+  (target n per facet: `RUNS_TARGET` in `report/index.html`, default 3).
+- Category = mean of attempted facets only; coverage is shown honestly
+  (e.g. "1/2 tests run", or "1/4 facets run (2 runs incl. parallel
+  forms)"). The report can show combined, objective-only, or
+  subjective-only views.
 
 ## Cheating detection (best-effort)
 
