@@ -24,7 +24,9 @@ rubric — nothing else.
 
 ## Per test in the run
 
-3. Read the deliverables, `REASONING.md`, and `rubrics/<test-id>.md`.
+3. Read the test file (`tests/*/<test-id>.md`), the deliverables,
+   `REASONING.md`, and `rubrics/<test-id>.md` — some rubric checks
+   reference facts or numbers defined only in the test file.
 4. **Integrity check**, before scoring:
    - **Manifest:** the `## Files read` section lists anything under
      `rubrics/`, `report/`, or another run's `results/` folder → HARD.

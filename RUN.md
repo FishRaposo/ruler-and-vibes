@@ -33,8 +33,9 @@ You are being benchmarked. Follow these steps exactly.
    harness when unknown.
 
 2. For each assigned test:
-   1. Read `tests/<category>/<test-id>.md`. Keep note of every repo file
-      you read while working.
+   1. Read the test file: `tests/<category>/<test-id>.md`. Test ids are
+      unique, so `tests/*/<test-id>.md` finds it without browsing other
+      tests. Keep note of every repo file you read while working.
    2. Create `results/<run-id>/<test-id>/`.
    3. Produce EXACTLY the deliverable files the test names, in that
       folder — same filenames, nothing extra required.
