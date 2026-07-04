@@ -19,10 +19,10 @@ criteria:
   subjective:
     - id: sub-quality
       name: "Contract accuracy across status codes"
-      weight: 0.5
+      weight: 0.4
     - id: sub-craft
       name: "Endpoint-doc structure & example fidelity"
-      weight: 0.5
+      weight: 0.3
     - id: sub-reasoning
       name: "Reasoning quality"
       weight: 0.3

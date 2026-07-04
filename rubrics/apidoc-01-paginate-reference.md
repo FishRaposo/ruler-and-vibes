@@ -19,10 +19,10 @@ criteria:
   subjective:
     - id: sub-quality
       name: "Documentation accuracy & completeness"
-      weight: 0.5
+      weight: 0.4
     - id: sub-craft
       name: "Reference clarity & example quality"
-      weight: 0.5
+      weight: 0.3
     - id: sub-reasoning
       name: "Reasoning quality"
       weight: 0.3
