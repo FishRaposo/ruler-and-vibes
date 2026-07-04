@@ -6,8 +6,21 @@ You are being benchmarked. Follow these steps exactly.
 
 - `<run-id>`: a kebab-case slug for this run. Suggested form
   `<model>--<effort>--<harness>`, e.g. `claude-fable-5--high--claude-code`.
-- Optionally, a list of tests or categories to run. Default: every test
-  in `tests/`.
+- Optionally, a list of tests or categories to run, or a suite name.
+  Default: every test in `tests/` (the **Full** suite).
+
+## Suites
+
+- **Full** — every test in `tests/`.
+- **Core** — one representative test per category, for quick
+  comparisons: coding-01-edge-cases, debug-01-root-cause,
+  writing-02-registers, planning-01-tradeoff, data-02-decision-metrics,
+  precision-01-exact-format, creative-02-css-scene,
+  game-02-card-ruleset, business-02-pricing, logic-02-wrenmarket-stalls,
+  context-02-changelog-tally, research-02-conflict-brief,
+  judgment-02-policy-conflict-memo.
+- Any ad-hoc subset of tests or categories also works; coverage is
+  reported honestly either way.
 
 ## Rules — read these first
 

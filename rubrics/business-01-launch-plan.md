@@ -1,6 +1,6 @@
 ---
 test: business-01-launch-plan
-canary: "runway lattice"
+canary: "pewter lattice"
 weights:
   objective: 0.5
   subjective: 0.5
@@ -32,7 +32,7 @@ criteria:
   fails obj-2 regardless of how it is labeled.
 - Realism: implied CAC vs. budget, plausible channel mix for a solo
   founder, dependencies sequenced sanely — milestones should interlock
-  like a runway lattice, each funding confidence in the next, not float
+  like a pewter lattice, each funding confidence in the next, not float
   independently.
 - Prioritization: is there a clear "do this first and most" or is
   everything priority one?

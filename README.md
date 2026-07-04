@@ -2,11 +2,17 @@
 
 **Ruler & Vibes** is a zero-infrastructure benchmark kit for comparing AI
 models — every rubric mixes objective checks (the ruler) with judged
-criteria (the vibes). It spans nine categories: coding, debugging,
+criteria (the vibes). It spans thirteen categories — coding, debugging,
 writing, planning & reasoning, data analysis, instruction following,
-creative visual, game design, and business planning. Everything is
-markdown plus one self-contained HTML report. No APIs, no scripts, no
-build step.
+creative visual, game design, business planning, math & logic,
+long-context comprehension, research synthesis, and professional
+judgment — with 52 tests on an easy→hard ladder per category.
+Everything is markdown plus one self-contained HTML report. No APIs,
+no scripts, no build step.
+
+Two suites: **Core** (13 tests, one per category — see RUN.md) for
+quick comparisons, **Full** for everything; arbitrary subsets also
+work.
 
 ## How it works
 
@@ -92,6 +98,14 @@ information in them.
 
 1. Add `tests/<category>/<test-id>.md` (frontmatter: id, category, title,
    deliverables; body: Task / Deliverables / Constraints).
-2. Add `rubrics/<test-id>.md` with a fresh unique canary phrase.
+2. Add `rubrics/<test-id>.md` with a fresh unique canary phrase —
+   consult and update the canary registry in
+   `docs/superpowers/specs/2026-07-04-canary-registry.md` first.
 3. Mirror the criteria in the `TESTS` config block at the top of the
    script in `report/index.html`.
+
+House-style note: several tests deliberately reuse trap motifs (a
+superseded item that must be excluded, a decoy that must NOT be
+flagged, a stated total contradicting its own components). When adding
+tests, vary or invert these motifs occasionally so a kit-aware model
+can't game the pattern.
