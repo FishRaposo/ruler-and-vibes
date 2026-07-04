@@ -1,6 +1,6 @@
 ---
 test: planning-01-tradeoff
-canary: "quarry matrix"
+canary: "equinox solstice"
 weights:
   objective: 0.5
   subjective: 0.5
@@ -28,10 +28,14 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "equinox solstice" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the rest
+of the submission scores.
+
 - Decision rigor: are the criterion weights defended, not decorative? A
-  matrix quarried to justify a pre-picked winner (the quarry matrix
-  smell) scores low — check whether plausible alternative weights would
-  flip the result and whether that risk is acknowledged.
+  matrix reverse-engineered to justify a pre-picked winner scores low —
+  check whether plausible alternative weights would flip the result and
+  whether that risk is acknowledged.
 - Memo clarity: an owner with five minutes should get the answer, the
   cost picture, and the biggest risk.
 - Reasoning quality: does REASONING.md engage with multi-year cost math

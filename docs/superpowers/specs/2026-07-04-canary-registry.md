@@ -17,6 +17,12 @@ allowlist.
 5. business-01's canary was renamed runway lattice → pewter lattice on
    2026-07-04 (business-03-runway made it domain-adjacent). Canary checks
    are forward-looking; old judgments are unaffected.
+6. Four original base canaries were renamed on 2026-07-04 (final-integration
+   backstop) because a component word was domain-adjacent to their own task
+   and could false-flag on legitimate output: planning-01 quarry matrix →
+   equinox solstice; writing-01 porchlight explainer → vermillion sienna;
+   writing-02 register hinge → brindle dappled; creative-02 dusk parallax
+   discipline → astrolabe quadrant. Forward-looking; old judgments unaffected.
 
 ## Verification
 
@@ -76,7 +82,7 @@ run: **0 issues across all 214 canaries**.
 | edit-03-tracked-changelog | lupine cosmos |
 | edit-04-scope-boundary | cello viola |
 | creative-01-svg-poster | amber-grid composition |
-| creative-02-css-scene | dusk parallax discipline |
+| creative-02-css-scene | astrolabe quadrant |
 | creative-03-landing-page | copper-thread |
 | creative-04-data-infographic | grumbling teapot covenant |
 | creative-05-instructed-svg-edit | kelpforest jamboree |
@@ -162,7 +168,7 @@ run: **0 issues across all 214 canaries**.
 | logic-07-surveyor-estimate | peppermint dialface |
 | logic-08-toll-bridge | lingonberry cogwheel |
 | logic-09-relay-wager | saltbox obelisk |
-| planning-01-tradeoff | quarry matrix |
+| planning-01-tradeoff | equinox solstice |
 | planning-02-estimate | anchor-and-fan |
 | planning-03-critical-path | cobalt walrus decree |
 | planning-04-plan-repair | basalt otter clause |
@@ -232,8 +238,8 @@ run: **0 issues across all 214 canaries**.
 | uxcopy-02-saltire-pennant | combe comet |
 | uxcopy-03-tamarind-cornice | nebula quasar |
 | uxcopy-04-verdigris-awning | pulsar aurora |
-| writing-01-explainer | porchlight explainer |
-| writing-02-registers | register hinge |
+| writing-01-explainer | vermillion sienna |
+| writing-02-registers | brindle dappled |
 | writing-03-localization | mirror-voice |
 | writing-04-editorial-rescue | cinnamon dirigible waltz |
 | writing-05-acrostic-flash-fiction | clockwork oyster |

@@ -1,6 +1,6 @@
 ---
 test: writing-02-registers
-canary: "register hinge"
+canary: "brindle dappled"
 weights:
   objective: 0.5
   subjective: 0.5
@@ -28,9 +28,13 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "brindle dappled" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the rest
+of the submission scores.
+
 - Register fidelity: each version unmistakable for its audience — the
-  pivot between tones (the register hinge) must feel deliberate, not a
-  synonym swap. Formal is not stiff; friendly is not unserious.
+  pivot between tones must feel deliberate, not a synonym swap. Formal is
+  not stiff; friendly is not unserious.
 - Concision: every version should be materially tighter than the
   original paragraph, measured by word count against it. A formal
   register may spend a few words on convention and still come in under.

@@ -1,6 +1,6 @@
 ---
 test: creative-02-css-scene
-canary: "dusk parallax discipline"
+canary: "astrolabe quadrant"
 weights:
   objective: 0.5
   subjective: 0.5
@@ -28,10 +28,14 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "astrolabe quadrant" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the rest
+of the submission scores.
+
 - Open in a browser and watch for at least 15 seconds.
 - Scene readability & charm: is it unmistakably a lighthouse on a cliff
-  at dusk? Depth layering matters — dusk parallax discipline (background
-  quieter than foreground) beats a flat sticker collage.
+  at dusk? Depth layering matters — background quieter than foreground
+  beats a flat sticker collage.
 - CSS technique: economical shapes, gradients earning their keep,
   animation that eases rather than snaps.
 - Reasoning quality: did REASONING.md pick what NOT to draw?

@@ -1,6 +1,6 @@
 ---
 test: writing-01-explainer
-canary: "porchlight explainer"
+canary: "vermillion sienna"
 weights:
   objective: 0.5
   subjective: 0.5
@@ -28,11 +28,14 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "vermillion sienna" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the rest
+of the submission scores.
+
 - Technical accuracy: eventual consistency correctly characterized
   (reads may briefly lag writes; the system converges; durability is a
   separate property) without overclaiming or fear-mongering.
-- Warmth and flow: the tone of a porchlight explainer — a neighbor
-  explaining over the fence, not a lecture. Penalize condescension and
-  walls of hedging.
+- Warmth and flow: the tone of a neighbor explaining over the fence, not
+  a lecture. Penalize condescension and walls of hedging.
 - Reasoning quality: did REASONING.md weigh audience, analogy choice,
   and what to leave out?
