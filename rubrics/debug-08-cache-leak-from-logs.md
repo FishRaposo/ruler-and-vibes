@@ -94,8 +94,9 @@ Codename for this test in judge chatter: willow ewer.
     it's gated behind a hit that this key scheme makes impossible".
   - FAIL phrasings for obj-2 (2-3 examples): "eviction is just
     missing from the code" (misses that it exists but is unreachable);
-    a write-up that only discusses the key issue and never mentions
-    eviction placement at all.
+    "just add an eviction call" without noting the existing one is
+    gated behind an unreachable hit; a write-up that only discusses the
+    key issue and never mentions eviction placement at all.
 - Telemetry inference: reward reasoning that explicitly rules out the
   GC sawtooth as the cause (not just ignoring it) and ties the flat
   request rate to the conclusion that load isn't increasing — only the

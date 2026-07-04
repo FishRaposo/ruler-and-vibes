@@ -61,8 +61,9 @@ value, with ties broken by giving priority to the lowest index.
      already-correct distractor case — must still pass)
   5. `allocate(100000, [1,1,1,1,1,1,1])` → shares sum to exactly 100000
 - `DRIFT.md` — name the root cause (independent per-share `Math.round`
-  does not conserve the total) and state the largest-remainder rule
-  used to distribute leftover pennies.
+  does not conserve the total) and state the rule you used to
+  distribute the leftover pennies so the shares sum exactly (including
+  how ties are broken).
 
 ## Constraints
 
