@@ -60,6 +60,28 @@ digits). Similarly for memo.md's obj-3/obj-4/obj-5, judge whether each
 listed item is a genuine, correctly-stated discrepancy against the
 answer key above, not just whether some numbers appear.
 
+Example phrasings for the prose-located checks (apply the same standard
+to equivalent wordings):
+
+- **obj-2 (article states a fact as a claim)** — PASS: "doors open on
+  15 March", "the 2.1-metre primary mirror", "eighty visitors per
+  session". FAIL (banned wrong value stated as a claim): "opening
+  Saturday the 14th", "our 1.2 m mirror", "up to 180 guests a session",
+  "director Mirella Okafor". FAIL (fact absent/too vague to count):
+  "opening in mid-March", "a large mirror" with no measurement.
+- **obj-3 (memo item is a genuine, correctly-stated discrepancy)** —
+  PASS: "Capacity: draft says 180, fact sheet says 80 — corrected to
+  80"; "Mirror: 1.2 m in the draft should be 2.1 m". FAIL (only one
+  side / no correction): "the capacity number looks off", "double-check
+  the mirror size". FAIL (invented or wrong correction): "date should
+  be 16 March" (the correct value is 15).
+- **obj-5 (volunteer count must NOT be flagged as an error)** — PASS
+  (leaves it out, or notes it as consistent): memo omits the volunteer
+  count entirely; "Volunteer count 'over 200' vs 212 — consistent, no
+  change". FAIL (flags it as a discrepancy): "Volunteers: draft says
+  over 200 but it's 212 — fix"; listing "over 200 members" in the
+  corrections table.
+
 - **Rewrite prose quality**: does article.md read as a tight, polished
   piece of promotional writing at roughly half the draft's length, not
   a mechanically shortened version? Reward active voice, a strong
