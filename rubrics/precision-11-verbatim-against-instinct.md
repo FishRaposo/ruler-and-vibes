@@ -19,9 +19,12 @@ criteria:
   subjective:
     - id: sub-quality
       name: "Literal fidelity over correction instinct"
-      weight: 0.7
+      weight: 0.4
     - id: sub-craft
       name: "Byte-exact reproduction"
+      weight: 0.3
+    - id: sub-reasoning
+      name: "Reasoning quality"
       weight: 0.3
 ---
 
