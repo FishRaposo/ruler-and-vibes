@@ -74,7 +74,7 @@ give it to the judge to audit.
 
 ## Skills (optional, recommended)
 
-Two agent skills ship with the repo under `.agents/skills/` (the
+Three agent skills ship with the repo under `.agents/skills/` (the
 cross-harness Agent Skills layout):
 
 - **running-the-benchmark** — keeps the model under test inside its
@@ -83,6 +83,11 @@ cross-harness Agent Skills layout):
 - **judging-benchmark-results** — scoring discipline: verify by
   executing, score blind before reading any prior judgment, finish the
   data.js paperwork.
+- **generating-parallel-tests** — evaluator-side: mint a fresh parallel
+  form of an existing test (same construct, new surface) so a model can
+  be scored across more distinct runs — see `AUTHOR.md` for the full
+  protocol, including the independent review gate every form must pass
+  before scored use.
 
 **Install:**
 
@@ -115,3 +120,9 @@ superseded item that must be excluded, a decoy that must NOT be
 flagged, a stated total contradicting its own components). When adding
 tests, vary or invert these motifs occasionally so a kit-aware model
 can't game the pattern.
+
+To add a *parallel form* of an existing test (same construct, fresh
+surface — used for multi-run evaluation of a single facet), follow
+`AUTHOR.md` instead: it covers the form-id convention (`story-01b-…`),
+the equivalence contract, canary minting (`node tools/canary-audit.js`
+verifies), and the independent review gate.

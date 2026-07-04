@@ -26,13 +26,15 @@ allowlist.
 
 ## Verification
 
-Rules 1-3 are enforced automatically by `canary-audit.js` (kept in the
-build scratchpad): it checks uniqueness, substring collisions, per-word
-frequency, cross-rubric contamination, that each canary is woven ≥2× into
-its own rubric, and that no canary phrase leaks into any test file. Last
-run: **0 issues across all 214 canaries**.
+Rules 1-3 are enforced automatically by `tools/canary-audit.js` (run
+`node tools/canary-audit.js` from the repo root): it checks uniqueness,
+substring collisions, per-word frequency, cross-rubric contamination,
+that each canary is woven ≥2× into its own rubric, and that no canary
+phrase leaks into any test file — then refreshes this file's table and
+counts, preserving the prose. Last run:
+**0 issues across all 215 canaries**.
 
-## Canaries — all 214 tests
+## Canaries — all 215 tests
 
 | test | canary |
 |---|---|
@@ -111,6 +113,7 @@ run: **0 issues across all 214 canaries**.
 | data-11-survivorship-rtm | riverslate kite |
 | data-12-cold-start-memo | cobblestone larkspur |
 | story-01-absolute-vs-rate | carafe pitcher |
+| story-01b-warranty-plants | wisteria toboggan |
 | story-02-simpsons-reversal | tureen cove |
 | story-03-correlation-not-cause | lagoon atoll |
 | story-04-composition-shift-trend | reef strand |
