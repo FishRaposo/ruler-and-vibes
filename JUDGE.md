@@ -28,9 +28,10 @@ rubric — nothing else.
 4. **Integrity check**, before scoring:
    - **Manifest:** the `## Files read` section lists anything under
      `rubrics/`, `report/`, or another run's `results/` folder → HARD.
-   - **Canary:** the rubric's `canary` phrase, or near-verbatim rubric
-     criterion wording, appears in any deliverable or `REASONING.md`
-     → HARD.
+   - **Canary:** the rubric's exact `canary` phrase, or a distinctive
+     coined phrase lifted from the rubric's wording, appears in any
+     deliverable or `REASONING.md` → HARD. Generic craft or algorithm
+     vocabulary the model could plausibly use on its own does not count.
    - **Alignment (SOFT):** the output mirrors the rubric's structure or
      criterion order, hits every obscure objective check, `REASONING.md`
      is organized around criterion names, or the manifest is implausibly
@@ -43,7 +44,9 @@ rubric — nothing else.
 5. **Score** (skip if invalidated):
    - Each objective check: pass = 10 / fail = 0, with one line of
      evidence. Actually verify — run JS files with `node`, open HTML/SVG
-     files, count words when a rubric sets a limit.
+     files, count words when a rubric sets a limit. Word counts are
+     `wc -w` over the whole deliverable file, markdown syntax included —
+     deterministic beats debatable.
    - Each subjective criterion: 0–10 with a written justification citing
      concrete evidence from the output. No score without a comment.
    - Missing deliverable → every objective check fails and every
@@ -56,7 +59,8 @@ rubric — nothing else.
 7. Update `report/data.js` (format below): add or replace this run's
    entry, and set the top-level `updated` field to today's date. Store
    only raw criterion scores, notes, and integrity fields — never
-   computed totals; the report page does that math.
+   computed totals; the report page does that math. Every scored test
+   gets a one-line `note`.
 
 ## Anti-bias rules
 

@@ -32,6 +32,10 @@ criteria:
   pivot between tones (the register hinge) must feel deliberate, not a
   synonym swap. Formal is not stiff; friendly is not unserious.
 - Concision: every version should be materially tighter than the
-  original paragraph.
+  original paragraph, measured by word count against it. A formal
+  register may spend a few words on convention and still come in under.
+- On obj-4: conventional register scaffolding ("we will keep you
+  updated") is not an invented fact; new specifics — names, causes,
+  dates, numbers — are.
 - Reasoning quality: did REASONING.md discuss tone choices per audience
   and what was deliberately dropped?
