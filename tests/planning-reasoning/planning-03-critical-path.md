@@ -4,7 +4,6 @@ category: planning-reasoning
 title: Pop-up bakery launch schedule
 deliverables:
   - PLAN.md
-  - REASONING.md
 ---
 
 ## Task
@@ -46,8 +45,6 @@ finish the whole project).
   convention above), followed by a statement of the minimum project
   duration, the single critical path (as a chain of task letters), and
   the slack of every non-critical task.
-- `REASONING.md` (at most 300 words) — explain the method used to
-  compute the schedule and identify the critical path.
 
 ## Constraints
 

@@ -5,7 +5,6 @@ title: Harborlight Lantern Festival plan audit
 deliverables:
   - AUDIT.md
   - REVISED-PLAN.md
-  - REASONING.md
 ---
 
 ## Task
@@ -63,8 +62,6 @@ all of them, and produce a corrected plan.
   and critical path. State explicitly whether the promised day-24
   gates-open milestone is feasible, and if not, the earliest feasible
   day.
-- `REASONING.md` (at most 400 words) — explain how you found and fixed
-  each defect.
 
 ## Constraints
 
