@@ -62,9 +62,13 @@ rubric — nothing else.
    using the template at the bottom of this file.
 7. Update `report/data.js` (format below): add or replace this run's
    entry, and set the top-level `updated` field to today's date. Store
-   only raw criterion scores, notes, and integrity fields — never
-   computed totals; the report page does that math. Every scored test
-   gets a one-line `note`.
+   only raw criterion scores, notes, per-criterion comments, and
+   integrity fields — never computed totals; the report page does that
+   math. Every scored test gets a one-line `note` and a `comments` map
+   with a condensed one-or-two-sentence justification per criterion
+   (same ids as the scores). The full reasoning stays in the judgment
+   file; `comments` is what the report page displays, since a `file://`
+   page cannot load the judgment markdown at runtime.
 
 ## Anti-bias rules
 
@@ -96,7 +100,16 @@ rubric):
     "coding-01-edge-cases": {
       objective: { "obj-1": 10, "obj-2": 10, "obj-3": 0, "obj-4": 10 },
       subjective: { "sub-quality": 7, "sub-craft": 8, "sub-reasoning": 6 },
-      note: "Solid merge logic; adjacency case missed."
+      note: "Solid merge logic; adjacency case missed.",
+      comments: {
+        "obj-1": "Ran it: all self-tests print PASS.",
+        "obj-2": "Empty and single-range inputs verified correct.",
+        "obj-3": "[1,2]+[2,3] returns them unmerged — adjacency missed.",
+        "obj-4": "One file, 96 lines, no dependencies.",
+        "sub-quality": "Correct on overlaps; misses the adjacency requirement.",
+        "sub-craft": "Clear naming and structure throughout.",
+        "sub-reasoning": "Real trade-offs discussed; limitations honest."
+      }
       // integrity: "flagged" | "invalidated"   (omit when clean)
       // integrityNote: "one line of evidence"  (required with integrity)
       // an invalidated test carries NO objective/subjective scores

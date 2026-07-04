@@ -195,7 +195,9 @@ protocol instructs the judge to:
    per-criterion scores, evidence, comments, and an overall verdict paragraph.
 6. Update `report/data.js`: add/replace that run's entry with the run's
    `meta.json` fields (model, effort, harness, date), per-criterion numeric
-   scores, a one-line note per test, and judge metadata (judge model name,
+   scores, a one-line note per test, a condensed per-criterion `comments`
+   map (the report displays these; a `file://` page cannot load the
+   judgment markdown at runtime), and judge metadata (judge model name,
    date — provided by the user or session context). Section scores and totals
    are NOT stored — the report page computes them from raw scores and weights,
    so the math lives in one place.
@@ -269,6 +271,7 @@ window.BENCH_DATA = {
           objective: { "obj-1": 10, "obj-2": 0 },
           subjective: { "sub-quality": 7, "sub-clarity": 8, "sub-reasoning": 6 },
           note: "Solid solution, missed the dependency constraint.",
+          comments: { "obj-1": "Verified empty input.", /* one per criterion */ },
           // optional integrity fields; absent = clean
           integrity: "flagged",            // or "invalidated" (then no scores)
           integrityNote: "REASONING.md structured around criterion names."
