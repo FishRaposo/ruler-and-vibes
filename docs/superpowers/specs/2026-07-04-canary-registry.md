@@ -32,9 +32,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 219 canaries**.
+**0 issues across all 241 canaries**.
 
-## Canaries — all 219 tests
+## Canaries — all 241 tests
 
 | test | canary |
 |---|---|
@@ -52,6 +52,8 @@ counts, preserving the prose. Last run:
 | apidoc-04-async-loader-contracts | trowel mallet |
 | business-01-launch-plan | pewter lattice |
 | business-02-pricing | keel margin |
+| business-02b-makerspace-tiers | bandicoot realgar |
+| business-02c-cloudstream-tiers | bilby weathervane |
 | business-03-runway | topaz pelican waltz |
 | business-04-expansion-covenant | glacier mantis hymnal |
 | business-05-roadmap-prioritization | skylark ember prism |
@@ -87,6 +89,8 @@ counts, preserving the prose. Last run:
 | edit-04-scope-boundary | cello viola |
 | creative-01-svg-poster | amber-grid composition |
 | creative-02-css-scene | astrolabe quadrant |
+| creative-02b-sunrise-balloon | caracal madder |
+| creative-02c-balloon-dawn | margay woad |
 | creative-03-landing-page | copper-thread |
 | creative-04-data-infographic | grumbling teapot covenant |
 | creative-05-instructed-svg-edit | kelpforest jamboree |
@@ -104,6 +108,8 @@ counts, preserving the prose. Last run:
 | security-08-input-validator-authoring | pomelo gnomon doorknob |
 | data-01-anomaly | drift-flag |
 | data-02-decision-metrics | penny-lure |
+| data-02b-acquisition-channels | coati mauveine |
+| data-02c-enrollment-cac | kinkajou puce |
 | data-03-segment-paradox | juniper hammock edict |
 | data-04-ledger-reconcile | cinnamon walrus doctrine |
 | data-05-ab-verdict | thornwick vaneglass |
@@ -139,6 +145,8 @@ counts, preserving the prose. Last run:
 | pat-04-quill-nested-literal | gecko iguana |
 | game-01-microgame | pip-loop pacing |
 | game-02-card-ruleset | table-hush |
+| game-02b-domino-ruleset | oncilla cochineal |
+| game-02c-domino-ruleset | jaguarundi orpiment |
 | game-03-balance-patch | marzipan flotilla |
 | game-04-puzzle-pack | gingham matador |
 | game-05-be-the-engine | marjoram skiff |
@@ -147,6 +155,8 @@ counts, preserving the prose. Last run:
 | game-08-combo-engine | medlar embassy |
 | game-09-ev-economy | sorrel ferry |
 | precision-01-exact-format | brass-rule |
+| precision-01b-library-acquisitions | olingo wenge |
+| precision-01c-library-accession | dhole smalt |
 | precision-02-constrained-piece | metronome discipline |
 | precision-03-amended-spec | cobalt tambourine |
 | precision-04-conditional-manifest | velvet stalactite |
@@ -158,6 +168,8 @@ counts, preserving the prose. Last run:
 | precision-11-verbatim-against-instinct | brackwater flambeau |
 | context-01-needle | tweed pendulum |
 | context-02-changelog-tally | mulberry flywheel |
+| context-02b-orbiter-downlink-tally | hoopoe gargoyle |
+| context-02c-tram-headway-tally | avocet corbel |
 | context-03-contradictions | terracotta tuba |
 | context-04-policy-synthesis | huckleberry sextant |
 | context-05-grounded-summary | buckwheat carousel |
@@ -168,6 +180,7 @@ counts, preserving the prose. Last run:
 | context-10-icl-labeling | walnut funicular |
 | logic-01-ferry-ledger | gingham asteroid verdict |
 | logic-02-wrenmarket-stalls | corduroy pelican statute |
+| logic-02b-dawnascent-balloons | potoroo capstone |
 | logic-03-token-pouch | velvet accordion doctrine |
 | logic-04-ninefold-league | porcelain tumbleweed sonata |
 | logic-05-guild-charter | tideflat cartwheel |
@@ -176,6 +189,8 @@ counts, preserving the prose. Last run:
 | logic-08-toll-bridge | lingonberry cogwheel |
 | logic-09-relay-wager | saltbox obelisk |
 | planning-01-tradeoff | equinox solstice |
+| planning-01b-coldchain-lastmile | paca gamboge |
+| planning-01c-canning-line | agouti fuchsine |
 | planning-02-estimate | anchor-and-fan |
 | planning-03-critical-path | cobalt walrus decree |
 | planning-04-plan-repair | basalt otter clause |
@@ -186,6 +201,8 @@ counts, preserving the prose. Last run:
 | planning-10-storm-option | meerkat sourdough |
 | judgment-01-client-reply | marzipan foghorn |
 | judgment-02-policy-conflict-memo | quilted asteroid |
+| judgment-02b-biospecimen-sop-conflict | sanderling mullion |
+| judgment-02c-quarantine-retention-memo | turnstone balustrade |
 | judgment-03-bad-news-announcement | paprika gondola |
 | judgment-04-pushback-cherry-pick | obsidian marmalade |
 | judgment-05-need-to-know | riverstile glockenspiel |
@@ -205,6 +222,8 @@ counts, preserving the prose. Last run:
 | audit-04-bayesian-screening-calculation | turmeric cardamom |
 | research-01-attribution | paisley periscope |
 | research-02-conflict-brief | burlap kaleidoscope |
+| research-02b-datacenter-outage | godwit keystone |
+| research-02c-grain-terminal-blast | dunlin lintel |
 | research-03-evidence-grading | indigo accordion |
 | research-04-dossier | saffron ocarina |
 | research-05-insufficient-evidence | riptide xylophone |
@@ -222,6 +241,7 @@ counts, preserving the prose. Last run:
 | reverse-08-loom-dispatch | teasel bollard quiver |
 | reverse-09-braid-mill | whortleberry vireo plume |
 | sql-01-join-cardinality | zither axolotl |
+| sql-01b-sculptor-sale-rollup | plover chub |
 | sql-02-null-three-valued | tapir lemur |
 | sql-03-group-having-filter | ocelot caribou |
 | sql-04-window-rank-frames | marten ferret |
@@ -247,6 +267,8 @@ counts, preserving the prose. Last run:
 | uxcopy-04-verdigris-awning | pulsar aurora |
 | writing-01-explainer | vermillion sienna |
 | writing-02-registers | brindle dappled |
+| writing-02b-studio-postponement | binturong cerulean |
+| writing-02c-kiln-firing | sifaka magenta |
 | writing-03-localization | mirror-voice |
 | writing-04-editorial-rescue | cinnamon dirigible waltz |
 | writing-05-acrostic-flash-fiction | clockwork oyster |
