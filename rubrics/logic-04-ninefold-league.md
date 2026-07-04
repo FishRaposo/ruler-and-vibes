@@ -19,10 +19,13 @@ criteria:
   subjective:
     - id: sub-quality
       name: "Proof rigor"
-      weight: 0.5
+      weight: 0.4
     - id: sub-craft
       name: "Mathematical exposition"
-      weight: 0.5
+      weight: 0.3
+    - id: sub-reasoning
+      name: "Reasoning quality"
+      weight: 0.3
 ---
 
 ## Judge guidance
@@ -111,3 +114,6 @@ wrong count 17 expected 18`.
   schedule" with "no schedule exists" (Part C requires an actual
   exhibit, not a non-existence claim, and Part B/D require proofs, not
   assertions).
+- **Reasoning quality**: does REASONING.md reflect on why the parity
+  argument settles Part B and how the exhibited schedule was verified,
+  rather than asserting the results?

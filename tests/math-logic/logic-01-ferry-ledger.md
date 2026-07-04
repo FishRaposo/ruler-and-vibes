@@ -1,7 +1,7 @@
 ---
 id: logic-01-ferry-ledger
 category: math-logic
-title: The Lantern Ferry Ledger
+title: Lantern Ferry Ledger
 deliverables:
   - ANSWERS.md
 ---

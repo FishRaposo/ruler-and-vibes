@@ -1,7 +1,7 @@
 ---
 id: logic-04-ninefold-league
 category: math-logic
-title: The Ninefold League
+title: Ninefold League
 deliverables:
   - PROOF.md
 ---

@@ -1,7 +1,7 @@
 ---
 id: logic-03-token-pouch
 category: math-logic
-title: The Token Pouch Game
+title: Token Pouch Game
 deliverables:
   - ANSWERS.md
 ---

@@ -19,10 +19,13 @@ criteria:
   subjective:
     - id: sub-quality
       name: "Deduction narrative"
-      weight: 0.5
+      weight: 0.4
     - id: sub-craft
       name: "Logical economy"
-      weight: 0.5
+      weight: 0.3
+    - id: sub-reasoning
+      name: "Reasoning quality"
+      weight: 0.3
 ---
 
 ## Judge guidance
@@ -118,3 +121,6 @@ answer key above. Run it once against the puzzle as stated (must print
   showing why other combinations are eliminated). Reward a chain that
   explicitly rules out the tempting misreading of clue 8 (adjacency)
   or otherwise shows the strict-order reading was used correctly.
+- **Reasoning quality**: does REASONING.md explain the solving strategy
+  — which clues anchored the deduction and how the clue-8 misreading
+  was ruled out — rather than merely restating the final chain?

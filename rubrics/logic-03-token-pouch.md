@@ -19,9 +19,12 @@ criteria:
   subjective:
     - id: sub-quality
       name: "Probabilistic rigor"
-      weight: 0.7
+      weight: 0.4
     - id: sub-craft
       name: "Enumeration craft"
+      weight: 0.3
+    - id: sub-reasoning
+      name: "Reasoning quality"
       weight: 0.3
 ---
 
@@ -89,3 +92,6 @@ P(<0) = 1/5. Game B: 36 outcomes, sum 84, EV = 7/3. Difference:
 - **Enumeration craft**: are the case tables complete, clearly labeled,
   and organized so a reader could re-total the expected value by hand
   from the table alone (counts, per-case scores, and a visible sum)?
+- **Reasoning quality**: does REASONING.md justify the without- vs
+  with-replacement distinction and the choice to keep exact fractions,
+  showing awareness of the 7/3 decimal trap?
