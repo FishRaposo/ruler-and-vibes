@@ -1,6 +1,8 @@
-# Model Benchmark
+# Ruler & Vibes
 
-A zero-infrastructure kit for comparing AI models across six categories:
+**Ruler & Vibes** is a zero-infrastructure benchmark kit for comparing AI
+models — every rubric mixes objective checks (the ruler) with judged
+criteria (the vibes). It spans six categories:
 coding, writing, planning & reasoning, creative visual, game design, and
 business planning. Everything is markdown plus one self-contained HTML
 report. No APIs, no scripts, no build step.
