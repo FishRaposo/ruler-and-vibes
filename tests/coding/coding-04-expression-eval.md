@@ -4,7 +4,6 @@ category: coding
 title: Build an arithmetic expression evaluator with exact precedence, associativity, and error contracts
 deliverables:
   - evaluator.js
-  - REASONING.md
 ---
 
 ## Task
@@ -41,11 +40,6 @@ through each case:
   when run with `node evaluator.js`, prints one line per embedded test
   vector in the exact format `INPUT => RESULT`, in the order the
   vectors are listed below (printing at require time is fine).
-- `REASONING.md` — name the parsing strategy you used (e.g. recursive
-  descent or shunting-yard) and explain specifically how you
-  implemented right-associativity for `^` and the unary-minus rules
-  above.
-
 Test vectors — evaluate each and print one line per vector, in this
 order. They are given as JavaScript string literals so that the
 whitespace in vector 4 is unambiguous (its leading and trailing spaces
@@ -73,4 +67,3 @@ const VECTORS = [
 - Plain JavaScript, no dependencies, single file.
 - The file must end with `module.exports = { evaluate }`; the judge's
   harness requires it.
-- `REASONING.md`, at most 300 words (whole file, `wc -w`).

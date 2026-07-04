@@ -4,7 +4,6 @@ category: coding
 title: Implement the Kestrel-8 checksum exactly as specified
 deliverables:
   - validator.js
-  - REASONING.md
 ---
 
 ## Task
@@ -49,9 +48,6 @@ code is **VALID**.
      listed below.
   2. Three lines, one per test stem, each formatted exactly
      `<stem> -> <digit>`, in the order the stems are listed below.
-- `REASONING.md` — explain your position-numbering choice (which end
-  you count from, and how you confirmed it) and how you made sure you
-  did not accidentally implement the mirror-image rule.
 
 Test codes (validate each, print in this order):
 `46718296`, `24681357`, `12121212`, `11223344`, `44332211`,
@@ -65,4 +61,3 @@ Test stems (compute the check digit for each, print in this order):
 - Plain JavaScript, no dependencies, `validator.js` at most 80 lines.
 - The file must end with `module.exports = { validate, checkDigit }`;
   the judge's harness requires it.
-- `REASONING.md`, at most 200 words (whole file, `wc -w`).

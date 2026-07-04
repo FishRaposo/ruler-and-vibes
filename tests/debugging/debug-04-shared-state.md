@@ -4,7 +4,6 @@ category: debugging
 title: Wrong discount on the second booking
 deliverables:
   - pricing.js
-  - REASONING.md
 ---
 
 ## Task
@@ -57,11 +56,6 @@ sequence (an override call followed by a plain call) behave correctly.
   and `applyDiscount`. `RULES` must remain a plain, shared,
   module-level object with the same shape and starting values shown
   above.
-- `REASONING.md` — explain (a) what you found actually causes the
-  cross-call leak, reproducing the order-dependence from the bug
-  report, and (b) whether `applyDiscount` was really at fault, with
-  your reasoning.
-
 ## Constraints
 
 - Plain JavaScript, no dependencies, `pricing.js` at most 45 lines.
@@ -75,4 +69,3 @@ sequence (an override call followed by a plain call) behave correctly.
 - The file must end with
   `module.exports = { RULES, getRules, applyDiscount }`; the judge's
   harness requires it.
-- `REASONING.md`, at most 250 words (whole file, `wc -w`).

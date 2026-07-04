@@ -4,7 +4,6 @@ category: debugging
 title: Read the Trace, Fix the Crash
 deliverables:
   - cart.js
-  - REASONING.md
 ---
 
 ## Task
@@ -51,13 +50,8 @@ Fix the crash and ship a working `cart.js`.
   1. `[{name:'candle',qty:2,unitPriceCents:350},{name:'soap',qty:1,unitPriceCents:499}]`
   2. `[{name:'lamp',qty:3,unitPriceCents:1400}]`
   3. `[]` (the empty cart)
-- `REASONING.md` — using the crash log above, identify the exact line
-  and condition in the shipped code that caused the crash, and explain
-  why it also crashes on the empty-cart case.
-
 ## Constraints
 
 - Plain JavaScript, no dependencies, `cart.js` at most 40 lines.
 - The file must end with `module.exports = { summarizeCart }`; the
   judge's harness requires it.
-- `REASONING.md`, at most 150 words (whole file, `wc -w`).
