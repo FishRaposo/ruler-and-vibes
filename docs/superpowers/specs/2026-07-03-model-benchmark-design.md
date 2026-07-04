@@ -68,9 +68,12 @@ model-benchmark/
 
 One markdown file per test: `tests/<category>/<test-id>.md`, where
 `<test-id>` = `<category-slug>-<nn>-<slug>` (e.g. `coding-01-edge-cases`).
-Initial set: **2 tests per category** (9 categories, 18 total after the
-2026-07-04 expansion adding debugging, data-analysis, and
-instruction-following). New tests are just new files.
+Initial set: **2 tests per category** (9 categories; 20 total after the
+2026-07-04 expansions: debugging, data-analysis, and
+instruction-following categories, plus third tests in creative-visual
+— landing page — and writing — EN/PT-BR localization). Category counts
+may be uneven; category scores are means over attempted tests, so this
+is safe by construction. New tests are just new files.
 
 Section weights are per rubric: most tests use objective 0.5 /
 subjective 0.5, but instruction-following tests weigh 0.7 / 0.3 —
