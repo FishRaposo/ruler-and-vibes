@@ -4,7 +4,6 @@ category: theory-of-mind
 title: Two-room map and torch epistemic tracker
 deliverables:
   - beliefs.md
-  - REASONING.md
 ---
 
 ## Task

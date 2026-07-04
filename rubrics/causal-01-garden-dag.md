@@ -96,6 +96,22 @@ FAILING:
 - "Because R and K are independent given S, they're independent,
   period."
 
+### Example phrasings — obj-2, R independent of K given S
+
+PASSING:
+- "Once you fix the season, R and K become independent: the only path
+  connecting them, R<-S->K, is a fork, and conditioning on its root S
+  blocks it."
+- "Given S, there's no remaining association between R and K — S is a
+  common cause (fork), so holding it constant screens off the two."
+
+FAILING:
+- "R and K stay dependent even after conditioning on S." (wrong: the
+  fork is blocked once S is fixed)
+- "They're independent given S because W lies between them." (wrong
+  mechanism: cites the collider W, not the fork at S; the blocking path
+  is R<-S->K, not anything through W).
+
 ### Example phrasings — obj-4, collider opens association
 
 PASSING:
