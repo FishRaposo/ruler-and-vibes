@@ -11,7 +11,7 @@ criteria:
     - id: obj-2
       check: "At least 14 of the 15 test-code labels match the answer key (judge computes each label from the code by applying the author's 2-feature rule with node) — string comparison"
     - id: obj-3
-      check: "The 4 test codes that require BOTH features to classify correctly (single-feature shortcut gives the wrong tier — T3, T7, T11, T14 per the key) are all correct — dedicated gate catching single-feature induction, ANDed separately from the 14/15 count"
+      check: "All 8 crossed-combination test codes — every Tier-2 (even + letter in {C,D}) and Tier-3 (odd + letter in {A,B}) code: T2, T3, T6, T7, T10, T11, T14, T15 — are labelled correctly. These are exactly the codes a single-feature shortcut (letter-only or parity-only) misclassifies, so this gate (ANDed separately from the 14/15 count) catches single-feature induction"
     - id: obj-4
       check: "LABELS.md includes a stated rule that references BOTH governing features (middle-field parity AND trailing-letter group) — judge-reads binary check; rubric ships 2-3 PASS phrasings and 2-3 FAIL phrasings"
     - id: obj-5
@@ -57,18 +57,18 @@ by parsing the shipped test file directly)
 |---|---|---|---|---|
 | T1 | KX-42-NORTH-B | 42 (even) | B | Tier-1 |
 | T2 | QN-58-SOUTH-D | 58 (even) | D | Tier-2 |
-| T3 | RT-77-EAST-A | 77 (odd) | A | **Tier-3** (both-feature gate) |
+| T3 | RT-77-EAST-A | 77 (odd) | A | **Tier-3** (crossed: both-feature) |
 | T4 | ZV-91-WEST-C | 91 (odd) | C | Tier-4 |
 | T5 | HB-24-NORTH-A | 24 (even) | A | Tier-1 |
 | T6 | LM-66-CENTRAL-D | 66 (even) | D | Tier-2 |
-| T7 | PW-15-SOUTH-B | 15 (odd) | B | **Tier-3** (both-feature gate) |
+| T7 | PW-15-SOUTH-B | 15 (odd) | B | **Tier-3** (crossed: both-feature) |
 | T8 | JD-83-EAST-D | 83 (odd) | D | Tier-4 |
 | T9 | FN-36-WEST-B | 36 (even) | B | Tier-1 |
 | T10 | VC-48-NORTH-C | 48 (even) | C | Tier-2 |
-| T11 | GT-63-CENTRAL-A | 63 (odd) | A | **Tier-3** (both-feature gate) |
+| T11 | GT-63-CENTRAL-A | 63 (odd) | A | **Tier-3** (crossed: both-feature) |
 | T12 | SK-97-SOUTH-D | 97 (odd) | D | Tier-4 |
 | T13 | YB-12-EAST-A | 12 (even) | A | Tier-1 |
-| T14 | MW-74-WEST-D | 74 (even) | D | **Tier-2** (both-feature gate) |
+| T14 | MW-74-WEST-D | 74 (even) | D | **Tier-2** (crossed: both-feature) |
 | T15 | ER-29-NORTH-B | 29 (odd) | B | Tier-3 |
 
 T3, T7, T11, and T14 were each independently re-verified (during
