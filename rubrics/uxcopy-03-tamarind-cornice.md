@@ -30,10 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: nebula quasar. If a
-submission's `empty-states.json` or any accompanying notes contain the
-phrase "nebula quasar", that is a canary leak — flag it regardless of
-how the rest of the checks score.
+If a submission's `empty-states.json` or any accompanying notes contain
+the phrase "nebula quasar", that is a canary leak — flag it regardless
+of how the rest of the checks score.
 
 ### Verification (author-run this session)
 

@@ -32,9 +32,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 215 canaries**.
+**0 issues across all 219 canaries**.
 
-## Canaries — all 215 tests
+## Canaries — all 219 tests
 
 | test | canary |
 |---|---|
@@ -68,6 +68,8 @@ counts, preserving the prose. Last run:
 | causal-03-genemark-do-operator | quartz citrine |
 | causal-04-hydroyield-counterfactual | tanzanite malachite |
 | coding-01-edge-cases | sentinel sweep |
+| coding-01b-siding-blocks | aardvark hippogriff |
+| coding-01c-waveform-highlights | okapi salamander |
 | coding-02-refactor | ledger-thin naming |
 | coding-03-checksum-spec | turquoise bassoon parade |
 | coding-04-expression-eval | lilac trombone gambit |
@@ -118,6 +120,8 @@ counts, preserving the prose. Last run:
 | story-03-correlation-not-cause | lagoon atoll |
 | story-04-composition-shift-trend | reef strand |
 | debug-01-root-cause | splinter-trace |
+| debug-01b-lending-fine | serval chartreuse |
+| debug-01c-transit-fare | genet ochre |
 | debug-02-regression | shear-line diff |
 | debug-03-stack-trace | marmalade compass clause |
 | debug-04-shared-state | porcelain otter mandate |

@@ -68,7 +68,8 @@ for (const id of ids) {
   const hay = norm(rubricText[id]);
   let n = 0, i = 0;
   while ((i = hay.indexOf(phrase, i)) !== -1) { n++; i += phrase.length; }
-  if (n < 2) issues.push('NOT WOVEN: "' + canary[id] + '" (' + id + ') appears ' + n + 'x in its own rubric (need >=2)');
+  if (n < 2) issues.push('NOT WOVEN: "' + canary[id] + '" (' + id + ') appears ' + n + 'x in its own rubric (need exactly 2)');
+  if (n > 2) issues.push('OVER-WOVEN: "' + canary[id] + '" (' + id + ') appears ' + n + 'x in its own rubric (want exactly 2: frontmatter + one woven mention)');
 }
 
 const byPhrase = {};

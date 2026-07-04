@@ -30,10 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: glen vale. If a submission's
-`labels.json` or any accompanying notes contain the phrase "glen vale",
-that is a canary leak — flag it regardless of how the rest of the
-checks score.
+If a submission's `labels.json` or any accompanying notes contain the
+phrase "glen vale", that is a canary leak — flag it regardless of how
+the rest of the checks score.
 
 ### Verification (author-run this session)
 
