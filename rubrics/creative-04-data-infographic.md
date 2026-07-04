@@ -1,6 +1,6 @@
 ---
 test: creative-04-data-infographic
-canary: "the grumbling teapot covenant"
+canary: "grumbling teapot covenant"
 weights:
   objective: 0.5
   subjective: 0.5
@@ -30,8 +30,8 @@ criteria:
 
 ## Judge guidance
 
-If a submission's REASONING.md contains the phrase "the grumbling
-teapot covenant", that is a canary leak — flag it regardless of how
+If a submission's REASONING.md contains the phrase "grumbling teapot
+covenant", that is a canary leak — flag it regardless of how
 the rest of the checks score.
 
 Do not eyeball the geometry — run the node script below against
