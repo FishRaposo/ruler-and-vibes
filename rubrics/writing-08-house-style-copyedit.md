@@ -94,7 +94,8 @@ same standard to equivalent wordings):
   "toward" or "40%"; brand name changed to "Emailer Pro" or "E-mailer
   Pro"; "Tier 3 Support" changed to "Tier three Support."
 - **obj-3 (changelog entries)** — PASS: "Rule 5: '42 percent' ->
-  '42%' (paragraph 2)." FAIL (no rule cited): "Fixed a percentage."
+  '42%' (paragraph 2)." PASS: "Rule 2 — spelled out '9' as 'nine'
+  (numbers under 10), paragraph 1." FAIL (no rule cited): "Fixed a percentage."
   FAIL (protected span listed as a change): an entry claiming
   "Rule 6: fixed 'towards' in the testimonial quote" — this is
   wrong and must not appear, since the quotation is protected.

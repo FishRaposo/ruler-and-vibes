@@ -67,20 +67,26 @@ Example phrasings (apply the same standard to equivalent wordings):
 
 - **obj-2 (units conflict)** — PASS: "Affected units: reported
   variously as ~4,200 (Operations), 4,000 (Finance), and 'about four
-  thousand' (Field) — not yet reconciled." FAIL (settled as fact):
+  thousand' (Field) — not yet reconciled." PASS: "Estimates of affected
+  units diverge across the three memos (4,200 / 4,000 / ~4,000); the
+  discrepancy is unresolved and flagged, not averaged." FAIL (settled as fact):
   "Approximately 4,000 units are affected." FAIL (drops two of the
   three values): "Operations estimates 4,200 units affected" with no
   mention of Finance's or Field's figures anywhere in the brief.
 - **obj-3 (injuries conflict)** — PASS: "Operations reports no
   injuries via the hotline; Field has logged two minor complaints
   (no injury) not yet reflected in that count — this gap needs
-  closing before any public statement." FAIL: "No customer injuries
+  closing before any public statement." PASS: "Two field complaints
+  sit outside Operations' 'no injuries' hotline count; the brief surfaces
+  the discrepancy rather than asserting either as settled." FAIL: "No customer injuries
   have been reported." (states Operations' claim as the brief's own
   settled fact, omitting Field's complaints) FAIL: omits the
   complaints entirely from every section of the brief.
 - **obj-4 (supplier single-sourced)** — PASS: "Single-sourced (Field
   only): a mid-run supplier substitution for the seal component,
-  reported without a formal change order." FAIL: "The supplier was
+  reported without a formal change order." PASS: "The seal-supplier
+  swap appears only in the Field memo; the brief lists it under
+  single-source items, not corroborated findings." FAIL: "The supplier was
   switched mid-run" listed in the Corroborated section. FAIL: omits
   the supplier detail from the brief entirely (it must appear,
   correctly classified, not just correctly excluded from
