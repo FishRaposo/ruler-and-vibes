@@ -5,7 +5,6 @@ title: Two-option expansion decision under a minimum-cash covenant
 deliverables:
   - DECISION.md
   - cashflow.csv
-  - REASONING.md
 ---
 
 ## Task
@@ -45,7 +44,6 @@ All cash flows land at month-end alongside the baseline +8,000/month.
 - `DECISION.md` — at most 600 words. State whether each option ever
   breaches the 25,000 covenant floor and when, give the 24-month
   cumulative comparison between the options, and make one recommendation.
-- `REASONING.md` — the month-by-month construction of both series.
 
 ## Constraints
 

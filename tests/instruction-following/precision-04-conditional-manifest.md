@@ -4,7 +4,6 @@ category: instruction-following
 title: Warehouse manifest with interacting conditional rules
 deliverables:
   - manifest.txt
-  - REASONING.md
 ---
 
 ## Task
@@ -53,8 +52,6 @@ K-019 hasp 57
 ## Deliverables
 
 - `manifest.txt` — produced under the rules above.
-- `REASONING.md` — show the TOTAL-UNITS computation, which sort branch
-  it selects, and each CHECK computation.
 
 ## Constraints
 

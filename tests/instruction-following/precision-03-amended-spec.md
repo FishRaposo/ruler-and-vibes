@@ -4,7 +4,6 @@ category: instruction-following
 title: Roster under an amended rule sheet
 deliverables:
   - attendees.txt
-  - REASONING.md
 ---
 
 ## Task
@@ -55,8 +54,6 @@ Ravi Chandran
 ## Deliverables
 
 - `attendees.txt` — the roster, produced under the rules as amended.
-- `REASONING.md` — at most 200 words. Identify which numbered rules were
-  changed or struck by the amendments and how that changed the output.
 
 ## Constraints
 

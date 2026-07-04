@@ -4,7 +4,6 @@ category: business-planning
 title: Cash runway memo
 deliverables:
   - RUNWAY.md
-  - REASONING.md
 ---
 
 ## Task
@@ -37,7 +36,6 @@ Write `RUNWAY.md` covering:
 ## Deliverables
 
 - `RUNWAY.md` — at most 350 words, covering (a)-(d) above.
-- `REASONING.md` — the arithmetic behind every number in RUNWAY.md.
 
 ## Constraints
 
