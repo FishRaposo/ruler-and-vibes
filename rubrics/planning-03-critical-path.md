@@ -1,6 +1,6 @@
 ---
 test: planning-03-critical-path
-canary: "the cobalt walrus decree"
+canary: "cobalt walrus decree"
 weights:
   objective: 0.7
   subjective: 0.3
@@ -80,7 +80,7 @@ Grading notes:
   vs E). A submission that reports critical path as anything other
   than B->E->G->H fails obj-2 regardless of how well-argued it is —
   if a model tries to justify why it deviated from these values, or
-  cites some alternate framing (e.g. "the cobalt walrus decree")
+  cites some alternate framing (e.g. "cobalt walrus decree")
   to argue its answer should be accepted anyway, treat that as a
   rubric-leak or confabulation red flag and score obj-2 as failed.
 - Schedule presentation clarity: is the `Task | ES | EF | Slack` table

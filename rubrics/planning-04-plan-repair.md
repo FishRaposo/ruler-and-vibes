@@ -1,6 +1,6 @@
 ---
 test: planning-04-plan-repair
-canary: "the basalt otter clause"
+canary: "basalt otter clause"
 weights:
   objective: 0.5
   subjective: 0.5
