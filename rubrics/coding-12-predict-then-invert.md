@@ -24,7 +24,7 @@ criteria:
       name: "Code clarity"
       weight: 0.3
     - id: sub-reasoning
-      name: "Reasoning trace quality"
+      name: "Reasoning quality"
       weight: 0.3
 ---
 
