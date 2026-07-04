@@ -61,7 +61,8 @@ give it to the judge to audit.
 
 ## Skills (optional, recommended)
 
-Two agent skills ship with the repo under `.claude/skills/`:
+Two agent skills ship with the repo under `.agents/skills/` (the
+cross-harness Agent Skills layout):
 
 - **running-the-benchmark** — keeps the model under test inside its
   reading allowlist (naive agents reliably wander into README/JUDGE.md
@@ -72,15 +73,16 @@ Two agent skills ship with the repo under `.claude/skills/`:
 
 **Install:**
 
-- **Claude Code, working inside this repo:** nothing to do — project
-  skills in `.claude/skills/` are discovered automatically.
-- **Claude Code, global (any directory):** copy each skill folder to
-  `~/.claude/skills/`, e.g.
-  `cp -r .claude/skills/running-the-benchmark ~/.claude/skills/`.
-- **Other harnesses:** paste the relevant SKILL.md body into the
-  session's system/context before starting; the protocols also work
-  bare (RUN.md / JUDGE.md are self-contained), the skills just make
-  role hygiene automatic.
+- **Harnesses that support Agent Skills** (`.agents/skills/` project
+  discovery): nothing to do when working inside this repo.
+- **Claude Code:** recent versions discover `.agents/skills/`
+  automatically; if yours doesn't, copy into the Claude layout —
+  project: `cp -r .agents/skills/* .claude/skills/`, or global:
+  `cp -r .agents/skills/running-the-benchmark ~/.claude/skills/`.
+- **Anything else:** paste the relevant SKILL.md body into the
+  session's context before starting; the protocols also work bare
+  (RUN.md / JUDGE.md are self-contained), the skills just make role
+  hygiene automatic.
 
 Skill files are on the runner's reading allowlist; never put scoring
 information in them.

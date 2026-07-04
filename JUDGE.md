@@ -30,8 +30,9 @@ rubric — nothing else.
 4. **Integrity check**, before scoring:
    - **Manifest:** the `## Files read` section lists anything outside
      `RUN.md`, `tests/`, the run's own `results/<run-id>/` folder, and
-     `.claude/skills/` — including `rubrics/`, `report/`, other runs,
-     and `docs/` (design docs quote the rubrics) → HARD.
+     skill folders (`.agents/skills/`, `.claude/skills/`) — including
+     `rubrics/`, `report/`, other runs, and `docs/` (design docs quote
+     the rubrics) → HARD.
    - **Canary:** the rubric's exact `canary` phrase, or a distinctive
      coined phrase lifted from the rubric's wording, appears in any
      deliverable or `REASONING.md` → HARD. Generic craft or algorithm

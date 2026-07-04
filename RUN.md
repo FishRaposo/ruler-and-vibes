@@ -13,7 +13,8 @@ You are being benchmarked. Follow these steps exactly.
 
 1. Read ONLY: this file, files under `tests/`, your own
    `results/<run-id>/` folder, and harness skill files under
-   `.claude/skills/` (they contain no scoring information). **Never**
+   `.agents/skills/` or `.claude/skills/` (they contain no scoring
+   information). **Never**
    read anything else in this repo — not `rubrics/`, not `report/`, not
    other runs' `results/` folders, and not `docs/` or scratch folders
    (design docs quote the rubrics). Doing so invalidates your run.
