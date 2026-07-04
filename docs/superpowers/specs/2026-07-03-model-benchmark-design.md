@@ -68,14 +68,20 @@ model-benchmark/
 
 One markdown file per test: `tests/<category>/<test-id>.md`, where
 `<test-id>` = `<category-slug>-<nn>-<slug>` (e.g. `coding-01-edge-cases`).
-Current set: **4 tests per category on an easy→hard ladder, 15
-categories, 60 total** (2026-07-04 exhaustive expansion — 13 categories
-plus cybersecurity and reverse-engineering, all in
-`2026-07-04-expansion-roster.md`; `2026-07-04-canary-registry.md` holds
-the canary rules and every test's canary). Two documented run suites:
-Core (one representative test per category, listed in RUN.md) and Full.
-Category counts may be uneven in the future; category scores are means
-over attempted tests, so this is safe by construction. New tests are
+Current set: **214 tests across 31 categories on an easy→hard ladder**
+(2026-07-04 maximal expansion). Category counts are uneven by design:
+the original 15 categories were deepened (several to 10–12 tests each)
+and 16 new categories were added at 4 tests each — accessibility,
+algorithmic-complexity, api-documentation, calibration, causal-reasoning,
+copyediting, data-storytelling, formal-patterns, prompt-injection,
+reasoning-audit, sql-reasoning, structured-extraction, temporal-scheduling,
+theory-of-mind, transcript-synthesis, ux-copy. Every test's canary and the
+canary rules live in `2026-07-04-canary-registry.md` (regenerated from the
+shipped rubrics); the original 13-category expansion roster is preserved in
+`2026-07-04-expansion-roster.md`. Two documented run suites: Core (one
+representative test per category — 31 tests, listed in RUN.md) and Full.
+Category scores are means over attempted tests, so uneven per-category
+counts are safe by construction. New tests are
 just new files.
 
 Section weights are per rubric: most tests use objective 0.5 /

@@ -12,14 +12,21 @@ You are being benchmarked. Follow these steps exactly.
 ## Suites
 
 - **Full** — every test in `tests/`.
-- **Core** — one representative test per category, for quick
+- **Core** — one representative test per category (31 tests), for quick
   comparisons: coding-01-edge-cases, debug-01-root-cause,
   writing-02-registers, planning-01-tradeoff, data-02-decision-metrics,
   precision-01-exact-format, creative-02-css-scene,
   game-02-card-ruleset, business-02-pricing, logic-02-wrenmarket-stalls,
   context-02-changelog-tally, research-02-conflict-brief,
   judgment-02-policy-conflict-memo, security-02-decoy-triage,
-  reverse-01-tangled-tag.
+  reverse-01-tangled-tag, sql-01-join-cardinality,
+  pat-01-ipv4-octet, cplx-01-loop-triangular, extr-01-receipt-fields,
+  edit-01-style-card, tom-01-sally-anne,
+  inj-01-ticket-summarizer-override, sched-01-earliest-finish-dag,
+  causal-01-garden-dag, audit-01-aquifer-recharge-calculation,
+  a11y-01-thornbury-signup, apidoc-01-paginate-reference,
+  calib-01-triage-dossier, story-01-absolute-vs-rate,
+  txsyn-01-decision-reversal, uxcopy-01-quatrefoil-latch.
 - Any ad-hoc subset of tests or categories also works; coverage is
   reported honestly either way.
 

@@ -2,14 +2,19 @@
 
 **Ruler & Vibes** is a zero-infrastructure benchmark kit for comparing AI
 models — every rubric mixes objective checks (the ruler) with judged
-criteria (the vibes). It spans fifteen categories — coding, debugging,
-writing, planning & reasoning, data analysis, instruction following,
-creative visual, game design, business planning, math & logic,
-long-context comprehension, research synthesis, professional judgment,
-cybersecurity (defensive), and reverse engineering
-(comprehension/interop) — with 60 tests on an easy→hard ladder per
-category. Everything is markdown plus one self-contained HTML report.
-No APIs, no scripts, no build step.
+criteria (the vibes). It spans **31 categories** and **214 tests** on an
+easy→hard difficulty ladder, grouped roughly as: reasoning (math & logic,
+causal reasoning, reasoning audit, theory of mind, algorithmic complexity,
+formal/regex patterns, temporal scheduling); software (coding, debugging,
+reverse engineering, SQL reasoning, API documentation, accessibility);
+language & communication (writing, copyediting, UX copy, transcript
+synthesis, data storytelling); analysis & judgment (data analysis,
+research synthesis, professional judgment, calibration, structured
+extraction, long-context comprehension); planning, instruction following,
+creative visual, game design, and business planning; and safety
+(defensive cybersecurity and prompt-injection resistance). Everything is
+markdown plus one self-contained HTML report. No APIs, no scripts, no
+build step.
 
 Two suites: **Core** (one representative test per category — see
 RUN.md) for quick comparisons, **Full** for everything; arbitrary

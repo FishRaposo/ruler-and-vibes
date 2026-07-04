@@ -8,86 +8,239 @@ allowlist.
 
 1. Every canary phrase is unique; no phrase is a substring of another.
 2. No content word appears in more than 2 canaries across the kit.
-3. No canary word may appear in ANY test's scenario vocabulary (check the
-   Scenario vocabulary section below, and add your test's proper nouns and
-   distinctive domain words when authoring).
+3. No canary phrase may appear in ANY test file (it belongs only in its own
+   rubric: the `canary:` frontmatter field plus one woven mention in
+   `## Judge guidance`). This is the leak-detection invariant.
 4. Canary phrases must be orthogonal to their task domain (the
-   sentinel-sweep lesson: natural solution vocabulary makes false
+   sentinel-sweep lesson: natural solution vocabulary causes false
    positives).
 5. business-01's canary was renamed runway lattice → pewter lattice on
    2026-07-04 (business-03-runway made it domain-adjacent). Canary checks
    are forward-looking; old judgments are unaffected.
 
-## Canaries — all 52 tests
+## Verification
+
+Rules 1-3 are enforced automatically by `canary-audit.js` (kept in the
+build scratchpad): it checks uniqueness, substring collisions, per-word
+frequency, cross-rubric contamination, that each canary is woven ≥2× into
+its own rubric, and that no canary phrase leaks into any test file. Last
+run: **0 issues across all 214 canaries**.
+
+## Canaries — all 214 tests
 
 | test | canary |
 |---|---|
+| a11y-01-thornbury-signup | coriander tarragon |
+| a11y-02-mossgill-report | rosemary thyme |
+| a11y-03-quillfen-contrast | oregano chervil |
+| a11y-04-sedgemoor-widgets | borage lovage |
+| cplx-01-loop-triangular | cicada beetle |
+| cplx-02-linear-dedupe | marigold foxglove |
+| cplx-03-recurrence-master-theorem | bluebell snapdragon |
+| cplx-04-amortized-doubling-buffer | primrose columbine |
+| apidoc-01-paginate-reference | sumac allspice |
+| apidoc-02-reserve-endpoint | clove mace |
+| apidoc-03-config-merge-errata | bobbin bellows |
+| apidoc-04-async-loader-contracts | trowel mallet |
+| business-01-launch-plan | pewter lattice |
+| business-02-pricing | keel margin |
+| business-03-runway | topaz pelican waltz |
+| business-04-expansion-covenant | glacier mantis hymnal |
+| business-05-roadmap-prioritization | skylark ember prism |
+| business-06-unit-economics-dump | numbat coppice eddy |
+| business-07-tam-sam-som-sizing | halcyon shoal dozy |
+| business-08-forecast-sensitivity | cordial narwhal fathom |
+| business-09-build-vs-buy-vs-partner | wren zephyr dell |
+| calib-01-triage-dossier | chisel awl |
+| calib-02-computable-or-missing | ladle skillet |
+| calib-03-confidence-abstention | flagon tankard |
+| calib-04-false-premise | goblet decanter |
+| causal-01-garden-dag | opal onyx |
+| causal-02-berkson-admissions | jasper agate |
+| causal-03-genemark-do-operator | quartz citrine |
+| causal-04-hydroyield-counterfactual | tanzanite malachite |
 | coding-01-edge-cases | sentinel sweep |
 | coding-02-refactor | ledger-thin naming |
 | coding-03-checksum-spec | turquoise bassoon parade |
 | coding-04-expression-eval | lilac trombone gambit |
-| debug-01-root-cause | splinter-trace |
-| debug-02-regression | shear-line diff |
-| debug-03-stack-trace | marmalade compass clause |
-| debug-04-shared-state | porcelain otter mandate |
-| writing-01-explainer | porchlight explainer |
-| writing-02-registers | register hinge |
-| writing-03-localization | mirror-voice |
-| writing-04-editorial-rescue | cinnamon dirigible waltz |
-| planning-01-tradeoff | quarry matrix |
-| planning-02-estimate | anchor-and-fan |
-| planning-03-critical-path | cobalt walrus decree |
-| planning-04-plan-repair | basalt otter clause |
-| data-01-anomaly | drift-flag |
-| data-02-decision-metrics | penny-lure |
-| data-03-segment-paradox | juniper hammock edict |
-| data-04-ledger-reconcile | cinnamon walrus doctrine |
-| precision-01-exact-format | brass-rule |
-| precision-02-constrained-piece | metronome discipline |
-| precision-03-amended-spec | cobalt tambourine |
-| precision-04-conditional-manifest | velvet stalactite |
+| coding-05-booking-ledger-bug | brindled quokka |
+| coding-06-ttl-cache-tiebreak | clementine drizzle |
+| coding-07-async-scheduler-ordering | petrichor lantern |
+| coding-08-kill-the-mutants | meridian gingersnap |
+| coding-09-pair-count-time-budget | saltmarsh fiddler |
+| coding-10-exact-cents-interest-ledger | riverstone kettle |
+| coding-11-messy-log-byte-exact | pinewood scupper |
+| coding-12-predict-then-invert | cindershore whistle |
+| edit-01-style-card | fuchsia begonia |
+| edit-02-consistency-pass | petunia verbena |
+| edit-03-tracked-changelog | lupine cosmos |
+| edit-04-scope-boundary | cello viola |
 | creative-01-svg-poster | amber-grid composition |
 | creative-02-css-scene | dusk parallax discipline |
 | creative-03-landing-page | copper-thread |
 | creative-04-data-infographic | grumbling teapot covenant |
-| game-03-balance-patch | marzipan flotilla |
-| game-01-microgame | pip-loop pacing |
-| game-02-card-ruleset | table-hush |
-| game-04-puzzle-pack | gingham matador |
-| business-03-runway | topaz pelican waltz |
-| business-01-launch-plan | pewter lattice |
-| business-02-pricing | keel margin |
-| business-04-expansion-covenant | glacier mantis hymnal |
-| logic-01-ferry-ledger | gingham asteroid verdict |
-| logic-02-wrenmarket-stalls | corduroy pelican statute |
-| logic-03-token-pouch | velvet accordion doctrine |
-| logic-04-ninefold-league | porcelain tumbleweed sonata |
-| context-01-needle | tweed pendulum |
-| context-02-changelog-tally | mulberry flywheel |
-| context-03-contradictions | terracotta tuba |
-| context-04-policy-synthesis | huckleberry sextant |
-| research-01-attribution | paisley periscope |
-| research-02-conflict-brief | burlap kaleidoscope |
-| research-03-evidence-grading | indigo accordion |
-| research-04-dossier | saffron ocarina |
-| judgment-01-client-reply | marzipan foghorn |
-| judgment-02-policy-conflict-memo | quilted asteroid |
-| judgment-03-bad-news-announcement | paprika gondola |
-| judgment-04-pushback-cherry-pick | obsidian marmalade |
-
+| creative-05-instructed-svg-edit | kelpforest jamboree |
+| creative-06-wcag-accessible-component | windlass reverie |
+| creative-07-compositional-scene | tidepool cadence |
+| creative-08-svg-comprehension | riverbend almanac |
+| creative-09-flowchart-nonoverlap | osprey plateau |
 | security-01-guestbook-fix | sable harmonica bazaar |
 | security-02-decoy-triage | flannel zamboni prelude |
 | security-03-authlog-stuffing | nutmeg trellis quadrille |
 | security-04-shareconfig-hardening | speckled bathysphere lullaby |
+| security-05-detection-rule-authoring | pinwheel teeter roundabout |
+| security-06-authz-idor-review | lingonwood millrace beryl |
+| security-07-crypto-scheme-selection | peppergrass koala tuffet |
+| security-08-input-validator-authoring | pomelo gnomon doorknob |
+| data-01-anomaly | drift-flag |
+| data-02-decision-metrics | penny-lure |
+| data-03-segment-paradox | juniper hammock edict |
+| data-04-ledger-reconcile | cinnamon walrus doctrine |
+| data-05-ab-verdict | thornwick vaneglass |
+| data-06-alert-base-rates | windmill sprocket |
+| data-07-seasonal-trend | pinesap sconce |
+| data-08-export-cleaner | seabrine warble |
+| data-09-audit-script | cograil heron |
+| data-10-misleading-chart | burrow reed |
+| data-11-survivorship-rtm | riverslate kite |
+| data-12-cold-start-memo | cobblestone larkspur |
+| story-01-absolute-vs-rate | carafe pitcher |
+| story-02-simpsons-reversal | tureen cove |
+| story-03-correlation-not-cause | lagoon atoll |
+| story-04-composition-shift-trend | reef strand |
+| debug-01-root-cause | splinter-trace |
+| debug-02-regression | shear-line diff |
+| debug-03-stack-trace | marmalade compass clause |
+| debug-04-shared-state | porcelain otter mandate |
+| debug-05-lost-update-async | kelpwood tarn |
+| debug-06-bisect-the-diffs | clover satchel |
+| debug-07-penny-drift-apportionment | harbor thimble |
+| debug-08-cache-leak-from-logs | willow ewer |
+| debug-09-reproduce-then-fix | meadow ripple |
+| debug-10-shrink-the-poison-row | cavern fjord |
+| debug-11-quadratic-creep | kestrel damselfly |
+| debug-12-contract-fine-print | pebble gantry |
+| pat-01-ipv4-octet | badger mongoose |
+| pat-02-sable-tag-regex | civet wombat |
+| pat-03-shipment-contract | quoll dingo |
+| pat-04-quill-nested-literal | gecko iguana |
+| game-01-microgame | pip-loop pacing |
+| game-02-card-ruleset | table-hush |
+| game-03-balance-patch | marzipan flotilla |
+| game-04-puzzle-pack | gingham matador |
+| game-05-be-the-engine | marjoram skiff |
+| game-06-break-it | vellum estuary |
+| game-07-branching-quest | brackish taper |
+| game-08-combo-engine | medlar embassy |
+| game-09-ev-economy | sorrel ferry |
+| precision-01-exact-format | brass-rule |
+| precision-02-constrained-piece | metronome discipline |
+| precision-03-amended-spec | cobalt tambourine |
+| precision-04-conditional-manifest | velvet stalactite |
+| precision-05-prohibition-gauntlet | cranberry sundial |
+| precision-06-unstated-rule-induction | lichen mesa |
+| precision-07-field-guide-persistence | quince turnstile |
+| precision-08-relay-ledger-chain | birchbark thicket |
+| precision-09-quoted-thread-firewall | thymeleaf brook |
+| precision-11-verbatim-against-instinct | brackwater flambeau |
+| context-01-needle | tweed pendulum |
+| context-02-changelog-tally | mulberry flywheel |
+| context-03-contradictions | terracotta tuba |
+| context-04-policy-synthesis | huckleberry sextant |
+| context-05-grounded-summary | buckwheat carousel |
+| context-06-depth-sweep | wallaby grotto |
+| context-07-ledger-query | seagull stanchion |
+| context-08-absence-check | pinecone escalator |
+| context-09-variable-tracking | saxifrage inkwell |
+| context-10-icl-labeling | walnut funicular |
+| logic-01-ferry-ledger | gingham asteroid verdict |
+| logic-02-wrenmarket-stalls | corduroy pelican statute |
+| logic-03-token-pouch | velvet accordion doctrine |
+| logic-04-ninefold-league | porcelain tumbleweed sonata |
+| logic-05-guild-charter | tideflat cartwheel |
+| logic-06-cipher-wheel | eelgrass stileway |
+| logic-07-surveyor-estimate | peppermint dialface |
+| logic-08-toll-bridge | lingonberry cogwheel |
+| logic-09-relay-wager | saltbox obelisk |
+| planning-01-tradeoff | quarry matrix |
+| planning-02-estimate | anchor-and-fan |
+| planning-03-critical-path | cobalt walrus decree |
+| planning-04-plan-repair | basalt otter clause |
+| planning-05-depot-robot | pangolin caraway |
+| planning-07-ledger-replay | seagrass filbert |
+| planning-08-portfolio-cut | ptarmigan brioche |
+| planning-09-three-rooms | capybara wintergreen |
+| planning-10-storm-option | meerkat sourdough |
+| judgment-01-client-reply | marzipan foghorn |
+| judgment-02-policy-conflict-memo | quilted asteroid |
+| judgment-03-bad-news-announcement | paprika gondola |
+| judgment-04-pushback-cherry-pick | obsidian marmalade |
+| judgment-05-need-to-know | riverstile glockenspiel |
+| judgment-06-pick-one-vendor | mossflit ashfleck |
+| judgment-07-triage-under-fire | brackenfen windchime |
+| judgment-08-find-the-landmine | cobbleway chaffinch |
+| judgment-09-decide-with-holes | thornfield lampglow |
+| judgment-10-two-goods-in-conflict | peatmoss halberd |
+| judgment-11-hold-the-line | alderbark cudgel |
+| inj-01-ticket-summarizer-override | lute lyre |
+| inj-02-triage-queue-over-refusal-trap | sitar harpsichord |
+| inj-03-obfuscated-multi-vector-payloads | dulcimer marimba |
+| inj-04-covert-exfiltration-output-channel | vibraphone celeste |
+| audit-01-aquifer-recharge-calculation | azurite serpentine |
+| audit-02-quadratic-rearrangement-derivation | feldspar mica |
+| audit-03-syllogistic-deduction-validity | pumice geode |
+| audit-04-bayesian-screening-calculation | turmeric cardamom |
+| research-01-attribution | paisley periscope |
+| research-02-conflict-brief | burlap kaleidoscope |
+| research-03-evidence-grading | indigo accordion |
+| research-04-dossier | saffron ocarina |
+| research-05-insufficient-evidence | riptide xylophone |
+| research-06-quantitative-meta-synthesis | cauldron zenithmark |
+| research-07-coverage-audit | brinemarsh yodel |
+| research-08-provenance-map | speckflint wickerlight |
+| research-09-triangulation-matrix | gudgeon dowsing |
 | reverse-01-tangled-tag | fennel trapeze ballad |
 | reverse-02-capsule-log | damson kazoo tundra |
 | reverse-03-relay-vm | hazelnut gazebo mazurka |
 | reverse-04-word-mill | persimmon unicycle picnic |
-
-## Scenario vocabulary (append per test as you author)
-
-- writing-04-editorial-rescue: Alderpoint Hills Observatory
-- planning-04-plan-repair: Lantern Festival
-- logic-01-ferry-ledger: Lantern Ferry
-- logic-02-wrenmarket-stalls: Wrenmarket, lantern seller
-- creative-02 / context-01 / research-02 / research-04: maritime domain (lighthouse, ferries) — dense; avoid maritime words in future canaries
+| reverse-05-signal-hut | clearwater spindle tessera |
+| reverse-06-cog-ladder | trefoil undertow dialstone |
+| reverse-07-crate-manifest | sallow catkin wharf |
+| reverse-08-loom-dispatch | teasel bollard quiver |
+| reverse-09-braid-mill | whortleberry vireo plume |
+| sql-01-join-cardinality | zither axolotl |
+| sql-02-null-three-valued | tapir lemur |
+| sql-03-group-having-filter | ocelot caribou |
+| sql-04-window-rank-frames | marten ferret |
+| extr-01-receipt-fields | zinnia dahlia |
+| extr-02-invoice-nested | peony aster |
+| extr-03-manifest-records | crocus tulip |
+| extr-04-invoice-correction | daffodil orchid |
+| sched-01-earliest-finish-dag | theremin bagpipe |
+| sched-02-cross-zone-meeting-window | fiddle rebec |
+| sched-03-two-machine-makespan | amethyst peridot |
+| sched-04-feasibility-or-proof | garnet zircon |
+| tom-01-sally-anne | oboe clarinet |
+| tom-02-asymmetry-nest | piccolo cornet |
+| tom-03-deception-override | euphonium ukulele |
+| tom-04-room-gated-ledger | mandolin banjo |
+| txsyn-01-decision-reversal | quay jetty |
+| txsyn-02-commitment-discrimination | pier copse |
+| txsyn-03-temporal-conditional | glade heath |
+| txsyn-04-cross-meeting-reconciliation | moor fen |
+| uxcopy-01-quatrefoil-latch | glen vale |
+| uxcopy-02-saltire-pennant | combe comet |
+| uxcopy-03-tamarind-cornice | nebula quasar |
+| uxcopy-04-verdigris-awning | pulsar aurora |
+| writing-01-explainer | porchlight explainer |
+| writing-02-registers | register hinge |
+| writing-03-localization | mirror-voice |
+| writing-04-editorial-rescue | cinnamon dirigible waltz |
+| writing-05-acrostic-flash-fiction | clockwork oyster |
+| writing-06-chapter-two-continuity | thornhedge tollgate |
+| writing-07-corroboration-brief | hollow dialpost |
+| writing-08-house-style-copyedit | granite firefly |
+| writing-09-steelman-memo | clearing abacus |
+| writing-10-sestina | flotsam knapsack |
+| writing-11-ghostwriter-voice-fingerprint | cobblet tollhouse |
+| writing-12-assembly-manual | cactus quill |
