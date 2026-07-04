@@ -100,11 +100,23 @@ discrepancy.
   invents a plausible-sounding inspection count or a plausible-sounding
   post-collapse career for the keeper (rather than stating insufficient
   evidence) fails this check even if the invented content sounds
-  reasonable.
+  reasonable. Example phrasings (apply to equivalent wordings):
+  - PASS: "Q3: the dossier does not record how many inspections
+    occurred — insufficient evidence"; "Q5: no source says what the
+    keeper did afterward; cannot be determined".
+  - FAIL (fabricated specifics): "Q3: there were three inspections";
+    "Q5: the keeper retired to the mainland and opened a chandlery"
+    (no source states either).
 - **obj-4**: this is the shared-author dependency check — the byline of
   S8 and the interviewee named in S5 are the same person
   (Persimmon Wilde); a submission that treats S8 as separate
-  corroboration for anything Wilde says in S5 has missed this.
+  corroboration for anything Wilde says in S5 has missed this. Example
+  phrasings:
+  - PASS: "S8 is authored by Wilde, the same person interviewed in S5,
+    so it is not independent corroboration of S5"; "S5 and S8 share a
+    source and should count once".
+  - FAIL: "S5 is corroborated by S8" (treats them as independent);
+    "three sources agree" when two of the three are S5 and S8.
 - **obj-5**: recompute both sums with node; a submission that names the
   wrong source (e.g., says the ancillary total is the broken one) or
   gets either arithmetic value wrong fails.
