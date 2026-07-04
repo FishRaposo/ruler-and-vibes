@@ -72,6 +72,14 @@ answer, so a confident answer to either is scored as wrong).
   the items the submission marked "answer" (not "abstain"). Use the
   correctness key above. A submission that abstains on 5-6 has a
   Brier computed only over its 4 (or more) answered items.
+  - PASS (answer matches key → correct=1): item 2 given as "restart of
+    the ingest-worker fleet" or "ingest-worker fleet restart" (names the
+    keyed cause); item 4 given as the keyed before/after value in any
+    phrasing (e.g. "rose from 3.2s to 5.1s", "3.2 → 5.1s").
+  - FAIL (answer does not match → correct=0): item 2 given as a
+    different root cause (e.g. "database failover"); item 4 with a wrong
+    value (e.g. "dropped to 2s") or a vague near-miss that never states
+    the keyed before/after numbers.
 
 ### Subjective guidance
 

@@ -19,13 +19,13 @@ criteria:
   subjective:
     - id: sub-quality
       name: "Language exactness"
-      weight: 0.2
+      weight: 0.4
     - id: sub-craft
       name: "Validator structure"
-      weight: 0.15
+      weight: 0.3
     - id: sub-reasoning
       name: "Reasoning quality"
-      weight: 0.15
+      weight: 0.3
 ---
 
 ## Judge guidance
@@ -77,6 +77,13 @@ Codename for this test in judge chatter: gecko iguana.
   submission reproduces the corpus without glosses, or with glosses
   that don't match what the string literal actually contains, fail
   obj-2 even if the printed classifications happen to be correct.
+  - PASS (gloss present and consistent): `< \< >  // chars: '<', then
+    escaped-'<' (\<), then '>'`; `< a \\ >  // chars: '<','a', escaped
+    backslash (\\), '>'`.
+  - FAIL (gloss missing or inconsistent): a corpus line reproduced with
+    no accompanying comment at all; `< a \> >  // a normal group with a,
+    then >` (the gloss ignores that `\>` escapes the '>', so it
+    contradicts the actual literal).
 - Language exactness: score per-discriminator — does the validator
   correctly handle unbounded nesting depth, sibling groups, and every
   escape case (valid escape, invalid escape target, escaped-close)?

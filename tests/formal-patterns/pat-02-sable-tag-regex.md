@@ -53,7 +53,6 @@ const CORPUS = [
   "ABC-123",
   "AB-123456",
   "see AB-999 here",
-  // must be classified REJECT
   "ab-123",
   "A-123",
   "AB-023",

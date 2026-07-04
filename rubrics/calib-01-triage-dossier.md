@@ -92,6 +92,12 @@ rest of the checks score.
   variance in answerable answers (e.g. "82,000" for 82000, "A-3" order
   swapped in item 2's compound answer) as long as the entailed fact is
   correct.
+  - PASS (answerable value accepted): `82000`; `"82,000"`;
+    `"A-3, 82000"`; `"82000, A-3"` (order-swapped compound); `8.7`.
+  - FAIL (answerable value rejected): `"≈82k"` or `"about 80,000"`
+    (imprecise or wrong number); `"A-3 (highest paid)"` (prose gloss
+    instead of the entailed value); any non-null value paired with an
+    `underdetermined` or `missing` label.
 - **obj-4**: this re-checks the two seeded traps specifically, since
   they are the crux of the test — a submission could get obj-2 mostly
   right while still failing on exactly these two hardest items.
