@@ -18,7 +18,8 @@ You are being benchmarked. Follow these steps exactly.
   precision-01-exact-format, creative-02-css-scene,
   game-02-card-ruleset, business-02-pricing, logic-02-wrenmarket-stalls,
   context-02-changelog-tally, research-02-conflict-brief,
-  judgment-02-policy-conflict-memo.
+  judgment-02-policy-conflict-memo, security-02-decoy-triage,
+  reverse-01-tangled-tag.
 - Any ad-hoc subset of tests or categories also works; coverage is
   reported honestly either way.
 

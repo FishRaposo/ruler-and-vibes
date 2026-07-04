@@ -75,6 +75,15 @@ allowlist.
 | judgment-03-bad-news-announcement | paprika gondola |
 | judgment-04-pushback-cherry-pick | obsidian marmalade |
 
+| security-01-guestbook-fix | sable harmonica bazaar |
+| security-02-decoy-triage | flannel zamboni prelude |
+| security-03-authlog-stuffing | nutmeg trellis quadrille |
+| security-04-shareconfig-hardening | speckled bathysphere lullaby |
+| reverse-01-tangled-tag | fennel trapeze ballad |
+| reverse-02-capsule-log | damson kazoo tundra |
+| reverse-03-relay-vm | hazelnut gazebo mazurka |
+| reverse-04-word-mill | persimmon unicycle picnic |
+
 ## Scenario vocabulary (append per test as you author)
 
 - writing-04-editorial-rescue: Alderpoint Hills Observatory

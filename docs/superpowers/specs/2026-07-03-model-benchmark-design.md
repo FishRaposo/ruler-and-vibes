@@ -68,11 +68,12 @@ model-benchmark/
 
 One markdown file per test: `tests/<category>/<test-id>.md`, where
 `<test-id>` = `<category-slug>-<nn>-<slug>` (e.g. `coding-01-edge-cases`).
-Current set: **4 tests per category on an easy→hard ladder, 13
-categories, 52 total** (2026-07-04 exhaustive expansion; see
-`2026-07-04-expansion-roster.md` for the full verified roster,
-`2026-07-04-canary-registry.md` for canary rules). Two documented run
-suites: Core (13 tests, one per category, listed in RUN.md) and Full.
+Current set: **4 tests per category on an easy→hard ladder, 15
+categories, 60 total** (2026-07-04 exhaustive expansion — 13 categories
+plus cybersecurity and reverse-engineering, all in
+`2026-07-04-expansion-roster.md`; `2026-07-04-canary-registry.md` holds
+the canary rules and every test's canary). Two documented run suites:
+Core (one representative test per category, listed in RUN.md) and Full.
 Category counts may be uneven in the future; category scores are means
 over attempted tests, so this is safe by construction. New tests are
 just new files.

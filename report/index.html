@@ -84,6 +84,8 @@ const CATEGORIES=[
   {id:"long-context",label:"Long Context"},
   {id:"research-synthesis",label:"Research Synthesis"},
   {id:"professional-judgment",label:"Professional Judgment"},
+  {id:"cybersecurity",label:"Cybersecurity"},
+  {id:"reverse-engineering",label:"Reverse Engineering"},
 ];
 const WEIGHTS={objective:0.5,subjective:0.5};
 const TESTS={
@@ -253,6 +255,34 @@ const TESTS={
 "judgment-04-pushback-cherry-pick":{category:"professional-judgment",title:"Push back on a VP's bad-but-legal request to cherry-pick data for the board",
  objective:[["obj-1","reply.md exists and wc -w is"],["obj-2","Reply states the correct"],["obj-3","Reply names the Segment B"],["obj-4","Reply proposes a concrete"],["obj-5","Reply contains none of the"]],
  subjective:[["sub-quality","Persuasive diplomacy",0.4],["sub-craft","Alternative construction",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"security-01-guestbook-fix":{category:"cybersecurity",title:"Three flaws in the Harborlight Inn guest lookup",
+ objective:[["obj-1","FINDINGS.md identifies all"],["obj-2","Judge runs node fixed.js"],["obj-3","fixed.js contains no"],["obj-4","Token generation in fixed.js"],["obj-5","The literal hardcoded secret"]],
+ subjective:[["sub-quality","Fix quality and behavior preservation",0.4],["sub-craft","Findings clarity and risk explanation",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"security-02-decoy-triage":{category:"cybersecurity",title:"Eight snippets, four of them lying to you",
+ weights:{objective:0.7,subjective:0.3},
+ objective:[["obj-1","All four vulnerable snippets"],["obj-2","All four decoys are classified"],["obj-3","The justification for snippet"],["obj-4","Each of the four vulnerable"],["obj-5","TRIAGE.md contains a table"]],
+ subjective:[["sub-quality","Classification justification depth",0.4],["sub-craft","Fix precision and concision",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"security-03-authlog-stuffing":{category:"cybersecurity",title:"One bad night at Larkspur Notes",
+ weights:{objective:0.7,subjective:0.3},
+ objective:[["obj-1","Attack pattern named as"],["obj-2","Compromised account identified"],["obj-3","Attacker source IP identified"],["obj-4","The svc-backup burst is"],["obj-5","Containment answer includes"]],
+ subjective:[["sub-quality","Evidence-grounded narrative",0.4],["sub-craft","Containment plan practicality",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"security-04-shareconfig-hardening":{category:"cybersecurity",title:"Hardening Petrel Docs before the share-link launch",
+ objective:[["obj-1","Judge runs node JSON.parse on"],["obj-2","Both decoys are unchanged in"],["obj-3","HARDENING.md identifies at"],["obj-4","The debug endpoint is disabled"],["obj-5","THREATMODEL.md contains a"]],
+ subjective:[["sub-quality","Threat model completeness and specificity",0.4],["sub-craft","Hardened config craftsmanship",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"reverse-01-tangled-tag":{category:"reverse-engineering",title:"Untangle the Tag Function",
+ objective:[["obj-1","Judge runs node -e"],["obj-2","Judge pastes the original z9"],["obj-3","clean.js contains no"],["obj-4","REASONING.md explicitly states"],["obj-5","REASONING.md correctly"]],
+ subjective:[["sub-quality","Readability of the reconstruction",0.4],["sub-craft","Disguise-spotting thoroughness",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"reverse-02-capsule-log":{category:"reverse-engineering",title:"Decode the PLQ Sensor Capsule",
+ weights:{objective:0.7,subjective:0.3},
+ objective:[["obj-1","decoded.json contains magic"],["obj-2","Record 1"],["obj-3","Record 2"],["obj-4","REASONING.md identifies the"],["obj-5","Judge runs node on decoder.js"]],
+ subjective:[["sub-quality","Clarity of the format write-up",0.4],["sub-craft","Decoder robustness",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"reverse-03-relay-vm":{category:"reverse-engineering",title:"Trace the Relay Stack Machine",
+ weights:{objective:0.7,subjective:0.3},
+ objective:[["obj-1","ANSWER.md states the emitted"],["obj-2","ANSWER.md identifies the"],["obj-3","ANSWER.md states the 91/63"],["obj-4","Judge runs node vm.js"],["obj-5","vm.js's printed instruction"]],
+ subjective:[["sub-quality","Trace exposition",0.4],["sub-craft","Interpreter fidelity",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"reverse-04-word-mill":{category:"reverse-engineering",title:"Reconstruct the Word Mill",
+ objective:[["obj-1","Judge runs transform.js on all"],["obj-2","Held-back single words"],["obj-3","Held-back multi-word"],["obj-4","RULE.md states both clauses of"],["obj-5","RULE.md explicitly rejects"]],
+ subjective:[["sub-quality","Hypothesis argumentation",0.4],["sub-craft","Transformer implementation quality",0.3],["sub-reasoning","Reasoning quality",0.3]]},
 };
 const COLORS=["#00e5ff","#ff4d97","#a3ff57","#ffb200","#b26bff","#ff6b4d","#4dc3ff","#ffe14d"];
 
