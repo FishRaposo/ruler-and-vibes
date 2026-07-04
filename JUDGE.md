@@ -28,8 +28,10 @@ rubric — nothing else.
    `REASONING.md`, and `rubrics/<test-id>.md` — some rubric checks
    reference facts or numbers defined only in the test file.
 4. **Integrity check**, before scoring:
-   - **Manifest:** the `## Files read` section lists anything under
-     `rubrics/`, `report/`, or another run's `results/` folder → HARD.
+   - **Manifest:** the `## Files read` section lists anything outside
+     `RUN.md`, `tests/`, and the run's own `results/<run-id>/` folder —
+     including `rubrics/`, `report/`, other runs, and `docs/` (design
+     docs quote the rubrics) → HARD.
    - **Canary:** the rubric's exact `canary` phrase, or a distinctive
      coined phrase lifted from the rubric's wording, appears in any
      deliverable or `REASONING.md` → HARD. Generic craft or algorithm

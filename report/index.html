@@ -148,7 +148,7 @@ function shownRuns(){return visibleRuns().filter(r=>!state.hidden.has(r.id));}
 function sectionScores(tid,t){
   const cfg=TESTS[tid];
   const ov=cfg.objective.map(o=>t.objective&&t.objective[o[0]])
-    .filter(v=>typeof v==="number");
+    .filter(v=>v===0||v===10);
   const obj=ov.length?ov.reduce((a,b)=>a+b,0)/ov.length:null;
   let sw=0,ss=0;
   for(const [sid,,w] of cfg.subjective){

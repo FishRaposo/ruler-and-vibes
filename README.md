@@ -50,7 +50,9 @@ discretion). **Soft evidence** — output suspiciously shaped like the
 rubric — flags it with a ⚠ badge but scores normally.
 
 **Known limits:** a careful cheater who reads a rubric, paraphrases, and
-lies in its manifest evades all of this. Optional hardening if you want
+lies in its manifest evades all of this. Design docs under `docs/` quote
+the rubrics, so the protocols treat reading anything outside `tests/`
+and the run's own results folder as a violation. Optional hardening if you want
 it: deny rubric reads at the harness level for run sessions (e.g. Claude
 Code permission deny rules), or save the run session's transcript and
 give it to the judge to audit.
