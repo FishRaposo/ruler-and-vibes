@@ -45,11 +45,11 @@ reference `fixed.html` it passes all five.
 2. The Filter control is a native `<button>` that has been given a
    contradictory `role="link"` plus an invalid `aria-checked="false"`
    (checked state doesn't apply to a button or a link).
-3. The Pin toggle is a `<span aria-pressed="false" onclick=...>` with no
-   accessible name (no text content beyond "Pin" being purely visual with
-   no semantic tie, no `tabindex`, no keyboard handler) — a custom toggle
-   that is neither keyboard-operable nor properly named as a toggle
-   button.
+3. The Pin toggle is a `<span aria-pressed="false" onclick=...>` — a
+   non-button element carrying `aria-pressed` with no `role`, so the
+   toggle state is not exposed to assistive technology; it also has no
+   `tabindex` and no keyboard handler, making it a custom toggle that is
+   neither keyboard-operable nor exposed as a toggle button.
 4. The toolbar's `aria-labelledby="toolbar-title"` points at an id that
    does not exist anywhere in the document — a broken reference.
 5. The status dot `<span aria-status="active">` uses `aria-status`,

@@ -42,25 +42,28 @@ checked with a Node script implementing obj-1 through obj-5 exactly as
 stated above. The reference passes all 5 checks; the broken variant —
 which used "Click to Save" / "Successfully saved your draft here." for
 `saveDraft` and appended "Undo" directly into the `removeTeammate`
-toast while leaving its `undo` field null — fails obj-3 (toast too long
-and does not end in a single period), obj-4 (banned words "click" and
-"successfully" and "here"), and obj-5 (destructive row missing its
-`undo` field).
+toast while leaving its `undo` field null — fails obj-4 (the `saveDraft`
+button/toast carry the banned words "click", "successfully", and
+"here"), obj-3 (once "Undo" is appended, the `removeTeammate` toast no
+longer ends in a single period), and obj-5 (the destructive
+`removeTeammate` row is missing its `undo` field). Note the `saveDraft`
+toast itself, at 35 characters and ending in one period, passes obj-3 —
+its only failure is obj-4.
 
 Reference values (character counts re-verified this session):
 
-- `saveDraft`: button "Save draft", toast "Draft saved." (13 chars),
+- `saveDraft`: button "Save draft", toast "Draft saved." (12 chars),
   undo null.
-- `publishPost`: button "Publish post", toast "Post published." (16
+- `publishPost`: button "Publish post", toast "Post published." (15
   chars), undo null.
 - `inviteTeammate`: button "Invite teammate", toast "Invite sent to
   your teammate." (29 chars), undo null.
 - `archiveProject`: button "Archive project", toast "Project
   archived." (17 chars), undo null.
 - `removeTeammate` **(destructive)**: button "Remove teammate", toast
-  "Teammate removed." (18 chars), undo "Undo".
+  "Teammate removed." (17 chars), undo "Undo".
 - `deleteDraft` **(destructive)**: button "Delete draft", toast "Draft
-  deleted." (15 chars), undo "Undo".
+  deleted." (14 chars), undo "Undo".
 
 All toasts are well under the 60-character cap and end in exactly one
 period; all button labels are 1-3 words with no trailing punctuation;

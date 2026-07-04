@@ -1,7 +1,7 @@
 ---
 id: story-02-simpsons-reversal
 category: data-storytelling
-title: Aggregate winner versus per-cohort winner
+title: Support-squad reliability across two ticket cohorts
 deliverables:
   - narrative.md
 ---

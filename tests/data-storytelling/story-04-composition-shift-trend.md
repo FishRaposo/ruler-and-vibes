@@ -1,7 +1,7 @@
 ---
 id: story-04-composition-shift-trend
 category: data-storytelling
-title: Rising headline hiding a decline in every segment
+title: Average deal size by segment, Q1 to Q4
 deliverables:
   - narrative.md
 ---

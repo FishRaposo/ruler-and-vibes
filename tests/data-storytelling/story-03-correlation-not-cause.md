@@ -1,7 +1,7 @@
 ---
 id: story-03-correlation-not-cause
 category: data-storytelling
-title: Channel recommendation with a causation trap
+title: Campaign channel efficiency and budget recommendation
 deliverables:
   - narrative.md
 ---
