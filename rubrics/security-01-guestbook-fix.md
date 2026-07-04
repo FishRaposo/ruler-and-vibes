@@ -157,7 +157,19 @@ module.exports = { makeDb, lookupGuest, checkAdmin, makeSessionToken, handleGues
   reject a FINDINGS.md that only names two of the three flaws, or
   that describes a flaw vaguely enough it could mean something else
   (e.g. "insecure randomness" without connecting it to session tokens
-  specifically).
+  specifically). Example phrasings (apply the same standard to
+  equivalent wordings):
+  - PASS (SQL injection): "the guest name is concatenated into the
+    query string, so input like `x' OR '1'='1` rewrites the WHERE
+    clause — SQL injection".
+  - PASS (hardcoded secret): "the admin token is a literal in the
+    source and compared with `==`; anyone reading the code has it".
+  - PASS (weak tokens): "session IDs come from `Math.random()`, which
+    is not cryptographically random, so tokens are predictable".
+  - FAIL (too vague to credit): "there may be an injection issue in
+    the query function"; "the randomness looks weak" (no tie to
+    session tokens); "hardcoded values should be avoided" (does not
+    identify the secret or the auth use).
 - **obj-2**: run the literal command. No partial credit — the final
   line must be exactly `SELFTEST OK`, not a longer message containing
   it.
