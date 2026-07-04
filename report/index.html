@@ -35,6 +35,8 @@ td.commented{cursor:help;text-decoration:underline dotted var(--dim);
   text-underline-offset:3px}
 tr.notes-row td{border-top:none;text-align:left;padding:2px 10px 6px}
 tr.notes-row summary{font-size:12px}
+.note-sec{margin:10px 0 2px;font-size:11px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--text)}
 .crit-note{margin:6px 0 6px 12px;color:var(--dim);text-align:left;
   max-width:860px}
 .crit-note b{color:var(--text);font-weight:500}
@@ -323,6 +325,20 @@ function renderTables(){
           .filter(c=>cm[c[0]])
           .map(c=>'<div class="crit-note"><b>'+esc(c[1])+':</b> '
             +esc(cm[c[0]])+'</div>').join("");
+        const rs=(t.reasoning&&typeof t.reasoning==="object")
+          ?t.reasoning:null;
+        const reasonBlock=rs
+          ?'<div class="note-sec">Model reasoning (its own words, condensed)</div>'
+            +(rs.approach?'<div class="crit-note"><b>Approach:</b> '
+              +esc(rs.approach)+'</div>':'')
+            +(rs.decisions?'<div class="crit-note"><b>Key decisions:</b> '
+              +esc(rs.decisions)+'</div>':'')
+            +(rs.limitations
+              ?'<div class="crit-note"><b>Trade-offs &amp; limitations:</b> '
+              +esc(rs.limitations)+'</div>':'')
+            +'<div class="crit-note"><a href="../results/'+esc(r.id)+'/'
+            +tid+'/REASONING.md">full REASONING.md</a></div>'
+          :'';
         return '<tr><td class="run">'+esc(label(r))+flag+'</td>'
           +cfg.objective.map(o=>cell(o[0],
             chip(t.objective&&t.objective[o[0]]))).join("")
@@ -331,8 +347,10 @@ function renderTables(){
               ?t.subjective[s[0]]:null))).join("")
           +'<td class="total">'+fmt(testScore(tid,t,state.view))+'</td></tr>'
           +'<tr class="notes-row"><td colspan="'+nCols
-          +'"><details><summary>judge notes — '+esc(label(r))
-          +'</summary><div class="crit-note"><b>Verdict note:</b> '
+          +'"><details><summary>notes — '+esc(label(r))+'</summary>'
+          +reasonBlock
+          +'<div class="note-sec">Judge notes</div>'
+          +'<div class="crit-note"><b>Verdict note:</b> '
           +esc(t.note||"")+'</div>'
           +critNotes
           +'<div class="crit-note">'+link+'</div></details></td></tr>';

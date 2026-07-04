@@ -196,8 +196,10 @@ protocol instructs the judge to:
 6. Update `report/data.js`: add/replace that run's entry with the run's
    `meta.json` fields (model, effort, harness, date), per-criterion numeric
    scores, a one-line note per test, a condensed per-criterion `comments`
-   map (the report displays these; a `file://` page cannot load the
-   judgment markdown at runtime), and judge metadata (judge model name,
+   map, a `reasoning` object faithfully condensing the runner's own
+   REASONING.md (approach/decisions/limitations, no judge evaluation —
+   the report shows both sides; a `file://` page cannot load the
+   markdown files at runtime), and judge metadata (judge model name,
    date — provided by the user or session context). Section scores and totals
    are NOT stored — the report page computes them from raw scores and weights,
    so the math lives in one place.

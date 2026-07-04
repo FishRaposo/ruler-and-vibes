@@ -69,6 +69,12 @@ rubric — nothing else.
    (same ids as the scores). The full reasoning stays in the judgment
    file; `comments` is what the report page displays, since a `file://`
    page cannot load the judgment markdown at runtime.
+   Every scored test also gets a `reasoning` object — the RUNNER's own
+   REASONING.md faithfully condensed to one or two sentences per
+   section (`approach`, `decisions`, `limitations`), in the model's own
+   voice. Do NOT evaluate there — your judgment belongs in `comments`;
+   `reasoning` is a faithful summary of what the model said about its
+   own work, so the report can show both sides.
 
 ## Anti-bias rules
 
@@ -109,6 +115,11 @@ rubric):
         "sub-quality": "Correct on overlaps; misses the adjacency requirement.",
         "sub-craft": "Clear naming and structure throughout.",
         "sub-reasoning": "Real trade-offs discussed; limitations honest."
+      },
+      reasoning: {  // the runner's own words, condensed — no judging here
+        approach: "Sorted the ranges, then merged in a single pass.",
+        decisions: "Chose to throw on malformed entries to surface bad data.",
+        limitations: "Acknowledges adjacency handling was not considered."
       }
       // integrity: "flagged" | "invalidated"   (omit when clean)
       // integrityNote: "one line of evidence"  (required with integrity)

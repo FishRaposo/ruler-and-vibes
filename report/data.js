@@ -20,6 +20,11 @@ window.BENCH_DATA = {
             "sub-quality": "Clean sort-then-single-pass; returns a new array without mutating the input; invalid-entry policy documented. Nit: bad entries dropped silently.",
             "sub-craft": "Clear names, small helper, self-tests as a named data table. The sort comparator and in-place extension are uncommented relative to the rest.",
             "sub-reasoning": "Real alternatives weighed (adjacency interpretation, error policy) with honest limitations; one slightly confused justification for the adjacency choice."
+          },
+          reasoning: {
+            approach: "A pure function: normalize and filter input, sort by start (end as tiebreak), then one linear sweep — the standard sort + sweep interval merge. Self-tests run only when the file is executed directly, so it stays cleanly require-able.",
+            decisions: "Merge on shared boundary (matching the spec's own example) rather than consecutive-integer gaps; silently skip malformed entries so one bad record can't destroy the result; swap inverted pairs; non-array input returns [].",
+            limitations: "Silent skipping gives callers no signal about ignored input; self-tests are hand-picked rather than property-based; integer pairs only."
           }
         },
         "writing-02-registers": {
@@ -34,6 +39,11 @@ window.BENCH_DATA = {
             "sub-quality": "Deliberate pivot, not a synonym swap — the discount is reframed per audience. Formal opener is form-letter boilerplate.",
             "sub-craft": "Original is 67 words; Formal is 88 and Friendly 70 — both longer, not tighter. Only the 16-word summary meets the bar.",
             "sub-reasoning": "Concrete per-audience tone choices and named cuts; never examines Formal/Friendly length — the entry's main blind spot."
+          },
+          reasoning: {
+            approach: "Extracted the four load-bearing facts first, then wrote three independent versions for distinct audiences, checking each against the fact list and its own constraint before finalizing.",
+            decisions: "Formal leads with cause-and-effect for investors, no contractions; Friendly uses direct address and frames the discount as a thank-you; Summary compressed to one 16-word sentence; facts kept numerically identical to avoid paraphrase drift.",
+            limitations: "Formal is short for a real investor update; Friendly leans casual as a safe default absent a brand voice; the summary trades warmth for density."
           }
         },
         "game-02-card-ruleset": {
@@ -48,6 +58,11 @@ window.BENCH_DATA = {
             "sub-quality": "Real blind-commit decision and tie-pot escalation, but most clashes approach matching-pennies guessing; loser-leads and first-to-21 are strategically vestigial.",
             "sub-craft": "Covers tie chains, safety valve, and tiebreaks — but 51 playable cards is odd while clashes consume two, so the stated end condition is unreachable.",
             "sub-reasoning": "Names influences and the degenerate strategy designed against; leaves an unedited self-correction in the text and claims 'no ambiguity' while the endgame hole went unnoticed."
+          },
+          reasoning: {
+            approach: "Designed 'Siege of Suits', a simultaneous-reveal trick game using only the bare deck — blind commitment each clash keeps a real decision without extra components. Wrote a 3-clash worked example and trimmed from ~1440 to 782 words.",
+            decisions: "Blind reveal over open trick-taking to avoid 'always play just-high-enough'; loser-leads-next as a rubber-band consolation; ties feed a shared pot with a 4-tie safety valve; the Spoils Suit doubles scoring while clash resolution stays rank-only.",
+            limitations: "No bluffing tells beyond hand intuition, so the decision space is narrower than bidding games; the 10–20 minute estimate is not playtested; early-win-at-21 math is fiddly to verify by hand."
           }
         }
       }
