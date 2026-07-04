@@ -7,8 +7,9 @@
 ## Purpose
 
 A reusable, zero-infrastructure benchmark kit for comparing AI models across
-use cases (coding, writing, planning, creative visual, game design, business
-planning). Any agentic model runs the tests by following a markdown protocol;
+use cases (coding, debugging, writing, planning, data analysis, instruction
+following, creative visual, game design, business planning). Any agentic
+model runs the tests by following a markdown protocol;
 an evaluator model judges the outputs against rubrics; a static HTML report
 renders a radar chart and score tables comparing all benchmarked models.
 
@@ -40,8 +41,11 @@ model-benchmark/
 ├── JUDGE.md                  # protocol for the evaluator model
 ├── tests/
 │   ├── coding/               # coding-01-<slug>.md, coding-02-<slug>.md
+│   ├── debugging/            # debug-01-…, debug-02-…
 │   ├── writing/
 │   ├── planning-reasoning/
+│   ├── data-analysis/        # data-01-…, data-02-…
+│   ├── instruction-following/ # precision-01-…, precision-02-…
 │   ├── creative-visual/
 │   ├── game-design/
 │   └── business-planning/
@@ -64,7 +68,14 @@ model-benchmark/
 
 One markdown file per test: `tests/<category>/<test-id>.md`, where
 `<test-id>` = `<category-slug>-<nn>-<slug>` (e.g. `coding-01-edge-cases`).
-Initial set: **2 tests per category, 12 total.** New tests are just new files.
+Initial set: **2 tests per category** (9 categories, 18 total after the
+2026-07-04 expansion adding debugging, data-analysis, and
+instruction-following). New tests are just new files.
+
+Section weights are per rubric: most tests use objective 0.5 /
+subjective 0.5, but instruction-following tests weigh 0.7 / 0.3 —
+precision IS the mechanical part. The report's `TESTS` config carries an
+optional per-test `weights` override; the global 0.5/0.5 is the default.
 
 Frontmatter:
 

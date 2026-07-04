@@ -72,8 +72,11 @@ svg text{fill:var(--dim);font-size:12px}
 /* ---------- config: keep in sync with rubrics/ ---------- */
 const CATEGORIES=[
   {id:"coding",label:"Coding"},
+  {id:"debugging",label:"Debugging"},
   {id:"writing",label:"Writing"},
   {id:"planning-reasoning",label:"Planning & Reasoning"},
+  {id:"data-analysis",label:"Data Analysis"},
+  {id:"instruction-following",label:"Instruction Following"},
   {id:"creative-visual",label:"Creative Visual"},
   {id:"game-design",label:"Game Design"},
   {id:"business-planning",label:"Business Planning"},
@@ -86,6 +89,12 @@ const TESTS={
 "coding-02-refactor":{category:"coding",title:"Behavior-preserving refactor",
  objective:[["obj-1","Self-tests pass"],["obj-2","5 cases correct"],["obj-3","Quirks preserved"],["obj-4","No deps, ≤100 lines"]],
  subjective:[["sub-quality","Refactor quality",0.4],["sub-craft","CHANGES.md clarity",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"debug-01-root-cause":{category:"debugging",title:"Three seeded bugs, minimal fixes",
+ objective:[["obj-1","Self-tests pass"],["obj-2","5 values correct"],["obj-3","3 root causes named"],["obj-4","Minimal fix, ≤90 lines"]],
+ subjective:[["sub-quality","Root-cause depth",0.4],["sub-craft","Fix discipline",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"debug-02-regression":{category:"debugging",title:"Fix the regression, keep the feature",
+ objective:[["obj-1","Self-tests pass"],["obj-2","5 outputs correct"],["obj-3","Both regressions named"],["obj-4","maxLen retained, ≤80 lines"]],
+ subjective:[["sub-quality","Regression isolation",0.4],["sub-craft","Fix discipline",0.3],["sub-reasoning","Reasoning quality",0.3]]},
 "writing-01-explainer":{category:"writing",title:"Lay-audience explainer",
  objective:[["obj-1","250–400 words"],["obj-2","Prose only, one title"],["obj-3","Exactly one analogy"],["obj-4","Answers data-safety"]],
  subjective:[["sub-quality","Technical accuracy",0.4],["sub-craft","Warmth and flow",0.3],["sub-reasoning","Reasoning quality",0.3]]},
@@ -98,6 +107,20 @@ const TESTS={
 "planning-02-estimate":{category:"planning-reasoning",title:"Fermi estimate",
  objective:[["obj-1","All 4 sections"],["obj-2","Arithmetic correct"],["obj-3","Result is a range"],["obj-4","Sensitivity named"]],
  subjective:[["sub-quality","Estimation judgment",0.4],["sub-craft","Transparency",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"data-01-anomaly":{category:"data-analysis",title:"Totals, one anomaly, one data error",
+ objective:[["obj-1","Error identified"],["obj-2","Anomaly identified"],["obj-3","Arithmetic correct"],["obj-4","≤500 words, adjustments stated"]],
+ subjective:[["sub-quality","Analytical judgment",0.4],["sub-craft","Clarity of findings",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"data-02-decision-metrics":{category:"data-analysis",title:"Channel metrics and a budget call",
+ objective:[["obj-1","CAC correct"],["obj-2","CPL/conversion correct"],["obj-3","Allocation follows numbers"],["obj-4","≤600 words, assumptions"]],
+ subjective:[["sub-quality","Quantitative rigor",0.4],["sub-craft","Decision linkage",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"precision-01-exact-format":{category:"instruction-following",title:"Messy records to exact JSON",
+ weights:{objective:0.7,subjective:0.3},
+ objective:[["obj-1","Parses, schema exact, sorted"],["obj-2","Dedup → 8 records"],["obj-3","Dates correct"],["obj-4","Normalization correct"]],
+ subjective:[["sub-quality","Ambiguity handling",0.4],["sub-craft","NOTES completeness",0.3],["sub-reasoning","Reasoning quality",0.3]]},
+"precision-02-constrained-piece":{category:"instruction-following",title:"Announcement under stacked constraints",
+ weights:{objective:0.7,subjective:0.3},
+ objective:[["obj-1","5 paras, correct openers"],["obj-2","140–160 words, P5 rule"],["obj-3","No forbidden words"],["obj-4","Features placed correctly"]],
+ subjective:[["sub-quality","Natural under constraints",0.4],["sub-craft","Copy quality",0.3],["sub-reasoning","Reasoning quality",0.3]]},
 "creative-01-svg-poster":{category:"creative-visual",title:"Hand-coded SVG poster",
  objective:[["obj-1","Renders, viewBox 600×900"],["obj-2","Name/dates/venue text"],["obj-3","No external refs"],["obj-4","≤150 lines"]],
  subjective:[["sub-quality","Composition & atmosphere",0.4],["sub-craft","SVG craftsmanship",0.3],["sub-reasoning","Reasoning quality",0.3]]},
@@ -173,7 +196,8 @@ function testScore(tid,t,view){
   if(view==="subjective")return subj;
   if(obj==null)return subj;
   if(subj==null)return obj;
-  return WEIGHTS.objective*obj+WEIGHTS.subjective*subj;
+  const w=TESTS[tid].weights||WEIGHTS;   // per-test override (e.g. 0.7/0.3)
+  return w.objective*obj+w.subjective*subj;
 }
 function categoryScore(run,cat,view){
   const vals=[];
