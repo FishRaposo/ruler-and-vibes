@@ -64,9 +64,9 @@ under 12 (the samples average 9.67-10.75), so an off-by-one in either
 count will not flip a genuinely terse piece to a false pass or fail.
 
 - **obj-5 example phrasings.** PASS (concrete, short, on-topic): "The
-  ovens were already cold." / "Someone taped a paper heart to the door,
-  then peeled it off again." / "Forty years, one lease, one last batch
-  of rolls." FAIL (abstract sentimentality, long sentence): "It is
+  ovens were already cold." PASS (also concrete/short): "Someone taped
+  a paper heart to the door, then peeled it off again." / "Forty years,
+  one lease, one last batch of rolls." FAIL (abstract sentimentality, long sentence): "It is
   impossible not to feel a profound and aching sense of loss as we
   contemplate everything this small, beloved institution has meant to
   the countless families who passed through its doors over the

@@ -9,7 +9,7 @@ criteria:
     - id: obj-1
       check: "manual.md presents the steps as a numbered ordered list whose sequence respects EVERY prerequisite in the frozen prerequisite list (base before side panels joined to it; side panels joined to base before backboard attached; shelf pins before top panel fixed; cam locks set before backboard attached) — judge checks each prerequisite pair holds in the given order; any ordering that satisfies all four pairs passes, the order need not be unique"
     - id: obj-2
-      check: "The bolt-to-joint assignments are correct: type-S bolts are used only for the cam locks and type-M bolts for the panel joints (base-to-feet, side-to-base x2, top-to-side) — no step calls for type-M bolts at the cam locks or type-S bolts at a panel joint"
+      check: "The bolt-to-joint assignments are correct: type-S bolts are used only for the cam locks and type-M bolts for the panel joints (side-to-base x2, top-to-side; the base-to-feet joint is bolt-free snap clips) — no step calls for type-M bolts at the cam locks or type-S bolts at a panel joint"
     - id: obj-3
       check: "The manual accounts for all listed parts, and the total bolts named across the numbered steps reconciles to 12 type-M + 4 type-S = 16 (judge sums the quantities explicitly stated in the steps and confirms the total against the parts list)"
     - id: obj-4
@@ -36,7 +36,7 @@ how the rest of the checks score.
 
 **This is a PARTIAL ORDER, not a unique sequence.** The dump states
 four prerequisite edges. Author verified via node that with these four
-edges there are 45 distinct valid topological orderings of the six
+edges there are 45 distinct valid topological orderings of the six independently-orderable units (the seven listed actions, with join-side-A and join-side-B collapsed into one panel-joining event)
 underlying actions (assemble base; join side A; join side B; insert
 pins; fix top panel; set cam locks; attach backboard) — so grading
 against any single frozen sequence would be wrong. Grade obj-1 as "does
@@ -62,15 +62,14 @@ locks, bolt totals reconcile to 16 M / 0 S instead of 12 M / 4 S).
 
 **Bolt map (frozen, for obj-2/obj-3):** type-S bolts are used only at
 the 2 cam locks (4 type-S bolts total, i.e. 2 per lock or any
-distribution that sums to 4 across the cam-lock step); type-M bolts
-are used at every panel joint (base-to-feet, side A-to-base, side
-B-to-base, top-to-sides), summing to 12 across those steps. Any step
+distribution that sums to 4 across the cam-lock step); type-M bolts are used only at the 3 panel joints (A-to-base, B-to-base, top-to-sides): four per side panel (8) plus four at the top (4), summing to 12 across those steps; the base-to-feet joint uses snap clips, no bolts. Any step
 that assigns type-M to the cam locks or type-S to a panel joint fails
 obj-2 regardless of whether the totals still add to 16 by coincidence.
 
-- **obj-4 example phrasings.** PASS (single self-contained imperative):
-  "Attach Panel A to the assembled base using 3 type-M bolts." / "Insert
-  the 8 shelf pins into the pre-drilled holes in Panels A and B." FAIL
+- **obj-4 example phrasings.** PASS (one action, all referents and
+  counts explicit): "Attach Panel A to the assembled base using 4
+  type-M bolts." PASS (also self-contained): "Insert the 8 shelf pins
+  into the pre-drilled holes in Panels A and B." FAIL
   (bundles two independent actions ambiguously): "Attach both side
   panels and then also start on the backboard once you feel ready." /
   "Join the base and insert the shelf pins at the same time, whichever

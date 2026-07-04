@@ -28,8 +28,9 @@ a clear, correctly sequenced, numbered assembly manual from this dump.
 
 **STEP FACTS (scrambled order; prerequisites stated explicitly):**
 
-> - Assemble the base by joining Panel C to the two feet brackets
->   using type-M bolts. This has no prerequisite and must happen before
+> - Assemble the base by pressing Panel C onto the two feet brackets
+>   until the pre-attached snap clips engage (no bolts are used for
+>   this joint). This has no prerequisite and must happen before
 >   side panels can be joined to it.
 > - Join side panels A and B to the base (Panel C) using type-M bolts,
 >   four per panel. This requires the base to already be assembled, and
