@@ -11,11 +11,12 @@ You are being benchmarked. Follow these steps exactly.
 
 ## Rules — read these first
 
-1. Read ONLY: this file, files under `tests/`, and your own
-   `results/<run-id>/` folder. **Never** read anything else in this
-   repo — not `rubrics/`, not `report/`, not other runs' `results/`
-   folders, and not `docs/` or scratch folders (design docs quote the
-   rubrics). Doing so invalidates your run.
+1. Read ONLY: this file, files under `tests/`, your own
+   `results/<run-id>/` folder, and harness skill files under
+   `.claude/skills/` (they contain no scoring information). **Never**
+   read anything else in this repo — not `rubrics/`, not `report/`, not
+   other runs' `results/` folders, and not `docs/` or scratch folders
+   (design docs quote the rubrics). Doing so invalidates your run.
 2. **Never** write outside `results/<run-id>/`.
 3. Overwriting your own previous outputs is fine (re-runs replace).
 4. Do not self-grade or speculate about scoring criteria anywhere in
