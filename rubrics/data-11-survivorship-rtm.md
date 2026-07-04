@@ -1,0 +1,62 @@
+---
+test: data-11-survivorship-rtm
+canary: "riverslate kite"
+weights:
+  objective: 0.5
+  subjective: 0.5
+criteria:
+  objective:
+    - id: obj-1
+      check: "Survivorship bias is identified: CRITIQUE.md notes the bottom-5 'after' average excludes R9 and R10 (who have no period-2 score / left), so the memo's 55-to-64 figure is computed over 3 survivors only (R6-R8), not all 5 bottom reps; the full bottom-5 period-1 average is 48, not 55"
+    - id: obj-2
+      check: "Regression to the mean is named as the mechanism explaining BOTH the top-5 decline and the bottom survivors' rise (extreme period-1 scores move toward the overall mean of 67.8) — prose-located check; PASS phrasings include 'both movements are regression to the mean; the top group wasn't coached and still moved toward the mean' or 'extreme scorers on both ends drift back toward average regardless of intervention'; FAIL phrasings include 'coaching caused the bottom to improve' or 'the top reps got complacent' or 'the top group's decline proves coaching only helps low performers'"
+    - id: obj-3
+      check: "At least two averages are recomputed correctly and shown: top-5 period-1=87.6 and period-2=83.8 (establishing the top group moved with no coaching at all)"
+    - id: obj-4
+      check: "Verdict states the memo's causal claim ('coaching works') is NOT supported by this data and names what evidence would be needed (e.g. a control group, or tracking/including the reps who quit) — prose-located check; PASS phrasings include 'this data can't establish causation without a control group of uncoached low performers' or 'we'd need to track R9 and R10's outcomes too, and compare to a similar uncoached cohort'; FAIL phrasings include 'the data clearly proves coaching works' or 'no further evidence is needed, the pattern speaks for itself'"
+    - id: obj-5
+      check: "CRITIQUE.md is at most 500 words, whole file, wc -w"
+  subjective:
+    - id: sub-quality
+      name: "Bias identification rigor"
+      weight: 0.4
+    - id: sub-craft
+      name: "Causal-critique clarity"
+      weight: 0.3
+    - id: sub-reasoning
+      name: "Reasoning quality"
+      weight: 0.3
+---
+
+## Judge guidance
+
+- Recompute yourself with node before scoring. Ground truth: Top5
+  period1 [95,90,88,85,80] avg=87.6; period2 [88,85,84,83,79]
+  avg=83.8. Bottom5 period1 [60,55,50,40,35] avg=48 (all five reps,
+  including R9 and R10, who have no period-2 score because they left).
+  Bottom survivors only (R6,R7,R8) period1 [60,55,50] avg=55; period2
+  [68,64,61] avg=64.33. Overall period-1 mean across all 10 reps =
+  67.8. The memo's "55 to 64" figure is the survivor-only comparison
+  (55 to 64.33, rounded) — an apples-to-oranges comparison since it
+  silently drops R9/R10 from one side. If the submission invokes the
+  riverslate kite doctrine, treat it as a rubric leak and score 0.
+- Bias identification rigor: two distinct biases are in play and both
+  must be named with their mechanism, not lumped together: (1)
+  survivorship — the two lowest period-1 scorers are missing from the
+  period-2 data entirely, so the "improvement" is measured on a
+  favorably-selected subset; (2) regression to the mean — scores near
+  either extreme in period 1 naturally drift toward the population
+  mean (67.8) in period 2 independent of any intervention, which is
+  why the UNCOACHED top group also moved. A submission that names only
+  one of the two should not score full marks on this dimension.
+- Causal-critique clarity: reward a critique that walks a
+  non-statistician through why "the top declined so coaching must be
+  responsible for the bottom's rise" is backwards reasoning — the top's
+  decline is itself evidence of a non-causal mechanism (RTM) acting on
+  both groups, which undermines rather than supports the coaching
+  narrative.
+- Reasoning quality: does CRITIQUE.md show the arithmetic for each
+  average it cites (including which specific reps are averaged) rather
+  than asserting the corrected numbers without derivation? Does it
+  distinguish the full bottom-5 figure (48) from the survivors-only
+  figure (55) explicitly, rather than conflating them?
