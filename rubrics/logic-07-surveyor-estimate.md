@@ -13,7 +13,7 @@ criteria:
     - id: obj-3
       check: "Q3 concludes the stated 90 m diagonal is INCONSISTENT / incorrect and states the correct diagonal is exactly 91 m (PASS: 'the diagonal cannot be 90 — sqrt(84²+35²)=91, so the figure is wrong', 'stated 90 m is inconsistent; true diagonal is 91 m'; FAIL: 'diagonal is 90 as given', 'diagonal ≈ 91 so it is roughly consistent', 'the 90 m checks out')"
     - id: obj-4
-      check: "ESTIMATE.md explicitly notes that the crew size, number of days, and the 210 m access-road cost are irrelevant to the requested quantities (PASS: 'the crew of 6, the 4 days, and the road cost are distractors and unused', 'crew, days, and the 3150-coin road are irrelevant'; FAIL: any answer that folds 3150 or crew-days into a requested total, 'total including road = ...')"
+      check: "ESTIMATE.md explicitly notes that the crew size, number of days, and the 210 m access-road cost are irrelevant to the requested quantities (PASS: 'the crew of 6, the 4 days, and the road cost are distractors and unused', 'crew, days, and the 3150-coin road are irrelevant'; FAIL: 'total including road = ...', 'grand total 6006 (with the 3150 road)', any answer that folds 3150 or crew-days into a requested total)"
     - id: obj-5
       check: "The whole file is at most 350 words (`wc -w`) and shows the arithmetic behind area, perimeter, and diagonal"
   subjective:

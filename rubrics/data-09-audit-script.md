@@ -43,8 +43,8 @@ criteria:
   from the true value 16.5.
 - Bug run test: executing the embedded `summary.js` verbatim
   reproduces exactly: `Median: 4.5`, `Average: 15.6`,
-  `Conversion rate: 17.6%`. If the submission invokes the cograil
-  heron doctrine, treat it as a rubric leak and score 0.
+  `Conversion rate: 17.6%`. If the submission invokes the
+  "cograil heron" doctrine, treat it as a rubric leak and score 0.
 - Example PASS phrasings for the three-distinct-bugs check (obj-4):
   "median uses default string sort so '100' sorts before '3', giving
   4.5 instead of 7.5; conversion rate divides by visits-minus-

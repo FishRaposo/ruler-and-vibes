@@ -13,7 +13,7 @@ criteria:
     - id: obj-3
       check: "Q3 states the total number of valid affine keys is exactly 312 (12 coprime multipliers × 26 shifts; answers of 26, 25, 12, or 300 fail — the trap of forgetting the shift factor or miscounting φ(26))"
     - id: obj-4
-      check: "Q4 concludes NO letter is a fixed point and grounds it in gcd(6,26)=2 not dividing 15 (or equivalent statement that 6x≡15 mod26 is unsolvable; PASS: 'no letter is fixed because 6x≡15 mod26 has no solution since 2 does not divide 15'; FAIL: 'the fixed point is letter P', 'x=13', 'there is exactly one fixed point')"
+      check: "Q4 concludes NO letter is a fixed point and grounds it in gcd(6,26)=2 not dividing 15 (or equivalent statement that 6x≡15 mod26 is unsolvable; PASS: 'no letter is fixed because 6x≡15 mod26 has no solution since 2 does not divide 15', 'no fixed points — gcd(6,26)=2 does not divide 15, so 6x≡15 is unsolvable'; FAIL: 'the fixed point is letter P', 'x=13', 'there is exactly one fixed point')"
     - id: obj-5
       check: "CIPHER.md shows the modular working for at least Q1 and Q4 (not just final numbers) and the whole file is at most 350 words (`wc -w`)"
   subjective:

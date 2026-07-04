@@ -13,7 +13,7 @@ criteria:
     - id: obj-3
       check: "Q2 states the convoy cost 5c+3r+2d = 68 coins (5×7+3×5+2×9 = 35+15+18; any other value fails)"
     - id: obj-4
-      check: "Q3 states the largest number of carts is exactly 6 with exactly 4 coins remaining (60 − 5 − 9 = 46; floor(46/7)=6 carts costing 42; total 56; 4 left; PASS: '6 carts, 4 coins left'; FAIL: '7 carts', '6 carts, 46 leftover', a non-integer answer)"
+      check: "Q3 states the largest number of carts is exactly 6 with exactly 4 coins remaining (60 − 5 − 9 = 46; floor(46/7)=6 carts costing 42; total 56; 4 left; PASS: '6 carts, 4 coins left', 'the most carts is 6, leaving 4 coins'; FAIL: '7 carts', '6 carts, 46 leftover', a non-integer answer)"
     - id: obj-5
       check: "LEDGER.md shows the elimination/substitution working for Q1 and the whole file is at most 400 words (`wc -w`)"
   subjective:

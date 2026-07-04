@@ -9,9 +9,9 @@ criteria:
     - id: obj-1
       check: "Q1 states the first player WINS from 17 and gives a valid winning first move — removing 3 (leaving 14) OR removing 1 (leaving 16); removing 4 (leaving 13) is NOT a valid winning move (PASS: 'first player wins, remove 3 leaving 14', 'first player wins by removing 1'; FAIL: 'first player loses', 'remove 4 to leave 13')"
     - id: obj-2
-      check: "Q2 states that from 23 the SECOND player wins / the first player loses (23 mod 7 = 2, a losing position; PASS: 'second player wins', 'first player has no forced win'; FAIL: 'first player wins')"
+      check: "Q2 states that from 23 the SECOND player wins / the first player loses (23 mod 7 = 2, a losing position; PASS: 'second player wins', 'first player has no forced win'; FAIL: 'first player wins', 'the mover from 23 can force a win')"
     - id: obj-3
-      check: "Q3 states that from 100 the SECOND player wins / the first player loses (100 mod 7 = 2; the trap value — PASS: 'second player wins', 'first player loses'; FAIL: 'first player wins')"
+      check: "Q3 states that from 100 the SECOND player wins / the first player loses (100 mod 7 = 2; the trap value — PASS: 'second player wins', 'first player loses'; FAIL: 'first player wins', '100 is a winning position for the first player')"
     - id: obj-4
       check: "Q4 states there are exactly 14 losing starting piles in 1..49 (the N with N mod 7 ∈ {0,2}: 2,7,9,14,16,21,23,28,30,35,37,42,44,49; any other count fails)"
     - id: obj-5
