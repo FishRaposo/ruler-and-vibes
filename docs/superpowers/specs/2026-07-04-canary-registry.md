@@ -32,9 +32,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 320 canaries**.
+**0 issues across all 364 canaries**.
 
-## Canaries — all 320 tests
+## Canaries — all 364 tests
 
 | test | canary |
 |---|---|
@@ -123,36 +123,80 @@ counts, preserving the prose. Last run:
 | causal-03b-ferralt-drip-blight | buckthorn pergola |
 | causal-03c-kilnford-quench-do | dogwood belvedere |
 | causal-04-hydroyield-counterfactual | tanzanite malachite |
+| causal-04b-sappledon-boil-counterfactual | spindletree bolero |
+| causal-04c-lumacal-frame | wayfaring polonaise |
 | coding-01-edge-cases | sentinel sweep |
 | coding-01b-siding-blocks | aardvark hippogriff |
 | coding-01c-waveform-highlights | okapi salamander |
 | coding-02-refactor | ledger-thin naming |
+| coding-02b-payroll-levy | cumin galliard |
+| coding-02c-compute-cost-estimator | lemongrass pavane |
 | coding-03-checksum-spec | turquoise bassoon parade |
+| coding-03b-alderport-consignment-seal | galangal rigadoon |
+| coding-03c-verdal-gate-token | fenugreek czardas |
 | coding-04-expression-eval | lilac trombone gambit |
+| coding-04b-geartrain-formula | asafoetida schottische |
+| coding-04c-formula-cell-eval | szechuan landler |
 | coding-05-booking-ledger-bug | brindled quokka |
+| coding-05b-airtime-handover | zaatar siciliana |
+| coding-05c-ink-coverage-bug | dukkah forlana |
 | coding-06-ttl-cache-tiebreak | clementine drizzle |
+| coding-06b-cryorack-thaw-tiebreak | harissa passacaglia |
+| coding-06c-pass-book-tiebreak | moonstone chaconne |
 | coding-07-async-scheduler-ordering | petrichor lantern |
+| coding-07b-foundry-pour-ordering | labradorite batik |
+| coding-07c-reagent-pour-plan | rhodonite ikat |
 | coding-08-kill-the-mutants | meridian gingersnap |
+| coding-08b-gauge-fill-fraction-suite | chalcedony shibori |
+| coding-08c-temp-offset-suite | carnelian faille |
 | coding-09-pair-count-time-budget | saltmarsh fiddler |
+| coding-09b-beacon-resonance-scan-budget | aventurine foulard |
+| coding-09c-resonance-pair-sweep | sunstone cheviot |
 | coding-10-exact-cents-interest-ledger | riverstone kettle |
+| coding-10b-culture-growth-ledger | kunzite melton |
+| coding-10c-integer-glarn-dividend-wallet | morganite loden |
 | coding-11-messy-log-byte-exact | pinewood scupper |
+| coding-11b-dropbox-scan-tally | variscite worsted |
+| coding-11c-scada-telemetry-report | dioptase mohair |
 | coding-12-predict-then-invert | cindershore whistle |
+| coding-12b-callsign-scrambler | prehnite angora |
+| coding-12c-sigil-encoder | larimar vicuna |
 | edit-01-style-card | fuchsia begonia |
 | edit-01b-recycling-style-card | trogon zander |
 | edit-01c-tool-library-bulletin | quetzal wels |
 | edit-02-consistency-pass | petunia verbena |
+| edit-02b-letterpress-clinic | sodalite alpaca |
+| edit-02c-glassworks-consistency | howlite ramie |
 | edit-03-tracked-changelog | lupine cosmos |
+| edit-03b-cargobike-lending-changelog | unakite consomme |
+| edit-03c-letterpress-booking | tektite veloute |
 | edit-04-scope-boundary | cello viola |
+| edit-04b-radio-fieldday-log | shawm remoulade |
+| edit-04c-trail-series-recap | crumhorn gribiche |
 | creative-01-svg-poster | amber-grid composition |
+| creative-01b-tidewater-cartography | sackbut mirepoix |
+| creative-01c-windward-regatta | panpipe soffritto |
 | creative-02-css-scene | astrolabe quadrant |
 | creative-02b-sunrise-balloon | caracal madder |
 | creative-02c-balloon-dawn | margay woad |
 | creative-03-landing-page | copper-thread |
+| creative-03b-tea-kettle-launch | kalimba gremolata |
+| creative-03c-nightride-helmet | bodhran persillade |
 | creative-04-data-infographic | grumbling teapot covenant |
+| creative-04b-glacier-fieldwork-report | mellophone tapenade |
+| creative-04c-marlstone-excavation-report | flugelhorn duxelles |
 | creative-05-instructed-svg-edit | kelpforest jamboree |
+| creative-05b-forecast-tile-repair | serpenthorn gabbro |
+| creative-05c-clockmaker-plaque | hurdygurdy dolerite |
 | creative-06-wcag-accessible-component | windlass reverie |
+| creative-06b-pantry-shift-signup | nyckelharpa gneiss |
+| creative-06c-loamgate-garden-pass | cumulus schist |
 | creative-07-compositional-scene | tidepool cadence |
+| creative-07b-footlight-gel-stack | nimbus quartzite |
+| creative-07c-shingled-roof-course | stratus marl |
 | creative-08-svg-comprehension | riverbend almanac |
+| creative-08b-stacked-panes-paint | sirocco chert |
+| creative-08c-silkscreen-ink-passes | monsoon flint |
 | creative-09-flowchart-nonoverlap | osprey plateau |
 | security-01-guestbook-fix | sable harmonica bazaar |
 | security-02-decoy-triage | flannel zamboni prelude |
