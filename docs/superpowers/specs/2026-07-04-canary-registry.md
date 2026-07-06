@@ -32,9 +32,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 276 canaries**.
+**0 issues across all 319 canaries**.
 
-## Canaries — all 276 tests
+## Canaries — all 319 tests
 
 | test | canary |
 |---|---|
@@ -42,42 +42,85 @@ counts, preserving the prose. Last run:
 | a11y-01b-brightwater-lido | potoo pouting |
 | a11y-01c-larkhill-stargazing | pratincole blenny |
 | a11y-02-mossgill-report | rosemary thyme |
+| a11y-02b-marloe-belfry | treehopper wheatear |
+| a11y-02c-threndle-navigation | springtail firecrest |
 | a11y-03-quillfen-contrast | oregano chervil |
+| a11y-03b-marrowbell-planetarium | silverfish goldcrest |
+| a11y-03c-thistledown-palette | earwig chiffchaff |
 | a11y-04-sedgemoor-widgets | borage lovage |
+| a11y-04b-harptide-playback-bar | lacebug blackcap |
+| a11y-04c-wraymoor-mapviewer | shieldbug whitethroat |
 | cplx-01-loop-triangular | cicada beetle |
 | cplx-01b-pairwise-collation | ibis vendace |
 | cplx-01c-warp-crossings | spoonbill powan |
 | cplx-02-linear-dedupe | marigold foxglove |
+| cplx-02b-sonar-sweep-dedupe | soldierfly garganey |
+| cplx-02c-belt-serial-scan | hoverfly pochard |
 | cplx-03-recurrence-master-theorem | bluebell snapdragon |
+| cplx-03b-recurrence-quintary-split | bristletail shoveler |
+| cplx-03c-trellisort-ternary-recurrence | hollyhock pintail |
 | cplx-04-amortized-doubling-buffer | primrose columbine |
+| cplx-04b-cylinder-cabinet-relocation | delphinium wigeon |
+| cplx-04c-granary-doubling-silo | campanula smew |
 | apidoc-01-paginate-reference | sumac allspice |
 | apidoc-01b-shelve-books-reference | courser gurnard |
 | apidoc-01c-shelf-allotment | weevil chanterelle |
 | apidoc-02-reserve-endpoint | clove mace |
+| apidoc-02b-locker-claim-endpoint | scabious goosander |
+| apidoc-02c-darkroom-station | cornflower merganser |
 | apidoc-03-config-merge-errata | bobbin bellows |
+| apidoc-03b-query-param-combine-errata | nasturtium lyra |
+| apidoc-03c-waybill-combine-errata | anemone altair |
 | apidoc-04-async-loader-contracts | trowel mallet |
+| apidoc-04b-name-resolver-coalescing | ranunculus rigel |
+| apidoc-04c-render-cache-coalescing | freesia deneb |
 | business-01-launch-plan | pewter lattice |
+| business-01b-mobile-sharpening | gladiolus antares |
+| business-01c-mobile-bike-repair | amaryllis betelgeuse |
 | business-02-pricing | keel margin |
 | business-02b-makerspace-tiers | bandicoot realgar |
 | business-02c-cloudstream-tiers | bilby weathervane |
 | business-03-runway | topaz pelican waltz |
+| business-03b-cooperative-reserve | lobelia aldebaran |
+| business-03c-creamery-runway | nemesia arcturus |
 | business-04-expansion-covenant | glacier mantis hymnal |
+| business-04b-thornfield-linen-covenant | salvia procyon |
 | business-05-roadmap-prioritization | skylark ember prism |
+| business-05b-capital-works-budget | alyssum castor |
+| business-05c-print-slate-capacity | candytuft pollux |
 | business-06-unit-economics-dump | numbat coppice eddy |
+| business-06b-subscription-cohort-dump | nigella fomalhaut |
+| business-06c-subscription-box-dump | foxtail spica |
 | business-07-tam-sam-som-sizing | halcyon shoal dozy |
+| business-07b-ev-fleet-charging-sizing | hornbeam regulus |
+| business-07c-audiology-fitting-sizing | hawthorn bellatrix |
 | business-08-forecast-sensitivity | cordial narwhal fathom |
+| business-08b-vineyard-graft-sensitivity | blackthorn mizar |
+| business-08c-railcar-ton-mile-forecast | rowan alcor |
 | business-09-build-vs-buy-vs-partner | wren zephyr dell |
+| business-09b-prescription-routing-strategy | aspen denebola |
+| business-09c-identity-screening-strategy | sycamore alphard |
 | calib-01-triage-dossier | chisel awl |
 | calib-01b-lot-intake-ledger | katydid morel |
 | calib-01c-launch-log-triage | lacewing truffle |
 | calib-02-computable-or-missing | ladle skillet |
+| calib-02b-priceable-or-unpriced | linden hamal |
+| calib-02c-bindery-costing | tamarack mirach |
 | calib-03-confidence-abstention | flagon tankard |
+| calib-03b-turbidity-field-log | ironwood algol |
+| calib-03c-turbidity-excursion | ironbark markab |
 | calib-04-false-premise | goblet decanter |
+| calib-04b-switchport-flap | mahogany enif |
+| calib-04c-strain-gauge-dossier | teak barbican |
 | causal-01-garden-dag | opal onyx |
 | causal-01b-frostgate-coldstore | nuthatch pollack |
 | causal-01c-cleanroom-collider | treecreeper coley |
 | causal-02-berkson-admissions | jasper agate |
+| causal-02b-copperkettle-nightmarket | laburnum cupola |
+| causal-02c-dining-guide-listing | whitebeam rotunda |
 | causal-03-genemark-do-operator | quartz citrine |
+| causal-03b-ferralt-drip-blight | buckthorn pergola |
+| causal-03c-kilnford-quench-do | dogwood belvedere |
 | causal-04-hydroyield-counterfactual | tanzanite malachite |
 | coding-01-edge-cases | sentinel sweep |
 | coding-01b-siding-blocks | aardvark hippogriff |
