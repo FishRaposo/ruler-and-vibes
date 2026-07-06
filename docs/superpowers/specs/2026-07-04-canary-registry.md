@@ -32,9 +32,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 319 canaries**.
+**0 issues across all 320 canaries**.
 
-## Canaries — all 319 tests
+## Canaries — all 320 tests
 
 | test | canary |
 |---|---|
@@ -85,6 +85,7 @@ counts, preserving the prose. Last run:
 | business-03c-creamery-runway | nemesia arcturus |
 | business-04-expansion-covenant | glacier mantis hymnal |
 | business-04b-thornfield-linen-covenant | salvia procyon |
+| business-04c-glasshouse-reserve | dianthus capella |
 | business-05-roadmap-prioritization | skylark ember prism |
 | business-05b-capital-works-budget | alyssum castor |
 | business-05c-print-slate-capacity | candytuft pollux |
