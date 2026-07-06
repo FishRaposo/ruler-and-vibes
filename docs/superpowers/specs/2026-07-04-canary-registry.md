@@ -32,21 +32,27 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 241 canaries**.
+**0 issues across all 276 canaries**.
 
-## Canaries — all 241 tests
+## Canaries — all 276 tests
 
 | test | canary |
 |---|---|
 | a11y-01-thornbury-signup | coriander tarragon |
+| a11y-01b-brightwater-lido | potoo pouting |
+| a11y-01c-larkhill-stargazing | pratincole blenny |
 | a11y-02-mossgill-report | rosemary thyme |
 | a11y-03-quillfen-contrast | oregano chervil |
 | a11y-04-sedgemoor-widgets | borage lovage |
 | cplx-01-loop-triangular | cicada beetle |
+| cplx-01b-pairwise-collation | ibis vendace |
+| cplx-01c-warp-crossings | spoonbill powan |
 | cplx-02-linear-dedupe | marigold foxglove |
 | cplx-03-recurrence-master-theorem | bluebell snapdragon |
 | cplx-04-amortized-doubling-buffer | primrose columbine |
 | apidoc-01-paginate-reference | sumac allspice |
+| apidoc-01b-shelve-books-reference | courser gurnard |
+| apidoc-01c-shelf-allotment | weevil chanterelle |
 | apidoc-02-reserve-endpoint | clove mace |
 | apidoc-03-config-merge-errata | bobbin bellows |
 | apidoc-04-async-loader-contracts | trowel mallet |
@@ -62,10 +68,14 @@ counts, preserving the prose. Last run:
 | business-08-forecast-sensitivity | cordial narwhal fathom |
 | business-09-build-vs-buy-vs-partner | wren zephyr dell |
 | calib-01-triage-dossier | chisel awl |
+| calib-01b-lot-intake-ledger | katydid morel |
+| calib-01c-launch-log-triage | lacewing truffle |
 | calib-02-computable-or-missing | ladle skillet |
 | calib-03-confidence-abstention | flagon tankard |
 | calib-04-false-premise | goblet decanter |
 | causal-01-garden-dag | opal onyx |
+| causal-01b-frostgate-coldstore | nuthatch pollack |
+| causal-01c-cleanroom-collider | treecreeper coley |
 | causal-02-berkson-admissions | jasper agate |
 | causal-03-genemark-do-operator | quartz citrine |
 | causal-04-hydroyield-counterfactual | tanzanite malachite |
@@ -84,6 +94,8 @@ counts, preserving the prose. Last run:
 | coding-11-messy-log-byte-exact | pinewood scupper |
 | coding-12-predict-then-invert | cindershore whistle |
 | edit-01-style-card | fuchsia begonia |
+| edit-01b-recycling-style-card | trogon zander |
+| edit-01c-tool-library-bulletin | quetzal wels |
 | edit-02-consistency-pass | petunia verbena |
 | edit-03-tracked-changelog | lupine cosmos |
 | edit-04-scope-boundary | cello viola |
@@ -100,6 +112,8 @@ counts, preserving the prose. Last run:
 | creative-09-flowchart-nonoverlap | osprey plateau |
 | security-01-guestbook-fix | sable harmonica bazaar |
 | security-02-decoy-triage | flannel zamboni prelude |
+| security-02b-plan-import-triage | whimbrel tench |
+| security-02c-shelf-triage | curlew roach |
 | security-03-authlog-stuffing | nutmeg trellis quadrille |
 | security-04-shareconfig-hardening | speckled bathysphere lullaby |
 | security-05-detection-rule-authoring | pinwheel teeter roundabout |
@@ -122,6 +136,7 @@ counts, preserving the prose. Last run:
 | data-12-cold-start-memo | cobblestone larkspur |
 | story-01-absolute-vs-rate | carafe pitcher |
 | story-01b-warranty-plants | wisteria toboggan |
+| story-01c-donation-reactions | mayfly porcini |
 | story-02-simpsons-reversal | tureen cove |
 | story-03-correlation-not-cause | lagoon atoll |
 | story-04-composition-shift-trend | reef strand |
@@ -140,6 +155,8 @@ counts, preserving the prose. Last run:
 | debug-11-quadratic-creep | kestrel damselfly |
 | debug-12-contract-fine-print | pebble gantry |
 | pat-01-ipv4-octet | badger mongoose |
+| pat-01b-valgrove-berth | bittern bleak |
+| pat-01c-cindermoor-beam | egret burbot |
 | pat-02-sable-tag-regex | civet wombat |
 | pat-03-shipment-contract | quoll dingo |
 | pat-04-quill-nested-literal | gecko iguana |
@@ -181,6 +198,7 @@ counts, preserving the prose. Last run:
 | logic-01-ferry-ledger | gingham asteroid verdict |
 | logic-02-wrenmarket-stalls | corduroy pelican statute |
 | logic-02b-dawnascent-balloons | potoroo capstone |
+| logic-02c-tarnhollow-balloons | merlin finial |
 | logic-03-token-pouch | velvet accordion doctrine |
 | logic-04-ninefold-league | porcelain tumbleweed sonata |
 | logic-05-guild-charter | tideflat cartwheel |
@@ -213,10 +231,14 @@ counts, preserving the prose. Last run:
 | judgment-10-two-goods-in-conflict | peatmoss halberd |
 | judgment-11-hold-the-line | alderbark cudgel |
 | inj-01-ticket-summarizer-override | lute lyre |
+| inj-01b-listing-desk-override | bunting brill |
+| inj-01c-proposal-review-queue | siskin plaice |
 | inj-02-triage-queue-over-refusal-trap | sitar harpsichord |
 | inj-03-obfuscated-multi-vector-payloads | dulcimer marimba |
 | inj-04-covert-exfiltration-output-channel | vibraphone celeste |
 | audit-01-aquifer-recharge-calculation | azurite serpentine |
+| audit-01b-solar-array-yield-calculation | wryneck hake |
+| audit-01c-nitrogen-loading-audit | nightjar whiting |
 | audit-02-quadratic-rearrangement-derivation | feldspar mica |
 | audit-03-syllogistic-deduction-validity | pumice geode |
 | audit-04-bayesian-screening-calculation | turmeric cardamom |
@@ -232,6 +254,8 @@ counts, preserving the prose. Last run:
 | research-08-provenance-map | speckflint wickerlight |
 | research-09-triangulation-matrix | gudgeon dowsing |
 | reverse-01-tangled-tag | fennel trapeze ballad |
+| reverse-01b-gate-stamp | redshank rudd |
+| reverse-01c-station-digest | greenshank dace |
 | reverse-02-capsule-log | damson kazoo tundra |
 | reverse-03-relay-vm | hazelnut gazebo mazurka |
 | reverse-04-word-mill | persimmon unicycle picnic |
@@ -242,26 +266,37 @@ counts, preserving the prose. Last run:
 | reverse-09-braid-mill | whortleberry vireo plume |
 | sql-01-join-cardinality | zither axolotl |
 | sql-01b-sculptor-sale-rollup | plover chub |
+| sql-01c-apiary-tapping-rollup | lapwing barbel |
 | sql-02-null-three-valued | tapir lemur |
 | sql-03-group-having-filter | ocelot caribou |
 | sql-04-window-rank-frames | marten ferret |
 | extr-01-receipt-fields | zinnia dahlia |
+| extr-01b-dispatch-slip | jacana pollan |
+| extr-01c-vet-visit-card | motmot ruffe |
 | extr-02-invoice-nested | peony aster |
 | extr-03-manifest-records | crocus tulip |
 | extr-04-invoice-correction | daffodil orchid |
 | sched-01-earliest-finish-dag | theremin bagpipe |
+| sched-01b-banquet-prep-critical-path | crossbill turbot |
+| sched-01c-chart-engraving-pipeline | waxwing megrim |
 | sched-02-cross-zone-meeting-window | fiddle rebec |
 | sched-03-two-machine-makespan | amethyst peridot |
 | sched-04-feasibility-or-proof | garnet zircon |
 | tom-01-sally-anne | oboe clarinet |
+| tom-01b-conservatory-trowel | tanager sturgeon |
+| tom-01c-wardrobe-brooch | oriole lamprey |
 | tom-02-asymmetry-nest | piccolo cornet |
 | tom-03-deception-override | euphonium ukulele |
 | tom-04-room-gated-ledger | mandolin banjo |
 | txsyn-01-decision-reversal | quay jetty |
+| txsyn-01b-broadcast-reversal | caddisfly enoki |
+| txsyn-01c-rigging-recert | froghopper shiitake |
 | txsyn-02-commitment-discrimination | pier copse |
 | txsyn-03-temporal-conditional | glade heath |
 | txsyn-04-cross-meeting-reconciliation | moor fen |
 | uxcopy-01-quatrefoil-latch | glen vale |
+| uxcopy-01b-cascade-chime | leafhopper maitake |
+| uxcopy-01c-deadbolt-transom | planthopper reishi |
 | uxcopy-02-saltire-pennant | combe comet |
 | uxcopy-03-tamarind-cornice | nebula quasar |
 | uxcopy-04-verdigris-awning | pulsar aurora |
