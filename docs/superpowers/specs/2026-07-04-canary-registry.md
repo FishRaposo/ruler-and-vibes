@@ -303,7 +303,7 @@ counts, preserving the prose. Last run:
 | debug-10b-fare-gate-pipe-feed | wyvern rosette |
 | debug-10c-vireya-fee-ledger | cockatrice tracery |
 | debug-11-quadratic-creep | kestrel damselfly |
-| debug-11b-glaze-palette-scan | vaquita zenith |
+| debug-11b-glaze-palette-scan | capuchin galago |
 | debug-11c-bindery-folio-collapse | viridian ogee |
 | debug-12-contract-fine-print | pebble gantry |
 | debug-12b-chunk-bounds-fine-print | puffball crocket |

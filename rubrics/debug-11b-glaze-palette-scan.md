@@ -1,6 +1,6 @@
 ---
 test: debug-11b-glaze-palette-scan
-canary: "vaquita zenith"
+canary: "capuchin galago"
 reviewed: "pass 2026-07-04 (independent gate)"
 weights:
   objective: 0.5
@@ -33,7 +33,7 @@ criteria:
 
 Parallel form of `debug-11-quadratic-creep` (same construct, fresh surface).
 
-If the phrase "vaquita zenith" appears in any deliverable or REASONING.md,
+If the phrase "capuchin galago" appears in any deliverable or REASONING.md,
 that is a canary leak — flag it regardless of how the rest scores.
 
 - Embedded buggy distinctColors and harness (carried here verbatim; the
