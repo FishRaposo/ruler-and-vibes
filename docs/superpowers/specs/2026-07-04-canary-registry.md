@@ -32,9 +32,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 364 canaries**.
+**0 issues across all 403 canaries**.
 
-## Canaries — all 364 tests
+## Canaries — all 403 tests
 
 | test | canary |
 |---|---|
@@ -198,34 +198,73 @@ counts, preserving the prose. Last run:
 | creative-08b-stacked-panes-paint | sirocco chert |
 | creative-08c-silkscreen-ink-passes | monsoon flint |
 | creative-09-flowchart-nonoverlap | osprey plateau |
+| creative-09b-cider-press-pipeline | typhoon scoria |
+| creative-09c-papermaking-vat-sheet | mistral rhyolite |
 | security-01-guestbook-fix | sable harmonica bazaar |
+| security-01b-railway-volunteer-fix | levanter andesite |
+| security-01c-ferry-manifest-fix | harmattan peridotite |
 | security-02-decoy-triage | flannel zamboni prelude |
 | security-02b-plan-import-triage | whimbrel tench |
 | security-02c-shelf-triage | curlew roach |
 | security-03-authlog-stuffing | nutmeg trellis quadrille |
+| security-03b-badge-reader-replay | willywaw caravel |
+| security-03c-fernweave-token-spray | brickfielder dhow |
 | security-04-shareconfig-hardening | speckled bathysphere lullaby |
+| security-04b-cygnet-guestpass-hardening | chinook felucca |
+| security-04c-wardstone-guestpin | corrie xebec |
 | security-05-detection-rule-authoring | pinwheel teeter roundabout |
+| security-05b-depot-lift-burst | esker brigantine |
+| security-05c-keycard-unlock-burst | drumlin barque |
 | security-06-authz-idor-review | lingonwood millrace beryl |
+| security-06b-clinic-chart-review | moraine schooner |
+| security-06c-vet-chart-authz-review | machair clipper |
 | security-07-crypto-scheme-selection | peppergrass koala tuffet |
+| security-07b-webhook-payload-signing | fenland ketch |
+| security-07c-transit-fare-token-mac | oxbow yawl |
 | security-08-input-validator-authoring | pomelo gnomon doorknob |
+| security-08b-scene-slug-validator | billabong coracle |
+| security-08c-baycode-field-validator | colander wherry |
 | data-01-anomaly | drift-flag |
+| data-01b-compost-yield | ramekin pinnace |
+| data-01c-hatchery-yield | trivet wyrm |
 | data-02-decision-metrics | penny-lure |
 | data-02b-acquisition-channels | coati mauveine |
 | data-02c-enrollment-cac | kinkajou puce |
 | data-03-segment-paradox | juniper hammock edict |
+| data-03b-underwriting-mix-reversal | pestle banshee |
+| data-03c-reminder-rollout | bodkin dryad |
 | data-04-ledger-reconcile | cinnamon walrus doctrine |
+| data-04b-deskpass-reconcile | gimlet naiad |
+| data-04c-mooring-fee-reconcile | fettle oread |
 | data-05-ab-verdict | thornwick vaneglass |
+| data-05b-newsletter-subject-split | capstan nereid |
+| data-05c-subject-line-split | bowsprit triton |
 | data-06-alert-base-rates | windmill sprocket |
+| data-06b-leak-alert-base-rates | gunwale faun |
+| data-06c-weld-scan-base-rates | keelson centaur |
 | data-07-seasonal-trend | pinesap sconce |
+| data-07b-juice-shipments-summer-dip | futtock satyr |
+| data-07c-filing-season-dip | rudder undine |
 | data-08-export-cleaner | seabrine warble |
+| data-08b-weighbridge-normalizer | tiller sylph |
+| data-08c-bakelog-normalizer | mizzen gnome |
 | data-09-audit-script | cograil heron |
+| data-09b-meteorite-survey | binnacle djinn |
+| data-09c-centrifuge-spin-audit | ratline golem |
 | data-10-misleading-chart | burrow reed |
+| data-10b-podcast-download-axis | futtocks haar |
+| data-10c-seedling-height-chart | orlop smirr |
 | data-11-survivorship-rtm | riverslate kite |
+| data-11b-tutoring-benchmark-scores | scuttlebutt gloaming |
+| data-11c-shade-canopy-yield | damask brume |
 | data-12-cold-start-memo | cobblestone larkspur |
+| data-12b-garage-gate-log | brocade rime |
 | story-01-absolute-vs-rate | carafe pitcher |
 | story-01b-warranty-plants | wisteria toboggan |
 | story-01c-donation-reactions | mayfly porcini |
 | story-02-simpsons-reversal | tureen cove |
+| story-02b-phlebotomist-veins | calico graupel |
+| story-02c-heating-engineer-callouts | muslin virga |
 | story-03-correlation-not-cause | lagoon atoll |
 | story-04-composition-shift-trend | reef strand |
 | debug-01-root-cause | splinter-trace |
