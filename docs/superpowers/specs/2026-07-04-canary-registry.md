@@ -36,9 +36,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 583 canaries**.
+**0 issues across all 613 canaries**.
 
-## Canaries — all 583 tests
+## Canaries — all 613 tests
 
 | test | canary |
 |---|---|
@@ -575,36 +575,66 @@ counts, preserving the prose. Last run:
 | reverse-08c-dosing-pump-loop | umbrella sieve |
 | reverse-09-braid-mill | whortleberry vireo plume |
 | reverse-09b-spool-cipher | supernova pulsar |
+| reverse-09c-scorecard-cipher | quasar blackhole |
 | sql-01-join-cardinality | zither axolotl |
 | sql-01b-sculptor-sale-rollup | plover chub |
 | sql-01c-apiary-tapping-rollup | lapwing barbel |
 | sql-02-null-three-valued | tapir lemur |
+| sql-02b-leaf-comments-upvotes | wormhole paladin |
+| sql-02c-relay-latency-nulls | ranger druid |
 | sql-03-group-having-filter | ocelot caribou |
+| sql-03b-outfitter-comped-checkout | warlock sorcerer |
+| sql-03c-shift-ledger-quantifier | lancet umber |
 | sql-04-window-rank-frames | marten ferret |
+| sql-04b-trivia-league-standings | bard rogue |
+| sql-04c-fundraiser-homeroom-tally | monk cleric |
 | extr-01-receipt-fields | zinnia dahlia |
 | extr-01b-dispatch-slip | jacana pollan |
 | extr-01c-vet-visit-card | motmot ruffe |
 | extr-02-invoice-nested | peony aster |
+| extr-02b-nursery-invoice | barbarian gargantuan |
+| extr-02c-rental-invoice-recompute | colossal titanic |
 | extr-03-manifest-records | crocus tulip |
+| extr-03b-lab-sample-intake | mammoth immense |
+| extr-03c-repair-work-orders | gigantic monumental |
 | extr-04-invoice-correction | daffodil orchid |
+| extr-04b-book-order-correction | towering whisper |
+| extr-04c-signage-order-correction | murmur rustle |
 | sched-01-earliest-finish-dag | theremin bagpipe |
 | sched-01b-banquet-prep-critical-path | crossbill turbot |
 | sched-01c-chart-engraving-pipeline | waxwing megrim |
 | sched-02-cross-zone-meeting-window | fiddle rebec |
+| sched-02b-ground-station-calibration-call | shimmer glimmer |
+| sched-02c-logistics-hub-reconciliation-call | twinkle glisten |
 | sched-03-two-machine-makespan | amethyst peridot |
+| sched-03b-render-node-contention | windbreak underbrush |
+| sched-03c-towing-tank-runs | papyrus origami |
 | sched-04-feasibility-or-proof | garnet zircon |
+| sched-04b-autoclave-cure-feasibility | savanna steppe |
+| sched-04c-recording-booth-slates | tundra taiga |
 | tom-01-sally-anne | oboe clarinet |
 | tom-01b-conservatory-trowel | tanager sturgeon |
 | tom-01c-wardrobe-brooch | oriole lamprey |
 | tom-02-asymmetry-nest | piccolo cornet |
+| tom-02b-cobalt-seal-grid | sconce chandelier |
+| tom-02c-rosewood-box-safe | brazier harpoon |
 | tom-03-deception-override | euphonium ukulele |
+| tom-03b-restoration-key-swap | trident cutlass |
+| tom-03c-tuning-fork-workshop | rapier scimitar |
 | tom-04-room-gated-ledger | mandolin banjo |
+| tom-04b-fore-aft-cabin-tracker | broadsword halberd |
+| tom-04c-workshop-partition-ledger | pike lance |
 | txsyn-01-decision-reversal | quay jetty |
 | txsyn-01b-broadcast-reversal | caddisfly enoki |
 | txsyn-01c-rigging-recert | froghopper shiitake |
 | txsyn-02-commitment-discrimination | pier copse |
+| txsyn-02b-curtain-call-crew | javelin tapestry |
+| txsyn-02c-summer-reading-prep | fresco mural |
 | txsyn-03-temporal-conditional | glade heath |
+| txsyn-03b-clinic-reopening-window | stainedglass etching |
+| txsyn-03c-aquarium-exhibit-opening | woodcut gazetteer |
 | txsyn-04-cross-meeting-reconciliation | moor fen |
+| txsyn-04b-catering-vendor-swap | compendium anthology |
 | uxcopy-01-quatrefoil-latch | glen vale |
 | uxcopy-01b-cascade-chime | leafhopper maitake |
 | uxcopy-01c-deadbolt-transom | planthopper reishi |
