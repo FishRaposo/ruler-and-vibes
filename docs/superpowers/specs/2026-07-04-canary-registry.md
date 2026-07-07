@@ -36,9 +36,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 553 canaries**.
+**0 issues across all 583 canaries**.
 
-## Canaries — all 553 tests
+## Canaries — all 583 tests
 
 | test | canary |
 |---|---|
@@ -524,27 +524,57 @@ counts, preserving the prose. Last run:
 | audit-04c-orchard-blemish-screening | hogchoker sapphire |
 | research-01-attribution | paisley periscope |
 | research-01b-vaultsecure-disclosure | ruby topaz |
+| research-01c-signal-loss | emerald diamond |
 | research-02-conflict-brief | burlap kaleidoscope |
 | research-02b-datacenter-outage | godwit keystone |
 | research-02c-grain-terminal-blast | dunlin lintel |
 | research-03-evidence-grading | indigo accordion |
+| research-03b-air-purifier-claims | opal coral |
+| research-03c-mesh-booster-throughput | onyx turquoise |
 | research-04-dossier | saffron ocarina |
+| research-04b-concert-hall-fire | lapis spinel |
+| research-04c-hollowfen-mill-fire | iolite kyanite |
 | research-05-insufficient-evidence | riptide xylophone |
+| research-05b-recall-lot-triage | apatite fluorite |
+| research-05c-municipal-pool-triage | calcite gypsum |
 | research-06-quantitative-meta-synthesis | cauldron zenithmark |
+| research-06b-adaptive-signal-timing | halite mica |
+| research-06c-checkout-latency-synthesis | feldspar poplar |
 | research-07-coverage-audit | brinemarsh yodel |
+| research-07b-school-start-time-audit | chestnut hazel |
+| research-07c-str-fee-brief | beech fir |
 | research-08-provenance-map | speckflint wickerlight |
+| research-08b-wolverine-trailcam | spruce yew |
+| research-08c-painting-attribution | juniper redwood |
 | research-09-triangulation-matrix | gudgeon dowsing |
+| research-09b-rooftop-hive-triangulation | baobab banyan |
+| research-09c-sourdough-crust-matrix | turnip parsnip |
 | reverse-01-tangled-tag | fennel trapeze ballad |
 | reverse-01b-gate-stamp | redshank rudd |
 | reverse-01c-station-digest | greenshank dace |
 | reverse-02-capsule-log | damson kazoo tundra |
+| reverse-02b-restock-ticket | rutabaga swede |
+| reverse-02c-jukebox-spin-capsule | kohlrabi celeriac |
 | reverse-03-relay-vm | hazelnut gazebo mazurka |
+| reverse-03b-claw-crane-vm | salsify jicama |
+| reverse-03c-tempo-divider-vm | daikon radish |
 | reverse-04-word-mill | persimmon unicycle picnic |
+| reverse-04b-letter-wringer | watercress arugula |
+| reverse-04c-ticket-stamper | endive radicchio |
 | reverse-05-signal-hut | clearwater spindle tessera |
+| reverse-05b-wash-bay-relay | chicory frisee |
+| reverse-05c-carwash-bay | escarole sorrel |
 | reverse-06-cog-ladder | trefoil undertow dialstone |
+| reverse-06b-gumball-jackpot | cyclone squall |
+| reverse-06c-sprinkler-zone-timer | gale breeze |
 | reverse-07-crate-manifest | sallow catkin wharf |
+| reverse-07b-greenkeep-zone-frame | gust flurry |
+| reverse-07c-greenhouse-telemetry | blizzard whiteout |
 | reverse-08-loom-dispatch | teasel bollard quiver |
+| reverse-08b-phase-sequencer | meteor vortex |
+| reverse-08c-dosing-pump-loop | umbrella sieve |
 | reverse-09-braid-mill | whortleberry vireo plume |
+| reverse-09b-spool-cipher | supernova pulsar |
 | sql-01-join-cardinality | zither axolotl |
 | sql-01b-sculptor-sale-rollup | plover chub |
 | sql-01c-apiary-tapping-rollup | lapwing barbel |
