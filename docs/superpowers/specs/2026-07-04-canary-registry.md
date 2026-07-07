@@ -36,9 +36,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 523 canaries**.
+**0 issues across all 553 canaries**.
 
-## Canaries — all 523 tests
+## Canaries — all 553 tests
 
 | test | canary |
 |---|---|
@@ -473,27 +473,57 @@ counts, preserving the prose. Last run:
 | judgment-02c-quarantine-retention-memo | turnstone balustrade |
 | judgment-03-bad-news-announcement | paprika gondola |
 | judgment-03b-recovery-suite-refund | lyrebird bowerbird |
+| judgment-03c-twilight-range-pass | riflebird satinbird |
 | judgment-04-pushback-cherry-pick | obsidian marmalade |
+| judgment-04b-renewal-pilot-spotlight | catbird scrubbird |
+| judgment-04c-pilot-line-defect-spotlight | sittella whipbird |
 | judgment-05-need-to-know | riverstile glockenspiel |
+| judgment-05b-battery-recall-tiers | logrunner pardalote |
+| judgment-05c-signal-failure-disclosure | thornbill gerygone |
 | judgment-06-pick-one-vendor | mossflit ashfleck |
+| judgment-06b-steel-fabricator-pick | whiteface fairywren |
+| judgment-06c-relocation-firm-pick | emuwren grasswren |
 | judgment-07-triage-under-fire | brackenfen windchime |
+| judgment-07b-parks-priority-line | heathwren mistletoebird |
+| judgment-07c-conservation-queue | spiderhunter honeyeater |
 | judgment-08-find-the-landmine | cobbleway chaffinch |
+| judgment-08b-forklift-fleet-cap | friarbird wattlebird |
+| judgment-08c-airport-gate-cap | miner noisyminer |
 | judgment-09-decide-with-holes | thornfield lampglow |
+| judgment-09b-cloud-patch-rollout | blackbird redstart |
+| judgment-09c-barrel-lot-bottling-call | nightingale robin |
 | judgment-10-two-goods-in-conflict | peatmoss halberd |
+| judgment-10b-mainstage-director-dilemma | bullhead sculpin |
+| judgment-10c-investigative-series-handoff | darter goby |
 | judgment-11-hold-the-line | alderbark cudgel |
+| judgment-11b-wedding-package-floor | wrasse parrotfish |
+| judgment-11c-audiobook-narration-floor | surgeonfish tang |
 | inj-01-ticket-summarizer-override | lute lyre |
 | inj-01b-listing-desk-override | bunting brill |
 | inj-01c-proposal-review-queue | siskin plaice |
 | inj-02-triage-queue-over-refusal-trap | sitar harpsichord |
+| inj-02b-city-311-request-queue | damselfish clownfish |
+| inj-02c-fleet-service-queue | angelfish butterflyfish |
 | inj-03-obfuscated-multi-vector-payloads | dulcimer marimba |
+| inj-03b-marathon-volunteer-guide | triggerfish pufferfish |
+| inj-03c-botanical-tour-script-vectors | boxfish cowfish |
 | inj-04-covert-exfiltration-output-channel | vibraphone celeste |
+| inj-04b-moth-trap-survey-digest | filefish lionfish |
+| inj-04c-escape-room-recap-digest | scorpionfish stonefish |
 | audit-01-aquifer-recharge-calculation | azurite serpentine |
 | audit-01b-solar-array-yield-calculation | wryneck hake |
 | audit-01c-nitrogen-loading-audit | nightjar whiting |
 | audit-02-quadratic-rearrangement-derivation | feldspar mica |
+| audit-02b-binomial-expansion-audit | frogfish anglerfish |
+| audit-02c-quadratic-collection-audit | batfish flatfish |
 | audit-03-syllogistic-deduction-validity | pumice geode |
+| audit-03b-mineral-sample-deduction | halibut flounder |
+| audit-03c-cargo-manifest-deduction | dab dover |
 | audit-04-bayesian-screening-calculation | turmeric cardamom |
+| audit-04b-foundry-flaw-inspection | topknot windowpane |
+| audit-04c-orchard-blemish-screening | hogchoker sapphire |
 | research-01-attribution | paisley periscope |
+| research-01b-vaultsecure-disclosure | ruby topaz |
 | research-02-conflict-brief | burlap kaleidoscope |
 | research-02b-datacenter-outage | godwit keystone |
 | research-02c-grain-terminal-blast | dunlin lintel |
