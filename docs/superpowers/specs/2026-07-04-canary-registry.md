@@ -36,9 +36,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 493 canaries**.
+**0 issues across all 523 canaries**.
 
-## Canaries — all 493 tests
+## Canaries — all 523 tests
 
 | test | canary |
 |---|---|
@@ -422,27 +422,57 @@ counts, preserving the prose. Last run:
 | logic-03c-bead-tin | sawmill smithy |
 | logic-04-ninefold-league | porcelain tumbleweed sonata |
 | logic-04b-sevenfold-troupes | spatula whisk |
+| logic-04c-repeater-patch-mesh | lechwe topi |
 | logic-05-guild-charter | tideflat cartwheel |
+| logic-05b-abyssal-station-protocol | hartebeest reedbuck |
+| logic-05c-blackfen-curling-club | waterbuck kob |
 | logic-06-cipher-wheel | eelgrass stileway |
+| logic-06b-arcade-scorecode | puku roan |
+| logic-06c-spur-scrambler | blesbok bongo |
 | logic-07-surveyor-estimate | peppermint dialface |
+| logic-07b-warehouse-floor-tally | eland duiker |
+| logic-07c-rink-board-tally | klipspringer steenbok |
 | logic-08-toll-bridge | lingonberry cogwheel |
+| logic-08b-grainmill-tally | pangolin numbat |
+| logic-08c-print-shop-invoice | wallaroo antechinus |
 | logic-09-relay-wager | saltbox obelisk |
+| logic-09b-lighthouse-flask-duel | bettong pademelon |
+| logic-09c-tray-pull-showdown | ocelot kodkod |
 | planning-01-tradeoff | equinox solstice |
 | planning-01b-coldchain-lastmile | paca gamboge |
 | planning-01c-canning-line | agouti fuchsine |
 | planning-02-estimate | anchor-and-fan |
+| planning-02b-laundromat-water-detergent | colocolo pampas |
+| planning-02c-toolshare-fermi | fossa fanaloka |
 | planning-03-critical-path | cobalt walrus decree |
+| planning-03b-gallery-exhibit | linsang civet |
+| planning-03c-esports-tournament-launch | grysbok oribi |
 | planning-04-plan-repair | basalt otter clause |
+| planning-04b-cascade-ridge-trail-race | suni dikdik |
+| planning-04c-planetarium-premiere-audit | damalisk sassaby |
 | planning-05-depot-robot | pangolin caraway |
+| planning-05b-archive-cart | tsessebe wildebeest |
+| planning-05c-bicycle-coop-crates | hirola sitatunga |
 | planning-07-ledger-replay | seagrass filbert |
+| planning-07b-printlab-credit-replay | bushbuck nyalabuck |
+| planning-07c-costume-shop-tally | cassowary emu |
 | planning-08-portfolio-cut | ptarmigan brioche |
+| planning-08b-instrument-bay-mass-budget | kiwi kakapo |
+| planning-08c-festival-lineup-hours | takahe weka |
 | planning-09-three-rooms | capybara wintergreen |
+| planning-09b-wind-tunnel-overrun | pukeko fantail |
+| planning-09c-amberlane-sound-booths | tui bellbird |
 | planning-10-storm-option | meerkat sourdough |
+| planning-10b-flu-surge-staffing | saddleback stitchbird |
+| planning-10c-fuel-spike-fleet | kokako morepork |
 | judgment-01-client-reply | marzipan foghorn |
+| judgment-01b-tailoring-delay | ruru piopio |
+| judgment-01c-tradeshow-booth-delay | huia laughingkookaburra |
 | judgment-02-policy-conflict-memo | quilted asteroid |
 | judgment-02b-biospecimen-sop-conflict | sanderling mullion |
 | judgment-02c-quarantine-retention-memo | turnstone balustrade |
 | judgment-03-bad-news-announcement | paprika gondola |
+| judgment-03b-recovery-suite-refund | lyrebird bowerbird |
 | judgment-04-pushback-cherry-pick | obsidian marmalade |
 | judgment-05-need-to-know | riverstile glockenspiel |
 | judgment-06-pick-one-vendor | mossflit ashfleck |
