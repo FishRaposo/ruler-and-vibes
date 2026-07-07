@@ -36,9 +36,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 486 canaries**.
+**0 issues across all 493 canaries**.
 
-## Canaries — all 486 tests
+## Canaries — all 493 tests
 
 | test | canary |
 |---|---|
@@ -409,12 +409,19 @@ counts, preserving the prose. Last run:
 | context-09b-railyard-tally-plates | impala nyala |
 | context-09c-lockflight-tallies | platypus kudu |
 | context-10-icl-labeling | walnut funicular |
+| context-10b-pinball-service-bands | drawbridge portcullis |
+| context-10c-typebar-warehouse-grades | rampart bastion |
 | logic-01-ferry-ledger | gingham asteroid verdict |
+| logic-01b-cablecar-flour-ledger | citadel stockade |
+| logic-01c-dyehouse-ledger | palisade watchtower |
 | logic-02-wrenmarket-stalls | corduroy pelican statute |
 | logic-02b-dawnascent-balloons | potoroo capstone |
 | logic-02c-tarnhollow-balloons | merlin finial |
 | logic-03-token-pouch | velvet accordion doctrine |
+| logic-03b-crystal-tray | waterwheel gristmill |
+| logic-03c-bead-tin | sawmill smithy |
 | logic-04-ninefold-league | porcelain tumbleweed sonata |
+| logic-04b-sevenfold-troupes | spatula whisk |
 | logic-05-guild-charter | tideflat cartwheel |
 | logic-06-cipher-wheel | eelgrass stileway |
 | logic-07-surveyor-estimate | peppermint dialface |
