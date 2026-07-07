@@ -32,9 +32,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 403 canaries**.
+**0 issues across all 433 canaries**.
 
-## Canaries — all 403 tests
+## Canaries — all 433 tests
 
 | test | canary |
 |---|---|
@@ -259,6 +259,7 @@ counts, preserving the prose. Last run:
 | data-11c-shade-canopy-yield | damask brume |
 | data-12-cold-start-memo | cobblestone larkspur |
 | data-12b-garage-gate-log | brocade rime |
+| data-12c-clinic-intake-memo | chintz hoarfrost |
 | story-01-absolute-vs-rate | carafe pitcher |
 | story-01b-warranty-plants | wisteria toboggan |
 | story-01c-donation-reactions | mayfly porcini |
@@ -266,26 +267,55 @@ counts, preserving the prose. Last run:
 | story-02b-phlebotomist-veins | calico graupel |
 | story-02c-heating-engineer-callouts | muslin virga |
 | story-03-correlation-not-cause | lagoon atoll |
+| story-03b-outreach-van-efficiency | taffeta tamarillo |
+| story-03c-vaccination-clinic-efficiency | chenille feijoa |
 | story-04-composition-shift-trend | reef strand |
+| story-04b-watch-time-format-mix | organza loquat |
+| story-04c-grant-award-mix | gabardine sloe |
 | debug-01-root-cause | splinter-trace |
 | debug-01b-lending-fine | serval chartreuse |
 | debug-01c-transit-fare | genet ochre |
 | debug-02-regression | shear-line diff |
+| debug-02b-sku-shelf-code | seersucker bullace |
+| debug-02c-asset-key-storage | grosgrain greengage |
 | debug-03-stack-trace | marmalade compass clause |
+| debug-03b-gauge-rollup | jacquard mirabelle |
+| debug-03c-saddlery-cut-tally | herringbone physalis |
 | debug-04-shared-state | porcelain otter mandate |
+| debug-04b-ferry-fare-rebate | houndstooth rambutan |
+| debug-04c-emberkiln-roast-shrinkage | griffin mangosteen |
 | debug-05-lost-update-async | kelpwood tarn |
+| debug-05b-telemetry-running-total | sphinx jujube |
+| debug-05c-stock-replenish-race | chimera pawpaw |
 | debug-06-bisect-the-diffs | clover satchel |
+| debug-06b-boundary-in-the-grades | basilisk soursop |
+| debug-06c-bisect-size-diffs | phoenix cherimoya |
 | debug-07-penny-drift-apportionment | harbor thimble |
+| debug-07b-seat-drift-apportionment | kraken salak |
+| debug-07c-dimmer-budget-leveling | selkie longan |
 | debug-08-cache-leak-from-logs | willow ewer |
+| debug-08b-geocode-cache-leak | kelpie kumquat |
+| debug-08c-permit-memo-leak | nixie calamansi |
 | debug-09-reproduce-then-fix | meadow ripple |
+| debug-09b-abutting-plate-slots | brownie weathercock |
+| debug-09c-back-to-back-bookings | manticore cinquefoil |
 | debug-10-shrink-the-poison-row | cavern fjord |
+| debug-10b-fare-gate-pipe-feed | wyvern rosette |
+| debug-10c-vireya-fee-ledger | cockatrice tracery |
 | debug-11-quadratic-creep | kestrel damselfly |
+| debug-11b-glaze-palette-scan | vaquita zenith |
+| debug-11c-bindery-folio-collapse | viridian ogee |
 | debug-12-contract-fine-print | pebble gantry |
+| debug-12b-chunk-bounds-fine-print | puffball crocket |
+| debug-12c-shelf-run-boundary | inkcap comfrey |
 | pat-01-ipv4-octet | badger mongoose |
 | pat-01b-valgrove-berth | bittern bleak |
 | pat-01c-cindermoor-beam | egret burbot |
 | pat-02-sable-tag-regex | civet wombat |
+| pat-02b-ferrule-stamp-regex | bolete vervain |
+| pat-02c-ravelin-cask-stamp | russula betony |
 | pat-03-shipment-contract | quoll dingo |
+| pat-03b-pyrotechnics-cue-contract | lactarius agrimony |
 | pat-04-quill-nested-literal | gecko iguana |
 | game-01-microgame | pip-loop pacing |
 | game-02-card-ruleset | table-hush |
