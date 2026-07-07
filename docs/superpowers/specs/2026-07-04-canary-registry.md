@@ -32,9 +32,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 433 canaries**.
+**0 issues across all 463 canaries**.
 
-## Canaries — all 433 tests
+## Canaries — all 463 tests
 
 | test | canary |
 |---|---|
@@ -316,27 +316,57 @@ counts, preserving the prose. Last run:
 | pat-02c-ravelin-cask-stamp | russula betony |
 | pat-03-shipment-contract | quoll dingo |
 | pat-03b-pyrotechnics-cue-contract | lactarius agrimony |
+| pat-03c-dive-plan-contract | amanita mullein |
 | pat-04-quill-nested-literal | gecko iguana |
+| pat-04b-nooka-nesting-doll | blewit woundwort |
+| pat-04c-skein-knot-escape | fieldcap selfheal |
 | game-01-microgame | pip-loop pacing |
+| game-01b-pocket-arcade | parasol loosestrife |
+| game-01c-griddle-flip | scarletina meadowsweet |
 | game-02-card-ruleset | table-hush |
 | game-02b-domino-ruleset | oncilla cochineal |
 | game-02c-domino-ruleset | jaguarundi orpiment |
 | game-03-balance-patch | marzipan flotilla |
+| game-03b-harvester-yield | milkcap chough |
+| game-03c-spellspire-turret | webcap dipper |
 | game-04-puzzle-pack | gingham matador |
+| game-04b-bogtrot-warren | waxcap wagtail |
+| game-04c-orrery-deck | earthstar pipit |
 | game-05-be-the-engine | marjoram skiff |
+| game-05b-spellbind-standoff | stinkhorn shrike |
+| game-05c-coilworks-arena | dunnock waxbill |
 | game-06-break-it | vellum estuary |
+| game-06b-degenerate-sigil | fieldfare weaver |
+| game-06c-boiler-overpressure | redwing whydah |
 | game-07-branching-quest | brackish taper |
+| game-07b-derelict-outpost-relay | brambling bishopbird |
+| game-07c-hollowdeep-survey | twite sunbird |
 | game-08-combo-engine | medlar embassy |
+| game-08b-tonic-brewery | linnet flowerpecker |
+| game-08c-gearcore-torque | greenfinch beluga |
 | game-09-ev-economy | sorrel ferry |
+| game-09b-fairground-spinner | bullfinch vaquita |
+| game-09c-canister-payout | hawfinch dugong |
 | precision-01-exact-format | brass-rule |
 | precision-01b-library-acquisitions | olingo wenge |
 | precision-01c-library-accession | dhole smalt |
 | precision-02-constrained-piece | metronome discipline |
+| precision-02b-bakehouse-bulletin | yellowhammer manatee |
+| precision-02c-transit-bulletin | corncrake pangophid |
 | precision-03-amended-spec | cobalt tambourine |
+| precision-03b-seed-library-labels | capercaillie solenodon |
+| precision-03c-trailrace-startlist | sandpiper tenrec |
 | precision-04-conditional-manifest | velvet stalactite |
+| precision-04b-organ-voicing-roster | phalarope desman |
+| precision-04c-cheese-cellar-rack | stonechat zorilla |
 | precision-05-prohibition-gauntlet | cranberry sundial |
+| precision-05b-joinery-studio-gauntlet | whinchat marmoset |
+| precision-05c-rain-shell-gauntlet | oriel colobus |
 | precision-06-unstated-rule-induction | lichen mesa |
+| precision-06b-foundry-token-stamp | clerestory gibbon |
+| precision-06c-spice-shelf-code | transept macaque |
 | precision-07-field-guide-persistence | quince turnstile |
+| precision-07b-carillon-bell-card | ambulatory langur |
 | precision-08-relay-ledger-chain | birchbark thicket |
 | precision-09-quoted-thread-firewall | thymeleaf brook |
 | precision-11-verbatim-against-instinct | brackwater flambeau |
