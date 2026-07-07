@@ -7,7 +7,11 @@ allowlist.
 ## Rules (enforced kit-wide)
 
 1. Every canary phrase is unique; no phrase is a substring of another.
-2. No content word appears in more than 2 canaries across the kit.
+2. No content word appears in more than 2 canaries across the kit. This
+   allows a word to repeat, but its two placements must NEVER pair with
+   the same second word in reversed order (e.g. "A B" and "B A") —
+   that is a word-set collision, effectively the same canary twice.
+   `tools/canary-audit.js` checks this explicitly (WORD-SET COLLISION).
 3. No canary phrase may appear in ANY test file (it belongs only in its own
    rubric: the `canary:` frontmatter field plus one woven mention in
    `## Judge guidance`). This is the leak-detection invariant.
@@ -32,9 +36,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 463 canaries**.
+**0 issues across all 486 canaries**.
 
-## Canaries — all 463 tests
+## Canaries — all 486 tests
 
 | test | canary |
 |---|---|
@@ -367,20 +371,43 @@ counts, preserving the prose. Last run:
 | precision-06c-spice-shelf-code | transept macaque |
 | precision-07-field-guide-persistence | quince turnstile |
 | precision-07b-carillon-bell-card | ambulatory langur |
+| precision-07c-star-party-observing-plan | narthex aardwolf |
 | precision-08-relay-ledger-chain | birchbark thicket |
+| precision-08b-aquarium-tank-relay | tympanum tarsier |
+| precision-08c-tincture-phial-relay | voussoir indri |
 | precision-09-quoted-thread-firewall | thymeleaf brook |
+| precision-09b-cragside-forwarded-inbox | spandrel loris |
+| precision-09c-boardgame-table-firewall | archivolt potto |
 | precision-11-verbatim-against-instinct | brackwater flambeau |
+| precision-11b-signal-box-regulations | pilaster uakari |
+| precision-11c-survey-station-marking-code | entablature saki |
 | context-01-needle | tweed pendulum |
+| context-01b-observatory-consortium | architrave titi |
+| context-01c-glasshouse-report | frieze douc |
 | context-02-changelog-tally | mulberry flywheel |
 | context-02b-orbiter-downlink-tally | hoopoe gargoyle |
 | context-02c-tram-headway-tally | avocet corbel |
 | context-03-contradictions | terracotta tuba |
+| context-03b-rail-signalling | machicolation guenon |
+| context-03c-clinical-program-contradictions | crenel mandrill |
 | context-04-policy-synthesis | huckleberry sextant |
+| context-04b-wind-turbine-noise-code | merlon mangabey |
+| context-04c-airfield-operations-synthesis | gavotte talapoin |
 | context-05-grounded-summary | buckwheat carousel |
+| context-05b-underground-lab-brief | sarabande patas |
+| context-05c-cellar-provenance-brief | courante vervet |
 | context-06-depth-sweep | wallaby grotto |
+| context-06b-film-shoot-diary | bourree bushbaby |
+| context-06c-restoration-diary | tarantella aye |
 | context-07-ledger-query | seagull stanchion |
+| context-07b-curing-room-ledger | fandango dunnart |
+| context-07c-crate-grading-log | gazelle springbok |
 | context-08-absence-check | pinecone escalator |
+| context-08b-warewasher-spec | tamandua echidna |
+| context-08c-microscope-absence | gemsbok oryx |
 | context-09-variable-tracking | saxifrage inkwell |
+| context-09b-railyard-tally-plates | impala nyala |
+| context-09c-lockflight-tallies | platypus kudu |
 | context-10-icl-labeling | walnut funicular |
 | logic-01-ferry-ledger | gingham asteroid verdict |
 | logic-02-wrenmarket-stalls | corduroy pelican statute |

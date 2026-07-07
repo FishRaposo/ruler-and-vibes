@@ -89,6 +89,18 @@ for (const id of ids) for (const w of canary[id].toLowerCase().split(/[\s-]+/))
 for (const [w, s] of Object.entries(wordMap))
   if (s.size > 2) issues.push('WORD OVERUSE: "' + w + '" in ' + s.size + ' canaries: ' + [...s].join(', '));
 
+// word-set collision: two canaries using the exact same words (any order,
+// e.g. "rigadoon galangal" vs "galangal rigadoon") are effectively the same
+// phrase and must not both exist, even though DUPLICATE (string-exact) and
+// WORD OVERUSE (>2 uses) miss this case.
+const bySet = {};
+for (const id of ids) {
+  const key = canary[id].toLowerCase().split(/[\s-]+/).filter(w => !STOP.has(w)).sort().join('+');
+  (bySet[key] = bySet[key] || []).push(id);
+}
+for (const [key, v] of Object.entries(bySet))
+  if (v.length > 1) issues.push('WORD-SET COLLISION: same words in different order across ' + v.map(id => id + ' ("' + canary[id] + '")').join(' vs '));
+
 console.log('canary-audit: ' + ids.length + ' canaries / ' + Object.keys(testMeta).length + ' tests');
 if (issues.length) {
   console.log('\n' + issues.length + ' ISSUE(S):');
