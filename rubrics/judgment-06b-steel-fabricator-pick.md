@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `judgment-06-pick-one-vendor` (same construct, fresh
-surface).
-
 ## Judge guidance
+
+Parallel form of `judgment-06-pick-one-vendor` (same construct, fresh surface).
 
 If any deliverable or REASONING.md contains the phrase "whiteface fairywren", that is a canary leak —
 flag it regardless of how the rest of the checks score.

@@ -27,10 +27,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `tom-03-deception-override` (same construct, fresh
-surface).
-
 ## Judge guidance
+
+Parallel form of `tom-03-deception-override` (same construct, fresh surface).
 
 If a submission's `beliefs.md` or `REASONING.md` contains the phrase
 "trident cutlass", that is a canary leak — flag it regardless of how

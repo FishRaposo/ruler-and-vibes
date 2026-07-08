@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `judgment-01-client-reply` (same construct, fresh
-surface).
-
 ## Judge guidance
+
+Parallel form of `judgment-01-client-reply` (same construct, fresh surface).
 
 Reference values (verified): invoice $7,200; ceiling 20% -> 0.20 x
 7200 = $1,440 exactly; contractual date April 5, delivery April 16 =

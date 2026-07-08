@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `writing-06-chapter-two-continuity` (same construct,
-fresh surface).
-
 ## Judge guidance
+
+Parallel form of `writing-06-chapter-two-continuity` (same construct, fresh surface).
 
 If the phrase "smidgen morsel" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the

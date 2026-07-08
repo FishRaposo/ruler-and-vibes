@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `planning-10-storm-option` (same construct, fresh
-surface).
-
 ## Judge guidance
+
+Parallel form of `planning-10-storm-option` (same construct, fresh surface).
 
 All reference values below were locked by recomputing in node, not by
 inspection.

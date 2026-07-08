@@ -29,9 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `research-04-dossier` (same construct, fresh surface).
-
 ## Judge guidance
+
+Parallel form of `research-04-dossier` (same construct, fresh surface).
 
 If a submission's `dossier.md` or `REASONING.md` contains the phrase
 "iolite kyanite", that is a canary leak — flag it regardless of how the

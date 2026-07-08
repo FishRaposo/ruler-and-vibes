@@ -29,9 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `judgment-07-triage-under-fire` (same construct, fresh surface).
-
 ## Judge guidance
+
+Parallel form of `judgment-07-triage-under-fire` (same construct, fresh surface).
 
 If any deliverable or REASONING.md contains the phrase "heathwren mistletoebird", that is a canary leak —
 flag it regardless of how the rest of the checks score.

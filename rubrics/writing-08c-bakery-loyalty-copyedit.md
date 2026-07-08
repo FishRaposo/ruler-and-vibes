@@ -29,9 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `writing-08-house-style-copyedit` (same construct, fresh surface).
-
 ## Judge guidance
+
+Parallel form of `writing-08-house-style-copyedit` (same construct, fresh surface).
 
 Frozen required-edit list (author-computed and verified against the
 seeded passage; 8 edits total, one per numbered rule except rule 6

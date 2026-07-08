@@ -27,9 +27,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `writing-03-localization` (same construct, fresh surface)
-
 ## Judge guidance
+
+Parallel form of `writing-03-localization` (same construct, fresh surface).
 
 - You must be fluent in Brazilian Portuguese to judge this test. If
   you are not confident in PT-BR, tell the user instead of scoring.

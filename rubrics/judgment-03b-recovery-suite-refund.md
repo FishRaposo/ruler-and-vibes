@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `judgment-03-bad-news-announcement` (same construct,
-fresh surface).
-
 ## Judge guidance
+
+Parallel form of `judgment-03-bad-news-announcement` (same construct, fresh surface).
 
 Refund arithmetic (verified): $960 / 12 = $80/month; unused months
 November, December, January, February, March = 5; 5 x $80 = $400

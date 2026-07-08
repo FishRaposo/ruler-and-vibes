@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `research-09-triangulation-matrix` (same construct,
-fresh surface).
-
 ## Judge guidance
+
+Parallel form of `research-09-triangulation-matrix` (same construct, fresh surface).
 
 If a submission's `crust-triangulation.md` or `REASONING.md` contains
 the phrase "turnip parsnip", that is a canary leak — flag it regardless

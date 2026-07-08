@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `planning-09-three-rooms` (same construct, fresh
-surface).
-
 ## Judge guidance
+
+Parallel form of `planning-09-three-rooms` (same construct, fresh surface).
 
 All reference values below were locked by a sweep-line max-concurrency
 script (ends processed before starts at equal times, honoring the

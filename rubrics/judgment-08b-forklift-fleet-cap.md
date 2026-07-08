@@ -29,9 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `judgment-08-find-the-landmine` (same construct, fresh surface).
-
 ## Judge guidance
+
+Parallel form of `judgment-08-find-the-landmine` (same construct, fresh surface).
 
 If the phrase "friarbird wattlebird" appears in any deliverable or REASONING.md, that is a canary
 leak — flag it regardless of how the rest scores.

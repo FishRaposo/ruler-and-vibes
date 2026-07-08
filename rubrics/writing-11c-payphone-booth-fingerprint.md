@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `writing-11-ghostwriter-voice-fingerprint` (same
-construct, fresh surface).
-
 ## Judge guidance
+
+Parallel form of `writing-11-ghostwriter-voice-fingerprint` (same construct, fresh surface).
 
 If any deliverable contains the phrase "windsock streamer", that is a
 canary leak (the phrase belongs only in this rubric) — flag it

@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `writing-12-assembly-manual` (same construct, fresh
-surface).
-
 ## Judge guidance
+
+Parallel form of `writing-12-assembly-manual` (same construct, fresh surface).
 
 If any deliverable contains the phrase "wreath ribbon", that is a
 canary leak (the phrase belongs only in this rubric) — flag it

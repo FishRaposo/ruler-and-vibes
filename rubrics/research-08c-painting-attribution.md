@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `research-08-provenance-map` (same construct, fresh
-surface).
-
 ## Judge guidance
+
+Parallel form of `research-08-provenance-map` (same construct, fresh surface).
 
 If a submission's `provenance-map.md` or `REASONING.md` contains the
 phrase "juniper redwood", that is a canary leak — flag it regardless of

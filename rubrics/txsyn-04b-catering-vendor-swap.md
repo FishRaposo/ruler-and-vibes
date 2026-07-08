@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `txsyn-04-cross-meeting-reconciliation` (same
-construct, fresh surface).
-
 ## Judge guidance
+
+Parallel form of `txsyn-04-cross-meeting-reconciliation` (same construct, fresh surface).
 
 If a submission's `state.json` or `RECONCILIATION.md` contains the
 phrase "compendium anthology", that is a canary leak — flag it

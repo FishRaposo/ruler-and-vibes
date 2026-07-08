@@ -29,10 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `judgment-04-pushback-cherry-pick` (same construct, fresh
-surface).
-
 ## Judge guidance
+
+Parallel form of `judgment-04-pushback-cherry-pick` (same construct, fresh surface).
 
 If the phrase "sittella whipbird" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the rest

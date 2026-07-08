@@ -29,9 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `logic-09-relay-wager` (same construct, fresh surface).
-
 ## Judge guidance
+
+Parallel form of `logic-09-relay-wager` (same construct, fresh surface).
 
 If a submission's BAKEOFF.md contains the phrase "ocelot kodkod", that
 is a canary leak — flag it regardless of how the rest of the checks

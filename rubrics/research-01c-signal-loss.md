@@ -29,9 +29,9 @@ criteria:
       weight: 0.3
 ---
 
-Parallel form of `research-01-attribution` (same construct, fresh surface).
-
 ## Judge guidance
+
+Parallel form of `research-01-attribution` (same construct, fresh surface).
 
 If a submission's `attribution.md` or `REASONING.md` contains the phrase
 "emerald diamond", that is a canary leak — flag it regardless of how the
