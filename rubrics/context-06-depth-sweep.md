@@ -47,7 +47,7 @@ approximate depth markers, not part of the expected answer)
 | D6 | the 9th of Aurelmonth | ~53.5% (~50%, lost-in-middle) | Day 9 date, expedition's in-story calendar |
 | D7 | 52-J07-S | ~82.7% (~75%) | Day 12 three-quarter-point waypoint |
 | D8 | 41.6 km | ~84.3% (~75%) | Day 12 measured distance from the Day 3 ridge; decoy "41.2 km" is a Day 13 distance from a *different* reference point (an old survey cairn), explicitly noted as measuring something else |
-| D9 | GEN-4471X | ~95.6% (near end) | Day 14 generator asset tag logged out of service |
+| D9 | GEN-4471X | ~95.6% (near end) | Day 15 generator asset tag logged out of service |
 | D10 | 27 core samples | ~98.1% (near end) | Day 15 final sample tally |
 
 Every needle value appears exactly once in the shipped logbook, except

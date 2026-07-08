@@ -272,7 +272,7 @@ located and quoted precisely by its line number.
 49g. Priya: Good, let's put that on the shared calendar so nobody's
      surprised by it.
 50. Priya: I also want to confirm the communication plan. Go-live
-    communication to warehouse staff is planned for March 8.
+    communication to warehouse staff is planned for March 1.
 50a. Priya: That's ahead of code freeze on purpose, so staff have time
      to plan their shifts around the cutover window before anything in
      the system actually changes.

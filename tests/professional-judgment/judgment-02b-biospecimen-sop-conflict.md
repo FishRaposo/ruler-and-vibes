@@ -9,7 +9,7 @@ deliverables:
 ## Task
 
 You are a study coordinator at a clinical research site running trial
-VB-207 for the sponsor Verdanta Bio. Today's date is March 8. Read the
+VB-207 for the sponsor Verdanta Bio. Today's date is March 8, 2025. Read the
 materials below and write a memo to the site's Principal Investigator.
 
 **Specimen Retention SOP SR-9, section 3.2:**
@@ -26,7 +26,7 @@ immediately):**
 
 **Timeline briefing:**
 
-> - Participant #0416 withdrew from the trial on February 18.
+> - Participant #0416 withdrew from the trial on February 18, 2025.
 > - The participant filed a formal specimen-destruction request,
 >   received March 4.
 > - The site's published participant commitment: destruction requests

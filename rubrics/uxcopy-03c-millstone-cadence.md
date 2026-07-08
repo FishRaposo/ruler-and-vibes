@@ -40,10 +40,21 @@ rest of the checks score.
 
 ### Objective checks — one Node script, run standalone
 
-Score obj-1 through obj-5 by parsing `empty-state-copy.json` and
-applying the five predicates literally. The script below implements
-all five and runs standalone via
-`node check-uxcopy-03c.js empty-state-copy.json`:
+Score obj-1, obj-2, obj-3, and obj-5 by parsing `empty-state-copy.json`
+and applying those predicates literally via the script below. For
+obj-4, the script's word-count (1-3 words) and no-trailing-punctuation
+checks are authoritative and literal; the "starts with an imperative
+verb" clause uses a closed-vocabulary fast path (`ALL_IMPERATIVE_VERBS`)
+that is deliberately non-exhaustive. If a CTA's first word is not in
+that list, do NOT auto-fail obj-4 (or the CTA-intent trap check) —
+instead judge it manually: any unambiguous imperative verb (e.g.
+"Browse", "Explore", "Skip", "Check", "Dismiss", "Find") counts as
+satisfying obj-4, and its create/corrective/neutral intent should be
+judged the same way the source facet (uxcopy-03) does it — by reading
+whether the CTA changes the query, starts something new, or moves on,
+not by dictionary membership. The script below runs standalone via
+`node check-uxcopy-03c.js empty-state-copy.json` and flags exactly
+which CTAs need this manual fallback rather than silently failing them:
 
 ```js
 // check-uxcopy-03c.js — run: node check-uxcopy-03c.js empty-state-copy.json
@@ -82,8 +93,13 @@ for (const k of KEYS) {
   const words = c.trim().split(/\s+/);
   const firstWord = words[0] ? words[0].toLowerCase() : "";
   const startsWithImperative = ALL_IMPERATIVE_VERBS.includes(firstWord);
-  const ctaShapeOk = words.length >= 1 && words.length <= 3 && !/[.,!?;:]$/.test(c) && startsWithImperative;
-  if (!ctaShapeOk) obj4 = false;
+  const shapeMechanicsOk = words.length >= 1 && words.length <= 3 && !/[.,!?;:]$/.test(c);
+  // startsWithImperative is a non-exhaustive fast path; a `false` here
+  // means "needs manual verb-check", not an automatic fail — only the
+  // mechanical word-count/punctuation checks are auto-fail.
+  if (!shapeMechanicsOk) obj4 = false;
+  const needsManualReview = shapeMechanicsOk && !startsWithImperative;
+  if (needsManualReview) console.log(`  [obj-4/intent manual review] "${c}" (${k}): first word "${firstWord}" not in whitelist — judge the imperative-verb and intent rules by hand`);
 
   const all = (h + " " + b + " " + c).toLowerCase();
   if (BANNED.some(w => all.includes(w))) obj5 = false;
@@ -93,7 +109,7 @@ for (const k of KEYS) {
   else if (CORRECTIVE_VERBS.includes(firstWord)) intent = "corrective";
   else if (NEUTRAL_VERBS.includes(firstWord)) intent = "neutral";
   const expected = FIRST_RUN.has(k) ? "create" : (k === CORRECTIVE ? "corrective" : (k === NEUTRAL ? "neutral" : "unknown"));
-  if (intent !== expected) ctaIntentOk = false;
+  if (intent !== expected && !needsManualReview) ctaIntentOk = false;
 }
 console.log({ obj1, obj2, obj3, obj4, obj5, ctaIntentOk });
 ```

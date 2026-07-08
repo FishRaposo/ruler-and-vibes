@@ -10,15 +10,15 @@ deliverables:
 ## Task
 
 A fictional divide-and-conquer routine ("Trellisort") splits its input
-into 5 subproblems of one-third the size and does linear work to combine
-them. Its running time is described exactly by the recurrence:
+into 7 subproblems of one-quarter the size and does linear work to
+combine them. Its running time is described exactly by the recurrence:
 
 ```
-T(n) = 5*T(n/3) + n     for n a power of 3, n > 1
+T(n) = 7*T(n/4) + n     for n a power of 4, n > 1
 T(1) = 1
 ```
 
-This recurrence is defined only for `n` a power of 3, so it is
+This recurrence is defined only for `n` a power of 4, so it is
 well-defined at every input this test asks for.
 
 Rather than accept an unverifiable algebraic claim, this task requires
@@ -37,16 +37,16 @@ asymptotic growth class using the Master Theorem.
     printed by the script.
   - When run with `node recurrence.js`, print **exactly 6 lines**, one
     per pinned input, in the exact form `T(<n>)=<value>`, for
-    `n = 1, 3, 9, 27, 81, 729` **in that order** — no header, no extra
+    `n = 1, 4, 16, 64, 256, 1024` **in that order** — no header, no extra
     lines.
 - `ANALYSIS.md` (max 250 words, whole file) — must:
   - State the asymptotic class using the Master Theorem, i.e.
-    Theta(n^log3(5)) (equivalently "Theta(n^1.465...)" or "n raised to
-    log base 3 of 5").
-  - Give a one-paragraph justification: identify `a=5`, `b=3`,
+    Theta(n^log4(7)) (equivalently "Theta(n^1.404...)" or "n raised to
+    log base 4 of 7").
+  - Give a one-paragraph justification: identify `a=7`, `b=4`,
     `f(n)=n`, compare `f(n)` against `n^log_b(a)`, and state which
     Master Theorem case applies and why.
-  - State the exact value of `T(729)`.
+  - State the exact value of `T(1024)`.
 
 ## Constraints
 

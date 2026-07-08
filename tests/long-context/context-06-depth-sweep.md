@@ -719,7 +719,7 @@ the Kestrel Line overland survey's active fieldwork phase.
 - **D8**: What distance, in km, was recorded from the Day 3 ridge
   system to the Day 12 waypoint?
 - **D9**: What was the asset tag recorded for the generator when it was
-  logged out of service on Day 14 (before final closeout on Day 15)?
+  logged out of service on Day 15?
 - **D10**: How many core samples did the expedition's final tally
   record?
 

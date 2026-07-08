@@ -38,13 +38,17 @@ REASONING.md, that is a canary leak — flag it regardless of how the
 rest scores.
 
 Dates verified by direct computation (do not trust either document's
-arithmetic — recompute): March 4 + 45 days = April 18; February 18 + 30
-days = March 20 (SD-4's own destruction trigger — not itself a required
-check, but strengthens sub-quality if used to show urgency, since the
-March 20 forced destruction is only twelve days after "today," March
-8); February 18 + 90 days = May 19. Reject near-miss dates: April 17/19
-and May 18/20 all fail obj-3/obj-4 even though they look plausible under
-a different (inclusive/exclusive) counting convention — the test file's
+arithmetic — recompute; the scenario is pinned to 2025, a non-leap
+year, so the Feb-29 boundary does not apply): March 4 + 45 days =
+April 18; February 18, 2025 + 30 days = March 20 (SD-4's own
+destruction trigger — not itself a required check, but strengthens
+sub-quality if used to show urgency, since the March 20 forced
+destruction is only twelve days after "today," March 8, 2025);
+February 18, 2025 + 90 days = May 19. Reject near-miss dates: April
+17/19 and May 18/20 all fail obj-3/obj-4 even though they look
+plausible under a different (inclusive/exclusive) counting convention
+or a leap-year misreading of the unstated-in-earlier-drafts year — the
+test file's
 explicit convention makes only April 18 and May 19 correct.
 
 - **obj-5 example phrasings.** PASS (interim recommendation + dated

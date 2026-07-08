@@ -276,7 +276,7 @@ quoted precisely by its line number.
 49g. Halligan: Good, let's put that on the shared calendar so nobody's
      caught out by it.
 50. Halligan: I also want to confirm the communication plan. Go-live
-    communication to depot staff is planned for September 29.
+    communication to depot staff is planned for September 22.
 50a. Halligan: That's ahead of design freeze on purpose, so staff have
      time to plan their shifts around the cutover window before anything
      in the system actually changes.
