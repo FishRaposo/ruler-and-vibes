@@ -18,9 +18,9 @@ the exact result set for:
 
 1. Revenue per craft type — `SUM(hours * rate)` — **excluding** comped
    checkouts, showing only craft types whose (non-comped) revenue
-   exceeds 100, ordered by revenue descending.
-2. The craft types in which **every** checkout has `hours >= 4` (i.e.
-   there is no checkout of that craft type with `hours < 4`).
+   exceeds 90, ordered by revenue descending.
+2. The craft types in which **every** checkout has `hours >= 3` (i.e.
+   there is no checkout of that craft type with `hours < 3`).
 
 ## Embedded dataset
 
@@ -52,7 +52,7 @@ INSERT INTO checkout (id, gear, craft, hours, rate, comped) VALUES
 - `ANSWERS.md` — exact result sets as tables, plus a short explanation
   (a few sentences) of why the comp exclusion must be applied per-row
   before aggregation rather than as a post-aggregation filter, and why
-  "every checkout has hours >= 4" cannot be expressed as a simple
+  "every checkout has hours >= 3" cannot be expressed as a simple
   per-row filter on `hours`.
 
 ## Constraints

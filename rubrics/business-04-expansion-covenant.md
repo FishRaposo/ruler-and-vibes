@@ -117,18 +117,62 @@ matches` line and the `B[m24]` checkpoint.
 - **obj-1**: exact integer match on the three checkpoints; a close-but-
   off value (e.g. rounding) still fails — every number here has one
   correct integer answer.
+  - PASS: "option_a month 3 is 17000, option_a month 24 is 410000,
+    option_b month 1 is 69500" (with a 24-row CSV under the exact
+    header).
+  - PASS: a CSV whose every row equals the answer-key series above.
+  - PASS: checkpoints stated as 17,000 / 410,000 / 69,500 with the CSV
+    matching row-for-row.
+  - FAIL: option_a month 24 given as 465000 (fit-out payment dropped or
+    misdated).
+  - FAIL: the header is `month,a,b` or the file has 12 rows instead
+    of 24.
+  - FAIL: option_b month 1 given as 72000 (rent not applied in month 1).
 - **obj-2**: the breach month is month 3, not month 1 (fit-out payments
   land in M1 and M3; cash is still 33,000 at the end of M2). Accept
   "month 6 minimum (14,000)" as supporting detail but the required claim
   is the month-3 breach.
+  - PASS: "Option A first breaches the 25,000 floor in month 3, when
+    cash falls to 17,000."
+  - PASS: "the covenant is broken in month 3 (17,000), and cash bottoms
+    out at 14,000 in month 6."
+  - PASS: "Option A stays above 25,000 until month 3, where it drops to
+    17,000 — the first breach."
+  - FAIL: "Option A breaches immediately in month 1 when the 55,000
+    payment lands."
+  - FAIL: "Option A breaches in month 6 at its 14,000 low" (names only
+    the minimum, not the first breach).
+  - FAIL: "neither option breaches the covenant."
 - **obj-3**: this is the rent-omission trap — 463,500 (or exactly
   460,000 above the correct value in any form) is a hard fail.
+  - PASS: option_b month 24 = 403500 in the CSV, with the rent visibly
+    subtracted each month.
+  - PASS: DECISION.md notes the 2,500/month rent is charged separately
+    and B ends at 403,500.
+  - FAIL: option_b month 24 = 463500 (rent never subtracted).
+  - FAIL: the rent is mentioned in prose but the CSV still shows 463500
+    (stated but not applied).
 - **obj-4**: accept either the ending-cash framing (410,000 vs 403,500)
   or the cumulative-incremental framing (128,000 vs 121,500); both are
   the same 6,500 delta.
+  - PASS: "Option A ends 6,500 ahead — 410,000 versus 403,500."
+  - PASS: "incremental contribution is 128,000 for A and 121,500 for B,
+    a 6,500 gap in A's favour."
+  - PASS: "A leads by 6,500 over the 24 months."
+  - FAIL: "Option B is more profitable" or "A leads by 66,500" (the
+    latter comes from dropping B's rent).
+  - FAIL: "the two options tie on cumulative cash."
+  - FAIL: no cumulative comparison is stated at all.
 - **obj-5**: recommending Option A fails this check outright, regardless
   of how well-argued — the covenant makes A infeasible, not merely
   worse. Whole-file `wc -w` for the 600-word cap.
+  - PASS: "Recommend Option B" with the covenant cited as the
+    disqualifier for A, file under 600 words.
+  - PASS: "Option B is the only feasible choice; choose it."
+  - FAIL: "Recommend Option A for its higher return" (ignores the
+    covenant).
+  - FAIL: a DECISION.md over 600 words even if it recommends B.
+  - FAIL: no clear single recommendation (hedges between A and B).
 
 ### Subjective guidance
 

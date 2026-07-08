@@ -73,13 +73,48 @@ Count words with `wc -w RUNWAY.md` (whole file) for obj-5.
 - **obj-1 / obj-3 (burn figures)**: exact numbers, not approximations —
   26,000 and 35,500 are both derived from fixed inputs with no
   legitimate rounding.
+  - PASS: "net burn = 48,000 − 22,000 = 26,000/month" and later
+    "post-hire burn = 26,000 + 9,500 = 35,500/month".
+  - PASS: burn stated as "26k/month" going forward and "35.5k/month"
+    with the hire, arithmetic traceable.
+  - PASS: "monthly outflow exceeds inflow by 26,000; adding the 9,500
+    role brings it to 35,500".
+  - FAIL: baseline net shown as +4,000 or as a surplus (grant folded
+    into revenue).
+  - FAIL: burn stated as 26,000 but post-hire burn given as anything
+    other than 35,500 (e.g. 31,500 from mis-adding the hire).
+  - FAIL: a burn number asserted with no derivation and inconsistent
+    with the fixed inputs.
 - **obj-2 / obj-3 (runway)**: allow reasonable phrasing bands as stated;
   do not fail a memo that says "about 7 months" and "about 5 months" as
   long as the underlying arithmetic (burn, and cash-on-hand) is right.
+  - PASS: "180,000 / 26,000 ≈ 6.9 months; cash runs out during month 7".
+  - PASS: "cash lasts 6 full months, empties in month 7" for baseline
+    and "5 full months, empties in month 6" for the hire case.
+  - PASS: "about 7 months" baseline and "about 5 months" post-hire.
+  - FAIL: "runway is unlimited" / "cash never runs out" (the trap
+    outcome).
+  - FAIL: runway given with the right burn but wrong division (e.g.
+    "180,000 / 26,000 = 5 months").
+  - FAIL: post-hire runway equal to or longer than the baseline runway.
 - **obj-4**: look for language that names the grant as one-time/
   non-recurring and explicitly removes it from the go-forward rate —
   not merely mentioning the grant exists.
+  - PASS: "the 30,000 grant is one-time and already inside the cash
+    balance, so it is excluded from the forward run-rate".
+  - PASS: "because the grant will not recur, it is not counted in
+    monthly revenue for the burn calculation".
+  - PASS: "forward revenue is client fees only (22,000); the 30,000
+    award is a non-recurring, already-banked item".
+  - FAIL: the grant is added to monthly revenue, or a recurring 30,000
+    inflow is assumed.
+  - FAIL: the grant is mentioned only as background with no statement
+    that it is excluded from the rate.
+  - FAIL: the memo is silent on the grant's treatment.
 - **obj-5**: whole-file `wc -w`, not just prose paragraphs.
+  - PASS: a 250-word memo.
+  - PASS: a memo at exactly 350 words.
+  - FAIL: a 410-word memo.
 
 ### Subjective guidance
 

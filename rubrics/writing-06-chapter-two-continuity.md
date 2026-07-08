@@ -61,6 +61,35 @@ Author-verified anchors for each canon fact, as stated in Chapter One
    also opens the strongbox. The trap: a careless continuation may
    slip into "the keys" out of habit; watch specifically for this.
 
+For obj-2 (canon contradiction), ship 2-3 PASS + 2-3 FAIL example
+phrasings:
+
+- PASS: chapter two refers throughout to "the key" (singular) and to
+  Wren's own left hand/pocket habit without ever switching sides.
+- PASS: chapter two shows Wren reluctantly wading into the shallows at
+  the millpond's edge but not swimming out into deep water, still
+  visibly afraid.
+- PASS: Cass is referred to as older throughout, and the town is
+  called Millrace consistently, with the season staying autumn.
+- FAIL: chapter two has Wren swimming confidently across the millpond
+  to retrieve something herself.
+- FAIL: chapter two refers to "the missing keys" or introduces a
+  second key that also opens the strongbox.
+- FAIL: chapter two calls Cass "her younger brother" or otherwise
+  reverses the sibling order.
+
+For obj-3 (entity consistency), ship 2-3 PASS + 2-3 FAIL example
+phrasings:
+
+- PASS: Wren and Cass keep their names, spellings, and sibling
+  relationship consistent throughout chapter two.
+- PASS: Millrace is referred to consistently as the town's name, with
+  no alternate name introduced for the same place.
+- FAIL: a character is introduced as "Wren's sister" instead of her
+  brother, or Cass is renamed "Cassian" partway through the chapter.
+- FAIL: the town is called "Millrace" in one paragraph and a different
+  name in another without explanation.
+
 For obj-4 (plot advancement), ship 2-3 PASS + 2-3 FAIL example
 phrasings:
 

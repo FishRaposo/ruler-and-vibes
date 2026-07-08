@@ -200,12 +200,26 @@ process.exit(allOk && paintOk ? 0 : 1);
   "roof course study" (title/labels/background optional but welcome),
   with the overlap and the upper-over-lower lapping visually legible
   rather than just five flat rectangles with no framing?
+  - PASS phrasings: a sky or wall backdrop, a title, and rounded tile
+    corners that make the descending lap read as a shingled roof
+    course.
+  - FAIL phrasings: five bare rectangles on a blank canvas with no
+    framing or context; a backdrop so busy the lapping is unreadable.
 - **SVG structural clarity**: is the markup clean and easy to audit —
   tiles listed in a clear, deliberate reverse order (not shuffled
   unpredictably), consistent formatting, no redundant grouping that
   obscures the document order the check relies on?
+  - PASS phrasings: the five tiles are contiguous, one per line, in
+    plain course-5→course-1 order with aligned attributes.
+  - FAIL phrasings: tiles interleaved with unrelated elements and
+    wrapped in nested `<g>`s that make the paint order hard to trace.
 - **Reasoning quality**: if the model explains its ordering choice
   (inline comment or accompanying note), does it correctly identify that
   reverse document order is what produces "lower id on top" under SVG's
   paint model, rather than attributing the effect to opacity or z-index
   (which SVG 1.1 rects do not have)?
+  - PASS phrasings: "SVG paints in document order, so the last-written
+    rect wins; I emit course-5 first and course-1 last so course-1 sits
+    on top."
+  - FAIL phrasings: "I set a higher z-index on course-1"; "opacity
+    keeps course-1 visible on top" — both misattribute the mechanism.

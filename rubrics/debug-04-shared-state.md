@@ -78,7 +78,23 @@ rest scores.
 - Root-cause depth: does REASONING.md reproduce the actual order
   dependence (show the leak happening), or does it just assert "there
   was a mutation bug" without demonstrating the mechanism?
+  - PASS phrasings: "the override call writes 0.25 into the shared
+    RULES.standard, so the next plain call reads 0.25 and returns 6000
+    instead of 7200"; "I traced call two returning the leaked rate";
+    "Object.assign's first arg is the shared object, so it is mutated
+    in place — the second discount inherits it".
+  - FAIL phrasings: "there was a state bug, now fixed"; "cleaned up how
+    rules are handled"; "added a defensive copy" with no trace of the
+    leaked second-call value.
 - Reasoning quality: does the write-up explicitly exonerate
   `applyDiscount`, explaining why the bug report's target was wrong,
   rather than silently fixing the real bug without addressing the
   report's (incorrect) accusation?
+  - PASS phrasings: "applyDiscount is a pure function of the rules it
+    receives — given the right rules it is always correct, so it is not
+    at fault"; "the report blamed applyDiscount, but the mutation is in
+    getRules; applyDiscount only sees polluted input"; "touching
+    applyDiscount would break the legitimate percent-form override".
+  - FAIL phrasings: silence on applyDiscount entirely; "fixed
+    applyDiscount as reported"; "both functions had issues" (false —
+    applyDiscount is correct).

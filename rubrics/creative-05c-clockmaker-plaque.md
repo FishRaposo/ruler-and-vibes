@@ -12,7 +12,7 @@ criteria:
     - id: obj-2
       check: "#headline text content is exactly MERIDIAN (the string PROOF no longer appears as the headline text content) and #bg carries fill=\"#101f38\" (the value #f0efe9 no longer appears on #bg)"
     - id: obj-3
-      check: "#dial carries both stroke=\"#c9a227\" and stroke-width=\"4\" (judge confirms both attributes are on the element with id=\"dial\")"
+      check: "#dial carries both stroke=\"#c9a227\" and stroke-width=\"5\" (judge confirms both attributes are on the element with id=\"dial\")"
     - id: obj-4
       check: "The url(...) fill reference on #rose resolves to a real, paintable gradient: the id inside #rose's fill=\"url(#___)\" matches the id of an actual <linearGradient>/<radialGradient> def present in the file AND that gradient contains at least one <stop> (judge confirms the referenced id exists as a gradient def with >=1 stop, so the rose is painted, not merely id-matched to an empty def)"
     - id: obj-5
@@ -60,20 +60,84 @@ scores.
   obj-4 (rose gradient unresolved), while passing obj-1 and obj-5 —
   confirming the seeded defects are real and independent of the
   element-id-survival check.
-- **obj-1**: grep for `<script`, `<image`, `<foreignObject`, `@import`;
-  confirm every `href`/`xlink:href`/`url(...)` value starts with `#`;
-  confirm `http` appears only in the `xmlns` declaration.
-- **obj-2**: read `#headline`'s text node and `#bg`'s `fill` attribute
-  directly; both must match exactly (case-sensitive hex).
-- **obj-3**: read `#dial`'s attributes; both `stroke` and
-  `stroke-width` must be present with the exact values.
-- **obj-4**: extract the id inside `#rose`'s `fill="url(#___)"`, find
-  a `<linearGradient>` or `<radialGradient>` with that id elsewhere in
-  the file, and confirm it has at least one `<stop>` child. Do not
-  accept an id match alone.
-- **obj-5**: count occurrences of `id="bg"`, `id="headline"`,
-  `id="dial"`, `id="rose"` — each must appear exactly once anywhere
-  in the file (as elements, not merely mentioned in a comment).
+
+**obj-1** — valid self-contained SVG, no external references, all
+targets fragment-local.
+- PASS: no `<script>`, `<image>`, `<foreignObject>`, or `@import`
+  anywhere; every `url(...)` and `href` value starts with `#`; the only
+  `http` is inside the `xmlns="http://www.w3.org/2000/svg"` declaration.
+- PASS: `viewBox="0 0 380 380"` is preserved and the file opens straight
+  from disk with no network fetch.
+- PASS: the gradient reference is the only `url(...)` and it targets an
+  in-document `#fragment`.
+- FAIL: a `<script>` block, an `<image href="...">`, a `<foreignObject>`,
+  or an `@import` appears in the file.
+- FAIL: a `url(...)` or `href`/`xlink:href` points at an external path or
+  an `http(s)://` URL rather than a `#id`.
+- FAIL: the `viewBox` was dropped or changed so the plaque no longer
+  frames as authored.
+
+**obj-2** — headline retext and background recolor.
+- PASS: `#headline`'s text node reads exactly `MERIDIAN` and `#bg`
+  carries `fill="#101f38"`.
+- PASS: the string `PROOF` no longer appears as the headline's text
+  content and `#f0efe9` no longer appears on `#bg`.
+- PASS: both edits are present together (neither was skipped).
+- FAIL: the headline still reads `PROOF`, or reads something other than
+  `MERIDIAN` (e.g. `Meridian` in the wrong case, `ZENITH`).
+- FAIL: `#bg` still carries `fill="#f0efe9"`, or was recolored to some
+  value other than `#101f38`.
+- FAIL: only one of the two edits landed (headline changed but bg
+  untouched, or vice versa).
+
+**obj-3** — stroke added to the dial.
+- PASS: the element with `id="dial"` carries both `stroke="#c9a227"`
+  and `stroke-width="5"`.
+- PASS: both attributes sit on `#dial` itself (not on a wrapper `<g>`
+  or a different element).
+- PASS: the stroke values are exact (`#c9a227`, `5`), case-sensitive
+  hex.
+- FAIL: `#dial` has no `stroke` / `stroke-width`, so the dial renders
+  with no outline.
+- FAIL: only one of the two attributes is present (a stroke color with
+  no width, or a width with no color).
+- FAIL: the stroke was applied with the wrong value (e.g.
+  `stroke="#ffffff"` or `stroke-width="4"`).
+
+**obj-4** — the rose's gradient reference resolves to a real, paintable
+gradient. Extract the id inside `#rose`'s `fill="url(#___)"`, find a
+`<linearGradient>`/`<radialGradient>` with that id, and confirm it has at
+least one `<stop>`. Do not accept an id match alone.
+- PASS: the def was renamed `brass` -> `compass` (keeping its two
+  `<stop>`s), so `#rose`'s `url(#compass)` now targets a real 2-stop
+  gradient.
+- PASS: instead of renaming, `#rose`'s fill was repointed to
+  `url(#brass)`, the existing real 2-stop gradient — also a legitimate
+  repair.
+- PASS: a genuine `id="compass"` gradient with one or more real `<stop>`
+  children was added, and `#rose` references it.
+- FAIL: an empty `<linearGradient id="compass"></linearGradient>` (zero
+  `<stop>`s) was added — id matches but the rose still does not paint.
+- FAIL: the id mismatch is untouched, so `#rose`'s `url(#compass)` still
+  points at nothing (no gradient def with that id exists).
+- FAIL: `#rose`'s `url(...)` was replaced with a flat color or a
+  reference to a non-gradient element, so no gradient paints it.
+
+**obj-5** — the four original element ids survive, exactly once each.
+- PASS: `id="bg"`, `id="headline"`, `id="dial"`, and `id="rose"` each
+  appear exactly once as elements — the document was edited, not
+  regenerated.
+- PASS: a gradient id may have been renamed to satisfy the repair, but
+  the four element ids are all still present.
+- PASS: no duplicate carries any of the four ids (no second element
+  reusing `id="rose"`, etc.).
+- FAIL: one of the four ids is missing because the plaque was rebuilt
+  from scratch under different names.
+- FAIL: an id appears twice (e.g. two elements both `id="rose"`), which
+  would make the id ambiguous.
+- FAIL: an id survives only inside a comment rather than on a live
+  element.
+
 - **Edit fidelity & restraint**: did the model change only what was
   asked (plus the minimal gradient-id repair), preserving the plaque's
   original layout, geometry, and unrelated attributes, rather than

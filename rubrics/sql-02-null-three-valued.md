@@ -83,7 +83,20 @@ rest scores.
 - Correctness of three-valued-logic handling: does the submission
   correctly avoid (or correctly explain and route around) the NOT-IN
   NULL trap, and does it correctly reason about which rows NULL
-  bonuses drop from each aggregate and predicate?
+  bonuses drop from each aggregate and predicate? PASS example:
+  "Submission explains that a single NULL in the manager_id subquery
+  poisons every NOT IN comparison to UNKNOWN, and separately reasons
+  that `bonus <> 500` evaluates to UNKNOWN (not TRUE) for NULL rows,
+  correctly excluding them, while COUNT(bonus) only tallies the 3
+  non-null rows." Another PASS example: "Submission uses NOT EXISTS
+  with a clear rationale for avoiding the NULL comparison problem in
+  NOT IN, and correctly computes AVG as SUM over COUNT(bonus), not
+  COUNT(*)." FAIL example: "Submission's non-managers query returns 0
+  rows and the accompanying text claims this is correct because
+  everyone reports to someone." (misdiagnoses the trap output as
+  correct behavior). Another FAIL example: "Submission computes
+  AVG(bonus) by dividing SUM by COUNT(*) instead of COUNT(bonus)."
+  (silently wrong NULL handling in the aggregate).
 - Clarity of the NULL-behavior explanation: is the explanation of why
   the two bonus predicates differ, and why NOT IN needs a NULL guard,
   written so a reader unfamiliar with SQL's three-valued logic could
@@ -107,4 +120,20 @@ rest scores.
   avoid the common misconception that NOT IN and NOT EXISTS always
   behave identically regardless of NULLs (they coincide here only
   because the fixed/correct forms were used — flag any suggestion that
-  the raw, unfiltered NOT IN "should" have worked)?
+  the raw, unfiltered NOT IN "should" have worked)? PASS example: "The
+  subquery `SELECT manager_id FROM employee` returns NULL for the two
+  top-level employees (Ren and Wyn), and a single NULL anywhere in a
+  NOT IN list makes every non-matching comparison UNKNOWN, so filtering
+  `WHERE manager_id IS NOT NULL` inside the subquery (or switching to
+  NOT EXISTS) is required to get the real 4-row answer instead of an
+  empty set." Another PASS example: "Because two employees have a NULL
+  manager_id, the raw NOT IN list contains NULL; SQL evaluates `x NOT
+  IN (…, NULL)` as UNKNOWN whenever x isn't found among the non-null
+  values, so the WHERE clause discards every row — NOT EXISTS avoids
+  this because it never compares against the poisoned list directly."
+  FAIL example: "We just used NOT EXISTS since it's basically the same
+  as NOT IN." (asserts equivalence without explaining the
+  NULL-poisoning mechanism that makes the naive NOT IN fail here).
+  Another FAIL example: "The NOT IN query didn't return the right rows
+  so we switched to a different query." (no diagnosis of why, no
+  mention of NULL or UNKNOWN as the cause).

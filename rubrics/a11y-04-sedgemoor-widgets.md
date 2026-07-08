@@ -38,8 +38,10 @@ rest scores.
 
 The embedded starter page contains exactly five ARIA/keyboard defects,
 verified with a checker script that greps the source and inline script:
-against the unedited starter it fails all five checks; against a
-reference `fixed.html` it passes all five.
+against the unedited starter it fails obj-1 through obj-4 (the four
+repairable defects) and trivially satisfies obj-5 (the starter is
+already a self-contained file); against a reference `fixed.html` it
+passes all five.
 
 1. The Archive control is a `<div class="archive-div" onclick=...>` —
    works on click, but has no `tabindex`, no `role`, and no keyboard
@@ -75,9 +77,9 @@ reference `fixed.html` it passes all five.
 - `aria-status` removed; state now shown as adjacent visible text
   ("Active") next to the status dot.
 
-Both the starter (fails all five checks) and this reference fix (passes
-all five) were confirmed against the checker before this rubric was
-finalized.
+Both the starter (fails obj-1 through obj-4 and trivially satisfies
+obj-5) and this reference fix (passes all five) were confirmed against
+the checker before this rubric was finalized.
 
 ### Trap
 

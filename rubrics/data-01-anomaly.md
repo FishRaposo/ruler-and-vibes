@@ -40,7 +40,35 @@ the rest scores.
   against the region's own trend before deciding, and to say what
   evidence would settle it (promo calendar, order logs). Penalize
   treating both the same way.
+  - PASS examples: "the -820 is physically impossible so I can correct
+    it from the page, but the 4890 is only improbable and needs the
+    order logs before anyone touches it"; "a negative is a data error;
+    a 7–8x spike is a real-or-mislog question the numbers alone can't
+    close"; "checked each against its own region's range — one is out
+    of bounds, one is just far up the tail."
+  - FAIL examples: "both are outliers so I replaced each with the
+    region average" (collapses the distinction and silently corrects
+    the spike); "August was 4890, that's wrong, I set it to the monthly
+    mean" (silent correction, no investigation); "the -820 might be a
+    big return month" (treats the impossible value as a real event).
 - Clarity of findings: could a non-analyst owner act on this in two
   minutes?
+  - PASS examples: totals shown both as-recorded and as-treated with
+    the adjustment named inline; a two-line "fix this, investigate
+    that" split; arithmetic laid out so each region total is checkable
+    at a glance.
+  - FAIL examples: findings buried in a wall of prose with no per-region
+    total; treatments applied but never stated, so the reader can't
+    tell what was changed; numbers quoted without saying which were
+    adjusted.
 - Reasoning quality: does REASONING.md acknowledge what the data alone
   cannot resolve?
+  - PASS examples: "the data can prove the negative is impossible but
+    cannot prove whether 4890 is a real surge or a decimal mislog —
+    that needs the order logs"; "I flag rather than fix August because
+    the sheet gives me no way to distinguish a genuine spike from an
+    entry error."
+  - FAIL examples: "I fixed both anomalies, the data is now clean"
+    (false certainty about the spike); no acknowledgement that the
+    spike's cause is unresolved; asserting the 4890 is definitely an
+    error with no external evidence.

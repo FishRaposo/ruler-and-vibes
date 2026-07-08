@@ -102,9 +102,42 @@ broken version should print `false` for obj-2, obj-3, and obj-4.
   amendments were read and reconciled with the base rules, not just
   applied by accident? Partial credit if 2 of 3 amendments landed
   correctly with the third explainable as a near-miss.
+  - PASS: REASONING.md names Amendment A (last-name sort supersedes the
+    base rule), Amendment B (mixed case, not uppercase), and Amendment C
+    (drop the "(host)" tag) and shows the output matches all three.
+  - PASS: the output alone matches the answer key exactly, which is
+    only possible if all three amendments were correctly reconciled with
+    the base rules.
+  - PASS: two of three amendments land correctly (e.g. sort and casing
+    right, host tag left on one line) with REASONING.md showing the
+    third was considered but misapplied, rather than ignored.
+  - FAIL: the output matches the first-name-sort, uppercased, "(host)"-
+    tagged trap shape, showing the base rules were applied with no
+    amendments reconciled at all.
+  - FAIL: REASONING.md claims all three amendments were applied but the
+    output still shows uppercase names or a stray "(host)" tag.
+  - FAIL: only the sort order changes while casing and the host tag are
+    left exactly as the base rules would have produced them.
 - **Output cleanliness**: is `attendees.txt` free of any stray
   formatting — extra whitespace, inconsistent comma spacing, stray
   punctuation?
+  - PASS: every line reads `Lastname, Firstname` with a single space
+    after the comma and no trailing whitespace.
+  - PASS: the file has exactly one trailing newline and no blank lines
+    between entries.
+  - FAIL: inconsistent comma spacing (`Feld,Anouk` on one line, `Feld,
+    Bram` on another).
+  - FAIL: a stray blank line, extra trailing newline, or leftover
+    punctuation (e.g. a semicolon or period) after an entry.
 - **Reasoning quality**: does REASONING.md explain the tiebreak
   reasoning for the two same-surname pairs (Feld: Anouk/Bram; Vega:
   Dmitri/Marisol), not just assert the final order?
+  - PASS: REASONING.md states that Rule 7's first-name tiebreak resolves
+    Feld (Anouk before Bram) and Vega (Dmitri before Marisol), not just
+    that the final order happens to be correct.
+  - PASS: REASONING.md walks through applying the base rules, then each
+    amendment in turn, before producing the final ten-line order.
+  - FAIL: REASONING.md asserts the final order is correct without
+    mentioning the tiebreak at all.
+  - FAIL: REASONING.md describes a tiebreak method (e.g. input order)
+    that would not actually produce the answer key's Feld/Vega ordering.

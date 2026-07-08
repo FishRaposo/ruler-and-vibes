@@ -88,7 +88,7 @@ rest scores.
   a partial string, or an empty string?
   - PASS examples: exactly the seven schema keys present with
     `tracking_code` as JSON `null`; `declared_weight` emitted as the
-    number `67.00`, not `"67.00"`; no extra `register`/`bay` key added.
+    number `67.00`, not `"67.00"`; no extra `dock`/`bay` key added.
   - FAIL examples: `tracking_code` set to `"HC-73*-*1*6"`, `"HC-731-816"`,
     `""`, or the string `"null"`; a stray eighth key such as `"dock"`
     included; `total` emitted as the string `"77.05"`.

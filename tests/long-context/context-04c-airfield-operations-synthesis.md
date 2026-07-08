@@ -162,10 +162,10 @@ person-view goggles without a visual observer, or any beyond-line-of-sight
 method, even if that method is used only on a trainer airframe.
 
 (b) Certified-instructor introductory sessions. A newly enrolled trainee
-flying under a certified instructor may operate during its first sixty
-days of enrollment, regardless of declared condition green or amber,
-provided the instructor files an introductory-session notice with the
-safety officer before flying begins under this exception.
+flying under a certified instructor may operate during its first
+forty-five days of enrollment, regardless of declared condition green or
+amber, provided the instructor files an introductory-session notice with
+the safety officer before flying begins under this exception.
 
 (c) Emergency spotting use. An airframe may be flown without restriction
 for emergency search-and-spot purposes at the direction of the site
@@ -193,7 +193,7 @@ of pilots, established the following provisions, effective as of its
 adoption date:
 
 (a) Certified-pilot rebate. A certified pilot, as defined in Section 1,
-receives a 20% rebate off the combined base fee and weight surcharge
+receives a 25% rebate off the combined base fee and weight surcharge
 described in Appendix A.
 
 (b) Scope clarification. Amendment 1 also clarified that the definition of
@@ -206,7 +206,7 @@ has not been altered by any subsequent amendment. Its rebate provision in
 subsection (a), however, is addressed by Amendment 2 below.
 
 At the time of its adoption, Amendment 1's certification program was
-projected to certify roughly one hundred fifty additional pilots over its
+projected to certify roughly one hundred twenty additional pilots over its
 first two seasons, based on a poll of member interest taken by the safety
 officer. Amendment 1 also directed the safety officer to report back to
 the membership after one season on certification uptake and program cost,
@@ -220,13 +220,13 @@ officer's certification-program costs, makes the following changes:
 (a) Replacement of Amendment 1's rebate clause. Amendment 2 explicitly
 replaces Amendment 1's certified-pilot rebate clause (Section 5,
 subsection (a)) in its entirety. Effective as of Amendment 2's adoption
-date, a certified pilot receives a 35% rebate off the combined base fee
-and weight surcharge described in Appendix A, superseding the 20% figure
+date, a certified pilot receives a 40% rebate off the combined base fee
+and weight surcharge described in Appendix A, superseding the 25% figure
 previously established by Amendment 1. This revised rebate applies to all
 certified pilots as of Amendment 2's effective date, including pilots who
 certified under Amendment 1's original terms before Amendment 2 was
 adopted; Amendment 2 does not grandfather any pilot into the superseded
-20% rate, and the 20% figure in Section 5(a) should be read as historical
+25% rate, and the 25% figure in Section 5(a) should be read as historical
 only and is no longer in effect for any pilot as of this amendment.
 
 (b) Scope clarification on shared airframes. Amendment 2 further clarifies
@@ -240,8 +240,8 @@ turns flying the airframe.
 Amendment 2 does not alter the authorization requirement in Section 2, the
 flight restrictions in Section 3, or the exceptions in Section 4.
 
-The membership's stated rationale for increasing the rebate from 20% to
-35% under Amendment 2, despite the budget review that prompted the
+The membership's stated rationale for increasing the rebate from 25% to
+40% under Amendment 2, despite the budget review that prompted the
 amendment, was that certification uptake following Amendment 1 had been
 lower than the safety officer's original projection, and the membership
 concluded that a larger rebate was a more effective incentive than the
@@ -263,12 +263,12 @@ weight surcharge.
 
 For a certified pilot, as defined in Section 1, the combined total of the
 base fee and any applicable weight surcharge is rebated at the rate
-currently in effect under Amendment 2, Section 6(a) — a 35% rebate —
-rather than the superseded 20% rate originally set by Amendment 1.
+currently in effect under Amendment 2, Section 6(a) — a 40% rebate —
+rather than the superseded 25% rate originally set by Amendment 1.
 
 For example, a certified pilot flying an airframe over 5 kilograms pays a
 base fee of 48 plus a weight surcharge of 22, for a combined subtotal of
-70, rebated by 35% under the currently effective rate, yielding a final
+70, rebated by 40% under the currently effective rate, yielding a final
 fee. Fee amounts should always be calculated using the currently effective
 rebate rate under Amendment 2 rather than any earlier rate that appears
 elsewhere in this document for historical reference only.

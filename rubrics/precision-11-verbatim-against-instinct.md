@@ -56,7 +56,7 @@ House Style Guide (excerpt)
 11. This  excerpt is a controlled reference; copy it exactly as given.
 ```
 
-(11 lines total: 1 title line, 1 blank line, 10 numbered rules whose
+(12 lines total: 1 title line, 1 blank line, 10 numbered rules whose
 numbering intentionally skips "5.", running 1,2,3,4,6,7,8,9,10,11.
 Rule 11 contains a deliberate doubled space between "This" and
 "excerpt".)

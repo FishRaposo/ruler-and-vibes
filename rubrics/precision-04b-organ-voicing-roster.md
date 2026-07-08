@@ -123,8 +123,37 @@ and obj-3 (wrong TOTAL-PIPES).
   TOTAL-PIPES computation (excluding REPAIR) was done before the branch
   decision (Rule 4)? Reward REASONING.md that shows this order
   explicitly.
+  - PASS: REASONING.md states that celeste and krummhorn (both count 0)
+    are excluded first under Rule 1, before nazard and viola are split
+    into REPAIR under Rule 2.
+  - PASS: REASONING.md shows TOTAL-PIPES computed from only the five
+    VOICED ranks (excluding nazard/viola), arriving at 546 before the
+    alphabetical-vs-descending branch (Rule 4) is decided.
+  - FAIL: REASONING.md computes TOTAL-PIPES by summing every rank
+    including nazard and viola (giving 612), then uses that wrong total
+    to decide the sort branch.
+  - FAIL: REASONING.md never mentions Rule 1's exclusion, leaving it
+    unclear whether celeste/krummhorn were dropped by design or by
+    coincidence.
 - **Format discipline**: exact pipe/space separators, no extra
   whitespace, correct field order.
+  - PASS: every VOICED line matches `R-###|name|count|check` with no
+    extra spaces around the pipes.
+  - PASS: the REPAIR lines use single spaces (`R-560 nazard 37`) and no
+    pipes, and stay in inventory order (nazard then viola).
+  - FAIL: a VOICED line has a space after a pipe (`R-231 |bourdon|121|46`)
+    or fields in a different order.
+  - FAIL: the REPAIR lines use pipes, extra whitespace, or the wrong
+    order (viola before nazard) instead of the specified format.
 - **Reasoning quality**: does REASONING.md show the TOTAL-PIPES
   computation landing at 546 (not 612), and does it show each CHECK
   computation's arithmetic rather than just asserting the final digit?
+  - PASS: REASONING.md shows the five-rank sum (121+78+55+102+190 = 546)
+    explicitly, distinct from the trap total of 612.
+  - PASS: REASONING.md shows at least one worked CHECK example, e.g.
+    bourdon: (121 × 7) mod 89 = 46, rather than only stating the final
+    digit.
+  - FAIL: REASONING.md states the final CHECK digits with no arithmetic
+    shown at all.
+  - FAIL: REASONING.md's stated TOTAL-PIPES arithmetic does not add up
+    to the value in the delivered voicing.txt.

@@ -72,14 +72,39 @@ rest scores.
   no other note contains "lithium", "hazard", or "flammable" in any
   form (negated or otherwise), so the hazmat inference has exactly one
   correct `true`.
-- Multi-record extraction fidelity: are all four distinct shipments
-  captured correctly with no field bleed between records?
-- Type coercion, dedup & inference discipline: is the unit conversion
-  correct, is the duplicate reprint dropped rather than kept or
-  merged incorrectly, is `hazmat` a real boolean (not `"true"` or
-  omitted), and is the blank destination left `null` rather than
-  guessed?
-- Reasoning quality: does REASONING.md name the specific duplicate id
-  that was dropped and describe the gram-to-kilogram conversion
-  performed, rather than asserting the final array with no account of
-  these two judgment calls?
+- Multi-record extraction fidelity (`sub-quality`): are all four
+  distinct shipments captured correctly with no field bleed between
+  records?
+  - PASS examples: SH-100's `destination_zone` (`"ZONE-A"`) and
+    SH-103's `destination_zone` (`"ZONE-B"`) are not swapped; SH-102's
+    note-derived `hazmat` does not leak onto SH-103; each record's
+    `weight_kg` matches only its own line.
+  - FAIL examples: SH-101's blank destination is silently filled with
+    `"ZONE-A"` copied from the adjacent record; SH-102 and SH-103 are
+    merged into a single object; a fifth phantom record appears with no
+    source line.
+
+- Type coercion, dedup & inference discipline (`sub-craft`): is the
+  unit conversion correct, is the duplicate reprint dropped rather
+  than kept or merged incorrectly, is `hazmat` a real boolean (not
+  `"true"` or omitted), and is the blank destination left `null`
+  rather than guessed?
+  - PASS examples: `weight_kg` for SH-101 is the number `0.8`;
+    `manifest.json` contains exactly one `SH-100` object; `hazmat`
+    values are the JSON literals `true`/`false`, never quoted strings.
+  - FAIL examples: SH-101's weight left as `800` (grams, unconverted)
+    or as the string `"800 g"`; two `SH-100` entries appear (one
+    tagged as a "reprint"); `hazmat` rendered as `"true"`, `"yes"`, or
+    omitted from the SH-102 object entirely.
+
+- Reasoning quality (`sub-reasoning`): does REASONING.md name the
+  specific duplicate id that was dropped and describe the
+  gram-to-kilogram conversion performed, rather than asserting the
+  final array with no account of these two judgment calls?
+  - PASS examples: "SH-100's second line is a duplicate scan of the
+    first SH-100 record, so I dropped it and kept one record.";
+    "SH-101 is logged as 800 g, which I converted to 0.8 kg."
+  - FAIL examples: REASONING.md lists the four records with no mention
+    of the reprint or the unit conversion; a generic "I parsed the
+    manifest carefully" with no specifics; the conversion is asserted
+    as a bare number with no statement of which line it came from.

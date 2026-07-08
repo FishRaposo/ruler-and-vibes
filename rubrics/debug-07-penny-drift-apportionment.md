@@ -88,3 +88,20 @@ rest scores.
   split per this test's design (precision-heavy, mechanically
   dominant); a brief, correct DRIFT.md write-up naming the rule
   suffices — do not require extensive prose.
+- obj-5 is prose-decidable; judge DRIFT.md's stated root cause and
+  distribution rule.
+  - PASS phrasings (accept): "independent per-share `Math.round`
+    doesn't conserve the total; I floor each share and give leftover
+    pennies to the largest fractional remainders, ties to lowest
+    index"; "rounding each share on its own lets the rounding errors
+    add up instead of cancelling, so I use floors plus a
+    largest-remainder pass, breaking ties by lowest index"; "the fix
+    floors every share then hands the remaining pennies to whichever
+    recipients have the biggest leftover fractions, lowest index
+    winning a tie."
+  - FAIL phrasings (reject): "rounding is unreliable, so I round more
+    carefully" (names no conservation mechanism and no distribution
+    rule); "I add the missing pennies to the first recipient"
+    (conserves the sum but is not the largest-remainder rule and omits
+    the tie convention); "the totals were wrong so I recomputed them"
+    (no root cause, no stated rule).

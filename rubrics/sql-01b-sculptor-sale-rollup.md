@@ -87,10 +87,23 @@ Parallel form of `sql-01-join-cardinality` (same construct, fresh surface).
   sale-less sculptors, and that COUNT of a nullable joined column
   (not `COUNT(*)`) is required to get 0 rather than 1 for them? Does
   it use `COALESCE`/`IFNULL` (or an equivalent NULL-to-zero mapping)
-  for the revenue total?
+  for the revenue total? PASS example: prose that says LEFT JOIN keeps
+  Tovi and Mira and COUNT(s.id) yields 0 for them. PASS example: prose
+  that uses a correlated subquery over `sale` per sculptor and explains
+  it counts matching rows, defaulting to 0. FAIL example: prose that
+  defends `INNER JOIN` here, or `COUNT(*)` over the outer join, as
+  correct. FAIL example: numbers that are right but produced by a
+  hand-written result table with no runnable SELECT behind them.
 - SQL readability and result-set presentation: are the four queries
   clearly separated and labeled in QUERIES.sql, is ANSWERS.md easy to
   cross-reference against the questions, are column names sensible?
+  PASS example: each query prefixed with a `-- Q3:` style comment and
+  ANSWERS tables in question order. PASS example: consistent,
+  descriptive aliases like `sale_count` / `total_revenue`. FAIL
+  example: four unlabeled SELECTs concatenated with no way to tell
+  which answers which question. FAIL example: result tables whose
+  column order or row order cannot be matched back to the four
+  questions.
 - Reasoning quality: does the submission's explanation (in ANSWERS.md
   or accompanying prose) correctly articulate *why* LEFT JOIN +
   COUNT(s.id) is required to preserve zero-sale sculptors, and why

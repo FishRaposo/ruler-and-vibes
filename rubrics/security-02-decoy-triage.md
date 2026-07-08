@@ -47,7 +47,7 @@ checking the actual data flow.
 |---|---|---|
 | A | VULNERABLE | Prototype pollution — recursive merge with no key guard. Confirmed by running `mergeRecipeSettings({}, JSON.parse('{"__proto__":{"polluted":"yes"}}'))`: `({}).polluted` becomes `"yes"` afterward, i.e. `Object.prototype` itself was mutated. |
 | B | SAFE (decoy) | The interpolated `column` identifier only ever resolves to one of three hardcoded strings (`recipe_name`, `avg_rating`, `created_at`) via an own-property check against a frozen whitelist map, or to the hardcoded fallback `'recipe_name'` — confirmed by passing `__proto__`, `constructor`, and a SQL-metacharacter string as `userSortKey`: all three fall through to `'recipe_name'`, never to `[object Object]` or attacker text. `minRating` goes through a placeholder. No attacker-controlled string ever reaches the SQL text. |
-| C | VULNERABLE | ReDoS / catastrophic backtracking — `^(([a-zA-Z]+)+)+$` nests three quantified groups with overlapping matches for runs of letters. Confirmed by execution: `isReasonableTitle('a'.repeat(15) + '!')` did not return within seconds (had to be killed), demonstrating exponential blowup on a modest ~15-character adversarial input. |
+| C | VULNERABLE | ReDoS / catastrophic backtracking — `^(([a-zA-Z]+)+)+$` nests three quantified groups with overlapping matches for runs of letters. Confirmed by execution: `isReasonableTitle('a'.repeat(15) + '!')` takes ~1s, `('a'.repeat(17) + '!')` ~8.5s, and `('a'.repeat(18) + '!')` did not return within 20 seconds (had to be killed) — each added character roughly doubles the time, demonstrating exponential blowup on a modest ~18-character adversarial input. |
 | D | SAFE (decoy) | `execFile` with an argument array never invokes a shell — confirmed by intercepting `child_process.exec`/`execFile` calls: `D`'s equivalent call path passes the id as one argv element with no shell metacharacter interpretation possible, unlike G below. Visually adjacent to G (both shell out to a helper) but structurally safe. |
 | E | VULNERABLE | XSS via `innerHTML` — any HTML/script content in `description` is parsed and can execute in the viewer's browser (stored XSS, since descriptions are user-submitted and persisted). |
 | F | SAFE (decoy) | `textContent` never parses its argument as markup; a string containing `<script>` renders as literal text. Visually adjacent to E (both render user data into the DOM) but the sink is safe. |
@@ -116,6 +116,29 @@ FAILING:
 - "Vulnerable, same issue as snippet D." (D is the safe execFile
   decoy — conflating the two misses the precise distinction the test
   is checking for)
+
+### Example phrasings — snippet C ReDoS justification (obj-3)
+
+PASSING:
+- "Vulnerable: ReDoS. The pattern `^(([a-zA-Z]+)+)+$` nests three
+  quantified groups, so a run of letters has exponentially many ways
+  to be split across the inner and outer `+`s; when the trailing `!`
+  forces a failed match, the engine backtracks through all of them
+  before giving up."
+- "The outer `(...)+` wraps an inner `(...)+` wraps `[a-zA-Z]+`, so an
+  all-letter prefix can be partitioned between the nested quantifiers
+  in exponentially many equivalent ways — that ambiguity, not just
+  'it's a regex,' is what causes catastrophic backtracking here."
+- "This is catastrophic backtracking: nesting `(([a-zA-Z]+)+)+` creates
+  ambiguous grouping for any run of letters, so failing inputs make
+  backtracking time grow exponentially with length."
+
+FAILING:
+- "This regex is unsafe on user input." (no mechanism named at all)
+- "ReDoS." (bare class label — doesn't identify the nested/overlapping
+  quantifier structure obj-3 requires)
+- "Regexes on untrusted strings are risky because they can hang."
+  (generic risk statement, no structural reasoning about the nesting)
 
 ### Subjective guidance
 

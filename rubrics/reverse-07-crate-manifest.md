@@ -69,19 +69,86 @@ rest scores.
   exactly `-7` (a common bug reads the four payload bytes as unsigned,
   reporting a large positive number instead of recognizing two's
   complement).
+- obj-3 phrasing guide (byte order, magic bytes, two's-complement):
+  - PASS phrasings: "states explicitly 'the format is little-endian' and
+    points to the magic bytes appearing as `31 5a` in the stream (low
+    byte first) decoding to `0x5A31`, plus explains `-7` is stored as
+    two's complement `f9 ff ff ff`"; "shows the determination method —
+    reading `31 5a` as little-endian yields the header's own magic
+    constant `0x5A31`, confirming the byte order — and separately calls
+    out that the negative INT payload `f9 ff ff ff` is the 32-bit
+    two's-complement encoding of `-7`"; "reasons that reading the same
+    bytes big-endian would give a different, wrong 16-bit value
+    (`0x315A`), using that mismatch to justify little-endian, and states
+    the two's-complement byte pattern for `-7`".
+  - FAIL phrasings: "asserts 'the format is big-endian', or never names
+    a byte order at all and just presents the decoded values"; "states
+    little-endian correctly but never shows the byte-level evidence
+    (never quotes `31 5a` or `f9 ff ff ff`), just asserts the final
+    decoded numbers"; "describes the negative value only as 'a negative
+    number' or 'stored as -7' without describing the two's-complement
+    byte encoding".
+- obj-5 phrasing guide (generic tag dispatch):
+  - PASS phrasings: "decode.js loops `for (let i = 0; i < count; i++)`
+    and branches on the tag byte read that iteration, so it would
+    decode a differently-ordered or differently-sized record stream
+    correctly"; "tag dispatch is switch- or if-chain-driven off the tag
+    byte value, with no fixed byte offsets baked in for this specific
+    buffer's three records"; "correctly decodes the STR record's
+    length-prefix generically, not assuming a fixed 3-byte payload".
+  - FAIL phrasings: "decode.js hardcodes three fixed-offset reads (e.g.
+    `buf.readInt32LE(6)`, `buf.readUInt8(14)`...) tied to this exact
+    buffer's layout, breaking on any other record order or count"; "only
+    handles exactly one record of each type in a fixed position,
+    silently breaking if two records shared a tag"; "uses an if/else
+    keyed on record *position* (`if (i === 0) ...`) rather than the tag
+    *byte value*, so reordering the records would decode them
+    incorrectly even though the tag byte is present".
 - Layout exposition: does ANSWER.md explain HOW little-endian was
   determined (e.g., by checking that the byte order matches expectation
   for the magic constant, or reasoning about the two's-complement INT),
   rather than just asserting "it's little-endian"? Does it clearly show
   the byte-level encoding of the magic and the negative integer, not
   just their final values?
+  - PASS phrasings: "confirms little-endian by showing `31 5a` reads as
+    `0x5A31` and noting the big-endian alternative `0x315A` is a
+    different, only-superficially-plausible value"; "walks through
+    `f9 ff ff ff` as the two's-complement encoding of -7 byte by byte
+    before stating the final value"; "points at the specific header
+    bytes (0-1) and payload bytes (4-9) rather than describing them in
+    the abstract".
+  - FAIL phrasings: "just says 'it's little-endian' with no byte
+    evidence"; "states the INT value is -7 without ever mentioning
+    two's complement or showing the payload bytes"; "describes the
+    magic number only by its decoded value, never showing how the raw
+    stream bytes map to it".
 - Parser correctness: does decode.js generalize (loop over `count`,
   branch on the tag byte for each of the three tag values) rather than
   hardcode fixed offsets for exactly this buffer's three-record
   sequence? Penalize a decoder that only works for this one buffer's
   specific tag ordering (INT, STR, FLOAT) and would break if the same
   format encoded records in a different order or count.
+  - PASS phrasings: "loops `count` times, reading tag/id/payload
+    generically and branching on the tag value inside the loop";
+    "computes each record's offset from a running cursor rather than
+    literal byte indices"; "handles the length-prefixed STR payload by
+    reading the length byte and advancing `1 + length`, not by assuming
+    a fixed 3-byte string".
+  - FAIL phrasings: "hardcodes `bytes[4]`, `bytes[10]`, `bytes[17]` for
+    the three record starts"; "special-cases exactly three records with
+    no loop"; "assumes the record order is always INT, STR, FLOAT
+    rather than reading the tag byte to decide".
 - Reasoning quality: look for explicit reasoning about why little-endian
   fits (not big-endian) and why the INT payload decodes to -7 via
   two's complement rather than an unsigned or sign-magnitude
   interpretation.
+  - PASS phrasings: "explicitly rules out big-endian by showing the
+    swapped magic value `0x315A` doesn't match any other consistency
+    check, then commits to little-endian"; "traces the two's-complement
+    bit pattern for `-7` and shows why it's negative rather than a large
+    unsigned value"; "cross-checks byte order using both the magic
+    number and the sign of the INT record before concluding".
+  - FAIL phrasings: "asserts little-endian with no derivation"; "reports
+    -7 without ever discussing two's complement or an unsigned
+    alternative"; "guesses the byte order from convention ('most formats
+    are big-endian') rather than from the data".

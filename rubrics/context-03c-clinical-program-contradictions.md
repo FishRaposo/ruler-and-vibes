@@ -77,9 +77,9 @@ contradictions.
 
 ### Answer key: the 4 decoys (must NOT appear as contradictions)
 
-1. **FTE phrasing** — Line 9 (Ada): "Dev is at 0.5 FTE" and Line 9a
-   (Ines): "Dev's putting in half of his time" are the same fact in two
-   phrasings (0.5 FTE = half time) — reconciled.
+1. **FTE phrasing** — Line 9 (Ada): "Dev is at 0.6 FTE" and Line 9a
+   (Ines): "Dev's putting in three days a week" are the same fact in two
+   phrasings (0.6 FTE = three of five working days) — reconciled.
 2. **Comparator-drug cost correction** — Line 52 (Miriam): "63k" and Line
    54 (Miriam): "The updated number for comparator-drug procurement is
    69k, I had an old vendor quote" — explicit self-correction with
@@ -128,9 +128,10 @@ phrasings a judge will encounter, and how to score them:
    vendor, with no reconciling statement in the transcript."
 
 **FAILING** (incorrectly flags a decoy as a contradiction):
-1. "Ada says Dev is at 0.5 FTE (Line 9) but Ines says half of his time
-   (Line 9a) — these numbers don't match." (They do match: 0.5 FTE =
-   half-time; this is the reconciled decoy, not a contradiction.)
+1. "Ada says Dev is at 0.6 FTE (Line 9) but Ines says three days a week
+   (Line 9a) — these numbers don't match." (They do match: 0.6 FTE =
+   three of five working days; this is the reconciled decoy, not a
+   contradiction.)
 2. "Felix reports deviation rate at 9% while Dev reports 35% — a clear
    contradiction in the deviation numbers." (Line 27 explicitly states
    these are measured against two different denominators; flagging this

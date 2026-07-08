@@ -16,7 +16,7 @@ criteria:
     - id: obj-4
       check: "Every 'cta' is 1-3 whitespace-delimited words, starts with an imperative verb, and has no trailing punctuation"
     - id: obj-5
-      check: "None of the banned tone words (sorry, oops, whoops, unfortunately, simply, just, 'no data') appear case-insensitively as substrings in any heading, body, or cta"
+      check: "None of the banned tone words (sorry, oops, whoops, sadly, solely, just, 'nothing found') appear case-insensitively as substrings in any heading, body, or cta"
   subjective:
     - id: sub-quality
       name: "Empty-state helpfulness and orientation"
@@ -60,7 +60,7 @@ which CTAs need this manual fallback rather than silently failing them:
 // check-uxcopy-03c.js — run: node check-uxcopy-03c.js empty-state-copy.json
 const fs = require("fs");
 const KEYS = ["emptyWorkoutLog","noExerciseResults","noRoutinesYet","dismissedReminders"];
-const BANNED = ["sorry","oops","whoops","unfortunately","simply","just","no data"];
+const BANNED = ["sorry","oops","whoops","sadly","solely","just","nothing found"];
 const FIRST_RUN = new Set(["emptyWorkoutLog","noRoutinesYet"]);
 const CORRECTIVE = "noExerciseResults";
 const NEUTRAL = "dismissedReminders";
@@ -131,7 +131,7 @@ console.log({ obj1, obj2, obj3, obj4, obj5, ctaIntentOk });
 - **obj-4 / obj-5 (CTA shape and banned words).**
   - PASS: `"Log workout"`, `"Create routine"`, `"View dashboard"`.
   - FAIL: `"Log a new workout now"` (5 words), `"Try again."` (trailing
-    period), `"Simply retry your search"` (banned word "simply").
+    period), `"Solely retry your search"` (banned word "solely").
 
 ### Verification (author-run this session)
 

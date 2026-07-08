@@ -81,7 +81,10 @@ association as automatic evidence of a causal or explanatory
 relationship. A submission that gets the -0.6 exactly right in (b) but
 then in (c)/(d) treats it as real evidence that zest trades off against
 a good pitch has fallen for exactly the error the test is built to
-catch, and should fail obj-4/obj-5 even with a perfect script.
+catch, and should fail obj-4/obj-5 even with a perfect script. (Note
+also that the biased 0.4 coins make the four cells UNequal — a script
+that assumes uniform 0.25 cells prints the wrong moments and fails
+obj-1/obj-2.)
 
 ### Example phrasings — obj-4, rebutting the causal claim
 

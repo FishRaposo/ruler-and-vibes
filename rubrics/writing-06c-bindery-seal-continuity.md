@@ -65,6 +65,36 @@ Author-verified anchors for each canon fact, as stated in Chapter One
    that also authenticates deeds. The trap: a careless continuation may
    slip into "the seals" out of habit; watch specifically for this.
 
+For obj-2 (canon contradiction), ship 2-3 PASS + 2-3 FAIL example
+phrasings:
+
+- PASS: chapter two refers throughout to "the seal-die" (singular) and
+  to Senna's own right hand/sleeve habit without ever switching sides.
+- PASS: chapter two shows Senna reluctantly descending partway down the
+  sub-cellar stairs but stopping before the bottom, still visibly
+  tense.
+- PASS: Bastian is referred to as older throughout, and the town is
+  called Corrow consistently, with the season staying winter.
+- FAIL: chapter two has Senna descending fully into the sub-cellar
+  with ease to retrieve something herself.
+- FAIL: chapter two refers to "the missing seals" or introduces a
+  second seal-die that also authenticates deeds.
+- FAIL: chapter two calls Bastian "her younger brother" or otherwise
+  reverses the sibling order.
+
+For obj-3 (entity consistency), ship 2-3 PASS + 2-3 FAIL example
+phrasings:
+
+- PASS: Senna and Bastian keep their names, spellings, and sibling
+  relationship consistent throughout chapter two.
+- PASS: Corrow is referred to consistently as the town's name, with no
+  alternate name introduced for the same place.
+- FAIL: a character is introduced as "Senna's sister" instead of her
+  brother, or Bastian is renamed "Bastien" partway through the
+  chapter.
+- FAIL: the town is called "Corrow" in one paragraph and a different
+  name in another without explanation.
+
 For obj-4 (plot advancement), ship 2-3 PASS + 2-3 FAIL example
 phrasings:
 

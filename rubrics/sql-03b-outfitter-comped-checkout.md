@@ -8,13 +8,13 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "The non-comped per-craft revenue with HAVING revenue > 100, ordered descending, is exactly Kayak=254, Canoe=153, Paddleboard=111; a submission that includes comped checkouts (which would yield Kayak=280, Canoe=198, Paddleboard=111) fails; judge re-runs the submission's query in node:sqlite"
+      check: "The non-comped per-craft revenue with HAVING revenue > 90, ordered descending, is exactly Kayak=254, Canoe=153, Paddleboard=111; a submission that includes comped checkouts (which would yield Kayak=280, Canoe=198, Paddleboard=111) fails; judge re-runs the submission's query in node:sqlite"
     - id: obj-2
       check: "The comp exclusion is implemented as a row-level WHERE (comped = 0) applied before aggregation, not as a HAVING clause on the raw comped column; judge inspects the SQL text and confirms the returned values match the WHERE-filtered totals (254/153/111), not the unfiltered totals (280/198/111)"
     - id: obj-3
-      check: "The 'every checkout has hours >= 4' query returns exactly {Paddleboard} and is implemented with HAVING MIN(hours) >= 4 (or an equivalent NOT EXISTS anti-join excluding craft types with any hours < 4 row) rather than a bare WHERE hours >= 4, which would incorrectly admit Kayak and Canoe; judge re-runs in node:sqlite"
+      check: "The 'every checkout has hours >= 3' query returns exactly {Paddleboard} and is implemented with HAVING MIN(hours) >= 3 (or an equivalent NOT EXISTS anti-join excluding craft types with any hours < 3 row) rather than a bare WHERE hours >= 3, which would incorrectly admit Kayak and Canoe; judge re-runs in node:sqlite"
     - id: obj-4
-      check: "ANSWERS.md (or QUERIES.sql comments) correctly distinguishes WHERE (applied per-row, before aggregation) from HAVING (applied per-group, after aggregation), and explains the MIN()-as-universal-quantifier idiom used for the hours>=4 query"
+      check: "ANSWERS.md (or QUERIES.sql comments) correctly distinguishes WHERE (applied per-row, before aggregation) from HAVING (applied per-group, after aggregation), and explains the MIN()-as-universal-quantifier idiom used for the hours>=3 query"
   subjective:
     - id: sub-quality
       name: "Correctness of WHERE/HAVING separation and quantifier logic"
@@ -55,7 +55,7 @@ surface).
 
 - Pinned expected result sets, recomputed independently in
   `node:sqlite` (v24.16.0) for this rubric:
-  - Non-comped revenue per craft, `HAVING SUM(hours*rate) > 100`,
+  - Non-comped revenue per craft, `HAVING SUM(hours*rate) > 90`,
     `ORDER BY revenue DESC`:
     `[{"craft":"Kayak","revenue":254},{"craft":"Canoe","revenue":153},{"craft":"Paddleboard","revenue":111}]`
   - Trap (same query but omitting `WHERE comped = 0`, i.e. including
@@ -64,16 +64,16 @@ surface).
     Note Paddleboard is unaffected by the trap (it has no comped rows)
     — this is expected and does not indicate a passing submission if
     Kayak/Canoe are wrong.
-  - Every-checkout-hours>=4 via `HAVING MIN(hours) >= 4`:
+  - Every-checkout-hours>=3 via `HAVING MIN(hours) >= 3`:
     `[{"craft":"Paddleboard"}]` — confirmed equivalent to a `NOT
-    EXISTS` anti-join on `hours < 4`.
-  - Trap (bare `WHERE hours >= 4` with `DISTINCT craft`, admitting any
+    EXISTS` anti-join on `hours < 3`.
+  - Trap (bare `WHERE hours >= 3` with `DISTINCT craft`, admitting any
     craft type with at least one qualifying row instead of requiring
     all rows to qualify):
     `[{"craft":"Kayak"},{"craft":"Canoe"},{"craft":"Paddleboard"}]`
     — all three craft types, because each has at least one checkout
-    with hours>=4, even though Kayak and Canoe both also have an
-    hours<4 checkout.
+    with hours>=3, even though Kayak and Canoe both also have an
+    hours<3 checkout.
 - Collision check for graders: the trap revenue set
   `{Kayak:280, Canoe:198, Paddleboard:111}` and the trap quantifier set
   `{Kayak, Canoe, Paddleboard}` are both distinguishable from the
@@ -88,47 +88,67 @@ surface).
   the submission correctly filter comped rows at the row level (not
   by trying to filter on `comped` inside `HAVING`, which cannot
   correctly express a per-row exclusion once rows are aggregated),
-  and does it correctly use `MIN(hours) >= 4` (or an anti-join) rather
-  than a `WHERE hours >= 4` that only checks whether *some* row
-  qualifies?
+  and does it correctly use `MIN(hours) >= 3` (or an anti-join) rather
+  than a `WHERE hours >= 3` that only checks whether *some* row
+  qualifies? PASS example: "We put `comped = 0` in the WHERE clause
+  so the rows never reach GROUP BY, and used `HAVING MIN(hours) >= 3`
+  so a craft type only counts as qualifying when its smallest checkout
+  still clears the bar." PASS example: "The comped flag is per-row, so
+  it has to be resolved before the rows collapse into groups; the
+  hours condition is per-group, so it has to be resolved with an
+  aggregate like MIN() after grouping." FAIL example: "We used HAVING
+  comped = 0 to drop the comped checkouts before grouping by craft
+  type." (HAVING cannot see a raw per-row column once grouped — this
+  is exactly the confusion the test is designed to catch). FAIL
+  example: "WHERE hours >= 3 keeps only the craft types where
+  checkouts are long enough." (a row-level WHERE cannot express a
+  group-level "for all" condition; it only requires that *some* row in
+  the surviving group satisfy the predicate).
 - Query structure and result presentation: are the two queries clearly
   separated and labeled, is the ORDER BY applied as specified, are
-  results presented legibly in ANSWERS.md?
+  results presented legibly in ANSWERS.md? PASS example: each query
+  prefixed with a `-- Q1:` / `-- Q2:` comment and ANSWERS.md tables in
+  question order with descriptive column headers. PASS example: a
+  single clean markdown table per query, values right-aligned or at
+  least unambiguous. FAIL example: two SELECTs pasted back-to-back with
+  no labels distinguishing which answers which question. FAIL example:
+  result rows dumped as raw unformatted text with no indication of
+  which column is `craft` and which is `revenue`.
 - Reasoning quality: does the explanation correctly state that WHERE
   filters rows before grouping/aggregation while HAVING filters groups
-  after aggregation, and that `MIN(hours) >= 4` is true for a craft
-  type only when *every* checkout's hours is >= 4 (since the group's
+  after aggregation, and that `MIN(hours) >= 3` is true for a craft
+  type only when *every* checkout's hours is >= 3 (since the group's
   minimum must clear the bar), which is what "every checkout" requires?
   PASS example: "WHERE removes the comped rows before SUM() ever sees
   them, so the revenue total is computed only from paying checkouts; a
   HAVING-based comp filter doesn't work because by the time HAVING
   runs, the rows are already collapsed into one group per craft type —
   there's no per-row comped flag left to filter on. For the hours
-  condition, a craft type's MIN(hours) can only be >= 4 if literally
-  every checkout in that group has hours >= 4, which is exactly the
-  'for all' condition we need; a plain WHERE hours >= 4 instead throws
+  condition, a craft type's MIN(hours) can only be >= 3 if literally
+  every checkout in that group has hours >= 3, which is exactly the
+  'for all' condition we need; a plain WHERE hours >= 3 instead throws
   away the disqualifying short checkouts and leaves behind craft types
   that only partially qualify." Another PASS example: "The comped flag
   is a per-row property, so it has to be applied in the WHERE clause
   before GROUP BY collapses the rows — once the rows are aggregated
   there's no way to ask 'was this particular checkout comped' anymore.
-  MIN(hours) >= 4 works as a stand-in for 'every checkout's hours is at
-  least 4' because the minimum of a set can only clear a bar if every
-  member of the set clears it; filtering rows with WHERE hours >= 4
+  MIN(hours) >= 3 works as a stand-in for 'every checkout's hours is at
+  least 3' because the minimum of a set can only clear a bar if every
+  member of the set clears it; filtering rows with WHERE hours >= 3
   first and then just listing which craft types remain would wrongly
   include a craft type as long as any one of its checkouts happened to
   be long enough." A third PASS example: "We can't push the comp
   exclusion into HAVING because HAVING only sees aggregated values —
   by that point all nine rows have already been folded into three
   groups, and the comped flag of any individual row is gone. And
-  hours>=4 for 'every row' has to go through MIN() in HAVING, since
-  checking hours>=4 in WHERE would just drop the short checkouts and
-  falsely certify a craft type that still has other checkouts under 4
+  hours>=3 for 'every row' has to go through MIN() in HAVING, since
+  checking hours>=3 in WHERE would just drop the short checkouts and
+  falsely certify a craft type that still has other checkouts under 3
   hours sitting in a different, unfiltered world." FAIL example: "We
   filtered comped checkouts and grouped by craft type to get the
   revenue." (does not explain the WHERE-before-HAVING ordering or why
-  it matters). Another FAIL example: "MIN(hours) >= 4 checks if the
-  hours is at least 4" (restates the syntax without explaining why MIN
+  it matters). Another FAIL example: "MIN(hours) >= 3 checks if the
+  hours is at least 3" (restates the syntax without explaining why MIN
   specifically encodes a universal quantifier over the group). A third
   FAIL example: "Comped checkouts don't count as revenue so we left
   them out, and Paddleboard was the only craft where everything was

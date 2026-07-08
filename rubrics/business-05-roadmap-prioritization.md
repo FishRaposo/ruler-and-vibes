@@ -103,15 +103,48 @@ Payments-implies-AuthRevamp checks.
 
 - **obj-1**: exact set match — any deviation (extra or missing feature)
   fails, even if the resulting value/cost happen to look reasonable.
+  - PASS: "We will fund Compliance, Payments, AuthRevamp, and Referrals."
+  - PASS: "Selected set: {Compliance, AuthRevamp, Payments, Referrals}."
+  - PASS: "Shipping: Referrals, AuthRevamp, Payments, Compliance (order aside)."
+  - FAIL: "Selected: Compliance, Payments, AuthRevamp, BulkExport." (wrong fourth)
+  - FAIL: "We ship all except DarkMode." (five features — over budget/wrong set)
+  - FAIL: "Compliance, Referrals, BulkExport, DarkMode." (drops the Payments pair)
 - **obj-2**: both value (160) and cost (20) must be stated exactly; a
   plausible-sounding but wrong total (e.g. 145 from the second-best set)
   fails.
+  - PASS: "Total ROI value 160 at a cost of 20 engineer-weeks."
+  - PASS: "Value = 160; engineer-weeks = 20 (the full budget)."
+  - PASS: "The roadmap delivers 160 value for 20 engineer-weeks."
+  - FAIL: "Total value 145, cost 19 engineer-weeks." (second-best totals)
+  - FAIL: "Value 200 across 18 engineer-weeks." (naive greedy totals)
+  - FAIL: "About 158 value for roughly 20 engineer-weeks." (value not exact)
 - **obj-3**: this is the constraint-compliance check — Compliance must
   appear, and Payments-without-AuthRevamp is a hard fail regardless of
   the resulting value.
+  - PASS: "Compliance is included per the mandate, and Payments ships
+    alongside its required AuthRevamp dependency."
+  - PASS: "We fund AuthRevamp solely to unlock Payments; Compliance is
+    non-negotiable."
+  - PASS: "Mandatory Compliance retained; Payments+AuthRevamp funded as a
+    pair."
+  - FAIL: "We skip Compliance since its ratio is worst." (drops mandatory)
+  - FAIL: "Payments is funded; AuthRevamp is deferred to next quarter." (dep break)
+  - FAIL: "Payments leads the roadmap (AuthRevamp not selected)." (dep break)
 - **obj-4**: re-sum the judge's own copy of the table for the submitted
   set; do not trust the submission's arithmetic uncritically.
+  - PASS: submitted set re-sums to 20 engineer-weeks (4+6+5+5).
+  - PASS: any funded set the judge re-sums to <= 20.
+  - PASS: "4 + 6 + 5 + 5 = 20, matching the budget exactly."
+  - FAIL: submitted set re-sums to 23 (e.g. adds DarkMode to the optimum).
+  - FAIL: submitted set re-sums to 21 or more by the judge's own count.
+  - FAIL: memo claims cost 20 but the judge's re-sum of its named set is 22.
 - **obj-5**: whole-file `wc -w` for the 500-word cap.
+  - PASS: `wc -w roadmap.md` reports 500 or fewer.
+  - PASS: file is 375 words.
+  - PASS: file is exactly 500 words.
+  - FAIL: `wc -w roadmap.md` reports 501 or more.
+  - FAIL: file is 640 words.
+  - FAIL: file is 512 words.
 
 ### Subjective guidance
 

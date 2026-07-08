@@ -97,6 +97,16 @@ rest scores.
   necessarily formatting), or does it just assert the final answer
   without showing the intermediate MOD reductions (84,36)->(36,12)->
   (12,0)?
+  - PASS phrasings: "shows the stack after every instruction, including
+    both DUP/JNZ/SWAP/OVER cycles before each MOD"; "walks through 84
+    mod 36 = 12, then 36 mod 12 = 0, and connects each reduction to the
+    surviving stack values"; "labels each of the 19 steps with the
+    opcode and resulting stack, matching the reference trace in
+    substance".
+  - FAIL phrasings: "just states 'the program computes gcd(84,36)=12'
+    with no per-instruction stack shown"; "shows the first PUSH/DUP
+    pair then skips ahead straight to the final OUT"; "gives a final
+    answer but never shows either MOD reduction explicitly".
 - Interpreter fidelity: does vm.js implement all 10 opcodes generally
   (a real fetch-decode-execute loop keyed on the opcode value), or does
   it special-case this one program's control flow? Penalize any
@@ -104,8 +114,30 @@ rest scores.
   match the expected output rather than genuinely executing the given
   opcode semantics — probe by mentally checking it would still work if
   the two PUSH immediates were swapped in position.
+  - PASS phrasings: "a single dispatch (switch or lookup table) keyed
+    on the opcode value handles all 10 cases uniformly"; "PC
+    advancement is computed generically per opcode (one cell, two
+    cells, or a jump target), not hardcoded to this program's length";
+    "swapping the two PUSH immediates in the source array still
+    produces a correctly computed (if different) result".
+  - FAIL phrasings: "hardcodes `console.log(12, 19)` or otherwise
+    prints constants instead of interpreting"; "special-cases the pc
+    of the JNZ instruction to short-circuit straight to the known
+    answer"; "only implements the opcodes this one program happens to
+    use, silently ignoring the general spec".
 - Reasoning quality: does ANSWER.md explicitly explain why JNZ must pop
   (e.g. citing the spec's stated pop-then-read-addr order) and why MOD
   takes its operands top-then-second (i.e., top of stack is divisor)?
   Surface-level "I ran it and got 12" without explaining the mechanism
   should score lower here even if the objective checks all pass.
+  - PASS phrasings: "cites the spec's 'pop the top, then read addr'
+    order to explain why JNZ must consume the tested value before
+    branching"; "explains that MOD pops `y` first so the top of stack
+    is always the divisor, not the dividend"; "connects the operand-
+    order rule to why a naive same-order rewrite would silently
+    corrupt the second reduction".
+  - FAIL phrasings: "says only 'I ran it and got 12' with no mechanism
+    discussed"; "asserts the algorithm is GCD without explaining the
+    JNZ pop-order or MOD operand-order rules"; "describes the loop in
+    general terms but never addresses why popping order matters for
+    either JNZ or MOD".

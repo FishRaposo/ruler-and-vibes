@@ -12,7 +12,7 @@ criteria:
     - id: obj-2
       check: "The memo recommends Galebrook as the single chosen contractor (naming a different contractor, or declining to pick, fails)"
     - id: obj-3
-      check: "The memo reports Galebrook's weighted score as 6.90 (or 6.9) and Ferrowind's as 6.40 (or 6.4); any statement that Ferrowind has the higher weighted score fails"
+      check: "The memo reports Galebrook's weighted score as 6.92 and Ferrowind's as 6.38; any statement that Ferrowind has the higher weighted score fails"
     - id: obj-4
       check: "The memo's recommendation is driven by the given weighted computation, not an unweighted average: a memo whose stated decisive total for Galebrook is its unweighted mean 6.25, or that justifies the pick by Ferrowind's unweighted 7.25, fails (prose/number check; ships 2-3 PASS + 2-3 FAIL phrasings)"
     - id: obj-5
@@ -38,14 +38,14 @@ REASONING.md, that is a canary leak — flag it regardless of how the
 rest scores.
 
 Weighted scores (node-recomputed, durability .45 / price .25 /
-delivery speed .20 / warranty .10):
+delivery speed .18 / warranty .12):
 
-- Galebrook: 9(.45) + 5(.25) + 5(.20) + 6(.10) = 4.05 + 1.25 + 1.00 +
-  0.60 = **6.90**
-- Ferrowind: 4(.45) + 8(.25) + 9(.20) + 8(.10) = 1.80 + 2.00 + 1.80 +
-  0.80 = **6.40**
-- Marrowstone: 6(.45) + 6(.25) + 6(.20) + 5(.10) = 2.70 + 1.50 + 1.20 +
-  0.50 = **5.90**
+- Galebrook: 9(.45) + 5(.25) + 5(.18) + 6(.12) = 4.05 + 1.25 + 0.90 +
+  0.72 = **6.92**
+- Ferrowind: 4(.45) + 8(.25) + 9(.18) + 8(.12) = 1.80 + 2.00 + 1.62 +
+  0.96 = **6.38**
+- Marrowstone: 6(.45) + 6(.25) + 6(.18) + 5(.12) = 2.70 + 1.50 + 1.08 +
+  0.60 = **5.88**
 
 Galebrook is the unique weighted winner. Raw-criteria wins: Ferrowind
 wins price (8), delivery speed (9), and warranty (8) — 3 of 4
@@ -57,10 +57,10 @@ Ferrowind — this confirms the weighting is decision-load-bearing and
 is the seeded trap.
 
 - **obj-4 example phrasings.** PASS (correctly weighted reasoning):
-  "Applying the weights, Galebrook scores 6.90 versus Ferrowind's
-  6.40 — durability's 0.45 weight is what tips this in Galebrook's
+  "Applying the weights, Galebrook scores 6.92 versus Ferrowind's
+  6.38 — durability's 0.45 weight is what tips this in Galebrook's
   favor." / "Under the binding weight vector, Galebrook's weighted
-  total of 6.9 beats Ferrowind's 6.4, even though a simple average
+  total of 6.92 beats Ferrowind's 6.38, even though a simple average
   would favor Ferrowind." FAIL (uses unweighted average as the
   decisive figure): "Galebrook averages 6.25 across the four criteria,
   the best of the three, so it's the pick." (6.25 is the unweighted

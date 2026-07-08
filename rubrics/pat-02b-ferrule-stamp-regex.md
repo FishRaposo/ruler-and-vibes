@@ -70,12 +70,43 @@ scores.
   valid single grade digit) or `TRV/1000#g` followed by no digits
   (should not match) to sanity-check generality beyond the 22 listed
   vectors.
+  - PASS phrasings: "the digit run is `[1-9]\d{3,5}`, pinning the
+    stamp number to 4-6 digits with a non-zero lead"; "the
+    `(#g\d{1,2})?` group makes the grade suffix optional and caps it
+    at two digits, so `TRV/1234` and `TRV/1234#g1` both match while
+    `TRV/1234#g123` does not"; "accepts `TRV/1234#g0` because a lone
+    `0` is one valid grade digit."
+  - FAIL phrasings: "uses `\d{4,6}` and so wrongly admits a leading
+    zero like `TRV/0123`"; "makes the whole suffix mandatory (or its
+    digits optional), so a bare `TRV/1234` is rejected or `TRV/1234#g`
+    is accepted"; "bounds the digit run as `\d{3,5}` or `\d+`,
+    mis-sizing the 4-6-digit stamp number."
 - Pattern economy: reward a single clean anchored regex that maps
   cleanly to the grammar (character class, slash, digit-count
   quantifier, optional group) over a sprawling alternation or a regex
   wrapped in extra hand-written pre/post string manipulation that
   defeats the "single regex" spirit of the task.
+  - PASS phrasings: "one anchored literal whose four pieces line up
+    with the four grammar rules, no alternation"; "the optional suffix
+    is a single `?`-quantified group rather than two spelled-out
+    alternatives"; "no hand-written slicing or pre-trimming around the
+    regex — the pattern does all the work."
+  - FAIL phrasings: "a long `|`-alternation enumerating with-suffix
+    and without-suffix forms separately"; "the regex is only part of
+    the job and the code hand-parses the slash or the digit run in
+    JavaScript"; "escaped every literal character defensively,
+    producing an unreadable pattern that obscures the four grammar
+    rules."
 - Reasoning quality: judge from comments/structure in pattern.js
   whether the model explains why full-string anchoring is required
   (the substring-match trap) and how the digit-count and leading-digit
   constraints are encoded.
+  - PASS phrasings: "states that without `^...$` the pattern would
+    match a valid stamp embedded in surrounding text like `lot
+    TRV/9999 flagged`"; "explains that `[1-9]` on the first digit is
+    what bans the leading-zero run `TRV/0123`"; "notes the `{3,5}`
+    after the lead digit is what yields a 4-6 digit total."
+  - FAIL phrasings: "no rationale, just the pattern"; "claims the
+    regex is whole-string safe without mentioning anchors or the
+    substring trap"; "hand-waves 'matches the stamp format' without
+    saying how the digit count or leading digit is enforced."

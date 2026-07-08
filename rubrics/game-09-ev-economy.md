@@ -72,6 +72,17 @@ the runner's stated arithmetic in `TUNING.md` without checking it.
 - **obj-4**: confirm 80.5 appears as the stated current EV, and that
   the four `prob*value` products plus their sum are shown (not just a
   final number asserted).
+  - PASS: TUNING.md restates the current EV as 80.5 and shows the four
+    products (e.g. 14, 13.2, 8.25, 15.0) with their sum 50.45.
+  - PASS: the products and sum are laid out in a table with a stated
+    total and the 80.5 current EV appears in the prose.
+  - PASS: arithmetic shown inline as `14 + 13.2 + 8.25 + 15.0 = 50.45`
+    alongside the restated 80.5.
+  - FAIL: only the final EV is asserted, with no per-tier products
+    shown.
+  - FAIL: the current EV 80.5 is never restated.
+  - FAIL: products are shown but their sum is never stated, or the sum
+    shown does not match the products.
 - **obj-5**: run `wc -w TUNING.md` on the whole file.
 
 ### Subjective guidance

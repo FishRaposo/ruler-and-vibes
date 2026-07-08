@@ -16,7 +16,7 @@ criteria:
     - id: obj-4
       check: "The second sentence of every message begins with a capitalized imperative verb; judge-adjudicated by reading the recovery sentence and comparing its opening against the embedded PASS/FAIL example phrasings, not a pure regex"
     - id: obj-5
-      check: "None of the banned blame terms (error, invalid, failed, illegal, 'you must', oops) appear case-insensitively as substrings in any message"
+      check: "None of the banned blame terms (malfunction, tampered, corrupted, breach, 'your fault', whoops) appear case-insensitively as substrings in any message"
   subjective:
     - id: sub-quality
       name: "Cause-plus-recovery usefulness"
@@ -44,13 +44,14 @@ A reference `errors.json` and a deliberately broken variant were both
 checked with a Node script implementing obj-1, obj-2, obj-3, and obj-5
 mechanically, plus a heuristic proxy for obj-4 (the true obj-4 check is
 judge-read). The reference passes every check. The broken variant —
-which used "Your clip was too long and it failed." (one sentence, banned
-word "failed") for `clipTooLong`, a 157-character, three-sentence
-message containing the banned word "error" and inventing a fake
-user-side fix ("Please restart your router.") for `hubUnreachable`, and
-"You must pick another name because this one is invalid." (one
-sentence, banned phrase "you must", banned word "invalid") for
-`zoneNameTaken` — fails obj-2, obj-3, obj-4, and obj-5.
+which used "Your clip was too long and it malfunctioned." (one
+sentence, banned word "malfunction") for `clipTooLong`, a
+157-character, three-sentence message containing the banned word
+"breach" and inventing a fake user-side fix ("Please restart your
+router.") for `hubUnreachable`, and "Your fault for picking a name
+that's already corrupted in our system." (one sentence, banned phrase
+"your fault", banned word "corrupted") for `zoneNameTaken` — fails
+obj-2, obj-3, obj-4, and obj-5.
 
 Reference messages (character counts re-verified this session, all
 <=120):
@@ -90,10 +91,11 @@ PASS:
 - "Get a new one and try again."
 
 FAIL:
-- "Your clip was too long and it failed." (no imperative verb start, and
-  uses the banned word "failed")
-- "You must pick another name for this zone." (uses the banned phrase
-  "you must", and reads as blame rather than a plain instruction)
+- "Your clip was too long and it malfunctioned." (no imperative verb
+  start, and uses the banned word "malfunction")
+- "Your fault — pick another name for this zone." (uses the banned
+  phrase "your fault", and reads as blame rather than a plain
+  instruction)
 
 ### Subjective guidance
 

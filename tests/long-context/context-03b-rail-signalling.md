@@ -71,7 +71,7 @@ quoted precisely by its line number.
     energization-date question rather than closing either out early.
 7. Halligan: Okay, let's park that, I want to note it and move on for now
    so we can get through the rest of the agenda.
-8. Halligan: Next is programme staffing. We currently have 13 people
+8. Halligan: Next is programme staffing. We currently have 15 people
    assigned across all workstreams.
 8a. Halligan: That's spread across signalling, test and commissioning,
     operations liaison, and supplier management, and it's held steady
@@ -79,7 +79,7 @@ quoted precisely by its line number.
 8b. Rennick: Is that headcount fully charged to the programme, or are some
     of those people shared with other schemes?
 8c. Halligan: A few are shared, mostly on the operations liaison side, but
-    the core team of 13 is what we track for capacity planning.
+    the core team of 15 is what we track for capacity planning.
 9. Halligan: For the record on staffing, Priti is at 0.4 FTE on the test
    evidence pack, which has been enough for the assurance work so far.
 9a. Vasey: That matches what I see day to day too — Priti is giving two
@@ -142,10 +142,10 @@ quoted precisely by its line number.
 22a. Vasey: We added roughly 220 of those scenarios in just the last
      month, mostly around the new berth-code edge cases that came up
      during the dry run.
-23. Vasey: We currently have 2 open P1 defects, both in the passenger
+23. Vasey: We currently have 3 open P1 defects, all in the passenger
     information display module rather than core signalling.
-23a. Vasey: Neither is expected to block energization on its own, they're
-     both cosmetic issues with how platform messages render, not
+23a. Vasey: None of them is expected to block energization on its own,
+     they're all cosmetic issues with how platform messages render, not
      functional failures.
 23b. Halligan: Good, let's keep an eye on those but they don't sound like
      they change today's discussion about the energization date itself.
@@ -244,7 +244,7 @@ quoted precisely by its line number.
      cutover-week task list so it doesn't get missed.
 44e. Sundqvist: Appreciated, it's a quick step but easy to forget if it's
      not written down somewhere.
-45. Sundqvist: We also completed a dry run last week covering 5,600
+45. Sundqvist: We also completed a dry run last week covering 6,300
     telemetry points migrated into the new system successfully.
 45a. Sundqvist: We found a handful of minor data-cleanup issues during
      that dry run, but nothing that changes our confidence in the

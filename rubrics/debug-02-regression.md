@@ -39,6 +39,22 @@ rest scores.
   edits where v2 parted from v1, each tied to a broken behavior.
   Penalize vague "v2 handled accents worse" phrasing that never pins
   the mechanism.
+  - PASS phrasings (obj-3, both regressions pinned to their edit):
+    - "v2 deleted the `.normalize('NFD').replace(...)` line, so accents
+      survive as stripped letters (`Café`→`caf`); and it changed
+      `/^-+|-+$/` to `/^-+/`, so trailing hyphens are no longer
+      removed."
+    - "Two edits regressed: the diacritic-folding step was removed, and
+      the end-anchored trim (`-+$`) was dropped from the final replace."
+    - "Broke accent stripping (NFD step gone) AND trailing-separator
+      cleanup (trim narrowed from both ends to leading-only)."
+  - FAIL phrasings (obj-3, incomplete or unpinned):
+    - "The accents and the trimming both got a bit worse in v2." (names
+      neither edit)
+    - "v2 forgot to normalize accents." (only one regression named)
+    - "The trailing hyphen bug comes from slicing with maxLen."
+      (misattributes the trailing-hyphen regression to the cap
+      rather than the narrowed trim)
 - Fix discipline: restores v1 semantics and keeps the feature without
   inventing new behavior (e.g. don't start trimming whitespace
   differently than v1 did).

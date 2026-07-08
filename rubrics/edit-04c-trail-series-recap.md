@@ -57,7 +57,7 @@ these are the ONLY genuine errors outside the two protected spans):
 1. paragraph 1, "wraped up" -> "wrapped up"
 2. paragraph 1, "finally stabalized" -> "finally stabilized"
 3. paragraph 1, "already flaging" -> "already flagging"
-4. paragraph 5 (final paragraph), "due by tuesday" -> "due by Tuesday"
+4. paragraph 6 (final paragraph), "due by tuesday" -> "due by Tuesday"
    (day-of-week capitalization)
 
 Example phrasings for the prose-located comparison checks (apply the

@@ -16,7 +16,7 @@ criteria:
     - id: obj-4
       check: "The second sentence of every message begins with a capitalized imperative verb; judge-adjudicated by reading the recovery sentence and comparing its opening against the embedded PASS/FAIL example phrasings, not a pure regex"
     - id: obj-5
-      check: "None of the banned blame terms (error, invalid, failed, illegal, 'you must', oops) appear case-insensitively as substrings in any message"
+      check: "None of the banned blame terms (violation, revoked, non-compliant, penalty, 'your responsibility', yikes) appear case-insensitively as substrings in any message"
   subjective:
     - id: sub-quality
       name: "Cause-plus-recovery usefulness"
@@ -43,12 +43,13 @@ A reference `errors.json` and a deliberately broken variant were both
 checked with a Node script implementing obj-1, obj-2, obj-3, and obj-5
 mechanically, plus a heuristic proxy for obj-4 (the true obj-4 check is
 judge-read). The reference passes every check. The broken variant —
-which used "Your photo was too big and it failed." (one sentence,
-banned word "failed") for `permitPhotoOversized`, a 172-character
-message with four sentence terminators for `gateServerUnreachable`, and
-"You must fix this and retry." (banned phrase "you must") appended after
-the cause sentence for `plateAlreadyRegistered` — fails obj-2, obj-3,
-obj-4, and obj-5.
+which used "Your photo is now a violation and it's been revoked." (one
+sentence, banned words "violation" and "revoked") for
+`permitPhotoOversized`, a 172-character message with four sentence
+terminators for `gateServerUnreachable`, and "It's your responsibility
+to fix this and retry." (banned phrase "your responsibility") appended
+after the cause sentence for `plateAlreadyRegistered` — fails obj-2,
+obj-3, obj-4, and obj-5.
 
 Reference messages (character counts re-verified this session, all
 <=120):
@@ -89,10 +90,11 @@ PASS:
 - "Try a different card or contact your bank."
 
 FAIL:
-- "Your pass was too old and it failed." (no imperative verb start, and
-  uses the banned word "failed")
-- "You must fix this and retry." (uses the banned phrase "you must",
-  and reads as blame rather than a plain instruction)
+- "Your pass is now a violation and it's been revoked." (no imperative
+  verb start, and uses the banned words "violation" and "revoked")
+- "It's your responsibility to fix this and retry." (uses the banned
+  phrase "your responsibility", and reads as blame rather than a plain
+  instruction)
 
 ### Subjective guidance
 

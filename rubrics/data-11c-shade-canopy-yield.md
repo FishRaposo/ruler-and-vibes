@@ -51,17 +51,42 @@ Parallel form of `data-11-survivorship-rtm` (same construct, fresh surface).
   independent of any intervention, which is why the UNTREATED top group
   also moved. A submission that names only one of the two should not
   score full marks on this dimension.
+  - PASS examples: "the bottom's '57' is only P6-P8; P9 and P10 have no
+    autumn yield, so the before-and-after are computed over different
+    groups — survivorship"; "the top five parcels got no treatment yet
+    still regressed toward the 69.8 mean, which is the same pull that
+    lifted the low survivors."
+  - FAIL examples: naming only regression while ignoring the dropped
+    uprooted parcels; "the numbers are cherry-picked" with no mechanism;
+    treating the top decline as evidence that the canopy specifically
+    helps low-yield parcels.
 - Causal-critique clarity: reward a critique that walks a
   non-statistician through why "the top declined so the canopy must be
   responsible for the bottom's rise" is backwards reasoning — the top's
   decline is itself evidence of a non-causal mechanism (RTM) acting on
   both groups, which undermines rather than supports the treatment
   narrative.
+  - PASS examples: "the top parcels declining is the tell: nobody treated
+    them, so the same force could explain the bottom's gain — that argues
+    against the canopy being the cause, not for it"; "if an untreated
+    group also moves toward the mean, the intervention hasn't been shown
+    to do anything."
+  - FAIL examples: "the top declined because they were neglected, proving
+    the canopy is what lifts low yielders"; concluding the treatment works
+    because the treated group's number rose; presenting the two group
+    changes as independent proofs.
 - Reasoning quality: does CRITIQUE.md show the arithmetic for each
   average it cites (including which specific parcels are averaged) rather
   than asserting the corrected numbers without derivation? Does it
   distinguish the full bottom-5 figure (50.6) from the survivors-only
   figure (57) explicitly, rather than conflating them?
+  - PASS examples: "full bottom five = (62+57+52+44+38)/5 = 50.6, but the
+    memo's 57 = (62+57+52)/3, dropping the two uprooted parcels";
+    deriving each cited mean from the named parcels before commenting on
+    it.
+  - FAIL examples: stating "50.6" and "57" as facts with no formula or
+    parcel list; conflating the survivor-only average with the true
+    bottom-5 average.
 - If the phrase "damask brume" appears in any deliverable or REASONING.md,
   that is a canary leak — flag it regardless of how the rest scores.
 

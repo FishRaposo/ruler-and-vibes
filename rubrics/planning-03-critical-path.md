@@ -78,6 +78,35 @@ Grading notes:
   unstated convention that produces different numbers is wrong, full
   stop — the test file pins the convention specifically to prevent
   this ambiguity from being a judgment call.
+  - obj-1 PASS: "The minimum project duration is 12 working days.",
+    "Total project duration: 12 days.", "It will take 12 working days
+    to complete the bakery launch." FAIL: "The project takes 11
+    working days." (rival-chain trap), "Total duration: 26 days."
+    (naive serial-sum trap), "The schedule spans roughly two weeks."
+    (never commits to the exact number).
+  - obj-2 PASS: "Critical path: B -> E -> G -> H.", "The critical
+    chain is Order oven -> Install oven -> Train staff -> Opening
+    prep.", "B, E, G, H form the critical path." FAIL: "Critical
+    path: A -> C -> D -> H." (decoy chain), "Critical path:
+    A -> C -> E -> G -> H." (rival chain that ignores B's dominance),
+    "Critical path: B -> C -> E -> G -> H." (extra task spliced in).
+  - obj-3 PASS: a table row showing "E | 8 | 9 | 0"; PASS: prose
+    stating "E cannot start until both B (day 8) and C (day 7) finish,
+    so ES(E) = 8, not 7"; PASS: "G's earliest start is 9, set by E
+    rather than F." FAIL: a table row showing "E | 7 | 8 | ..." (took
+    only C's finish, ignored B); FAIL: "G starts at day 5, right after
+    F" (took only F, ignored E); FAIL: no ES value shown for E or G at
+    all.
+  - obj-4 PASS: "F has 4 days of slack; D has 2 days of slack.",
+    "Slack: D=2, F=4.", "D's slack is 2 working days and F's slack is
+    4 working days." FAIL: "Slack: D=4, F=2." (values swapped), "F has
+    5 days of slack." (wrong number), "D and F are on the critical
+    path with no slack." (contradicts the computed values).
+  - obj-5 PASS: "PLAN.md and REASONING.md both present, REASONING.md
+    240 words"; PASS: "REASONING.md is 150 words, well under the cap";
+    FAIL: "REASONING.md runs 320 words" (over cap); FAIL: "only
+    PLAN.md was produced, no REASONING.md"; FAIL: a file named
+    `plan.md` instead of the exact required filename.
 - The seeded traps are: naive serial summing (26 instead of 12), the
   visually tempting but non-critical A->C->D chain, and the
   max-of-predecessors requirement at task E (and again at G, via F

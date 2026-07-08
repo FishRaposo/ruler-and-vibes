@@ -25,8 +25,8 @@ exactly one company.
 **Binding weight vector (use these weights, not a simple average):**
 
 > On-Time Rate: 0.35
-> Budget Fit: 0.30
-> Damage-Free Rate: 0.20
+> Budget Fit: 0.31
+> Damage-Free Rate: 0.19
 > Claims Support: 0.15
 
 Compute each company's weighted total score (sum of criterion score x

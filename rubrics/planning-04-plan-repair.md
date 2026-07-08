@@ -121,6 +121,40 @@ Grading notes:
   are genuinely necessary edges — breaking either one is a real
   failure, not a stylistic variant, and changes the completion day per
   the script above).
+- **obj-1 phrasing.** PASS: "The dependency cycle runs T4 (Order
+  lanterns) -> T8 (Set up lighting rig) -> T5 (Build lantern frames)
+  -> back to T4.", "T4, T5, and T8 form a circular dependency: T4
+  needs T8, T8 needs T5, and T5 needs T4.", "There's a three-task
+  cycle involving Order lanterns, Build lantern frames, and Set up
+  lighting rig." FAIL: "T4 and T8 conflict with each other." (only two
+  of three tasks named), "There's a scheduling loop somewhere in the
+  lantern and lighting tasks." (vague, doesn't unambiguously name all
+  three), "T3, T4, and T5 form a cycle." (wrong task set — T3 isn't in
+  the cycle).
+- **obj-2 phrasing.** PASS: "Bruno is double-booked: he owns both T9
+  (Print programs, days 3-7) and T10 (Install signage, days 6-9),
+  which overlap.", "Owner Bruno has two overlapping tasks, T9 and
+  T10.", "T9 and T10 both belong to Bruno and their listed windows
+  overlap on days 6-7." FAIL: "Dax is overbooked on T4 and T5." (wrong
+  owner and wrong tasks), "There's a resource conflict somewhere in
+  the schedule." (no owner or tasks named), "Bruno's tasks are too
+  tightly scheduled." (owner named but not the specific conflicting
+  tasks).
+- **obj-3 phrasing.** PASS: "T11 is listed finishing on day 16, but
+  9 + 3 = 12, so the correct finish is day 12.", "The finish date for
+  Rehearse opening ceremony should be 12, not 16.", "T11's listed
+  finish (16) doesn't match start+duration; the corrected finish is
+  day 12." FAIL: "T11's dates look fine." (misses the error entirely),
+  "T11 should finish on day 15." (wrong corrected value), "T10's
+  finish date is wrong." (wrong task named).
+- **obj-5 phrasing.** PASS: "The promised day-24 gates-open milestone
+  is not feasible; the earliest the gates can realistically open is
+  day 27.", "Day 24 cannot be met — the corrected schedule completes
+  on day 27.", "Infeasible: 27 > 24, so the earliest feasible
+  gates-open day is 27." FAIL: "The day-24 milestone is feasible as
+  planned." (misses the infeasibility), "The plan will complete by day
+  24 with minor tweaks." (contradicts the corrected schedule), "The
+  earliest feasible day is 25." (wrong number).
 - Audit completeness and precision: were all four defects found with
   correct, specific evidence (not vague "something seems off")?
 - Repair minimality and feasibility: does the revised plan change only

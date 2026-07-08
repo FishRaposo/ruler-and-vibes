@@ -28,7 +28,7 @@ final game state.
   paid and no effect occurs.** Play continues with the next spell in
   the list.
 - Five spells exist, each with a fixed vigor cost and effect:
-  - **JOLT** — cost 1. Deal 4 damage to the opponent.
+  - **JOLT** — cost 1. Deal 5 damage to the opponent.
   - **SMITE** — cost 2. Deal 8 damage to the opponent, but first
     consume one of the **caster's own** WARD tokens if the caster has
     any (this consumption has no effect on SMITE's damage — it is a

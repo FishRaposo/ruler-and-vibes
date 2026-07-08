@@ -102,12 +102,38 @@ rest scores.
   submission correctly select RANK (gaps after ties) vs DENSE_RANK
   (no gaps) vs ROW_NUMBER (unique sequential, needs a deterministic
   tie-break) for each of the four questions, matching the semantics
-  each question actually calls for?
+  each question actually calls for? PASS example: submission pairs
+  `RANK() OVER (ORDER BY score DESC)` with `DENSE_RANK() OVER (ORDER
+  BY score DESC)` side-by-side for question 1, uses `ROW_NUMBER() OVER
+  (PARTITION BY division ORDER BY score DESC, id ASC)` filtered to
+  rn=1 for question 2, and `RANK() OVER (PARTITION BY division ORDER
+  BY score DESC)` filtered to rnk=1 for question 3 — each function
+  matches what its question actually needs. PASS example: submission
+  explicitly notes it swapped in ROW_NUMBER for question 2 because
+  "exactly one row per division" is required, while keeping RANK for
+  question 3 because ties must be preserved. FAIL example: submission
+  uses ROW_NUMBER for all four questions, including question 3 ("tied
+  teams"), silently dropping Foxes from the tied-at-max query. FAIL
+  example: submission uses RANK for question 2 ("division leader"),
+  returning two Crimson rows (Wildcats and Foxes) where exactly one is
+  required.
 - Query composition and leaderboard presentation: are the four window
   queries clearly composed (e.g. correct use of subqueries/CTEs to
   filter on a window function's output, since window functions cannot
   appear directly in WHERE/HAVING), and is the standings-style output
-  presented legibly?
+  presented legibly? PASS example: each query wraps its window
+  function in a CTE (`WITH ranked AS (...) SELECT * FROM ranked WHERE
+  rn = 1`) since window functions cannot be filtered directly in
+  WHERE, and results are labeled by question with readable column
+  aliases (`rnk`, `drnk`, `running_total`). PASS example: queries are
+  commented per question (`-- Q1: global ranking`, `-- Q2: division
+  leader`, etc.) with descriptive aliases rather than raw expressions.
+  FAIL example: submission attempts `SELECT * FROM standings WHERE
+  RANK() OVER (...) = 1` directly in a WHERE clause, which is invalid
+  SQL since window functions cannot appear there. FAIL example: four
+  queries are concatenated with no comments or labels, leaving no way
+  to tell which output answers which question, and column names are
+  left as unlabeled expressions.
 - Reasoning quality: does the explanation correctly describe why RANK
   produces a gap (4) after two rows tied at rank 2 while DENSE_RANK
   does not (3), why ROW_NUMBER requires an explicit tie-break to be

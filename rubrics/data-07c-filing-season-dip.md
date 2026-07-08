@@ -44,12 +44,13 @@ rest scores.
   same drop recurred exactly one year earlier. Every April in the
   series spikes (the filing deadline pulls a year of returns into one
   month) and every May drops back by a similar magnitude (~40-41%),
-  while the average YoY growth across the twelve non-April overlapping
-  months is approximately +13.6% (a range of roughly +13.4% to +14.1%
-  month by month) — healthy, consistent growth once the seasonal swing
-  is removed. (Author's note: including the April peak-to-peak pair
-  (722→810 = +12.2%) the trailing average is ~13.6%; excluding it,
-  ~13.7%. Either figure — or no figure at all, since it is not an
+  while the average YoY growth across the twelve overlapping months
+  from May-2025 through Apr-2026 (each vs. the same month a year
+  earlier, including the April peak-to-peak pair 722→810 = +12.2%) is
+  approximately +13.6%; restricted to the eleven non-April months
+  among them it is ~13.7% (a range of roughly +13.4% to +14.1% month
+  by month) — healthy, consistent growth once the seasonal swing is
+  removed. (Either figure — or no figure at all, since it is not an
   objective check — is fine; do not penalize a submission for not
   citing this average, and do not penalize ±1pt variation if a
   submission does cite it.)

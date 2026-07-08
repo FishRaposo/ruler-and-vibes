@@ -56,14 +56,39 @@ rest scores.
   board. Full credit requires stating that Alpha wins BOTH segments
   individually despite losing in aggregate. Penalize any submission
   that treats the aggregate rate as decisive without disaggregating.
+  - PASS examples: "the 74.5% vs 35.5% gap is a mix effect — Beta was
+    handed organic traffic, Alpha paid — and Alpha actually leads in
+    both segments (90% vs 80%, 30% vs 20%)"; "once you hold the traffic
+    segment fixed the ranking flips: Alpha is stronger everywhere"; "the
+    aggregate is confounded by which traffic mix each variant received."
+  - FAIL examples: "Beta's 74.5% clearly beats Alpha's 35.5%, so Beta is
+    the better variant"; reporting the per-segment rates but never
+    stating Alpha wins both; "Alpha does better with organic traffic"
+    without noting it also wins paid and loses only in aggregate.
 - Clarity and persuasiveness of the rebuttal to the memo: could the
   growth lead read this and immediately see why their memo is wrong?
   Reward directly quoting or referencing the memo's claim and showing,
   numerically, why it's misleading. Penalize hedging that never
   actually confronts the memo's recommendation.
+  - PASS examples: "the memo's 74.5% vs 35.5% compares two different
+    traffic mixes, not two variants — corrected for mix, Alpha wins";
+    "routing everything to Beta would lower total conversions, not
+    raise it: 1,100 vs Alpha's 1,320 at equal mix"; "reject: the
+    headline number is an artifact of the leaked segment allocation."
+  - FAIL examples: "there are some nuances worth considering before
+    deciding" with no clear accept/reject; restating both variants'
+    numbers without ever addressing the memo's route-all-to-Beta call;
+    "Beta looks better but results may vary."
 - Reasoning quality: does REASONING.md acknowledge why the naive
   headline-rate projection is tempting and specifically wrong (it
   silently assumes the leaked, unbalanced segment mix persists), rather
   than just asserting the correct answer? Reward engagement with what
   would need to be true for the memo's framing to be valid (e.g., a
   properly randomized test with balanced segment allocation).
+  - PASS examples: "the aggregate projection is seductive because it's
+    one multiplication, but it bakes in the 91%-paid mix Alpha happened
+    to get"; "the memo would only hold if future traffic stayed as
+    skewed as the leaked segment mix made it."
+  - FAIL examples: reasoning that just restates the per-segment answer
+    with no account of why the aggregate path misleads; "I computed the
+    rates and Alpha wins" with no engagement with the confound.

@@ -114,15 +114,39 @@ scores.
   Penalize a "clean" file that just renames `_u`/`_q` but keeps the
   reversal indirection alive, or that keeps the double-negation style
   even with different variable names.
+  - PASS phrasings: "renamed everything to `tag`/`h`/`c`, replaced the
+    reversed lookups with direct `s.length` and `s.charCodeAt(i)`, loop
+    reads top-to-bottom"; "no indirection or double-negation survives —
+    the fold is a plain `((h<<5)+c)^(c>>3)`"; "control flow is a single
+    straight `for` with an explicit `h & 0x7FFF` mask, nothing disguised".
+  - FAIL phrasings: "kept `_u(_q[1])` for the length lookup, only renamed
+    the outer function"; "still writes `- -c` for the add, just with a
+    nicer variable name"; "left `b^b` in place as the initializer instead
+    of writing `0`".
 - Disguise-spotting thoroughness: does `REASONING.md` name ALL of the
   disguises — the reversed-string property-name lookup, the `b^b` dead
   zero, the double-negation-as-addition (both occurrences), and the
   15-bit mask — or does it only catch the obvious ones and miss, say, the
   second `- -` in the return statement?
+  - PASS phrasings: "lists all four tricks: reversed `charCodeAt`/`length`
+    names, `b^b` = 0, both `- -` additions, and the `& 0x7FFF` per-loop
+    mask"; "explicitly notes the return-statement `- -` is the *second*
+    disguised add, not just the one in the loop"; "identifies `b^b` as a
+    decoy that always yields zero regardless of `b`".
+  - FAIL phrasings: "mentions only the reversed property names and stops
+    there"; "spots the loop `- -c` but never addresses the tail `- -`";
+    "calls `b^b` 'some constant' without noting it is always 0".
 - Reasoning quality: look for a precise, step-by-step deobfuscation
   narrative rather than a vague "I cleaned it up" — it should be clear
   the author actually decoded `_u(_q[1])` to `length` rather than
   guessing from context.
+  - PASS phrasings: "reverses `'htgnel'` character-by-character to reach
+    `'length'` and shows the work"; "traces one loop iteration with a
+    concrete `c` to confirm the fold and mask"; "explains why `b^b`
+    forces the seed to 0 regardless of `b`".
+  - FAIL phrasings: "asserts the answer with no derivation"; "says 'it
+    hashes the string' without decoding the reversed names"; "guesses
+    `length` from surrounding context rather than reversing the literal".
 - PASS/FAIL exemplars for the two prose-decidable checks (obj-5 names the
   x11-length tail and 15-bit hash; obj-6 names `- -` as addition). Accept
   any clearly-worded equivalent; these are illustrative, not verbatim

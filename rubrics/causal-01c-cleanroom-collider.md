@@ -16,7 +16,7 @@ criteria:
     - id: obj-4
       check: "ANSWERS.md (d) identifies D as a collider on H->D<-V and states that conditioning on D induces (opens) an association between H and V (prose-located)"
     - id: obj-5
-      check: "Running `node verify.js` prints P(H=1)=0.39, P(V=1)=0.5, P(H=1,V=1)=0.087, and product=0.195, demonstrating 0.087 != 0.195 (marginal dependence)"
+      check: "Running `node verify.js` prints P(H=1)=0.38, P(V=1)=0.55, P(H=1,V=1)=0.128, and product=0.209, demonstrating 0.128 != 0.209 (marginal dependence)"
   subjective:
     - id: sub-quality
       name: "Correctness and completeness of the structural causal reasoning"
@@ -39,16 +39,16 @@ scores.
 
 ### Answer key (verified with node during authoring)
 
-CPTs: P(N=1)=0.4; P(H=1|N=1)=0.75, P(H=1|N=0)=0.15; P(V=1|N=1)=0.05,
-P(V=1|N=0)=0.80. H and V are conditionally independent given N (the CPTs
+CPTs: P(N=1)=0.4; P(H=1|N=1)=0.65, P(H=1|N=0)=0.20; P(V=1|N=1)=0.10,
+P(V=1|N=0)=0.85. H and V are conditionally independent given N (the CPTs
 generate H and V independently once N is fixed).
 
-- P(H=1) = 0.4*0.75 + 0.6*0.15 = **0.39**
-- P(V=1) = 0.4*0.05 + 0.6*0.80 = **0.50**
-- P(H=1,V=1) = 0.4*(0.75*0.05) + 0.6*(0.15*0.80) = 0.4*0.0375 +
-  0.6*0.12 = **0.087**
-- product = 0.39*0.50 = **0.195**
-- 0.087 != 0.195, so H and V are marginally DEPENDENT despite being
+- P(H=1) = 0.4*0.65 + 0.6*0.20 = **0.38**
+- P(V=1) = 0.4*0.10 + 0.6*0.85 = **0.55**
+- P(H=1,V=1) = 0.4*(0.65*0.10) + 0.6*(0.20*0.85) = 0.4*0.065 +
+  0.6*0.17 = **0.128**
+- product = 0.38*0.55 = **0.209**
+- 0.128 != 0.209, so H and V are marginally DEPENDENT despite being
   conditionally independent given N — this is the correct verdict for
   (a).
 
@@ -67,7 +67,7 @@ Correct verdicts:
   conditioning does to a fork.
 
 Judge runs `verify.js` to confirm the four printed numbers match
-exactly (0.39, 0.50, 0.087, 0.195); the structural verdicts (a)-(d) are
+exactly (0.38, 0.55, 0.128, 0.209); the structural verdicts (a)-(d) are
 checked by reading them against the DAG and CPTs above, not by running
 code.
 

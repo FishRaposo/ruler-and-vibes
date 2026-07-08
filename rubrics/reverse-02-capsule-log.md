@@ -87,11 +87,40 @@ rest scores.
   endianness was determined (not just assert it), e.g. by pointing at
   the recurring `01 03` byte pair? Does it clearly justify the checksum
   reading rather than just asserting "it's probably a checksum"?
+  - PASS phrasings: "confirms little-endian by noting the same `01 03`
+    bytes appear as the station id and again as record 1's second
+    reading, both consistently decoding to 769"; "shows the payload
+    sum for each record and states explicitly that it equals the
+    trailing byte mod 256"; "walks through all three records' byte
+    ranges before naming the trailer as a checksum".
+  - FAIL phrasings: "just says 'little-endian seems right' with no byte
+    evidence"; "calls the trailing byte 'probably a checksum or magic
+    number' without computing a sum"; "never explains why 769 is
+    chosen over 259".
 - Decoder robustness: does decoder.js generalize (loop over
   `recordCount`, branch on `channel < 0x80`) rather than hardcode
   offsets 7/16/25 and the three record shapes directly? Penalize a
   decoder that only works for exactly this one capsule's byte layout.
+  - PASS phrasings: "loops `recordCount` times, reading channel/length/
+    payload/trailer generically and branching on `channel < 0x80`";
+    "computes each record's offset from the running cursor rather
+    than literal byte indices"; "handles an arbitrary number of
+    2-byte readings per numeric payload, not just three".
+  - FAIL phrasings: "hardcodes `bytes[7]`, `bytes[16]`, `bytes[25]` for
+    the three record starts"; "special-cases exactly 3 records with no
+    loop"; "assumes payload length is always 6 or 4 rather than reading
+    the length byte".
 - Reasoning quality: look for explicit falsification of the
   alternative checksum hypotheses (XOR, sum-including-header-bytes) or
   at least a clear statement of why the payload-sum reading was chosen
   over an unexamined guess.
+  - PASS phrasings: "tests XOR-of-payload against all three trailers
+    and shows it fails for all three records"; "tests sum-including-
+    channel-and-length-bytes and shows it matches none of the three
+    trailers"; "states the payload-sum-mod-256 hypothesis is the only
+    one consistent across all three records, with the arithmetic
+    shown".
+  - FAIL phrasings: "asserts 'it's a checksum' with no alternative
+    considered"; "checks the hypothesis against only one record and
+    stops"; "shows the sum for record 1 but never verifies records 2
+    and 3 line up too".

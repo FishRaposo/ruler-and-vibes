@@ -98,11 +98,36 @@ scores.
   AA-compliant but ugly gray-on-white with no hierarchy)? Reward a
   considered palette that keeps a design identity while meeting every
   threshold.
+  - PASS phrasings: a distinct green identity (e.g. `#157347` heading,
+    `#146c43` schedule/button) with a clear visual hierarchy between
+    shift title, schedule, and duties while every pair still clears
+    its threshold; spacing and typography preserve the original
+    card's polish.
+  - FAIL phrasings: every text element recolored to the same flat
+    `#565656` gray with no hierarchy, reading as a compliance
+    checklist rather than a designed card; the fix technically passes
+    contrast but the button blends into the card with no visual
+    weight.
 - **Semantic & accessible markup**: beyond the minimum structural
   checks, is the markup clean (single heading level used consistently,
   no redundant wrapper divs, sensible use of a `<section>`/`<article>`
   root, a real accessible name distinct from decorative text)?
+  - PASS phrasings: a single `<h2>` holds "Harborview Food Pantry",
+    the three duties sit in a `<ul><li>`, and the button has a clear
+    visible label with no redundant wrapper divs; the card uses a
+    `<section>`/`<article>` root and one consistent heading level.
+  - FAIL phrasings: the shift title wrapped in both an `<h2>` and a
+    redundant `aria-label` duplicating the same text; duties rendered
+    as individual `<div>`s dressed up with `role="listitem"` instead
+    of real `<li>` elements inside a `<ul>`.
 - **Reasoning quality**: if the model explains its color choices (e.g.
   inline comments or prose), does it show genuine contrast reasoning
   (naming ratios or the AA thresholds) rather than just asserting the
   card "looks accessible now"?
+  - PASS phrasings: "`#157347` on white is 5.87:1, comfortably above
+    the 4.5:1 AA threshold for normal text"; "the button label needs
+    4.5:1 since it has no explicit large font-size, so I picked white
+    on `#146c43` for 6.45:1".
+  - FAIL phrasings: "I made sure the card looks accessible now"; "the
+    new colors are more muted so contrast should be fine" — no ratios
+    or thresholds named.

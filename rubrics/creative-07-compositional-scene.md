@@ -151,12 +151,26 @@ process.exit(allOk && paintOk ? 0 : 1);
   "signal relay" (title/labels/background optional but welcome), with
   the overlap and occlusion visually legible rather than just six flat
   circles with no framing?
+  - PASS phrasings: a labeled backdrop, a title, and a subtle connecting
+    line or glow that make the descending overlap read as a relay chain
+    of signal nodes.
+  - FAIL phrasings: six bare circles on a blank canvas with no framing
+    or context; a backdrop so busy the overlap is unreadable.
 - **SVG structural clarity**: is the markup clean and easy to audit —
   circles listed in a clear, deliberate reverse order (not shuffled
   unpredictably), consistent formatting, no redundant grouping that
   obscures the document order the check relies on?
+  - PASS phrasings: the six discs are contiguous, one per line, in plain
+    disc-6→disc-1 order with aligned attributes.
+  - FAIL phrasings: discs interleaved with unrelated elements and
+    wrapped in nested `<g>`s that make the paint order hard to trace.
 - **Reasoning quality**: if the model explains its ordering choice
   (inline comment or accompanying note), does it correctly identify
   that reverse document order is what produces "lower id on top" under
   SVG's paint model, rather than attributing the effect to opacity or
   z-index (which SVG 1.1 circles do not have)?
+  - PASS phrasings: "SVG paints in document order, so the last-written
+    circle wins; I emit disc-6 first and disc-1 last so disc-1 sits on
+    top."
+  - FAIL phrasings: "I set a higher z-index on disc-1"; "opacity keeps
+    disc-1 visible on top" — both misattribute the mechanism.

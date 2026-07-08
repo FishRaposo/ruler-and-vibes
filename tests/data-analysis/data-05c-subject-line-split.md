@@ -1,58 +1,58 @@
 ---
 id: data-05c-subject-line-split
 category: data-analysis
-title: Subject-line verdict under a broken split
+title: Point-of-sale display verdict under a broken split
 deliverables:
   - VERDICT.md
 ---
 
 ## Task
 
-Quillstream, a newsletter platform, ran a subject-line experiment
-configured as a 50/50 split between a control arm (`Plainline`, the
-current plain subject-line style) and a treatment arm (`Teaser`, a
-curiosity-gap subject line). Each subscriber was randomly assigned one
-arm and received that week's issue. Below is the arm-level summary after
-one send, followed by a channel-level breakdown and a memo from the
-growth lead asking you to sign off. An "open" is a subscriber who opened
-the email at least once.
+Northfield Goods, a retail chain, ran an in-store display experiment
+configured as a 50/50 split between a control arm (`Endcap`, the
+current point-of-sale display) and a treatment arm (`Spotlight`, a
+redesigned display with a QR discount code). Each store visit was
+randomly assigned one arm and shown that day's display. Below is the
+arm-level summary after one week, followed by a loyalty-member
+breakdown and a memo from the merchandising lead asking you to sign
+off. A "scan" is a shopper who scanned the QR code at least once.
 
 `arms.csv`:
 
 ```csv
-arm,sent,opens
-Plainline,13000,1495
-Teaser,11400,1425
+arm,shown,scans
+Endcap,13000,1495
+Spotlight,11400,1425
 ```
 
-`channel_breakdown.csv` (referral-acquired subscribers only, a subset of
-the arms above):
+`loyalty_breakdown.csv` (loyalty-member shoppers only, a subset of the
+arms above):
 
 ```csv
-arm,channel,sent,opens
-Plainline,referral,4400,572
-Teaser,referral,3600,576
+arm,segment,shown,scans
+Endcap,loyalty_member,4400,572
+Spotlight,loyalty_member,3600,576
 ```
 
-The growth lead's memo:
+The merchandising lead's memo:
 
-> "Teaser opens at 12.5% vs Plainline's 11.5% — that's a z-score of 2.4,
-> comfortably significant. And it's even stronger among referral
-> subscribers, where Teaser beats Plainline by +3.0pts. Roll it out to
-> everyone this week."
+> "Spotlight scans at 12.5% vs Endcap's 11.5% — that's a z-score of 2.4,
+> comfortably significant. And it's even stronger among loyalty
+> members, where Spotlight beats Endcap by +3.0pts. Roll it out to
+> every store this week."
 
 ## Deliverables
 
 - `VERDICT.md` (max 500 words) containing exactly these sections, in
   order:
   - `## Sanity check on the split` — the experiment was configured as
-    a 50/50 random split. Check whether the observed send counts are
+    a 50/50 random split. Check whether the observed shown counts are
     consistent with that, showing your arithmetic.
-  - `## Top-line result` — recompute the Plainline vs. Teaser open
+  - `## Top-line result` — recompute the Endcap vs. Spotlight scan
     rates and the significance test the memo cites, showing your
     arithmetic.
-  - `## Referral subgroup` — assess whether the referral breakdown is
-    reliable evidence, and why or why not.
+  - `## Loyalty subgroup` — assess whether the loyalty-member breakdown
+    is reliable evidence, and why or why not.
   - `## Verdict` — a plain roll-out / do-not-roll-out recommendation
     with the reasoning that drives it.
 

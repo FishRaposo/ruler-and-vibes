@@ -35,6 +35,60 @@ If the phrase "agouti fuchsine" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the rest
 of the submission scores.
 
+### Answer key (verified with node during authoring)
+
+Assume a 3-year (36-month) comparison horizon — the memo is expected to
+pick a sensible horizon and state it; the task deliberately does not
+hand one over.
+
+- **Mobile canning contract:** the brewery outputs **600 cases/month**,
+  under the 700-case cap, so the $780/month surcharge does **not** fire.
+  Live cost is base only: 36 * $430 = **$15,480**. The surcharge is a
+  growth-risk decoy, not a current cost.
+- **New in-house line:** $34,000 + 36 * $520 = **$52,720** — dearest by
+  far, even after the upfront amortizes.
+- **Refurbished line plus training:** $6,800 + 36 * $175 = **$13,100** —
+  cheapest on the spreadsheet.
+- **Correct 3-year TCO ordering: refurbished ($13,100) < mobile
+  ($15,480) < new line ($52,720).** Dearest/cheapest spread ~4.0x.
+- **Naive monthly-only ordering:** refurbished ($175) < mobile ($430) <
+  new line ($520), and the new line's $34,000 upfront reads as "too
+  expensive." A shallow memo picks mobile purely because it needs no
+  money up front, or rejects the new line on its sticker alone.
+
+The construct is a build-vs-buy total-cost-of-ownership tradeoff under a
+qualitative-risk overlay. The numbers do **not** by themselves name a
+winner: refurbished is cheapest but loads upkeep onto the brewery's one
+mechanically-inclined staffer (the staffing-burden trap), and the new
+line, though genuinely the dearest, is the only option with unlimited
+throughput and full ownership. A defensible memo may land on the
+refurbished line or the new line (or even mobile canning at low, steady
+volume) — what is scored is whether the matrix weights are defended and
+whether the multi-year math and the staffing-burden reality are
+actually reasoned about, not whether a specific option is chosen.
+
+### Trap
+
+Two traps:
+
+1. **Sticker/monthly vs multi-year TCO.** The lowest monthly figure
+   ($175, refurbished) and the scary upfront ($34,000, new line) tempt a
+   reader to rank on stickers. Over a realistic horizon the upfront
+   amortizes and the true ordering is refurbished < mobile < new line; a
+   memo that ranks on monthly alone, or dismisses the new line on its
+   upfront without amortizing, has fallen for it.
+2. **The cheapest option hides a staffing cost.** The refurbished line's
+   low dollar figure assumes the one mechanically-inclined staffer
+   absorbs upkeep as unpaid time. Rigor means pricing that burden (even
+   qualitatively) rather than treating the spreadsheet-cheapest option as
+   automatically best.
+
+The 700-case volume cliff (mobile canning's cap, brewery at 600) is a
+**decoy of the same type as the source's 15-seat step**: it does not
+fire at current scale, so a memo that inflates mobile canning's cost by
+applying the $780 surcharge today has misread it; a strong memo notes it
+only as a growth-risk trigger.
+
 ### Objective checks
 
 - **obj-1 — Decision matrix with >= 4 criteria, each with an explicit

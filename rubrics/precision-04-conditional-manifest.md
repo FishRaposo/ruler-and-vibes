@@ -118,8 +118,37 @@ the result — the broken version must fail obj-1 (wrong order) and obj-3
   TOTAL-UNITS computation (excluding backorder) was done before the
   branch decision (Rule 4)? Reward REASONING.md that shows this order
   explicitly.
+  - PASS: REASONING.md states that bellows and easel (both qty 0) are
+    excluded first under Rule 1, before hasp is split into BACKORDER
+    under Rule 2.
+  - PASS: REASONING.md shows TOTAL-UNITS computed from only the five
+    alphabetical-order items (excluding hasp), arriving at 487 before
+    the alphabetical-vs-descending branch (Rule 4) is decided.
+  - FAIL: REASONING.md computes TOTAL-UNITS by summing every item
+    including hasp (giving 544), then uses that wrong total to decide
+    the sort branch.
+  - FAIL: REASONING.md never mentions Rule 1's exclusion, leaving it
+    unclear whether bellows/easel were dropped by design or by
+    coincidence.
 - **Format discipline**: exact pipe/space separators, no extra
   whitespace, correct field order.
+  - PASS: every MAIN line matches `K-###|name|qty|check` with no extra
+    spaces around the pipes.
+  - PASS: the BACKORDER line uses single spaces (`K-019 hasp 57`) and no
+    pipes.
+  - FAIL: a MAIN line has a space after a pipe (`K-104 | anvil|62|19`)
+    or fields in a different order.
+  - FAIL: the BACKORDER line uses pipes or extra whitespace instead of
+    the single-space format.
 - **Reasoning quality**: does REASONING.md show the TOTAL-UNITS
   computation landing at 487 (not 544), and does it show each CHECK
   computation's arithmetic rather than just asserting the final digit?
+  - PASS: REASONING.md shows the five-item sum (62+143+89+118+75 = 487)
+    explicitly, distinct from the trap total of 544.
+  - PASS: REASONING.md shows at least one worked CHECK example, e.g.
+    anvil: (62 × 5) mod 97 = 19, rather than only stating the final
+    digit.
+  - FAIL: REASONING.md states the final CHECK digits with no arithmetic
+    shown at all.
+  - FAIL: REASONING.md's stated TOTAL-UNITS arithmetic does not add up
+    to the value in the delivered manifest.txt.

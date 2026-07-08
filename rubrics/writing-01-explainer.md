@@ -42,6 +42,64 @@ of the submission scores.
 - Reasoning quality: did REASONING.md weigh audience, analogy choice,
   and what to leave out?
 
+### obj-3 — exactly one extended analogy
+
+The analogy must be developed (multiple sentences building out the
+comparison), not a single throwaway clause, and there must be exactly
+one — not zero, not two competing ones.
+
+**PASSING** (one analogy, developed across several sentences):
+
+1. A restaurant-order-ticket analogy: the kitchen accepts your order
+   the instant you place it, but the printed ticket on the wall board
+   only gets updated a moment later — nobody loses the order, it just
+   takes a beat for every copy to show the same thing.
+2. A group-text analogy: you send the news to a group chat and each
+   friend's phone buzzes at a slightly different moment depending on
+   their signal, but everyone ends up seeing the same message.
+3. A newsletter-mailing analogy: the newsletter is finalized the moment
+   it's sent, but it lands in different inboxes a few seconds apart
+   depending on each mail server, even though every copy is identical.
+
+**FAILING**:
+
+1. No analogy at all — the piece stays in literal, technical terms
+   throughout ("the system uses eventually consistent replication
+   across nodes with convergence guarantees").
+2. Two unrelated analogies — opens with the group-text comparison, then
+   switches midway to a relay-race handoff comparison. Even if both are
+   well drawn, "exactly one" is violated.
+3. A single passing mention that is never developed ("it's a bit like
+   texting someone") with no elaboration — too brief to count as
+   "extended."
+
+### obj-4 — explicitly answers the safety question
+
+The explainer must directly state whether the owner's data is safe
+during the lag, not merely gesture at the system resolving itself.
+
+**PASSING** (an explicit, on-point answer):
+
+1. "Yes — your sales data is completely safe; the dashboard is just
+   slow to catch up, nothing about the sale itself is at risk."
+2. "To be clear: none of your data is in danger here. This delay is
+   only about how quickly the number on your screen updates, not
+   whether the sale was recorded."
+3. "So the short answer is yes, you're covered: every sale is recorded
+   the moment it happens, and the dashboard simply takes a few seconds
+   to show it."
+
+**FAILING** (never lands on an explicit answer):
+
+1. Explains eventual consistency thoroughly and accurately, but never
+   circles back to say whether the data is safe — leaves the reader to
+   infer it.
+2. Generic reassurance that doesn't address the actual worry: "Don't
+   worry, everything will be fine — these things always work out!"
+   (never mentions the data or sales specifically).
+3. Evasive hedging: "It really depends on how your system is set up" —
+   never commits to an answer for this owner's situation.
+
 ### obj-5 — unexplained jargon
 
 Every technical term the piece uses must be explained in the same

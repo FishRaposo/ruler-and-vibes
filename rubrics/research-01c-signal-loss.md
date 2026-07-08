@@ -73,6 +73,33 @@ the rest scores.
   claims 4, 7, and 10 must show `none`, not a blank cell or an
   unrelated citation.
 
+### Prose-located check: is claim 7 (hedged speculation vs. asserted fact) correctly read as unsupported?
+
+This determination is binary but requires reading S4's hedge in context.
+Example phrasings a judge will encounter, and how to score them:
+
+**PASSING** (correctly treats the hedge as non-support):
+1. "S4's customer explicitly says 'I have no idea if Fenwick has had an
+   outage this bad before... I'm just guessing out loud' — this is the
+   poster admitting they don't know, not a statement that it was or
+   wasn't the first major outage, so claim 7 is UNSUPPORTED."
+2. "Although S4 touches on the topic of prior outages, the poster frames
+   it as their own uninformed guess rather than a known fact, so this
+   cannot be read as source support for claim 7."
+3. "No source states or implies whether this was Fenwick's first major
+   outage; S4's musing is explicitly hedged and not evidence either
+   way."
+
+**FAILING** (treats the hedge as if it were a factual assertion):
+1. "S4 confirms this was Fenwick's first major outage [S4]." (Reads a
+   forum poster's admitted guess as a factual claim.)
+2. "Since the customer in S4 wonders whether Fenwick has had a bad
+   outage before and doesn't mention any prior incident, we can treat
+   this as supporting evidence that it's the first one." (Converts an
+   acknowledged absence of knowledge into support.)
+3. Marking claim 7 SUPPORTED citing S4 without any note that the
+   language is hedged speculation rather than an assertion.
+
 ### Subjective guidance
 
 - **Evidence-mapping clarity**: can a reader verify each verdict by

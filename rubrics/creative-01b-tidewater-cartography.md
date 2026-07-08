@@ -8,7 +8,7 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "Valid SVG that renders in a browser; viewBox is 0 0 640 960"
+      check: "Valid SVG that renders in a browser; viewBox is 0 0 620 930"
     - id: obj-2
       check: "Event name, dates, and venue all present as text"
     - id: obj-3
@@ -37,18 +37,18 @@ of the submission scores.
 
 - Open the file in a browser; judge what you see, not the code alone.
 
-**obj-1 — Valid SVG that renders in a browser; viewBox is 0 0 640 960.**
+**obj-1 — Valid SVG that renders in a browser; viewBox is 0 0 620 930.**
 The root must be `<svg>`, the markup well-formed, and the viewBox exactly
-`0 0 640 960` (portrait).
-- PASS: the root `<svg>` carries `viewBox="0 0 640 960"` and the file
+`0 0 620 930` (portrait).
+- PASS: the root `<svg>` carries `viewBox="0 0 620 930"` and the file
   opens to a rendered poster with no XML parse error.
-- PASS: values equivalent up to whitespace (e.g. `viewBox="0 0 640
-  960"` with extra spaces) that a browser parses to the same 640×960
+- PASS: values equivalent up to whitespace (e.g. `viewBox="0 0 620
+  930"` with extra spaces) that a browser parses to the same 620×930
   box.
 - PASS: every tag is closed and nested correctly; the browser shows
   artwork rather than a raw-source or error view.
 - FAIL: viewBox is missing, or is a different box such as
-  `0 0 600 900` or `0 0 640 900`.
+  `0 0 600 900` or `0 0 620 900`.
 - FAIL: the SVG is malformed — an unclosed tag or stray `<` — so the
   browser shows a parse error instead of the poster.
 - FAIL: the artwork is authored in landscape (width greater than

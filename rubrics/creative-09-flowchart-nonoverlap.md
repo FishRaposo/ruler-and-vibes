@@ -164,12 +164,38 @@ process.exit(allOk ? 0 : 1);
   floating near the boxes)? Penalize layouts that satisfy the geometric
   predicate but visually obscure the 1->2->3->4->5->6 order (e.g.
   nodes scattered with crossing, ambiguous connectors).
+  - PASS: nodes proceed strictly left-to-right in two clean columns
+    (node-1/3/5 left, node-2/4/6 right) or top-to-bottom in a single
+    column, so the 1->2->...->6 order is obvious at a glance; PASS:
+    each edge visibly touches the boundary of its source and target box
+    with no ambiguity about which pair it connects.
+  - FAIL: nodes are scattered (e.g. node-5 placed above node-2) so the
+    AABB/margin checks pass but a viewer cannot tell the sequence
+    without reading labels one by one; FAIL: an edge is routed as a
+    long diagonal that visually appears to touch node-3 when it is
+    actually the node-1->node-2 connector, creating a misleading
+    connection.
 - **SVG layout craftsmanship**: is spacing deliberate and balanced (not
   just barely-legal placements hugging the margin), is the arrowhead
   marker sized/oriented sensibly, and is the markup organized clearly
   (grouped nodes vs. edges, consistent styling)?
+  - PASS: consistent gaps between columns/rows well beyond the 20px
+    minimum margin, nodes grouped under something like `<g
+    id="nodes">`/`<g id="edges">`, an arrowhead sized proportionally to
+    the connector's stroke width and oriented along the line direction.
+  - FAIL: nodes packed at exactly x=20/y=20 with no breathing room,
+    mismatched stroke widths/fills across nodes with no evident
+    pattern, or a marker so large it obscures the node it points at.
 - **Reasoning quality**: if the model explains its layout choice (grid
   vs. serpentine vs. single row), does the explanation correctly
   connect the chosen coordinates to the non-overlap and margin
   constraints (e.g., naming the row/column spacing that guarantees
   disjointness) rather than just asserting the layout is valid?
+  - PASS: reasoning names the actual chosen coordinates and spacing
+    (e.g. "two columns 520px apart, rows 220px apart, both exceeding
+    the 160x60 box size") and explains why that spacing guarantees zero
+    overlap and satisfies the >=20px margin.
+  - FAIL: reasoning only asserts "the boxes don't overlap" without
+    citing the coordinates/spacing actually used, or cites spacing
+    numbers that don't match the coordinates actually present in
+    flowchart.svg.

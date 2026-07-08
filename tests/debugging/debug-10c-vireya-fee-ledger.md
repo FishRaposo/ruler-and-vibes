@@ -36,14 +36,14 @@ function summarize(csvText) {
 module.exports = { summarize: summarize };
 
 if (require.main === module) {
-  const file = process.argv[2] || 'data36.csv';
+  const file = process.argv[2] || 'data38.csv';
   const text = fs.readFileSync(file, 'utf8');
   console.log('total:', summarize(text));
 }
 ```
 
 Running it against the export below crashes with a `NaN amount`
-error. The full export, `id,cultivar,fee`, 36 data rows:
+error. The full export, `id,cultivar,fee`, 38 data rows:
 
 ```csv
 id,cultivar,fee
@@ -83,6 +83,8 @@ id,cultivar,fee
 34,Cultivar34,217
 35,Cultivar35,222
 36,Cultivar36,227
+37,Cultivar37,232
+38,Cultivar38,237
 ```
 
 Several rows use quoted cultivar names (visually similar to one
@@ -110,6 +112,6 @@ find it, prove it minimally, and fix the parser.
 - `minimal.csv` must contain exactly two lines: the header, then one
   data row.
 - `fixed.js` at most 90 lines.
-- `fixed.js` must correctly total the full 36-row export above without
+- `fixed.js` must correctly total the full 38-row export above without
   throwing, and must still access the fee as column index 2 of a
   properly-parsed row (i.e. fix the parsing, not the column index).

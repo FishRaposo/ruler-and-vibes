@@ -12,7 +12,7 @@ criteria:
     - id: obj-2
       check: "minimal.csv contains exactly two lines (header + one data row, mechanically checked by line count), and that row is the author's ground-truth poison row: `23,\"Vireya, Thornwood\",162`"
     - id: obj-3
-      check: "node fixed.js run against the full embedded 36-row CSV parses without throwing and returns the reference total of 5022"
+      check: "node fixed.js run against the full embedded 38-row CSV parses without throwing and returns the reference total of 5491"
     - id: obj-4
       check: "Judge confirms fixed.js correctly handles a quoted field containing a comma: summarize('id,cultivar,fee\\n5,\"Vireya, Thornwood\",240\\n') returns exactly 240, not NaN and not a shifted value"
     - id: obj-5
@@ -66,20 +66,20 @@ rest scores.
   than one data row, fails obj-2 even if it happens to still crash for
   an unrelated reason (verify the crash is specifically the row-23
   shift, not something else introduced by the submission).
-- Reference total over the full 36-row export under a correct
-  quoted-CSV parse: **5022** (sum of `47 + 5*i` for i in 1..36).
-  Recompute directly if in doubt: `sum_{i=1}^{36}(47+5i) = 36*47 +
-  5*(36*37/2) = 1692 + 3330 = 5022`.
+- Reference total over the full 38-row export under a correct
+  quoted-CSV parse: **5491** (sum of `47 + 5*i` for i in 1..38).
+  Recompute directly if in doubt: `sum_{i=1}^{38}(47+5i) = 38*47 +
+  5*(38*39/2) = 1786 + 3705 = 5491`.
 - Judge-script sketch:
   ```
   node -e "
   const {summarize} = require('./fixed.js');
-  console.log(summarize(require('fs').readFileSync('data36.csv','utf8')));
+  console.log(summarize(require('fs').readFileSync('data38.csv','utf8')));
   console.log(summarize('id,cultivar,fee\n5,\"Vireya, Thornwood\",240\n'));
   "
   ```
-  Expected: `5022` then `240`. (The judge reconstructs `data36.csv`
-  from the 36-row block embedded in the test file.)
+  Expected: `5491` then `240`. (The judge reconstructs `data38.csv`
+  from the 38-row block embedded in the test file.)
 - obj-5 root-cause naming -- example phrasings for comparison:
   - PASS phrasings (2-3 examples): "the parser splits every line on
     `,` with no awareness of quotes, so the embedded comma in

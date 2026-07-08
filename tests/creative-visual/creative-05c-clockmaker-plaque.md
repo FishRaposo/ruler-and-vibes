@@ -33,7 +33,7 @@ ordered edits:
 
 1. Change `#headline`'s text content from `PROOF` to `MERIDIAN`.
 2. Change `#bg`'s `fill` from `#f0efe9` to `#101f38`.
-3. Add `stroke="#c9a227"` and `stroke-width="4"` to `#dial`.
+3. Add `stroke="#c9a227"` and `stroke-width="5"` to `#dial`.
 
 You must also fix the rendering bug: `#rose` has `fill="url(#compass)"`,
 but the only gradient definition in `<defs>` has `id="brass"` — so as

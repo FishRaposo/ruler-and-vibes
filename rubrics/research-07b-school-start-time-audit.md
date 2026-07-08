@@ -66,6 +66,23 @@ rest scores.
 
 - **obj-1**: both S3 and S6 must be named by ID with their specific
   fact (not just "S3 has a downside" without stating what it is).
+  Example phrasings:
+  - PASS: "S3 is omitted: a comparable district's later start time
+    produced a 14% decline in after-school athletic program
+    participation in year one [S3]. S6 is also omitted: students with
+    part-time jobs or caregiving duties have less schedule flexibility
+    to absorb a later dismissal, and the proposal offers no
+    accommodation, so lower-income students bear a disproportionate
+    share of the cost [S6]."
+  - PASS: "Two sources never appear in the brief — S3, which found a
+    14% year-one drop in athletic participation, and S6, which flags
+    that students juggling jobs or caregiving get no accommodation for
+    the later dismissal."
+  - FAIL: "The brief omitted S3 and S6, both of which contain
+    unfavorable evidence." (no specific fact stated for either source)
+  - FAIL: "S3 has a downside for athletics, and S6 raises equity
+    concerns." (gestures at a topic without naming the actual finding
+    or figure)
 - **obj-2**: a false-positive omission (e.g., claiming the brief never
   cites S4, or never cites S2) fails this check even if S3/S6 are
   correctly caught. Listing S5 inside the "omitted sources" finding

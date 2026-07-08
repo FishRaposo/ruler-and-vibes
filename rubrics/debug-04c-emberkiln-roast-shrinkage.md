@@ -82,7 +82,24 @@ scores.
 - Root-cause depth: does REASONING.md reproduce the actual order
   dependence (show the leak happening), or does it just assert "there
   was a mutation bug" without demonstrating the mechanism?
+  - PASS phrasings: "the override call writes 0.30 into the shared
+    PROFILES.house, so the next plain call reads 0.30 and returns 3780
+    instead of 4752"; "I traced call two returning the leaked loss
+    value"; "Object.assign's first arg is the shared object, so it is
+    mutated in place — the second roast inherits it".
+  - FAIL phrasings: "there was a state bug, now fixed"; "cleaned up how
+    profiles are handled"; "added a defensive copy" with no trace of
+    the leaked second-call value.
 - Reasoning quality: does the write-up explicitly exonerate
   `applyShrinkage`, explaining why the bug report's target was wrong,
   rather than silently fixing the real bug without addressing the
   report's (incorrect) accusation?
+  - PASS phrasings: "applyShrinkage is a pure function of the profile
+    it receives — given the right profile it is always correct, so it
+    is not at fault"; "the report blamed applyShrinkage, but the
+    mutation is in getProfile; applyShrinkage only sees polluted
+    input"; "touching applyShrinkage would break the legitimate
+    percent-form override".
+  - FAIL phrasings: silence on applyShrinkage entirely; "fixed
+    applyShrinkage as reported"; "both functions had issues" (false —
+    applyShrinkage is correct).

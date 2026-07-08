@@ -66,14 +66,37 @@ rest scores.
   value can be honestly recovered; any submitted string (even one that
   copies the partial digits and asterisks, or invents replacement
   digits) fails obj-2.
-- Transcription fidelity: does every field map cleanly from the
-  printed text with no transcription slips (case, spelling, item
-  order)?
-- Schema conformance & null discipline: exact key set, correct types
-  (numbers as numbers, not strings), and — the crux of this test — is
-  `null` used for the illegible field instead of a guess, a partial
-  string, or an empty string?
-- Reasoning quality: does REASONING.md state explicitly, in plain
-  terms, why `loyalty_number` is `null` (the card is smudged / three
-  characters are asterisked and unrecoverable), rather than silently
-  omitting an explanation or hand-waving past it?
+
+- Transcription fidelity (`sub-quality`): does every field map cleanly
+  from the printed text with no transcription slips (case, spelling,
+  item order)?
+  - PASS examples: `store_name` is `"Northgate Pantry"` with exact
+    casing; `items` preserves the printed order Oat Milk → Sourdough →
+    Almonds; `purchase_date` copied as `"2024-11-08"` verbatim.
+  - FAIL examples: `store_name` lower-cased to `"northgate pantry"` or
+    abbreviated to `"Northgate"`; `items` reordered (Sourdough before
+    Oat Milk) or a description trimmed to `"Almonds"`; `purchase_date`
+    reformatted to `"11/08/2024"`.
+
+- Schema conformance & null discipline (`sub-craft`): exact key set,
+  correct types (numbers as numbers, not strings), and — the crux of
+  this test — is `null` used for the illegible field instead of a
+  guess, a partial string, or an empty string?
+  - PASS examples: exactly the seven schema keys present with
+    `loyalty_number` as JSON `null`; `subtotal` emitted as the number
+    `43.00`, not `"43.00"`; no extra `bay`/`register` key added.
+  - FAIL examples: `loyalty_number` set to `"4471-**8-2*9"`,
+    `"4471-018-289"`, `""`, or the string `"null"`; a stray eighth key
+    such as `"bay"` included; `total` emitted as the string `"47.30"`.
+
+- Reasoning quality (`sub-reasoning`): does REASONING.md state
+  explicitly, in plain terms, why `loyalty_number` is `null` (the card
+  is smudged / three characters are asterisked and unrecoverable),
+  rather than silently omitting an explanation or hand-waving past it?
+  - PASS examples: "The loyalty line reads `4471-**8-2*9` — three
+    positions are masked, so the full number cannot be recovered and I
+    set `loyalty_number` to `null`."; a note that guessing the masked
+    digits would violate the no-invention constraint.
+  - FAIL examples: no mention of `loyalty_number` at all; a vague
+    "some fields were unclear" with no statement of which field or why;
+    a claim that the number was "reconstructed from context."

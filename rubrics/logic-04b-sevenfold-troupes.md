@@ -12,7 +12,7 @@ criteria:
     - id: obj-2
       check: "Part B contains all three required elements as text the judge locates: the sum 7 x 3 = 21 (or an equivalent statement that the sum of all troupes' coproduction counts would be 21), the fact that each coproduction contributes 2 to that sum (so the sum must be even), and an explicit conclusion of impossibility"
     - id: obj-3
-      check: "Part C's coproduction list passes the rubric's node property-check script: every line parses as 'i-j' with 1 <= i < j <= 7, exactly 14 distinct pairs, no self-pairings, and every troupe appears in exactly 4 coproductions"
+      check: "Part C's coproduction list passes the rubric's node property-check script: every line parses as 'i-j' with 1 <= i < j <= 7, exactly 7 distinct pairs, no self-pairings, and every troupe appears in exactly 2 coproductions"
     - id: obj-4
       check: "Part D states that per-troupe counts lie in {1,...,6} (6 possible values for 7 troupes) and applies pigeonhole to conclude two troupes share a count"
     - id: obj-5
@@ -47,7 +47,7 @@ exactly as they appear in PROOF.md) as `schedule.txt`, then run:
 node -e "
 const fs = require('fs');
 const lines = fs.readFileSync('schedule.txt', 'utf8').split('\n').map(l => l.trim()).filter(l => l.length > 0);
-const n = 7, requiredDegree = 4;
+const n = 7, requiredDegree = 2;
 const seen = new Set();
 const degree = {};
 for (let i = 1; i <= n; i++) degree[i] = 0;
@@ -69,29 +69,28 @@ if (ok) {
     if (degree[v] !== requiredDegree) { ok = false; reason = 'troupe ' + v + ' has degree ' + degree[v] + ' expected ' + requiredDegree; break; }
   }
 }
-console.log(ok ? 'PASS: valid 4-regular festival on 7 troupes' : 'FAIL: ' + reason);
+console.log(ok ? 'PASS: valid 2-regular festival on 7 troupes' : 'FAIL: ' + reason);
 console.log('degrees:', degree);
 "
 ```
 
 Run this against the submission's actual Part C list — do not assume the
 circulant example is the only valid answer; **any** simple graph on 7
-vertices where every vertex has degree exactly 4 passes (this forces
-exactly 14 edges, since 7x4/2=14, so the edge count is not an
+vertices where every vertex has degree exactly 2 passes (this forces
+exactly 7 edges, since 7x2/2=7, so the edge count is not an
 independent constraint).
 
 Example correct construction (troupes in a circle, each coproducing with
-its two nearest neighbors on each side): `1-2, 1-3, 1-6, 1-7, 2-3, 2-4,
-2-7, 3-4, 3-5, 4-5, 4-6, 5-6, 5-7, 6-7` — this construction was run
-through the script above and printed `PASS` with all 7 troupes at degree
-4.
+its two nearest neighbors, forming a single 7-cycle): `1-2, 1-7, 2-3,
+3-4, 4-5, 5-6, 6-7` — this construction was run through the script above
+and printed `PASS` with all 7 troupes at degree 2.
 
 Before trusting the result on a real submission, also run the script
 against two deliberately broken lists to confirm it correctly rejects
 them: (1) a list with one pair duplicated (e.g. repeat `1-2` in place of
 one other edge) must print `FAIL: duplicate: 1-2`; (2) a list with one
-edge simply removed (13 edges instead of 14) must print `FAIL: wrong
-count 13 expected 14`.
+edge simply removed (6 edges instead of 7) must print `FAIL: wrong
+count 6 expected 7`.
 
 - **obj-1**: 21 must appear as the stated answer for Part A, with C(7,2)
   or 7x6/2 shown as the derivation.
@@ -114,7 +113,7 @@ count 13 expected 14`.
     (asserts oddness but never says the sum must be even / why); "each
     troupe having 3 is too many, so it fails" (wrong mechanism).
 - **obj-3**: run the property-check script above; it must print `PASS`.
-  Any valid 4-regular graph on 7 vertices is acceptable, not just the
+  Any valid 2-regular graph on 7 vertices is acceptable, not just the
   circulant example.
 - **obj-4**: the count of possible values (6, for range 1..6) and the
   pigeonhole conclusion (two troupes share a count) must both be

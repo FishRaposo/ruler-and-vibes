@@ -14,7 +14,7 @@ the yard's true spur assignments before they are printed on the day's
 ops sheet, using the affine formula:
 
 ```
-S(x) = (5x + 9) mod 34
+S(x) = (3x + 15) mod 34
 ```
 
 where `x` is the true spur number and the result is the printed
@@ -24,8 +24,8 @@ true routing sequence.
 
 Answer all four questions, showing your modular working for Q1 and Q4:
 
-- **Q1**: Compute the modular inverse of 5 mod 34 (the number `k` such
-  that `5k ≡ 1 (mod 34)`). State it.
+- **Q1**: Compute the modular inverse of 3 mod 34 (the number `k` such
+  that `3k ≡ 1 (mod 34)`). State it.
 - **Q2**: Using that inverse, decode the printed sequence `1, 9, 12,
   23` and state the recovered true spur sequence, in order.
 - **Q3**: A valid scrambler key on this 34-spur disk is a pair `(a, b)`

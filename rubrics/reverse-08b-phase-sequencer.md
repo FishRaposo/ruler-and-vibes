@@ -42,6 +42,16 @@ rest scores.
   structured recovered version agree on all `limit` in `0..24`.
   Reference outputs: `f(0)=0`, `f(1)=0`, `f(4)=4`, `f(12)=24`,
   `f(24)=84`.
+- obj-1 (ANSWER.md states what the function computes):
+  - PASS phrasings: "It sums every index from 1 to `limit` that's a
+    multiple of 4"; "Returns the total of all multiples of 4 in the
+    inclusive range 1..limit"; "Every 4th step contributes its own
+    index value to a running total, which is what's returned".
+  - FAIL phrasings: "It counts how many steps ran" (wrong construct —
+    describes a count, not a conditional sum); "It adds up every index
+    from 1 to `limit`" (misses the divisible-by-4 condition entirely —
+    this is the double-add trap's behavior, not the reference); "It
+    computes the average value per step" (wrong operation).
 - Recovered structure — a `for` loop from `idx=1` to `idx<=limit`, with
   an inner `if (idx % 4 === 0) total += idx;` and no `else` action:
 
@@ -78,6 +88,21 @@ rest scores.
   `idx < limit` instead of `idx <= limit`) gives `0, 0, 0, 12, 60`
   instead of the correct `0, 0, 4, 24, 84` — also sharply wrong at the
   reference inputs, not a subtle discrepancy.
+- obj-5 (explains phase-2's if/else and the shared successor):
+  - PASS phrasings: "Both branches of phase 2 lead to phase 3 next;
+    only the `if` (when `idx % 4 === 0`) adds to `total` — the `else`
+    is a bare fallthrough that changes nothing before advancing"; "The
+    `if`/`else` in phase 2 aren't symmetric: only a multiple of 4 bumps
+    `total`; every other idx just falls through to phase 3 with no side
+    effect"; "Phase 2's `else` exists only to route non-multiples to
+    the same next phase (phase 3) that the `if` branch reaches after
+    adding — it is not a second accumulation path".
+  - FAIL phrasings: "The `if` and `else` both add to `total`, just by
+    different amounts" (asserts a false symmetry); "Phase 2's `else`
+    branch skips the rest of the loop and exits" (misreads the control
+    flow — `else` does not exit); "The conditional in phase 2 doesn't
+    really affect the outcome" (vague, never identifies the actual
+    mechanism).
 - Verify obj-2 and obj-4 by actually running `node unflat.js`: it must
   print the recovered function's five reference outputs, then a single
   `EQUIVALENCE: PASS (n=0..24)` line (or, if the submission's logic is

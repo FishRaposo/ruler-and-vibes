@@ -66,12 +66,43 @@ rest scores.
   `0` alone is a valid single version digit) or `AB-100.v` followed
   by no digits (should not match) to sanity-check generality beyond
   the 22 listed vectors.
+  - PASS phrasings: "the digit run is `[1-9]\d{2,4}`, pinning the tag
+    number to 3-5 digits with a non-zero lead"; "the `(\.v\d{1,2})?`
+    group makes the version suffix optional and caps it at two digits,
+    so `AB-123` and `AB-123.v1` both match while `AB-123.v123` does
+    not"; "accepts `AB-999.v0` because a lone `0` is one valid version
+    digit."
+  - FAIL phrasings: "uses `\d{3,5}` and so wrongly admits a leading
+    zero like `AB-023`"; "makes the whole suffix mandatory (or its
+    digits optional), so a bare `AB-123` is rejected or `AB-123.v` is
+    accepted"; "bounds the digit run as `\d{2,4}` or `\d+`, mis-sizing
+    the 3-5-digit tag number."
 - Pattern economy: reward a single clean anchored regex that maps
   cleanly to the grammar (character class, hyphen, digit-count
   quantifier, optional group) over a sprawling alternation or a regex
   wrapped in extra hand-written pre/post string manipulation that
   defeats the "single regex" spirit of the task.
+  - PASS phrasings: "one anchored literal whose four pieces line up
+    with the four grammar rules, no alternation"; "the optional suffix
+    is a single `?`-quantified group rather than two spelled-out
+    alternatives"; "no hand-written slicing or pre-trimming around the
+    regex — the pattern does all the work."
+  - FAIL phrasings: "a long `|`-alternation enumerating with-suffix
+    and without-suffix forms separately"; "the regex is only part of
+    the job and the code hand-parses the hyphen or the digit run in
+    JavaScript"; "escaped every literal character defensively,
+    producing an unreadable pattern that obscures the four grammar
+    rules."
 - Reasoning quality: judge from comments/structure in pattern.js
   whether the model explains why full-string anchoring is required
   (the substring-match trap) and how the digit-count and leading-digit
   constraints are encoded.
+  - PASS phrasings: "states that without `^...$` the pattern would
+    match a valid tag embedded in surrounding text like `see AB-999
+    here`"; "explains that `[1-9]` on the first digit is what bans the
+    leading-zero run `AB-023`"; "notes the `{2,4}` after the lead digit
+    is what yields a 3-5 digit total."
+  - FAIL phrasings: "no rationale, just the pattern"; "claims the
+    regex is whole-string safe without mentioning anchors or the
+    substring trap"; "hand-waves 'matches the tag format' without
+    saying how the digit count or leading digit is enforced."

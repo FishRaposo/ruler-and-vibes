@@ -15,10 +15,10 @@ apply the exact same rule to the four new items.
 ### Worked labels (item -> shelf code)
 
 ```
-thyme -> hymet5
-saffron -> affrons7
-chive -> hivec5
-bay -> ayb3
+thyme -> 5ethym
+saffron -> 7nsaffro
+chive -> 5echiv
+bay -> 3yba
 ```
 
 ### New items to label

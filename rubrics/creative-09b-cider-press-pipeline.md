@@ -197,12 +197,35 @@ process.exit(allOk ? 0 : 1);
   floating near the boxes)? Penalize layouts that satisfy the geometric
   predicate but visually obscure the 1->2->3->4->5->6->7 order (e.g.
   stages scattered with crossing, ambiguous connectors).
+  - PASS: the reference-style serpentine (column A/B alternating down
+    the canvas) reads unambiguously top-to-bottom, with each connector
+    visibly touching its source/target stage; PASS: a single column or
+    single row where stage-1..stage-7 appear in strict visual order.
+  - FAIL: stages placed out of visual order (e.g. stage-6 sitting above
+    stage-3) so the geometric checks pass but a viewer must trace labels
+    to find the sequence; FAIL: a connector's line crosses through an
+    unrelated stage box or appears to link the wrong pair of stages.
 - **SVG layout craftsmanship**: is spacing deliberate and balanced (not
   just barely-legal placements hugging the margin), is the arrowhead
   marker sized/oriented sensibly, and is the markup organized clearly
   (grouped stages vs. edges, consistent styling)?
+  - PASS: the ~420px column gap / 128px row pitch from the reference
+    layout (or comparably generous spacing), stages and edges grouped
+    into separate `<g>` blocks, a marker sized/oriented consistently
+    with the connector stroke.
+  - FAIL: stages placed at the bare 24px margin on every side with no
+    visual breathing room, inconsistent fills/stroke widths across
+    stages for no apparent reason, or an arrowhead marker pointing the
+    wrong direction relative to its edge.
 - **Reasoning quality**: if the model explains its layout choice (grid
   vs. serpentine vs. single row), does the explanation correctly connect
   the chosen coordinates to the non-overlap and margin constraints (e.g.,
   naming the row/column spacing that guarantees disjointness) rather than
   just asserting the layout is valid?
+  - PASS: reasoning states the actual column/row spacing used (e.g.
+    "columns 420px apart, rows 128px apart, both exceeding the 140x70
+    stage box") and explains why that spacing prevents overlap while
+    respecting the 24px margin.
+  - FAIL: reasoning vaguely claims "no stages overlap" without citing
+    real coordinates or spacing, or states spacing numbers that
+    contradict the coordinates actually used in cidermap.svg.

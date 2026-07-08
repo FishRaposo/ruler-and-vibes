@@ -55,6 +55,14 @@ rest scores.
   underlying data — reward submissions that state this mechanism
   clearly (not just "the chart is misleading") and connect it to the
   specific 95-start baseline and the specific ratio distortion.
+  PASS phrasings: "the axis is truncated at 95, so a 5% rise is drawn
+  as a doubled bar"; "cutting the baseline to 95 encodes value-minus-95,
+  not value, so small gaps balloon"; "the non-zero baseline makes the
+  Q4 bar 2x the Q1 bar while the metric rose only 1.05x".
+  FAIL phrasings: "the chart is misleading and unfair to readers";
+  "the bars overstate the trend and should be redrawn"; "leadership
+  could be fooled by this exaggerated chart" (no mechanism, no baseline,
+  no number).
 - Honest-chart craftsmanship: reward clean, readable SVG (sensible
   viewBox, visible axis or baseline reference, labeled bars/values)
   over a bare four-rect dump that technically satisfies the numeric
@@ -62,3 +70,9 @@ rest scores.
 - Reasoning quality: does CRITIQUE.md show the actual arithmetic for
   both the true growth rate and the exaggeration ratio, rather than
   asserting "the chart exaggerates growth" without numbers?
+  PASS phrasings: "(105-100)/100 = 0.05 = 5%, and 10/5 = 2.0 vs 105/100 =
+  1.05, so 2.0/1.05 = 1.9x"; "growth is 5% by (105-100)/100; the height
+  ratio 2.0 overstates the true 1.05 ratio by ~1.9x".
+  FAIL phrasings: "the chart roughly doubles the real growth" (no
+  computation shown); "Q4 is only slightly higher than Q1 so the
+  chart lies" (no rate, no exaggeration figure).

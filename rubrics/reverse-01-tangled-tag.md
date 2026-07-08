@@ -108,12 +108,52 @@ rest scores.
   flow. Penalize a "clean" file that just renames `_r`/`_p` but keeps
   the reversal indirection alive, or that keeps the double-negation
   style even with different variable names.
+  - PASS phrasings: "renamed everything to `tag`/`t`/`c`, replaced the
+    reversed lookups with direct `s.length` and `s.charCodeAt(i)`, loop
+    reads top-to-bottom"; "no indirection or double-negation survives —
+    the fold is a plain `((t<<3)+c)^(c>>1)`"; "control flow is a single
+    straight `for` with an explicit `t & 0xFFF` mask, nothing disguised".
+  - FAIL phrasings: "kept `_r(_p[1])` for the length lookup, only renamed
+    the outer function"; "still writes `- -c` for the add, just with a
+    nicer variable name"; "left `a^a` in place as the initializer instead
+    of writing `0`".
 - Disguise-spotting thoroughness: does `REASONING.md` name ALL of the
   disguises — the reversed-string property-name lookup, the `a^a`
   dead zero, the double-negation-as-addition (both occurrences), and
   the 12-bit mask — or does it only catch the obvious ones and miss,
   say, the second `- -` in the return statement?
+  - PASS phrasings: "lists all four tricks: reversed `charCodeAt`/`length`
+    names, `a^a` = 0, both `- -` additions, and the `& 0xFFF` per-loop
+    mask"; "explicitly notes the return-statement `- -` is the *second*
+    disguised add, not just the one in the loop"; "identifies `a^a` as a
+    decoy that always yields zero regardless of `a`".
+  - FAIL phrasings: "mentions only the reversed property names and stops
+    there"; "spots the loop `- -c` but never addresses the tail `- -`";
+    "calls `a^a` 'some constant' without noting it is always 0".
 - Reasoning quality: look for a precise, step-by-step deobfuscation
   narrative rather than a vague "I cleaned it up" — it should be clear
   the author actually decoded `_r(_p[1])` to `length` rather than
   guessing from context.
+  - PASS phrasings: "reverses `'htgnel'` character-by-character to reach
+    `'length'` and shows the work"; "traces one loop iteration with a
+    concrete `c` to confirm the fold and mask"; "explains why `a^a`
+    forces the seed to 0 regardless of `a`".
+  - FAIL phrasings: "asserts the answer with no derivation"; "says 'it
+    hashes the string' without decoding the reversed names"; "guesses
+    `length` from surrounding context rather than reversing the literal".
+- PASS/FAIL exemplars for the two prose-decidable checks (obj-5 names the
+  x7-length tail and 12-bit hash; obj-6 names `- -` as addition). Accept
+  any clearly-worded equivalent; these are illustrative, not verbatim
+  requirements.
+  - obj-5 PASS: "the result is the 12-bit rolling hash plus seven times
+    the length" / "returns the masked hash, then adds 7 * s.length" /
+    "final value = rolling digest (& 0xFFF) + 7·(number of characters)".
+  - obj-5 FAIL: "returns a hash of the string" (tail unnamed) / "adds a
+    multiple of the length" (multiplier 7 not stated) / silence on the
+    trailing `+ 7 * s.length` term entirely.
+  - obj-6 PASS: "`- -c` subtracts a negated value, which is just adding
+    `c`" / "the double minus is disguised addition" / "`t - -c` equals
+    `t + c`, so it is an add, not a subtract".
+  - obj-6 FAIL: "the code subtracts the character code" (read literally
+    as subtraction) / "there is a minus operation on `c`" (no equivalence
+    to addition drawn) / no mention of the `- -` construct at all.

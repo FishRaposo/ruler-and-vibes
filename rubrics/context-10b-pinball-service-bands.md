@@ -91,10 +91,7 @@ even+A => Band-1, same letter/opposite parity) and training row 1
 (DK-357-FOYER-C, odd+C => Band-4, same parity/opposite letter-group). A
 model that classifies using only one feature will get some of the eight
 right by chance but cannot get all eight right without truly combining
-both features — this is exactly what obj-3 gates on. (A naive
-letter-only classifier scores 7/15 and a naive parity-only classifier
-scores 7/15 on the test set; only a genuine two-feature rule reaches
-15/15.)
+both features — this is exactly what obj-3 gates on.
 
 ### Objective check notes
 

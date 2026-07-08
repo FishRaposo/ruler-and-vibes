@@ -57,14 +57,44 @@ Parallel form of `precision-02-constrained-piece` (same construct, fresh surface
     obj-4 FAIL phrasings: `route history` repeated in paragraph 5;
     `group rides` mentioned in paragraph 3; a feature named twice
     anywhere in the piece.
-- Reads naturally: the best entries stay disciplined — every beat lands
-  on the constraint grid, yet a reader who doesn't know the rules
-  notices nothing stiff. Penalize copy that telegraphs its
+- Reads naturally under constraints: the best entries stay disciplined —
+  every beat lands on the constraint grid, yet a reader who doesn't know
+  the rules notices nothing stiff. Penalize copy that telegraphs its
   constraints (strained openers, padded sentences to hit the count).
+  - PASS: the mandated opener words start sentences that would read the
+    same way if no rule existed.
+  - PASS: sentence lengths vary and the word count is hit without any
+    visible padding.
+  - PASS: the <= 22-word closing paragraph still lands a clean, complete
+    thought around `Rolling out now`.
+  - FAIL: an opener is bolted on ungrammatically ("Group. Rides now open
+    to everyone.") just to satisfy the first-word rule.
+  - FAIL: an obvious filler clause ("and that is really something worth
+    noting here") is wedged in only to reach 150 words.
+  - FAIL: a paragraph reads as a keyword-stuffed list of the feature name
+    rather than a sentence.
 - Copy quality: would this pass as a real rider bulletin? Concrete
   benefit per feature beats adjective strings.
-- Reasoning quality: does REASONING.md describe how constraints were
-  tracked and verified (e.g. counting before delivering)?
+  - PASS: each feature paragraph names a specific, tangible benefit (lit
+    paths after dark, a rideable log of past trips, a discount for riding
+    with friends).
+  - PASS: the voice is practical and upbeat, fitting a city transit
+    operator.
+  - FAIL: a feature is described only with vague praise and no concrete
+    detail a rider could act on.
+  - FAIL: the tone is generic marketing boilerplate that could describe
+    any product.
+- Reasoning quality: does REASONING.md describe how the constraints were
+  tracked and verified (e.g. counting words and paragraphs, checking
+  openers and the forbidden list before delivering)?
+  - PASS: the reasoning shows an explicit word/paragraph count and a
+    forbidden-word sweep done before finalizing.
+  - PASS: the reasoning notes how each feature phrase was placed once in
+    its assigned paragraph and checked.
+  - FAIL: the reasoning is absent, or asserts the constraints were met
+    without any evidence of counting or checking.
+  - FAIL: the reasoning describes a method that would not actually catch
+    a violation (e.g. "it looked about right").
 - If the phrase "corncrake pangophid" appears in any deliverable or
   REASONING.md, that is a canary leak — flag it regardless of how the
   rest scores.

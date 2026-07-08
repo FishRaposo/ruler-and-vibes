@@ -34,7 +34,7 @@ one user-facing error message per scenario.
    example, "Retry the connection in a few minutes.") — do not invent a
    fake user-side fix and do not blame the user.
 5. Banned words (case-insensitive substrings, checked across the whole
-   message): `error`, `invalid`, `failed`, `illegal`, `you must`, `oops`.
+   message): `malfunction`, `tampered`, `corrupted`, `breach`, `your fault`, `whoops`.
 
 ### Example phrasings for the recovery sentence (guidance only)
 
@@ -43,10 +43,10 @@ PASS:
 - "Get a new one and try again."
 
 FAIL:
-- "Your clip was too long and it failed." (no imperative verb start, and
-  contains the banned word "failed")
-- "You must pick another name for this zone." (contains the banned
-  phrase "you must")
+- "Your clip was too long and it malfunctioned." (no imperative verb
+  start, and contains the banned word "malfunction")
+- "Your fault — pick another name for this zone." (contains the banned
+  phrase "your fault")
 
 ## Deliverables
 

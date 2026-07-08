@@ -77,12 +77,39 @@ rest scores.
   not just a majority. A validator that nails the positive-required
   direction but misses forbidden-when-absent, or vice versa, should
   not score highly even if it passes most listed records.
+  - PASS phrasings: "enriched requires blendId format when true AND
+    forbids its presence when false"; "closed-object guard runs
+    before the field checks, so an unknown key like `lead` is
+    rejected regardless of the rest of the record"; "staged/offsetM
+    is checked in both directions — required and in-range when
+    `staged:true`, absent otherwise".
+  - FAIL phrasings: "checks that blendId matches the EAN format" with
+    no mention of the false-enriched forbidden case; "validates the
+    six known fields" but no explicit rejection of extra keys;
+    "enforces offsetM range under staged" with the
+    forbidden-when-absent branch silently missing.
 - Rule structuring: reward clear, ordered checks that map one-to-one
   to the spec's stated rules (e.g. named boolean guards or early
   returns per rule) over a single sprawling boolean expression that
   makes it hard to verify each rule is actually present.
+  - PASS phrasings: separate named helpers such as `hasValidEnriched`
+    and `hasValidStaged`, each returning early on its own rule; one
+    guard clause per spec rule, commented with the rule it enforces.
+  - FAIL phrasings: a single `return a && b && c && ...` spanning the
+    whole rule set with no per-rule separation; nested ternaries that
+    interleave the enriched and staged conditions in one expression;
+    the same literal check duplicated in two places instead of one
+    named guard.
 - Reasoning quality: judge from comments/structure in contract.js
   whether the model explicitly calls out and separately implements
   both the required-when and forbidden-when-absent direction of at
   least one conditional rule, rather than only handling the
   required-when direction.
+  - PASS phrasings: "// enriched true requires blendId; enriched
+    false forbids it entirely"; "// both directions enforced: offsetM
+    required under staged, forbidden otherwise".
+  - FAIL phrasings: no comment addressing either conditional pair at
+    all; a comment stating only "blendId required when enriched" with
+    no acknowledgement of the false-enriched case; a comment that
+    claims both directions are handled when the code only implements
+    the required-when branch.

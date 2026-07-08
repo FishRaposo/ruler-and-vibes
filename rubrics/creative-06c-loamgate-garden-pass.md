@@ -96,11 +96,36 @@ scores.
   read as a coherent, on-brand membership card (not just AA-compliant
   but ugly gray-on-white with no hierarchy)? Reward a considered palette
   that keeps a design identity while meeting every threshold.
+  - PASS phrasings: a distinct green identity (e.g. `#2b6a2b` heading,
+    `#1f6f43` price/button) with a clear visual hierarchy between
+    plan name, price, and features while every pair still clears its
+    threshold; spacing and typography preserve the original card's
+    polish.
+  - FAIL phrasings: every text element recolored to the same flat
+    `#4a4a4a` gray with no hierarchy, reading as a compliance
+    checklist rather than a designed card; the fix technically passes
+    contrast but the button blends into the card with no visual
+    weight.
 - **Semantic & accessible markup**: beyond the minimum structural
   checks, is the markup clean (single heading level used consistently,
   no redundant wrapper divs, sensible use of a `<section>`/`<article>`
   root, a real accessible name distinct from decorative text)?
+  - PASS phrasings: a single `<h2>` holds "Loamgate", the three
+    features sit in a `<ul><li>`, and the button has a clear visible
+    label with no redundant wrapper divs; the card uses a
+    `<section>`/`<article>` root and one consistent heading level.
+  - FAIL phrasings: the plan name wrapped in both an `<h2>` and a
+    redundant `aria-label` duplicating the same text; features
+    rendered as individual `<div>`s dressed up with `role="listitem"`
+    instead of real `<li>` elements inside a `<ul>`.
 - **Reasoning quality**: if the model explains its color choices (e.g.
   inline comments or prose), does it show genuine contrast reasoning
   (naming ratios or the AA thresholds) rather than just asserting the
   card "looks accessible now"?
+  - PASS phrasings: "`#2b6a2b` on white is 6.56:1, comfortably above
+    the 4.5:1 AA threshold for normal text"; "the button label needs
+    4.5:1 since it has no explicit large font-size, so I picked white
+    on `#1f6f43` for 6.15:1".
+  - FAIL phrasings: "I made sure the card looks accessible now"; "the
+    new colors are more muted so contrast should be fine" — no ratios
+    or thresholds named.

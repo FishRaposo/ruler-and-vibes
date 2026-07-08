@@ -14,7 +14,7 @@ criteria:
     - id: obj-3
       check: "Every 'toast' value is <= 60 characters including spaces and ends with exactly one period (JS: v.length<=60 && /\\.$/.test(v) && !/\\.\\s*\\.$/.test(v))"
     - id: obj-4
-      check: "None of the banned words (click, button, successfully, please, here) appear case-insensitively as substrings in any button+toast pair (JS: ['click','button','successfully','please','here'].some(w=>(button+' '+toast).toLowerCase().includes(w)) === false for every entry)"
+      check: "None of the banned words (select, button, successfully, please, below) appear case-insensitively as substrings in any button+toast pair (JS: ['select','button','successfully','please','below'].some(w=>(button+' '+toast).toLowerCase().includes(w)) === false for every entry)"
     - id: obj-5
       check: "For exactly the 2 destructive actions (unfollowShow, clearHistory) 'undo' is a non-empty string; for the other 4 actions 'undo' is null or absent"
   subjective:
@@ -50,7 +50,7 @@ as stated in the frontmatter and runs standalone via
 const fs = require("fs");
 const KEYS = ["queueEpisode","shareClip","followShow","downloadEpisode","unfollowShow","clearHistory"];
 const DESTRUCTIVE = new Set(["unfollowShow","clearHistory"]);
-const BANNED = ["click","button","successfully","please","here"];
+const BANNED = ["select","button","successfully","please","below"];
 const data = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
 
 let obj1 = (typeof data === "object" && data !== null);
@@ -101,8 +101,8 @@ predicate above is authoritative when a case is ambiguous.
 - **obj-4 (no banned substrings across button + toast).**
   - PASS: `"Add to queue"` / `"Episode added to your queue."`,
     `"Share clip"` / `"Clip link copied."`.
-  - FAIL: `"Click here"` / `"Successfully queued your episode here."`
-    (carries "click", "here", "successfully"), any toast containing
+  - FAIL: `"Select below"` / `"Successfully queued your episode below."`
+    (carries "select", "below", "successfully"), any toast containing
     "please", any label using the word "button".
 - **obj-5 (undo only on the two destructive actions).**
   - PASS: `unfollowShow` and `clearHistory` each have a non-empty string
@@ -117,14 +117,14 @@ predicate above is authoritative when a case is ambiguous.
 A reference `labels.json` and a deliberately broken variant were both
 checked with the Node script above implementing obj-1 through obj-5
 exactly as stated. The reference passes all 5 checks; the broken variant
-— which used "Click here" / "Successfully queued your episode here." for
-`queueEpisode` and appended "Undo" directly into the `unfollowShow`
+— which used "Select below" / "Successfully queued your episode below."
+for `queueEpisode` and appended "Undo" directly into the `unfollowShow`
 toast ("Show unfollowed. Undo") while leaving its `undo` field null —
 fails obj-4 (the `queueEpisode` button/toast carry the banned words
-"click", "successfully", and "here"), obj-3 (once "Undo" is appended
+"select", "successfully", and "below"), obj-3 (once "Undo" is appended
 without its own terminator, the `unfollowShow` toast no longer ends in a
 single period), and obj-5 (the destructive `unfollowShow` row is missing
-its `undo` field). Note the `queueEpisode` toast itself, at 38
+its `undo` field). Note the `queueEpisode` toast itself, at 39
 characters and ending in one period, passes obj-3 — its only failure is
 obj-4.
 

@@ -21,7 +21,7 @@ Answer all four parts below.
   the 7 troupes to take part in exactly 3 coproductions during the
   festival.
 - **Part C**: Exhibit an explicit festival programme (a specific list of
-  coproductions) in which every troupe takes part in **exactly 4
+  coproductions) in which every troupe takes part in **exactly 2
   coproductions**. Format the list as one coproduction per line, in the
   exact form `i-j` where `i` and `j` are troupe numbers from 1 to 7 and
   `i < j` (e.g. `1-2`). List only coproduction lines in this section —
@@ -42,7 +42,7 @@ Answer all four parts below.
 - At most 600 words (whole file, `wc -w`).
 - Part C requires an actual exhibited programme, not just an assertion
   that one exists. Any valid festival where every troupe takes part in
-  exactly 4 coproductions is accepted — it does not need to follow any
+  exactly 2 coproductions is accepted — it does not need to follow any
   particular construction.
 - Parts B and D must be prose proofs, not just assertions of the
   conclusion.

@@ -93,7 +93,7 @@ module.exports = { sign, verify };
 The embedded original (`md5(key + payload)` verified with `===`) is
 genuinely broken as authored: it produces a working but insecure
 32-character MD5 hex digest
-(`30ebe287bce247efe5e8a767d0c704b1` for the canonical pair above),
+(`925cbae3500cdf606224f047d142d2a7` for the canonical pair above),
 verifies correctly for valid input (so it "looks like it works"), and
 uses both `createHash` and `'md5'` literally in its signing path — the
 exact substrings obj-2 checks for absence of in a correct solution.

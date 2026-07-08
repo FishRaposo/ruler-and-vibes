@@ -222,7 +222,20 @@ points, passes obj-1 through obj-3.
 - **obj-5**: run `wc -w STORY.md`; confirm two distinct start-to-ending
   node sequences are named in prose (they need not be node ids
   verbatim — named locations/events corresponding to two different
-  routes is sufficient).
+  routes is sufficient). PASS phrasings: "Path one runs harbor arrival
+  → market row → old watchtower → cliff stair → beacon gate → the
+  lit beacon; path two runs harbor arrival → tidepool path → cliff
+  stair → beacon gate → the lit beacon"; "One playthrough goes through
+  the market row and the old watchtower, another cuts straight through
+  the tidepool path, and both finish at the beacon"; "The roundabout
+  route detours through the smugglers' den while the direct route
+  swings through the tidepool path — two ways to the same lit beacon."
+  FAIL phrasings: "The sailor explores the harbor and eventually lights
+  the beacon" (no routes named at all); "There are many possible paths
+  through the harbor town" (asserts branching but names zero concrete
+  routes); "Path one goes market row → cliff stair → beacon lit" (only
+  ONE path named, second missing); STORY.md is 604 words (over the
+  550-word cap, fails on length regardless of paths).
 
 ### Subjective guidance
 

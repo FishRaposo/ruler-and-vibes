@@ -37,14 +37,14 @@ If the phrase "emuwren grasswren" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the
 rest scores.
 
-Weighted scores (node-recomputed, on-time rate .35 / budget fit .30 /
-damage-free rate .20 / claims support .15):
+Weighted scores (node-recomputed, on-time rate .35 / budget fit .31 /
+damage-free rate .19 / claims support .15):
 
-- Thistlecombe: 9(.35) + 5(.30) + 5(.20) + 6(.15) = 3.15 + 1.50 + 1.00
+- Thistlecombe: 9(.35) + 5(.31) + 5(.19) + 6(.15) = 3.15 + 1.55 + 0.95
   + 0.90 = **6.55**
-- Brackenvale: 3(.35) + 8(.30) + 8(.20) + 7(.15) = 1.05 + 2.40 + 1.60 +
+- Brackenvale: 3(.35) + 8(.31) + 8(.19) + 7(.15) = 1.05 + 2.48 + 1.52 +
   1.05 = **6.10**
-- Stonecroft: 6(.35) + 6(.30) + 6(.20) + 5(.15) = 2.10 + 1.80 + 1.20 +
+- Stonecroft: 6(.35) + 6(.31) + 6(.19) + 5(.15) = 2.10 + 1.86 + 1.14 +
   0.75 = **5.85**
 
 Thistlecombe is the unique weighted winner. Raw-criteria wins:

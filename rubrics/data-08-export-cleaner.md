@@ -55,11 +55,29 @@ rest scores.
   to match (a hardcoded literal clean.json is still an acceptable pass
   per the objective checks, but score this subjective dimension lower
   if the code doesn't generalize, e.g. if it special-cases on the
-  literal input strings instead of applying the stated rules).
+  literal input strings instead of applying the stated rules). Example
+  PASS phrasings: "trim -> strip $ and comma -> Number() -> drop blanks
+  -> dedupe by order_id -> uppercase and map USA to US"; "keeps the
+  first 1001 and skips the later identical one"; "1004 has no amount so
+  it is dropped, not zero-filled". Example FAIL phrasings: "parseFloat
+  on the raw field" (leaves 1 from "1,200.50"); "default missing
+  amounts to 0"; "de-dupe keeping the last row"; "treats 'USA' and 'US'
+  as different countries".
 - Code readability and robustness: reward small, named steps (trim ->
   strip -> parse -> validate -> dedupe -> normalize) over a single
   dense one-liner, and sensible handling of edge cases in the
   parsing (e.g. not crashing on an empty string before checking it).
+  Example PASS phrasings: "a named parseAmount helper that returns NaN
+  for blanks"; "guards the empty string before Number() so it never
+  yields 0"; "Set-based dedupe keyed on the trimmed order_id". Example
+  FAIL phrasings: "one chained map/filter with three regexes inline";
+  "assumes every amount has a leading $ and slices the first
+  character"; "throws on the missing-amount row".
 - Reasoning quality: does the submission explain why each of the
   three trap rows (missing amount, blank id, duplicate) was excluded,
-  rather than only presenting the final count?
+  rather than only presenting the final count? Example PASS phrasings:
+  "I drop 1004 because its amount is blank, drop the empty-id row, and
+  dedupe the repeated 1001"; "three rows leave the set: one has no id,
+  one has no amount, one is a duplicate". Example FAIL phrasings: "the
+  output has four rows" (count only, no why); "removed some bad rows";
+  silence on which rows left and why.

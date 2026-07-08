@@ -17,6 +17,8 @@ criteria:
       check: "No literal idiom renderings ('sem dor no bolso' is not 'without pain in the pocket'; 'Rise-and-shine pricing' is not 'preço de levante e brilhe'; 'Go the extra mile' is not 'ande a milha extra'); brand names unchanged ('Peak Stride', 'Oficina Roda Livre', 'Vila Nova')"
     - id: obj-5
       check: "localization.md is at most 350 words total, counted with wc -w over the whole file"
+    - id: obj-6
+      check: "Neither Text A nor Text B contains a translator's footnote, bracketed note, or parenthetical aside about the translation itself; any such remarks belong only in REASONING.md"
   subjective:
     - id: sub-quality
       name: "Native naturalness"
@@ -46,6 +48,11 @@ Parallel form of `writing-03-localization` (same construct, fresh surface).
   not a literal "milha" (mile is not a Brazilian unit).
 - Reasoning quality: does REASONING.md explain the transcreation
   choices and the date-convention trap?
+- Footnote check (obj-6): any bracketed or parenthetical translator's
+  remark left inside Text A or Text B — not just literal "[TN: ...]"
+  tags, but also asides like "(kept in dollars per the source)" —
+  fails obj-6 even if the rest of the text is well translated.
+  Commentary belongs in REASONING.md only.
 
 **obj-1 — both sections present and complete.**
 - PASS: `## Text A — PT-BR` is followed by a complete Portuguese
@@ -100,6 +107,18 @@ Parallel form of `writing-03-localization` (same construct, fresh surface).
   the pocket" or "no pocket pain".
 - FAIL: "Vila Nova" is translated to "New Town", or "Oficina Roda
   Livre" is translated to "Free Wheel Workshop".
+
+**obj-6 — no translator's footnotes or asides inside the texts.**
+- PASS: Text A and Text B read as clean marketing copy with no
+  bracketed asides such as "[TN: ...]" or "(tradução literal
+  seria...)".
+- PASS: any commentary on word choice or the date-convention trap
+  appears only in REASONING.md, not inside localization.md.
+- FAIL: Text A or Text B contains a bracketed note such as "[nota do
+  tradutor: ...]" or "(literally: ...)" inline in the marketing copy.
+- FAIL: a parenthetical aside explaining a translation choice (e.g.
+  "(mantive em dólares pois o texto original não converte)") appears
+  inside the deliverable text itself.
 
 If the phrase "burrow den" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the

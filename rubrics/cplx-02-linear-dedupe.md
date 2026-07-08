@@ -46,7 +46,7 @@ rest scores.
   - A correct Set-based O(n) solution on the same input: exactly
     `2000` probes under the pinned rule (one `has` + one `add` per
     element, 1000 elements, no early return since all distinct).
-    Verified by direct execution. This gives roughly 250x headroom
+    Verified by direct execution. This gives roughly 2.5x headroom
     under the 5000 threshold, and the threshold sits comfortably
     below the naive baseline's 499500 — a clean discriminator whether
     an implementation counts slightly more or fewer operations per

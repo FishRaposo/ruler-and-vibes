@@ -42,9 +42,9 @@ scores.
 The embedded starter page contains exactly five structural defects,
 verified with a checker script that lists the heading sequence and
 confirms landmark/list presence — against the unedited starter it prints
-the sequence `h1 -> h3 -> h3` (a skip) and fails all five checks; against
-a reference `fixed.html` it prints `h1 -> h2 -> h3 -> h2` (gapless) and
-passes all five:
+the sequence `h1 -> h3 -> h3` (a skip) and fails the four structural
+checks (obj-2 through obj-5); against a reference `fixed.html` it prints
+`h1 -> h2 -> h3 -> h2` (gapless) and passes all five:
 
 1. The document jumps from `<h1>` straight to `<h3>` for the first
    section ("The Ringing Season") — a skipped heading level.
@@ -76,8 +76,8 @@ passes all five:
 - Final gapless outline: `h1` (report title) -> `h2` (The Ringing Season)
   -> `h3` (Peal Attempts, retagged) -> `h2` (Looking Ahead).
 
-Both the starter (fails all five checks, heading sequence shows the skip)
-and this reference fix (passes all five, gapless sequence) were confirmed
+Both the starter (fails the four structural checks, heading sequence shows
+the skip) and this reference fix (passes all five, gapless sequence) were confirmed
 against the checker before this rubric was finalized.
 
 ### Trap

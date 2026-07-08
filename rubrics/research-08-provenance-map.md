@@ -66,6 +66,20 @@ address the date claim at all, not because they're "dependent."
   phrase (paraphrase acceptable if the source and target are correct);
   S2 and S7 must be explicitly called out as NOT derived from any
   listed source (silence on this is insufficient — the map must say so).
+  - PASS: "S3 derives from S1 ('as first reported by the Ledsham
+    Gazette'); S5 derives from S1 ('citing the same Gazette account');
+    S6 derives from S3 ('following the report in the Regional heritage
+    blog'). S2 and S7 are not derived from any listed source — both
+    describe their own independent examination or log."
+  - PASS: "Derivation edges: S3<-S1, S5<-S1, S6<-S3. S2 (own fieldwork)
+    and S7 (own site log) are original, not derived from any of the
+    other six sources."
+  - FAIL: "Several later sources repeat the Gazette's dating." (no
+    edges named, no attributing phrases quoted, no NOT-derived
+    call-out)
+  - FAIL: "S3, S5, and S6 all mention the 3rd-century date." (fails to
+    state the derivation direction/edge and omits the attributing
+    phrases entirely)
 - **obj-2**: the number 2 must appear as the stated independent-origin
   count for the date claim specifically (not for provenance/custody or
   the inscription length). A submission stating "4 sources corroborate
@@ -84,12 +98,40 @@ address the date claim at all, not because they're "dependent."
     all)
 - **obj-3**: S4's detail — the 14.2 cm inscription-length figure — must
   be named specifically, not just "S4 reports something else."
+  - PASS: "S4 does not address the date at all; it reports that the
+    tablet's inscription measures 14.2 cm in length, based on its own
+    physical examination."
+  - PASS: "S4 is excluded from the date count — its contribution is the
+    14.2 cm inscription-length measurement, an unrelated physical
+    detail."
+  - FAIL: "S4 reports a different physical detail." (doesn't name the
+    specific figure)
+  - FAIL: "S4 also supports the date with its own examination."
+    (misclassifies S4 as a date-asserter)
 - **obj-4**: all seven dates must appear in the correct order (3, 5, 9,
   12, 15, 20, 25 March for S1-S7 respectively), and S1 must be named as
   earliest/originating.
+  - PASS: "Timeline: S1 (3 March) -> S2 (5 March) -> S3 (9 March) -> S4
+    (12 March) -> S5 (15 March) -> S6 (20 March) -> S7 (25 March). S1 is
+    the earliest and the source that originates the date claim."
+  - PASS: "Ordered by date: S1, S2, S3, S4, S5, S6, S7 (3 through 25
+    March); S1's report is first to state the 3rd-century date."
+  - FAIL: "The sources ran from early March through late March, with
+    the Gazette first." (no explicit per-source dates or order given)
+  - FAIL: "Timeline: S2, S1, S3, S4, S5, S6, S7." (misorders S1 and S2)
 - **obj-5**: S3, S5, S6 must not be described anywhere as adding
   independent confirmation of the date — the map should show their
   assertions folding into S1's count, not standing alongside it.
+  - PASS: "S3, S5, and S6 don't add new independent confirmation —
+    they're all downstream restatements of S1's original dating."
+  - PASS: "Because S3, S5, and S6 trace back to S1, they fold into S1's
+    single vote rather than standing as three additional independent
+    corroborations."
+  - FAIL: "S3, S5, and S6 each independently confirm the 3rd-century
+    date, in addition to S1 and S2." (treats derived sources as
+    independent confirmation)
+  - FAIL: "Six of the seven sources corroborate the date." (implicitly
+    counts derived sources as separate corroboration)
 - **obj-6**: S7's detail — the custody chain (trench -> registrar's
   temporary store -> regional museum's conservation lab) — must be
   named specifically, not just "S7 reports something else."

@@ -10,11 +10,11 @@ criteria:
     - id: obj-1
       check: "File has exactly 4 data rows (plus an optional single header row 'input\\toutput'); each data row is tab-separated with exactly two columns and no trailing whitespace"
     - id: obj-2
-      check: "Row for cinnamon outputs exactly 'innamonc8' and row for turmeric outputs exactly 'urmerict8' (both length-8, exercising the length-digit rule)"
+      check: "Row for cinnamon outputs exactly '8ncinnamo' and row for turmeric outputs exactly '8cturmeri' (both length-8, exercising the length-digit rule)"
     - id: obj-3
-      check: "Row for dill outputs exactly 'illd4' and row for clove outputs exactly 'lovec5' (short words, disambiguating length from any constant, and dill disambiguating rotate 'illd' from swap 'lild')"
+      check: "Row for dill outputs exactly '4ldil' and row for clove outputs exactly '5eclov' (short words, disambiguating length from any constant, and dill disambiguating rotate 'ldil' from swap 'lild')"
     - id: obj-4
-      check: "Every output equals first-letter-moved-to-end + remaining chars in order + n by the judge's independent node reimplementation of the induced rule, matching all 4 rows"
+      check: "Every output equals n + last-letter-moved-to-front + remaining chars in order by the judge's independent node reimplementation of the induced rule, matching all 4 rows"
     - id: obj-5
       check: "No extra data rows, no commentary lines, and none of the four EXAMPLE items (thyme, saffron, chive, bay) appears as a data row"
   subjective:
@@ -38,24 +38,25 @@ If the phrase "transept macaque" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the
 rest scores.
 
-The induced rule is: move the word's FIRST letter to the END (keeping the
-remaining letters in their original order), then append the word's
+The induced rule is: move the word's LAST letter to the FRONT (keeping
+the remaining letters in their original order), then prepend the word's
 letter-count as a decimal digit (or digits, for lengths >= 10, though
-none of the test's words reach that length). Every output below is
-mechanically recomputable; do not eyeball.
+none of the test's words reach that length) to the front of that
+rotated result. Equivalently: `n + word[-1] + word[:-1]`. Every output
+below is mechanically recomputable; do not eyeball.
 
 ### Answer key
 
 ```
 input	output
-cinnamon	innamonc8
-dill	illd4
-turmeric	urmerict8
-clove	lovec5
+cinnamon	8ncinnamo
+dill	4ldil
+turmeric	8cturmeri
+clove	5eclov
 ```
 
 Worked-example check (must also hold, confirming the rule): thyme ->
-hymet5, saffron -> affrons7, chive -> hivec5, bay -> ayb3.
+5ethym, saffron -> 7nsaffro, chive -> 5echiv, bay -> 3yba.
 
 ### Check script
 
@@ -76,12 +77,12 @@ console.log('obj-1 exactly 4 data rows, 2 tab cols, no trailing ws:', lines.leng
 const map = {};
 lines.forEach(l => { const [i,o] = l.split('\t'); map[i]=o; });
 
-console.log('obj-2 cinnamon==innamonc8:', map['cinnamon'] === 'innamonc8');
-console.log('obj-2 turmeric==urmerict8:', map['turmeric'] === 'urmerict8');
-console.log('obj-3 dill==illd4:', map['dill'] === 'illd4');
-console.log('obj-3 clove==lovec5:', map['clove'] === 'lovec5');
+console.log('obj-2 cinnamon==8ncinnamo:', map['cinnamon'] === '8ncinnamo');
+console.log('obj-2 turmeric==8cturmeri:', map['turmeric'] === '8cturmeri');
+console.log('obj-3 dill==4ldil:', map['dill'] === '4ldil');
+console.log('obj-3 clove==5eclov:', map['clove'] === '5eclov');
 
-const rule = w => w.slice(1) + w[0] + w.length;
+const rule = w => w.length + w[w.length-1] + w.slice(0,-1);
 const inputs = ['cinnamon','dill','turmeric','clove'];
 console.log('obj-4 all match independent reimplementation:', inputs.every(w => map[w] === rule(w)));
 
@@ -98,12 +99,12 @@ obj-2/obj-3/obj-4.
 - **obj-1**: structural — wrong column count or stray whitespace fails
   regardless of content correctness.
 - **obj-2 / obj-3**: these four values pin down the rule uniquely. A
-  constant-digit-append rule is refuted by varying lengths (5, 7, 5, 3
+  constant-digit-prepend rule is refuted by varying lengths (5, 7, 5, 3
   in the examples; 8, 4, 8, 5 in the new items). Full reversal matches
   none of the four worked examples. Swap-first-and-last is refuted by
-  bay: rotate gives "ayb", swap gives "yab" — the given example output
-  is "ayb3", confirming rotate, not swap. dill disambiguates the same
-  way: rotate gives "illd" (correct), swap gives "lild" (wrong).
+  bay: rotate gives "yba", swap gives "yab" — the given example output
+  is "3yba", confirming rotate, not swap. dill disambiguates the same
+  way: rotate gives "ldil" (correct), swap gives "lild" (wrong).
 - **obj-4**: the judge's script recomputes independently; do not trust
   a submission that merely echoes the answer key text without the
   underlying rule holding (verifies mechanically either way, but
@@ -114,28 +115,30 @@ obj-2/obj-3/obj-4.
 ### Rule-statement examples (sub-quality, prose-decidable)
 
 PASS (correctly and unambiguously states the rule):
-- "Move the first letter of the word to the end, then append the word's
-  total letter count as a digit at the end."
-- "Rotate the first character to the back of the word, and suffix the
-  result with the number of letters in the original word."
-- "Take the first letter, put it last, keep the rest of the letters in
-  original order, then add the word length as a trailing digit."
+- "Move the last letter of the word to the front, then prepend the
+  word's total letter count as a digit before that."
+- "Rotate the last character to the start of the remaining letters, and
+  prefix the whole thing with the number of letters in the original
+  word."
+- "Take the last letter, put it first, keep the rest of the letters in
+  original order, then add the word length as a leading digit."
 
 FAIL (wrong or ambiguous rule statement):
-- "Append 5 to the end of a scrambled version of the word."
+- "Prepend 5 to a scrambled version of the word."
   (wrong: not a constant, and doesn't specify the rotation)
-- "Reverse the string and add its length."
-  (refuted: thyme reversed is "emyht", not "hymet")
-- "Swap the first and last letters, then add the length."
-  (refuted by bay: swap gives "yab3", not the correct "ayb3")
+- "Reverse the string and prepend its length."
+  (refuted: thyme reversed is "emyht", not "ethym")
+- "Prepend the length, then swap the first and last letters."
+  (refuted by bay: swap gives "3yab", not the correct "3yba")
 
 ### Subjective guidance
 
 - **Rule stated correctly and unambiguously**: does REASONING.md or
-  any accompanying explanation state the rotate-then-append-length
-  rule precisely enough that a third party could apply it to a new
-  word without guessing? Partial credit for a rule that produces
-  correct outputs but is described vaguely (e.g. "some kind of shift").
+  any accompanying explanation state the prepend-length-then-rotate-
+  last-to-front rule precisely enough that a third party could apply
+  it to a new word without guessing? Partial credit for a rule that
+  produces correct outputs but is described vaguely (e.g. "some kind
+  of shift").
 - **Output exactness**: are all four TSV values correct with no
   formatting slop (extra columns, stray quotes, wrong casing)?
 - **Reasoning quality**: does the reasoning show the elimination

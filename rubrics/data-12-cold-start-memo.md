@@ -11,9 +11,9 @@ criteria:
     - id: obj-2
       check: "The impossible row (2025-06-11: transactions 210 > foot_traffic 150) is explicitly flagged as a data-quality error and NOT used in headline conclusions — prose-located check; PASS phrasings include 'the June 11 row has more transactions than visitors, which is impossible — excluded from the totals' or 'one row fails a basic sanity check (tx > traffic) and is flagged rather than computed through'; FAIL phrasings include silently averaging it in with no comment, reporting a 140% conversion day as a real finding, or 'the best conversion day was June 11 at 140%'"
     - id: obj-3
-      check: "The highest-revenue day (2025-06-14, revenue 4550) is correctly identified AND its below-average conversion (27.1%, versus the ~40% dataset average) is surfaced as a notable finding rather than celebrated as a pure win — judge recomputes the max-revenue date and its conversion from the embedded rows and confirms the memo names that date and its low conversion"
+      check: "The highest-revenue day (2025-06-14, revenue 4550) is correctly identified AND its below-average conversion (27.1%, versus the ~40% dataset average) is surfaced as a notable finding rather than celebrated as a pure win — judge recomputes the max-revenue date and its conversion from the embedded rows and confirms the memo names that date and its low conversion. PASS phrasings include 'June 14 is the top revenue day at $4,550 but converts only 130/480 = 27.1% of foot traffic, well below the ~40% average', or 'the record-revenue day is also the weakest conversion day — high traffic, low conversion, only 3 staff on shift'. FAIL phrasings include 'June 14 was an unambiguous win, repeat the playbook', naming June 14 as best without noting its low conversion, or treating peak revenue as pure success."
     - id: obj-4
-      check: "INSIGHTS.md contains an explicit limitations / 'what this data cannot tell us' section naming at least one thing the data cannot establish (e.g. causation between staffing and conversion, or effects of factors not captured by these columns such as marketing, local events, or competitor activity)"
+      check: "INSIGHTS.md contains an explicit limitations / 'what this data cannot tell us' section naming at least one thing the data cannot establish (e.g. causation between staffing and conversion, or effects of factors not captured by these columns such as marketing, local events, or competitor activity). PASS phrasings include 'we cannot tell whether more staff CAUSE higher conversion or whether the store schedules more staff on days it already expects to be busy', 'nothing here records marketing spend, local events, competitor promotions, or weather beyond the coarse category recorded', or 'this cannot establish causation between staffing and conversion'. FAIL phrasings include omitting the section entirely, a bare slogan like 'correlation is not causation' with no specifics tied to this data, or claiming the data proves staffing drives conversion."
     - id: obj-5
       check: "INSIGHTS.md is at most 600 words, whole file, wc -w"
   subjective:
@@ -41,7 +41,8 @@ rest scores.
   total transactions=1,932, weighted overall conversion=1932/4826=
   40.03% (simple average of daily rates ≈40.17% — either framing is
   fine, the ±0.5pt band covers both). Per-day conversion ranges from
-  about 34% to 44% across valid rows. Revenue-per-transaction is $20
+  about 27.1% to 44.2% across valid rows (the low end is the June 14
+  outlier flagged below). Revenue-per-transaction is $20
   for every row except 2025-06-14 ($35/transaction) — a legitimate,
   not impossible, outlier worth noting if the submission catches it.
   Max-revenue day is 2025-06-14 (revenue $4,550, foot_traffic 480,

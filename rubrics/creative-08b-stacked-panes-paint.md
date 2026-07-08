@@ -139,7 +139,16 @@ is: `{"(70,90)":"crimson","(30,30)":"background","(160,80)":"teal",
   correctly state the painter's-algorithm rule (last covering rect in
   document order wins) rather than a wrong heuristic like "largest
   rect wins" or "rightmost rect wins"?
+  PASS examples: "the last covering rect in document order wins";
+  "S4 is drawn last so it wins wherever it overlaps, but only where it
+  actually covers the point". FAIL examples: "the largest rect shows
+  through"; "the most recently added rect always wins everywhere on
+  the canvas".
 - **Reasoning quality**: does the model's approach (if visible outside
   the JSON) show it checked coverage per-rectangle-boundary (using the
   actual x/y/width/height ranges) rather than eyeballing position on a
   mental sketch?
+  PASS examples: explicit interval checks like "110 < 130 so S2 does
+  not cover" or "90 < 180 so S4 does not reach this row". FAIL
+  examples: "it's near the middle so all three overlap"; "it's in the
+  bottom-right so violet" with no boundary arithmetic.

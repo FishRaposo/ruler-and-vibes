@@ -52,6 +52,20 @@ rest scores.
   This is why obj-4 (naming the loop bound itself, not just "add a
   guard") is the objective discriminator — a guard-based fix that never
   mentions `i <= items.length` in REASONING.md must fail obj-4.
+  - PASS phrasings (obj-4, the bound itself is named as root cause):
+    - "Root cause: the loop uses `i <= items.length`; the `<=` runs one
+      past the last index, so `items[i]` is undefined."
+    - "The off-by-one bound `i <= items.length` should be
+      `i < items.length` — that extra iteration is the crash."
+    - "It loops to `i === items.length` inclusive, indexing one element
+      past the array; the fix is the `<=`-to-`<` bound change."
+  - FAIL phrasings (obj-4, symptom named but not the bound):
+    - "An item came back undefined, so I added a null check before
+      using it." (guards the symptom, never names the bound)
+    - "The crash is a missing-null-check on the item; guard it and move
+      on." (no mention of `i <= items.length`)
+    - "There's an indexing issue in the loop that reads past the data."
+      (vague; never pins the `<=` bound as the cause)
 - Diagnosis accuracy: does REASONING.md connect the crash log's line
   reference to the actual faulty expression, rather than vaguely
   gesturing at "an indexing issue"?

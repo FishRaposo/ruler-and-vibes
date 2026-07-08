@@ -50,7 +50,7 @@ stated first-occurrence rule):
    the closed variant, yielding 4 total occurrences of "night-shift"
    and zero of "nightshift."
 3. **Unit axis:** "kg" occurs first (paragraph 1, "roughly 40 kg") and
-   once more later in the same paragraph ("post the 40 kg limit"),
+   once more later, in paragraph 3 ("post the 40 kg limit"),
    2 occurrences total before the variant; "kilograms" occurs once, in
    paragraph 2 ("one outlier stack at 41 kilograms"). First-occurrence
    form is "kg" -> normalize "41 kilograms" to "41 kg," yielding 3

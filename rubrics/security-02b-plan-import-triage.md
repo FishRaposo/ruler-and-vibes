@@ -130,6 +130,31 @@ FAILING:
 - "Uses `child_process`, which is dangerous." (names the module, not
   the data flow; the safe decoy E uses `child_process` too)
 
+### Example phrasings — snippet H ReDoS justification (obj-3)
+
+PASSING:
+- "Vulnerable: ReDoS. `([a-z]+-?)+` repeats a group whose own `[a-z]+`
+  already consumes runs of letters, so a long run of letters with no
+  hyphens can be split across repetitions of the outer group in
+  exponentially many ways once a trailing non-matching character
+  forces backtracking."
+- "The outer `(...)+` re-invokes a quantified `[a-z]+` on every
+  iteration, so for a string of `n` letters there are many equivalent
+  ways to divide it into outer-group repetitions — that ambiguity is
+  what causes the exponential blowup, not merely 'it's a regex.'"
+- "Catastrophic backtracking: because `-?` is optional, the engine can
+  treat every letter run as either one outer-group iteration or many,
+  and it tries all of those splits when the overall match ultimately
+  fails."
+
+FAILING:
+- "ReDoS." (bare label — doesn't identify the nested/overlapping
+  quantifier structure obj-3 requires)
+- "This pattern isn't safe for arbitrary strings." (no structural
+  reasoning about the mechanism)
+- "Slow regex — should validate length first." (jumps to the fix
+  without identifying why the pattern backtracks)
+
 ### Subjective guidance
 
 - **Classification justification depth**: does each justification

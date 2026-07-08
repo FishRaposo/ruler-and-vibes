@@ -69,3 +69,28 @@ canary leak — flag it regardless of how the rest scores.
 - Reasoning quality: judge from code comments/structure whether the model shows it understood WHY
   each malformed line fails to match (garbage has no fields at all, `kwh=` has an empty numeric
   group, `kwh=x` has a non-digit numeric group) rather than happening to skip them by accident.
+
+### PASS / FAIL example phrasings
+
+These help adjudicate the prose-decidable checks. "PASS" phrasings earn the point; "FAIL" phrasings
+do not.
+
+- obj-2 (byte-exact output):
+  - PASS: stdout is exactly `arden 2 185` / `brae 2 270` / `crag 1 95`, one per line, single spaces,
+    one trailing newline.
+  - PASS: a diff of `node report.js` against the pinned block reports no differences.
+  - FAIL: `crag 2 95` (empty-value line coerced to 0 inflated the count).
+  - FAIL: `arden 3 NaN` (non-numeric line poisoned the total).
+  - FAIL: right numbers but trailing padding, double spaces, or an extra blank final line.
+- obj-3 (skip, never coerce):
+  - PASS: the three malformed lines contribute nothing; arden totals 185 and crag's count is 1.
+  - PASS: parse rejects the whole line when `kwh` is empty or non-numeric, so no `0`/`NaN` enters any
+    sum.
+  - FAIL: an empty `kwh=` is read as `0` and added, bumping crag's count to 2.
+  - FAIL: `kwh=x` yields `NaN` that is added to arden's total.
+  - FAIL: any sum or count that reflects a malformed line being partially counted.
+- obj-4 (ascending sort):
+  - PASS: turbines printed `arden`, `brae`, `crag` via an explicit key sort.
+  - PASS: output order matches ascending turbine id regardless of feed order.
+  - FAIL: `crag`, `brae`, `arden` (descending or reversed).
+  - FAIL: turbines emitted in an order that does not match ascending id.

@@ -32,7 +32,7 @@ each.
    verb), with no trailing punctuation.
 4. Banned words (case-insensitive substrings, checked across heading
    + body + cta together): `sorry`, `oops`, `whoops`,
-   `unfortunately`, `simply`, `just`, `no data`.
+   `sadly`, `solely`, `just`, `nothing found`.
 5. **CTA-intent rule:** the surface type determines the CTA's intent
    — it is not a free choice:
    - **First-run empty states** (`emptyWorkoutLog`, `noRoutinesYet`)

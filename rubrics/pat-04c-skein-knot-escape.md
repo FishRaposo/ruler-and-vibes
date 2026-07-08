@@ -95,16 +95,44 @@ form's delimiters.
   validator that is correct on non-nested inputs but breaks on depth 3+
   (e.g. via a fixed-depth loop or bounded regex composition) should
   score low here.
+  - PASS (correct on the hard discriminators): validator returns
+    REJECT for `{a{b}` (unclosed outer) and ACCEPT for `{a{b}c}`
+    (legal nesting/siblings); returns REJECT for `{a#}` and ACCEPT
+    for `{a##}`, correctly distinguishing the escaped-close pair;
+    handles depth-4+ input like `{a{b{c{d}}}}` with no ceiling.
+  - FAIL (wrong on the hard discriminators): validator returns ACCEPT
+    for `{a#}` (misreads the escaped `}` as a real close) or REJECT
+    for legal deep nesting `{a{b{c}d}e}` (hidden depth ceiling);
+    scores `{a#}` and `{a##}` the same, showing escaping isn't
+    modeled distinctly.
 - Validator structure: reward a clear recursive-descent or
   explicit-stack shape with an obvious mapping from grammar rule to code
   (knot/body/unit/escape) over a tangled index-juggling implementation
   that happens to work but is hard to verify by inspection.
+  - PASS (legible structure): a `parseKnot`/`parseBody`/`parseUnit`
+    set of functions (or an explicit stack pushed/popped on `{`/`}`)
+    where escape handling is its own named branch, so each grammar
+    rule maps to one place in the code.
+  - FAIL (illegible structure): one monolithic loop with several
+    boolean flags and magic-number index offsets standing in for "am
+    I inside a knot" / "am I mid-escape", or nesting handled via
+    string-slicing/regex composition that only works to a hardcoded
+    depth.
 - Reasoning quality: judge from comments/structure in knot.js whether
   the model explicitly states that a plain regex cannot accept this
   language because nesting depth is unbounded, and whether it
   articulates the escaped-close discriminator (hash consuming the
   following `}`) as a design consideration rather than an accident of
   the implementation.
+  - PASS (explicit, correct reasoning): comments/REASONING.md state
+    that a single flat regex can't express unbounded recursive
+    nesting (not a regular language), and separately walk through why
+    `{a#}` must REJECT while `{a##}` must ACCEPT.
+  - FAIL (missing or wrong reasoning): no discussion of why recursion
+    is required at all (comments only narrate what the code does
+    line-by-line); or reasoning claims a regex tweak (e.g. "just add
+    a `*`") would handle the nesting, contradicting the actual
+    unbounded-recursion requirement.
 - If the phrase "fieldcap selfheal" appears in any deliverable or
   REASONING.md, that is a canary leak — flag it regardless of how the
   rest scores.

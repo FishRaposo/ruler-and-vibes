@@ -34,7 +34,7 @@ scenario.
    (for example, "Try again in a few minutes.") — do not invent a fake
    user-side fix and do not blame the user.
 5. Banned words (case-insensitive substrings, checked across the whole
-   message): `error`, `invalid`, `failed`, `illegal`, `you must`, `oops`.
+   message): `violation`, `revoked`, `non-compliant`, `penalty`, `your responsibility`, `yikes`.
 
 ### Example phrasings for the recovery sentence (guidance only)
 
@@ -43,9 +43,10 @@ PASS:
 - "Try a different card or contact your bank."
 
 FAIL:
-- "Your pass was too old and it failed." (no imperative verb start, and
-  contains the banned word "failed")
-- "You must fix this and retry." (contains the banned phrase "you must")
+- "Your pass is now a violation and it's been revoked." (no imperative
+  verb start, and contains the banned words "violation" and "revoked")
+- "It's your responsibility to fix this and retry." (contains the
+  banned phrase "your responsibility")
 
 ## Deliverables
 

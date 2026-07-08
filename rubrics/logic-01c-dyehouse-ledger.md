@@ -10,9 +10,9 @@ criteria:
     - id: obj-1
       check: "A1 states exactly 30 batches (fails on 29 from an unrounded 613/21=29.19, or on 26 from a capacity-24 miscalculation)"
     - id: obj-2
-      check: "A2 states exactly 950 coins (30 batches, 5 free of hire fee, 25 paid x 38; fails on 1140 = free-batch discount forgotten, or any other free-count)"
+      check: "A2 states exactly 988 coins (30 batches, 4 free of hire fee, 26 paid x 38; fails on 1140 = free-batch discount forgotten, or any other free-count)"
     - id: obj-3
-      check: "A3 states mordant 600 coins, grand total 1550 coins, and per-bolt cost 2.53 (judge recomputes in node: 30*2.5*8=600; 950+600=1550; 1550/613=2.5285 -> 2.53)"
+      check: "A3 states mordant 525 coins, grand total 1513 coins, and per-bolt cost 2.47 (judge recomputes in node: 30*2.5*7=525; 988+525=1513; 1513/613=2.4682 -> 2.47)"
     - id: obj-4
       check: "A4 states 26 batches and 4 batches saved (ceil(613/24)=26; 30-26=4)"
     - id: obj-5
@@ -45,14 +45,14 @@ bolts = 613
 capPerBatch = 24 - 3 = 21
 A1 = ceil(613 / 21) = ceil(29.190...) = 30
 
-freeBatches = floor(30 / 6) = 5   // batches 6, 12, 18, 24, 30
-paidBatches = 30 - 5 = 25
-A2 = 25 * 38 = 950                 // trap: 30*38=1140 if discount forgotten
+freeBatches = floor(30 / 7) = 4   // batches 7, 14, 21, 28
+paidBatches = 30 - 4 = 26
+A2 = 26 * 38 = 988                 // trap: 30*38=1140 if discount forgotten
 
-mordantPerBatch = 2.5 * 8 = 20     // billed on EVERY batch, including free ones
-mordantTotal = 30 * 20 = 600
-grandTotal = 950 + 600 = 1550
-perBolt = 1550 / 613 = 2.528548... -> 2.53
+mordantPerBatch = 2.5 * 7 = 17.5   // billed on EVERY batch, including free ones
+mordantTotal = 30 * 17.5 = 525
+grandTotal = 988 + 525 = 1513
+perBolt = 1513 / 613 = 2.468188... -> 2.47
 
 A4: swatch-free vat at 24/batch -> ceil(613/24) = ceil(25.541...) = 26
 saved = 30 - 26 = 4
@@ -68,25 +68,26 @@ saved = 30 - 26 = 4
   "613/21 ≈ 29, so 29 batches." FAIL example: "613/24 = 25.5 → 26
   batches" (used full vat capacity, ignoring the 3 swatch slots). FAIL
   example: "30.5, so 31 batches" (mis-divided).
-- **obj-2**: the hire-free trap is the every-6th-batch waiver; 1140 is
+- **obj-2**: the hire-free trap is the every-7th-batch waiver; 1140 is
   the exact tell for a submission that computed 30 paid batches instead
-  of 25. PASS example: "batches 6, 12, 18, 24, 30 are free → 25 paid ×
-  38 = 950." PASS example: "floor(30/6) = 5 waived, 25 × 38 = 950 coins."
-  PASS example: "hire = 30×38 − 5×38 = 1140 − 190 = 950." FAIL example:
-  "30 × 38 = 1140 coins" (waiver forgotten). FAIL example: "6 batches
-  free → 24 × 38 = 912" (wrong free-count). FAIL example: "988 coins"
-  (26 paid batches).
-- **obj-3**: mordant must be charged on all 30 batches, not just the 25
+  of 26. PASS example: "batches 7, 14, 21, 28 are free → 26 paid ×
+  38 = 988." PASS example: "floor(30/7) = 4 waived, 26 × 38 = 988 coins."
+  PASS example: "hire = 30×38 − 4×38 = 1140 − 152 = 988." FAIL example:
+  "30 × 38 = 1140 coins" (waiver forgotten). FAIL example: "5 batches
+  free (mistaking the modulus for every 6th) → 25 × 38 = 950" (wrong
+  free-count). FAIL example: "27 paid batches × 38 = 1026" (miscounted
+  the waived batches by one).
+- **obj-3**: mordant must be charged on all 30 batches, not just the 26
   paid ones — a submission that only mordants paid batches would show
-  25×20 = 500 and a grand total of 1450, both wrong. Per-bolt must be
-  rounded to exactly 2 decimals (2.53), not truncated (2.52) or left
-  unrounded. PASS example: "30 × 20 = 600 mordant; 950 + 600 = 1550;
-  1550/613 = 2.5285 → 2.53." PASS example: "mordant on every batch incl.
-  the 5 free ones: 600 coins; per bolt 2.53." PASS example: "grand 1550,
-  2.53 per bolt after rounding the third decimal up." FAIL example:
-  "mordant 25 × 20 = 500, grand 1450" (only paid batches mordanted). FAIL
-  example: "per bolt = 2.52" (truncated). FAIL example: "1550/613 = 2.5"
-  (under-rounded).
+  26×17.5 = 455 and a grand total of 1443, both wrong. Per-bolt must be
+  rounded to exactly 2 decimals (2.47), not truncated (2.46) or left
+  unrounded. PASS example: "30 × 17.5 = 525 mordant; 988 + 525 = 1513;
+  1513/613 = 2.4682 → 2.47." PASS example: "mordant on every batch incl.
+  the 4 free ones: 525 coins; per bolt 2.47." PASS example: "grand 1513,
+  2.47 per bolt after rounding the third decimal up." FAIL example:
+  "mordant 26 × 17.5 = 455, grand 1443" (only paid batches mordanted).
+  FAIL example: "per bolt = 2.46" (truncated). FAIL example:
+  "1513/613 = 2.5" (under-rounded).
 - **obj-4**: this is a check on whether the model can vary one assumption
   (capacity 24 vs 21) and redo the ceiling division cleanly; 26 and "4
   batches saved" are both required, not just one. PASS example: "at 24
@@ -107,10 +108,10 @@ saved = 30 - 26 = 4
   reader can re-derive by hand.
 - **Trap navigation**: does the submission explicitly acknowledge the
   swatch-capacity constraint, the need to round up (not down), and the
-  every-6th-batch waiver, rather than silently landing on the right
+  every-7th-batch waiver, rather than silently landing on the right
   numbers by luck? Penalize a submission that gets correct numbers with
   working that doesn't actually justify them (e.g. rounds down but still
   writes 30).
 - **Reasoning quality**: does REASONING.md name which of the three traps
   it had to watch for and how it double-checked itself (e.g. recomputing
-  1550/613 to confirm the second decimal)?
+  1513/613 to confirm the second decimal)?

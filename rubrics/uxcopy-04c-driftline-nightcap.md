@@ -55,7 +55,7 @@ option).
 Reference (product name "Driftline" throughout, character/word counts
 re-verified this session):
 
-- **Screen 1**: heading "Understand your sleep" (22 chars), body
+- **Screen 1**: heading "Understand your sleep" (21 chars), body
   "Driftline turns each night into simple patterns you can actually
   use." (69 chars), primary "Peek inside" (exploratory list), secondary
   null.

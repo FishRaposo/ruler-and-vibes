@@ -78,10 +78,10 @@ by its line number.
     or are some of those people shared with other initiatives?
 8c. Ada: A few are shared, mostly on the translational operations side,
     but the core team of 13 is what we track for capacity planning.
-9. Ada: For the record on staffing, Dev is at 0.5 FTE on this program,
+9. Ada: For the record on staffing, Dev is at 0.6 FTE on this program,
    which has been enough for the regulatory work so far.
-9a. Ines: That matches what I see day to day too — Dev's putting in half
-    of his time on the program, and it's kept pace with regulatory needs.
+9a. Ines: That matches what I see day to day too — Dev's putting in three
+    days a week on the program, and it's kept pace with regulatory needs.
 9b. Ines: If the dosing date slips further we may need to revisit that
     allocation, but for now it's holding up fine.
 10. Ines: I also want to raise scope. We're activating this across all 6
@@ -139,11 +139,11 @@ by its line number.
 22a. Dev: We added roughly 260 of those parameters in just the last
      month, mostly around the new safety-readout edge cases that came up
      during the qualification runs.
-23. Dev: We currently have 2 open major deviations, both related to the
+23. Dev: We currently have 4 open major deviations, all related to the
     sample-labeling workflow rather than core assay performance.
-23a. Dev: Neither is expected to block first-in-human on its own, they're
-     both clerical issues with how aliquot labels print, not analytical
-     failures.
+23a. Dev: None of them is expected to block first-in-human on its own,
+     they're all clerical issues with how aliquot labels print, not
+     analytical failures.
 23b. Ada: Good, let's keep an eye on those but they don't sound like they
      change today's discussion about the dosing date itself.
 24. Felix: I want to raise something on deviation trends, if that's okay.

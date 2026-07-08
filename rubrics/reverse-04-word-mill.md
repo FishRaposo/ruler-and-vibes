@@ -97,11 +97,45 @@ rest scores.
   specifically flag `drum sky` as the example that broke it, rather
   than just asserting the final rule? Does it note that length-2 and
   length-1 words are uninformative for distinguishing the two rules?
+  - PASS phrasings: "shows that 'reverse every word' matches all 9
+    examples except `drum sky`, where it predicts `murd yks` instead of
+    the actual `rumd yks`"; "explicitly notes length-1 and length-2
+    words can't distinguish reversal from rotate-left, so only `drum`
+    is decisive"; "walks through the 8-example near-miss before stating
+    the final two-clause parity rule".
+  - FAIL phrasings: "states the parity rule with no mention of the
+    'reverse every word' alternative at all"; "asserts the rule is
+    correct without showing what a simpler guess would have predicted
+    for `drum sky`"; "claims `hi` or `at` prove the rule when those
+    words are actually ambiguous between both hypotheses".
 - Transformer implementation quality: does transform.js implement the
   general parity rule (a length check plus a generic reverse/rotate
   operation), or does it hardcode outputs for the 9 known examples?
   Penalize any lookup-table implementation even if it passes obj-1.
+  - PASS phrasings: "a single length-parity branch feeding a generic
+    `reverse`/`rotateLeft1` helper, no per-word special-casing";
+    "cleanly separates the two operations into named helper functions
+    and applies them via `word.length % 2`"; "handles arbitrary fresh
+    words correctly because the logic is parametric on length, not on
+    word identity".
+  - FAIL phrasings: "a lookup object keyed by the 9 visible words with
+    a fallback that just returns the input unchanged"; "an if/else
+    chain that special-cases `'drum'`, `'sky'`, etc. by literal string
+    match"; "works on the sample table but throws or returns garbage on
+    an unseen word".
 - Reasoning quality: reward RULE.md that explicitly generalizes beyond
   the given examples (e.g., predicts behavior for a novel even-length
   word) and clearly explains the rotate-left mechanic (first character
   moved to the end, not last character moved to the front).
+  - PASS phrasings: "predicts that a fresh 6-letter word like `basket`
+    rotates left to `asketb` before being told the answer"; "explicitly
+    describes rotate-left as 'take the first character and move it to
+    the end', distinguishing it from rotate-right"; "traces the
+    `drum`->`rumd` derivation character by character rather than just
+    stating the result".
+  - FAIL phrasings: "describes the rotation direction ambiguously, e.g.
+    'shift the letters around by one'"; "never applies the rule to any
+    word outside the given 9 examples"; "confuses rotate-left with
+    rotate-right when explaining `drum`, describing the last character
+    moving to the front instead of the first character moving to the
+    end".

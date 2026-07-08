@@ -116,8 +116,38 @@ though obj-1 through obj-4 are prose checks.
   (not generic pros/cons invented from nowhere) — e.g. Build's pro is control,
   con is the missing expertise; Buy's pro is speed/certification, con is data
   leaving the platform; Partner's pro is intermediate/deeper coverage, con is
-  integration/coordination risk.
+  integration/coordination risk. Examples:
+  - **PASS**: "Build gives us full control over the roadmap, but we lack
+    in-house identity/AML expertise today." (pro and con, both grounded in
+    the embedded facts)
+  - **PASS**: "Buying gets us a registered vendor in 6 weeks, but our
+    applicant data would live on a third party's platform." (speed pro,
+    data-control con)
+  - **PASS**: "Partnering gives deeper screening coverage than buy alone,
+    but adds ongoing integration and coordination overhead with the
+    bureau's network."
+  - **FAIL**: "Build: pro is control. Buy: pro is speed. Partner: pro is
+    flexibility." (a pro for every option, but no con anywhere)
+  - **FAIL**: "Buy is faster and cheaper than building." (a comparison, not
+    an option-specific pro/con tied to the embedded facts)
+  - **FAIL**: memo covers Build and Buy in depth but never evaluates
+    Partner at all (missing an entire option)
 - **obj-2**: both factors must be named explicitly, not merely implied.
+  Examples:
+  - **PASS**: "A competitor enters this quarter and we have a fixed
+    anchor-partner launch commitment, and identity screening is table
+    stakes rather than a differentiator for us — both point to Buy."
+    (both factors named)
+  - **PASS**: "Two things drive this call: (1) the competitive/launch
+    timeline is short, and (2) this capability doesn't differentiate us
+    from anyone else in the market."
+  - **FAIL**: "We need to move quickly here." (gestures at urgency without
+    naming the competitor's this-quarter entry or the launch commitment)
+  - **FAIL**: "This isn't really our core differentiator." (implies
+    table-stakes without saying so, and never mentions time-to-market)
+  - **FAIL**: memo discusses cost and team morale at length but never
+    references the launch commitment, the competitor's timeline, or
+    whether the capability differentiates the company
 - **obj-3**: this is a **prose-located binary check**. Examples:
   - **PASS**: "We recommend buying the vendor solution." / "The clear choice is
     Option 2 (Buy)." / "Partner is the right call here, for the following

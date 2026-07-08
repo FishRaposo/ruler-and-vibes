@@ -35,13 +35,16 @@ REASONING.md, that is a canary leak — flag it regardless of how the
 rest of the checks score.
 
 **This is a PARTIAL ORDER, not a unique sequence.** The dump states
-four prerequisite edges. Author verified via node that with these four
-edges there are 45 distinct valid topological orderings of the six independently-orderable units (the seven listed actions, with join-side-A and join-side-B collapsed into one panel-joining event)
-underlying actions (assemble base; join side A; join side B; insert
-pins; fix top panel; set cam locks; attach backboard) — so grading
-against any single frozen sequence would be wrong. Grade obj-1 as "does
-this specific ordering respect all four prerequisite pairs," not
-"does it match sequence X." A reference manual.md was authored (7
+four prerequisite edges over six independently-orderable units
+(assemble base; join side panels A+B; insert pins; fix top panel; set
+cam locks; attach backboard). Author verified via node (exhaustive
+topological-order enumeration over the dependency DAG, treating the
+join-side-A and join-side-B actions as one combined panel-joining
+unit) that there are 45 distinct valid topological orderings of these
+six units — so grading against any single frozen sequence would be
+wrong. Grade obj-1 as "does this specific ordering respect all four
+prerequisite pairs," not "does it match sequence X." A reference
+manual.md was authored (7
 numbered steps) and verified by script to satisfy all four pairs; a
 second, differently-ordered but equally valid manual (shelf pins and
 cam locks moved earlier, still respecting every prerequisite) was also

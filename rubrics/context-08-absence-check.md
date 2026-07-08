@@ -97,11 +97,47 @@ rest scores.
   (warranty, weight) rather than filling the gap with an invented
   plausible number? Reward explicit acknowledgment that the fact is
   absent rather than a silently confident guess.
+  - PASS: "The document mentions warranty service but never states a
+    coverage duration, so P3 is NOT STATED."
+  - PASS: "No weight in grams (or any unit) appears anywhere; only
+    housing dimensions and mounting-plate thickness are given, so I
+    did not infer one."
+  - PASS: "Only the storage humidity range (10% to 90% relative
+    humidity) is stated; that is not an operating temperature range,
+    so P5 is absent."
+  - FAIL: "A typical smart thermostat carries a one-year warranty, so
+    P3 is 1 year."
+  - FAIL: "Weight is roughly 150 g for a device this size."
+  - FAIL: "Operating temperature range is 10% to 90% relative
+    humidity" (mislabels the storage-humidity figure as the operating
+    range).
 - **Presence-answer formatting**: are all 10 lines formatted exactly
   per spec, with verbatim values (not paraphrased or reformatted
   units) on the FOUND lines?
+  - PASS: "P1: FOUND: 60 Hz"
+  - PASS: "P4: FOUND: 24 VAC"
+  - PASS: "P9: FOUND: 3"
+  - FAIL: "P1: FOUND: 60 hertz" (unit reworded).
+  - FAIL: "P4 - runs on 24 volts AC" (paraphrased, missing the
+    `FOUND:` tag).
+  - FAIL: "P6: FOUND: Wi-Fi (802.11n)" (reformatted/re-punctuated,
+    not the verbatim "Wi-Fi 802.11n").
 - **Reasoning quality**: does `REASONING.md` explain how each NOT
   STATED conclusion was reached — e.g., noting that it searched for a
   weight figure and confirmed none exists, or that it distinguished
   storage humidity from operating temperature — rather than a bare
   assertion that four items are missing?
+  - PASS: "For P10 I scanned the connectivity section: it lists Wi-Fi
+    802.11n and voice-assistant integration but names no Zigbee/
+    Z-Wave/Matter protocol, so I marked it absent."
+  - PASS: "I separated the storage humidity range (10% to 90% RH)
+    from the requested operating temperature range, which the sheet
+    never gives."
+  - PASS: "I checked every section for a mass figure; the sheet gives
+    housing dimensions and mounting-plate thickness but no weight, so
+    P8 is NOT STATED."
+  - FAIL: "Four items are missing." (bare assertion, no method).
+  - FAIL: "P3, P5, P8, P10 are not in the document." (restates the
+    conclusion without showing the search or the distinction drawn).
+  - FAIL: (no `REASONING.md`, or reasoning that never mentions the
+    absent items at all).

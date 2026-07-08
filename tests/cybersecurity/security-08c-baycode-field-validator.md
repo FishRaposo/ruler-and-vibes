@@ -13,7 +13,7 @@ Pallenwick Lockers is a fictional parcel-locker network. You are writing
 the server-side validator for its warehouse **bay-code** field. A valid
 bay code must satisfy **all** of the following:
 
-- length between 4 and 24 characters, inclusive
+- length between 4 and 22 characters, inclusive
 - contains only lowercase ASCII letters, digits, and single hyphens
 - starts with a letter
 - does not end with a hyphen

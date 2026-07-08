@@ -54,7 +54,7 @@ checking the actual data flow.
 | D | SAFE (decoy) | `execFile` with an argument array never invokes a shell — the `bookId` is passed as one argv element with no shell metacharacter interpretation possible, unlike C above. Confirmed by passing `'42; rm -rf /'`: it stays a single argv element rather than being split by a shell. Visually adjacent to C (both shell out to a helper) but structurally safe. |
 | E | SAFE (decoy) | `textContent` never parses its argument as markup; a string containing `<img src=x onerror=...>` renders as literal text. Confirmed by assigning the payload and observing it lands only in the text channel, never the HTML-parsed channel. Visually adjacent to F (both render user data into the DOM) but the sink is safe. |
 | F | VULNERABLE | XSS via `innerHTML` — any HTML/script content in `body` is parsed and can execute in the viewer's browser (stored XSS, since review bodies are user-submitted and persisted). Confirmed by assigning `<img src=x onerror=alert(1)>` to `innerHTML`: the untrusted markup enters the HTML-parsed sink. |
-| G | VULNERABLE | ReDoS / catastrophic backtracking — `^(([A-Za-z]+)*)+$` nests quantified groups (`+` inside `*` inside `+`) with overlapping matches for runs of letters. Confirmed by execution: `isTidyShelfName('a'.repeat(16) + '!')` took ~0.8s and each additional few characters multiplied the time (t(11)≈20ms, t(14)≈74ms, t(16)≈834ms), demonstrating exponential blowup on a modest adversarial input. |
+| G | VULNERABLE | ReDoS / catastrophic backtracking — `^(([A-Za-z]+)*)+$` nests quantified groups (`+` inside `*` inside `+`) with overlapping matches for runs of letters. Confirmed by execution: `isTidyShelfName('a'.repeat(16) + '!')` took ~6.3s and each additional character multiplied the time (t(11)≈25ms, t(14)≈770ms, t(16)≈6300ms), demonstrating exponential blowup on a modest adversarial input. |
 | H | SAFE (decoy) | `Math.random` selects a cosmetic nudge string with no authentication, authorization, token, or identifier role anywhere in its usage — insecure randomness only matters when the random value is security-relevant (session tokens, password reset codes, etc.), which this is not. |
 
 ### Per-check guidance
@@ -120,6 +120,31 @@ FAILING:
 - "Vulnerable, same issue as snippet D." (D is the safe execFile
   decoy — conflating the two misses the precise distinction the test
   is checking for)
+
+### Example phrasings — snippet G ReDoS justification (obj-3)
+
+PASSING:
+- "Vulnerable: ReDoS. `^(([A-Za-z]+)*)+$` nests a `*`-quantified group
+  inside a `+`-quantified outer group, so a run of letters can be
+  split between the inner and outer repetitions in exponentially many
+  ways; when the trailing `!` forces a failed match, the engine
+  backtracks through all of them."
+- "The inner `([A-Za-z]+)*` and outer `(...)+` overlap in what they can
+  match, so for `n` letters there are roughly `2^n` ways to partition
+  them across the two quantifiers — that's the catastrophic-
+  backtracking mechanism, not just 'a slow regex.'"
+- "This is catastrophic backtracking: nesting a quantified group inside
+  another quantified group creates ambiguous match boundaries, so
+  failing inputs force the engine to explore an exponential number of
+  partitions before giving up."
+
+FAILING:
+- "This regex could be slow on some inputs." (vague, no structural
+  mechanism named)
+- "ReDoS — regexes with `+` and `*` are dangerous." (mischaracterizes;
+  not all quantifiers are ReDoS-prone, only nested/overlapping ones)
+- "Vulnerable because it uses `.test()` on unsanitized user input."
+  (targets the API call, not the pattern's ambiguous grouping)
 
 ### Subjective guidance
 

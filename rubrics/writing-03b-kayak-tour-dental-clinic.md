@@ -17,6 +17,8 @@ criteria:
       check: "No literal idiom renderings ('sem enrolação' is not 'without wrapping'; 'first come, first served' is not a word-for-word calque; 'Bring your A-game' is not 'traga seu jogo A'); brand names unchanged"
     - id: obj-5
       check: "localization.md is at most 350 words total, counted with wc -w over the whole file"
+    - id: obj-6
+      check: "Neither Text A nor Text B contains a translator's footnote, bracketed note, or parenthetical aside about the translation itself; any such remarks belong only in REASONING.md"
   subjective:
     - id: sub-quality
       name: "Native naturalness"
@@ -51,9 +53,40 @@ rest scores.
   rendering.
 - Reasoning quality: does REASONING.md explain the transcreation
   choices and the date-convention trap?
+- Footnote check (obj-6): any bracketed or parenthetical translator's
+  remark left inside Text A or Text B — not just literal "[TN: ...]"
+  tags, but also asides like "(kept in dollars per the source)" —
+  fails obj-6 even if the rest of the text is well translated.
+  Commentary belongs in REASONING.md only.
 
 ### PASS/FAIL exemplars for prose-decidable checks
 
+- **obj-1 (both sections present and complete):**
+  - PASS: `## Text A — PT-BR` is followed by a complete Portuguese
+    translation and `## Text B — EN` is followed by a complete
+    English translation, each covering every sentence of the source.
+  - PASS: header punctuation varies slightly (e.g. an en dash instead
+    of an em dash) but both texts are fully present and correctly
+    assigned.
+  - FAIL: the `## Text B — EN` section is missing or is cut off
+    before the "children 12 and under" sentence.
+  - FAIL: the two sections are swapped or mislabeled (e.g. the PT-BR
+    text appears under the `Text B — EN` header).
+- **obj-2 (all facts survive):**
+  - PASS: "the first 12 paddlers also get a free dry bag" becomes "os
+    12 primeiros remadores ganham uma bolsa estanque de brinde" —
+    count and item both intact.
+  - PASS: "20% off" and "free cancellation up to 24 hours before the
+    appointment" both appear unchanged in the English Text B.
+  - PASS: "Children 12 and under don't pay for the evaluation" is
+    present in the English Text B.
+  - FAIL: the paddler count drifts (e.g. "10 primeiros remadores"
+    instead of 12) or the discount percentage drifts (e.g. "15%"
+    instead of 20%).
+  - FAIL: the free-evaluation or free-cancellation detail is dropped
+    from the English Text B.
+  - FAIL: the price pair is altered or converted (e.g. "R$ 99 em vez
+    de R$ 139" instead of keeping US dollars).
 - **obj-3 (date convention):**
   - PASS: "June 9, 2027" / "9 de junho de 2027" / "book by June 9"
   - FAIL: "September 6, 2027" / "Sept. 6, 2027" / "9/6/2027" read the
@@ -70,3 +103,15 @@ rest scores.
 - **obj-4 (idiom literalism — "Bring your A-game"):**
   - PASS: "venha com tudo", "dê o seu melhor", "capriche no remo"
   - FAIL: "traga seu jogo A", "traga seu jogo A-classe"
+- **obj-6 (no translator's footnotes or asides inside the texts):**
+  - PASS: Text A and Text B read as clean marketing copy with no
+    bracketed asides such as "[TN: ...]" or "(tradução literal
+    seria...)".
+  - PASS: any commentary on word choice or the date-convention trap
+    appears only in REASONING.md, not inside localization.md.
+  - FAIL: Text A or Text B contains a bracketed note such as "[nota
+    do tradutor: ...]" or "(literally: ...)" inline in the marketing
+    copy.
+  - FAIL: a parenthetical aside explaining a translation choice (e.g.
+    "(mantive em dólares pois o texto original não converte)")
+    appears inside the deliverable text itself.

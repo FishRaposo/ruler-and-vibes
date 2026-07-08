@@ -61,7 +61,7 @@ these are the ONLY genuine errors outside the two protected spans):
 1. paragraph 1, "Society recieved" -> "Society received"
 2. paragraph 1, "failures that occured" -> "failures that occurred"
 3. paragraph 1, "already begining" -> "already beginning"
-4. paragraph 5 (final paragraph), "due by thursday" -> "due by Thursday"
+4. paragraph 6 (final paragraph), "due by thursday" -> "due by Thursday"
    (day-of-week capitalization)
 
 Example phrasings for the prose-located comparison checks (apply the

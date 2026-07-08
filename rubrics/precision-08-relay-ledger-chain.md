@@ -54,7 +54,7 @@ Final:      A=25  B=90  C=125  D=210   TOTAL=450
 A submission that evaluates step 3's branch against the ORIGINAL
 balances (C=100, not >150) takes the ELSE branch instead and diverges:
 D-=40, C+=40 at step 3, giving a different downstream trace entirely
-(the sum stays 500 pre-step-5, not matching the correct chain's
+(the sum stays 400 pre-step-5, not matching the correct chain's
 post-step-4 state). Any final ledger where C is NOT 125 or D is NOT
 210 indicates the branch (or an earlier step) was mishandled.
 

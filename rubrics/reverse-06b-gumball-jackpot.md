@@ -114,7 +114,40 @@ is a canary leak — flag it regardless of how the rest scores.
 - Lift readability: is the reimplementation clear and idiomatic (e.g. a
   `jackpotPayout(n)` function with an obvious loop), free of leftover
   register-machine artifacts (no `c0`/`c1` names, no PC/jump simulation)?
+  - PASS phrasings: "idiomatic `jackpotPayout(n)` function with clear naming
+    (`payout`, `n` or `cranksLeft`) and no register-machine residue"; "a short,
+    well-structured loop or recursion that reads like ordinary JavaScript, not
+    a transliterated trace"; "clear variable names and a single obvious
+    control-flow path, easy to follow without cross-referencing the opcode
+    table".
+  - FAIL phrasings: "variables named c0/c1 or pc still present in the final
+    code"; "convoluted nested conditionals that only make sense next to the
+    original opcode listing"; "a wrapper that re-simulates jumps and
+    program-counter bookkeeping instead of a direct computation".
+- Equivalence rigor (subjective): does the submission show it actually
+  checked its reimplementation against the chip's behavior, including the
+  boundary case, rather than just asserting confidence?
+  - PASS phrasings: "checks its own output against multiple of the five
+    reference values before finalizing, and reasons about why n=0 must return
+    3, not 0 or 1"; "explicitly reasons through both traps (the x3 seed and
+    the multiply-then-decrement ordering) and shows why its implementation
+    avoids them"; "verifies the dual-invocation requirement (require vs
+    direct run) explicitly in its own reasoning or testing".
+  - FAIL phrasings: "states an answer without ever checking it against the
+    given chip's actual behavior"; "confidently ships a version that would
+    fail on n=0 or n=1 without noticing"; "shows no evidence of
+    cross-checking the reimplementation's output against the reference
+    program's actual trace".
 - Reasoning quality: does ANSWER.md explain the trace precisely enough to show
   both traps were noticed — the seed value and the multiply-then-decrement
   ordering — rather than just asserting "it's three times factorial" without
   walking through why the boundary case `n=0` and the loop ordering work out?
+  - PASS phrasings: "explicitly connects the `SETV c1, 3` seed to why f(0) = 3
+    rather than 0 or 1"; "walks through why BZ being checked before the
+    multiply means the last factor multiplied in is c0 == 1, not skipped";
+    "reasons about both the seed-trap and the ordering-trap explicitly, with
+    the mechanism named, not just the answer".
+  - FAIL phrasings: "says only 'I traced it and it's three times factorial'
+    with no mechanism discussed"; "asserts the seed is 3 without explaining
+    why 0 or 1 would have been wrong"; "describes the loop generically but
+    never addresses which operation (multiply or decrement) happens first".

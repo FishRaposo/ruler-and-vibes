@@ -72,6 +72,12 @@ Total word count across all fields: **53** (<=90). Screen 1's primary
 - Committal (Screen 3 only): "Start now", "Get started", "Begin now",
   "Create my first task"
 
+Note for judges: each list contains one entry that is 4 words long
+("See how it works" in exploratory; "Create my first task" in
+committal) — these are list members but fail the 1-3 word primary-CTA
+rule (obj-2) if chosen, so picking them is a genuine dual-constraint
+trap, not a safe choice.
+
 ### Trap
 
 Screen 2 is a consent ask. The correct treatment gives it a real,
@@ -82,7 +88,11 @@ mandatory by leaving `secondary` null on Screen 2 specifically (Screens
 technically non-null but coercive decline such as "Skip and lose
 features", which pressures rather than genuinely offers an out. Only
 (1) is mechanically caught by obj-5; (2) is a judge-read tone problem
-under "Cross-screen consistency and consent framing" below.
+under "Cross-screen consistency and consent framing" below. A third,
+subtler trap sits in the CTA lists themselves: each list contains one
+four-word decoy ("See how it works", "Create my first task") that reads
+as thematically on-brand but silently violates the general 1–3 word CTA
+rule (obj-2) if chosen.
 
 ### Subjective guidance
 

@@ -17,8 +17,8 @@ from the line lead proposing a process change.
 
 | Metric | Value |
 |---|---|
-| Weld volume | 80,000 welds |
-| Defect prevalence | 0.75% of welds have a real cracking defect |
+| Weld volume | 50,000 welds |
+| Defect prevalence | 0.6% of welds have a real cracking defect |
 | Sensitivity (true positive rate) | 88% of actual defects are flagged |
 | Specificity (true negative rate) | 93% of sound welds pass without a flag |
 
@@ -35,7 +35,7 @@ The line lead's memo:
   order:
   - `## Confusion matrix` — build the full confusion matrix (true
     positives, false negatives, false positives, true negatives) for
-    the stated 80,000-weld population, showing your arithmetic.
+    the stated 50,000-weld population, showing your arithmetic.
   - `## What a flag actually means` — compute the positive predictive
     value (the probability a weld is truly cracked given that it was
     flagged), showing your arithmetic.

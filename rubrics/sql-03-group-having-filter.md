@@ -86,10 +86,30 @@ rest scores.
   cannot correctly express a per-row exclusion once rows are
   aggregated), and does it correctly use `MIN(qty) >= 3` (or an anti-
   join) rather than a `WHERE qty >= 3` that only checks whether *some*
-  row qualifies?
+  row qualifies? PASS example: "We put `refunded = 0` in the WHERE
+  clause so the rows never reach GROUP BY, and used `HAVING MIN(qty)
+  >= 3` so a category only counts as qualifying when its smallest line
+  item still clears the bar." PASS example: "The refunded flag is
+  per-row, so it has to be resolved before the rows collapse into
+  groups; the quantity condition is per-group, so it has to be
+  resolved with an aggregate like MIN() after grouping." FAIL example:
+  "We used HAVING refunded = 0 to drop the refunded lines before
+  grouping by category." (HAVING cannot see a raw per-row column once
+  grouped — this is exactly the confusion the test is designed to
+  catch). FAIL example: "WHERE qty >= 3 keeps only the categories where
+  line items are large enough." (a row-level WHERE cannot express a
+  group-level "for all" condition; it only requires that *some* row in
+  the surviving group satisfy the predicate).
 - Query structure and result presentation: are the two queries clearly
   separated and labeled, is the ORDER BY applied as specified, are
-  results presented legibly in ANSWERS.md?
+  results presented legibly in ANSWERS.md? PASS example: each query
+  prefixed with a `-- Q1:` / `-- Q2:` comment and ANSWERS.md tables in
+  question order with descriptive column headers. PASS example: a
+  single clean markdown table per query, values right-aligned or at
+  least unambiguous. FAIL example: two SELECTs pasted back-to-back with
+  no labels distinguishing which answers which question. FAIL example:
+  result rows dumped as raw unformatted text with no indication of
+  which column is `category` and which is `revenue`.
 - Reasoning quality: does the explanation correctly state that WHERE
   filters rows before grouping/aggregation while HAVING filters groups
   after aggregation, and that `MIN(qty) >= 3` is true for a group only
@@ -104,8 +124,17 @@ rest scores.
   group has qty >= 3, which is exactly the 'for all' condition we
   need; a plain WHERE qty >= 3 instead throws away the disqualifying
   low-qty rows and leaves behind categories that only partially
-  qualify." FAIL example: "We filtered refunded orders and grouped by
-  category to get the revenue." (does not explain the WHERE-before-
+  qualify." Another PASS example: "The refunded flag is a per-row
+  property, so it has to be applied in the WHERE clause before GROUP
+  BY collapses the rows — once the rows are aggregated there's no way
+  to ask 'was this particular line item refunded' anymore. MIN(qty) >=
+  3 works as a stand-in for 'every line item's qty is at least 3'
+  because the minimum of a set can only clear a bar if every member of
+  the set clears it; filtering rows with WHERE qty >= 3 first and then
+  just listing which categories remain would wrongly include a
+  category as long as any one of its line items happened to have
+  enough qty." FAIL example: "We filtered refunded orders and grouped
+  by category to get the revenue." (does not explain the WHERE-before-
   HAVING ordering or why it matters). Another FAIL example: "MIN(qty)
   >= 3 checks if the quantity is at least 3" (restates the syntax
   without explaining why MIN specifically encodes a universal

@@ -91,11 +91,41 @@ rest scores.
 - Cross-document reconciliation accuracy: were all three overrides
   (quantity correction, line removal, discount) correctly located in
   the email and applied to the right lines?
+  - PASS examples: BX-9's qty is corrected to 30 (not left at the
+    printed 3), with `extended` recomputed to 450.00; DX-4 is fully
+    absent from `line_items` (not zeroed out, not kept with qty 0);
+    the $25.00 discount is applied as a single flat subtraction to the
+    subtotal.
+  - FAIL examples: BX-9's qty left at 3, or "corrected" to the wrong
+    figure (e.g. 3.0 or 300, a misplaced decimal); DX-4 kept in
+    `line_items` with `qty: 0` or `extended: 0.00` instead of removed;
+    the discount misread as a percentage (25% instead of a flat
+    $25.00) or subtracted from `tax` instead of `subtotal`.
 - Override ordering & schema authority: was the order of operations
   (corrections → subtotal → discount → tax → total) followed exactly,
   and does the output schema carry the override's authority cleanly
   (no stray original-invoice figures, no leftover reference to DX-4)?
+  - PASS examples: `tax` computed as 8% of `(subtotal - discount)`,
+    i.e. 0.08×597.00 = 47.76; no trace of DX-4 or "Servo Motor"
+    anywhere in the raw file, not even in a comment-like description
+    field; `invoice_number` carried over exactly as `"INV-5521"` with
+    no stray original subtotal/tax/total values duplicated elsewhere.
+  - FAIL examples: `tax` computed on the pre-discount subtotal
+    (622.00×0.08 = 49.76) with the discount subtracted afterward;
+    `reconciled.json` includes a residual field or comment mentioning
+    DX-4 or "Servo Motor" as removed; extra keys added (e.g.
+    `"notes"`, `"original_total"`) beyond the six schema keys.
 - Reasoning quality: does REASONING.md walk the override sequence —
   the BX-9 quantity fix, the DX-4 removal, and the discount-before-tax
   ordering — showing the arithmetic tying back to 644.76, rather than
   asserting the final total with no derivation?
+  - PASS examples: "BX-9: 30 × 15.00 = 450.00 (not 3 × 15.00 = 45.00);
+    DX-4 removed entirely; subtotal 54.00+100.00+450.00+18.00 =
+    622.00; minus the 25.00 discount = 597.00; ×8% tax = 47.76; total
+    644.76."; an explicit note that the discount is applied before tax
+    per the email's third instruction.
+  - FAIL examples: REASONING.md states "the total is 644.76" with no
+    supporting arithmetic; the corrections are described narratively
+    but the subtotal/discount/tax arithmetic is never shown; the
+    derivation asserts a number without tying it back to the surviving
+    line items.

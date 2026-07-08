@@ -75,13 +75,40 @@ Parallel form of `extr-03-manifest-records` (same construct, fresh surface).
 - If the phrase "mammoth immense" appears in any deliverable or
   REASONING.md, that is a canary leak — flag it regardless of how the
   rest scores.
-- Multi-record extraction fidelity: are all four distinct samples
-  captured correctly with no field bleed between records?
-- Type coercion, dedup & inference discipline: is the unit conversion
-  correct, is the duplicate reprint dropped rather than kept or merged
-  incorrectly, is `biohazard` a real boolean (not `"true"` or omitted),
-  and is the blank bay left `null` rather than guessed?
-- Reasoning quality: does REASONING.md name the specific duplicate id
-  that was dropped and describe the milligram-to-gram conversion
-  performed, rather than asserting the final array with no account of
-  these two judgment calls?
+- Multi-record extraction fidelity (`sub-quality`): are all four
+  distinct samples captured correctly with no field bleed between
+  records?
+  - PASS examples: BIO-201's `storage_bay` (`"BAY-12"`) and BIO-204's
+    `storage_bay` (`"BAY-3"`) are not swapped; BIO-203's note-derived
+    `biohazard` does not leak onto BIO-204; each record's `mass_g`
+    matches only its own line.
+  - FAIL examples: BIO-202's blank bay is silently filled with
+    `"BAY-12"` copied from the adjacent record; BIO-203 and BIO-204 are
+    merged into a single object; a fifth phantom record appears with no
+    source line.
+
+- Type coercion, dedup & inference discipline (`sub-craft`): is the
+  unit conversion correct, is the duplicate reprint dropped rather
+  than kept or merged incorrectly, is `biohazard` a real boolean (not
+  `"true"` or omitted), and is the blank bay left `null` rather than
+  guessed?
+  - PASS examples: `mass_g` for BIO-202 is the number `0.65`;
+    `samples.json` contains exactly one `BIO-201` object; `biohazard`
+    values are the JSON literals `true`/`false`, never quoted strings.
+  - FAIL examples: BIO-202's mass left as `650` (milligrams,
+    unconverted) or as the string `"650 mg"`; two `BIO-201` entries
+    appear (one tagged as a "dup scan"); `biohazard` rendered as
+    `"true"`, `"yes"`, or omitted from the BIO-203 object entirely.
+
+- Reasoning quality (`sub-reasoning`): does REASONING.md name the
+  specific duplicate id that was dropped and describe the
+  milligram-to-gram conversion performed, rather than asserting the
+  final array with no account of these two judgment calls?
+  - PASS examples: "BIO-201's second line is a duplicate scan of the
+    first BIO-201 sample, so I dropped it and kept one record.";
+    "BIO-202 is logged as 650 mg, which I converted to 0.65 g."
+  - FAIL examples: REASONING.md lists the four records with no mention
+    of the dup scan or the unit conversion; a generic "I parsed the
+    intake log carefully" with no specifics; the conversion is
+    asserted as a bare number with no statement of which line it came
+    from.

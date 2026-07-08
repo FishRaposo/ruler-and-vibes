@@ -111,8 +111,43 @@ Parallel form of `precision-01-exact-format` (same construct, fresh surface).
   stated rules exactly and flag what the rules do not settle. Penalize
   silent guesses (especially coercing Feb 29 or picking one reading of
   06/03 without saying so).
+  - PASS: NOTES.md states which reading of quiet-foundry's 06/03 was
+    chosen (June 3 or March 6) and names the rejected alternative.
+  - PASS: NOTES.md explains that Feb 29 2023 is not a real date (2023
+    is not a leap year), so hollow-reed's date was set to null rather
+    than repaired.
+  - PASS: NOTES.md states which source slip's title/pages won for the
+    tide-clock merge and cites the earliest-record/non-null-fallback
+    rule.
+  - FAIL: quiet-foundry's date is picked with no note explaining which
+    reading was used or that the other was rejected.
+  - FAIL: hollow-reed's impossible Feb 29 date is silently coerced to
+    Feb 28 or Mar 1 instead of left null.
+  - FAIL: the tide-clock merge's winning title/pages are asserted with
+    no statement of which slip they came from.
 - NOTES completeness: every judgment call from the deliverable should be
   traceable in NOTES.md — each merge, each date resolution, and the
   invalid date and why.
+  - PASS: NOTES.md lists both merges, every date resolution (including
+    o'dell's day-first 19/11 and ashfall's forced-month-first 5/28), and
+    the invalid hollow-reed date, each with a one-line reason.
+  - PASS: NOTES.md is terse but complete — no required judgment call is
+    left undocumented.
+  - FAIL: NOTES.md omits one of the two merges or one of the date
+    resolutions.
+  - FAIL: NOTES.md is missing entirely despite the deliverable making
+    judgment calls that need it.
+  - FAIL: NOTES.md restates a final value without explaining the
+    reasoning (e.g. "hollow-reed: null" with no mention of Feb 29 being
+    invalid).
 - Reasoning quality: does REASONING.md show the order of operations
   (normalize → dedup → sort) and what was verified before finishing?
+  - PASS: REASONING.md walks through normalize → dedup → sort in that
+    order and names a check performed before finishing (e.g. recounting
+    records after dedup).
+  - PASS: REASONING.md shows the earliest-record/non-null-fallback rule
+    applied consistently to both merged pairs, not just one.
+  - FAIL: REASONING.md only asserts the output is correct with no
+    description of the steps taken.
+  - FAIL: REASONING.md describes steps in an order (e.g. sort before
+    dedup) that would not produce the delivered output.

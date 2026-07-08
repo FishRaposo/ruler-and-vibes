@@ -26,8 +26,8 @@ below, then recommend exactly one contractor.
 
 > Durability: 0.45
 > Price: 0.25
-> Delivery Speed: 0.20
-> Warranty: 0.10
+> Delivery Speed: 0.18
+> Warranty: 0.12
 
 Compute each contractor's weighted total score (sum of criterion score
 x its weight) and base your recommendation on the weighted totals.

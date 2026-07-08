@@ -121,8 +121,37 @@ and obj-3 (wrong TOTAL-WHEELS).
   TOTAL-WHEELS computation (excluding curing) was done before the branch
   decision (Rule 4)? Reward REASONING.md that shows this order
   explicitly.
+  - PASS: REASONING.md states that gouda and brie (both score 0) are
+    excluded first under Rule 1, before colby is split into CURING
+    under Rule 2.
+  - PASS: REASONING.md shows TOTAL-WHEELS computed from only the five
+    RACK-section wheels (excluding colby), arriving at 485 before the
+    alphabetical-vs-descending branch (Rule 4) is decided.
+  - FAIL: REASONING.md computes TOTAL-WHEELS by summing every wheel
+    including colby (giving 538), then uses that wrong total to decide
+    the sort branch.
+  - FAIL: REASONING.md never mentions Rule 1's exclusion, leaving it
+    unclear whether gouda/brie were dropped by design or by
+    coincidence.
 - **Format discipline**: exact pipe/space separators, no extra
   whitespace, correct field order.
+  - PASS: every RACK line matches `W-###|name|score|seal` with no extra
+    spaces around the pipes.
+  - PASS: the CURING line uses single spaces (`W-045 colby 53`) and no
+    pipes.
+  - FAIL: a RACK line has a space after a pipe (`W-137 |cheddar|66|17`)
+    or fields in a different order.
+  - FAIL: the CURING line uses pipes or extra whitespace instead of the
+    single-space format.
 - **Reasoning quality**: does REASONING.md show the TOTAL-WHEELS
   computation landing at 485 (not 538), and does it show each SEAL
   computation's arithmetic rather than just asserting the final digit?
+  - PASS: REASONING.md shows the five-wheel sum (66+82+91+134+112 = 485)
+    explicitly, distinct from the trap total of 538.
+  - PASS: REASONING.md shows at least one worked SEAL example, e.g.
+    cheddar: (66 × 7) mod 89 = 17, rather than only stating the final
+    digit.
+  - FAIL: REASONING.md states the final SEAL digits with no arithmetic
+    shown at all.
+  - FAIL: REASONING.md's stated TOTAL-WHEELS arithmetic does not add up
+    to the value in the delivered manifest.txt.

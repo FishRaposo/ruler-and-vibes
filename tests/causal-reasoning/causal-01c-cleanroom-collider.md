@@ -33,11 +33,11 @@ The conditional probability tables (ground truth, not to be estimated):
 ```
 P(N=1) = 0.4
 
-P(H=1 | N=1) = 0.75
-P(H=1 | N=0) = 0.15
+P(H=1 | N=1) = 0.65
+P(H=1 | N=0) = 0.20
 
-P(V=1 | N=1) = 0.05
-P(V=1 | N=0) = 0.80
+P(V=1 | N=1) = 0.10
+P(V=1 | N=0) = 0.85
 ```
 
 (H and V are generated independently of each other once N is fixed — the

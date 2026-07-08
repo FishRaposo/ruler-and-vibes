@@ -71,14 +71,87 @@ rest scores.
   pipeline above and confirming the submission's `decode` recovers it
   (or, at minimum, confirming the file contains base64/XOR/reverse
   operations applied generally rather than a lookup table).
+
+Prose-decidable check exemplars:
+
+- obj-1 (naming + outermost stage): **PASS** phrasings — "The pipeline
+  is base64(reverse(xor(bytes, 0x2A))); decoding undoes base64 first,
+  then the byte-reversal and the XOR in either order."; "Three stages:
+  XOR with 0x2A, a whole-buffer reversal, and base64 on the outside —
+  so decode strips base64, then reverses, then XORs."; "Base64 is
+  applied last during encoding, so it must be removed first when
+  decoding, followed by undoing the reversal and the XOR." **FAIL**
+  phrasings — "The blob is just base64 of an XORed string." (drops the
+  reversal stage entirely); "It's some kind of scrambled encoding that
+  base64-decodes into the answer." (too vague, no stage is actually
+  named); "Undo the XOR, then base64-decode, then reverse." (gets
+  base64's outermost position wrong — base64 must be undone first, not
+  last).
+- obj-4 (intermediate-byte walkthrough): **PASS** phrasings — a table
+  or line showing `utf8 4d4f44454c -> XOR 67656e6f66 -> reversed
+  666f6e6567 -> base64 Zm9uZWc=`, where the reversed hex is visibly the
+  XORed hex's bytes in reverse order; the same walkthrough for `"abc"`
+  (`616263 -> 4b4849 -> 49484b`); any worked example where the reader
+  can check the reversed column is the mirror image of the XORed
+  column. **FAIL** phrasings — showing only the plaintext and final
+  base64 with no intermediate hex at all; showing hex bytes that are
+  claimed to be "after reversal" but are byte-identical to the XORed
+  row (the reversal was asserted, not actually performed); showing
+  intermediate bytes for a string the model invented rather than one of
+  the worked examples, so the reversal can't be checked against a known
+  answer.
+- obj-5 (generic decoder vs. lookup table): **PASS** phrasings — a
+  `decode(blob)` function that runs `Buffer.from(blob, 'base64')`, then
+  a byte-reversal loop or `.reverse()`, then a per-byte XOR with 0x2A,
+  and returns the result for whatever blob is passed in; a decoder that
+  correctly recovers a brand-new string encoded with the same pipeline
+  but not present in the test. **FAIL** phrasings — `if (blob ===
+  'Zm9uZWc=') return 'MODEL'; if (blob === 'SUhL') return 'abc'; ...`;
+  a `decode` that has the three answers hardcoded in a switch/map and
+  falls through to `undefined` or an error on any other input; a
+  function that "decodes" by string-matching against the challenge blob
+  specifically rather than performing base64/XOR/reverse arithmetic.
+
 - Pipeline exposition: does ANSWER.md clearly name all three stages and
   correctly identify base64 as outermost (undone first), rather than
   vaguely describing "some encoding"?
+  - PASS phrasings: "names XOR-0x2A, byte-reversal, and base64 and
+    explains base64 must come off first since it was applied last
+    during encoding"; "states the pipeline as an equation,
+    `base64(reverse(xor(bytes,0x2A)))`, and separately explains the
+    decode order"; "notes that swapping the XOR/reversal order on
+    decode doesn't matter, only base64 being outermost does".
+  - FAIL phrasings: "names the stages but never says which one comes
+    off first, leaving the order implicit"; "says the string is 'base64
+    encoded and scrambled' without naming the reversal or the XOR
+    constant"; "explains the pipeline only in code comments, with no
+    corresponding prose in ANSWER.md".
 - Inversion correctness: does invert.js's `decode` function generalize
   to arbitrary blobs produced by the stated pipeline, applying real
   base64-decode, byte-reversal, and XOR operations rather than
   hardcoding the three given blob-to-plaintext pairs?
+  - PASS phrasings: "`decode` is three composable steps (base64-decode,
+    reverse, XOR) with no reference anywhere to the specific challenge
+    strings"; "correctly decodes a freshly-encoded string not present in
+    ANSWER.md or the test file"; "the reversal operates on the whole
+    buffer generically rather than a hardcoded byte count".
+  - FAIL phrasings: "`decode` special-cases the challenge blob with an
+    `if (blob === 'GB5CSURPSA==') return 'bench42'`"; "the reversal step
+    is hardcoded to a fixed length rather than reversing the actual
+    buffer"; "works on the three known blobs but throws or returns
+    garbage on a novel blob encoded with the same pipeline".
 - Reasoning quality: does ANSWER.md's intermediate-byte walkthrough
   actually show the reversal changing the byte order (compare the XORed
   hex to the reversed hex and confirm they're reverses of each other),
   proving the stage wasn't just claimed but genuinely traced?
+  - PASS phrasings: "shows the XORed hex `67656e6f66` and the reversed
+    hex `666f6e6567` side by side so the mirroring is visible"; "states
+    explicitly that reversing `67656e6f66` gives `666f6e6567`, letting
+    the reader verify it by eye"; "traces the pipeline for a second
+    example (`abc`) in addition to the primary one, reinforcing the
+    reversal is real".
+  - FAIL phrasings: "shows only the plaintext and the final base64,
+    skipping the intermediate hex entirely"; "claims a 'reversed' hex
+    value that is actually identical to the XORed value, meaning the
+    reversal was asserted but never performed"; "asserts 'the bytes get
+    reversed' with no hex shown to check the claim against".

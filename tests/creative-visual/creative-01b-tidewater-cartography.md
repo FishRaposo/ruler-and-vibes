@@ -14,7 +14,7 @@ readable at a glance.
 
 ## Deliverables
 
-- `poster.svg` — portrait orientation with `viewBox="0 0 640 960"`,
+- `poster.svg` — portrait orientation with `viewBox="0 0 620 930"`,
   containing the event name, the dates, and the venue as text, plus at
   least three distinct non-text visual elements (shapes, gradients,
   patterns).

@@ -96,11 +96,42 @@ rest scores.
 - Cross-document reconciliation accuracy: were all three overrides
   (quantity correction, line removal, discount) correctly located in
   the email and applied to the right lines?
+  - PASS examples: PS-3's qty is corrected to 40 (not left at the
+    printed 4), with `extended` recomputed to 880.00; PS-5 is fully
+    absent from `line_items` (not zeroed out, not kept with qty 0);
+    the $28.00 discount is applied as a single flat subtraction to the
+    subtotal.
+  - FAIL examples: PS-3's qty left at 4, or "corrected" to the wrong
+    figure (e.g. 14 or 400, a transposition); PS-5 kept in
+    `line_items` with `qty: 0` or `extended: 0.00` instead of removed;
+    the discount misread as a percentage (28% instead of a flat
+    $28.00) or subtracted from `tax` instead of `subtotal`.
 - Override ordering & schema authority: was the order of operations
   (corrections → subtotal → discount → tax → total) followed exactly,
   and does the output schema carry the override's authority cleanly
   (no stray original-invoice figures, no leftover reference to PS-5)?
+  - PASS examples: `tax` computed as 9% of `(subtotal - discount)`,
+    i.e. 0.09×1252.00 = 112.68; no trace of PS-5 or "Retractable
+    Banner Stand" anywhere in the raw file, not even in a comment-like
+    description field; `invoice_number` carried over exactly as
+    `"INV-8834"` with no stray original subtotal/tax/total values
+    duplicated elsewhere.
+  - FAIL examples: `tax` computed on the pre-discount subtotal
+    (1280.00×0.09 = 115.20) with the discount subtracted afterward;
+    `reconciled.json` includes a residual field or comment mentioning
+    PS-5 or "Retractable Banner Stand" as removed; extra keys added
+    (e.g. `"notes"`, `"original_total"`) beyond the six schema keys.
 - Reasoning quality: does REASONING.md walk the override sequence —
   the PS-3 quantity fix, the PS-5 removal, and the discount-before-tax
   ordering — showing the arithmetic tying back to 1364.68, rather than
   asserting the final total with no derivation?
+  - PASS examples: "PS-3: 40 × 22.00 = 880.00 (not 4 × 22.00 = 88.00);
+    PS-5 removed entirely; subtotal 210.00+120.00+880.00+70.00 =
+    1280.00; minus the 28.00 discount = 1252.00; ×9% tax = 112.68;
+    total 1364.68."; an explicit note that the discount is applied
+    before tax per the email's third instruction.
+  - FAIL examples: REASONING.md states "the total is 1364.68" with no
+    supporting arithmetic; the corrections are described narratively
+    but the subtotal/discount/tax arithmetic is never shown; the
+    derivation asserts a number without tying it back to the surviving
+    line items.

@@ -105,15 +105,55 @@ rest scores.
   unambiguously list all 8 transitions with their source state, event,
   and destination state, in a form a reader could check row-by-row
   against the trace?
+  - PASS phrasings: "prints a table with one row per transition, each
+    row showing state, event, and next-state, e.g. `SCRUB + DRAIN ->
+    RINSE`"; "groups transitions by source state and labels self-loops
+    explicitly (e.g. `SCRUB + JET -> SCRUB (self)`)"; "the printed
+    table can be checked line-by-line against the 12-line trace
+    without cross-referencing other output."
+  - FAIL phrasings: "dumps a raw nested object with no state/event/
+    next-state labeling, leaving the reader to guess which key means
+    what"; "prints only 'ACCEPT'/'REJECT' per trace line with no
+    standalone table of the 8 transitions"; "table omits one or more
+    transitions or silently merges two distinct transitions into one
+    row."
 - Simulator generality: does `fsm.js` implement a genuine lookup-keyed
   step function usable on arbitrary event sequences (verify by trying a
   sequence not in the test, e.g. `['CLEAR']` from `IDLE`, which should
   reject immediately since `IDLE` has no `CLEAR` transition), rather
   than a switch/if-chain hardcoded to only the three specific candidate
   sequences or the 12-line trace?
+  - PASS phrasings: "a single object or Map keyed by state, each value
+    keyed by event, consulted generically inside `step`"; "`run`
+    iterates over an arbitrary array of events calling `step` in a
+    loop, with no branch that special-cases the trace or the three
+    candidate sequences"; "running
+    `node -e \"const {run}=require('./fsm.js'); console.log(run(['CLEAR'],'IDLE'))\"`
+    correctly rejects immediately and reports `finalState: 'IDLE'`
+    (unchanged), showing the lookup isn't just replaying memorized
+    answers."
+  - FAIL phrasings: "a chain of `if (state === 'SCRUB' && event ===
+    'DRAIN')` statements enumerating exactly the observed lines";
+    "`run` only accepts the three literal candidate sequences (or the
+    12-line trace) as special-cased arguments and errors or misbehaves
+    on any other input"; "hardcodes the three answers to the numbered
+    questions directly, bypassing the transition table entirely for
+    those cases."
 - Reasoning quality: does `ANSWER.md` show *how* the table was derived
   from the state-labeled lines (e.g., pointing out that each line
   directly names a transition or a rejection) rather than just
   asserting a table? Does it correctly explain why REJECT lines don't
   advance state, and connect that to why Sequence B/C fail where they
   do?
+  - PASS phrasings: "walks through the 12 lines noting each ACCEPT
+    line pins one transition and each REJECT line confirms an absent
+    one"; "explicitly states that a REJECT leaves the state unchanged,
+    then uses that to explain why Sequence C fails in `PRESOAK` rather
+    than wherever `JET` last worked"; "notes that `SPRAY` fires from
+    both `IDLE` and `PRESOAK` but not from `SCRUB` or `RINSE`, and uses
+    that to justify the Sequence B rejection."
+  - FAIL phrasings: "states the final transition table with no
+    reference to which log lines justify which transitions"; "asserts
+    the three sequence verdicts without tracing through the
+    intermediate states"; "never addresses why a REJECT doesn't move
+    the machine, leaving the Sequence B/C reasoning unsupported."

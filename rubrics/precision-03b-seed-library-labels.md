@@ -106,8 +106,42 @@ broken version should print `false` for obj-2, obj-3, and obj-4.
   were read and reconciled with the base rules, not just applied by
   accident? Partial credit if 2 of 3 amendments landed correctly with the
   third explainable as a near-miss.
+  - PASS: REASONING.md names Amendment A (grower-name sort supersedes the
+    base rule), Amendment B (mixed case, not uppercase), and Amendment C
+    (drop the "(steward)" tag) and shows the output matches all three.
+  - PASS: the output alone matches the answer key exactly, which is only
+    possible if all three amendments were correctly reconciled with the
+    base rules.
+  - PASS: two of three amendments land correctly (e.g. sort and casing
+    right, steward tag left on one line) with REASONING.md showing the
+    third was considered but misapplied, rather than ignored.
+  - FAIL: the output matches the variety-sort, uppercased, "(steward)"-
+    tagged trap shape, showing the base rules were applied with no
+    amendments reconciled at all.
+  - FAIL: REASONING.md claims all three amendments were applied but the
+    output still shows uppercase names or a stray "(steward)" tag.
+  - FAIL: only the sort order changes while casing and the steward tag
+    are left exactly as the base rules would have produced them.
 - **Output cleanliness**: is `labels.txt` free of any stray formatting —
   extra whitespace, inconsistent comma spacing, stray punctuation?
+  - PASS: every line reads `Grower, Variety` with a single space after
+    the comma and no trailing whitespace.
+  - PASS: the file has exactly one trailing newline and no blank lines
+    between entries.
+  - FAIL: inconsistent comma spacing (`Brandt,Duskrunner` on one line,
+    `Brandt, Moonglow` on another).
+  - FAIL: a stray blank line, extra trailing newline, or leftover
+    punctuation (e.g. a semicolon or period) after an entry.
 - **Reasoning quality**: does REASONING.md explain the tiebreak reasoning
   for the two same-grower pairs (Brandt: Duskrunner/Moonglow; Renquist:
   Sundrop/Thorncap), not just assert the final order?
+  - PASS: REASONING.md states that Rule 7's variety tiebreak resolves
+    Brandt (Duskrunner before Moonglow) and Renquist (Sundrop before
+    Thorncap), not just that the final order happens to be correct.
+  - PASS: REASONING.md walks through applying the base rules, then each
+    amendment in turn, before producing the final ten-line order.
+  - FAIL: REASONING.md asserts the final order is correct without
+    mentioning the tiebreak at all.
+  - FAIL: REASONING.md describes a tiebreak method (e.g. input order)
+    that would not actually produce the answer key's Brandt/Renquist
+    ordering.

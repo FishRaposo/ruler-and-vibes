@@ -62,6 +62,17 @@ rest scores.
   (correct), and any number in between usually indicates only a subset of
   the traps was caught. A submission landing on 990 has likely ignored
   the ledger and just restated the expected schedule.
+  - PASS examples: "deduped B018 against B006, dropped orphan B019, and
+    confirmed B020/B021 net to zero — collected_total_q2 is 952, not the
+    naive 1062"; "flagged 1062 as the raw sum and explained why it
+    overstates collections before presenting the corrected 952";
+    "re-ran the sum independently, matching each line's vessel_id against
+    vessels.csv rather than trusting the ledger as given."
+  - FAIL examples: "totals don't fully reconcile, more investigation
+    needed" with no computed figure; reporting 1062 (naive sum) or 990
+    (the expected schedule restated) as the final collected total;
+    landing on a number between 952 and 1062 with no explanation of
+    which traps were and weren't applied.
 - Discrepancy classification & audit trail: reward classifying each of
   the six seeded issues distinctly (missing payment, underpayment,
   orphan, duplicate, post-departure error, offsetting refund) rather than
@@ -69,8 +80,31 @@ rest scores.
   is the subtlest trap — it rewards restraint: recognizing that V06's
   overcharge is already resolved and should NOT be re-surfaced as
   something needing action is as important as catching the other five.
+  - PASS examples: "six distinct findings: V05 missing payment (30), V08
+    underpayment (8), B019 orphan (billed to nonexistent V77), B018
+    duplicate of B006, B020 post-departure error charge to V06, offset by
+    refund B021 — net zero, no action needed"; "V06 shows a +80/-80 pair
+    that fully cancels, so it's noted as resolved rather than listed as
+    an open discrepancy"; an audit trail that cites the specific ledger
+    row for every flagged item.
+  - FAIL examples: a single line like "ledger has some data quality
+    issues" with no per-item breakdown; grouping the duplicate and the
+    orphan together as generic "bad rows"; re-surfacing V06 as an
+    unresolved discrepancy despite the B020/B021 refund fully offsetting
+    it.
 - Reasoning quality: does REASONING.md explain WHY each excluded or
   deduplicated line was excluded (not just that it was), and does it show
   the arithmetic that ties the 38 shortfall (990 - 952) back to the two
   genuine underpayments (30 + 8)? Penalize submissions that assert the
   final numbers without showing how they got there.
+  - PASS examples: "990 - 952 = 38, which decomposes into V05's missing
+    30 payment plus V08's 8 underpayment — the other four traps net to
+    zero once deduped/excluded/offset"; "B019 is excluded because V77
+    does not exist in vessels.csv, not merely because it looked odd";
+    "B018 is deduped because it matches B006 on vessel, date, and amount
+    exactly — a real second charge would need its own terminal-assigned
+    payment ID."
+  - FAIL examples: "the numbers reconcile now" with no supporting
+    arithmetic; stating collected_total_q2 = 952 without showing how
+    1062 was reduced to it; "removed a few duplicate/bad lines" without
+    naming which lines or the reason each was removed.

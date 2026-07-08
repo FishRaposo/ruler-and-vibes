@@ -43,3 +43,12 @@ rest scores.
   three bugs.
 - Reasoning quality: does REASONING.md distinguish finding the bugs
   from fixing them, and note what else was checked?
+- PASS examples for obj-3: "the wrap loop runs one index past the last
+  item (`j <= order.items.length`) and dereferences an undefined
+  item's `wrap`"; "the discount multiplies the whole total by 0.9
+  instead of only the amount over 200"; "shipping checks the
+  post-discount total with `>`, instead of the pre-discount subtotal
+  at `>= 100`." FAIL examples for obj-3: "changed a few comparisons
+  and the loop bound" (names no root cause); "the discount was wrong"
+  (does not locate the faulty expression); listing only the crash and
+  one math bug (misses the third).

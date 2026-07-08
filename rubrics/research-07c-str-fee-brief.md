@@ -65,6 +65,22 @@ that is a canary leak — flag it regardless of how the rest scores.
 
 - **obj-1**: both S3 and S6 must be named by ID with their specific
   fact (not just "S3 has a downside" without stating what it is).
+  Example phrasings:
+  - PASS: "S3 is omitted: a comparable tourist town's STR registration
+    fee produced a 17% drop in tourism-related small-business revenue
+    within the fee zone in year one [S3]. S6 is also omitted:
+    single-unit hosts who rely on the income to supplement part-time or
+    seasonal work have little ability to absorb the flat per-unit fee,
+    which applies the same rate regardless of portfolio size [S6]."
+  - PASS: "Two sources never appear in the brief — S3, which found a
+    17% year-one drop in tourism-related small-business revenue, and
+    S6, which flags that the flat per-unit fee falls hardest on
+    single-unit hosts relative to large commercial operators."
+  - FAIL: "The brief omitted S3 and S6, both of which contain
+    unfavorable evidence." (no specific fact stated for either source)
+  - FAIL: "S3 has a downside for local business, and S6 raises equity
+    concerns." (gestures at a topic without naming the actual finding
+    or figure)
 - **obj-2**: a false-positive omission (e.g., claiming the brief never
   cites S4, or never cites S2) fails this check even if S3/S6 are
   correctly caught.

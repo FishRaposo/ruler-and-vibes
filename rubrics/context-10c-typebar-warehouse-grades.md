@@ -82,9 +82,7 @@ least one example with the same parity but the opposite letter-group
 landing in a different grade (kills a parity-only shortcut). A model that
 classifies using only one feature will get some of these 8 right by chance
 but cannot get all 8 right without truly combining both features — this is
-exactly what obj-3 gates on. (For calibration: a letter-only majority
-baseline and a parity-only majority baseline each score only 7/15 on the
-test set, and each misses all 8 crossed codes.)
+exactly what obj-3 gates on.
 
 ### Objective check notes
 

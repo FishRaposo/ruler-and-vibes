@@ -143,12 +143,37 @@ least one `<stop>`. Do not accept an id match alone.
   regenerating a new composition from scratch? Penalize gratuitous
   rewrites (new shapes, repositioned elements, added text) that go
   beyond the instructed edits.
+  - PASS: only the four instructed values changed plus a clean gradient
+    repair; the bolt path `d`, the disc geometry, and the text position
+    are byte-for-byte the originals.
+  - PASS: the model renamed `daybreak` to `tempest` and touched nothing
+    else, leaving coordinates and unrelated attributes intact.
+  - FAIL: the model redrew the bolt with a new path, moved the label, or
+    swapped the flat disc for a new shape.
+  - FAIL: the model rebuilt the document from scratch with reordered
+    elements and fresh coordinates even though the visible result looks
+    similar.
 - **SVG craftsmanship**: is the gradient repair clean (a sensible
   rename or repoint, not a duplicate second gradient def left dangling
   alongside an unused original)? Does the bolt visibly read as a
   painted, gradient-filled shape rather than a flat single color used
   as a workaround?
+  - PASS: one gradient def, correctly referenced, with the bolt showing
+    a daybreak gradient sweep from light to dark.
+  - PASS: the def was repointed and no orphan gradient remains in
+    `<defs>`.
+  - FAIL: two gradient defs left in the file, one unused and dangling.
+  - FAIL: the mismatch was "fixed" by replacing the gradient url with a
+    flat `fill="#ffd36b"`, so the bolt is a solid color, not a gradient.
 - **Reasoning quality**: if the model explains its repair choice
   (rename vs. repoint vs. new def), does the explanation correctly
   identify the id mismatch as the root cause rather than describing it
   as a generic "missing color" issue?
+  - PASS: the explanation names the `tempest`/`daybreak` id mismatch as
+    the reason the fill resolved to nothing.
+  - PASS: the model states it reconciled the reference and the def id
+    so the `url(#...)` target now resolves to a real gradient.
+  - FAIL: the explanation says only that it "added a color" or "made
+    the bolt visible" without identifying the unresolved id reference.
+  - FAIL: the model claims the gradient itself was malformed or missing
+    stops when the real defect was the id name mismatch.

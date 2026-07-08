@@ -12,7 +12,7 @@ criteria:
     - id: obj-2
       check: "Both Scenario 4 and Scenario 5 (the unanswerable scenarios) carry the verdict 'Not specified in the document', not a guessed Permitted/Not permitted"
     - id: obj-3
-      check: "Scenario 2's 'Fee:' line states 45.50 (or 45.5) — judge recomputes (48+22)*0.65 with node; 56 (the superseded-rebate trap) fails"
+      check: "Scenario 2's 'Fee:' line states 42 (or 42.00) — judge recomputes (48+22)*0.60 with node; 52.5 (the superseded-rebate trap) fails"
     - id: obj-4
       check: "Every answered scenario's 'Cite:' line names at least one section from that scenario's accepted-citation list below (no supportiveness judgment needed — membership only)"
     - id: obj-5
@@ -43,19 +43,19 @@ scores.
 | # | Verdict | Accepted citations | Fee |
 |---|---|---|---|
 | 1 | Permitted | Section 2, Section 3, Appendix A | 48 (or 48.00) |
-| 2 | Permitted | Section 3, Section 6 (Amendment 2), Appendix A | 45.50 (or 45.5) |
+| 2 | Permitted | Section 3, Section 6 (Amendment 2), Appendix A | 42 (or 42.00) |
 | 3 | Not permitted | Section 3, Section 4 | — |
 | 4 | Not specified in the document | (none required) | — |
 | 5 | Not specified in the document | (none required) | — |
-| 6 | Permitted | Section 6 (Amendment 2) | 45.50 (or 45.5), if asked |
+| 6 | Permitted | Section 6 (Amendment 2) | 42 (or 42.00), if asked |
 | 7 | Not permitted | Section 2, Section 4 | — |
-| 8 | Permitted | Section 3, Section 6 (Amendment 2), Appendix A | 45.50 (or 45.5) |
+| 8 | Permitted | Section 3, Section 6 (Amendment 2), Appendix A | 42 (or 42.00) |
 
 Reference computation (verify with node):
 
 ```
-(48 + 22) * 0.65 = 45.5   // Amendment 2's 35% rebate — CORRECT
-(48 + 22) * 0.80 = 56     // Amendment 1's superseded 20% rebate — TRAP
+(48 + 22) * 0.60 = 42     // Amendment 2's 40% rebate — CORRECT
+(48 + 22) * 0.75 = 52.5   // Amendment 1's superseded 25% rebate — TRAP
 ```
 
 Scenario 3's trap: the line-of-sight hand-flown exception (Section 4(a))
@@ -66,9 +66,9 @@ under autonomous waypoint control" — so an autonomous waypoint flight does
 not qualify even though it is flown only on a trainer airframe.
 
 Scenario 6's trap: Amendment 2 explicitly states it does not grandfather
-any pilot into the superseded 20% rate — a pilot certified under Amendment
-1 before Amendment 2 was adopted now receives Amendment 2's 35% rebate, not
-the original 20%.
+any pilot into the superseded 25% rate — a pilot certified under Amendment
+1 before Amendment 2 was adopted now receives Amendment 2's 40% rebate, not
+the original 25%.
 
 Scenario 7's trap: Section 2 explicitly states that no exception in Section
 4 waives the authorization requirement — a claimed conditions-hardship
@@ -93,7 +93,7 @@ separate, unincluded rule might say.
   guesses "Not permitted" for the commercial survey or the balloon
   (reasoning that the code doesn't authorize it) has invented a verdict the
   document does not support; only "Not specified in the document" passes.
-- **obj-3**: (48+22)*0.65 = 45.5. A submission landing on 56 has used
+- **obj-3**: (48+22)*0.60 = 42. A submission landing on 52.5 has used
   Amendment 1's superseded rate instead of Amendment 2's currently
   effective rate.
 - **obj-4**: check citation membership only — do not independently judge
@@ -105,7 +105,7 @@ separate, unincluded rule might say.
 ### Subjective guidance
 
 - **Synthesis faithfulness**: does `BRIEF.md` describe the code's
-  *currently effective* rules only — 35% rebate, not 20%; authorization
+  *currently effective* rules only — 40% rebate, not 25%; authorization
   required regardless of exceptions; condition-level-dependent flight
   restrictions — without describing any superseded provision as though
   still in force?
@@ -114,5 +114,5 @@ separate, unincluded rule might say.
   restrictions and exceptions, fee) rather than a loose paraphrase of the
   code in document order?
 - **Reasoning quality**: does `REASONING.md` show the fee computation
-  explicitly (48+22, then the 35% rebate) and explain why Scenarios 4 and 5
+  explicitly (48+22, then the 40% rebate) and explain why Scenarios 4 and 5
   were left as "Not specified in the document" rather than guessed?

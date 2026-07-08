@@ -29,8 +29,8 @@ completes).
 2. Every **toast** is a complete sentence ending in exactly one period,
    and is at most 60 characters including spaces.
 3. Banned words (case-insensitive, checked as substrings across the
-   button label and toast together): `click`, `button`, `successfully`,
-   `please`, `here`. None may appear anywhere in your button or toast
+   button label and toast together): `select`, `button`, `successfully`,
+   `please`, `below`. None may appear anywhere in your button or toast
    text.
 4. **Undo exemption clause:** the two destructive actions
    (`unfollowShow`, `clearHistory`) must offer an undo affordance. That

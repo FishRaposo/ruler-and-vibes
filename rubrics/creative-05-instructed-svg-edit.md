@@ -57,32 +57,121 @@ rest scores.
   obj-4 (star gradient unresolved), while passing obj-1 and obj-5 —
   confirming the seeded defects are real and independent of the
   element-id-survival check.
-- **obj-1**: grep for `<script`, `<image`, `<foreignObject`, `@import`;
-  confirm every `href`/`xlink:href`/`url(...)` value starts with `#`;
-  confirm `http` appears only in the `xmlns` declaration.
-- **obj-2**: read `#headline`'s text node and `#bg`'s `fill` attribute
-  directly; both must match exactly (case-sensitive hex).
-- **obj-3**: read `#badge`'s attributes; both `stroke` and
-  `stroke-width` must be present with the exact values.
-- **obj-4**: extract the id inside `#star`'s `fill="url(#___)"`, find
-  a `<linearGradient>` or `<radialGradient>` with that id elsewhere in
-  the file, and confirm it has at least one `<stop>` child. Do not
-  accept an id match alone.
-- **obj-5**: count occurrences of `id="bg"`, `id="headline"`,
-  `id="badge"`, `id="star"` — each must appear exactly once anywhere
-  in the file (as elements, not merely mentioned in a comment).
+
+**obj-1** — valid self-contained SVG, no external references, all
+targets fragment-local.
+- PASS: no `<script>`, `<image>`, `<foreignObject>`, or `@import`
+  anywhere; every `url(...)` and `href` value starts with `#`; the only
+  `http` is inside the `xmlns="http://www.w3.org/2000/svg"` declaration.
+- PASS: `viewBox="0 0 400 400"` is preserved and the file opens straight
+  from disk with no network fetch.
+- PASS: the gradient reference is the only `url(...)` and it targets an
+  in-document `#fragment`.
+- FAIL: a `<script>` block, an `<image href="...">`, a `<foreignObject>`,
+  or an `@import` appears in the file.
+- FAIL: a `url(...)` or `href`/`xlink:href` points at an external path or
+  an `http(s)://` URL rather than a `#id`.
+- FAIL: the `viewBox` was dropped or changed so the badge no longer
+  frames as authored.
+
+**obj-2** — headline retext and background recolor.
+- PASS: `#headline`'s text node reads exactly `AURORA` and `#bg` carries
+  `fill="#0b1e3a"`.
+- PASS: the string `DRAFT` no longer appears as the headline's text
+  content and `#cccccc` no longer appears on `#bg`.
+- PASS: both edits are present together (neither was skipped).
+- FAIL: the headline still reads `DRAFT`, or reads something other than
+  `AURORA` (e.g. `Aurora` in the wrong case, `SUNRISE`).
+- FAIL: `#bg` still carries `fill="#cccccc"`, or was recolored to some
+  value other than `#0b1e3a`.
+- FAIL: only one of the two edits landed (headline changed but bg
+  untouched, or vice versa).
+
+**obj-3** — stroke added to the badge.
+- PASS: the element with `id="badge"` carries both `stroke="#ffd166"`
+  and `stroke-width="3"`.
+- PASS: both attributes sit on `#badge` itself (not on a wrapper `<g>`
+  or a different element).
+- PASS: the stroke values are exact (`#ffd166`, `3`), case-sensitive
+  hex.
+- FAIL: `#badge` has no `stroke` / `stroke-width`, so the badge renders
+  with no outline.
+- FAIL: only one of the two attributes is present (a stroke color with
+  no width, or a width with no color).
+- FAIL: the stroke was applied with the wrong value (e.g.
+  `stroke="#ffffff"` or `stroke-width="2"`).
+
+**obj-4** — the star's gradient reference resolves to a real, paintable
+gradient. Extract the id inside `#star`'s `fill="url(#___)"`, find a
+`<linearGradient>`/`<radialGradient>` with that id, and confirm it has at
+least one `<stop>`. Do not accept an id match alone.
+- PASS: the def was renamed `sunset` -> `sky` (keeping its two
+  `<stop>`s), so `#star`'s `url(#sky)` now targets a real 2-stop
+  gradient.
+- PASS: instead of renaming, `#star`'s fill was repointed to
+  `url(#sunset)`, the existing real 2-stop gradient — also a legitimate
+  repair.
+- PASS: a genuine `id="sky"` gradient with one or more real `<stop>`
+  children was added, and `#star` references it.
+- FAIL: an empty `<linearGradient id="sky"></linearGradient>` (zero
+  `<stop>`s) was added — id matches but the star still does not paint.
+- FAIL: the id mismatch is untouched, so `#star`'s `url(#sky)` still
+  points at nothing (no gradient def with that id exists).
+- FAIL: `#star`'s `url(...)` was replaced with a flat color or a
+  reference to a non-gradient element, so no gradient paints it.
+
+**obj-5** — the four original element ids survive, exactly once each.
+- PASS: `id="bg"`, `id="headline"`, `id="badge"`, and `id="star"` each
+  appear exactly once as elements — the document was edited, not
+  regenerated.
+- PASS: a gradient id may have been renamed to satisfy the repair, but
+  the four element ids are all still present.
+- PASS: no duplicate carries any of the four ids (no second element
+  reusing `id="star"`, etc.).
+- FAIL: one of the four ids is missing because the badge was rebuilt
+  from scratch under different names.
+- FAIL: an id appears twice (e.g. two elements both `id="star"`), which
+  would make the id ambiguous.
+- FAIL: an id survives only inside a comment rather than on a live
+  element.
+
 - **Edit fidelity & restraint**: did the model change only what was
   asked (plus the minimal gradient-id repair), preserving the badge's
   original layout, geometry, and unrelated attributes, rather than
   regenerating a new composition from scratch? Penalize gratuitous
   rewrites (new shapes, repositioned elements, added text) that go
   beyond the instructed edits.
+  - PASS: only the four instructed values changed plus a clean gradient
+    repair; the star path `d`, the badge geometry, and the text position
+    are byte-for-byte the originals.
+  - PASS: the model renamed `sunset` to `sky` and touched nothing else,
+    leaving coordinates and unrelated attributes intact.
+  - FAIL: the model redrew the star with a new path, moved the
+    headline, or swapped the flat badge for a new shape.
+  - FAIL: the model rebuilt the document from scratch with reordered
+    elements and fresh coordinates even though the visible result looks
+    similar.
 - **SVG craftsmanship**: is the gradient repair clean (a sensible
   rename or repoint, not a duplicate second gradient def left dangling
   alongside an unused original)? Does the star visibly read as a
   painted, gradient-filled shape rather than a flat single color used
   as a workaround?
+  - PASS: one gradient def, correctly referenced, with the star showing
+    a sunset gradient sweep from light to dark.
+  - PASS: the def was repointed and no orphan gradient remains in
+    `<defs>`.
+  - FAIL: two gradient defs left in the file, one unused and dangling.
+  - FAIL: the mismatch was "fixed" by replacing the gradient url with a
+    flat `fill="#ff9e4f"`, so the star is a solid color, not a gradient.
 - **Reasoning quality**: if the model explains its repair choice
   (rename vs. repoint vs. new def), does the explanation correctly
   identify the id mismatch as the root cause rather than describing it
   as a generic "missing color" issue?
+  - PASS: the explanation names the `sky`/`sunset` id mismatch as the
+    reason the fill resolved to nothing.
+  - PASS: the model states it reconciled the reference and the def id
+    so the `url(#...)` target now resolves to a real gradient.
+  - FAIL: the explanation says only that it "added a color" or "made
+    the star visible" without identifying the unresolved id reference.
+  - FAIL: the model claims the gradient itself was malformed or missing
+    stops when the real defect was the id name mismatch.

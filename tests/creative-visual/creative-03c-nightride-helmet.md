@@ -11,7 +11,7 @@ deliverables:
 Build a landing page for **Rillow**, a fictional smart urban cycling
 helmet (rear turn signals worked by a handlebar remote, automatic
 crash detection that alerts an emergency contact, 12 hours of light
-per USB-C charge, $129 founding price). One file, ready to open from
+per USB-C charge, $149 founding price). One file, ready to open from
 `file://`.
 
 ## Deliverables

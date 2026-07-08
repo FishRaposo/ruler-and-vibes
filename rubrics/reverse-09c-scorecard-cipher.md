@@ -119,11 +119,43 @@ Prose-decidable check exemplars:
 - Pipeline exposition: does ANSWER.md clearly name all three stages and
   correctly identify base64 as outermost (undone first), rather than
   vaguely describing "some encoding"?
+  - PASS phrasings: "names XOR-0x4B, byte-reversal, and base64 and
+    explains base64 must come off first since it was applied last
+    during encoding"; "states the pipeline as an equation,
+    `base64(reverse(xor(bytes,0x4B)))`, and separately explains the
+    decode order"; "notes that swapping the XOR/reversal order on
+    decode doesn't matter, only base64 being outermost does".
+  - FAIL phrasings: "names the stages but never says which one comes
+    off first, leaving the order implicit"; "says the string is 'base64
+    encoded and scrambled' without naming the reversal or the XOR
+    constant"; "explains the pipeline only in code comments, with no
+    corresponding prose in ANSWER.md".
 - Inversion correctness: does invert.js's `decode` function generalize
   to arbitrary blobs produced by the stated pipeline, applying real
   base64-decode, byte-reversal, and XOR operations rather than
   hardcoding the three given blob-to-plaintext pairs?
+  - PASS phrasings: "`decode` is three composable steps (base64-decode,
+    reverse, XOR) with no reference anywhere to the specific challenge
+    strings"; "correctly decodes a freshly-encoded string not present in
+    ANSWER.md or the test file"; "the reversal operates on the whole
+    buffer generically rather than a hardcoded byte count".
+  - FAIL phrasings: "`decode` special-cases the challenge blob with an
+    `if (blob === 'fHsuLC8uPA==') return 'wedge07'`"; "the reversal step
+    is hardcoded to a fixed length rather than reversing the actual
+    buffer"; "works on the three known blobs but throws or returns
+    garbage on a novel blob encoded with the same pipeline".
 - Reasoning quality: does ANSWER.md's intermediate-byte walkthrough
   actually show the reversal changing the byte order (compare the XORed
   hex to the reversed hex and confirm they're reverses of each other),
   proving the stage wasn't just claimed but genuinely traced?
+  - PASS phrasings: "shows the XORed hex `0c0a1f0419` and the reversed
+    hex `19041f0a0c` side by side so the mirroring is visible"; "states
+    explicitly that reversing `0c0a1f0419` gives `19041f0a0c`, letting
+    the reader verify it by eye"; "traces the pipeline for a second
+    example (`tee`) in addition to the primary one, reinforcing the
+    reversal is real".
+  - FAIL phrasings: "shows only the plaintext and the final base64,
+    skipping the intermediate hex entirely"; "claims a 'reversed' hex
+    value that is actually identical to the XORed value, meaning the
+    reversal was asserted but never performed"; "asserts 'the bytes get
+    reversed' with no hex shown to check the claim against".

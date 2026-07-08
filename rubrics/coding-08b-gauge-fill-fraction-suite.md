@@ -94,3 +94,27 @@ rest scores.
   from comments/structure in tests.js whether the model explains which
   edge case each test is targeting (flat gauge, empty, below-zero,
   direction) rather than writing opaque assertions with no rationale.
+
+### PASS / FAIL example phrasings (per prose-decidable check)
+
+- **obj-2 (flat-gauge kills M1):**
+  - PASS: "assertEqual(stretch([8,8]), [0,0])"
+  - PASS: "deepEqual(stretch([5,5,5,5]), [0,0,0,0]) // flat gauge -> zeros, no NaN"
+  - PASS: "expect all-equal input to yield zeros: stretch([12,12,12]) === [0,0,0]"
+  - FAIL: no all-equal/flat-gauge input appears anywhere in the suite
+  - FAIL: "stretch([8,8]).length === 2" (checks length only; M1's NaNs pass)
+  - FAIL: "assert(stretch([8,8]).every(v => typeof v === 'number'))" (NaN is a number; M1 survives)
+- **obj-3 (empty kills M3):**
+  - PASS: "assertEqual(stretch([]), [])"
+  - PASS: "deepEqual(stretch([]), []) // empty in, empty out"
+  - PASS: "expect(stretch([])).toEqual([])"
+  - FAIL: no empty-array input is ever passed to stretch
+  - FAIL: "stretch([]).length <= 1" (true for M3's [0]; M3 survives)
+  - FAIL: "assert(Array.isArray(stretch([])))" (M3's [0] is still an array)
+- **obj-4 (exact values kill M2 and M4):**
+  - PASS: "assertEqual(stretch([-6,-2,2]), [0,0.5,1])" plus "assertEqual(stretch([10,30,50,70]), [0,0.3333333333333333,0.6666666666666666,1])"
+  - PASS: "deepEqual(stretch([-6,-2,2]), [0,0.5,1]); deepEqual(stretch([10,30,50,70]), [0,1/3,2/3,1])"
+  - PASS: two exact-value assertions, one on a below-zero-spanning vector (kills M2) and one on an ascending positive vector (kills M4)
+  - FAIL: "stretch([-6,-2,2]).length === 3" (length only; M2 and M4 both survive)
+  - FAIL: only an exact assertion on a flat vector like `[8,8]` (stretch `[0,0]`) — neither M2 (needs `lo != 0`) nor M4 (needs non-flat data to reveal its sign-flip) diverges there, so both survive
+  - FAIL: "assert(stretch([-6,-2,2])[0] === 0)" (only checks the first element; M2's [0,2,4] still agrees at index 0, so M2 survives)

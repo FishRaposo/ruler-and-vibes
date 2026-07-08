@@ -109,7 +109,7 @@ both widths.
 - Conversion craft: one single argument should run through the page — a
   through-line from headline to closing CTA, benefit-led copy tied to the
   given specs (rear turn signals, crash detection, 12-hour battery,
-  USB-C, $129), CTA visually dominant. Penalize feature lists with no
+  USB-C, $149), CTA visually dominant. Penalize feature lists with no
   hierarchy and copy that never says what the product does for you.
 - Visual design: deliberate palette and spacing, readable contrast,
   believable product presence via CSS/SVG. Penalize default-looking

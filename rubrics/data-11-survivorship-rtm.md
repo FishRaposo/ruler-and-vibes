@@ -52,14 +52,38 @@ rest scores.
   mean (67.8) in period 2 independent of any intervention, which is
   why the UNCOACHED top group also moved. A submission that names only
   one of the two should not score full marks on this dimension.
+  - PASS examples: "the bottom's '55' is only R6-R8; R9 and R10 have no
+    period-2 score, so the before-and-after are computed over different
+    groups — survivorship"; "the top five got no coaching yet still
+    regressed toward the 67.8 mean, which is the same pull that lifted the
+    low survivors."
+  - FAIL examples: naming only regression while ignoring the dropped reps
+    who quit; "the numbers are cherry-picked" with no mechanism; treating
+    the top decline as evidence that coaching specifically helps low
+    performers.
 - Causal-critique clarity: reward a critique that walks a
   non-statistician through why "the top declined so coaching must be
   responsible for the bottom's rise" is backwards reasoning — the top's
   decline is itself evidence of a non-causal mechanism (RTM) acting on
   both groups, which undermines rather than supports the coaching
   narrative.
+  - PASS examples: "the top reps declining is the tell: nobody coached
+    them, so the same force could explain the bottom's gain — that argues
+    against coaching being the cause, not for it"; "if an untouched group
+    also moves toward the mean, the intervention hasn't been shown to do
+    anything."
+  - FAIL examples: "the top declined because they got complacent, proving
+    coaching is what lifts low performers"; concluding coaching works
+    because the coached group's number rose; presenting the two group
+    changes as independent proofs.
 - Reasoning quality: does CRITIQUE.md show the arithmetic for each
   average it cites (including which specific reps are averaged) rather
   than asserting the corrected numbers without derivation? Does it
   distinguish the full bottom-5 figure (48) from the survivors-only
   figure (55) explicitly, rather than conflating them?
+  - PASS examples: "full bottom five = (60+55+50+40+35)/5 = 48, but the
+    memo's 55 = (60+55+50)/3, dropping the two reps who quit"; deriving
+    each cited mean from the named reps before commenting on it.
+  - FAIL examples: stating "48" and "55" as facts with no formula or rep
+    list; conflating the survivor-only average with the true bottom-5
+    average.

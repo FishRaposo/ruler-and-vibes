@@ -90,7 +90,20 @@ surface).
 - Correctness of three-valued-logic handling: does the submission
   correctly avoid (or correctly explain and route around) the NOT-IN
   NULL trap, and does it correctly reason about which rows NULL
-  upvotes drop from each aggregate and predicate?
+  upvotes drop from each aggregate and predicate? PASS example:
+  "Submission explains that a single NULL in the parent_comment_id
+  subquery poisons every NOT IN comparison to UNKNOWN, and separately
+  reasons that `upvotes <> 40` evaluates to UNKNOWN (not TRUE) for NULL
+  rows, correctly excluding them, while COUNT(upvotes) only tallies the
+  4 non-null rows." Another PASS example: "Submission uses NOT EXISTS
+  with a clear rationale for avoiding the NULL comparison problem in
+  NOT IN, and correctly computes AVG as SUM over COUNT(upvotes), not
+  COUNT(*)." FAIL example: "Submission's never-replied-to query returns
+  0 rows and the accompanying text claims this is correct because every
+  comment got a reply." (misdiagnoses the trap output as correct
+  behavior). Another FAIL example: "Submission computes AVG(upvotes) by
+  dividing SUM by COUNT(*) instead of COUNT(upvotes)." (silently wrong
+  NULL handling in the aggregate).
 - Clarity of the NULL-behavior explanation: is the explanation of why
   the two upvote predicates differ, and why NOT IN needs a NULL guard,
   written so a reader unfamiliar with SQL's three-valued logic could

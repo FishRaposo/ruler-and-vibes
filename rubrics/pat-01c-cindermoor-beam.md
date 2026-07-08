@@ -12,7 +12,7 @@ criteria:
     - id: obj-2
       check: "All 10 MUST-MATCH strings are classified MATCH: 0:0:0, 500:500:500, 1:2:3, 12:340:5, 7:7:7, 500:0:250, 63:127:9, 400:16:88, 100:64:0, 203:0:113 (judge confirms via require('./validator.js').validate on each)"
     - id: obj-3
-      check: "All 15 MUST-REJECT strings are classified REJECT, including the range trap (501:0:0, 1:2:501, 1:2:600, 999:999:999) and leading-zero trap (01:2:3, 1:2:03, 00:0:0)"
+      check: "All 15 MUST-REJECT strings are classified REJECT, including the range trap (501:0:0, 1:2:501, 1:2:600, 777:777:777) and leading-zero trap (01:2:3, 1:2:03, 00:0:0)"
     - id: obj-4
       check: "The whitespace/shape traps reject: '12:340:5 ' (trailing space), ' 1:2:3' (leading space), '1:2:3:' (trailing colon), '1:2' (two segments), '1:2:3:4' (four segments), '1::3' (empty segment), '1:2:3a' (trailing junk), '1:2:-1' (negative)"
     - id: obj-5
@@ -47,12 +47,12 @@ that is a canary leak — flag it regardless of how the rest scores.
   `node -e "const {validate}=require('./validator.js'); ['0:0:0','500:500:500','1:2:3','12:340:5','7:7:7','500:0:250','63:127:9','400:16:88','100:64:0','203:0:113'].forEach(s=>console.log(s,validate(s)))"`
   must print `true` for all 10; the same pattern with the 15
   MUST-REJECT strings (`501:0:0`, `1:2:501`, `1:2:600`,
-  `999:999:999`, `01:2:3`, `1:2:03`, `00:0:0`, `'12:340:5 '`,
+  `777:777:777`, `01:2:3`, `1:2:03`, `00:0:0`, `'12:340:5 '`,
   `' 1:2:3'`, `'1:2:3:'`, `'1:2'`, `'1:2:3:4'`, `'1::3'`, `'1:2:3a'`,
   `'1:2:-1'`) must print `false` for all 15.
 - Discriminator trap, re-confirmed this session: the common naive
   regex `/^\d{1,3}(:\d{1,3}){2}$/` WRONGLY returns `true` for
-  `501:0:0`, `1:2:501`, `1:2:600`, `999:999:999`, `01:2:3`, `1:2:03`,
+  `501:0:0`, `1:2:501`, `1:2:600`, `777:777:777`, `01:2:3`, `1:2:03`,
   and `00:0:0` (verified this session), while correctly rejecting the
   leading/trailing-space traps. A submission whose validator is
   exactly this regex (or equivalent) will fail obj-3 on those inputs
@@ -63,18 +63,45 @@ that is a canary leak — flag it regardless of how the rest scores.
   segment — do not mistake that for evidence of range/leading-zero
   handling.
 - Specification fidelity: does the validator correctly enforce BOTH
-  the numeric range (`0`-`500`, catching `501`+ and `999`) AND the
+  the numeric range (`0`-`500`, catching `501`+ and `777`) AND the
   leading-zero rule (rejecting `01`, `03`, `00` but accepting bare
   `0`)? A submission that gets one dimension right and the other
   wrong (e.g. correct range but accepts leading zeros, or vice versa)
   should score low here even if it happens to pass most of the listed
   corpus by coincidence — check its handling of untested but
   spec-implied cases, e.g. `007` or `450` vs `510`.
+  - PASS phrasings: "splits on `:`, requires exactly three parts, then
+    checks each part against both `0`-`500` and the no-leading-zero
+    rule"; "rejects `510` by arithmetic comparison and `03` by
+    inspecting the digit run, accepting bare `0`"; "enforces the
+    range and the leading-zero constraint as two independent checks
+    per segment."
+  - FAIL phrasings: "clamps or truncates out-of-range segments to
+    `500` instead of rejecting them"; "accepts `01` because it only
+    range-checks `Number(part)` and never inspects leading zeros";
+    "rejects the bare `0` segment along with `00`, breaking a valid
+    beam code like `500:0:250`."
 - Validator clarity: reward a straightforward split-and-check
   structure (or an equally clear alternative) with obvious mapping
   from each grammar rule to a check, over a single dense regex or
   nested ternary that obscures which rule is being enforced.
+  - PASS phrasings: "one loop over the three segments with a named
+    check per grammar rule"; "each rule (count, digits-only,
+    leading-zero, range) maps to one readable guard clause"; "a
+    reader can point at the line that enforces each spec bullet."
+  - FAIL phrasings: "a single dense regex with backreferences that no
+    comment explains"; "deeply nested ternary where the range and
+    leading-zero logic are tangled into one expression"; "control
+    flow so indirect that which rule rejects `01` is unclear."
 - Reasoning quality: judge from comments/structure in validator.js
   whether the model explains why a pure regex cannot express the
   numeric range and leading-zero constraints, and which mechanism
   (arithmetic comparison, digit-run inspection) it used instead.
+  - PASS phrasings: "notes that `\d{1,3}` admits `501`-`999` and so
+    the range must be checked arithmetically"; "explains that a
+    leading-zero ban needs digit-run inspection a character-class
+    cannot express"; "states why the three-segment count and
+    full-string consumption are handled by the split length."
+  - FAIL phrasings: "no rationale at all, just code"; "claims the
+    regex is sufficient when it is not"; "hand-waves 'validates the
+    format' without saying how range or leading zeros are caught."

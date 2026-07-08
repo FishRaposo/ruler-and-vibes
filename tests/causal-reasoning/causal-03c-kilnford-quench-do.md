@@ -27,15 +27,15 @@ independently affects Cracking. The full conditional probability tables
 (ground truth):
 
 ```
-P(M=1) = 0.35
+P(M=1) = 0.40
 
-P(Q=1 | M=1) = 0.85
+P(Q=1 | M=1) = 0.75
 P(Q=1 | M=0) = 0.25
 
-P(C=1 | Q=1, M=1) = 0.85
+P(C=1 | Q=1, M=1) = 0.80
 P(C=1 | Q=1, M=0) = 0.45
-P(C=1 | Q=0, M=1) = 0.30
-P(C=1 | Q=0, M=0) = 0.05
+P(C=1 | Q=0, M=1) = 0.35
+P(C=1 | Q=0, M=0) = 0.10
 ```
 
 A process engineer wants to know "does the Quench-treatment cause

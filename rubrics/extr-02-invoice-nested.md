@@ -80,10 +80,43 @@ rest scores.
 - Extraction & correction accuracy: were the per-line figures
   transcribed correctly AND was the wrong printed subtotal caught and
   overridden with the correct recomputation, rather than propagated?
+  - PASS examples: `subtotal` is `180.50`, `tax` is `18.05`, `total` is
+    `198.55`, diverging from the printed `185.00`/`18.50`/`203.50`;
+    every `qty`/`unit_price` matches the printed line exactly (10/3.00,
+    4/12.50, 2/45.00, 6/1.75); a derivation that visibly sums the four
+    `extended` values to `180.50` instead of trusting the printed
+    `SUBTOTAL` line.
+  - FAIL examples: `subtotal` copied as `185.00` with `tax`/`total`
+    following from it; the Toner Cartridge row transcribed as `qty: 4,
+    unit_price: 15.50` (a digit slip) instead of `12.50`; `subtotal`
+    correctly recomputed as `180.50` but `tax` computed at some rate
+    other than 10% (or `total` not equal to `subtotal + tax`).
 - Nested-schema discipline: exact key sets at both the line-item level
   and the top level; numbers as numbers; `tax_id` as strict `null`
   rather than the literal placeholder text or an invented ID.
+  - PASS examples: every line item carries exactly `{description, qty,
+    unit_price, extended}` with no added `sku` or `notes` key; `vendor`
+    is exactly `{name, tax_id}` with `tax_id` as JSON `null`; all
+    numeric fields (`qty`, `unit_price`, `extended`, `subtotal`, `tax`,
+    `total`) emitted as JSON numbers, never quoted strings.
+  - FAIL examples: `vendor.tax_id` set to the string `"(see attached)"`
+    or an invented value like `"47-2093841"`; a line item with a stray
+    extra key (e.g. a `line_total` alongside `extended`) or missing
+    `extended` entirely; `subtotal` emitted as the string `"180.50"`
+    instead of the number `180.50`.
 - Reasoning quality: does REASONING.md explicitly flag that the
   printed subtotal disagreed with the line-item arithmetic and state
   the corrected value, rather than silently substituting a different
   number with no explanation?
+  - PASS examples: "The printed subtotal of 185.00 doesn't match the
+    sum of the four extended values (180.50); I used 180.50 and derived
+    tax/total from it."; an explicit note that the tax ID line only
+    says "(see attached)" with no attachment actually provided, so
+    `null` is used instead of inventing an ID; a walk through each
+    line's `extended` value before summing, tying the arithmetic to
+    `180.50 → 18.05 → 198.55`.
+  - FAIL examples: no mention anywhere of the printed-vs-recomputed
+    subtotal discrepancy — the final numbers are just asserted; a vague
+    "some figures looked inconsistent" that never names the subtotal or
+    states the corrected value; a claim that the tax ID "was found on
+    the invoice" despite none being present.

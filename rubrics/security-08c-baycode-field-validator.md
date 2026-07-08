@@ -45,7 +45,7 @@ yourself — do not trust a runner-pasted self-test.
 ```js
 function validateBayCode(s) {
   if (typeof s !== 'string') return false;
-  if (s.length < 4 || s.length > 24) return false;
+  if (s.length < 4 || s.length > 22) return false;
   return /^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(s);
 }
 ```

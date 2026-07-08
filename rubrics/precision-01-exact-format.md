@@ -38,8 +38,42 @@ rest scores.
   15/02, ambiguous 07/04, impossible 06-31, merge precedence). Reward
   calls that follow the stated rules exactly and flag what the rules do
   not settle. Penalize silent guesses.
+  - PASS: NOTES.md states which reading of fatima's 07/04 was chosen
+    (July 4 or April 7) and names the rejected alternative.
+  - PASS: NOTES.md explains that June 31 is not a real date, so sofia's
+    date was set to null rather than guessed at a nearby day.
+  - PASS: NOTES.md states which source record's date/phone won for each
+    merged pair (john.smith, wei.chen) and cites the earliest-record
+    rule.
+  - FAIL: fatima's date is picked with no note explaining which reading
+    was used or that the other reading was rejected.
+  - FAIL: sofia's impossible June 31 date is silently coerced to a
+    nearby valid date instead of left null.
+  - FAIL: a merge's winning fields are asserted with no statement of
+    which source record they came from or why.
 - NOTES completeness: every judgment call from the deliverable should
   be traceable in NOTES.md — merges, each date resolution, the invalid
   date.
+  - PASS: NOTES.md lists both merges, every date resolution (including
+    bob's day-first 15/02), and the invalid sofia date, each with a
+    one-line reason.
+  - PASS: NOTES.md is terse but complete — no required judgment call is
+    left undocumented.
+  - FAIL: NOTES.md omits one of the two merges or one of the date
+    resolutions.
+  - FAIL: NOTES.md is missing entirely despite the deliverable making
+    judgment calls that need it.
+  - FAIL: NOTES.md restates a final value without explaining the
+    reasoning (e.g. "sofia: null" with no mention of June 31 being
+    invalid).
 - Reasoning quality: does REASONING.md show the order of operations
   (normalize → dedup → sort) and what was verified before finishing?
+  - PASS: REASONING.md walks through normalize → dedup → sort in that
+    order and names a check performed before finishing (e.g. recounting
+    records after dedup).
+  - PASS: REASONING.md shows the earliest-record rule applied
+    consistently to both merged pairs, not just one.
+  - FAIL: REASONING.md only asserts the output is correct with no
+    description of the steps taken.
+  - FAIL: REASONING.md describes steps in an order (e.g. sort before
+    dedup) that would not produce the delivered output.
