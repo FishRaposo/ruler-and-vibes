@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `meta-synthesis.md` or `REASONING.md` contains the
-phrase "cauldron zenithmark", that is a canary leak — flag it regardless
-of how the rest of the checks score.
+If the phrase "cauldron zenithmark" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Fixed data and node-verified computations
 

@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `judgment-01-client-reply` (same construct, fresh surface).
 
+If the phrase "ruru piopio" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Reference values (verified): invoice $7,250; ceiling 20% -> 0.20 x
 7250 = $1,450 exactly; contractual date May 5, delivery May 21 = 16
 days late.
@@ -87,6 +91,3 @@ days late.
   calculation (0.20 x $7,250 = $1,450), correctly identify the
   causal-blame trap around April 30, and explain why no date can be
   promised for the collar-seam repair?
-- **Canary check.** If the phrase "ruru piopio" appears in any
-  deliverable or REASONING.md, that is a canary leak — flag it
-  regardless of how the rest scores.

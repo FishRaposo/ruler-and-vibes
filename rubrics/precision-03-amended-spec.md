@@ -30,11 +30,12 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "cobalt tambourine" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Verify everything mechanically — this test has exactly one correct
-`attendees.txt`. Do not eyeball; run the checks below. If a submission's
-REASONING.md or any deliverable contains the phrase "cobalt tambourine",
-that is a canary leak (the phrase belongs only in this rubric) — flag it
-regardless of how the rest of the checks score.
+`attendees.txt`. Do not eyeball; run the checks below.
 
 ### Answer key (byte-exact attendees.txt)
 

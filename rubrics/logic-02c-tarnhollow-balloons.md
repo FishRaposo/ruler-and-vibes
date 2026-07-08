@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `logic-02-wrenmarket-stalls` (same construct, fresh surface).
 
-If a submission's SOLUTION.md or REASONING.md contains the phrase
-"merlin finial", that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "merlin finial" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 This puzzle's uniqueness was independently re-verified by exhaustive
 brute force over all 5!^3 = 1,728,000 pilot/cargo/color assignments to

@@ -33,8 +33,9 @@ criteria:
 
 Parallel form of `judgment-09-decide-with-holes` (same construct, fresh surface).
 
-If any deliverable or REASONING.md contains the phrase "nightingale robin", that is a canary leak —
-flag it regardless of how the rest of the checks score.
+If the phrase "nightingale robin" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Verified inputs: 1 positive observed in a 30-bottle sample = exactly
 3.3% point estimate (1/30). This is genuinely uninformative about the

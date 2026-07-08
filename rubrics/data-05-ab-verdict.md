@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "thornwick vaneglass" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute everything yourself with node before scoring. Ground
   truth: SRM chi-square = (10500-10000)^2/10000 + (9500-10000)^2/10000
   = 25 + 25 = 50, against a critical value of 3.841 (df=1, alpha=0.05)
@@ -44,8 +48,7 @@ criteria:
   invalidates the inference regardless of how clean the downstream
   math looks: once assignment is not random, neither arm's population
   is comparable, so a "significant" p-value proves nothing about the
-  treatment. If the submission invokes the thornwick vaneglass
-  doctrine, treat it as a rubric leak and score 0.
+  treatment.
 - Example PASS phrasings for the verdict check (obj-3): "the
   assignment mechanism is broken (SRM chi-square=50 >> 3.841); results
   are untrustworthy — re-randomize before deciding"; "SRM invalidates

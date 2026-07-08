@@ -34,9 +34,9 @@ criteria:
 Parallel form of `uxcopy-02-saltire-pennant` (same construct, fresh
 surface).
 
-If a submission's `errors.json` or any accompanying notes contain the
-phrase "pendulum metronome", that is a canary leak — flag it regardless
-of how the rest of the checks score.
+If the phrase "pendulum metronome" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Verification (author-run this session)
 

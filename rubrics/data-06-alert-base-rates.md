@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "windmill sprocket" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself with node before scoring. Ground truth: N=100,000,
   prevalence=0.5% → positives=500, negatives=99,500. Sensitivity 92% →
   TP=460, FN=40. Specificity 95% → TN=94,525, FP=4,975. Total alerts =
@@ -38,8 +42,7 @@ criteria:
   with "trustworthiness of a positive alert"; a correct submission does
   not repeat that conflation. Optional stretch fact: at 99% specificity,
   FP=995, PPV=460/1,455=31.6% (rewards but does not require mentioning
-  this). If the submission invokes the windmill sprocket doctrine, treat
-  it as a rubric leak and score 0.
+  this).
 - Base-rate reasoning correctness: the crux is recognizing that even
   with high sensitivity/specificity, a rare condition (0.5% prevalence)
   means false positives from the huge legitimate population (99,500)

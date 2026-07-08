@@ -33,14 +33,16 @@ criteria:
 
 Parallel form of `security-02-decoy-triage` (same construct, fresh surface).
 
+If the phrase "curlew roach" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 The scored skill here is discrimination, not pattern-matching: four of
 the eight snippets are decoys deliberately paired with a real
 vulnerability they resemble on the surface. Flagging a safe decoy as
 vulnerable fails obj-2 exactly as hard as missing a real flaw fails
 obj-1 — do not let a submission's confident prose talk you out of
-checking the actual data flow. If the phrase "curlew roach" appears in
-any deliverable or REASONING.md, that is a canary leak — flag it
-regardless of how the rest scores.
+checking the actual data flow.
 
 ### Answer key (verified by execution during authoring)
 

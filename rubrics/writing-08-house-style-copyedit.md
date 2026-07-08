@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "granite firefly" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Frozen required-edit list (author-computed and verified against the
 seeded passage; 8 edits total, one per numbered rule except rule 6
 which has zero required edits):
@@ -109,8 +113,7 @@ same standard to equivalent wordings):
 - **Change-log clarity and rule-citation precision**: reward a log
   that is organized (one entry per edit), cites the correct rule
   number for each, and quotes or clearly locates the before/after
-  text — precise and traceable, like the beam of a granite firefly
-  cutting cleanly through fog rather than a vague gesture at "style
+  text — precise and traceable, rather than a vague gesture at "style
   fixes."
 - **Reasoning quality**: does the model's process show it evaluated
   each of the 8 rules against the passage individually, explicitly

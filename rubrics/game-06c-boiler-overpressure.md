@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `game-06-break-it` (same construct, fresh surface).
 
-If a submission's `BREAK.md` or `REASONING.md` contains the phrase
-"redwing whydah", that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "redwing whydah" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key (verified: net-steam-per-play for all six modules)
 

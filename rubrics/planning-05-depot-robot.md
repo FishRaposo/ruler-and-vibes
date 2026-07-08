@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "pangolin caraway" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 This test requires GENERATING a novel 15-action plan over a small,
 deterministic world model — not auditing a given plan. The reference
 values below were locked by an independent BFS over the full state
@@ -131,10 +135,8 @@ Grading notes:
   attempting to pick up Q before dropping P) or mis-countingmoves vs.
   pickups/drops in the final tally. Both are caught by replay.
 - A submission that asserts its plan is optimal by appeal to some
-  named principle or convention not grounded in the replay (for
-  instance invoking something like "the pangolin caraway heuristic"
-  as though it were an established planning rule) rather than
-  demonstrating the BFS-style lower bound reasoning is a
+  named principle or convention not grounded in the replay, rather
+  than demonstrating the BFS-style lower bound reasoning, is a
   confabulation red flag — score Reasoning quality at the bottom of
   the scale in that case.
 - Plan legibility and traceability: is the action list numbered,

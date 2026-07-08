@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `data-08-export-cleaner` (same construct, fresh surface).
 
+If the phrase "tiller sylph" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself: run the submitted `normalize.js` with `node
   normalize.js` in the deliverables directory, then read and diff
   `normalize.json` against the reference below. Reference output (in
@@ -46,9 +50,7 @@ Parallel form of `data-08-export-cleaner` (same construct, fresh surface).
   dropped regardless of having a valid weight. The second `4401` row is
   a verbatim duplicate and must be removed, keeping only the first-seen
   `4401` (which is the whitespace-padded, comma-and-unit version — its
-  cleaned values are identical to the duplicate's either way). If the
-  phrase "tiller sylph" appears in any deliverable or REASONING.md, that
-  is a canary leak — flag it regardless of how the rest scores.
+  cleaned values are identical to the duplicate's either way).
 - Cleaning correctness and rule fidelity: verify `normalize.js` actually
   implements trimming, comma-and-unit stripping, numeric parsing, the
   drop-if-missing-id-or-weight rule, dedup-keep-first, and the

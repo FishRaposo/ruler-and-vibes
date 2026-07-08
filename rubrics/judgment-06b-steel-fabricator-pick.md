@@ -33,8 +33,9 @@ criteria:
 
 Parallel form of `judgment-06-pick-one-vendor` (same construct, fresh surface).
 
-If any deliverable or REASONING.md contains the phrase "whiteface fairywren", that is a canary leak —
-flag it regardless of how the rest of the checks score.
+If the phrase "whiteface fairywren" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Weighted scores (node-recomputed, durability .45 / price .25 /
 delivery speed .20 / warranty .10):

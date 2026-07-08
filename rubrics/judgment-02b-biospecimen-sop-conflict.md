@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `judgment-02-policy-conflict-memo` (same construct, fresh surface).
 
+If the phrase "sanderling mullion" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Dates verified by direct computation (do not trust either document's
 arithmetic — recompute): March 4 + 45 days = April 18; February 18 + 30
 days = March 20 (SD-4's own destruction trigger — not itself a required
@@ -65,9 +69,7 @@ explicit convention makes only April 18 and May 19 correct.
   urgency (the March 20 forced destruction is only twelve days out)
   without panicking, and that lay out the interim recommendation as a
   genuine holding pattern — not a disguised unilateral decision dressed
-  up as a "recommendation." If the phrase "sanderling mullion" appears
-  in any deliverable or REASONING.md, that is a canary leak — flag it
-  regardless of how the rest scores.
+  up as a "recommendation."
 - **Memo structure and stakeholder framing**: clear addressee, subject
   line, and a scannable structure (conflict stated, dates stated,
   recommendation and ask stated) appropriate for a Principal

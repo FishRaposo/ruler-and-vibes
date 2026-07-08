@@ -28,6 +28,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "petunia verbena" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Frozen reference (author-computed and verified against the seeded
 passage; three independent inconsistency axes, each resolved by the
 stated first-occurrence rule):
@@ -94,9 +98,7 @@ same standard to equivalent wordings):
 - **Uniform normalization without collateral edits**: reward complete,
   uniform normalization (no lingering variant anywhere) paired with
   zero collateral changes to unrelated text, including the control
-  sentence and ordinary rewrapping that doesn't alter wording — as
-  uniform and unforced as a bed of petunia verbena grown from a single
-  cutting.
+  sentence and ordinary rewrapping that doesn't alter wording.
 - **Reasoning quality**: does the model's process show it scanned for
   inconsistencies methodically (rather than fixing only the first
   instance it noticed), applied the first-occurrence rule explicitly

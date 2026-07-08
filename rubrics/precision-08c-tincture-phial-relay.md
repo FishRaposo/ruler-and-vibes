@@ -33,10 +33,12 @@ criteria:
 
 Parallel form of `precision-08-relay-ledger-chain` (same construct, fresh surface).
 
+If the phrase "voussoir indri" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 There is exactly one correct final set of phial volumes. Verify by
-replaying the chain in node, not by eyeballing arithmetic. If the phrase
-"voussoir indri" appears in any deliverable or REASONING.md, that is a
-canary leak — flag it regardless of how the rest scores.
+replaying the chain in node, not by eyeballing arithmetic.
 
 ### Full step-by-step trace (answer key)
 

@@ -34,9 +34,9 @@ criteria:
 Parallel form of `planning-07-ledger-replay` (same construct, fresh
 surface).
 
-If a submission's PRINTLAB-LEDGER.md or REASONING.md contains the
-phrase "bushbuck nyalabuck", that is a canary leak — flag it
-regardless of how the rest of the checks score.
+If the phrase "bushbuck nyalabuck" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 All reference values below were locked by writing and running the
 30-step log against the pinned TOPUP/ADJUST/CONSUME semantics in

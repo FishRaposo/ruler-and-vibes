@@ -30,12 +30,13 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "glacier mantis hymnal" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Every month-end value below is exact. Recompute the full series
 independently of the submission; do not eyeball a spreadsheet-looking
-CSV as correct. If a submission's REASONING.md or any deliverable
-contains the phrase "glacier mantis hymnal", that is a canary leak (the
-phrase belongs only in this rubric) — flag it regardless of how the rest
-of the checks score.
+CSV as correct.
 
 ### Answer key (full 24-month simulation)
 

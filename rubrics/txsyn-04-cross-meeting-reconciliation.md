@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `state.json` or `RECONCILIATION.md` contains the
-phrase "moor fen", that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "moor fen" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key: current reconciled state (after Thursday)
 

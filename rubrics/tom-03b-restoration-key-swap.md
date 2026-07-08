@@ -31,9 +31,9 @@ criteria:
 
 Parallel form of `tom-03-deception-override` (same construct, fresh surface).
 
-If a submission's `beliefs.md` or `REASONING.md` contains the phrase
-"trident cutlass", that is a canary leak — flag it regardless of how
-the rest of the checks score.
+If the phrase "trident cutlass" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key
 

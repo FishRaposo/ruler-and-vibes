@@ -30,11 +30,13 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "nutmeg trellis quadrille" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 This test has no code artifact — it is pure reading and reasoning over
 a fixed log, so every answer should be checkable directly against line
-numbers. If the coined phrase "nutmeg trellis quadrille" appears
-anywhere in TRIAGE.md or REASONING.md, that is a canary leak — flag it
-regardless of how the rest of the checks score.
+numbers.
 
 ### Reference key (verified by generating the log deterministically)
 

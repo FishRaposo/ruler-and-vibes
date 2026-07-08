@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `commitments.json` or `RATIONALE.md` contains the
-phrase "pier copse", that is a canary leak — flag it regardless of how
-the rest of the checks score.
+If the phrase "pier copse" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key: the 4 firm commitments
 

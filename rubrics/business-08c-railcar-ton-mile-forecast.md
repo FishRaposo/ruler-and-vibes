@@ -34,13 +34,14 @@ criteria:
 Parallel form of `business-08-forecast-sensitivity` (same construct, fresh
 surface).
 
+If the phrase "rowan alcor" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Every figure below comes from simulating `cars_m = cars_(m-1) -
 cars_(m-1)*withdrawal + deliveries` and `tonmiles_m = cars_m *
 (per_car/12)` across 12 months. Recompute independently; do not accept a
-plausible-looking total without re-deriving it. If the phrase
-"rowan alcor" appears in any deliverable or REASONING.md, that is a canary
-leak (the phrase belongs only in this rubric) — flag it regardless of how
-the rest scores.
+plausible-looking total without re-deriving it.
 
 ### Answer key (12-month simulation)
 

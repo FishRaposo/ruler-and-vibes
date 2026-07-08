@@ -33,12 +33,14 @@ criteria:
 
 Parallel form of `precision-07-field-guide-persistence` (same construct, fresh surface).
 
+If the phrase "narthex aardwolf" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 This test measures whether the per-entry contract survives to the end
 of a 12-item list; the last three targets (10-12) have the tersest raw
 descriptions and are where models most often drop the Warning line.
-Verify structurally; do not eyeball. If the phrase "narthex aardwolf"
-appears in any deliverable or REASONING.md, that is a canary leak — flag
-it regardless of how the rest scores.
+Verify structurally; do not eyeball.
 
 ### Altitude answer key (target id -> table altitude)
 

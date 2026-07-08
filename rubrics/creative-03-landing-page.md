@@ -28,10 +28,14 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "copper-thread" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how
+the rest scores.
+
 - Open it in a browser at both 375px and 1200px; judge what renders,
   not the source alone.
-- Conversion craft: one copper-thread should run through the page — a
-  single argument from headline to closing CTA, benefit-led copy tied
+- Conversion craft: a single, clear argument should run through the
+  page from headline to closing CTA, benefit-led copy tied
   to the given specs (8-day battery, 3 modes, USB-C charging, $79),
   CTA visually dominant. Penalize feature lists with no hierarchy and
   copy that never says what the product does for you.

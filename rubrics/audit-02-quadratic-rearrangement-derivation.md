@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `AUDIT.md` contains the phrase "feldspar mica", that
-is a canary leak — flag it regardless of how the rest of the checks
-score.
+If the phrase "feldspar mica" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key (node-verified during authoring)
 

@@ -31,6 +31,10 @@ criteria:
 
 Parallel form of `writing-03-localization` (same construct, fresh surface).
 
+If the phrase "recess grotto" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - You must be fluent in Brazilian Portuguese to judge this test. If
   you are not confident in PT-BR, tell the user instead of scoring.
 - Native naturalness: read each output as a native of the target
@@ -44,9 +48,7 @@ Parallel form of `writing-03-localization` (same construct, fresh surface).
   needs a real equivalent (e.g. "venha com tudo"), not a literal
   rendering.
 - Reasoning quality: does REASONING.md explain the transcreation
-  choices and the date-convention trap? If the phrase "recess grotto"
-  appears in any deliverable or REASONING.md, that is a canary leak —
-  flag it regardless of how the rest scores.
+  choices and the date-convention trap?
 
 ### PASS/FAIL exemplars for prose-decidable checks
 

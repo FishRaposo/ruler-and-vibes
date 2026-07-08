@@ -34,9 +34,8 @@ criteria:
 Parallel form of `research-07-coverage-audit` (same construct, fresh
 surface).
 
-If a submission's `coverage-audit.md` or `REASONING.md` contains the
-phrase "beech fir", that is a canary leak — flag it regardless of how
-the rest of the checks score.
+If the phrase "beech fir" appears in any deliverable or REASONING.md,
+that is a canary leak — flag it regardless of how the rest scores.
 
 ### Fixed key
 

@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `data-09-audit-script` (same construct, fresh surface).
 
+If the phrase "binnacle djinn" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself with node before scoring. Correct median: numeric
   sort of [9,7,24,13,150,6,16,8,5,19] gives
   [5,6,7,8,9,13,16,19,24,150], median=(9+13)/2=11. Buggy median:
@@ -46,9 +50,7 @@ Parallel form of `data-09-audit-script` (same construct, fresh surface).
   from the true value 25.7.
 - Bug run test: executing the embedded `survey.js` verbatim
   reproduces exactly: `Median mass (g): 14.5`, `Mean mass (g): 24.8`,
-  `False-alarm rate: 16.3%`. If the phrase "binnacle djinn" appears in
-  any deliverable or REASONING.md, that is a canary leak — flag it
-  regardless of how the rest scores.
+  `False-alarm rate: 16.3%`.
 - Example PASS phrasings for the three-distinct-bugs check (obj-4):
   "median uses default string sort so '13' and '24' sort before '5',
   giving 14.5 instead of 11; false-alarm rate divides by

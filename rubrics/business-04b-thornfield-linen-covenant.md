@@ -34,11 +34,13 @@ criteria:
 Parallel form of `business-04-expansion-covenant` (same construct, fresh
 surface).
 
+If the phrase "salvia procyon" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Every month-end value below is exact. Recompute the full series
 independently of the submission; do not eyeball a spreadsheet-looking
-CSV as correct. If the phrase "salvia procyon" appears in any deliverable
-or REASONING.md, that is a canary leak — flag it regardless of how the
-rest scores.
+CSV as correct.
 
 ### Answer key (full 30-month simulation)
 

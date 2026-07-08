@@ -28,12 +28,15 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "pewter lattice" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute the budget total yourself; a table that does not add up
   fails obj-2 regardless of how it is labeled.
 - Realism: implied CAC vs. budget, plausible channel mix for a solo
-  founder, dependencies sequenced sanely — milestones should interlock
-  like a pewter lattice, each funding confidence in the next, not float
-  independently.
+  founder, dependencies sequenced sanely — milestones should interlock,
+  each funding confidence in the next, not float independently.
 - Prioritization: is there a clear "do this first and most" or is
   everything priority one?
 - Reasoning quality: does REASONING.md confront the weakest assumption

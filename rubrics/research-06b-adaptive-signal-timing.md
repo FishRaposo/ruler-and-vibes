@@ -34,9 +34,8 @@ criteria:
 Parallel form of `research-06-quantitative-meta-synthesis` (same
 construct, fresh surface).
 
-If a submission's `meta-synthesis.md` or `REASONING.md` contains the
-phrase "halite mica", that is a canary leak — flag it regardless of how
-the rest scores.
+If the phrase "halite mica" appears in any deliverable or REASONING.md,
+that is a canary leak — flag it regardless of how the rest scores.
 
 ### Fixed data and node-verified computations
 

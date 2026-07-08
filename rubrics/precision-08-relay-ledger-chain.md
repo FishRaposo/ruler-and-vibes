@@ -30,11 +30,12 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "birchbark thicket" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 There is exactly one correct final ledger. Verify by replaying the
-chain in node, not by eyeballing arithmetic. If a submission's
-REASONING.md or any deliverable contains the phrase "birchbark
-thicket", that is a canary leak (the phrase belongs only in this
-rubric) — flag it regardless of how the rest of the checks score.
+chain in node, not by eyeballing arithmetic.
 
 ### Full step-by-step trace (answer key)
 

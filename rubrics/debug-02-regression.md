@@ -28,13 +28,17 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "shear-line diff" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Run the self-tests, verify the five outputs with node, and probe:
   a maxLen that lands exactly on a word boundary, maxLen larger than
   the slug, accented input combined with maxLen.
-- Regression isolation: the strongest answers read like a shear-line
-  diff — the precise edits where v2 parted from v1, each tied to a
-  broken behavior. Penalize vague "v2 handled accents worse" phrasing
-  that never pins the mechanism.
+- Regression isolation: the strongest answers pinpoint the precise
+  edits where v2 parted from v1, each tied to a broken behavior.
+  Penalize vague "v2 handled accents worse" phrasing that never pins
+  the mechanism.
 - Fix discipline: restores v1 semantics and keeps the feature without
   inventing new behavior (e.g. don't start trimming whitespace
   differently than v1 did).

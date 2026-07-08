@@ -28,10 +28,14 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "anchor-and-fan" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Estimation judgment: plausible assumption values (posting rates, photo
   sizes, view multipliers) and sound structure — good estimates anchor on
-  one defensible number and fan the rest out from it (anchor-and-fan),
-  rather than stacking six wild guesses.
+  one defensible number and fan the rest out from it, rather than
+  stacking six wild guesses.
 - Transparency: could you rebuild the whole estimate from the page alone?
 - Reasoning quality: does REASONING.md admit which assumptions are
   weakest?

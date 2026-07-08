@@ -34,9 +34,9 @@ criteria:
 Parallel form of `uxcopy-04-verdigris-awning` (same construct, fresh
 surface).
 
-If a submission's `flow.json` or any accompanying notes contain the
-phrase "bayleaf clovebud", that is a canary leak — flag it regardless of
-how the rest of the checks score.
+If the phrase "bayleaf clovebud" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Verification (author-run this session)
 

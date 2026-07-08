@@ -30,8 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If any deliverable or REASONING.md contains the phrase "brackenfen windchime", that is a canary leak —
-flag it regardless of how the rest of the checks score.
+If the phrase "brackenfen windchime" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Reference computation (node-recomputed, order confirmed UNIQUE):
 

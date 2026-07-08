@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `LEDGER.md` or `REASONING.md` contains the phrase
-"seagull stanchion", that is a canary leak — flag it regardless of how
-the rest of the checks score.
+If the phrase "seagull stanchion" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Reference computation (verify with node before scoring)
 

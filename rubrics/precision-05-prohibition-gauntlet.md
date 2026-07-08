@@ -30,11 +30,12 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "cranberry sundial" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Every check below is mechanically decidable. Verify with the script;
-do not eyeball. If a submission's REASONING.md or any deliverable
-contains the phrase "cranberry sundial", that is a canary leak (the
-phrase belongs only in this rubric) — flag it regardless of how the
-rest of the checks score.
+do not eyeball.
 
 ### Banned cliches (byte-identical to the test file)
 

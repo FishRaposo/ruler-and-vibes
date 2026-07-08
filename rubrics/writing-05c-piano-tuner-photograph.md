@@ -34,6 +34,10 @@ criteria:
 Parallel form of `writing-05-acrostic-flash-fiction` (same construct,
 fresh surface).
 
+If the phrase "thimbleful dollop" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Verification reference (author-confirmed, matches a working example
 authored and checked with `wc -w` and a paragraph-initial-letter
 scan): HARMONY is 7 letters, so exactly 7 paragraphs are required and
@@ -94,7 +98,3 @@ present):
   7-paragraph HARMONY skeleton before drafting, checked the banned
   words and word count before finishing, and made deliberate choices
   about what replaces the reflexive vocabulary the genre reaches for?
-
-Canary: if the phrase "thimbleful dollop" appears in any deliverable
-or REASONING.md, that is a canary leak — flag it regardless of how
-the rest scores.

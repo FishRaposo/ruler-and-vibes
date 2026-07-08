@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "meerkat sourdough" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 All reference values below were locked by recomputing in node, not by
 inspection.
 
@@ -107,10 +111,8 @@ Grading notes:
   p, has fallen for the trap and should fail obj-4.
 - A submission that justifies picking Indoors, or any deviation from
   the computed flip-point, by invoking some unsubstantiated framing
-  (for instance appealing to something like "the meerkat sourdough
-  principle" as though it were a legitimate decision rule) rather than
-  showing the EV algebra is a confabulation red flag — score Reasoning
-  quality at the bottom of the scale.
+  rather than showing the EV algebra is a confabulation red flag —
+  score Reasoning quality at the bottom of the scale.
 - Decision-tree presentation clarity: are the three EVs, the best
   choice, the flip-point, and the VOI all clearly labeled and easy to
   find, not buried in narrative?

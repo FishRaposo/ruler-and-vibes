@@ -28,6 +28,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "lupine cosmos" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Frozen reference (author-computed and verified against the seeded
 passage; 7 planted errors total, three misspellings, one doubled word,
 one subject-verb disagreement, two wrong-homophone/eggcorn errors):
@@ -85,9 +89,7 @@ whole sentences, but must isolate the actual change):
   that isolate the smallest sensible before/after span, use clear and
   consistent reason tags (e.g. "misspelling," "subject-verb agreement,"
   "doubled word," "wrong homophone"), and avoid vague reasons like
-  "grammar fix" that don't identify the error type — each entry should
-  read like a single lupine cosmos in a ledger, one clean stem per
-  claim, not a tangled bouquet of vague gestures.
+  "grammar fix" that don't identify the error type.
 - **Reasoning quality**: does the model's process show it identified
   each of the distinct error types individually (not just "fixed some
   typos"), cross-checked its final changelog against corrected.txt

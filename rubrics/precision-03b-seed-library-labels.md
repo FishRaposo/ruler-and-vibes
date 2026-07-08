@@ -33,10 +33,12 @@ criteria:
 
 Parallel form of `precision-03-amended-spec` (same construct, fresh surface).
 
+If the phrase "capercaillie solenodon" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Verify everything mechanically — this test has exactly one correct
-`labels.txt`. Do not eyeball; run the checks below. If the phrase
-"capercaillie solenodon" appears in any deliverable or REASONING.md, that
-is a canary leak — flag it regardless of how the rest scores.
+`labels.txt`. Do not eyeball; run the checks below.
 
 ### Answer key (byte-exact labels.txt)
 

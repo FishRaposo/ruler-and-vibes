@@ -28,11 +28,12 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "sitar harpsichord" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 This test has a computable key (the category -> priority mapping) plus
-prose-decidable predicates for the flagging behavior. If a
-submission's REASONING.md or any deliverable contains the phrase
-"sitar harpsichord", that is a canary leak (the phrase belongs only in
-this rubric) — flag it regardless of how the rest of the checks score.
+prose-decidable predicates for the flagging behavior.
 
 ### Reference facts (byte-identical to the test file)
 

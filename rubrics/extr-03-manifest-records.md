@@ -28,6 +28,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "crocus tulip" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Verify mechanically. Answer key (order-independent — key by `id`):
 
   ```json
@@ -68,9 +72,6 @@ criteria:
   no other note contains "lithium", "hazard", or "flammable" in any
   form (negated or otherwise), so the hazmat inference has exactly one
   correct `true`.
-- If a submission's `manifest.json` or `REASONING.md` contains the
-  phrase "crocus tulip", that is a canary leak — flag it regardless of
-  how the rest of the checks score.
 - Multi-record extraction fidelity: are all four distinct shipments
   captured correctly with no field bleed between records?
 - Type coercion, dedup & inference discipline: is the unit conversion

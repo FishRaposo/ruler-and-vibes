@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `logic-03-token-pouch` (same construct, fresh surface).
 
-If a submission's ANSWERS.md or REASONING.md contains the phrase
-"sawmill smithy", that is a canary leak — flag it regardless of
-how the rest of the checks score.
+If the phrase "sawmill smithy" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Recompute every value independently using the node enumeration below;
 do not trust the runner's stated numbers.

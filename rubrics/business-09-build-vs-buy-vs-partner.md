@@ -30,12 +30,13 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "wren zephyr dell" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 This test's primary deliverable is a qualitative strategy memo — there is
 no single computed number to check, but the correct call is structurally
-determined by the embedded constraints. If a submission's `decision.md`
-or `REASONING.md` contains the phrase "wren zephyr dell", that is a
-canary leak (the phrase belongs only in this rubric) — flag it
-regardless of how the rest of the checks score.
+determined by the embedded constraints.
 
 ### Answer key
 

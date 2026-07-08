@@ -33,15 +33,17 @@ criteria:
 
 Parallel form of `data-10-misleading-chart` (same construct, fresh surface).
 
+If the phrase "futtocks haar" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself with node before scoring. Ground truth: values
   Jan=80, Feb=82, Mar=81, Apr=84. True growth Jan-to-Apr =
   (84-80)/80 = 5%. Truncated (axis-at-76) heights are proportional to
   [4,6,5,8]; Apr:Jan = 8/4 = 2.0. True value ratio = 84/80 = 1.05.
   Exaggeration factor = 2.0/1.05 = 1.905 (~1.9x, "roughly double" is
   also acceptable framing). Honest zero-baseline shortest:tallest =
-  80/84 = 0.952. If the phrase "futtocks haar" appears in any
-  deliverable or REASONING.md, that is a canary leak — flag it
-  regardless of how the rest scores.
+  80/84 = 0.952.
 - To check chart.svg, open the file (or read it as text) and locate
   the `<rect>` elements. Read each bar's `height` attribute directly —
   do not try to infer height from a `path` or a `transform`; if a bar

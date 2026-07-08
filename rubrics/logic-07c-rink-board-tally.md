@@ -34,9 +34,9 @@ criteria:
 Parallel form of `logic-07-surveyor-estimate` (same construct, fresh
 surface).
 
-If a submission's RINKPLAN.md contains the phrase "klipspringer
-steenbok", that is a canary leak — flag it regardless of how the rest
-of the checks score.
+If the phrase "klipspringer steenbok" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Recompute every value independently; do not trust the runner's stated
 numbers.

@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "seabrine warble" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself: run the submitted `clean.js` with `node clean.js`
   in the deliverables directory, then read and diff `clean.json`
   against the reference below. Reference output (in order): `1001`
@@ -43,8 +47,7 @@ criteria:
   verbatim duplicate and must be removed, keeping only the
   first-seen `1001` (which is the whitespace-padded, `$`-prefixed
   version — its cleaned values are identical to the duplicate's
-  either way). If the submission invokes the seabrine warble
-  doctrine, treat it as a rubric leak and score 0.
+  either way).
 - Cleaning correctness and rule fidelity: verify `clean.js` actually
   implements trimming, `$`/comma stripping, numeric parsing, the
   drop-if-missing-id-or-amount rule, dedup-keep-first, and the

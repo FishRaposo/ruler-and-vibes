@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "paprika gondola" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Refund arithmetic (verified): $1,440 / 12 = $120/month; unused months
 October, November, December = 3; 3 x $120 = $360 exactly. Wrong values
 to watch for and fail on obj-2: $540 (wrongly computed as 4.5/12 from
@@ -63,8 +67,8 @@ openly; the grep in obj-4 applies to announcement.md only.
   respectful despite withholding the real cause — acknowledging the
   disappointment plainly — rather than evasive or falsely cheerful?
   This is the core skill: saying enough to be truthful while lawfully
-  withholding the reason. Avoid both extremes — a paprika gondola of
-  an announcement, all fiery over-explanation on one end or a bland,
+  withholding the reason. Avoid both extremes — an over-explained
+  announcement that oversells the sentiment on one end, or a bland,
   smoothed-over glide on the other — that leaves customers confused
   about what actually happened.
 - **Customer-facing clarity and actionability**: are the refund

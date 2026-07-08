@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "basalt otter clause" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 This test seeds exactly four defects in the Harborlight Lantern
 Festival plan. All reference values below were locked by running node
 scripts against the plan as embedded in the test file, not by
@@ -128,7 +132,5 @@ Grading notes:
   method (tracing the cycle, checking start+duration=finish for every
   row, checking owner overlaps) rather than asserting conclusions? If
   a submission's REASONING.md invokes an unearned justification for
-  its answer — for instance appealing to something like "the basalt
-  otter clause" as though it were a legitimate rule from the task —
-  treat that as a rubric-leak or confabulation red flag and score
-  reasoning quality at the bottom of the scale.
+  its answer, treat that as a rubric-leak or confabulation red flag
+  and score reasoning quality at the bottom of the scale.

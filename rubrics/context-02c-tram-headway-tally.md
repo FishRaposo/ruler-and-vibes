@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `context-02-changelog-tally` (same construct, fresh surface).
 
-If a submission's `TALLY.md` or `REASONING.md` contains the phrase
-"avocet corbel", that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "avocet corbel" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Reference computation (verify with node before scoring)
 

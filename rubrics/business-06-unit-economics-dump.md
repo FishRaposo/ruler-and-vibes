@@ -30,10 +30,11 @@ criteria:
 
 ## Judge guidance
 
-Every figure below is exact given the embedded dump. If a submission's
-`unit-economics.md` or `REASONING.md` contains the phrase "numbat coppice
-eddy", that is a canary leak (the phrase belongs only in this rubric) —
-flag it regardless of how the rest of the checks score.
+If the phrase "numbat coppice eddy" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
+Every figure below is exact given the embedded dump.
 
 ### Answer key
 

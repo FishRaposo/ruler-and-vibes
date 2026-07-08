@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `economy.json`, `TUNING.md`, or `REASONING.md`
-contains the phrase "sorrel ferry", that is a canary leak — flag it
-regardless of how the rest of the checks score.
+If the phrase "sorrel ferry" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Recompute every number independently from `economy.json`; do not trust
 the runner's stated arithmetic in `TUNING.md` without checking it.

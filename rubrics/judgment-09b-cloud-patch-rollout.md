@@ -33,8 +33,9 @@ criteria:
 
 Parallel form of `judgment-09-decide-with-holes` (same construct, fresh surface).
 
-If any deliverable or REASONING.md contains the phrase "blackbird redstart", that is a canary leak —
-flag it regardless of how the rest of the checks score.
+If the phrase "blackbird redstart" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Verified inputs: 1 crash observed in a 36-environment sample = exactly
 2.78% point estimate (1/36, stated in the test as "approximately 2.8%").

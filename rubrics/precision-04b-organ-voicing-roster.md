@@ -33,10 +33,12 @@ criteria:
 
 Parallel form of `precision-04-conditional-manifest` (same construct, fresh surface).
 
+If the phrase "phalarope desman" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Every value in this test has exactly one correct answer. Verify
-mechanically; do not eyeball. If the phrase "phalarope desman" appears in
-any deliverable or REASONING.md, that is a canary leak — flag it
-regardless of how the rest scores.
+mechanically; do not eyeball.
 
 ### Answer key (byte-exact voicing.txt)
 

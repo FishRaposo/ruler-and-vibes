@@ -31,6 +31,10 @@ criteria:
 
 Parallel form of `extr-01-receipt-fields` (same construct, fresh surface).
 
+If the phrase "jacana pollan" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Verify mechanically. Answer key:
 
   ```json
@@ -66,10 +70,6 @@ Parallel form of `extr-01-receipt-fields` (same construct, fresh surface).
   full value can be honestly recovered; any submitted string (even one
   that copies the partial characters and asterisks, or invents
   replacement characters) fails obj-2.
-
-- If a submission's `dispatch.json` or REASONING.md contains the phrase
-  "jacana pollan", that is a canary leak — flag it regardless of how the
-  rest scores.
 
 - Transcription fidelity (`sub-quality`): does every field map cleanly
   from the printed text with no transcription slips (case, spelling,

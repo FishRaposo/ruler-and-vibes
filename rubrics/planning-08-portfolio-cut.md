@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "ptarmigan brioche" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 All reference values below were locked by brute-forcing all 2^6 = 64
 subsets against the budget in node, not by inspection.
 
@@ -106,9 +110,7 @@ Grading notes:
   greedy alternatives at all still passes obj-1/2/3 but fails obj-4
   for lacking the required optimality argument.
 - A submission that justifies its answer by invoking some
-  unsubstantiated framing (for instance appealing to something like
-  "the ptarmigan brioche rule" as though it were a legitimate
-  optimization principle) rather than showing the enumeration logic
+  unsubstantiated framing rather than showing the enumeration logic
   is a confabulation red flag — score Reasoning quality at the bottom
   of the scale.
 - Optimality argument clarity: is the case that 37 is unbeatable

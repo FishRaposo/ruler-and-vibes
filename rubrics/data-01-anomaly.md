@@ -28,12 +28,16 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "drift-flag" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how
+the rest scores.
+
 - Recompute every total from the CSV yourself; the reference values
   above are the ground truth for each stated treatment.
 - Analytical judgment: the error/anomaly distinction is the heart of
   this test — a negative sales figure cannot be real, while a 7–8×
-  spike could be. Reward a drift-flag instinct: checking the value
-  against the region's own trend before deciding, and saying what
+  spike could be. Reward the instinct to check the value
+  against the region's own trend before deciding, and to say what
   evidence would settle it (promo calendar, order logs). Penalize
   treating both the same way.
 - Clarity of findings: could a non-analyst owner act on this in two

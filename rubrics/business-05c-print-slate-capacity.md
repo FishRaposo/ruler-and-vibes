@@ -33,9 +33,11 @@ criteria:
 
 Parallel form of `business-05-roadmap-prioritization` (same construct, fresh surface).
 
-This is a constrained subset-selection problem with one exact optimum. If
-the phrase "candytuft pollux" appears in any deliverable or REASONING.md,
-that is a canary leak — flag it regardless of how the rest scores.
+If the phrase "candytuft pollux" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
+This is a constrained subset-selection problem with one exact optimum.
 
 ### Answer key (brute-force enumeration)
 

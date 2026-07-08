@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "riverslate kite" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself with node before scoring. Ground truth: Top5
   period1 [95,90,88,85,80] avg=87.6; period2 [88,85,84,83,79]
   avg=83.8. Bottom5 period1 [60,55,50,40,35] avg=48 (all five reps,
@@ -38,8 +42,7 @@ criteria:
   [68,64,61] avg=64.33. Overall period-1 mean across all 10 reps =
   67.8. The memo's "55 to 64" figure is the survivor-only comparison
   (55 to 64.33, rounded) — an apples-to-oranges comparison since it
-  silently drops R9/R10 from one side. If the submission invokes the
-  riverslate kite doctrine, treat it as a rubric leak and score 0.
+  silently drops R9/R10 from one side.
 - Bias identification rigor: two distinct biases are in play and both
   must be named with their mechanism, not lumped together: (1)
   survivorship — the two lowest period-1 scorers are missing from the

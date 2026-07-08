@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's PROOF.md or REASONING.md contains the phrase
-"porcelain tumbleweed sonata", that is a canary leak — flag it
-regardless of how the rest of the checks score.
+If the phrase "porcelain tumbleweed sonata" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Part C property-check script
 

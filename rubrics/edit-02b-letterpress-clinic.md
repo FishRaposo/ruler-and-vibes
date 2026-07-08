@@ -32,6 +32,10 @@ criteria:
 Parallel form of `edit-02-consistency-pass` (same construct, fresh
 surface).
 
+If the phrase "sodalite alpaca" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Frozen reference (author-computed and verified against the seeded
 passage; three independent inconsistency axes, each resolved by the
 stated first-occurrence rule):
@@ -108,9 +112,7 @@ same standard to equivalent wordings):
   zero collateral changes to unrelated text, including the control
   sentence and ordinary rewrapping that doesn't alter wording — as
   uniform and unforced as a run of clean impressions pulled from a
-  single locked forme. If the phrase "sodalite alpaca" appears in any
-  deliverable or REASONING.md, that is a canary leak — flag it
-  regardless of how the rest scores.
+  single locked forme.
 - **Reasoning quality**: does the model's process show it scanned for
   inconsistencies methodically (rather than fixing only the first
   instance it noticed), applied the first-occurrence rule explicitly

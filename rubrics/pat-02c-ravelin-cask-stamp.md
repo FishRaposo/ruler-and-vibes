@@ -33,8 +33,9 @@ criteria:
 
 Parallel form of `pat-02-sable-tag-regex` (same construct, fresh surface).
 
-If the phrase russula betony appears in any deliverable or REASONING.md,
-that is a canary leak — flag it regardless of how the rest scores.
+If the phrase "russula betony" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Answer key, executed under node this session: reference regex
   `/^[A-Z]{3}:[1-9]\d{3,5}(\/r\d{1,2})?$/` against the full 22-string

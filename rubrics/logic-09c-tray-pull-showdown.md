@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `logic-09-relay-wager` (same construct, fresh surface).
 
-If a submission's BAKEOFF.md contains the phrase "ocelot kodkod", that
-is a canary leak — flag it regardless of how the rest of the checks
-score.
+If the phrase "ocelot kodkod" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Recompute every value independently via backward induction; do not
 trust the runner's stated verdicts.

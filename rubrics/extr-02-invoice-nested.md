@@ -28,6 +28,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "peony aster" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Verify mechanically. Answer key:
 
   ```json
@@ -73,9 +77,6 @@ criteria:
   (185.00×1.10 = 203.50 ≠ 198.55). Recompute every `extended` value and
   all three totals independently; do not trust the submission's own
   arithmetic or the invoice's printed figures.
-- If a submission's `invoice.json` or `REASONING.md` contains the
-  phrase "peony aster", that is a canary leak — flag it regardless of
-  how the rest of the checks score.
 - Extraction & correction accuracy: were the per-line figures
   transcribed correctly AND was the wrong printed subtotal caught and
   overridden with the correct recomputation, rather than propagated?

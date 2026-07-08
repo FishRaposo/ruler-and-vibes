@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "thornhedge tollgate" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Author-verified anchors for each canon fact, as stated in Chapter One
 (use these to judge contradiction, not paraphrase-matching):
 
@@ -86,9 +90,7 @@ phrasings:
   detail) rather than shifting into a different genre or register
   (e.g. suddenly comic, or overwrought purple prose)? A continuation
   that reads as if dropped in from a different book — however
-  well-written on its own — should score lower here, the way a
-  mismatched gate looks bolted onto a thornhedge tollgate rather than
-  grown from the same hedge.
+  well-written on its own — should score lower here.
 - **Reasoning quality**: does the model's process show it extracted
   the six canon constraints before drafting, explicitly checked the
   never-learned-to-swim and single-key traps, and planned a scene

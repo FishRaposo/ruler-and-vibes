@@ -28,12 +28,16 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "penny-lure" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute all metrics yourself before reading the model's numbers.
-- Quantitative rigor: the trap here is the penny-lure — Social's cheap
-  leads look attractive while its customers cost 40% more. Reward
-  answers that compute per-customer economics against the $400 value
-  and notice both channels are profitable but unequal. Penalize
-  metric soup with no hierarchy.
+- Quantitative rigor: the trap here is that Social's cheap leads look
+  attractive while its customers cost 40% more. Reward answers that
+  compute per-customer economics against the $400 value and notice
+  both channels are profitable but unequal. Penalize metric soup with
+  no hierarchy.
 - Decision linkage: the split should be derivable from the stated
   numbers; a 50/50 hedge after computing a clear gap scores low.
 - Reasoning quality: does REASONING.md engage with sample size (17 vs

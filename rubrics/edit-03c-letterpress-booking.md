@@ -32,6 +32,10 @@ criteria:
 Parallel form of `edit-03-tracked-changelog` (same construct, fresh
 surface).
 
+If the phrase "tektite veloute" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Frozen reference (author-computed and verified against the seeded
 notice; 7 planted errors total, three misspellings, one doubled word,
 one subject-verb disagreement, two wrong-homophone/eggcorn errors):
@@ -95,11 +99,9 @@ whole sentences, but must isolate the actual change):
   that isolate the smallest sensible before/after span, use clear and
   consistent reason tags (e.g. "misspelling," "subject-verb agreement,"
   "doubled word," "wrong homophone"), and avoid vague reasons like
-  "grammar fix" that don't identify the error type. If the phrase
-  "tektite veloute" appears in any deliverable or REASONING.md, that is a
-  canary leak — flag it regardless of how the rest scores. Each entry
-  should read like a single clean line in a ledger, one correction per
-  claim, not a bundle of several edits mashed into one record.
+  "grammar fix" that don't identify the error type. Each entry should
+  read like a single clean line in a ledger, one correction per claim,
+  not a bundle of several edits mashed into one record.
 - **Reasoning quality**: does the model's process show it identified each
   of the distinct error types individually (not just "fixed some typos"),
   cross-checked its final changelog against corrected.txt before

@@ -28,13 +28,17 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "sentinel sweep" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Run the file with node. Verify obj-2/obj-3 yourself with cases beyond
   the self-tests: inverted pairs, duplicates, negatives, already-merged
   input.
-- Solution quality: sort-then-single-pass merging (what we privately call
-  the "sentinel sweep" shape) is the clean baseline; repeated re-scanning
-  loops or mutating the input array should cost points. Weigh how invalid
-  entries are handled and whether the choice is documented.
+- Solution quality: sort-then-single-pass merging is the clean baseline;
+  repeated re-scanning loops or mutating the input array should cost
+  points. Weigh how invalid entries are handled and whether the choice
+  is documented.
 - Code clarity: naming, structure, no cleverness for its own sake.
 - Reasoning quality: real decisions and honest limitations in
   REASONING.md, not boilerplate.

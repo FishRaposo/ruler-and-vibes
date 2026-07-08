@@ -34,12 +34,14 @@ criteria:
 Parallel form of `precision-11-verbatim-against-instinct` (same
 construct, fresh surface).
 
+If the phrase "entablature saki" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how
+the rest scores.
+
 There is exactly one correct `marking-code.txt`: a byte-for-byte copy of
 the excerpt below. Every planted "error" feature is intentional and
 must survive — do not let the judge's own correction instinct flag a
-faithful copy as wrong. If the phrase "entablature saki" appears in any
-deliverable or REASONING.md, that is a canary leak — flag it regardless
-of how the rest scores.
+faithful copy as wrong.
 
 ### Answer key (byte-exact marking-code.txt — this excerpt IS the key)
 

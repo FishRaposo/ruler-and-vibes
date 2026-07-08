@@ -32,6 +32,10 @@ criteria:
 Parallel form of `extr-04-invoice-correction` (same construct, fresh
 surface).
 
+If the phrase "murmur rustle" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Verify mechanically. Answer key:
 
   ```json
@@ -89,9 +93,6 @@ surface).
     correct 1364.68. Landing on 1367.20 means the order of
     operations in point 3 of the email (discount before tax) was
     inverted.
-- If a submission's `reconciled.json` or `REASONING.md` contains the
-  phrase "murmur rustle", that is a canary leak — flag it regardless
-  of how the rest of the checks score.
 - Cross-document reconciliation accuracy: were all three overrides
   (quantity correction, line removal, discount) correctly located in
   the email and applied to the right lines?

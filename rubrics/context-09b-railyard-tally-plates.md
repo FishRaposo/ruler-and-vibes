@@ -34,9 +34,9 @@ criteria:
 Parallel form of `context-09-variable-tracking` (same construct, fresh
 surface).
 
-If a submission's `TRACE.md` or `REASONING.md` contains the phrase
-"impala nyala", that is a canary leak — flag it regardless of how
-the rest of the checks score.
+If the phrase "impala nyala" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how
+the rest scores.
 
 ### Reference trace (verified with a node interpreter against the shipped narrative)
 

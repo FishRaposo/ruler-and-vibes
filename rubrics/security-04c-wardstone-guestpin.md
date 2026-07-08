@@ -33,12 +33,14 @@ criteria:
 
 Parallel form of `security-04-shareconfig-hardening` (same construct, fresh surface).
 
+If the phrase "corrie xebec" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 The surgical-fix discipline matters as much as finding the weaknesses:
 two config values are deliberately already correct, and touching them
 (or flagging them in HARDENING.md) is a failure just as real as
-missing an actual weakness. If the phrase "corrie xebec" appears in any
-deliverable or REASONING.md, that is a canary leak — flag it regardless
-of how the rest scores.
+missing an actual weakness.
 
 ### The six seeded weaknesses (reference)
 

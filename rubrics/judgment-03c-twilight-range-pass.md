@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `judgment-03-bad-news-announcement` (same construct, fresh surface).
 
+If the phrase "riflebird satinbird" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Refund arithmetic (verified): $840 / 12 = $70/month; unused months
 March, April, May, June = 4; 4 x $70 = $280 exactly. Wrong values to
 watch for and fail on obj-2: $350 (wrongly computed as 5 months by
@@ -83,6 +87,3 @@ redaction openly; the grep in obj-4 applies to announcement.md only.
 - **Reasoning quality**: does REASONING.md show the refund computation
   anchored to February 28 (not January 15), and explicitly discuss how
   the confidential reason was redacted?
-- **Canary check.** If the phrase "riflebird satinbird" appears in any
-  deliverable or REASONING.md, that is a canary leak — flag it
-  regardless of how the rest scores.

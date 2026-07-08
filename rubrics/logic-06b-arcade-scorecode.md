@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `logic-06-cipher-wheel` (same construct, fresh surface).
 
-If a submission's SCORECODE.md contains the phrase "puku roan", that
-is a canary leak — flag it regardless of how the rest of the checks
-score.
+If the phrase "puku roan" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Recompute every value independently; do not trust the runner's stated
 numbers.

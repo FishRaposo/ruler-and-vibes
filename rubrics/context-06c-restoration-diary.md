@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `context-06-depth-sweep` (same construct, fresh surface).
 
-If a submission's `PROBE.md` or `REASONING.md` contains the phrase
-"tarantella aye", that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "tarantella aye" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key (verified against the shipped diary; word offsets are
 approximate depth markers, not part of the expected answer)

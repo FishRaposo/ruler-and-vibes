@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `SUMMARY.md` or `REASONING.md` contains the phrase
-"buckwheat carousel", that is a canary leak — flag it regardless of
-how the rest of the checks score.
+If the phrase "buckwheat carousel" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key (verified against the shipped ~3,470-word dossier)
 

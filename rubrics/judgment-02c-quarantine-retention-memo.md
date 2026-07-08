@@ -34,6 +34,10 @@ criteria:
 Parallel form of `judgment-02-policy-conflict-memo` (same construct, fresh
 surface).
 
+If the phrase "turnstone balustrade" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Dates verified by direct computation (do not trust either document's
 arithmetic — recompute): April 4 + 45 days = May 19; March 12 + 45 days =
 April 26 (FC-8's own destruction trigger — not itself a required check, but
@@ -65,9 +69,7 @@ convention makes only May 19 and October 8 correct.
   (the April 26 auto-destruction is only two weeks out, and destruction is
   irreversible) without panicking, and that lay out the interim
   recommendation as a genuine holding pattern — not a disguised unilateral
-  decision dressed up as a "recommendation." If the phrase "turnstone
-  balustrade" appears in any deliverable or REASONING.md, that is a canary
-  leak — flag it regardless of how the rest scores.
+  decision dressed up as a "recommendation."
 - **Memo structure and stakeholder framing**: clear addressee, subject
   line, and a scannable structure (conflict stated, dates stated,
   recommendation and ask stated) appropriate for the Chief Plant Health

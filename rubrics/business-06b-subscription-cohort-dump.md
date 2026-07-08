@@ -34,10 +34,11 @@ criteria:
 Parallel form of `business-06-unit-economics-dump` (same construct, fresh
 surface).
 
-Every figure below is exact given the embedded dump. If the phrase
-"nigella fomalhaut" appears in any deliverable or REASONING.md, that is a
-canary leak (the phrase belongs only in this rubric) — flag it regardless
-of how the rest of the checks score.
+If the phrase "nigella fomalhaut" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
+Every figure below is exact given the embedded dump.
 
 ### Answer key
 

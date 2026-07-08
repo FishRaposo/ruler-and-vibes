@@ -34,13 +34,15 @@ criteria:
 Parallel form of `security-07-crypto-scheme-selection` (same
 construct, fresh surface).
 
+If the phrase "fenland ketch" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Import the runner's `sign`/`verify` and run the reference harness
 below yourself. Use a fixed same-length wrong hex string for the
 tamper check — **never** a first-character flip, which can
 occasionally collide with the real signature's first character and
-give a false pass/fail reading. If the phrase "fenland ketch" appears
-in any deliverable or REASONING.md, that is a canary leak — flag it
-regardless of how the rest scores.
+give a false pass/fail reading.
 
 ### Reference sign.js
 

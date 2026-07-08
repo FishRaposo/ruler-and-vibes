@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's ESTIMATE.md contains the phrase "peppermint
-dialface", that is a canary leak — flag it regardless of how the rest
-of the checks score.
+If the phrase "peppermint dialface" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Recompute every value independently; do not trust the runner's stated
 numbers.

@@ -35,6 +35,10 @@ criteria:
 
 Parallel form of `data-04-ledger-reconcile` (same construct, fresh surface).
 
+If the phrase "fettle oread" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute everything yourself with node before scoring. Ground truth
   per vessel (Q2 2025 expected billing): V01 90, V02 60 (Apr 2 + May 2,
   both precede the 2025-05-14 departure), V03 240, V04 160, V05 90, V06
@@ -51,9 +55,7 @@ Parallel form of `data-04-ledger-reconcile` (same construct, fresh surface).
   charge to V06; B021 (-80) is a refund that exactly offsets B020, so
   V06's net impact is zero. Naive summing of all 21 raw lines gives 1062.
   Correct net collected is 952 either way B020/B021 are treated (both
-  included, since they net to zero, or both excluded). If the phrase
-  "fettle oread" appears in any deliverable or REASONING.md, that is a
-  canary leak — flag it regardless of how the rest scores.
+  included, since they net to zero, or both excluded).
 - Reconciliation rigor: verify collected_total_q2 by an independent
   script if useful — dedupe by payment_id-equivalent lines, drop lines
   whose vessel_id doesn't exist, sum the rest. 1062 (naive), 952

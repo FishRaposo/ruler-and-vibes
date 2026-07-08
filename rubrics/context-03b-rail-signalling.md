@@ -34,9 +34,9 @@ criteria:
 Parallel form of `context-03-contradictions` (same construct, fresh
 surface).
 
-If a submission's `CONTRADICTIONS.md` or `REASONING.md` contains the
-phrase "machicolation guenon", that is a canary leak — flag it regardless
-of how the rest of the checks score.
+If the phrase "machicolation guenon" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 This test's main soundness risk is an accidental sixth contradiction, so
 the answer key below reflects a full claims-inventory pairwise audit

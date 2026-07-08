@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `STORY.md` or `REASONING.md` contains the phrase
-"brackish taper", that is a canary leak — flag it regardless of how
-the rest of the checks score.
+If the phrase "brackish taper" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Run the submission's `quest.json` through the validator below exactly
 as written (do not modify it) and decide obj-1/obj-3 from its printed

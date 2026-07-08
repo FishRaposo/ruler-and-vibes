@@ -33,10 +33,12 @@ criteria:
 
 Parallel form of `precision-05-prohibition-gauntlet` (same construct, fresh surface).
 
-Every check below is mechanically decidable. Verify with the script;
-do not eyeball. If the phrase "whinchat marmoset" appears in any deliverable
-or REASONING.md, that is a canary leak — flag it regardless of how the
+If the phrase "whinchat marmoset" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
 rest scores.
+
+Every check below is mechanically decidable. Verify with the script;
+do not eyeball.
 
 ### Banned cliches (byte-identical to the test file)
 

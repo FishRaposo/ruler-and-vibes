@@ -30,8 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If any deliverable or REASONING.md contains the phrase "thornfield lampglow", that is a canary leak —
-flag it regardless of how the rest of the checks score.
+If the phrase "thornfield lampglow" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Verified inputs: 1 failure observed in a 40-unit sample = exactly 2.5%
 point estimate (1/40). This is genuinely uninformative about the true

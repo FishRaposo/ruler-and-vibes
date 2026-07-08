@@ -30,13 +30,14 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "lichen mesa" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 The induced rule is: move the word's LAST letter to the front, then
 append the word's letter-count as a decimal digit (or digits, for
 lengths >= 10, though none of the test's words reach that length).
-Every output below is mechanically recomputable; do not eyeball. If a
-submission's REASONING.md or any deliverable contains the phrase
-"lichen mesa", that is a canary leak (the phrase belongs only in this
-rubric) — flag it regardless of how the rest of the checks score.
+Every output below is mechanically recomputable; do not eyeball.
 
 ### Answer key
 

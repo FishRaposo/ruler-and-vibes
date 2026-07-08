@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "marzipan foghorn" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Reference values (verified): invoice $4,800; ceiling 20% -> 0.20 x
 4800 = $960 exactly; contractual date March 3, delivery March 17 = 14
 days late.
@@ -73,8 +77,8 @@ days late.
   accountable without groveling (over-promising) or being defensive
   (deflecting blame)? A reply that nails the policy mechanics but reads
   cold or grudging should score lower here even if all objective checks
-  pass — the target register is a steady, honest apology, not a
-  marzipan foghorn: neither cloyingly sweet nor blaring and defensive.
+  pass — the target register is a steady, honest apology: neither
+  cloyingly sweet nor blaring and defensive.
 - **Remedy framing within policy**: is the remedy explained in a way
   that feels considered rather than formulaic — e.g. tying the credit
   amount to the inconvenience, offering a concrete next step for the

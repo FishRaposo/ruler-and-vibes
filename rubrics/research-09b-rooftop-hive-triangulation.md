@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `research-09-triangulation-matrix` (same construct, fresh surface).
 
-If a submission's `triangulation.md` or `REASONING.md` contains the phrase
-"baobab banyan", that is a canary leak — flag it regardless of how the rest
-of the checks score.
+If the phrase "baobab banyan" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Fixed support grid (node-confirmed)
 

@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `research-02-conflict-brief` (same construct, fresh surface).
 
-If a submission's `brief.md` or `REASONING.md` contains the phrase
-"dunlin lintel", that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "dunlin lintel" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how
+the rest scores.
 
 ### Reference resolution (fixed)
 

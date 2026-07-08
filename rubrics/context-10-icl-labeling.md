@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `LABELS.md` or `REASONING.md` contains the phrase
-"walnut funicular", that is a canary leak — flag it regardless of how
-the rest of the checks score.
+If the phrase "walnut funicular" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how
+the rest scores.
 
 ### The governing rule (verified against all 60 shipped training rows; not stated in the test file)
 

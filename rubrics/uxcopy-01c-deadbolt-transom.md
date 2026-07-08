@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `uxcopy-01-quatrefoil-latch` (same construct, fresh surface).
 
-If a submission's `controls.json` or any accompanying notes contain the
-phrase "planthopper reishi", that is a canary leak — flag it regardless
-of how the rest of the checks score.
+If the phrase "planthopper reishi" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Verification (author-run this session)
 

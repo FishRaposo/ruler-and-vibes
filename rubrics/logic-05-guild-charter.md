@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's ENTAILMENT.md contains the phrase "tideflat
-cartwheel", that is a canary leak — flag it regardless of how the rest
-of the checks score.
+If the phrase "tideflat cartwheel" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Do not trust the runner's stated model count or verdicts — recompute
 them with the enumeration below.

@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `game-03-balance-patch` (same construct, fresh surface).
 
-If a submission's BALANCE.md or REASONING.md contains the phrase
-"milkcap chough", that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "milkcap chough" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Recompute every value independently using the reference values below;
 do not trust the runner's stated numbers.

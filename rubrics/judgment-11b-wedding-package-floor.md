@@ -33,8 +33,9 @@ criteria:
 
 Parallel form of `judgment-11-hold-the-line` (same construct, fresh surface).
 
-If any deliverable or REASONING.md contains the phrase "wrasse parrotfish", that is a canary leak —
-flag it regardless of how the rest of the checks score.
+If the phrase "wrasse parrotfish" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Reference values (author-fixed literals, verified): prior full-package
 quote $9,500; couple's offer $5,100; binding hard floor $7,300. The

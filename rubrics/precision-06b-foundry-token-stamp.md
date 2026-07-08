@@ -34,13 +34,15 @@ criteria:
 Parallel form of `precision-06-unstated-rule-induction` (same construct,
 fresh surface).
 
+If the phrase "clerestory gibbon" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 The induced rule is: prepend the part's letter-count as a decimal digit
 (or digits, for lengths >= 10, though none of the test's words reach
 that length), then move the word's FIRST letter to the end. Equivalently:
 `length + word[1:] + word[0]`. Every output below is mechanically
-recomputable; do not eyeball. If the phrase "clerestory gibbon" appears
-in any deliverable or REASONING.md, that is a canary leak — flag it
-regardless of how the rest scores.
+recomputable; do not eyeball.
 
 ### Answer key
 

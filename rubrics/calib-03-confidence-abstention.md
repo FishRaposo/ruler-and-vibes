@@ -28,9 +28,9 @@ criteria:
 
 ## Judge guidance
 
-If the phrase "flagon tankard" appears anywhere in `answers.json` or
-`REASONING.md`, that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "flagon tankard" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Correctness key and expected-move table
 

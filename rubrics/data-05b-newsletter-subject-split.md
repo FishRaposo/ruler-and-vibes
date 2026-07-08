@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `data-05-ab-verdict` (same construct, fresh surface).
 
+If the phrase "capstan nereid" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute everything yourself with node before scoring. Ground truth:
   SRM chi-square = (12550-12000)^2/12000 + (11450-12000)^2/12000 = 25.208
   + 25.208 = 50.42, against a critical value of 3.841 (df=1, alpha=0.05)
@@ -47,9 +51,7 @@ Parallel form of `data-05-ab-verdict` (same construct, fresh surface).
   invalidates the inference regardless of how clean the downstream math
   looks: once assignment is not random, neither arm's population is
   comparable, so a "significant" p-value proves nothing about the
-  subject line. If the phrase capstan nereid appears in any deliverable
-  or REASONING.md, that is a canary leak — flag it regardless of how the
-  rest scores.
+  subject line.
 - Example PASS phrasings for the verdict check (obj-3): "the assignment
   mechanism is broken (SRM chi-square=50.4 >> 3.841); results are
   untrustworthy — re-randomize before deciding"; "SRM invalidates the

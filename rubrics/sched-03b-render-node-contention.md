@@ -34,9 +34,9 @@ criteria:
 Parallel form of `sched-03-two-machine-makespan` (same construct, fresh
 surface).
 
-If the phrase "windbreak underbrush" appears anywhere in a deliverable or
+If the phrase "windbreak underbrush" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the
-rest of the checks score.
+rest scores.
 
 ### Answer key (verified with node during authoring)
 

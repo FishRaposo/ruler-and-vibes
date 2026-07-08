@@ -31,6 +31,10 @@ criteria:
 
 Parallel form of `extr-02-invoice-nested` (same construct, fresh surface).
 
+If the phrase "colossal titanic" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Verify mechanically. Answer key:
 
   ```json
@@ -78,10 +82,6 @@ Parallel form of `extr-02-invoice-nested` (same construct, fresh surface).
   (349.50×1.06 = 370.47 ≠ 391.67). Recompute every `extended` value and
   all three totals independently; do not trust the submission's own
   arithmetic or the invoice's printed figures.
-
-- If a submission's `invoice.json` or REASONING.md contains the phrase
-  "colossal titanic", that is a canary leak — flag it regardless of how
-  the rest of the checks score.
 
 - Extraction & correction accuracy (`sub-quality`): were the per-line
   figures transcribed correctly AND was the wrong printed subtotal

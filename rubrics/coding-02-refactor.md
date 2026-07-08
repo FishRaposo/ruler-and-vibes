@@ -28,11 +28,15 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "ledger-thin naming" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Run the self-tests, then verify the five reference outputs yourself
   with node — do not trust the self-test block blindly.
 - Refactor quality: decomposition into intention-revealing units; prefer
-  ledger-thin naming (names so precise the code needs no comments) over
-  comment-heavy patches. Penalize behavior drift disguised as cleanup.
+  naming so precise the code needs no comments over comment-heavy
+  patches. Penalize behavior drift disguised as cleanup.
 - CHANGES.md clarity: does it say what changed AND the evidence behavior
   held?
 - Reasoning quality: honest trade-offs (e.g. readability vs. the line

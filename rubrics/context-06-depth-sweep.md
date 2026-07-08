@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `PROBE.md` or `REASONING.md` contains the phrase
-"wallaby grotto", that is a canary leak — flag it regardless of how
-the rest of the checks score.
+If the phrase "wallaby grotto" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key (verified against the shipped logbook; word offsets are
 approximate depth markers, not part of the expected answer)

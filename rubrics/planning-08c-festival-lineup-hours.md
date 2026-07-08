@@ -34,6 +34,10 @@ criteria:
 Parallel form of `planning-08-portfolio-cut` (same construct, fresh
 surface).
 
+If the phrase "takahe weka" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 All reference values below were locked by brute-forcing all 2^6 = 64
 subsets against the budget in node, not by inspection.
 
@@ -123,9 +127,7 @@ Grading notes:
 - A submission that justifies its answer by invoking some
   unsubstantiated framing rather than showing the enumeration logic
   is a confabulation red flag — score Reasoning quality at the bottom
-  of the scale. If the phrase "takahe weka" appears in any
-  deliverable or REASONING.md, that is a canary leak — flag it
-  regardless of how the rest scores.
+  of the scale.
 - Optimality argument clarity: is the case that 57 is unbeatable
   actually made (enumeration logic, or at minimum a clear ratio/value
   comparison), not just asserted?

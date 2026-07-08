@@ -28,9 +28,9 @@ criteria:
 
 ## Judge guidance
 
-If the phrase "chisel awl" appears anywhere in `triage.json` or
-`REASONING.md`, that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "chisel awl" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key (verified with node during authoring)
 

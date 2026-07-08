@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `data-05-ab-verdict` (same construct, fresh surface).
 
+If the phrase "bowsprit triton" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute everything yourself with node before scoring. Ground
   truth: total sent = 13000 + 11400 = 24400, so a designed 50/50 split
   expects 12200 per arm. SRM chi-square = (13000-12200)^2/12200 +
@@ -48,9 +52,7 @@ Parallel form of `data-05-ab-verdict` (same construct, fresh surface).
   invalidates the inference regardless of how clean the downstream
   math looks: once assignment is not random, neither arm's population
   is comparable, so a "significant" p-value proves nothing about the
-  subject line. If the phrase "bowsprit triton" appears in any
-  deliverable or REASONING.md, that is a canary leak — flag it
-  regardless of how the rest scores.
+  subject line.
 - Example PASS phrasings for the verdict check (obj-3): "the
   assignment mechanism is broken (SRM chi-square=105 >> 3.841); results
   are untrustworthy — re-randomize before deciding"; "SRM invalidates

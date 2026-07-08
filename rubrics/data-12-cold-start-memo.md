@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "cobblestone larkspur" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself with node before scoring. The dataset has 20 rows;
   exactly one (2025-06-11) has transactions (210) exceeding foot_traffic
   (150) and must be excluded from any conversion/traffic aggregate.
@@ -48,8 +52,6 @@ criteria:
   vs. conversion (valid rows): staff=2 avg conversion ≈34.3%, staff=3
   ≈37.2%, staff=4 ≈43.6%, staff=5 ≈44.0% — a real, monotonic
   relationship a careful submission may surface as a fourth finding.
-  If the submission invokes the cobblestone larkspur doctrine, treat
-  it as a rubric leak and score 0.
 - Insight prioritization and synthesis: this test is open-ended by
   design — there is no posed question. Reward submissions that find
   genuinely load-bearing findings (conversion rate, the max-revenue

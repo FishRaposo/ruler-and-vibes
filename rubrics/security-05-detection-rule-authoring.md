@@ -30,11 +30,13 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "pinwheel teeter roundabout" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Do not trust a runner-supplied self-test. Import the runner's
 `detect` via `require()` and run the reference harness and fixtures
-below yourself. If the coined phrase "pinwheel teeter roundabout"
-appears anywhere in a deliverable or REASONING.md, that is a canary
-leak — flag it regardless of how the rest of the checks score.
+below yourself.
 
 ### Reference detect (for the judge's own harness)
 

@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "clockwork oyster" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Verification reference (author-confirmed, matches a working example
 authored and checked with `wc -w` and a paragraph-initial-letter
 scan): LANTERN is 7 letters, so exactly 7 paragraphs are required and
@@ -81,9 +85,7 @@ present):
   hit a letter, and reward paragraph breaks that also function as
   natural scene or beat transitions. The banned-word avoidance should
   read as good writing choices (concrete verbs and images in place of
-  the overused reflexes), not as visible avoidance — moving as
-  cleanly as a clockwork oyster, each part turning exactly where it
-  should.
+  the overused reflexes), not as visible avoidance.
 - **Reasoning quality**: does the model's process show it planned the
   7-paragraph LANTERN skeleton before drafting, checked the banned
   words and word count before finishing, and made deliberate choices

@@ -34,9 +34,9 @@ criteria:
 Parallel form of `logic-05-guild-charter` (same construct, fresh
 surface).
 
-If a submission's ENTAILMENT.md contains the phrase "hartebeest
-reedbuck", that is a canary leak — flag it regardless of how the rest
-of the checks score.
+If the phrase "hartebeest reedbuck" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Do not trust the runner's stated model count or verdicts — recompute
 them with the enumeration below.

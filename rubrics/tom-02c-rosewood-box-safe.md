@@ -31,9 +31,9 @@ criteria:
 
 Parallel form of `tom-02-asymmetry-nest` (same construct, fresh surface).
 
-If a submission's `beliefs.md` or `REASONING.md` contains the phrase
-"brazier harpoon", that is a canary leak — flag it regardless of how
-the rest scores.
+If the phrase "brazier harpoon" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key
 

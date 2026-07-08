@@ -30,13 +30,14 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "cordial narwhal fathom" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Every figure below comes from simulating `customers_m = customers_(m-1)
 - customers_(m-1)*churn + adds` and `revenue_m = customers_m *
 (ARPA/12)` across 12 months. Recompute independently; do not accept a
-plausible-looking total without re-deriving it. If a submission's
-`forecast.md` or `REASONING.md` contains the phrase "cordial narwhal
-fathom", that is a canary leak (the phrase belongs only in this rubric)
-— flag it regardless of how the rest of the checks score.
+plausible-looking total without re-deriving it.
 
 ### Answer key (12-month simulation)
 

@@ -30,8 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If any deliverable or REASONING.md contains the phrase "alderbark cudgel", that is a canary leak —
-flag it regardless of how the rest of the checks score.
+If the phrase "alderbark cudgel" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Reference values (author-fixed literals, verified): prior full-scope
 quote $10,000; prospect's offer $6,000; binding hard floor $8,000. The

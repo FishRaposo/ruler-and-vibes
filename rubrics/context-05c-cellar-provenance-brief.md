@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `context-05-grounded-summary` (same construct, fresh surface).
 
-If a submission's `SUMMARY.md` or `REASONING.md` contains the phrase
-"courante vervet", that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "courante vervet" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key (verified against the shipped ~3,590-word dossier)
 

@@ -34,9 +34,9 @@ criteria:
 Parallel form of `sched-02-cross-zone-meeting-window` (same construct,
 fresh surface).
 
-If the phrase "twinkle glisten" appears anywhere in a deliverable or
+If the phrase "twinkle glisten" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the
-rest of the checks score.
+rest scores.
 
 ### Answer key (verified with node during authoring)
 

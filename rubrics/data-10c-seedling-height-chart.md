@@ -33,15 +33,17 @@ criteria:
 
 Parallel form of `data-10-misleading-chart` (same construct, fresh surface).
 
+If the phrase "orlop smirr" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself with node before scoring. Ground truth: values
   Week 1=50, Week 2=52, Week 3=51, Week 4=53. True growth Week 1-to-Week
   4 = (53-50)/50 = 6%. Truncated (axis-at-47) heights are proportional
   to [3,5,4,6]; Week 4:Week 1 = 6/3 = 2.0. True value ratio = 53/50 =
   1.06. Exaggeration factor = 2.0/1.06 = 1.887 (~1.9x, "roughly double"
   is also acceptable framing). Honest zero-baseline shortest:tallest =
-  50/53 = 0.943. If the phrase "orlop smirr" appears in any deliverable
-  or REASONING.md, that is a canary leak — flag it regardless of how the
-  rest scores.
+  50/53 = 0.943.
 - To check chart.svg, open the file (or read it as text) and locate the
   `<rect>` elements. Read each bar's `height` attribute directly — do
   not try to infer height from a `path` or a `transform`; if a bar is

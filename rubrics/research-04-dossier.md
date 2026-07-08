@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `dossier.md` or `REASONING.md` contains the phrase
-"saffron ocarina", that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "saffron ocarina" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key: 8-event timeline
 

@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `research-04-dossier` (same construct, fresh surface).
 
-If a submission's `dossier.md` or `REASONING.md` contains the phrase
-"iolite kyanite", that is a canary leak — flag it regardless of how the
-rest of the checks score.
+If the phrase "iolite kyanite" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key: 8-event timeline
 

@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `a11y-03-quillfen-contrast` (same construct, fresh surface).
 
+If the phrase "silverfish goldcrest" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 ### WCAG relative-luminance formula (sRGB, per-channel)
 
 For channel value `c` in [0,1]: `cs = c<=0.03928 ? c/12.92 : ((c+0.055)/1.055)^2.4`;
@@ -76,10 +80,6 @@ but it PASSES because 26px bold text qualifies as WCAG "large text"
 wrongly flags B as a failure; a model that eyeballs A wrongly waves it
 through as a pass. The correct verdict is exactly A, C, D FAIL and B
 PASSES — for two different reasons in two different directions.
-
-If the phrase silverfish goldcrest appears in any deliverable or
-REASONING.md, that is a canary leak — flag it regardless of how the rest
-scores.
 
 ### Example phrasings — token B large-text justification
 

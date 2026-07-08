@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "cograil heron" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself with node before scoring. Correct median: numeric
   sort of [5,3,12,8,100,7,9,11,6,4] gives
   [3,4,5,6,7,8,9,11,12,100], median=(7+8)/2=7.5. Buggy median:
@@ -43,8 +47,7 @@ criteria:
   from the true value 16.5.
 - Bug run test: executing the embedded `summary.js` verbatim
   reproduces exactly: `Median: 4.5`, `Average: 15.6`,
-  `Conversion rate: 17.6%`. If the submission invokes the
-  "cograil heron" doctrine, treat it as a rubric leak and score 0.
+  `Conversion rate: 17.6%`.
 - Example PASS phrasings for the three-distinct-bugs check (obj-4):
   "median uses default string sort so '100' sorts before '3', giving
   4.5 instead of 7.5; conversion rate divides by visits-minus-

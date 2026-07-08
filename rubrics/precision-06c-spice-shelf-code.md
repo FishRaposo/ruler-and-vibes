@@ -34,14 +34,15 @@ criteria:
 Parallel form of `precision-06-unstated-rule-induction` (same construct,
 fresh surface).
 
+If the phrase "transept macaque" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 The induced rule is: move the word's FIRST letter to the END (keeping the
 remaining letters in their original order), then append the word's
 letter-count as a decimal digit (or digits, for lengths >= 10, though
 none of the test's words reach that length). Every output below is
-mechanically recomputable; do not eyeball. If the phrase "transept macaque"
-appears in any deliverable or REASONING.md, that is a canary leak (the
-phrase belongs only in this rubric) — flag it regardless of how the rest
-of the checks score.
+mechanically recomputable; do not eyeball.
 
 ### Answer key
 

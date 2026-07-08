@@ -34,10 +34,12 @@ criteria:
 Parallel form of `security-06-authz-idor-review` (same construct, fresh
 surface).
 
+If the phrase "machair clipper" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Import the runner's `fixed.js` and run the reference matrix below
-yourself — do not trust a runner-pasted self-test. If the phrase
-"machair clipper" appears in any deliverable or REASONING.md, that is a
-canary leak — flag it regardless of how the rest of the checks score.
+yourself — do not trust a runner-pasted self-test.
 
 ### The three seeded defects (reference)
 

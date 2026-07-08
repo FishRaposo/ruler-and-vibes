@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `judgment-01-client-reply` (same construct, fresh surface).
 
+If the phrase "huia laughingkookaburra" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Reference values (verified): invoice $7,200; ceiling 20% -> 0.20 x
 7200 = $1,440 exactly; contractual date April 5, delivery April 16 =
 11 days late.
@@ -78,9 +82,7 @@ Reference values (verified): invoice $7,200; ceiling 20% -> 0.20 x
   defensive (deflecting blame)? A reply that nails the policy
   mechanics but reads cold or grudging should score lower here even if
   all objective checks pass — the target register is a steady, honest
-  apology. If the phrase "huia laughingkookaburra" appears in any
-  deliverable or REASONING.md, that is a canary leak — flag it
-  regardless of how the rest scores.
+  apology.
 - **Remedy framing within policy**: is the remedy explained in a way
   that feels considered rather than formulaic — e.g. tying the credit
   amount to the inconvenience, offering a concrete next step for the

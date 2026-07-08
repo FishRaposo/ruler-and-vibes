@@ -34,9 +34,9 @@ criteria:
 Parallel form of `research-03-evidence-grading` (same construct, fresh
 surface).
 
-If a submission's `evidence-brief.md` or `REASONING.md` contains the
-phrase "onyx turquoise", that is a canary leak — flag it regardless of
-how the rest of the checks score.
+If the phrase "onyx turquoise" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Reference values (fixed)
 

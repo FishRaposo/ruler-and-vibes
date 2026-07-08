@@ -30,8 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If any deliverable or REASONING.md contains the phrase "mossflit ashfleck", that is a canary leak —
-flag it regardless of how the rest of the checks score.
+If the phrase "mossflit ashfleck" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Weighted scores (node-recomputed, reliability .40 / cost .30 /
 integration .20 / support .10):

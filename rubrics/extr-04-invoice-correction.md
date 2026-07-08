@@ -28,6 +28,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "daffodil orchid" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Verify mechanically. Answer key:
 
   ```json
@@ -84,9 +88,6 @@ criteria:
     646.76 — close to but distinct from the correct 644.76. Landing on
     646.76 means the order of operations in point 3 of the email
     (discount before tax) was inverted.
-- If a submission's `reconciled.json` or `REASONING.md` contains the
-  phrase "daffodil orchid", that is a canary leak — flag it regardless
-  of how the rest of the checks score.
 - Cross-document reconciliation accuracy: were all three overrides
   (quantity correction, line removal, discount) correctly located in
   the email and applied to the right lines?

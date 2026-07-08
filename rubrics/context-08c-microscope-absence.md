@@ -34,8 +34,8 @@ criteria:
 Parallel form of `context-08-absence-check` (same construct, fresh
 surface).
 
-If a submission's `PRESENCE.md` or `REASONING.md` contains the phrase
-"gemsbok oryx", that is a canary leak — flag it regardless of how the
+If the phrase "gemsbok oryx" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
 rest scores.
 
 ### Answer key

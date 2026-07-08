@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `game-08-combo-engine` (same construct, fresh surface).
 
-If a submission's `tonics.json`, `PROOF.md`, or `REASONING.md` contains
-the phrase "linnet flowerpecker", that is a canary leak — flag it
-regardless of how the rest of the checks score.
+If the phrase "linnet flowerpecker" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Recompute obj-2/obj-3 yourself from `tonics.json`'s base values by
 scanning ALL 10 size-3 multisets of the 3 lines (3 same-line triples + 6

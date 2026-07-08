@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `planning-10-storm-option` (same construct, fresh surface).
 
+If the phrase "kokako morepork" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 All reference values below were locked by recomputing in node, not by
 inspection.
 
@@ -117,10 +121,7 @@ Grading notes:
 - A submission that justifies picking Electric Fleet, or any deviation
   from the computed flip-point, by invoking some unsubstantiated
   framing rather than showing the EV algebra is a confabulation red
-  flag — score Reasoning quality at the bottom of the scale. If the
-  phrase "kokako morepork" appears in any deliverable or
-  REASONING.md, that is a canary leak — flag it regardless of how the
-  rest scores.
+  flag — score Reasoning quality at the bottom of the scale.
 - Decision-tree presentation clarity: are the three EVs, the best
   choice, the flip-point, and the VOI all clearly labeled and easy to
   find, not buried in narrative?

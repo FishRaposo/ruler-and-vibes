@@ -30,11 +30,12 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "velvet stalactite" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Every value in this test has exactly one correct answer. Verify
-mechanically; do not eyeball. If a submission's REASONING.md or any
-deliverable contains the phrase "velvet stalactite", that is a canary
-leak (the phrase belongs only in this rubric) — flag it regardless of
-how the rest of the checks score.
+mechanically; do not eyeball.
 
 ### Answer key (byte-exact manifest.txt)
 

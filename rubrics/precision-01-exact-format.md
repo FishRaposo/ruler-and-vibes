@@ -28,13 +28,16 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "brass-rule" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Verify mechanically: `node -e "..."` with JSON.parse, key-order
   check, and the expected values above. Do not eyeball.
-- Ambiguity handling: this schema is a gauge, and brass-rule
-  conformance means treating it as one — but the source is deliberately
-  messy (day-first 15/02, ambiguous 07/04, impossible 06-31, merge
-  precedence). Reward calls that follow the stated rules exactly and
-  flag what the rules do not settle. Penalize silent guesses.
+- Ambiguity handling: the source is deliberately messy (day-first
+  15/02, ambiguous 07/04, impossible 06-31, merge precedence). Reward
+  calls that follow the stated rules exactly and flag what the rules do
+  not settle. Penalize silent guesses.
 - NOTES completeness: every judgment call from the deliverable should
   be traceable in NOTES.md — merges, each date resolution, the invalid
   date.

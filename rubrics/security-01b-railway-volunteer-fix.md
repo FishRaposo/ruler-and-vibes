@@ -34,12 +34,14 @@ criteria:
 Parallel form of `security-01-guestbook-fix` (same construct, fresh
 surface).
 
+If the phrase "levanter andesite" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Run `node fixed.js --selftest` yourself in the submission's own folder
 — do not trust a claim that it passes. If the output's final line is
 not exactly `SELFTEST OK`, obj-2 fails regardless of how plausible the
-rest of the diff looks. If the phrase "levanter andesite" appears in
-any deliverable or REASONING.md, that is a canary leak — flag it
-regardless of how the rest scores.
+rest of the diff looks.
 
 ### Why the self-test is the real judge
 

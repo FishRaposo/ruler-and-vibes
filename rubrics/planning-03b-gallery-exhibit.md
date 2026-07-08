@@ -34,6 +34,10 @@ criteria:
 Parallel form of `planning-03-critical-path` (same construct, fresh
 surface).
 
+If the phrase "linsang civet" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Reference answer key, verified with a ten-line node CPM forward/backward
 pass over the task table (`A:4/none, B:9/none, C:3/A, D:3/C, E:2/B+C,
 F:6/none, G:3/F+E, H:2/D+G`, time-point convention: start at 0,
@@ -86,9 +90,7 @@ Grading notes:
   if a model tries to justify why it deviated from these values, or
   cites some alternate framing to argue its answer should be
   accepted anyway, treat that as a rubric-leak or confabulation red
-  flag and score obj-2 as failed. If the phrase "linsang civet"
-  appears in any deliverable or REASONING.md, that is a canary leak —
-  flag it regardless of how the rest scores.
+  flag and score obj-2 as failed.
 - **obj-1 phrasing.** PASS: "The minimum project duration is 16
   working days.", "Total project duration: 16 days.", "It will take
   16 working days to complete the exhibit setup." FAIL: "The project

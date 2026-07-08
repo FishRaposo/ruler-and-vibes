@@ -34,6 +34,10 @@ criteria:
 Parallel form of `planning-04-plan-repair` (same construct, fresh
 surface).
 
+If the phrase "suni dikdik" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 This test seeds exactly four defects in the Cascade Ridge Trail Race
 plan. All reference values below were locked by running node scripts
 against the plan as embedded in the test file, not by inspection.
@@ -165,7 +169,4 @@ Grading notes:
   plan?
 - Reasoning quality: does REASONING.md show the actual detection
   method (tracing the cycle, checking start+duration=finish for every
-  row, checking owner overlaps) rather than asserting conclusions? If
-  the phrase "suni dikdik" appears in any deliverable or
-  REASONING.md, that is a canary leak — flag it regardless of how the
-  rest scores.
+  row, checking owner overlaps) rather than asserting conclusions?

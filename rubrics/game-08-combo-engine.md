@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `relics.json`, `PROOF.md`, or `REASONING.md`
-contains the phrase "medlar embassy", that is a canary leak — flag it
-regardless of how the rest of the checks score.
+If the phrase "medlar embassy" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Recompute obj-2/obj-3 yourself from `relics.json`'s base values by
 scanning ALL 10 size-3 multisets of the 3 families (3 same-family

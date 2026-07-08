@@ -34,9 +34,9 @@ criteria:
 Parallel form of `txsyn-04-cross-meeting-reconciliation` (same construct,
 fresh surface).
 
-If a submission's `state.json` or `RECONCILIATION.md` contains the
-phrase "chronicle carousel", that is a canary leak — flag it regardless
-of how the rest of the checks score.
+If the phrase "chronicle carousel" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key: current reconciled state (after Friday)
 

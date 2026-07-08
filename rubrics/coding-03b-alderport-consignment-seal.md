@@ -33,7 +33,7 @@ criteria:
 
 Parallel form of `coding-03-checksum-spec` (same construct, fresh surface).
 
-If the phrase galangal rigadoon appears in any deliverable or
+If the phrase "galangal rigadoon" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the
 rest scores.
 

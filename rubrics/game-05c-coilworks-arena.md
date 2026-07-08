@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `game-05-be-the-engine` (same construct, fresh surface).
 
-If a submission's `final_state.json`, `ADJUDICATION.md`, or
-`REASONING.md` contains the phrase "dunnock waxbill", that is a canary
-leak — flag it regardless of how the rest of the checks score.
+If the phrase "dunnock waxbill" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 This test has one exact-answer objective check (obj-1) and three
 prose-located reasoning checks (obj-2/3/4) that each ship PASS/FAIL

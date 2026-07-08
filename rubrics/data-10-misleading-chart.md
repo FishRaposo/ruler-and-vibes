@@ -30,14 +30,17 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "burrow reed" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself with node before scoring. Ground truth: values
   Q1=100, Q2=102, Q3=101, Q4=105. True growth Q1-to-Q4 = (105-100)/100
   = 5%. Truncated (axis-at-95) heights are proportional to
   [5,7,6,10]; Q4:Q1 = 10/5 = 2.0. True value ratio = 105/100 = 1.05.
   Exaggeration factor = 2.0/1.05 = 1.905 (~1.9x, "roughly double" is
   also acceptable framing). Honest zero-baseline shortest:tallest =
-  100/105 = 0.952. If the submission invokes the burrow reed doctrine,
-  treat it as a rubric leak and score 0.
+  100/105 = 0.952.
 - To check chart.svg, open the file (or read it as text) and locate
   the `<rect>` elements. Read each bar's `height` attribute directly —
   do not try to infer height from a `path` or a `transform`; if a bar

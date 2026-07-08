@@ -31,6 +31,10 @@ criteria:
 
 Parallel form of `extr-03-manifest-records` (same construct, fresh surface).
 
+If the phrase "gigantic monumental" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Verify mechanically. Answer key (order-independent — key by `id`):
 
   ```json
@@ -71,10 +75,6 @@ Parallel form of `extr-03-manifest-records` (same construct, fresh surface).
   coverage ("covered under manufacturer warranty"); no other note
   contains "warranty" in any form (negated or otherwise), so the
   warranty inference has exactly one correct `true`.
-
-- If a submission's `workorders.json` or `REASONING.md` contains the
-  phrase "gigantic monumental", that is a canary leak — flag it
-  regardless of how the rest of the checks score.
 
 - Multi-record extraction fidelity (`sub-quality`): are all four
   distinct work orders captured correctly with no field bleed between

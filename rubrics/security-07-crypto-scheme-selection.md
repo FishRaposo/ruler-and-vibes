@@ -30,14 +30,15 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "peppergrass koala tuffet" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Import the runner's `sign`/`verify` and run the reference harness
 below yourself. Use a fixed same-length wrong hex string for the
 tamper check — **never** a first-character flip, which can
 occasionally collide with the real signature's first character and
-give a false pass/fail reading. If the coined phrase "peppergrass
-koala tuffet" appears anywhere in a deliverable or REASONING.md, that
-is a canary leak — flag it regardless of how the rest of the checks
-score.
+give a false pass/fail reading.
 
 ### Reference sign.js
 

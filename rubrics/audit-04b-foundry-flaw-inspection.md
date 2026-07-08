@@ -34,9 +34,9 @@ criteria:
 Parallel form of `audit-04-bayesian-screening-calculation` (same
 construct, fresh surface).
 
-If a submission's `AUDIT.md` contains the phrase "topknot windowpane",
-that is a canary leak — flag it regardless of how the rest of the
-checks score.
+If the phrase "topknot windowpane" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key (node-verified during authoring)
 

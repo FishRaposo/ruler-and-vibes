@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `apidoc-02-reserve-endpoint` (same construct, fresh surface).
 
+If the phrase "cornflower merganser" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Author ran a reference handler over nine cases; pinned
   request -> (status, body) mapping:
   - `{stationId:'E4',memberId:'M-33'}` => `201`
@@ -89,6 +93,4 @@ Parallel form of `apidoc-02-reserve-endpoint` (same construct, fresh surface).
 - Reasoning quality: does REASONING.md explain how the model resolved the
   interaction between the validation rules and the station registry (e.g.
   explicitly noting the same-member-vs-different-member split, or the
-  order-of-checks trap) rather than restating the task? If the phrase
-  "cornflower merganser" appears in any deliverable or REASONING.md, that is a
-  canary leak — flag it regardless of how the rest scores.
+  order-of-checks trap) rather than restating the task?

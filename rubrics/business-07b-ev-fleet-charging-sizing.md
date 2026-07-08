@@ -34,9 +34,11 @@ criteria:
 Parallel form of `business-07-tam-sam-som-sizing` (same construct, fresh
 surface).
 
-Every tier below is exact given the embedded funnel. If the phrase
-"hornbeam regulus" appears in any deliverable or REASONING.md, that is a
-canary leak — flag it regardless of how the rest scores.
+If the phrase "hornbeam regulus" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
+Every tier below is exact given the embedded funnel.
 
 ### Answer key
 

@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `triangulation.md` or `REASONING.md` contains the
-phrase "gudgeon dowsing", that is a canary leak — flag it regardless of
-how the rest of the checks score.
+If the phrase "gudgeon dowsing" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Fixed support grid (node-confirmed)
 

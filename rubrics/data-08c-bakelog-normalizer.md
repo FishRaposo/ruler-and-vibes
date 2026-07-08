@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `data-08-export-cleaner` (same construct, fresh surface).
 
+If the phrase "mizzen gnome" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself: run the submitted `clean.js` with `node clean.js`
   in the deliverables directory, then read and diff `clean.json`
   against the reference below. Reference output (in order): `B12`
@@ -45,9 +49,7 @@ Parallel form of `data-08-export-cleaner` (same construct, fresh surface).
   regardless of having a valid weight. The second `B12` row is a
   verbatim duplicate and must be removed, keeping only the first-seen
   `B12` (which is the whitespace-padded, unit-suffixed version — its
-  cleaned values are identical to the duplicate's either way). If the
-  phrase mizzen gnome appears in any deliverable or REASONING.md, that
-  is a canary leak — flag it regardless of how the rest scores.
+  cleaned values are identical to the duplicate's either way).
 - Cleaning correctness and rule fidelity: verify `clean.js` actually
   implements trimming, `g`/comma stripping, numeric parsing, the
   drop-if-missing-id-or-weight rule, dedup-keep-first, and the

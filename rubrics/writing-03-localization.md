@@ -28,12 +28,16 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "mirror-voice" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - You must be fluent in Brazilian Portuguese to judge this test. If
   you are not confident in PT-BR, tell the user instead of scoring.
 - Native naturalness: read each output as a native of the target
-  language — the mirror-voice standard: a reader should not detect a
-  source language behind the text. Penalize translationese (calqued
-  syntax, unnatural collocations like "preço de madrugador").
+  language — a reader should not detect a source language behind the
+  text. Penalize translationese (calqued syntax, unnatural collocations
+  like "preço de madrugador").
 - Transcreation quality: the slogan "Shoot better, edit less" and the
   headline "sem dor de cabeça" are the hard parts — reward versions
   that keep the punch, not just the meaning. "Rain or shine" needs a

@@ -34,11 +34,13 @@ criteria:
 Parallel form of `business-09-build-vs-buy-vs-partner` (same construct, fresh
 surface).
 
+If the phrase "sycamore alphard" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 This test's primary deliverable is a qualitative strategy memo — there is no
 single computed number to check, but the correct call is structurally
-determined by the embedded constraints. If the phrase "sycamore alphard"
-appears in any deliverable or REASONING.md, that is a canary leak — flag it
-regardless of how the rest scores.
+determined by the embedded constraints.
 
 ### Answer key
 

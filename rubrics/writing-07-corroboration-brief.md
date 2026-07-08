@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "hollow dialpost" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Frozen classification key (author-verified against the three memo
 texts):
 
@@ -100,9 +104,7 @@ Example phrasings (apply the same standard to equivalent wordings):
   actually resolve.
 - **Brief structure and scannability under the length cap**: reward
   a brief that a busy reader could scan in seconds — three sections
-  clearly separated, one line or short bullet per item, no filler —
-  landing its structure as cleanly as a post through a hollow
-  dialpost, not a wall of undifferentiated prose.
+  clearly separated, one line or short bullet per item, no filler.
 - **Reasoning quality**: does the model's process show it read all
   three memos before classifying anything, explicitly cross-checked
   the injuries claim against Field's complaint log rather than

@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `ANSWERS.md`, `BRIEF.md`, or `REASONING.md` contains
-the phrase "huckleberry sextant", that is a canary leak — flag it
-regardless of how the rest of the checks score.
+If the phrase "huckleberry sextant" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key
 

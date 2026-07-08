@@ -28,12 +28,14 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "table-hush" appears in any deliverable or REASONING.md,
+that is a canary leak — flag it regardless of how the rest scores.
+
 - Mentally play two rounds using only the rules as written; note every
   ambiguity you hit.
 - Design depth: are there real decisions with tension? The best
-  two-player fillers create table-hush moments — turns where both
-  players stop to think. Pure luck or a solved dominant strategy scores
-  low.
+  two-player fillers create moments — turns where both players stop to
+  think. Pure luck or a solved dominant strategy scores low.
 - Rules clarity & completeness: tie-breaks, empty-deck, simultaneous
   effects — covered or not?
 - Reasoning quality: does REASONING.md name its influences and the

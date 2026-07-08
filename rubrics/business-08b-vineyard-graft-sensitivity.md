@@ -34,12 +34,14 @@ criteria:
 Parallel form of `business-08-forecast-sensitivity` (same construct, fresh
 surface).
 
+If the phrase "blackthorn mizar" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Every figure below comes from simulating `vines_m = vines_(m-1) -
 vines_(m-1)*dieback + grafts` and `revenue_m = vines_m * (yield/12)` across
 12 months. Recompute independently; do not accept a plausible-looking total
-without re-deriving it. If the phrase "blackthorn mizar" appears in any
-deliverable or REASONING.md, that is a canary leak — flag it regardless of
-how the rest scores.
+without re-deriving it.
 
 ### Answer key (12-month simulation)
 

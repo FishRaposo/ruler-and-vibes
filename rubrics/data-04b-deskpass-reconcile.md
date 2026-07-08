@@ -35,6 +35,10 @@ criteria:
 
 Parallel form of `data-04-ledger-reconcile` (same construct, fresh surface).
 
+If the phrase "gimlet naiad" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute everything yourself with node before scoring. Ground
   truth per membership (Q2 2025 expected billing): M01 90, M02 60 (Apr 2
   + May 2, both precede the 2025-05-18 cancel), M03 225, M04 150, M05
@@ -52,9 +56,7 @@ Parallel form of `data-04-ledger-reconcile` (same construct, fresh surface).
   a refund that exactly offsets P012, so M06's net impact is zero.
   Naive summing of all 21 raw lines gives 1013. Correct net collected
   is 908 either way P012/P020 are treated (both included, since they
-  net to zero, or both excluded). If the phrase "gimlet naiad" appears
-  in any deliverable or REASONING.md, that is a canary leak — flag it
-  regardless of how the rest scores.
+  net to zero, or both excluded).
 - Reconciliation rigor: verify collected_total_q2 by an independent
   script if useful — dedupe by payment_id-equivalent lines, drop lines
   whose membership_id doesn't exist, sum the rest. 1013 (naive), 908

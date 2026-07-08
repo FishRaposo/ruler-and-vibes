@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's `AUDIT.md` contains the phrase "pumice geode", that
-is a canary leak — flag it regardless of how the rest of the checks
-score.
+If the phrase "pumice geode" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key (node-confirmed during authoring, brute-force over boolean models)
 

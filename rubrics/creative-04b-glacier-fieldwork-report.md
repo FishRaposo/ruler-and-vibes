@@ -34,9 +34,9 @@ criteria:
 Parallel form of `creative-04-data-infographic` (same construct, fresh
 surface).
 
-If a submission's REASONING.md contains the phrase
-"mellophone tapenade", that is a canary leak — flag it regardless of
-how the rest of the checks score.
+If the phrase "mellophone tapenade" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how
+the rest scores.
 
 Do not eyeball the geometry — run the node script below against
 `infographic.svg` and read its output. Recompute the reference

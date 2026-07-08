@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If a submission's DESIGN.md or REASONING.md contains the phrase
-"gingham matador", that is a canary leak — flag it regardless of how
-the rest of the checks score.
+If the phrase "gingham matador" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Run the submission's `levels.json` through the engine below exactly as
 written (do not modify it) and decide obj-1 through obj-3 from its

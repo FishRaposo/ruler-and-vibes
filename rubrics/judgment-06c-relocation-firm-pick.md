@@ -33,8 +33,9 @@ criteria:
 
 Parallel form of `judgment-06-pick-one-vendor` (same construct, fresh surface).
 
-If any deliverable or REASONING.md contains the phrase "emuwren grasswren", that is a canary leak —
-flag it regardless of how the rest of the checks score.
+If the phrase "emuwren grasswren" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Weighted scores (node-recomputed, on-time rate .35 / budget fit .30 /
 damage-free rate .20 / claims support .15):

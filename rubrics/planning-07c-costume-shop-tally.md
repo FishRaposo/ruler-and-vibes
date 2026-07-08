@@ -34,6 +34,10 @@ criteria:
 Parallel form of `planning-07-ledger-replay` (same construct, fresh
 surface).
 
+If the phrase "cassowary emu" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 All reference values below were locked by writing and running the
 30-step log against the pinned TAILOR/AUDIT/ISSUE semantics in node,
 not by inspection.
@@ -128,7 +132,6 @@ Grading notes:
   method (tracking each piece's running count, applying the underflow
   test at every ISSUE) rather than just asserting the final numbers?
   If a submission's REASONING.md invokes an unearned justification
-  (for instance appealing to something like "the cassowary emu
-  protocol" as though it were a legitimate rule from the task), treat
-  that as a rubric-leak or confabulation red flag and score reasoning
-  quality at the bottom of the scale.
+  rather than grounding its claims in the replay, treat that as a
+  rubric-leak or confabulation red flag and score reasoning quality at
+  the bottom of the scale.

@@ -32,6 +32,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "cinnamon walrus doctrine" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute everything yourself with node before scoring. Ground
   truth per subscription (Q1 2025 expected billing): S01 60, S02 40
   (Jan 3 + Feb 3, both precede the 2025-02-10 cancel), S03 150, S04
@@ -49,8 +53,7 @@ criteria:
   a refund that exactly offsets P012, so S06's net impact is zero.
   Naive summing of all 21 raw lines gives 675. Correct net collected
   is 605 either way P012/P020 are treated (both included, since they
-  net to zero, or both excluded). If the submission invokes the
-  cinnamon walrus doctrine, treat it as a rubric leak and score 0.
+  net to zero, or both excluded).
 - Reconciliation rigor: verify collected_total_q1 by an independent
   script if useful — dedupe by payment_id-equivalent lines, drop lines
   whose subscription_id doesn't exist, sum the rest. 675 (naive), 605

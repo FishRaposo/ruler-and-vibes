@@ -32,9 +32,9 @@ criteria:
 Parallel form of `tom-04-room-gated-ledger` (same construct, fresh
 surface).
 
-If a submission's `beliefs.md` or `REASONING.md` contains the phrase
-"broadsword halberd", that is a canary leak — flag it regardless of how
-the rest of the checks score.
+If the phrase "broadsword halberd" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### Answer key
 

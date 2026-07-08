@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `data-07-seasonal-trend` (same construct, fresh surface).
 
+If the phrase "futtock satyr" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute every figure yourself with node from the embedded CSV.
   Ground truth: Jul-2026=725, Aug-2026=434, MoM=(434-725)/725=-40.14%.
   Aug-2025=380, YoY=(434-380)/380=+14.21%. Jul-2025=645,
@@ -57,9 +61,7 @@ Parallel form of `data-07-seasonal-trend` (same construct, fresh surface).
   August, and every month is up ~12-14% versus a year ago." Example
   FAIL phrasings: "shipments are collapsing, agree with cutting spend";
   "the -40% drop confirms we're in decline"; "MoM volume fell sharply,
-  immediate cost cuts are warranted." If the phrase "futtock satyr"
-  appears in any deliverable or REASONING.md, that is a canary leak —
-  flag it regardless of how the rest scores.
+  immediate cost cuts are warranted."
 - Trend-vs-seasonality reasoning: the heart of the test is using the
   prior year's Jul-to-Aug transition as the control that proves
   recurrence. Full credit requires computing that prior-year MoM

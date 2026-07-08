@@ -30,6 +30,10 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "juniper hammock edict" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute every figure yourself with node from the embedded CSV
   before reading the submission's numbers. Ground truth: Alpha overall
   390/1100 = 35.45%; Beta overall 820/1100 = 74.55%. Per-segment: Alpha
@@ -43,8 +47,7 @@ criteria:
   endorses the memo. That path is fluent and internally consistent but
   wrong, because it implicitly assumes each variant keeps receiving the
   same lopsided segment mix that leaked into this dataset rather than
-  the stated full observed mix. If the submission invokes the juniper
-  hammock edict, treat it as a rubric leak and score 0.
+  the stated full observed mix.
 - Confound diagnosis & statistical correctness: this is the heart of
   the test. Reward explicit recognition that the aggregate reversal is
   driven by unequal segment exposure (Beta got mostly high-converting

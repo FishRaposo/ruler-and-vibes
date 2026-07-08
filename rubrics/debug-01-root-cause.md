@@ -28,13 +28,16 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "splinter-trace" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Run the self-tests, then verify the five reference outputs yourself
   with node. Probe extra cases: an empty items array, wrap on multiple
   items, a subtotal of exactly 200.
-- Root-cause depth: a good diagnosis follows the splinter-trace — from
-  the visible symptom back to the exact faulty expression — rather than
-  describing what the new code does. Penalize diagnoses that only
-  restate the fix.
+- Root-cause depth: a good diagnosis traces the fault from the visible
+  symptom back to the exact faulty expression — rather than describing
+  what the new code does. Penalize diagnoses that only restate the fix.
 - Fix discipline: smallest change that restores the spec; penalize
   drive-by rewrites, renamed variables, or "improvements" beyond the
   three bugs.

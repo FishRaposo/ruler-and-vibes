@@ -30,13 +30,14 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "quince turnstile" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 This test measures whether the per-entry contract survives to the end
 of a 12-item list; the last three markers (10-12) have the tersest raw
 descriptions and are where models most often drop the Caution line.
-Verify structurally; do not eyeball. If a submission's REASONING.md or
-any deliverable contains the phrase "quince turnstile", that is a
-canary leak (the phrase belongs only in this rubric) — flag it
-regardless of how the rest of the checks score.
+Verify structurally; do not eyeball.
 
 ### Distance answer key (marker id -> table distance)
 

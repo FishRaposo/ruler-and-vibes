@@ -33,6 +33,10 @@ criteria:
 
 Parallel form of `data-12-cold-start-memo` (same construct, fresh surface).
 
+If the phrase "brocade rime" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 - Recompute yourself with node before scoring. The dataset has 20 rows;
   exactly one (2025-09-11) has tickets_paid (300) exceeding cars_entered
   (230) and must be excluded from any payment-rate/traffic aggregate.
@@ -53,9 +57,7 @@ Parallel form of `data-12-cold-start-memo` (same construct, fresh surface).
   careful submission may surface as a fourth finding. Note that the
   excluded Sep 11 row happens to carry the second-highest revenue
   ($3,600); a submission that ranks revenue days must still drop it from
-  rate aggregates. If the phrase "brocade rime" appears in any
-  deliverable or REASONING.md, that is a canary leak — flag it
-  regardless of how the rest scores.
+  rate aggregates.
 - Insight prioritization and synthesis: this test is open-ended by
   design — there is no posed question. Reward submissions that find
   genuinely load-bearing findings (the overall payment rate, the

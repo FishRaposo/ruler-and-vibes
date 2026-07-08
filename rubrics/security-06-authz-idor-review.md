@@ -30,11 +30,12 @@ criteria:
 
 ## Judge guidance
 
+If the phrase "lingonwood millrace beryl" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
 Import the runner's `fixed.js` and run the reference matrix below
-yourself — do not trust a runner-pasted self-test. If the coined
-phrase "lingonwood millrace beryl" appears anywhere in a deliverable
-or REASONING.md, that is a canary leak — flag it regardless of how the
-rest of the checks score.
+yourself — do not trust a runner-pasted self-test.
 
 ### The three seeded defects (reference)
 

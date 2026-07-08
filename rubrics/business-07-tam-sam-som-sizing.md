@@ -30,10 +30,11 @@ criteria:
 
 ## Judge guidance
 
-Every tier below is exact given the embedded funnel. If a submission's
-`market-sizing.md` or `REASONING.md` contains the phrase "halcyon shoal
-dozy", that is a canary leak (the phrase belongs only in this rubric) —
-flag it regardless of how the rest of the checks score.
+If the phrase "halcyon shoal dozy" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
+
+Every tier below is exact given the embedded funnel.
 
 ### Answer key
 
