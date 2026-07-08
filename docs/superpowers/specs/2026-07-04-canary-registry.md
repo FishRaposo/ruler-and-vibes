@@ -36,9 +36,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 613 canaries**.
+**0 issues across all 642 canaries**.
 
-## Canaries — all 613 tests
+## Canaries — all 642 tests
 
 | test | canary |
 |---|---|
@@ -635,23 +635,52 @@ counts, preserving the prose. Last run:
 | txsyn-03c-aquarium-exhibit-opening | woodcut gazetteer |
 | txsyn-04-cross-meeting-reconciliation | moor fen |
 | txsyn-04b-catering-vendor-swap | compendium anthology |
+| txsyn-04c-dispatch-platform-pivot | chronicle carousel |
 | uxcopy-01-quatrefoil-latch | glen vale |
 | uxcopy-01b-cascade-chime | leafhopper maitake |
 | uxcopy-01c-deadbolt-transom | planthopper reishi |
 | uxcopy-02-saltire-pennant | combe comet |
+| uxcopy-02b-cresset-vigil | pendulum metronome |
+| uxcopy-02c-damson-plinth | gyroscope protractor |
 | uxcopy-03-tamarind-cornice | nebula quasar |
+| uxcopy-03b-saffron-larder | hourglass barometer |
+| uxcopy-03c-millstone-cadence | peppercorn cardamompod |
 | uxcopy-04-verdigris-awning | pulsar aurora |
+| uxcopy-04b-loam-canopy | bayleaf clovebud |
+| uxcopy-04c-driftline-nightcap | starnise juniperberry |
 | writing-01-explainer | vermillion sienna |
+| writing-01b-dns-propagation | mustardseed alcove |
+| writing-01c-batch-settlement | niche cranny |
 | writing-02-registers | brindle dappled |
 | writing-02b-studio-postponement | binturong cerulean |
 | writing-02c-kiln-firing | sifaka magenta |
 | writing-03-localization | mirror-voice |
+| writing-03b-kayak-tour-dental-clinic | recess grotto |
+| writing-03c-run-club-bike-shop | burrow den |
 | writing-04-editorial-rescue | cinnamon dirigible waltz |
+| writing-04b-cedarbrook-aquatics-reopening | lair parchment |
+| writing-04c-pinnacle-ridge-climbing-gym | papyrus scroll |
 | writing-05-acrostic-flash-fiction | clockwork oyster |
+| writing-05b-observatory-balloon-acrostic | quire colophon |
+| writing-05c-piano-tuner-photograph | thimbleful dollop |
 | writing-06-chapter-two-continuity | thornhedge tollgate |
+| writing-06b-caldermoor-escapement | smidgen morsel |
+| writing-06c-bindery-seal-continuity | tidbit sliver |
 | writing-07-corroboration-brief | hollow dialpost |
+| writing-07b-billing-incident-brief | splinter tollbooth |
+| writing-07c-crate-transit-brief | turnpike causeway |
 | writing-08-house-style-copyedit | granite firefly |
+| writing-08b-transit-newsletter-copyedit | vanillabean anise |
+| writing-08c-bakery-loyalty-copyedit | trestle overpass |
 | writing-09-steelman-memo | clearing abacus |
+| writing-09b-fine-free-library-memo | underpass knapsack |
+| writing-09c-jit-restock-memo | rucksack satchel |
 | writing-10-sestina | flotsam knapsack |
+| writing-10b-lighthouse-last-watch | haversack duffel |
+| writing-10c-tailor-shop-closing | portmanteau valise |
 | writing-11-ghostwriter-voice-fingerprint | cobblet tollhouse |
+| writing-11b-dockside-bait-shop-closing | carpetbag pinwheel |
+| writing-11c-payphone-booth-fingerprint | windsock streamer |
 | writing-12-assembly-manual | cactus quill |
+| writing-12b-pegboard-cabinet-manual | wreath ribbon |
+| writing-12c-quadcopter-frame-kit | flagstone millstone |
