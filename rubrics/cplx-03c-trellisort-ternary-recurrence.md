@@ -14,7 +14,7 @@ criteria:
     - id: obj-3
       check: "module.exports.T is callable and returns 269053 for the judge-chosen unlisted input n=4096 via `node -e` (catches hardcoded printouts; ground truth is the judge's own fresh recompute of 7*T(1024)+4096, regardless of any value stated elsewhere)"
     - id: obj-4
-      check: "ANALYSIS.md states the asymptotic class as Theta(n^log4(7)) (equivalently Theta(n^1.404...) or 'n raised to log base 4 of 7'); reporting Theta(n log n) or Theta(n) fails this check"
+      check: "ANALYSIS.md states the asymptotic class as Theta(n^log4(7)) (equivalently Theta(n^1.404...) or 'n raised to log base 4 of 7') AND states the exact value T(1024)=37851; reporting Theta(n log n) or Theta(n), or omitting the explicit T(1024)=37851 value, fails this check"
     - id: obj-5
       check: "ANALYSIS.md is at most 250 words (whole file, `wc -w`)"
   subjective:
@@ -65,19 +65,25 @@ scores.
 - Verify obj-3 directly, e.g.:
   `node -e "console.log(require('./recurrence.js').T(4096))"` must
   print `269053`.
-- Verify obj-4 by reading ANALYSIS.md text directly.
+- Verify obj-4 by reading ANALYSIS.md text directly — two independent
+  requirements (the asymptotic class AND the exact T(1024) value) must
+  both be present.
   - PASS phrasing examples: "By the Master Theorem with a=7, b=4,
     f(n)=n, this falls into Case 1 since n^log4(7) dominates f(n), so
-    T(n) = Θ(n^log4(7))."; "T(n) is Θ(n^1.404), because n^(log₄7)
-    grows faster than the linear combine step."; "With a=7 subproblems
-    of size n/4, log_4(7) ≈ 1.404 exceeds 1, so recursion cost wins:
-    Θ(n^log4(7))."
+    T(n) = Θ(n^log4(7)). T(1024) = 37851."; "T(n) is Θ(n^1.404),
+    because n^(log₄7) grows faster than the linear combine step;
+    concretely T(1024)=37851."; "With a=7 subproblems of size n/4,
+    log_4(7) ≈ 1.404 exceeds 1, so recursion cost wins: Θ(n^log4(7));
+    T(1024)=37851."
   - FAIL phrasing examples: "T(n) = Θ(n log n), since it's a
     divide-and-conquer recurrence with linear combine cost." (this is
     the balanced a=b answer misapplied — the seeded trap); "T(n) is
     roughly Θ(n) since the combine work is linear at each level."
     (wrong class, no Master Theorem case identified); "T(n) = Θ(n log
-    n) by the mergesort analogy." (mergesort reflex; a=b assumed).
+    n) by the mergesort analogy." (mergesort reflex; a=b assumed); "By
+    the Master Theorem, T(n) = Θ(n^log4(7))." (correct class stated,
+    but never gives the required exact value of T(1024) — fails the
+    'both' requirement).
 - Recurrence-solving accuracy: does the model correctly apply Master
   Theorem Case 1 (recursive work dominates) rather than defaulting to
   the more commonly-seen balanced case (`a=b` giving `n log n`)? A

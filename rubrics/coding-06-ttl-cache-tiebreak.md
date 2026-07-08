@@ -92,8 +92,11 @@ rest scores.
   naming, and encapsulated state; penalize sprawling conditionals or
   exposed mutable internals that make the invariants hard to verify by
   reading.
-- Reasoning quality is graded on the clarity of any inline comments or
-  structure explaining the tie-break rule and the deliberate absence
-  of recency tracking — this test has no separate reasoning file, so
-  judge this from code comments/structure and, if present, any
-  explanatory prose the model included.
+- Reasoning quality: judge primarily from REASONING.md (the Approach,
+  Key decisions, and Trade-offs/limitations sections per RUN.md) — does
+  it clearly explain the tie-break rule (expired-first, then
+  earliest-expiry, then insertion-order tie-break) and the deliberate
+  absence of recency tracking? Give additional credit for inline code
+  comments/structure that reinforce the same reasoning, but do not
+  substitute code comments for REASONING.md; a missing REASONING.md is
+  scored per JUDGE.md (sub-reasoning = 0).

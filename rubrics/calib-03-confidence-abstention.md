@@ -74,12 +74,13 @@ answer, so a confident answer to either is scored as wrong).
   Brier computed only over its 4 (or more) answered items.
   - PASS (answer matches key → correct=1): item 2 given as "restart of
     the ingest-worker fleet" or "ingest-worker fleet restart" (names the
-    keyed cause); item 4 given as the keyed before/after value in any
-    phrasing (e.g. "rose from 3.2s to 5.1s", "3.2 → 5.1s").
+    keyed cause); item 4 given as the keyed temporal ordering in any
+    phrasing (e.g. "after — 14:02 is later than 13:55", "the climb came
+    after the config push").
   - FAIL (answer does not match → correct=0): item 2 given as a
-    different root cause (e.g. "database failover"); item 4 with a wrong
-    value (e.g. "dropped to 2s") or a vague near-miss that never states
-    the keyed before/after numbers.
+    different root cause (e.g. "database failover"); item 4 answered
+    "before" or with a vague answer that never commits to the after
+    ordering.
 
 ### Subjective guidance
 

@@ -8,15 +8,17 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "DECISION.md reports the expected values at p = 0.35 as Diesel Fleet 28.5, Hybrid Fleet 39.75, Electric Fleet 24 (recomputed as 0.35*spike + 0.65*stable for each)"
+      check: "DECISION.md reports the expected values at p = 0.35 as Diesel Fleet 30, Hybrid Fleet 39.75, Electric Fleet 24 (recomputed as 0.35*spike + 0.65*stable for each)"
     - id: obj-2
       check: "DECISION.md names Hybrid Fleet (Option B) as the best choice at p = 0.35"
     - id: obj-3
-      check: "DECISION.md gives the flip-point between Diesel Fleet and Hybrid Fleet as p = 1/5 (any form within rounding of 0.2 -- e.g. 0.20, 20%, 1/5 -- confirmed via 60 - 90p = 45 - 15p) and states that Diesel Fleet is preferred below it and Hybrid Fleet above it"
+      check: "DECISION.md gives the flip-point between Diesel Fleet and Hybrid Fleet as p = 4/17 (any form within rounding of 0.2353 -- e.g. 0.235, 23.5%, 4/17 -- confirmed via 65 - 100p = 45 - 15p) and states that Diesel Fleet is preferred below it and Hybrid Fleet above it"
     - id: obj-4
       check: "DECISION.md states that Electric Fleet (Option C) is never the optimal choice for any spike probability in [0,1] (it is dominated by Hybrid Fleet throughout)"
     - id: obj-5
       check: "DECISION.md and REASONING.md both exist with exact filenames, and REASONING.md is at most 300 words (wc -w)"
+    - id: obj-6
+      check: "DECISION.md reports the value of perfect information (VOI) as 13 (recomputed as 52.75 - 39.75, where 52.75 = 0.35*30 + 0.65*65 is the expected value with perfect information and 39.75 is the best attainable EV at p = 0.35)"
   subjective:
     - id: sub-quality
       name: "Decision-tree presentation clarity"
@@ -42,16 +44,16 @@ inspection.
 
 **Answer key:**
 
-- At p = 0.35: `EV_A = 0.35*(-30) + 0.65*60 = 28.5`, `EV_B = 0.35*30 +
+- At p = 0.35: `EV_A = 0.35*(-35) + 0.65*65 = 30`, `EV_B = 0.35*30 +
   0.65*45 = 39.75`, `EV_C = 0.35*24 + 0.65*24 = 24`. Best = **Hybrid
   Fleet (39.75)**.
-- Linear forms: `EV_A(p) = 60 - 90p`, `EV_B(p) = 45 - 15p`, `EV_C(p) =
+- Linear forms: `EV_A(p) = 65 - 100p`, `EV_B(p) = 45 - 15p`, `EV_C(p) =
   24` (constant, since both payoffs are 24).
-- Flip-point (Diesel vs Hybrid): solve `60 - 90p = 45 - 15p` →
-  `75p = 15` → **p = 1/5 = 0.20**. Verified: at p = 0.10, EV_A = 51 >
-  EV_B = 43.5 (Diesel wins); at p = 0.20, EV_A = 42 = EV_B = 42 (tie);
-  at p = 0.30, EV_A = 33 < EV_B = 40.5 (Hybrid wins). So Diesel Fleet
-  is preferred below p = 1/5 and Hybrid Fleet above it.
+- Flip-point (Diesel vs Hybrid): solve `65 - 100p = 45 - 15p` →
+  `20 = 85p` → **p = 4/17 ≈ 0.2353**. Verified: at p = 0.10, EV_A = 55 >
+  EV_B = 43.5 (Diesel wins); at p = 4/17, EV_A = EV_B ≈ 41.47 (tie);
+  at p = 0.30, EV_A = 35 < EV_B = 40.5 (Hybrid wins). So Diesel Fleet
+  is preferred below p = 4/17 and Hybrid Fleet above it.
 - Electric Fleet dominance: solving `EV_B(p) = EV_C` gives
   `45 - 15p = 24` → `p = 1.4`, which is outside [0, 1]. Checking the
   endpoints: at p=0, EV_B = 45 > 24; at p=1, EV_B = 30 > 24. Since
@@ -59,19 +61,19 @@ inspection.
   Fleet's EV exceeds Electric Fleet's everywhere on [0,1] —
   **Electric Fleet is never optimal for any valid p**.
 - Value of perfect information: with foreknowledge, the company picks
-  Diesel Fleet when stable (+60, at probability 0.65) and Hybrid
+  Diesel Fleet when stable (+65, at probability 0.65) and Hybrid
   Fleet when a spike hits (+30, at probability 0.35):
-  `0.65*60 + 0.35*30 = 49.5`. VOI = `49.5 - 39.75 = 9.75`.
+  `0.65*65 + 0.35*30 = 52.75`. VOI = `52.75 - 39.75 = 13`.
 
 To re-verify before judging, run:
 
 ```
 node -e "
-const payoffs = { A:{spike:-30,stable:60}, B:{spike:30,stable:45}, C:{spike:24,stable:24} };
+const payoffs = { A:{spike:-35,stable:65}, B:{spike:30,stable:45}, C:{spike:24,stable:24} };
 function EV(opt,p){ return p*payoffs[opt].spike + (1-p)*payoffs[opt].stable; }
 const p0=0.35;
 for (const opt of ['A','B','C']) console.log('EV_'+opt+'(0.35)=', EV(opt,p0));
-console.log('Flip A/B: p=', (60-45)/(90-15));
+console.log('Flip A/B: p=', (65-45)/(100-15));
 console.log('EV_B at p=0:', EV('B',0), 'at p=1:', EV('B',1), '(both > 24, so Electric Fleet never optimal)');
 const bestIfSpike = Math.max(payoffs.A.spike, payoffs.B.spike, payoffs.C.spike);
 const bestIfStable = Math.max(payoffs.A.stable, payoffs.B.stable, payoffs.C.stable);
@@ -80,11 +82,11 @@ console.log('EV with perfect info:', EVwithInfo, 'VOI:', EVwithInfo - Math.max(E
 "
 ```
 
-This prints EV_A=28.5, EV_B=39.75, EV_C=24, flip-point p=0.2, EV_B at
-endpoints 45 and 30 (both exceeding Electric Fleet's constant 24), and
-VOI=9.75. If a submission's numbers disagree with this script's
-output, the submission is wrong — do not average or split the
-difference.
+This prints EV_A=30, EV_B=39.75, EV_C=24, flip-point p≈0.2353 (4/17),
+EV_B at endpoints 45 and 30 (both exceeding Electric Fleet's constant
+24), and VOI=13. If a submission's numbers disagree with this
+script's output, the submission is wrong — do not average or split
+the difference.
 
 **PASS/FAIL fragments for the Electric-Fleet-dominance claim
 (obj-4),** since it is prose-located:
@@ -110,8 +112,9 @@ FAIL phrasings:
 
 Grading notes:
 
-- **obj-1 through obj-3** are mechanical: recompute each EV, the best
-  choice, and the flip-point against the script above.
+- **obj-1 through obj-3 and obj-6** are mechanical: recompute each EV,
+  the best choice, the flip-point, and the VOI against the script
+  above.
 - **obj-4** is prose-located; use the PASS/FAIL fragments to
   adjudicate. The seeded trap is Option C (Electric Fleet) looking
   like a safe, defensible choice due to its flat, spike-proof payoff —

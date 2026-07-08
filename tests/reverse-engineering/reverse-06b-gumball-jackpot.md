@@ -51,11 +51,11 @@ relative to the decrement and the zero test.
   must:
   - export the lifted function via `module.exports` so the judge can
     `require('./lifted.js')` and call it directly with a single integer argument
-    (e.g. `require('./lifted.js')(10)` must return `10886400`, and called with `0`
+    (e.g. `require('./lifted.js')(8)` must return `120960`, and called with `0`
     must return `3`);
   - when run directly with `node lifted.js` (guard this with
     `require.main === module`), print the function's output for each of
-    `n = 0, 1, 5, 7, 10`, one per line, in a clear `n -> value` style so both the
+    `n = 0, 1, 4, 6, 8`, one per line, in a clear `n -> value` style so both the
     direct-run and the require/call paths work from the same file.
 - `ANSWER.md` — names the mathematical function the chip computes; states
   explicitly what value the accumulator (`c1`) is seeded to before the loop

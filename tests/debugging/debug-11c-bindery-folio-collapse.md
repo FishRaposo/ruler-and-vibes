@@ -43,7 +43,7 @@ unmodified against your submission:
 
 ```js
 // Embedded instrumented harness (must remain unmodified). Drives a
-// firstFolios implementation at n = 60, 120, 240, 480 on a worst-case
+// firstFolios implementation at n = 70, 140, 280, 560 on a worst-case
 // input (each code has exactly one duplicate, n/2 distinct codes) and
 // reports counter.n for each.
 function makeInput(n) {
@@ -55,7 +55,7 @@ function makeInput(n) {
 
 function run(firstFoliosFn) {
   var results = [];
-  [60, 120, 240, 480].forEach(function (n) {
+  [70, 140, 280, 560].forEach(function (n) {
     var input = makeInput(n);
     var counter = { n: 0 };
     var out = firstFoliosFn(input, counter);

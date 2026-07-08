@@ -8,7 +8,7 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "BALANCE.md contains an effective-output table whose four values match the reference (Emberpike 11.7, Frostcoil 12.6, Stormlance 12.0, Voidspar 19.8) within +/-0.1; judge recomputes potency x attunement / cooldown for each turret"
+      check: "BALANCE.md contains an effective-output table whose four values match the reference (Emberpike 10.9, Frostcoil 13.44, Stormlance 12.0, Voidspar 18.0) within +/-0.1; judge recomputes potency x attunement / cooldown for each turret"
     - id: obj-2
       check: "Voidspar is explicitly identified as the overpowered/outlier turret (not Stormlance)"
     - id: obj-3
@@ -44,24 +44,24 @@ do not trust the runner's stated numbers.
 
 output = potency x attunement / cooldown:
 
-- Emberpike: 26 x 0.90 / 2.0 = **11.7**
-- Frostcoil: 14 x 0.72 / 0.8 = **12.6**
+- Emberpike: 26 x 0.88 / 2.1 = **10.9**
+- Frostcoil: 14 x 0.72 / 0.75 = **13.44**
 - Stormlance: 52 x 0.60 / 2.6 = **12.0**
-- Voidspar: 11 x 0.90 / 0.5 = **19.8**
+- Voidspar: 9 x 0.90 / 0.45 = **18.0**
 
-Output per 100 essence: Voidspar 19.8/100*100 = **19.80**, Frostcoil
-**13.26**, Stormlance **10.0**, Emberpike **9.0**. Voidspar leads on both
+Output per 100 essence: Voidspar 18.0/100*100 = **18.00**, Frostcoil
+**14.15**, Stormlance **10.0**, Emberpike **8.38**. Voidspar leads on both
 raw and cost-normalized output, confirming it (not the flashy 52-potency
 Stormlance) is the outlier that needs the patch.
 
-Voidspar's original stats: potency 11, cooldown 0.5s, attunement 0.90,
+Voidspar's original stats: potency 9, cooldown 0.45s, attunement 0.90,
 essence 100.
 
 **Single-stat infeasibility** (informational — do not require the
 runner to state this, just use it to sanity-check any single-stat
 patch you're handed): within the 20% cap, no single-stat nerf reaches
-the [11.5, 13.5] band — potency 11->8.8 gives 15.84, cooldown 0.5->0.6
-gives 16.5, attunement 0.90->0.72 gives 15.84, all strictly above 13.5.
+the [11.5, 13.5] band — potency 9->7.2 gives 14.4, cooldown 0.45->0.54
+gives 15.0, attunement 0.90->0.72 gives 14.4, all strictly above 13.5.
 A correct submission must therefore patch two stats. If a submission
 patches only one stat and still claims to land in-band, recompute
 independently — a real single-stat solution does not exist within the
@@ -69,17 +69,17 @@ cap, so such a claim is a computation error and obj-3/obj-5 should
 fail.
 
 **Boundary case**: patching Voidspar's potency to its -20% cap
-(11->8.8) AND cooldown up only +10% (0.5->0.55), attunement unchanged,
-gives 8.8 x 0.90 / 0.55 = **14.4**, which is ABOVE the band. This shows
+(9->7.2) AND cooldown up only +5% (0.45->0.4725), attunement unchanged,
+gives 7.2 x 0.90 / 0.4725 = **13.71**, which is ABOVE the band. This shows
 not every two-stat patch works — verify the specific numbers submitted,
 don't assume "two stats changed" is sufficient.
 
 **Sample feasible patches** (for calibration only — any patch meeting
 the stated constraints passes, not only these):
-- potency 11 -> 9 (-18.2%), cooldown 0.5 -> 0.6 (+20.0%): output =
-  9 x 0.90 / 0.6 = **13.5** (in band)
-- cooldown 0.5 -> 0.6 (+20.0%), attunement 0.90 -> 0.72 (-20%): output =
-  11 x 0.72 / 0.6 = **13.2** (in band)
+- potency 9 -> 7.2 (-20.0%), cooldown 0.45 -> 0.54 (+20.0%): output =
+  7.2 x 0.90 / 0.54 = **12.0** (in band)
+- cooldown 0.45 -> 0.54 (+20.0%), attunement 0.90 -> 0.72 (-20%): output =
+  9 x 0.72 / 0.54 = **12.0** (in band)
 
 ### Per-check guidance
 

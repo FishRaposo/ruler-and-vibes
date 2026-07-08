@@ -7,7 +7,7 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "empty-states.json parses and contains all 4 embedded surface keys (emptyInbox, noSearchResults, noProjectsYet, clearedNotifications), each with non-empty string 'heading', 'body', and 'cta'"
+      check: "empty-states.json parses, has exactly these 4 top-level keys and no others (emptyInbox, noSearchResults, noProjectsYet, clearedNotifications), each mapping to an object with non-empty string 'heading', 'body', and 'cta'"
     - id: obj-2
       check: "Every 'heading' is <= 30 characters AND in Sentence case: first character uppercase and no word after the first begins with an uppercase letter (allowlist empty for this test) (JS: h.length<=30 && /^[A-Z]/.test(h) && h.trim().split(/\\s+/).slice(1).every(w=>!/^[A-Z]/.test(w)))"
     - id: obj-3

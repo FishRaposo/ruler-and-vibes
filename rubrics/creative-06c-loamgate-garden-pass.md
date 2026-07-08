@@ -10,7 +10,7 @@ criteria:
     - id: obj-1
       check: "card.html renders from file:// as a single self-contained file with no external resources (no CDN, <link> stylesheet, remote font, or <img> src to a URL; inline CSS/SVG only) AND uses only flat solid colors behind text: no gradient, no rgba/hsla/alpha channel, no opacity<1, no background-image (judge greps the CSS to confirm each rule the pairing check relies on is a solid hex/rgb color)"
     - id: obj-2
-      check: "Every normal-size text run meets >= 4.5:1 against its actual solid background, and the price heading (>=24px) and the button label each meet >= 3:1: the judge reads each text element's color and its single solid background hex from the CSS, recomputes the ratio with the WCAG relative-luminance formula, and confirms the failing 2.05:1 lime-on-white pair from the starter does not survive on any text"
+      check: "Every normal-size text run meets >= 4.5:1 against its actual solid background (this includes the button label, since it has no specified font-size and is therefore normal-size text), and the price heading (>=24px) meets >= 3:1: the judge reads each text element's color and its single solid background hex from the CSS, recomputes the ratio with the WCAG relative-luminance formula, and confirms the failing 2.05:1 lime-on-white pair from the starter does not survive on any text"
     - id: obj-3
       check: "The action control is a real <button> element (or <a role=\"button\">) with a non-empty accessible name, not a bare clickable <div>/<span> (judge inspects the element and its text/aria-label)"
     - id: obj-4
@@ -58,7 +58,7 @@ scores.
 - PASS example pairings (compare submissions against these): "`#4a4a4a`
   text on `#ffffff` card background = 8.86:1, PASS (>=4.5 required)";
   "white `#ffffff` button label on `#1f6f43` button background = 6.15:1,
-  PASS (>=3.0 required, button label)"; "`#2b6a2b` heading on `#ffffff`
+  PASS (>=4.5 required, button label is normal-size text)"; "`#2b6a2b` heading on `#ffffff`
   = 6.56:1, PASS (>=4.5 required, normal text)".
 - FAIL example pairings: "`#7ac943` body text on `#ffffff` = 2.05:1,
   FAIL (needs 4.5)"; "pale-green `#9bbf9b` on `#ffffff` = 2.04:1, FAIL
@@ -79,8 +79,8 @@ scores.
 - **obj-2**: for each text-bearing selector, pair its `color` with the
   nearest ancestor's solid `background`/`background-color` (default to
   the card's white background if unset), recompute contrast, and check
-  against the 4.5:1 (normal) or 3:1 (>=24px heading / button label)
-  threshold. The starter's uniform `#7ac943` must not appear on any
+  against the 4.5:1 (normal, including the button label) or 3:1
+  (>=24px heading) threshold. The starter's uniform `#7ac943` must not appear on any
   normal-size text against `#ffffff` or any other passing-adjacent
   light background.
 - **obj-3**: confirm a real `<button>` (or `<a role="button">`) exists

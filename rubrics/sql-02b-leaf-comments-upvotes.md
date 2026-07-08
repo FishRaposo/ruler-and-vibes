@@ -17,6 +17,8 @@ criteria:
       check: "The `upvotes IS NULL OR upvotes <> 40` result set is exactly {pixelfox, driftbyte, vaultmoth, cinderloop, glasswren} (5 rows); a submission omitting pixelfox, vaultmoth, or glasswren fails; judge re-runs and matches"
     - id: obj-5
       check: "ANSWERS.md (or QUERIES.sql comments) explicitly identifies that the presence of NULL in the parent_comment_id subquery is what makes a naive NOT IN return no rows, and names a working fix (filtering NULLs out of the subquery, or using NOT EXISTS)"
+    - id: obj-6
+      check: "ANSWERS.md presents the `upvotes <> 40` result set and the `upvotes IS NULL OR upvotes <> 40` result set as two separate, clearly labeled tables (e.g. under distinct headings/captions naming each predicate), per the task's explicit instruction; a submission that merges both predicates' rows into a single combined table or list (even if every row is otherwise correct) fails this check"
   subjective:
     - id: sub-quality
       name: "Correctness of three-valued-logic handling"

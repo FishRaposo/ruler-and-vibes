@@ -12,11 +12,13 @@ criteria:
     - id: obj-2
       check: "entry.md contains zero colons and exactly two em-dashes ('—'), verified by scanning the text"
     - id: obj-3
-      check: "entry.md mean sentence length is under 11 words: total word count divided by the number of sentence-final terminators among '.', '!', '?' — since the task forbids abbreviations, decimals, and ellipses, every such mark is a genuine sentence end, making the count unambiguous"
+      check: "entry.md mean sentence length is under 11 words: total word count divided by the number of sentence-final terminators among '.', '!', '?' — obj-6 independently verifies no abbreviations, decimals, or ellipses are present, so once obj-6 passes, every such mark counted here is guaranteed to be a genuine sentence end"
     - id: obj-4
       check: "entry.md whole-file word count is between 155 and 190 inclusive, verified with wc -w"
     - id: obj-5
       check: "entry.md is on the supplied topic (the bait-and-tackle shop on the pier closing for good) and does not lapse into long abstract sentimentality — sentences stay concrete and short per the fingerprint (prose-located check; ships 2-3 PASS + 2-3 FAIL example phrasings)"
+    - id: obj-6
+      check: "entry.md contains zero abbreviation-shaped tokens (e.g. 'a.m.', 'Mr.', 'St.'), zero decimals, and zero ellipses — every '.', '!', '?' in the file is a genuine sentence-final terminator, verified by scanning the text for any period not preceded immediately by a capitalized single-letter/short honorific token or followed by a digit, and for any '...' sequence"
   subjective:
     - id: sub-quality
       name: "Fidelity to the target voice (reads like an Abernathy sample)"
@@ -63,13 +65,13 @@ by default.
 **Counting method for obj-3 (spelled out for the judge):** count total
 words in entry.md (whole file, same tokenization as wc -w), then count
 every occurrence of '.', '!', or '?' — each occurrence is one sentence
-boundary. Divide word count by terminator count. Because the task
-forbids abbreviations ("a.m.", "Mr.", "St."), decimals, and ellipses,
-there is no legitimate mid-sentence period to miscount; every
-terminator found is a genuine sentence end. The target register sits
-comfortably under 11 (the samples average 8.17-9.36), so an off-by-one
-in either count will not flip a genuinely terse piece to a false pass
-or fail.
+boundary. Divide word count by terminator count. obj-6 independently
+verifies entry.md contains no abbreviations ("a.m.", "Mr.", "St."), no
+decimals, and no ellipses, so once obj-6 passes there is no legitimate
+mid-sentence period to miscount; every terminator found is guaranteed to
+be a genuine sentence end. The target register sits comfortably under 11
+(the samples average 8.17-9.36), so an off-by-one in either count will
+not flip a genuinely terse piece to a false pass or fail.
 
 - **obj-5 example phrasings.** PASS (concrete, short, on-topic): "The
   chalkboard still listed shrimp at three dollars a scoop." PASS (also

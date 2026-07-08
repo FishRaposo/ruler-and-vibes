@@ -10,11 +10,13 @@ criteria:
     - id: obj-1
       check: "Both sections present and complete: Text A in PT-BR, Text B in EN"
     - id: obj-2
-      check: "All facts survive both texts. A: September 5 2027, 6-7h Tue/Thu, deadline August 10, $89/$129 (still dollars), first-15 free socks. B: 20% off, free diagnostic included, free cancellation up to 24h before appointment, electric bikes exempt from inspection fee"
+      check: "All facts survive both texts. A: September 5 2027, 6-7h Tue/Thu, deadline August 10, $89/$129 (still dollars), first-15 free socks. B: 25% off, free diagnostic included, free cancellation up to 12h before appointment, electric bikes exempt from inspection fee"
     - id: obj-3
       check: "Date conventions correct per target locale — critically, B's 08/04/2027 renders as April 8, 2027 (NOT August 4); A's dates read naturally in PT-BR (e.g. 5 de setembro)"
     - id: obj-4
       check: "No literal idiom renderings ('sem dor no bolso' is not 'without pain in the pocket'; 'Rise-and-shine pricing' is not 'preço de levante e brilhe'; 'Go the extra mile' is not 'ande a milha extra'); brand names unchanged ('Peak Stride', 'Oficina Roda Livre', 'Vila Nova')"
+    - id: obj-5
+      check: "localization.md is at most 350 words total, counted with wc -w over the whole file"
   subjective:
     - id: sub-quality
       name: "Native naturalness"
@@ -61,13 +63,13 @@ Parallel form of `writing-03-localization` (same construct, fresh surface).
 - PASS: "the first 15 sign-ups get a free pair of running socks"
   becomes "os 15 primeiros inscritos ganham um par de meias de
   corrida de brinde" — count and item both intact.
-- PASS: "20% off parts" and "free cancellation up to 24 hours before
+- PASS: "25% off parts" and "free cancellation up to 12 hours before
   your scheduled time" both appear unchanged in the English Text B.
 - PASS: "Electric bikes don't pay the inspection fee" is present in
   the English Text B.
 - FAIL: the sign-up count drifts (e.g. "20 primeiros inscritos"
-  instead of 15) or the discount percentage drifts (e.g. "15%"
-  instead of 20%).
+  instead of 15) or the discount percentage drifts (e.g. "15%" or
+  "20%" instead of 25%).
 - FAIL: the electric-bikes exemption sentence is dropped from the
   English Text B.
 - FAIL: the price pair is altered or converted (e.g. "R$ 89 em vez de

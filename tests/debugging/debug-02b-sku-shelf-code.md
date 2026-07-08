@@ -49,8 +49,8 @@ ends in a dot.
   1. `skuCode("Rosé Barware")`
   2. `skuCode("Deluxe, Boxed!")`
   3. `skuCode("..Pre..Coded..")`
-  4. `skuCode("Steel Frame", 6)`
-  5. `skuCode("Crème Storage Bins", 10)`
+  4. `skuCode("Steel Frame", 5)`
+  5. `skuCode("Crème Storage Bins", 11)`
 - `REGRESSION.md` — name exactly which edits between v1 and v2 broke
   which behaviors, and why your fix preserves the new feature.
 

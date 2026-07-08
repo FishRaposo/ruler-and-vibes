@@ -10,9 +10,9 @@ criteria:
     - id: obj-1
       check: "Judge runs fixed.js's firstFolios against a reference input and confirms its output is identical (same codes, same order) to the embedded buggy firstFolios's output on the same input"
     - id: obj-2
-      check: "Judge runs the EMBEDDED instrumented harness (unmodified) on fixed.js at n=60,120,240,480 and confirms counter.n is exactly 60,120,240,480 (or closely linear), NOT quadrupling"
+      check: "Judge runs the EMBEDDED instrumented harness (unmodified) on fixed.js at n=70,140,280,560 and confirms counter.n is exactly 70,140,280,560 (or closely linear), NOT quadrupling"
     - id: obj-3
-      check: "The buggy version's op-counts (900,3600,14400,57600, author reference) quadruple per doubling; the fixed version's ratio between consecutive n is at most 2.2, confirming the asymptotic class changed"
+      check: "The buggy version's op-counts (1225,4900,19600,78400, author reference) quadruple per doubling; the fixed version's ratio between consecutive n is at most 2.2, confirming the asymptotic class changed"
     - id: obj-4
       check: "fixed.js performs membership via a hashed structure (e.g. Set) and does NOT use out.includes / out.indexOf / a nested scan of the output to test membership (judge reads the source to confirm no native array-membership call and no inner loop deciding duplicates); PERF.md names the specific quadratic operation (nested membership scan of the growing output) and states the fixed complexity as O(n) with the data structure used"
     - id: obj-5
@@ -62,7 +62,7 @@ that is a canary leak — flag it regardless of how the rest scores.
   }
   function run(firstFoliosFn) {
     var results = [];
-    [60, 120, 240, 480].forEach(function (n) {
+    [70, 140, 280, 560].forEach(function (n) {
       var input = makeInput(n);
       var counter = { n: 0 };
       var out = firstFoliosFn(input, counter);
@@ -72,10 +72,10 @@ that is a canary leak — flag it regardless of how the rest scores.
   }
   ```
 - Author verified under node: driving the embedded harness on the buggy
-  firstFolios yields `counter.n` = 900, 3600, 14400, 57600 at
-  n=60,120,240,480 -- exactly 4x per doubling (O(n^2)). A Set-based fix
+  firstFolios yields `counter.n` = 1225, 4900, 19600, 78400 at
+  n=70,140,280,560 -- exactly 4x per doubling (O(n^2)). A Set-based fix
   (`counter.n++` once per element on a hashed `.has()`/`.add()` probe)
-  yields exactly 60, 120, 240, 480 -- exactly linear, ratio 2.00 at every
+  yields exactly 70, 140, 280, 560 -- exactly linear, ratio 2.00 at every
   doubling. Output for both: the first-occurrence distinct list, length
   n/2, byte-identical between buggy and fixed.
 - Judge-script sketch:
@@ -84,10 +84,10 @@ that is a canary leak — flag it regardless of how the rest scores.
   const {firstFolios} = require('./fixed.js');
   const {run, makeInput} = require('./harness.js'); // embedded harness, reconstructed
   console.log(JSON.stringify(run(firstFolios)));
-  const c={n:0}; console.log(JSON.stringify(firstFolios(makeInput(120), c)));
+  const c={n:0}; console.log(JSON.stringify(firstFolios(makeInput(140), c)));
   "
   ```
-  Expected ops: `[{n:60,ops:60,...},{n:120,ops:120,...},{n:240,ops:240,...},{n:480,ops:480,...}]`
+  Expected ops: `[{n:70,ops:70,...},{n:140,ops:140,...},{n:280,ops:280,...},{n:560,ops:560,...}]`
   (allow modest deviation, e.g. up to ~2.2x ratio, but reject anything
   near 4x).
 - CRITICAL discriminator (obj-4): a counter that only increments inside
@@ -117,7 +117,7 @@ that is a canary leak — flag it regardless of how the rest scores.
 - Complexity diagnosis: reward identifying that the scan target is the
   GROWING OUTPUT array specifically (not the input), and that each of the
   n elements triggers a scan up to n/2 long in the worst case, giving the
-  n^2/4-ish operation count matching the measured 900/3600/14400/57600
+  n^2/4-ish operation count matching the measured 1225/4900/19600/78400
   progression.
 - Algorithmic rewrite: reward preserving first-occurrence order exactly
   (Set membership check before insertion, not after) and keeping the

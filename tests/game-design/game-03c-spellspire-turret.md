@@ -16,10 +16,10 @@ drafting a loadout, not for combat power):
 
 | Turret | Potency | Cooldown (s) | Attunement | Essence |
 |---|---|---|---|---|
-| Emberpike | 26 | 2.0 | 0.90 | 130 |
-| Frostcoil | 14 | 0.8 | 0.72 | 95 |
+| Emberpike | 26 | 2.1 | 0.88 | 130 |
+| Frostcoil | 14 | 0.75 | 0.72 | 95 |
 | Stormlance | 52 | 2.6 | 0.60 | 120 |
-| Voidspar | 11 | 0.5 | 0.90 | 100 |
+| Voidspar | 9 | 0.45 | 0.90 | 100 |
 
 Effective output (damage per second) for a turret is:
 

@@ -9,7 +9,7 @@ criteria:
     - id: obj-1
       check: "The judge imports canReadInvoice from the runner's fixed.js and evaluates its OWN reference matrix: a plain member CANNOT read another member's invoice; an org_admin CAN read a same-org invoice they don't own; an org_admin CANNOT read a different-org invoice; and calling the check does NOT mutate the actor's role (asserted directly, not trusting a runner-pasted self-test)"
     - id: obj-2
-      check: "FINDINGS.md identifies all three seeded defects — the IDOR/missing-ownership check, the `=` assignment where `===`/`==` was intended, and the cross-org support scoping gap — each with an approximately correct line reference; missing any one fails. Judge-decided by reading."
+      check: "FINDINGS.md identifies all three seeded defects — the IDOR/missing-ownership check, the `=` assignment where `===`/`==` was intended, and the cross-org org_admin scoping gap — each with an approximately correct line reference; missing any one fails. Judge-decided by reading."
     - id: obj-3
       check: "In fixed.js, the judge reads each authorization conditional and confirms every role/org comparison is a real comparison (=== or ==), with no bare single `=` assignment inside any conditional; a solution leaving the assignment bug fails even if a self-test is coaxed to pass"
     - id: obj-4

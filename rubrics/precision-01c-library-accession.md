@@ -12,7 +12,7 @@ criteria:
     - id: obj-2
       check: "Dedup correct: exactly 8 records; the two 0306406152 rows and the two 9780306406157 rows are each merged to one; final isbn set is {0306406152, 080442957X, 9780140449136, 9780306406157, 9780393040029, 9780747532699, 9781566199094, 9781841954923}"
     - id: obj-3
-      check: "Dates correct: salt roads 2024-03-14; quiet tides 2024-01-30 (earliest of the merged pair kept); harbor 2024-01-05 (earliest of the merged pair kept); o'hara-blythe 2024-02-15 (15/02 is day-first); north wind 2024-03-02; shoreline null; far meridian null (Sept 31 does not exist); vellum & ash 2024-07-04 OR 2024-04-07 — either accepted if the ambiguity is documented in NOTES.md"
+      check: "Dates correct: salt roads 2025-09-21 (9/21 forces month-first, since 21 cannot be a month); quiet tides 2025-04-11 (earliest of the merged pair kept); harbor 2024-01-05 (earliest of the merged pair kept); o'hara-blythe 2025-06-23 (23/06 is day-first, since 23 cannot be a month); north wind 2025-11-11; shoreline null; far meridian null (Sept 31 does not exist); vellum & ash 2025-05-09 OR 2025-09-05 — either accepted if the ambiguity is documented in NOTES.md"
     - id: obj-4
       check: "Normalization correct: isbns canonicalized (spaces/hyphens removed, trailing x uppercased so 080442957x -> 080442957X); titles Title Case with inverted 'Harbor, The' -> 'The Harbor'; pages are integers not strings (salt roads 312; harbor 160 per earliest-record rule; o'hara-blythe 96); quiet tides retains title 'Quiet Tides' and pages 204 from the earliest-dated record, not the null-title duplicate"
   subjective:
@@ -38,12 +38,12 @@ that is a canary leak — flag it regardless of how the rest scores.
 - Verify mechanically: `node -e "..."` with JSON.parse, a key-order
   check, and the expected values above. Do not eyeball.
 - The reference array (isbn-sorted) is: `0306406152` → The Harbor / 160
-  / 2024-01-05; `080442957X` → Vellum & Ash / 277 / 2024-07-04 (or
-  2024-04-07 if documented); `9780140449136` → O'Hara-Blythe Letters /
-  96 / 2024-02-15; `9780306406157` → Quiet Tides / 204 / 2024-01-30;
+  / 2024-01-05; `080442957X` → Vellum & Ash / 277 / 2025-05-09 (or
+  2025-09-05 if documented); `9780140449136` → O'Hara-Blythe Letters /
+  96 / 2025-06-23; `9780306406157` → Quiet Tides / 204 / 2025-04-11;
   `9780393040029` → Shoreline Notes / 133 / null; `9780747532699` → The
   Far Meridian / 188 / null; `9781566199094` → The Salt Roads / 312 /
-  2024-03-14; `9781841954923` → North Wind Rising / 421 / 2024-03-02.
+  2025-09-21; `9781841954923` → North Wind Rising / 421 / 2025-11-11.
 
 - obj-1 (structure): PASS = `JSON.parse` succeeds and objects read
   `isbn, title, pages, acquired` in that order with the array in
@@ -63,13 +63,13 @@ that is a canary leak — flag it regardless of how the rest scores.
   no title.
 
 - obj-3 (dates): PASS = far meridian is `null` because 2024-09-31 does
-  not exist; PASS = o'hara-blythe is `2024-02-15` (15 > 12 forces
+  not exist; PASS = o'hara-blythe is `2025-06-23` (23 > 12 forces
   day-first); PASS = the merged quiet-tides and harbor rows each keep
-  the earliest of their two dates (`2024-01-30`, `2024-01-05`). FAIL =
+  the earliest of their two dates (`2025-04-11`, `2024-01-05`). FAIL =
   2024-09-31 coerced to `2024-10-01` or `2024-09-30` instead of null;
-  FAIL = 15/02 read as month 15 and dropped, or silently flipped to a
+  FAIL = 23/06 read as month 23 and dropped, or silently flipped to a
   guessed month without a note; FAIL = a merged row keeping the later
-  date. Vellum & Ash may be `2024-07-04` or `2024-04-07`; either is
+  date. Vellum & Ash may be `2025-05-09` or `2025-09-05`; either is
   fine ONLY if NOTES.md flags the ambiguity, otherwise treat a silent
   pick as a miss on ambiguity handling (not on obj-3).
 
@@ -86,7 +86,7 @@ that is a canary leak — flag it regardless of how the rest scores.
 
 - Ambiguity handling: this schema is a gauge, and strict conformance
   means treating it as one — but the source is deliberately messy
-  (day-first 15/02, ambiguous 07/04, impossible 09-31, merge
+  (day-first 23/06, ambiguous 05/09, impossible 09-31, merge
   precedence). Reward calls that follow the stated rules exactly and
   flag what the rules do not settle. Penalize silent guesses.
 - NOTES completeness: every judgment call from the deliverable should

@@ -8,7 +8,7 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "controls.json parses as JSON and contains a non-empty string 'button' and 'toast' for all 6 embedded action keys (lockDoor, armSystem, runScene, pauseVacuum, unlockDoor, openGarage) — no missing keys"
+      check: "controls.json parses as JSON and contains a non-empty string 'button' and 'toast' for all 6 embedded action keys (lockDoor, armSystem, runScene, pauseVacuum, unlockDoor, openGarage), and the JSON object has exactly these 6 top-level keys — no missing or extra keys"
     - id: obj-2
       check: "Every 'button' value is 1-3 whitespace-delimited words and has no trailing '.', '!', or ellipsis (JS: w=v.trim().split(/\s+/); 1<=w.length<=3 && !/[.!…]$/.test(v) && !/\.\.\.$/.test(v))"
     - id: obj-3

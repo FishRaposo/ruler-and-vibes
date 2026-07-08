@@ -77,7 +77,7 @@ since the initial report.
 
 Host: So this tablet, the Verrow tablet — remind listeners what we know.
 
-Guest: Right, so following the report in the Ledsham Heritage blog, the
+Guest: Right, so following the report in the Regional heritage blog, the
 tablet's been dated to the 3rd century. It's a nice find for the
 region, assuming that holds up once the fuller technical report comes
 out.

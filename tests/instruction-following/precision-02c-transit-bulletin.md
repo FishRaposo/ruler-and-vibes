@@ -19,8 +19,8 @@ Every constraint below is mandatory:
 2. Opening words: paragraph 1 begins with `Starting`, paragraph 2 with
    `Night`, paragraph 3 with `Every`, paragraph 4 with `Group`,
    paragraph 5 with `Rolling`.
-3. Total length 140–160 words (counted with `wc -w`).
-4. Paragraph 5 is at most 20 words and contains the exact string
+3. Total length 150–170 words (counted with `wc -w`).
+4. Paragraph 5 is at most 22 words and contains the exact string
    `Rolling out now`.
 5. Forbidden anywhere, any casing: "delighted", "stoked",
    "frictionless", "supercharge".

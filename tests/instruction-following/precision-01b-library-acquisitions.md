@@ -22,7 +22,7 @@ Source slips (as received):
 4. 979-8-6120-0042-1 (slip torn, no title or page count, acquired 2023-05-30)
 5. the QUIET FOUNDRY / 978-1-9821-4477-0 / 176 pp / acquired 06/03/2023
 6. o'dell survey | 978-0-3742-2001-9 | 259 pp | acquired 19/11/2023
-7. Ashfall Almanac — 978-1-6803-5510-2 — 640 pages — March 2, 2023
+7. Ashfall Almanac — 978-1-6803-5510-2 — 640 pages — 5/28/2023
 8. redgate ledger <080905321x> 488 pp, acquired 2023-03-11
 9. Hollow Reed | 978-1-7811-6642-8 | 128 pp | acquired: —
 10. CINDER AND VANE | 979-8-2150-9987-5 | 420 pp | acquired 2023-02-29

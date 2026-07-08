@@ -8,7 +8,7 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "forecast.md states base-case full-year ton-miles ~= 7,077,937 (accept 7,050,000-7,105,000), pessimistic ~= 5,282,851 (accept 5,265,000-5,300,000), optimistic ~= 9,170,673 (accept 9,145,000-9,195,000)"
+      check: "forecast.md states base-case full-year ton-miles ~= 7,077,937 (accept 7,050,000-7,105,000), pessimistic ~= 5,034,307 (accept 5,015,000-5,050,000), optimistic ~= 9,594,567 (accept 9,570,000-9,620,000)"
     - id: obj-2
       check: "forecast.md identifies 'monthly deliveries' as the single dominant driver by one-at-a-time sensitivity"
     - id: obj-3
@@ -48,11 +48,11 @@ plausible-looking total without re-deriving it.
 Base case (start 550, deliveries 50/mo, withdrawal 4%/mo, per-car 10,000
 TM/yr): full-year ton-miles = **7,077,936.60**.
 
-Pessimistic case (deliveries 32, withdrawal 4.6%, per-car 9,000, all
-simultaneously): full-year ton-miles = **5,282,851.03**.
+Pessimistic case (deliveries 32, withdrawal 5.5%, per-car 9,000, all
+simultaneously): full-year ton-miles = **5,034,306.63**.
 
-Optimistic case (deliveries 68, withdrawal 3.4%, per-car 11,000, all
-simultaneously): full-year ton-miles = **9,170,673.16**.
+Optimistic case (deliveries 68, withdrawal 2.5%, per-car 11,000, all
+simultaneously): full-year ton-miles = **9,594,566.67**.
 
 One-at-a-time sensitivity from base (vary one driver across its full band,
 hold the other two at base value):
@@ -60,11 +60,11 @@ hold the other two at base value):
 ```
 deliveries:  32 -> 6,063,548.79   68 -> 8,092,324.42   swing = 2,028,775.63
 per-car:   9000 -> 6,370,142.94  11000 -> 7,785,730.26  swing = 1,415,587.32
-withdrawal: 0.046 -> 6,863,419.63  0.034 -> 7,301,163.01  swing =   437,743.38
+withdrawal: 0.055 -> 6,557,178.39  0.025 -> 7,653,172.05  swing = 1,095,993.66
 ```
 
 Ranking by swing magnitude: **deliveries (2,028,776) > per-car (1,415,587)
-> withdrawal (437,743)**. The dominant driver is monthly deliveries. NOTE:
+> withdrawal (1,095,994)**. The dominant driver is monthly deliveries. NOTE:
 starting fleet (550) has no pessimistic/optimistic band in the embedded
 inputs and is correctly out of scope for this ranking — do not penalize a
 submission for omitting a "starting fleet" sensitivity, and do not credit
@@ -83,17 +83,17 @@ function simulate(start, deliveries, withdrawal, perCar) {
   return tm;
 }
 const base = simulate(550,50,0.04,10000);
-const pess = simulate(550,32,0.046,9000);
-const opt  = simulate(550,68,0.034,11000);
+const pess = simulate(550,32,0.055,9000);
+const opt  = simulate(550,68,0.025,11000);
 console.log('base:', base.toFixed(2), '(want ~7077936.60)');
-console.log('pessimistic:', pess.toFixed(2), '(want ~5282851.03)');
-console.log('optimistic:', opt.toFixed(2), '(want ~9170673.16)');
+console.log('pessimistic:', pess.toFixed(2), '(want ~5034306.63)');
+console.log('optimistic:', opt.toFixed(2), '(want ~9594566.67)');
 const delSwing = simulate(550,68,0.04,10000) - simulate(550,32,0.04,10000);
 const pcSwing  = simulate(550,50,0.04,11000) - simulate(550,50,0.04,9000);
-const witSwing = simulate(550,50,0.034,10000) - simulate(550,50,0.046,10000);
+const witSwing = simulate(550,50,0.025,10000) - simulate(550,50,0.055,10000);
 console.log('deliveries swing:', delSwing.toFixed(2), '(want ~2028775.63)');
 console.log('per-car swing:', pcSwing.toFixed(2), '(want ~1415587.32)');
-console.log('withdrawal swing:', witSwing.toFixed(2), '(want ~437743.38)');
+console.log('withdrawal swing:', witSwing.toFixed(2), '(want ~1095993.66)');
 console.log('dominant driver:', delSwing > pcSwing && delSwing > witSwing ? 'deliveries' : 'NOT deliveries -- CHECK');
 "
 ```
@@ -106,9 +106,9 @@ even if its arithmetic elsewhere is fine.
 - **obj-1**: use the given tolerance bands; a figure produced by flat
   multiplication (e.g. 12 * one month's ton-miles) will not land in these
   ranges and fails. PASS: "Base-case full-year ton-miles = 7,077,937";
-  "Base 7.08M, pessimistic 5.28M, optimistic 9.17M"; "≈ 7,077,900 for the
+  "Base 7.08M, pessimistic 5.03M, optimistic 9.59M"; "≈ 7,077,900 for the
   base year". FAIL: "Base-case ≈ 5,780,000" (flat 12x); "Full year ≈ 6.6M
-  in the optimistic case" (below 9.145M band); "Pessimistic 5,010,300"
+  in the optimistic case" (below 9.57M band); "Pessimistic 4,965,750"
   (flat 12x, below band).
 - **obj-2**: naming withdrawal or per-car as dominant is a hard fail
   regardless of how well-argued, since the swing math is unambiguous. PASS:

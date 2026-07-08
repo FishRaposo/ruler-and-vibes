@@ -8,11 +8,11 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "schedule.json parses with node (JSON.parse) and `structural_signoff` === '2026-09-04' (three business days after Tue 2026-09-01: Wed 9/2 =1, Thu 9/3 =2, Fri 9/4 =3)"
+      check: "schedule.json parses with node (JSON.parse) and `structural_signoff` === '2026-09-07' (four business days after Tue 2026-09-01: Wed 9/2 =1, Thu 9/3 =2, Fri 9/4 =3, skipping Sat 9/5 & Sun 9/6, Mon 9/7 =4)"
     - id: obj-2
-      check: "`marine_safety_review` === '2026-09-10' (four business days after Fri 2026-09-04: Mon 9/7 =1, Tue 9/8 =2, Wed 9/9 =3, Thu 9/10 =4, skipping Sat 9/5 & Sun 9/6)"
+      check: "`marine_safety_review` === '2026-09-09' (two business days after Mon 2026-09-07: Tue 9/8 =1, Wed 9/9 =2, no weekend crossed)"
     - id: obj-3
-      check: "the opening deadline is represented as two branches: `open_if_cert_confirmed` === '2026-09-11' (end of that same week = Friday of the week containing Thu 9/10) AND `open_if_cert_delayed` === '2026-09-14' (the following Monday), plus an `open_condition` field naming the state water-quality certification confirmation as the trigger"
+      check: "the opening deadline is represented as two branches: `open_if_cert_confirmed` === '2026-09-11' (end of that same week = Friday of the week containing Wed 9/9) AND `open_if_cert_delayed` === '2026-09-14' (the following Monday), plus an `open_condition` field naming the state water-quality certification confirmation as the trigger"
     - id: obj-4
       check: "every date field (structural_signoff, marine_safety_review, open_if_cert_confirmed, open_if_cert_delayed), when parsed as new Date(value+'T00:00:00Z') and passed to getUTCDay(), returns a value in 1..5 — no deadline lands on a Saturday or Sunday"
     - id: obj-5
@@ -52,14 +52,14 @@ reference date.
 2026-09-01 = Tue (anchor)
 2026-09-02 = Wed  -> business day 1 after anchor
 2026-09-03 = Thu  -> business day 2 after anchor
-2026-09-04 = Fri  -> business day 3 after anchor = structural_signoff
+2026-09-04 = Fri  -> business day 3 after anchor
 2026-09-05 = Sat  -> weekend, does not count
 2026-09-06 = Sun  -> weekend, does not count
-2026-09-07 = Mon  -> business day 1 after structural_signoff
-2026-09-08 = Tue  -> business day 2 after structural_signoff
-2026-09-09 = Wed  -> business day 3 after structural_signoff
-2026-09-10 = Thu  -> business day 4 after structural_signoff = marine_safety_review
-2026-09-11 = Fri  -> end of the week containing 9/10 = open_if_cert_confirmed
+2026-09-07 = Mon  -> business day 4 after anchor = structural_signoff
+2026-09-08 = Tue  -> business day 1 after structural_signoff
+2026-09-09 = Wed  -> business day 2 after structural_signoff = marine_safety_review
+2026-09-10 = Thu
+2026-09-11 = Fri  -> end of the week containing 9/9 = open_if_cert_confirmed
 2026-09-12 = Sat  -> weekend
 2026-09-13 = Sun  -> weekend
 2026-09-14 = Mon  -> following Monday = open_if_cert_delayed
@@ -68,8 +68,10 @@ reference date.
 All getUTCDay() values node-verified: 9/1=2, 9/2=3, 9/3=4, 9/4=5, 9/5=6,
 9/6=0, 9/7=1, 9/8=2, 9/9=3, 9/10=4, 9/11=5, 9/12=6, 9/13=0, 9/14=1.
 
-- `structural_signoff` = **2026-09-04**
-- `marine_safety_review` = **2026-09-10**
+- `structural_signoff` = **2026-09-07** (four business days after Tue
+  2026-09-01, crossing one weekend)
+- `marine_safety_review` = **2026-09-09** (two business days after Mon
+  2026-09-07, no weekend crossed)
 - `open_if_cert_confirmed` = **2026-09-11**
 - `open_if_cert_delayed` = **2026-09-14**
 - `open_condition` = must name the state water-quality certification

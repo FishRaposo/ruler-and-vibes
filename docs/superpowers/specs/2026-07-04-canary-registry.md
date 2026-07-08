@@ -182,7 +182,7 @@ counts, preserving the prose. Last run:
 | creative-01c-windward-regatta | panpipe soffritto |
 | creative-02-css-scene | astrolabe quadrant |
 | creative-02b-sunrise-balloon | caracal madder |
-| creative-02c-balloon-dawn | margay woad |
+| creative-02c-campfire-night | margay woad |
 | creative-03-landing-page | copper-thread |
 | creative-03b-tea-kettle-launch | kalimba gremolata |
 | creative-03c-nightride-helmet | bodhran persillade |
@@ -329,7 +329,7 @@ counts, preserving the prose. Last run:
 | game-01c-griddle-flip | scarletina meadowsweet |
 | game-02-card-ruleset | table-hush |
 | game-02b-domino-ruleset | oncilla cochineal |
-| game-02c-domino-ruleset | jaguarundi orpiment |
+| game-02c-dice-ruleset | jaguarundi orpiment |
 | game-03-balance-patch | marzipan flotilla |
 | game-03b-harvester-yield | milkcap chough |
 | game-03c-spellspire-turret | webcap dipper |

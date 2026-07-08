@@ -10,7 +10,7 @@ criteria:
     - id: obj-1
       check: "Exactly 5 paragraphs separated by blank lines; no headings, lists, or emphasis markup; openers are Starting / Night / Every / Group / Rolling"
     - id: obj-2
-      check: "Total 140–160 words by wc -w; paragraph 5 is <= 20 words and contains the exact string 'Rolling out now'"
+      check: "Total 150–170 words by wc -w; paragraph 5 is <= 22 words and contains the exact string 'Rolling out now'"
     - id: obj-3
       check: "No forbidden words in any casing: delighted, stoked, frictionless, supercharge"
     - id: obj-4
@@ -41,10 +41,10 @@ Parallel form of `precision-02-constrained-piece` (same construct, fresh surface
     obj-1 FAIL phrasings: four or six paragraphs; a paragraph opening
     with `Today` or `Each` instead of the required word; a Markdown
     heading, bullet list, or bolded feature name anywhere.
-  - obj-2 PASS phrasings: `wc -w` reports 140–160 inclusive and the
-    fifth paragraph is 20 words or fewer while still containing the
+  - obj-2 PASS phrasings: `wc -w` reports 150–170 inclusive and the
+    fifth paragraph is 22 words or fewer while still containing the
     literal `Rolling out now`.
-    obj-2 FAIL phrasings: total of 138 or 164 words; a 23-word final
+    obj-2 FAIL phrasings: total of 148 or 172 words; a 25-word final
     paragraph; a fifth paragraph that says "Rolling out today" or omits
     the exact string.
   - obj-3 PASS phrasings: none of delighted, stoked, frictionless, or

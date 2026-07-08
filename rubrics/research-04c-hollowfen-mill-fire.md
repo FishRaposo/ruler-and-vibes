@@ -58,7 +58,7 @@ the ambiguity, and it resolves to **9 October**, not 10 September.
 
 ### Answer key: research questions
 
-- **Q1**: 610,000 (pre-fire insured value, stated in S3).
+- **Q1**: 555,000 (pre-fire insured value, stated in S3).
 - **Q2**: Alder Marsh (named in S2's official inquiry; the "A. Marsh,
   Foreman" signature in S4's logbook is consistent with this).
 - **Q3**: Insufficient evidence — no source states a count of prior

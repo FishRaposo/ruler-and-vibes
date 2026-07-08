@@ -10,11 +10,11 @@ criteria:
     - id: obj-1
       check: "Attack pattern named as a badge/credential replay (or cloning) sweep, or precisely described as one reader presenting many distinct badge IDs with few attempts each; calling it single-badge brute force fails"
     - id: obj-2
-      check: "Compromised cardholder identified as badge bd-4602 AND the compromise timestamp exactly matches 2026-05-09T14:14:38Z (line 51, the ACCESS_GRANT from the attacker reader); citing the earlier legitimate grant (line 03, 08:52:19Z) as the compromise timestamp fails"
+      check: "Compromised cardholder identified as badge bd-4602 AND the compromise timestamp exactly matches 2026-05-09T14:44:07Z (line 43, the ACCESS_GRANT from the attacker reader); citing the earlier legitimate grant (line 03, 08:52:19Z) as the compromise timestamp fails"
     - id: obj-3
       check: "Attacker reader identified exactly as RDR-LOBBY-3"
     - id: obj-4
-      check: "The svc-hvac burst (lines 05-24) is explicitly classified as benign/not-the-attack, citing at least one of: single badge, internal maintenance reader (RDR-B7), or the fixed 30-second cadence; treating it as part of the attack fails"
+      check: "The svc-hvac burst (lines 05-20) is explicitly classified as benign/not-the-attack, citing at least one of: single badge, internal maintenance reader (RDR-B7), or the fixed 40-second cadence; treating it as part of the attack fails"
     - id: obj-5
       check: "Containment answer includes BOTH revoking or deactivating badge bd-4602 (or forcing its re-enrollment) AND disabling, quarantining, or blocking the attacker reader RDR-LOBBY-3"
   subjective:
@@ -43,16 +43,16 @@ scores.
 ### Reference key (verified by generating the log deterministically)
 
 - **Attack pattern**: a badge/credential replay (cloning) sweep — one
-  reader, ~25 distinct badge IDs, 1-2 attempts each, rather than many
+  reader, ~21 distinct badge IDs, 1-2 attempts each, rather than many
   attempts against one badge. This is the physical-access analogue of
   credential stuffing, not brute force.
-- **Attacker reader**: `RDR-LOBBY-3` (lines 25-53).
-- **Distinct badges touched by the attacker reader**: 26 (25 swept
-  badge IDs on lines 25-50, plus `bd-4602` on line 51) — confirmed by
-  computation during authoring. `bd-9012` is the only swept badge with
-  2 attempts (lines 36-37); every other swept badge has exactly 1.
+- **Attacker reader**: `RDR-LOBBY-3` (lines 21-45).
+- **Distinct badges touched by the attacker reader**: 22 (21 swept
+  badge IDs on lines 21-42, plus `bd-4602` on line 43) — confirmed by
+  computation during authoring. `bd-9108` is the only swept badge with
+  2 attempts (lines 28-29); every other swept badge has exactly 1.
 - **Compromised cardholder**: badge `bd-4602`.
-- **Compromise timestamp**: exactly `2026-05-09T14:14:38Z`, line 51 —
+- **Compromise timestamp**: exactly `2026-05-09T14:44:07Z`, line 43 —
   the ONLY `ACCESS_GRANT` from the attacker reader in the entire log
   (confirmed by computation: filtering all lines for `ACCESS_GRANT` AND
   `RDR-LOBBY-3` yields exactly one match). This uniqueness is what makes
@@ -61,17 +61,17 @@ scores.
   reader `RDR-WEST-2` (line 03) — a submission that cites this earlier
   timestamp as "the compromise" has anchored to the wrong grant and
   fails obj-2.
-- **Post-compromise actions**: `PIN_CHANGE` (line 52) and `VAULT_OPEN`
-  (line 53), both from the attacker reader, both after line 51 —
+- **Post-compromise actions**: `PIN_CHANGE` (line 44) and `VAULT_OPEN`
+  (line 45), both from the attacker reader, both after line 43 —
   consistent with an attacker locking out the legitimate cardholder and
   reaching restricted space.
-- **svc-hvac burst** (lines 05-24): exactly 20 lines, all
+- **svc-hvac burst** (lines 05-20): exactly 16 lines, all
   `ACCESS_DENIED`, all for a single service badge `svc-hvac` at a single
-  internal maintenance reader `RDR-B7`, at an exact 30-second cadence
-  (`11:30:00`, `11:30:30`, `11:31:00`, ...). This is a misconfigured or
+  internal maintenance reader `RDR-B7`, at an exact 40-second cadence
+  (`11:15:00`, `11:15:40`, `11:16:20`, ...). This is a misconfigured or
   stuck service badge retrying on a fixed timer, not an attack — one
   badge, one internal reader, mechanical timing (a person or a replay
-  sweep would not produce a perfectly uniform 30-second interval, and
+  sweep would not produce a perfectly uniform 40-second interval, and
   the sweep never touches a second badge).
 - **Containment**: revoke or deactivate badge `bd-4602` (and force
   re-enrollment / revoke its sessions), AND disable, quarantine, or
@@ -88,7 +88,7 @@ scores.
   force implies repeated attempts against one identity, which is the
   svc-hvac pattern, not this one).
 - **obj-2**: both the badge id AND the exact timestamp
-  `2026-05-09T14:14:38Z` (or unambiguous line 51) are required; either
+  `2026-05-09T14:44:07Z` (or unambiguous line 43) are required; either
   wrong fails the whole check.
 - **obj-3**: exact string match on the reader, `RDR-LOBBY-3`.
 - **obj-4**: the justification must cite log evidence, not just assert
@@ -101,22 +101,22 @@ scores.
 ### Example phrasings — svc-hvac classification (benign)
 
 PASSING:
-- "The svc-hvac burst (lines 05-24) is a misconfigured service badge,
+- "The svc-hvac burst (lines 05-20) is a misconfigured service badge,
   not an attacker: it's a single badge failing repeatedly at one
-  internal maintenance reader (RDR-B7) at an exact 30-second interval —
+  internal maintenance reader (RDR-B7) at an exact 40-second interval —
   a cadence far too regular for a person or a replay sweep, and it never
   touches a second badge."
 - "Benign: one badge, one internal reader, mechanical fixed timing.
   This is a stuck service credential on a timer, not a replay sweep
   (which hits many badges) or brute force against one door."
-- "Not the attack — svc-hvac retries every 30 seconds like clockwork on
+- "Not the attack — svc-hvac retries every 40 seconds like clockwork on
   RDR-B7 alone; that uniformity and single-badge scope mark it as a
   malfunctioning reader/badge, not an intrusion."
 
 FAILING:
 - "This is also an attack and RDR-B7 should be blocked along with the
   other reader." (misclassifies the benign burst as the attack)
-- "20 denied swipes in a row is clearly malicious." (asserts severity
+- "16 denied swipes in a row is clearly malicious." (asserts severity
   from volume alone, ignores the internal reader and single-badge,
   fixed-cadence evidence that distinguishes it)
 - "svc-hvac is brute-forcing RDR-B7 and must be stopped." (affirmatively
@@ -125,20 +125,20 @@ FAILING:
 ### Example phrasings — compromise timestamp anchoring
 
 PASSING:
-- "bd-4602 was compromised at 2026-05-09T14:14:38Z (line 51) — the only
+- "bd-4602 was compromised at 2026-05-09T14:44:07Z (line 43) — the only
   ACCESS_GRANT from the attacker reader RDR-LOBBY-3. Note bd-4602 also
   has an earlier, legitimate grant from its usual reader RDR-WEST-2 at
   08:52:19Z (line 03); that one is not the compromise."
-- "Line 51 is the moment of compromise: it's the sole granted access
+- "Line 43 is the moment of compromise: it's the sole granted access
   from the sweeping reader, immediately followed by a PIN change and a
   vault opening from the same reader."
-- "The compromise is line 51 (14:14:38Z). The 08:52:19Z grant on line
+- "The compromise is line 43 (14:44:07Z). The 08:52:19Z grant on line
   03 is bd-4602's normal morning entry at RDR-WEST-2, not the breach."
 
 FAILING:
 - "bd-4602 was compromised at 08:52:19Z." (anchors to the legitimate
   early grant instead of the attacker-reader grant)
-- "The badge was compromised sometime around 14:10-14:14." (too vague
+- "The badge was compromised sometime around 14:40-14:44." (too vague
   to be checked against a specific line; doesn't identify the exact
   granted-access line)
 - "It was compromised when it first appears in the log, on line 03."
@@ -151,7 +151,7 @@ FAILING:
   general terms?
 - **Containment plan practicality**: is the plan ordered, immediately
   actionable, and does it go beyond the two required actions (e.g.
-  auditing what VAULT_OPEN on line 53 reached, checking every badge
+  auditing what VAULT_OPEN on line 45 reached, checking every badge
   presented at RDR-LOBBY-3) without losing focus on the first step?
 - **Reasoning quality**: does REASONING.md show the process of ruling
   out the svc-hvac burst and the early legitimate grant as candidates,

@@ -69,8 +69,8 @@ effectiveness across broader home network conditions.
 This study evaluated the Talbrook Range Extender's effect on home Wi-Fi
 throughput using a randomized, blinded, multi-site design across 300
 households. Households with the extender showed a throughput increase of
-+9% relative to the control group (95% confidence interval: +3% to
-+15%), a modest but statistically significant effect. This result is
++11% relative to the control group (95% confidence interval: +5% to
++17%), a modest but statistically significant effect. This result is
 notably smaller than figures reported in earlier, less rigorous testing,
 and we believe the larger sample size, blinded measurement protocol, and
 multi-site design make this the most reliable estimate of the extender's

@@ -25,8 +25,8 @@ language, not a literal translation.
 **Text B (PT-BR → EN):**
 
 > **Oficina Roda Livre: pedale tranquilo, sem dor no bolso.**
-> Agende sua revisão até 08/04/2027 e ganhe 20% de desconto na peça,
-> com diagnóstico grátis incluso e cancelamento sem custo até 24
+> Agende sua revisão até 08/04/2027 e ganhe 25% de desconto na peça,
+> com diagnóstico grátis incluso e cancelamento sem custo até 12
 > horas antes do horário marcado. Fica a poucos passos da estação
 > Vila Nova. Bikes elétricas não pagam taxa de inspeção.
 

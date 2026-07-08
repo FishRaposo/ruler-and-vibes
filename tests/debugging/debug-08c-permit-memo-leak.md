@@ -47,7 +47,7 @@ var memo = new Map();
 var hits = 0, misses = 0;
 
 function validate(app) {
-  var key = JSON.stringify(app); // app includes: formType, fields, traceId
+  var key = JSON.stringify(app); // app includes: formType, fields, sessionId
   if (memo.has(key)) {
     hits++;
     pruneIfFull();
@@ -60,7 +60,7 @@ function validate(app) {
 }
 
 function pruneIfFull() {
-  if (memo.size > 64) {
+  if (memo.size > 72) {
     var oldest = memo.keys().next().value;
     memo.delete(oldest);
   }
@@ -77,10 +77,10 @@ only sometimes.
 - `fix.js` — a corrected validation-memo module (self-contained, does
   not need to reuse the excerpt's exact structure) plus a self-test
   block runnable with `node fix.js` printing a PASS/FAIL line for:
-  1. after feeding 120 distinct requests (differing only in
-     `traceId`) through the memo, the memo holds at most 64 entries
-  2. two requests identical except for `traceId` produce a memo hit (a
-     single stored entry, not two)
+  1. after feeding 96 distinct requests (differing only in
+     `sessionId`) through the memo, the memo holds at most 72 entries
+  2. two requests identical except for `sessionId` produce a memo hit
+     (a single stored entry, not two)
 - `DIAGNOSIS.md` — explain the root cause using only the telemetry and
   excerpt above, and state which specific log signal confirms it.
 

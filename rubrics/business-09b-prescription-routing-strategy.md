@@ -69,7 +69,7 @@ plus the payer deadline, no in-house e-prescribing/compliance expertise,
 mandatory regulatory certification) all point the same direction:
 
 **Correct call: BUY.** A proven, already-certified vendor resolves the
-certification risk, ships in 10 weeks (fastest path against the
+certification risk, ships in 7 weeks (fastest path against the
 competitor's two-month launch and the payer deadline), and doesn't require
 the team to build expertise it lacks in a domain that isn't a
 differentiator anyway.

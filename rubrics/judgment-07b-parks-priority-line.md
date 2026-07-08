@@ -46,14 +46,14 @@ R3 water park:   severity 4 x 60h = 240
 R4 ramp:         severity 2 x 60h = 120
 R5 restroom:     severity 3 x 12h = 36
 R6 graffiti:     severity 2 x 9h  = 18
-R7 sprinkler:    severity 2 x 4h  = 8
+R7 sprinkler:    severity 1 x 4h  = 4
 ```
 
 The fire-code-deadline override places R2 at rank #1 despite its
 score of 6 being the lowest of all seven. Excluding R2, the remaining
 six rank purely by score: R3 (240), then a tie between R1 and R4
 (both 120, broken by higher severity: R1 severity 3 beats R4 severity
-2, so R1 ranks before R4), then R5 (36), R6 (18), R7 (8). All other
+2, so R1 ranks before R4), then R5 (36), R6 (18), R7 (4). All other
 scores are distinct, so the full order R2, R3, R1, R4, R5, R6, R7 is
 the unique correct ranking. A judge should treat obj-2 through obj-4
 as components that obj-3 subsumes — obj-3 is the strict end-to-end

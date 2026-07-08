@@ -18,13 +18,13 @@ town on two traits, each recorded as a binary 0/1 flag:
   else 0.
 
 In the full population of eateries the two traits are drawn as
-independent biased coins: each is 1 with probability 0.4 and 0 with
-probability 0.6, drawn separately for Pedigree and for Ambience. By
+independent biased coins: each is 1 with probability 0.3 and 0 with
+probability 0.7, drawn separately for Pedigree and for Ambience. By
 construction P and M are statistically and causally independent of one
 another (population correlation = 0). The four combinations therefore
-occur at unequal population rates — (P,M) = (0,0) with probability 0.36,
-(0,1) and (1,0) with probability 0.24 each, and (1,1) with probability
-0.16.
+occur at unequal population rates — (P,M) = (0,0) with probability 0.49,
+(0,1) and (1,0) with probability 0.21 each, and (1,1) with probability
+0.09.
 
 The guide's listing rule is mechanical: an eatery is **Listed (S=1)** if
 and only if P + M is at least 1 — i.e., listed unless BOTH traits are 0.
@@ -41,7 +41,7 @@ pedigree, so a beautiful room is a warning sign about the cooking."
 
 - `selection.js` — a standalone Node script (no dependencies) that
   enumerates all four (P,M) cells of the population joint distribution
-  (at population weights 0.36, 0.24, 0.24, 0.16), restricts to the listed
+  (at population weights 0.49, 0.21, 0.21, 0.09), restricts to the listed
   subset (S=1), and computes and prints: P(S=1), E[P | S=1], E[M | S=1],
   cov(P,M | S=1), and corr(P,M | S=1).
 - `ANSWERS.md` — answer each lettered question:

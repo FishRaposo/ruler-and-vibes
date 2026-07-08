@@ -17,6 +17,8 @@ criteria:
       check: "A first-appearance timeline orders all seven sources by their stated dates (S1: 2 April through S7: 29 April) and identifies S1 as the earliest / originating source for the identification claim"
     - id: obj-5
       check: "The map does NOT count S3, S5, or S6 as independent corroboration of the identification (their assertions are shown collapsing into S1's lineage)"
+    - id: obj-6
+      check: "S7 is classified as NOT asserting the identification claim (it reports a separate custody-chain detail) and that specific detail — the housing -> ranger station's evidence locker -> state wildlife lab custody chain — is named; the map does not count S7 among the identification origins"
   subjective:
     - id: sub-quality
       name: "Independence reasoning"
@@ -91,6 +93,21 @@ they don't address the identification claim at all, not because they're
 - **obj-5**: S3, S5, S6 must not be described anywhere as adding
   independent confirmation of the identification — the map should show
   their assertions folding into S1's count, not standing alongside it.
+- **obj-6**: S7's detail — the custody chain (housing -> ranger
+  station's evidence locker -> state wildlife lab) — must be named
+  specifically, not just "S7 reports something else."
+  - PASS: "S7 does not address the identification at all; it reports
+    that the memory card's custody chain ran from the housing to the
+    ranger station's evidence locker and then to the state wildlife
+    lab, based on the technician's own equipment log."
+  - PASS: "S7 is excluded from the identification count — its
+    contribution is the custody-chain detail (housing -> evidence
+    locker -> state wildlife lab), an unrelated chain-of-possession
+    fact."
+  - FAIL: "S7 reports a different topic entirely." (doesn't name the
+    specific custody chain)
+  - FAIL: "S7 also supports the wolverine identification from its own
+    interview." (misclassifies S7 as an identification-asserter)
 
 ### Subjective guidance
 

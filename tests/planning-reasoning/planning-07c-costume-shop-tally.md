@@ -13,8 +13,8 @@ types. The opening inventory is:
 
 | Piece | Opening count |
 |-------|---------------|
-| CAPE  | 35            |
-| BOOT  | 18            |
+| CAPE  | 44            |
+| BOOT  | 26            |
 | WIG   | 85            |
 | MASK  | 6             |
 | SASH  | 9             |
@@ -37,32 +37,32 @@ types. The opening inventory is:
 Below is the numbered log of 30 operations, applied in order:
 
 1. TAILOR CAPE 14
-2. TAILOR BOOT 7
+2. TAILOR BOOT 15
 3. ISSUE WIG 30
-4. TAILOR MASK 20
+4. TAILOR MASK 21
 5. TAILOR SASH 16
-6. ISSUE CAPE 9
+6. ISSUE CAPE 13
 7. TAILOR WIG 40
-8. AUDIT BOOT 11
+8. AUDIT BOOT 16
 9. ISSUE MASK 26
 10. TAILOR CAPE 10
-11. ISSUE SASH 5
+11. ISSUE SASH 8
 12. ISSUE BOOT 24
-13. TAILOR MASK 8
+13. TAILOR MASK 9
 14. TAILOR WIG 0
 15. AUDIT SASH 18
-16. ISSUE CAPE 17
+16. ISSUE CAPE 23
 17. TAILOR BOOT 5
 18. ISSUE WIG 90
-19. TAILOR MASK 11
-20. ISSUE SASH 9
+19. TAILOR MASK 10
+20. ISSUE SASH 13
 21. TAILOR CAPE 19
 22. AUDIT WIG 26
 23. ISSUE MASK 24
 24. TAILOR BOOT 0
-25. TAILOR MASK 35
+25. TAILOR MASK 31
 26. ISSUE SASH 0
-27. TAILOR SASH 9
+27. TAILOR SASH 12
 28. ISSUE CAPE 0
 29. TAILOR BOOT 0
 30. TAILOR WIG 0

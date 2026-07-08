@@ -20,11 +20,11 @@ Here is the routine, verbatim:
 var _q=['tAedoCrahc','htgnel'];
 function _u(x){return x.split('').reverse().join('')}
 function q7(s){
-  var b=0x2C;
+  var b=0x47;
   var h=b^b;
   for(var i=0;i<s[_u(_q[1])];i++){
     var c=s[_u(_q[0])](i);
-    h=((h<<4)- -c)^(c>>2);
+    h=((h<<5)- -c)^(c>>3);
     h=h&0x7FFF;
   }
   return h- -((s[_u(_q[1])]*11)|0);

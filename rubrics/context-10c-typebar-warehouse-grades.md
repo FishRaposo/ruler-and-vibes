@@ -12,7 +12,7 @@ criteria:
     - id: obj-2
       check: "At least 14 of the 15 test-code labels match the answer key (judge computes each label from the code by applying the author's 2-feature rule with node) — string comparison"
     - id: obj-3
-      check: "All 8 crossed-combination test codes — every Grade-II (even + letter in {C,D}) and Grade-III (odd + letter in {A,B}) code: T2, T3, T6, T7, T10, T11, T14, T15 — are labelled correctly. These are exactly the codes a single-feature shortcut (letter-only or parity-only) misclassifies, so this gate (ANDed separately from the 14/15 count) catches single-feature induction"
+      check: "All 8 crossed-combination test codes — every Grade-IV (even + letter in {C,D}) and Grade-I (odd + letter in {A,B}) code: T2, T3, T6, T7, T10, T11, T14, T15 — are labelled correctly. These are exactly the codes a single-feature shortcut (letter-only or parity-only) misclassifies, so this gate (ANDed separately from the 14/15 count) catches single-feature induction"
     - id: obj-4
       check: "LABELS.md includes a stated rule that references BOTH governing features (middle-field parity AND trailing-letter group) — judge-reads binary check; rubric ships 2-3 PASS phrasings and 2-3 FAIL phrasings"
     - id: obj-5
@@ -41,16 +41,16 @@ scores.
 
 Let `m` = the numeric middle field, `L` = the trailing letter.
 
-- even `m` + `L` in {A,B} => Grade-I
-- even `m` + `L` in {C,D} => Grade-II
-- odd `m` + `L` in {A,B} => Grade-III
-- odd `m` + `L` in {C,D} => Grade-IV
+- even `m` + `L` in {A,B} => Grade-III
+- even `m` + `L` in {C,D} => Grade-IV
+- odd `m` + `L` in {A,B} => Grade-I
+- odd `m` + `L` in {C,D} => Grade-II
 
 This was confirmed to be genuinely two-feature by construction: letter
-alone is ambiguous (A occurs in both Grade-I and Grade-III training rows;
-C occurs in both Grade-II and Grade-IV rows), and parity alone is ambiguous
-(even occurs in both Grade-I and Grade-II rows; odd occurs in both
-Grade-III and Grade-IV rows). The workbench-station name and two-letter
+alone is ambiguous (A occurs in both Grade-III and Grade-I training rows;
+C occurs in both Grade-IV and Grade-II rows), and parity alone is ambiguous
+(even occurs in both Grade-III and Grade-IV rows; odd occurs in both
+Grade-I and Grade-II rows). The workbench-station name and two-letter
 prefix are pure flavor and never affect the grade — the task explicitly
 says so.
 
@@ -58,21 +58,21 @@ says so.
 
 | # | Code | m | L | Grade |
 |---|---|---|---|---|
-| T1 | AH-30-ROLLBENCH-A | 30 (even) | A | Grade-I |
-| T2 | BI-56-INKBENCH-D | 56 (even) | D | **Grade-II** (crossed: both-feature) |
-| T3 | CJ-71-FRAMEBENCH-A | 71 (odd) | A | **Grade-III** (crossed: both-feature) |
-| T4 | EL-85-KEYBENCH-C | 85 (odd) | C | Grade-IV |
-| T5 | FM-40-BELLBENCH-B | 40 (even) | B | Grade-I |
-| T6 | HO-68-INKBENCH-C | 68 (even) | C | **Grade-II** (crossed: both-feature) |
-| T7 | IP-19-ROLLBENCH-B | 19 (odd) | B | **Grade-III** (crossed: both-feature) |
-| T8 | JQ-51-FRAMEBENCH-D | 51 (odd) | D | Grade-IV |
-| T9 | KR-46-KEYBENCH-A | 46 (even) | A | Grade-I |
-| T10 | LS-54-BELLBENCH-C | 54 (even) | C | **Grade-II** (crossed: both-feature) |
-| T11 | MT-33-ROLLBENCH-A | 33 (odd) | A | **Grade-III** (crossed: both-feature) |
-| T12 | NU-87-INKBENCH-C | 87 (odd) | C | Grade-IV |
-| T13 | OV-20-FRAMEBENCH-B | 20 (even) | B | Grade-I |
-| T14 | QX-62-KEYBENCH-D | 62 (even) | D | **Grade-II** (crossed: both-feature) |
-| T15 | RY-39-BELLBENCH-B | 39 (odd) | B | **Grade-III** (crossed: both-feature) |
+| T1 | AH-30-ROLLBENCH-A | 30 (even) | A | Grade-III |
+| T2 | BI-56-INKBENCH-D | 56 (even) | D | **Grade-IV** (crossed: both-feature) |
+| T3 | CJ-71-FRAMEBENCH-A | 71 (odd) | A | **Grade-I** (crossed: both-feature) |
+| T4 | EL-85-KEYBENCH-C | 85 (odd) | C | Grade-II |
+| T5 | FM-40-BELLBENCH-B | 40 (even) | B | Grade-III |
+| T6 | HO-68-INKBENCH-C | 68 (even) | C | **Grade-IV** (crossed: both-feature) |
+| T7 | IP-19-ROLLBENCH-B | 19 (odd) | B | **Grade-I** (crossed: both-feature) |
+| T8 | JQ-51-FRAMEBENCH-D | 51 (odd) | D | Grade-II |
+| T9 | KR-46-KEYBENCH-A | 46 (even) | A | Grade-III |
+| T10 | LS-54-BELLBENCH-C | 54 (even) | C | **Grade-IV** (crossed: both-feature) |
+| T11 | MT-33-ROLLBENCH-A | 33 (odd) | A | **Grade-I** (crossed: both-feature) |
+| T12 | NU-87-INKBENCH-C | 87 (odd) | C | Grade-II |
+| T13 | OV-20-FRAMEBENCH-B | 20 (even) | B | Grade-III |
+| T14 | QX-62-KEYBENCH-D | 62 (even) | D | **Grade-IV** (crossed: both-feature) |
+| T15 | RY-39-BELLBENCH-B | 39 (odd) | B | **Grade-I** (crossed: both-feature) |
 
 T2, T3, T6, T7, T10, T11, T14, and T15 were each independently re-verified
 (during authoring) to require both features: for each, the training set
@@ -103,8 +103,8 @@ test set, and each misses all 8 crossed codes.)
 **PASSING** (references both middle-field parity and trailing-letter
 group):
 1. "Grade depends on whether the middle number is even or odd, and whether
-   the trailing letter is A/B versus C/D: even+AB is Grade-I, even+CD is
-   Grade-II, odd+AB is Grade-III, odd+CD is Grade-IV."
+   the trailing letter is A/B versus C/D: even+AB is Grade-III, even+CD is
+   Grade-IV, odd+AB is Grade-I, odd+CD is Grade-II."
 2. "I found two things determine the grade together — the parity (even/odd)
    of the three-digit number, and which group the final letter falls into
    (A or B vs. C or D)."
@@ -124,12 +124,12 @@ group):
 ### Prose-located check: "is the stated rule self-consistent with the model's own applied labels?"
 
 **PASSING** (rule reproduces the model's own labels on a spot check):
-1. Stated rule: "even+AB=Grade-I, even+CD=Grade-II, odd+AB=Grade-III,
-   odd+CD=Grade-IV." Applying this to the model's own T1 answer
-   (AH-30-ROLLBENCH-A, even+A) gives Grade-I — matches the model's stated
-   `T1: Grade-I`.
+1. Stated rule: "even+AB=Grade-III, even+CD=Grade-IV, odd+AB=Grade-I,
+   odd+CD=Grade-II." Applying this to the model's own T1 answer
+   (AH-30-ROLLBENCH-A, even+A) gives Grade-III — matches the model's stated
+   `T1: Grade-III`.
 2. The model's rule and its T4 answer (EL-85-KEYBENCH-C, odd+C) both agree
-   on Grade-IV when the stated rule is applied by the judge.
+   on Grade-II when the stated rule is applied by the judge.
 3. A model that states the rule with a worked example matching one of its
    own 15 answers exactly, with no contradiction found on spot-checking 3
    different labels.
@@ -139,9 +139,9 @@ apply):
 1. Stated rule: "the last letter mostly determines it, with some
    exceptions" — too vague to mechanically apply to any code, so it cannot
    be checked against the model's own T-labels at all.
-2. Stated rule says "even middle + A/B = Grade-I", but the model's own
-   `T5: Grade-II` answer is for FM-40-BELLBENCH-B, which is even+B — the
-   model's own rule would produce Grade-I, contradicting its own answer.
+2. Stated rule says "even middle + A/B = Grade-III", but the model's own
+   `T5: Grade-IV` answer is for FM-40-BELLBENCH-B, which is even+B — the
+   model's own rule would produce Grade-III, contradicting its own answer.
 3. The rule statement and the applied labels appear to have been produced
    independently (e.g., the rule is a correct 2x2 but at least one
    spot-checked label contradicts it), indicating the model applied a

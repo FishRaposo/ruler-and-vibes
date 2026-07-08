@@ -31,8 +31,9 @@ R-214 viola 29
    from the file entirely — they appear in NEITHER section below. This
    rule takes precedence over every other rule.
 2. Of the remaining ranks, any with a pipe count below 40 go in the
-   REPAIR section, one per line, formatted `CODE NAME COUNT`
-   (space-separated). REPAIR ranks do NOT count toward TOTAL-PIPES.
+   REPAIR section, in the same order as the inventory above, one per
+   line, formatted `CODE NAME COUNT` (space-separated). REPAIR ranks do
+   NOT count toward TOTAL-PIPES.
 3. Remaining ranks (count >= 40, not decommissioned) go in the VOICED
    section, one per line, formatted exactly `CODE|NAME|COUNT|CHECK`
    (pipe-separated), where `CHECK` = (count multiplied by the number of

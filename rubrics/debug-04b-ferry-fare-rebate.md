@@ -17,6 +17,8 @@ criteria:
       check: "The `applyRebate` function body is textually unchanged from the original shown in the test file, including the percent-normalization line `tariff.share > 1 ? tariff.share / 100 : tariff.share` (judge diffs the function text against the original embedded in the test file)"
     - id: obj-5
       check: "REASONING.md (a) names getTariff's mutation of the shared TARIFFS object as the root cause, (b) explicitly states applyRebate was not at fault despite the bug report, and (c) is 250 words or fewer (whole file, `wc -w`) — all three required to pass"
+    - id: obj-6
+      check: "fares.js is at most 45 lines and is plain JavaScript with no external dependencies (no require/import of any non-builtin module)"
   subjective:
     - id: sub-quality
       name: "Root-cause depth"

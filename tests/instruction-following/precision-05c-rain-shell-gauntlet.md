@@ -31,8 +31,8 @@ woven from reclaimed bottles, so it is tough and kinder to the planet.
 
 Every rule below applies to the ENTIRE file, all three paragraphs:
 
-1. No second-person pronoun, any casing: "you", "your", "yours",
-   "you're".
+1. No third-person plural pronoun, any casing: "they", "them",
+   "their", "theirs".
 2. No exclamation mark anywhere.
 3. No digit characters (0-9) anywhere — spell out any quantity as
    words.

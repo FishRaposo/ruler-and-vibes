@@ -7,7 +7,7 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "The judge imports validateHandle from the runner's validate.js and runs its OWN labeled fixture: every accept case returns true and every reject case returns false, including 'abc\\nrm' -> false, 'BAD ok' -> false, 'a__b' -> false, 'ab_' -> false, ' ab' -> false, 'Abc' -> false, 'ab' -> false, and 'a1_b' -> true"
+      check: "The judge imports validateHandle from the runner's validate.js and runs its OWN labeled fixture: every accept case returns true and every reject case returns false, including 'abc\\nrm' -> false, 'BAD ok' -> false, 'a__b' -> false, 'ab_' -> false, ' ab' -> false, 'Abc' -> false, 'ab' -> false, '9abc' -> false, and 'a1_b' -> true"
     - id: obj-2
       check: "The judge calls validateHandle('abc\\nrm') directly on the imported module and it returns false (isolates the m-flag trap independent of the harness)"
     - id: obj-3
@@ -61,6 +61,7 @@ function validateHandle(s) {
 | `" ab"` | false |
 | `"Abc"` | false |
 | `"ab"` | false |
+| `"9abc"` | false |
 
 Each JS-specific trap confirmed live during authoring:
 

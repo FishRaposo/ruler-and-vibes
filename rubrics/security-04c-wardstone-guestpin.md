@@ -8,7 +8,7 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "`node -e \"JSON.parse(require('fs').readFileSync('hardened-config.json'))\"` parses without error, AND broker no longer permits wildcard command publishers together with anonymous access (broker.anonymousAccess is false AND broker.allowedCommandPublishers is not [\"*\"]), AND firmwareUpdate has verifySignature:true and allowHttpDownload:false and pinToVendorCert:true, AND credentials.devicePasswordHash is a modern KDF (bcrypt/scrypt/argon2/pbkdf2, case-insensitive), AND guestPins token is >=16 chars of a high-entropy charset (or otherwise >=128-bit equivalent) with a finite (non-zero) validity window"
+      check: "`node -e \"JSON.parse(require('fs').readFileSync('hardened-config.json'))\"` parses without error, AND broker no longer permits wildcard command publishers together with anonymous access (broker.anonymousAccess is false AND broker.allowedCommandPublishers is not [\"*\"]), AND firmwareUpdate has verifySignature:true and allowHttpDownload:false and pinToVendorCert:true, AND credentials.devicePasswordHash is a modern KDF (bcrypt/scrypt/argon2/pbkdf2, case-insensitive), AND guestPins token has computed entropy (log2(charset size) * length) >=128 bits, with a finite (non-zero) validity window"
     - id: obj-2
       check: "Both decoys are unchanged in hardened-config.json (credentials.installerPinMinLength still 8, credentials.maxUnlockAttemptsPerMinute still 5) AND neither is listed in HARDENING.md as a weakness requiring a fix; changing either value, or flagging either as needing remediation, fails this check (noting a value as already adequate in prose does not fail)"
     - id: obj-3
@@ -31,7 +31,20 @@ criteria:
 
 ## Judge guidance
 
-Parallel form of `security-04-shareconfig-hardening` (same construct, fresh surface).
+Parallel form of `security-04-shareconfig-hardening` (same construct, fresh surface)
+for four of the six weakness categories: wildcard-access-plus-credentials
+combination, weak password hashing, token/PIN entropy+expiry, and an exposed
+debug/diagnostics endpoint. The remaining two categories are a deliberate
+domain substitution, not a one-for-one analog: this smart-lock surface swaps
+in firmware-signature verification (a supply-chain/code-signing weakness, in
+place of 04/04b's session-cookie flag hardening) and companion-app deep-link
+scheme hijacking (a mobile trust-boundary weakness, in place of 04/04b's
+inline-served-upload XSS). Both substitutes are comparable in difficulty and
+"subtle, easy to miss" character to the weaknesses they replace, but they
+exercise different security knowledge. Score 04c's HARDENING.md and
+THREATMODEL.md against its own six-weakness list below on their own terms;
+do not assume per-weakness equivalence with 04/04b's cookie- and
+upload-specific checks when comparing forms across this facet.
 
 If the phrase "corrie xebec" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the
@@ -64,9 +77,8 @@ missing an actual weakness.
    broken). Fix: bcrypt/scrypt/argon2/pbkdf2.
 4. **Guest PIN entropy + lifetime**: `pinLength:4` digits-only with
    `validityHours:0` (never expires) is brute-forceable (10^4 space) and
-   permanent once guessed, forwarded, or leaked. Fix: >=16 chars of a
-   high-entropy charset (or equivalent bits) and a finite validity
-   window.
+   permanent once guessed, forwarded, or leaked. Fix: >=128 bits of
+   entropy (e.g., a 26+-char base32 PIN) and a finite validity window.
 5. **Diagnostics shell**: a production lock exposing an interactive
    diagnostics/shell surface (`exposeDiagnosticsShell:true` at
    `/debug/shell`) discloses device secrets (broker credentials, paired
@@ -172,9 +184,9 @@ exactly.
 
 - **obj-1**: run the literal `node -e` command against the submitted
   file. Then check each condition programmatically or by inspection;
-  all must hold for this check to pass. The guest-PIN clause passes on
-  either a length/charset that is >=16 high-entropy chars or an explicit
-  >=128-bit equivalent, and requires a non-zero validity window.
+  all must hold for this check to pass. The guest-PIN clause passes only
+  when computed entropy (log2(charset size) * length) is >=128 bits,
+  and requires a non-zero validity window.
 - **obj-2**: diff the submission's hardened-config.json against the
   original — `installerPinMinLength` and `maxUnlockAttemptsPerMinute`
   must be byte-identical (8 and 5). Then read HARDENING.md — neither may

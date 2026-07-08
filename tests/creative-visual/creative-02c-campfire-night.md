@@ -1,17 +1,17 @@
 ---
-id: creative-02c-balloon-dawn
+id: creative-02c-campfire-night
 category: creative-visual
-title: Pure-CSS drifting balloon scene
+title: Pure-CSS campfire night scene
 deliverables:
   - scene.html
 ---
 
 ## Task
 
-Build a single-file, pure-CSS illustrated scene: **a hot-air balloon
-drifting over rolling hills at dawn**, with at least one continuous CSS
-animation (the balloon bobbing, clouds sliding across the sky, the
-burner flame flickering — your choice).
+Build a single-file, pure-CSS illustrated scene: **a campfire crackling
+under a starry night sky**, with at least one continuous CSS animation
+(the flames flickering, smoke curling upward, stars twinkling — your
+choice).
 
 ## Deliverables
 

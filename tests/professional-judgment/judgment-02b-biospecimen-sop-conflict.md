@@ -20,7 +20,7 @@ materials below and write a memo to the site's Principal Investigator.
 **Specimen Disposal SOP SD-4, section 6.1 (new, effective
 immediately):**
 
-> Destroy a withdrawn participant's biospecimens within 30 calendar
+> Destroy a withdrawn participant's biospecimens within 21 calendar
 > days after the date of withdrawal, effective immediately, no
 > exceptions.
 

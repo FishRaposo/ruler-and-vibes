@@ -15,6 +15,8 @@ criteria:
       check: "Exactly one extended analogy"
     - id: obj-4
       check: "Explicitly answers whether the store and orders are safe"
+    - id: obj-5
+      check: "No unexplained jargon: every technical term used is explained in the same sentence, or is not used at all"
   subjective:
     - id: sub-quality
       name: "Technical accuracy"
@@ -116,3 +118,32 @@ resolving itself.
    (never mentions the store or orders specifically).
 3. Evasive hedging: "It really depends on how your host set things up"
    — never commits to an answer for this owner's situation.
+
+### obj-5 — unexplained jargon
+
+Every technical term the piece uses must be explained in the same
+sentence it appears in; if a term can't be worked in with an
+in-sentence explanation, it should be dropped rather than left bare.
+
+**PASSING**:
+
+1. "different visitors may briefly land on your old site because DNS
+   resolvers — the internet's address books that translate your domain
+   into a server address — haven't all refreshed yet" ("resolvers"
+   defined in the same sentence).
+2. "each cached copy has a TTL, or time-to-live, which is simply how
+   long it's allowed to keep using the old address before checking
+   again" ("TTL" defined immediately).
+3. "your domain's authoritative nameserver — the one official record
+   that holds the current, correct address — was updated instantly;
+   it's everyone else's copies that lag" (term defined where used).
+
+**FAILING**:
+
+1. "this is normal because resolvers haven't refreshed their TTL
+   against the authoritative nameserver yet" (three jargon terms —
+   "resolvers," "TTL," "authoritative nameserver" — none explained).
+2. "it's just standard DNS propagation behavior" ("propagation" used
+   as if self-explanatory, no definition given).
+3. "some caches haven't expired yet, that's all" ("caches" and
+   "expired" used in their technical DNS sense with no explanation).

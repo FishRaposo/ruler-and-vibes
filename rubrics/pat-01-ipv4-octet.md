@@ -51,12 +51,13 @@ rest scores.
   `false` for all 15.
 - Discriminator trap, re-confirmed this session: the common naive
   regex `/^\d{1,3}(\.\d{1,3}){3}$/` WRONGLY returns `true` for
-  `256.0.0.1`, `999.999.999.999`, and `01.2.3.4` (verified this
+  `256.0.0.1`, `1.2.3.256`, `1.2.3.400`, `999.999.999.999`,
+  `01.2.3.4`, `1.2.3.04`, and `00.0.0.0` (7 of 15, verified this
   session), while correctly rejecting the leading/trailing-space
   traps. A submission whose validator is exactly this regex (or
-  equivalent) will fail obj-3 on those three inputs — this is the
-  intended discriminator between "looks like an IP" and "is a
-  canonical IPv4 address." `'1.2.3.4 '`-style traps are rejected
+  equivalent) will fail obj-3 on the range and leading-zero inputs —
+  this is the intended discriminator between "looks like an IP" and
+  "is a canonical IPv4 address." `'1.2.3.4 '`-style traps are rejected
   correctly by both naive and correct approaches because the trailing
   `' '` breaks the digit-only match on the last segment — do not
   mistake that for evidence of range/leading-zero handling.

@@ -99,7 +99,7 @@ descending by score as gruyere/havarti/edam/comte/cheddar) before
 trusting the result — the broken version must fail obj-1 (wrong order)
 and obj-3 (wrong TOTAL-WHEELS).
 
-- **obj-1**: the trap order (TOTAL-WHEELS miscounted as 538 > 500,
+- **obj-1**: the trap order (TOTAL-WHEELS miscounted as 538 > 520,
   triggering descending-score sort) is gruyere, havarti, edam, comte,
   cheddar — fully different from the correct alphabetical order. Any
   descending-looking order fails this check.

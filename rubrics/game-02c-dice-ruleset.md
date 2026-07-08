@@ -1,7 +1,6 @@
 ---
-test: game-02c-domino-ruleset
+test: game-02c-dice-ruleset
 canary: "jaguarundi orpiment"
-reviewed: "pass 2026-07-04 (independent gate)"
 weights:
   objective: 0.5
   subjective: 0.5
@@ -10,9 +9,9 @@ criteria:
     - id: obj-1
       check: "All five sections present: Overview, Setup, Turn structure, Winning, Example round"
     - id: obj-2
-      check: "Requires only a standard double-six domino set, nothing else"
+      check: "Requires only a standard pair of six-sided dice, nothing else"
     - id: obj-3
-      check: "Example round names players and specific tiles"
+      check: "Example round names players and specific rolls/values"
     - id: obj-4
       check: "<= 800 words (count them)"
   subjective:
@@ -47,35 +46,34 @@ PASS: headings `## Overview`, `## Setup`, `## Turn structure`,
 - FAIL: "Setup" and "Turn structure" are merged into one heading, so a
   distinct turn-structure section never appears.
 
-### obj-2 — Requires only a standard double-six domino set
+### obj-2 — Requires only a standard pair of six-sided dice
 
-The only physical component may be one standard 28-tile double-six set.
-PASS if scoring is tracked mentally, verbally, or with the tiles
-themselves.
-- PASS: play and scoring use only the 28 tiles; a running score is kept
+The only physical component may be one standard pair of six-sided dice
+(2 dice). PASS if scoring is tracked mentally or verbally.
+- PASS: play and scoring use only the two dice; a running score is kept
   in players' heads.
 - PASS: the design explicitly says "no other equipment" and everything in
-  the rules stays inside the tile set.
-- FAIL: rules call for dice, a die, coins, chips, tokens, a spinner, a
-  pen-and-paper score sheet as a required component, or a second domino
-  set.
-- FAIL: play assumes a printed board, a card deck, or extra tiles beyond
-  the standard 28.
-- FAIL: a "double-nine" or larger set is required (not the standard
-  double-six).
+  the rules stays inside the two dice.
+- FAIL: rules call for a coin, chips, tokens, a spinner, a pen-and-paper
+  score sheet as a required component, or additional dice beyond the
+  standard two.
+- FAIL: play assumes a printed board, a card deck, or extra dice.
+- FAIL: a dice pool of more than two, or non-standard (non-six-sided)
+  dice, is required.
 
-### obj-3 — Example round names players and specific tiles
+### obj-3 — Example round names players and specific rolls/values
 
 The `## Example round` must show a concrete play-through with at least two
-named players and specific tiles by value.
+named players and specific die values or rolls.
 - PASS: two named players (e.g. Odalys and Tamsin) alternate turns, and
-  specific tiles are cited by spots (e.g. 6-3, 5-0, 3-2).
-- PASS: named players plus at least several explicit tile identities that
-  let the reader follow the chain.
+  specific rolls are cited by value (e.g. rolls a 4 and a 2, rerolls the
+  2 for a 6).
+- PASS: named players plus at least several explicit roll values that
+  let the reader follow the sequence.
 - FAIL: the example uses "Player 1 / Player 2" or "you / opponent" with no
   actual names.
-- FAIL: the example is abstract ("a player draws a tile and plays it")
-  with no specific tile values shown.
+- FAIL: the example is abstract ("a player rolls the dice and moves")
+  with no specific values shown.
 - FAIL: no `## Example round` content exists to evaluate.
 
 ### obj-4 — At most 800 words
@@ -94,18 +92,19 @@ wc -w rules.md
 
 - Design depth (weight 0.4): are there real decisions with tension? The
   best two-player fillers create moments where both players stop to think
-  — turns that force a genuine trade-off (open a new number vs. block one,
-  spend a bridge bonus now vs. hold it). Pure luck (chain forced every
-  turn) or a solved dominant strategy scores low. Reward designs that use
-  the hidden-hand and end-starvation dynamics the tile set affords.
-- Rules clarity & completeness (weight 0.3): tie-breaks, empty-reserve
-  (boneyard) exhaustion, blocked rounds where neither player can move,
-  double orientation, and simultaneous/ordering effects — covered or not?
-  A reader with a domino set should never hit a situation the rules leave
-  undefined.
+  — turns that force a genuine trade-off (bank a good roll vs. push for
+  more, hold a die vs. reroll it, race to a target vs. play it safe).
+  Pure luck (outcome decided by the roll alone, no choice changes it) or
+  a solved dominant strategy scores low. Reward designs that use the
+  reroll and hold/bank dynamics the two dice afford.
+- Rules clarity & completeness (weight 0.3): tie-breaks, both dice
+  landing the same value, a turn where no legal action exists, and
+  simultaneous/ordering effects — covered or not? A reader with a pair
+  of dice should never hit a situation the rules leave undefined.
 - Reasoning quality (weight 0.3): does REASONING.md name its influences
-  and the degenerate strategies it worried about (e.g. a hoard-the-blanks
-  stall, or a forced-draw grind), and explain how the design defuses them?
+  and the degenerate strategies it worried about (e.g. a dominant
+  reroll-spam strategy, or a forced-pass loop), and explain how the
+  design defuses them?
 
 If the phrase "jaguarundi orpiment" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the rest

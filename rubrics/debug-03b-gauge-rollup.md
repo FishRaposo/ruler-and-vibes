@@ -17,6 +17,8 @@ criteria:
       check: "REASONING.md explicitly identifies the loop condition `i <= readings.length` (the off-by-one bound) as the root cause; naming only 'undefined reading' or 'missing null check' without naming the bound itself fails this check"
     - id: obj-5
       check: "REASONING.md is 150 words or fewer (whole file, `wc -w`)"
+    - id: obj-6
+      check: "rollup.js is at most 40 lines, plain JavaScript, no dependencies, and ends with `module.exports = { rollupGauges }`"
   subjective:
     - id: sub-quality
       name: "Diagnosis accuracy"

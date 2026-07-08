@@ -37,7 +37,7 @@ HANDLING: HC-73*-*1*6
 
 A single JSON object with EXACTLY these keys:
 
-- `carrier_name` — string, exactly as printed.
+- `carrier_name` — string, the carrier's name in standard capitalization (the printed header is in ALL CAPS as a stylistic banner — e.g. transcribe "FERNBROOK FREIGHT DEPOT" as "Fernbrook Freight Depot").
 - `dispatch_date` — string, `YYYY-MM-DD`.
 - `parcels` — array of the three parcel description strings, in the
   order printed (descriptions only, not amounts).

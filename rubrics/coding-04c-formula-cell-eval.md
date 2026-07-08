@@ -10,11 +10,11 @@ criteria:
     - id: obj-1
       check: "`node formula.js` runs without throwing and prints exactly 12 'FORMULA -> VALUE' lines in the order the formulas appear in the test file, with numeric values formatted via standard JS `String(x)` conversion"
     - id: obj-2
-      check: "Precedence/associativity formulas are all correct: `3+4*5` -> 23, `(3+4)*5` -> 35, `2^2^3` -> 256, `\" 20 -  5-4 \"` (JS-literal form; spaces are part of the input) -> 11, `144/6/3` -> 8 (judge recomputes each independently; the whitespace formula also verifies the tokenizer handles irregular spacing)"
+      check: "Precedence/associativity formulas are all correct: `6+9*2` -> 24, `(6+9)*2` -> 30, `4^3^2` -> 262144, `\" 15 -  8-2 \"` (JS-literal form; spaces are part of the input) -> 5, `72/4/3` -> 6 (judge recomputes each independently; the whitespace formula also verifies the tokenizer handles irregular spacing)"
     - id: obj-3
-      check: "Unary-minus formulas are all correct: `-3^2` -> -9, `5*-3` -> -15, `-(2+3)^2` -> -25, `8^-1` -> 0.125"
+      check: "Unary-minus formulas are all correct: `-6^2` -> -36, `9*-7` -> -63, `-(4+6)^2` -> -100, `5^-1` -> 0.2"
     - id: obj-4
-      check: "Error formulas return the exact strings: `9/(4-4)` -> 'ERR: divide by zero'; `3//4` and `(6+7` -> 'ERR: malformed' (byte-exact; judge verifies with a two-line node require snippet against `module.exports.compute`, confirming it returns the string rather than throwing)"
+      check: "Error formulas return the exact strings: `20/(7-7)` -> 'ERR: divide by zero'; `7//9` and `(9-5` -> 'ERR: malformed' (byte-exact; judge verifies with a two-line node require snippet against `module.exports.compute`, confirming it returns the string rather than throwing)"
     - id: obj-5
       check: "REASONING.md exists, is at most 300 words (whole file, `wc -w`), and names the parsing strategy used (e.g. recursive descent or shunting-yard)"
   subjective:
@@ -34,48 +34,48 @@ criteria:
 Parallel form of `coding-04-expression-eval` (same construct, fresh surface).
 
 - All 12 reference values, recomputed independently with a reference
-  recursive-descent evaluator: `3+4*5` = 23; `(3+4)*5` = 35; `2^2^3` =
-  `2^8` = 256 (right-assoc; a left-associative bug gives 64 — use this
-  to catch the associativity trap); `" 20 -  5-4 "` = 11 (left-assoc; a
-  right-associative bug gives 19); `144/6/3` = 8 (left-assoc; a
-  right-associative bug gives 72); `-3^2` = -9 (models that bind unary
-  minus tighter than `^`, computing `(-3)^2`, wrongly get 9); `5*-3` =
-  -15; `-(2+3)^2` = -25 (a model that reads this as `(-(2+3))^2` wrongly
-  gets 25); `8^-1` = 0.125 (exact binary float; `String()` gives
-  `"0.125"`); `9/(4-4)` = `'ERR: divide by zero'`; `3//4` =
-  `'ERR: malformed'`; `(6+7` = `'ERR: malformed'`.
+  recursive-descent evaluator: `6+9*2` = 24; `(6+9)*2` = 30; `4^3^2` =
+  `4^9` = 262144 (right-assoc; a left-associative bug gives 4096 — use
+  this to catch the associativity trap); `" 15 -  8-2 "` = 5 (left-assoc;
+  a right-associative bug gives 9); `72/4/3` = 6 (left-assoc; a
+  right-associative bug gives 54); `-6^2` = -36 (models that bind unary
+  minus tighter than `^`, computing `(-6)^2`, wrongly get 36); `9*-7` =
+  -63; `-(4+6)^2` = -100 (a model that reads this as `(-(4+6))^2` wrongly
+  gets 100); `5^-1` = 0.2 (exact binary float; `String()` gives
+  `"0.2"`); `20/(7-7)` = `'ERR: divide by zero'`; `7//9` =
+  `'ERR: malformed'`; `(9-5` = `'ERR: malformed'`.
 - Reference stdout of a correct `node formula.js` run (computed by
   executing a reference implementation; formula 4's FORMULA begins with
   a space and ends with a space, hence the two spaces before its `->`):
 
   ```
-  3+4*5 -> 23
-  (3+4)*5 -> 35
-  2^2^3 -> 256
-   20 -  5-4  -> 11
-  144/6/3 -> 8
-  -3^2 -> -9
-  5*-3 -> -15
-  -(2+3)^2 -> -25
-  8^-1 -> 0.125
-  9/(4-4) -> ERR: divide by zero
-  3//4 -> ERR: malformed
-  (6+7 -> ERR: malformed
+  6+9*2 -> 24
+  (6+9)*2 -> 30
+  4^3^2 -> 262144
+   15 -  8-2  -> 5
+  72/4/3 -> 6
+  -6^2 -> -36
+  9*-7 -> -63
+  -(4+6)^2 -> -100
+  5^-1 -> 0.2
+  20/(7-7) -> ERR: divide by zero
+  7//9 -> ERR: malformed
+  (9-5 -> ERR: malformed
   ```
 
   VALUE must be byte-exact (`String(x)` for numbers, exact error
   strings). For the FORMULA echo, do not fail obj-1 solely because a
   submission trimmed formula 4's outer spaces when echoing it — the
   whitespace handling that is actually under test is graded by that
-  formula's VALUE (11) in obj-2.
-- Collision check for graders: the wrong-answer set `{64, 19, 72, 9, 25}`
+  formula's VALUE (5) in obj-2.
+- Collision check for graders: the wrong-answer set `{4096, 9, 54, 36, 100}`
   (what you get from the common precedence/associativity mistakes) is
   disjoint from the correct-answer set
-  `{23, 35, 256, 11, 8, -9, -15, -25, 0.125}` — if a submission's output
+  `{24, 30, 262144, 5, 6, -36, -63, -100, 0.2}` — if a submission's output
   matches a wrong-answer-set value on one of those five formulas, that
   formula fails outright, no partial credit.
 - Verify obj-4 by requiring the module directly, e.g.:
-  `node -e "console.log(require('./formula.js').compute('9/(4-4)'))"`
+  `node -e "console.log(require('./formula.js').compute('20/(7-7)'))"`
   should print `ERR: divide by zero`, and similarly for the two
   malformed formulas — confirm no exception is thrown in the process
   (a throwing implementation fails this check even if the harness
@@ -84,9 +84,9 @@ Parallel form of `coding-04-expression-eval` (same construct, fresh surface).
   `FORMULA -> VALUE` lines in order and no throw at load time. Sample
   PASS phrasings — "prints all 12 lines, values via String()"; "runs
   clean, one line per formula in listed order"; "no throw on require,
-  format matches". Sample FAIL phrasings — "throws on `(6+7` before
-  printing"; "prints only 9 lines / reorders them"; "emits `0.125000`
-  instead of `0.125` (not String())".
+  format matches". Sample FAIL phrasings — "throws on `(9-5` before
+  printing"; "prints only 9 lines / reorders them"; "emits `0.200000`
+  instead of `0.2` (not String())".
 - Parser correctness & robustness: does the implementation handle
   nested parens, chained associativity, and unary minus in all the
   positions the spec calls out, or does it special-case the 12 listed
@@ -110,10 +110,10 @@ Parallel form of `coding-04-expression-eval` (same construct, fresh surface).
 - Reasoning quality: REASONING.md should name the parsing strategy and
   specifically explain the mechanism used for right-associative `^`
   and for unary minus binding looser than `^` at the start of a power
-  chain but still working inside an exponent (`8^-1`). Sample PASS —
+  chain but still working inside an exponent (`5^-1`). Sample PASS —
   "names recursive descent and shows `power := atom ('^' factor)?` giving
-  right-assoc"; "explains unary sits above power so `-3^2` = `-(3^2)` yet
-  the exponent parses a factor so `8^-1` works"; "ties each pinned rule
+  right-assoc"; "explains unary sits above power so `-6^2` = `-(6^2)` yet
+  the exponent parses a factor so `5^-1` works"; "ties each pinned rule
   to a grammar production". Sample FAIL — "restates the outputs without
   naming a strategy"; "claims 'standard precedence' with no mechanism";
   "omits how right-associativity or exponent-side unary is achieved".

@@ -42,7 +42,7 @@ The submission must preserve all four across every version:
 - (a) **cause** — a cracked flue liner in the salt kiln that needs a full
   rebuild;
 - (b) **old date** — September 6;
-- (c) **new date** — November 22;
+- (c) **new date** — December 15;
 - (d) **compensation** — members who reserved a firing slot get two
   complimentary guest passes.
 
@@ -71,7 +71,7 @@ missing if dropped or made vague enough to lose the specific.
 PASS phrasings (fact still carried):
 
 - "a cracked flue liner in the salt kiln needs a full rebuild" (cause);
-- "moving from September 6th to November 22nd" (both dates);
+- "moving from September 6th to December 15th" (both dates);
 - "reserved members each receive two complimentary guest passes"
   (compensation).
 
@@ -79,7 +79,7 @@ FAIL phrasings (fact lost):
 
 - "because of kiln damage" — cause too vague; the cracked flue liner is
   gone.
-- "the firing is delayed to November 22nd" — old date (September 6)
+- "the firing is delayed to December 15th" — old date (September 6)
   dropped.
 - "members will be compensated" — the two-guest-passes specific is gone.
 

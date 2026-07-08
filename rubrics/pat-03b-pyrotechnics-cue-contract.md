@@ -12,11 +12,11 @@ criteria:
     - id: obj-2
       check: "All 8 MUST-ACCEPT records classify ACCEPT, including the boundary cases massG exactly 750 on comet, heightM exactly -5 and exactly 60 on aerial, and a fully-populated indoor+comet+aerial record at massG 749.9 (judge runs validate on each)"
     - id: obj-3
-      check: "The dependent-required traps classify REJECT: indoor true with no permitId, indoor true with permitId 'PY12' (too short) and '1203' (missing PY prefix), aerial true with no heightM, comet with massG 750.1"
+      check: "The dependent-required traps classify REJECT: indoor true with no permitId, indoor true with permitId 'PY45' (too short) and '4507' (missing PY prefix), aerial true with no heightM, comet with massG 750.1"
     - id: obj-4
-      check: "The FORBIDDEN-WHEN-ABSENT traps classify REJECT: indoor false carrying permitId 'PY1203'; heightM present with aerial false; heightM present with no aerial key; plus the closed-object trap (unknown key 'cue') and type/enum traps (effect 'strobe', massG 0, massG -5, indoor the string 'false')"
+      check: "The FORBIDDEN-WHEN-ABSENT traps classify REJECT: indoor false carrying permitId 'PY4507'; heightM present with aerial false; heightM present with no aerial key; plus the closed-object trap (unknown key 'cue') and type/enum traps (effect 'strobe', massG 0, massG -5, indoor the string 'false')"
     - id: obj-5
-      check: "The remaining traps classify REJECT: missing effect/massG/indoor individually, heightM out of range (-5.1 and 60.1) under aerial true, and a 5-digit permitId 'PY19930'; validate never throws on any of the 27 records and exports via module.exports = { validate }"
+      check: "The remaining traps classify REJECT: missing effect/massG/indoor individually, heightM out of range (-5.1 and 60.1) under aerial true, and a 5-digit permitId 'PY45070'; validate never throws on any of the 27 records and exports via module.exports = { validate }"
   subjective:
     - id: sub-quality
       name: "Contract completeness"
@@ -44,24 +44,24 @@ rest scores.
   (closed-object check); `effect`/`massG`/`indoor` are all present;
   `effect` is one of `gerb`/`comet`/`mine`; `massG` is a number `>0`;
   `indoor` is strictly boolean; if `indoor===true`, `permitId` must be
-  present and match `/^PY\d{4}$/` (exactly 4 digits, so `PY19930` with
+  present and match `/^PY\d{4}$/` (exactly 4 digits, so `PY45070` with
   5 digits is rejected); if `indoor===false`, `permitId` must be
   absent; if `effect==='comet'`, `massG<=750`; if `aerial` is present
   it must be boolean; if `aerial===true`, `heightM` must be present, a
   number, and in `[-5,60]` inclusive; if `aerial` is not `true`,
   `heightM` must be absent.
 - Exact run command for the judge (adapt indices to the submission's
-  print order): `node -e "const {validate}=require('./contract.js'); console.log(validate({effect:'mine',massG:10,indoor:false,permitId:'PY1203'}))"`
+  print order): `node -e "const {validate}=require('./contract.js'); console.log(validate({effect:'mine',massG:15,indoor:false,permitId:'PY4507'}))"`
   must print `false` (forbidden-when-absent: indoor false forbids
   permitId even though the format looks valid). Similarly
-  `validate({effect:'mine',massG:10,indoor:false,heightM:12})` must
+  `validate({effect:'mine',massG:15,indoor:false,heightM:12})` must
   print `false` (heightM present with no aerial key at all).
 - Forbidden-when-absent discriminator, re-confirmed this session: a
   validator that implements only the positive/required-when direction
   (require `permitId` when `indoor` is true, require `heightM` when
   `aerial` is true) but never checks the negative direction WRONGLY
-  returns `true` for `{effect:'mine',massG:10,indoor:false,permitId:'PY1203'}`
-  and for `{effect:'mine',massG:10,indoor:false,heightM:12}` (both
+  returns `true` for `{effect:'mine',massG:15,indoor:false,permitId:'PY4507'}`
+  and for `{effect:'mine',massG:15,indoor:false,heightM:12}` (both
   verified `true` under such a partial validator this session). This
   is the primary discriminator: a submission passing only the
   positive-direction traps but failing these two forbidden-when-absent

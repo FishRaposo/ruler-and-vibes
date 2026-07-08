@@ -17,6 +17,8 @@ criteria:
       check: "The `latency_ms IS NULL OR latency_ms <> 45` result set is exactly {Brask, Quirren, Fenmark, Ostrel, Corvent, Wrenlow} (6 rows); a submission omitting Brask, Quirren, Ostrel, or Wrenlow fails; judge re-runs and matches"
     - id: obj-5
       check: "ANSWERS.md (or QUERIES.sql comments) explicitly identifies that the presence of NULL in the parent_id subquery is what makes a naive NOT IN return no rows, and names a working fix (filtering NULLs out of the subquery, or using NOT EXISTS)"
+    - id: obj-6
+      check: "ANSWERS.md presents the `latency_ms <> 45` result set and the `latency_ms IS NULL OR latency_ms <> 45` result set as two separate, clearly labeled tables (e.g. under distinct headings/captions naming each predicate), per the task's explicit instruction; a submission that merges both predicates' rows into a single combined table or list (even if every row is otherwise correct) fails this check"
   subjective:
     - id: sub-quality
       name: "Correctness of three-valued-logic handling"

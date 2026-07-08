@@ -8,9 +8,9 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "Running `node selection.js` prints corr(P,M | S=1) = -0.6 (equivalently -3/5) and cov(P,M|S=1) = -0.140625 (-9/64)"
+      check: "Running `node selection.js` prints corr(P,M | S=1) = -0.7 (equivalently -7/10) and cov(P,M|S=1) ≈ -0.169550 (-49/289)"
     - id: obj-2
-      check: "The script prints P(S=1)=0.64 (16/25) and E[P|S=1]=E[M|S=1]=0.625 (5/8)"
+      check: "The script prints P(S=1)=0.51 and E[P|S=1]=E[M|S=1]≈0.588235 (10/17)"
     - id: obj-3
       check: "ANSWERS.md (a) states the population/marginal correlation between P and M is exactly 0 and attributes it to the stated independence"
     - id: obj-4
@@ -40,28 +40,28 @@ scores.
 
 ### Answer key (verified with node during authoring)
 
-Population joint of (P,M): each an independent Bernoulli(0.4), so the four
-cells carry weights (0,0)=0.36, (0,1)=0.24, (1,0)=0.24, (1,1)=0.16. S=1
+Population joint of (P,M): each an independent Bernoulli(0.3), so the four
+cells carry weights (0,0)=0.49, (0,1)=0.21, (1,0)=0.21, (1,1)=0.09. S=1
 for the three cells (0,1), (1,0), (1,1); S=0 only for (0,0).
 
-- P(S=1) = 1 - 0.36 = 0.64 = 16/25
-- Conditional weights among listed (divide by 0.64): (0,1)=3/8, (1,0)=3/8,
-  (1,1)=1/4
-- E[P|S=1] = E[M|S=1] = 3/8 + 1/4 = 5/8 ≈ **0.625**
-- E[PM|S=1] = 1/4 (only cell (1,1)) = **0.25**
-- cov(P,M|S=1) = 1/4 - (5/8)*(5/8) = 1/4 - 25/64 = -9/64 ≈ **-0.140625**
-- var(P|S=1) = var(M|S=1) = 5/8 - 25/64 = 15/64
-- corr(P,M|S=1) = (-9/64)/(15/64) = -9/15 = **-3/5 = -0.6**
+- P(S=1) = 1 - 0.49 = 0.51
+- Conditional weights among listed (divide by 0.51): (0,1)=21/51, (1,0)=21/51,
+  (1,1)=9/51
+- E[P|S=1] = E[M|S=1] = (21+9)/51 = 30/51 = 10/17 ≈ **0.588235**
+- E[PM|S=1] = 9/51 = 3/17 (only cell (1,1)) ≈ **0.176471**
+- cov(P,M|S=1) = 3/17 - (10/17)*(10/17) = 51/289 - 100/289 = -49/289 ≈ **-0.169550**
+- var(P|S=1) = var(M|S=1) = 10/17 - 100/289 = 70/289
+- corr(P,M|S=1) = (-49/289)/(70/289) = -49/70 = **-0.7**
 - Population/marginal cov(P,M) = 0 and corr(P,M) = 0, since P and M are
   independent biased coins by construction.
 
-Judge runs `selection.js` to confirm P(S=1)=0.64, E[P|S=1]=E[M|S=1]=0.625,
-cov(P,M|S=1)≈-0.140625, and corr(P,M|S=1)=-0.6 exactly.
+Judge runs `selection.js` to confirm P(S=1)=0.51, E[P|S=1]=E[M|S=1]≈0.588235,
+cov(P,M|S=1)≈-0.169550, and corr(P,M|S=1)=-0.7 exactly.
 
 Correct verdicts:
 - (a) population correlation is exactly 0 — P and M are independent by
   construction.
-- (b) conditional correlation among listed eateries is exactly -0.6
+- (b) conditional correlation among listed eateries is exactly -0.7
   (real, correctly computable, and non-zero).
 - (c) this is collider/selection bias (Berkson's paradox): conditioning
   on a common effect (Listed) of two independent causes induces an
@@ -79,17 +79,17 @@ negative correlation among listed eateries) is not a computational error
 — this is what distinguishes the test from a simple arithmetic mistake.
 The trap is treating a genuine, verifiable statistical association as
 automatic evidence of a causal or explanatory relationship. A submission
-that gets the -0.6 exactly right in (b) but then in (c)/(d) treats it as
+that gets the -0.7 exactly right in (b) but then in (c)/(d) treats it as
 real evidence that a beautiful room signals or causes a weaker kitchen
 has fallen for exactly the error the test is built to catch, and should
 fail obj-4/obj-5 even with a perfect script. (Note also that the biased
-0.4 coins make the four cells UNequal — a script that assumes uniform
+0.3 coins make the four cells UNequal — a script that assumes uniform
 0.25 cells prints the wrong moments and fails obj-1/obj-2.)
 
 ### Example phrasings — obj-4, rebutting the causal claim
 
 PASSING:
-- "The -0.6 correlation is real among listed eateries, but it's a pure
+- "The -0.7 correlation is real among listed eateries, but it's a pure
   artifact of the listing rule selecting on P+M>=1 — a classic
   collider/selection effect. It says nothing about whether a nice room
   actually predicts a worse kitchen; in the full population the two are
@@ -137,7 +137,7 @@ FAILING:
 
 - **Correctness of the exact conditional correlation and the causal
   (non)interpretation** (0.4): the numeric answer in (b) must match
-  exactly (-0.6 / -3/5), AND the causal verdicts in (c)/(d) must correctly
+  exactly (-0.7 / -7/10), AND the causal verdicts in (c)/(d) must correctly
   separate the real statistical association from the absence of any causal
   link. Getting the number right but the interpretation wrong (or vice
   versa) should not receive full credit here.

@@ -8,13 +8,13 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "schedule.md states the project earliest finish is exactly 22 hours"
+      check: "schedule.md states the project earliest finish is exactly 27 hours"
     - id: obj-2
-      check: "The finish times listed match exactly: P=5, Q=7, R=12, S=10, T=18, U=12, V=22, W=15"
+      check: "The finish times listed match exactly: P=6, Q=11, R=14, S=15, T=21, U=18, V=27, W=19"
     - id: obj-3
-      check: "The stated critical path is exactly P -> R -> T -> V (the unique root-to-sink chain whose durations sum 5+7+6+4=22)"
+      check: "The stated critical path is exactly P -> R -> T -> V (the unique root-to-sink chain whose durations sum 6+8+7+6=27)"
     - id: obj-4
-      check: "T's start time is given as 12 (not 7), correctly reflecting the R predecessor dominating over Q (prose-located, in the table or accompanying text)"
+      check: "T's start time is given as 14 (not 11), correctly reflecting the R predecessor dominating over Q (prose-located, in the table or accompanying text)"
     - id: obj-5
       check: "The table has exactly the columns Task | Start | Finish with all 8 stages present (not only critical-path stages)"
   subjective:
@@ -42,7 +42,7 @@ scores.
 
 ```
 node -e "
-const tasks={P:{dur:5,deps:[]},Q:{dur:2,deps:['P']},R:{dur:7,deps:['P']},S:{dur:3,deps:['Q']},T:{dur:6,deps:['Q','R']},U:{dur:2,deps:['S']},V:{dur:4,deps:['T','U']},W:{dur:3,deps:['R']}};
+const tasks={P:{dur:6,deps:[]},Q:{dur:5,deps:['P']},R:{dur:8,deps:['P']},S:{dur:4,deps:['Q']},T:{dur:7,deps:['Q','R']},U:{dur:3,deps:['S']},V:{dur:6,deps:['T','U']},W:{dur:5,deps:['R']}};
 const order=Object.keys(tasks);const ST={},FI={};
 for(const id of order){const t=tasks[id];ST[id]=t.deps.length?Math.max(...t.deps.map(d=>FI[d])):0;FI[id]=ST[id]+t.dur;}
 for(const id of order)console.log(id,'start',ST[id],'finish',FI[id]);
@@ -50,14 +50,14 @@ console.log('project',Math.max(...Object.values(FI)));
 "
 ```
 
-This prints: `P start 0 finish 5`, `Q start 5 finish 7`, `R start 5
-finish 12`, `S start 7 finish 10`, `T start 12 finish 18`, `U start 10
-finish 12`, `V start 18 finish 22`, `W start 12 finish 15`, and
-`project 22`.
+This prints: `P start 0 finish 6`, `Q start 6 finish 11`, `R start 6
+finish 14`, `S start 11 finish 15`, `T start 14 finish 21`, `U start 15
+finish 18`, `V start 21 finish 27`, `W start 14 finish 19`, and
+`project 27`.
 
-Enumerating all four root-to-sink paths gives: `P->Q->S->U->V` = 16,
-`P->Q->T->V` = 17, `P->R->T->V` = **22**, `P->R->W` = 15. Only
-`P->R->T->V` reaches 22, so the critical path is unique — this is a fair
+Enumerating all four root-to-sink paths gives: `P->Q->S->U->V` = 24,
+`P->Q->T->V` = 24, `P->R->T->V` = **27**, `P->R->W` = 19. Only
+`P->R->T->V` reaches 27, so the critical path is unique — this is a fair
 binary check, not a judgment call.
 
 If a submission's numbers disagree with this script's output, the
@@ -65,38 +65,38 @@ submission is wrong — do not average or split the difference.
 
 ### Trap
 
-Stage T depends on BOTH Q (finishes at 7) and R (finishes at 12). The
+Stage T depends on BOTH Q (finishes at 11) and R (finishes at 14). The
 correct rule takes the MAXIMUM over predecessor finish times, so T starts
-at 12, not 7. A solver who visually follows the shorter-looking
+at 14, not 11. A solver who visually follows the shorter-looking
 `P->Q->T` chain, or who sums/averages predecessor finishes instead of
 taking the max, will underestimate T's start (and therefore the project
-finish). A submission that reports T's start as 7, or the critical path
-as `P->Q->T->V` (sum 17, not 22), has fallen into this trap and fails
+finish). A submission that reports T's start as 11, or the critical path
+as `P->Q->T->V` (sum 24, not 27), has fallen into this trap and fails
 obj-2/obj-3/obj-4 regardless of how clearly it explains its (wrong)
 reasoning.
 
 ### Example phrasings — obj-4, T's start correctly reflects the max over predecessors
 
 PASSING:
-- "T can't start until both Q and R are done — Q finishes at hour 7 but R
-  runs until hour 12, so T is stuck waiting on R and starts at 12, not 7."
+- "T can't start until both Q and R are done — Q finishes at hour 11 but R
+  runs until hour 14, so T is stuck waiting on R and starts at 14, not 11."
 - "Even though the Q branch reaches T earlier, T has two predecessors and
-  must wait for the slower one (R, finishing at 12), so T's start is 12."
+  must wait for the slower one (R, finishing at 14), so T's start is 14."
 
 FAILING:
-- "T starts right after Q finishes, at hour 7, since that's the path that
+- "T starts right after Q finishes, at hour 11, since that's the path that
   leads to T."
 - "T's start is the sum of Q and R's finish times divided between them,
-  giving roughly hour 9 or 10."
+  giving roughly hour 12 or 13."
 
 ### Example phrasings — obj-3, naming the critical path correctly (max-of-predecessors logic, not a single-chain trace)
 
 PASSING:
 - "Walking the DAG, the chain P -> R -> T -> V is the one with zero slack
   end to end — every other root-to-sink path finishes earlier, so this is
-  the path that actually sets the 22-hour project finish."
+  the path that actually sets the 27-hour project finish."
 - "Comparing all four complete paths from a start stage to an end stage,
-  only P -> R -> T -> V sums to 22; the others (17, 16, 15) finish
+  only P -> R -> T -> V sums to 27; the others (24, 24, 19) finish
   earlier, so that's the critical path."
 
 FAILING:

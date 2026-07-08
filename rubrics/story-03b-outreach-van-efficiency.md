@@ -10,9 +10,9 @@ criteria:
     - id: obj-1
       check: "narrative.md exists and its body is 110 words or fewer (judge runs wc -w on the body, excluding a single heading line if present)"
     - id: obj-2
-      check: "The text names Cedarcroft as the most cost-effective van and cites its rate as 32 signups per $1,000 (Cedarcroft's rate '32' does not occur as a substring of any table number, so it is safely searchable); Maplewood and Birchhollow may be cited as 20 and 30 respectively but the judge confirms these appear in explicit signups-per-$1,000 context attached to their van, NOT by bare search (both '20' and '30' occur inside table numbers 72000/30000)"
+      check: "The text names Cedarcroft as the most cost-effective van and cites its rate as 32 signups per $1,000; Maplewood and Birchhollow may be cited as 18 and 31 respectively — all three rate figures ('18', '31', '32') are safely searchable by bare substring, since none occurs inside any table number (72000/1296/30000/960/15000/465)"
     - id: obj-3
-      check: "The text does NOT claim Maplewood is the best/most cost-effective van on the basis of its 1,440 raw signups; the raw count may appear only if reframed by efficiency — judge reads against shipped PASS/FAIL phrasings (prose-located check)"
+      check: "The text does NOT claim Maplewood is the best/most cost-effective van on the basis of its 1,296 raw signups; the raw count may appear only if reframed by efficiency — judge reads against shipped PASS/FAIL phrasings (prose-located check)"
     - id: obj-4
       check: "The text contains an explicit non-causal statement — it declines to claim the larger budget caused the signup increase, or flags the data as observational/correlational — judge reads against shipped PASS/FAIL phrasings (prose-located check)"
   subjective:
@@ -38,20 +38,18 @@ of the checks score.
 
 ### Answer key (verified with node during authoring)
 
-- Signups per $1,000: Maplewood 1440/(72000/1000) = **20**, Cedarcroft
-  960/(30000/1000) = **32**, Birchhollow 450/(15000/1000) = **30**.
-- Cost per signup: Maplewood $50.00, Cedarcroft $31.25, Birchhollow
-  $33.33 (consistent with the same ranking — Cedarcroft cheapest, then
+- Signups per $1,000: Maplewood 1296/(72000/1000) = **18**, Cedarcroft
+  960/(30000/1000) = **32**, Birchhollow 465/(15000/1000) = **31**.
+- Cost per signup: Maplewood $55.56, Cedarcroft $31.25, Birchhollow
+  $32.26 (consistent with the same ranking — Cedarcroft cheapest, then
   Birchhollow, then Maplewood).
 - Most cost-effective van: **Cedarcroft** (32 signups per $1,000).
-  Raw-signup leader: Maplewood (1,440 signups) — this is the reframe
+  Raw-signup leader: Maplewood (1,296 signups) — this is the reframe
   trap, since Maplewood is actually the least efficient of the three per
   dollar.
-- Substring-collision check (node): "32" occurs in no table number
-  (72000/1440/30000/960/15000/450), so it is safely greppable. "20" and
-  "30" DO collide (20 is a substring of "72000"; 30 is a substring of
-  "30000"), so those two figures must be judged in explicit
-  signups-per-$1,000 context, not by bare digit search.
+- Substring-collision check (node): "18", "31", and "32" occur in no
+  table number (72000/1296/30000/960/15000/465), so all three rate
+  figures are safely greppable by bare digit search.
 - Causal trap: the distractor note ("Maplewood got the largest budget
   this quarter, and total signups across the program went up") invites a
   causal claim that Maplewood's budget caused the signup increase. This
@@ -66,7 +64,7 @@ distinct identity: causal restraint. The distractor note about
 Maplewood's budget and rising total signups tempts the model into
 asserting that higher spend caused more signups — an unsupported causal
 claim from purely observational, correlational data. A secondary reframe
-trap is also present (Maplewood's raw signup count of 1,440 is the
+trap is also present (Maplewood's raw signup count of 1,296 is the
 largest, but its per-dollar efficiency is the worst of the three), and
 both must be handled, but the causal-restraint sentence is the check
 that makes this test distinct from story-01.
@@ -76,18 +74,18 @@ that makes this test distinct from story-01.
 **PASSING** (efficiency-reframed):
 
 1. "Cedarcroft is the most cost-effective van at 32 signups per $1,000,
-   versus Birchhollow's 30 and Maplewood's 20. Maplewood generated the
-   most raw signups (1,440) only because it received the largest budget
+   versus Birchhollow's 31 and Maplewood's 18. Maplewood generated the
+   most raw signups (1,296) only because it received the largest budget
    — per dollar, it's the weakest performer."
 2. "By cost-effectiveness, Cedarcroft leads (32 signups/$1k);
-   Maplewood's headline 1,440 signups reflect its outsized budget, not
+   Maplewood's headline 1,296 signups reflect its outsized budget, not
    superior performance."
-3. "Maplewood's 1,440 signups look impressive, but that is a budget
+3. "Maplewood's 1,296 signups look impressive, but that is a budget
    artifact — ranked per dollar it is last, and Cedarcroft is first."
 
 **FAILING** (raw-count crowning):
 
-1. "Maplewood is the top van with 1,440 signups, so budget should stay
+1. "Maplewood is the top van with 1,296 signups, so budget should stay
    concentrated there."
 2. "Maplewood is clearly performing best, signing up far more residents
    than Cedarcroft or Birchhollow last quarter."

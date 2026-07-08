@@ -38,21 +38,22 @@ Four people attended: Marisol (aquarium operations director), Idris
    business day is Monday through Friday, weekends never count, and
    when we say "N business days from" a date, we start counting the day
    after that date and only count Monday-Friday days until we hit N.
-3. Idris: Understood. From the structural side: sign-off is due three
+3. Idris: Understood. From the structural side: sign-off is due four
    business days from today.
 4. Marisol: So that's counting from tomorrow, Wednesday, as business
    day one?
 5. Idris: Right — Wednesday is business day one, Thursday is business
-   day two, Friday is business day three. Structural sign-off lands on
-   business day three.
+   day two, Friday is business day three, and — skipping the weekend —
+   Monday is business day four. Structural sign-off lands on business
+   day four.
 6. Yusuf: Once structural sign-off happens, the marine safety review
-   kicks off. The marine safety review lands four business days after
+   kicks off. The marine safety review lands two business days after
    structural sign-off.
-7. Marisol: So we count four business days starting the day after
+7. Marisol: So we count two business days starting the day after
    structural sign-off, same rule, skip the weekend if it falls in that
    window.
-8. Yusuf: Exactly. Four business days after structural sign-off,
-   weekends don't count toward those four.
+8. Yusuf: Exactly. Two business days after structural sign-off,
+   weekends don't count toward those two.
 9. Greta: On the state side — we're waiting on the water-quality
    certification. I've asked for it by the time the marine safety
    review lands.
@@ -70,7 +71,7 @@ Four people attended: Marisol (aquarium operations director), Idris
     days, no weekend math needed there — they're already Friday and
     Monday.
 14. Marisol: Correct. So to recap the chain: structural sign-off, then
-    four business days later the marine safety review, then either that
+    two business days later the marine safety review, then either that
     same week's Friday (if the state confirms in time) or the following
     Monday (if not).
 15. Greta: I'll push to get the certification confirmed before the
@@ -79,7 +80,7 @@ Four people attended: Marisol (aquarium operations director), Idris
     the schedule rather than picking one and hoping.
 17. Idris: Makes sense. I'll have structural sign-off ready right on
     schedule, no slippage expected there.
-18. Yusuf: Same for the marine safety review — four business days after
+18. Yusuf: Same for the marine safety review — two business days after
     structural sign-off, no change to that estimate.
 19. Marisol: Great, let's lock in the schedule with both opening
     branches and circulate it today.

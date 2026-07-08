@@ -14,9 +14,9 @@ a **single** JavaScript regular expression that matches a whole string
 if and only if it is a valid Ravelin cask stamp, and nothing else.
 Grammar:
 
-- Exactly three uppercase letters `A`-`Z` (the yard code).
+- Exactly four uppercase letters `A`-`Z` (the yard code).
 - A literal colon `:`.
-- Then 4 to 6 digits (the lot number), whose **first digit is `1`-`9`**
+- Then 2 to 4 digits (the lot number), whose **first digit is `1`-`9`**
   (no leading zero on the digit run).
 - An **optional** reissue suffix: the literal characters `/r` followed
   by one or two digits.
@@ -42,29 +42,29 @@ order:
 ```js
 const CORPUS = [
   // must be classified MATCH
-  "WKT:1234",
-  "QRS:987654",
-  "MZP:5000/r3",
-  "MZP:5000/r27",
-  "BCD:1000",
-  "GHT:2718/r9",
-  "VXN:314159/r42",
-  "JKL:80085",
+  "FYNX:731",
+  "QUOR:9876",
+  "DRAK:409/r5",
+  "DRAK:409/r58",
+  "HALT:20",
+  "VINE:876/r9",
+  "CLOY:9214/r64",
+  "BRIM:365",
   // must be classified REJECT
-  "ooWKT:1234oo",
-  "ABCD:1234",
-  "WKT:1234567",
-  "tag WKT:9000 x",
-  "wkt:1234",
-  "WK:1234",
-  "WKT:0123",
-  "WKT:123",
-  "WKT:1234/r",
-  "WKT:1234/r123",
-  "WKT:1234/R3",
-  "WKT-1234",
-  "WKT:12a4",
-  "WKT:1234 ",
+  "zzFYNX:731zz",
+  "XFYNX:731",
+  "FYNX:731895",
+  "code FYNX:731 today",
+  "fynx:731",
+  "FYN:731",
+  "FYNX:0731",
+  "FYNX:7",
+  "FYNX:731/r",
+  "FYNX:731/r895",
+  "FYNX:731/R5",
+  "FYNX-731",
+  "FYNX:7a1",
+  "FYNX:731 ",
 ];
 ```
 

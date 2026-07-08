@@ -16,7 +16,7 @@ docs for it yet. Write accurate reference documentation from the
 source itself — do not guess at behavior; read the code.
 
 ```js
-function allotShelf(crates, shelf, perShelf = 12) {
+function allotShelf(crates, shelf, perShelf = 15) {
   if (!Array.isArray(crates)) {
     throw new TypeError('crates must be an array');
   }
@@ -61,11 +61,11 @@ module.exports = { allotShelf };
   append exactly these five `console.log(JSON.stringify(...))` calls,
   in this order, so the file is runnable standalone with
   `node examples.js`:
-  1. `allotShelf(['a','b','c','d','e','f','g'], 1, 3)`
-  2. `allotShelf(['a','b','c','d','e','f','g'], 3, 3)`
-  3. `allotShelf(['a','b','c','d','e','f','g'], 8, 3)`
+  1. `allotShelf(['a','b','c','d','e','f','g','h','i'], 1, 4)`
+  2. `allotShelf(['a','b','c','d','e','f','g','h','i'], 3, 4)`
+  3. `allotShelf(['a','b','c','d','e','f','g','h','i'], 9, 4)`
   4. `allotShelf([], 1)`
-  5. `allotShelf(['a','b','c','d','e','f','g'], 1)`
+  5. `allotShelf(['a','b','c','d','e','f','g','h','i'], 1)`
 
 ## Constraints
 

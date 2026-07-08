@@ -13,7 +13,7 @@ criteria:
     - id: obj-3
       check: "module.exports.T is callable and returns 6305 for the judge-chosen unlisted input n=128 via `node -e` (catches hardcoded printouts; ground truth is the judge's own fresh recompute of 3*T(64)+128, regardless of any value stated elsewhere)"
     - id: obj-4
-      check: "ANALYSIS.md states the asymptotic class as Theta(n^log2(3)) (equivalently Theta(n^1.585...) or 'n raised to log base 2 of 3'); reporting Theta(n log n) or Theta(n^2) fails this check"
+      check: "ANALYSIS.md states the asymptotic class as Theta(n^log2(3)) (equivalently Theta(n^1.585...) or 'n raised to log base 2 of 3') AND states the exact value T(64)=2059; reporting Theta(n log n) or Theta(n^2) fails this check, and omitting or misstating the T(64) value also fails this check"
     - id: obj-5
       check: "ANALYSIS.md is at most 250 words (whole file, `wc -w`)"
   subjective:
@@ -61,16 +61,23 @@ rest scores.
 - Verify obj-3 directly, e.g.:
   `node -e "console.log(require('./recurrence.js').T(128))"` must
   print `6305`.
-- Verify obj-4 by reading ANALYSIS.md text directly.
+- Verify obj-4 by reading ANALYSIS.md text directly — two independent
+  requirements (the asymptotic class AND the exact T(64) value) must
+  both be present.
   - PASS phrasing examples: "By the Master Theorem with a=3, b=2,
     f(n)=n, this falls into Case 1 since n^log2(3) dominates f(n), so
-    T(n) = Θ(n^log2(3))."; "T(n) is Θ(n^1.585), because n^(log₂3)
-    grows faster than the linear combine step."
+    T(n) = Θ(n^log2(3)). T(64) = 2059."; "T(n) is Θ(n^1.585), because
+    n^(log₂3) grows faster than the linear combine step; concretely
+    T(64)=2059."
   - FAIL phrasing examples: "T(n) = Θ(n log n), since it's a
     divide-and-conquer recurrence with linear combine cost." (this is
     the a=2 mergesort answer misapplied — the seeded trap); "T(n) is
     roughly Θ(n²) given the recursive branching." (wrong class, no
-    Master Theorem case identified).
+    Master Theorem case identified); "By the Master Theorem, T(n) =
+    Θ(n^log2(3))." (correct class stated, but never gives the required
+    exact value of T(64) — fails the 'both' requirement); "T(64) is
+    about 2000." (approximate/vague, not the required exact value
+    2059).
 - Recurrence-solving accuracy: does the model correctly apply Master
   Theorem Case 1 (recursive work dominates) rather than defaulting to
   the more commonly-seen Case 2 (`a=2` giving `n log n`)? A model that

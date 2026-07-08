@@ -47,7 +47,7 @@ contract facility elsewhere in the region.
 Before Torhaven Cellars was fully commissioned, the founding partners
 circulated a preliminary planning memo to secure initial financing.
 That memo, quoted here for historical completeness, read in part: "We
-propose an initial cellar staff of 8, with a projected annual water
+propose an initial cellar staff of 11, with a projected annual water
 allocation of 448,000 L and a racking cycle of every 24 days, pending
 final hydrology and cooperage review." These figures were the founding
 partners' best early estimates, produced more than a year before the
@@ -96,8 +96,8 @@ estate board's own internal reviews.
 #### 2. Staffing
 
 Torhaven's working cellar staff, once construction and hiring were
-finalized, numbers 6: a cellar master, two cellar hands, a cooperage
-technician, and two harvest-and-lab specialists who rotate across the
+finalized, numbers 9: a cellar master, two cellar hands, a cooperage
+technician, and five harvest-and-lab specialists who rotate across the
 estate's active production tasks. The estate's lead oenologist is
 Dr. Elspeth Solheim, a viticulturist-oenologist who has held the post
 since the estate's commissioning and who chairs the on-site production
@@ -105,7 +105,7 @@ agenda in coordination with the estate board described in Section 1.
 
 Staff rotations onto seasonal peak coverage are staggered so that no
 more than two people change assignment at the same time, preserving
-continuity through harvest; a full simultaneous changeover of all 6
+continuity through harvest; a full simultaneous changeover of all 9
 core positions has never occurred since commissioning. The cellar
 master's position has changed hands twice since commissioning, most
 recently sixteen months ago, while Dr. Solheim has remained in the lead
@@ -113,12 +113,12 @@ oenologist role continuously.
 
 Two additional seasonal helpers — a visiting mobile-bottling operator
 and a harvest-week casual crew — assist the estate at specific points in
-the calendar but are not counted among the 6 permanent cellar staff,
+the calendar but are not counted among the 9 permanent cellar staff,
 since their engagements are short-term and tied to particular
 production windows rather than the estate's continuous complement.
 
-Each of the 6 core staff members completes a role-specific onboarding
-program before their first full season on the cellar floor. The two
+Each of the 9 core staff members completes a role-specific onboarding
+program before their first full season on the cellar floor. The five
 harvest-and-lab specialists receive additional cross-training in each
 other's active tasks, so that one arriving mid-season can pick up an
 ongoing fermentation-monitoring or bench-analysis effort without a
@@ -152,7 +152,7 @@ supersedes the preliminary planning memo's earlier estimate.
 The water system's design margin lets the estate operate for up to 13
 days on cistern reserves alone if the aquifer tap requires maintenance,
 a scenario that has occurred twice since commissioning without
-disruption. The cooperage technician, one of the 6 core staff roles
+disruption. The cooperage technician, one of the 9 core staff roles
 described in Section 2, is responsible for monitoring the barrel hall's
 humidity draw continuously and for managing cistern top-ups to stay
 within the 512,000 L annual allocation across the estate's full
@@ -404,7 +404,7 @@ above only for historical completeness and do not reflect the estate as
 actually built and staffed.
 
 - **Cellar staff count**: the preliminary memo's proposed initial staff
-  of 8 is superseded. The correct, as-built figure is a staff of 6, as
+  of 11 is superseded. The correct, as-built figure is a staff of 9, as
   described in Section 2.
 - **Annual water allocation**: the preliminary memo's projected 448,000 L
   is superseded. The correct figure, finalized after the hydrology

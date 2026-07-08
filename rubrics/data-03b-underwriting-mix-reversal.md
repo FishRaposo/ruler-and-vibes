@@ -8,7 +8,7 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "ANALYSIS.md states overall current-to-approved non-default rate of ~62.9% for Argus (692/1100) and ~84.7% for Vantage (932/1100), each within ±0.5pp (judge recomputes with node from the embedded CSV)"
+      check: "ANALYSIS.md states overall current-to-approved non-default rate of ~62.9% for Argus (2076/3300) and ~84.7% for Vantage (2796/3300), each within ±0.5pp (judge recomputes with node from the embedded CSV)"
     - id: obj-2
       check: "All four per-band rates are reported correctly: Argus prime 92%, Argus subprime 60%, Vantage prime 88%, Vantage subprime 52% (exact, any consistent formatting)"
     - id: obj-3
@@ -35,9 +35,9 @@ Parallel form of `data-03-segment-paradox` (same construct, fresh surface).
 
 - Recompute every figure yourself with node from the embedded CSV before
   reading the submission's numbers. Ground truth: Argus overall
-  692/1100 = 62.91%; Vantage overall 932/1100 = 84.73%. Per-band: Argus
-  prime 92/100 = 92%, Argus subprime 600/1000 = 60%, Vantage prime
-  880/1000 = 88%, Vantage subprime 52/100 = 52%. Band-weighted projection
+  2076/3300 = 62.91%; Vantage overall 2796/3300 = 84.73%. Per-band: Argus
+  prime 276/300 = 92%, Argus subprime 1800/3000 = 60%, Vantage prime
+  2640/3000 = 88%, Vantage subprime 156/300 = 52%. Band-weighted projection
   over 1,200 prime + 1,200 subprime: Argus = 1200*0.92 + 1200*0.60 =
   1824; Vantage = 1200*0.88 + 1200*0.52 = 1680.
 - The trap: a model that projects from the headline aggregate rates

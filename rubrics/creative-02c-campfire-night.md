@@ -1,5 +1,5 @@
 ---
-test: creative-02c-balloon-dawn
+test: creative-02c-campfire-night
 canary: "margay woad"
 reviewed: "pass 2026-07-04 (independent gate)"
 weights:
@@ -44,7 +44,7 @@ submission scores.
 ### Reference verification script (`verify-scene.js`) — run with `node verify-scene.js scene.html`
 
 ```js
-// Judge verification script for creative-02c-balloon-dawn.
+// Judge verification script for creative-02c-campfire-night.
 // Parses scene.html and checks the four objective constraints.
 const fs = require('fs');
 const file = process.argv[2];
@@ -94,18 +94,19 @@ console.log(allOk ? 'ALL OBJECTIVE CHECKS PASS' : 'OBJECTIVE CHECKS FAILED');
 process.exit(allOk ? 0 : 1);
 ```
 
-- Author-verified against a correct pure-CSS reference (gradient sky,
-  layered hill shapes, a balloon built from a radius-shaped `<div>`
-  envelope + basket, and `@keyframes` bob/drift/flicker set to
-  `infinite`): the script prints `obj-1..obj-4: PASS` and `ALL OBJECTIVE
-  CHECKS PASS`, exit code 0.
+- Author-verified against a correct pure-CSS reference (a dark gradient
+  night sky with small radial-gradient star dots, layered log shapes for
+  the fire pit, and flame/smoke shapes built from radius-shaped `<div>`s
+  with `@keyframes` flicker/rise/twinkle set to `infinite`): the script
+  prints `obj-1..obj-4: PASS` and `ALL OBJECTIVE CHECKS PASS`, exit code
+  0.
 - Author-verified against the seeded trap (the same scene but with the
-  balloon supplied as an `<img src="balloon.png">` plus a
+  fire supplied as an `<img src="campfire.png">` plus a
   `background-image: url("data:image/svg+xml;...")` and a JS
-  `setInterval` bob loop): `obj-1`, `obj-2`, and `obj-4` report `FAIL`
-  and the script exits 1 — confirming the checks catch the natural
-  shortcut of reaching for an image asset and a JS animation instead of
-  building the motion in CSS.
+  `setInterval` flicker loop): `obj-1`, `obj-2`, and `obj-4` report
+  `FAIL` and the script exits 1 — confirming the checks catch the
+  natural shortcut of reaching for an image asset and a JS animation
+  instead of building the motion in CSS.
 
 - **obj-1** — No JavaScript anywhere. Run the script; obj-1 must be
   PASS, then confirm by grepping the file.
@@ -113,9 +114,9 @@ process.exit(allOk ? 0 : 1);
     event handlers"; "all motion comes from CSS `@keyframes`, zero
     JavaScript"; "no `onclick`/`onload` attributes and no
     `javascript:` URIs anywhere."
-  - FAIL phrasings: "a `<script>` block drives the balloon with
+  - FAIL phrasings: "a `<script>` block drives the flames with
     `requestAnimationFrame`"; "an `onload="..."` handler kicks off the
-    animation"; "a `setInterval` loop updates the balloon's `top` in
+    animation"; "a `setInterval` loop updates the flame's `height` in
     JavaScript."
 - **obj-2** — No images or external resources. Run the script; obj-2
   must be PASS.
@@ -124,17 +125,17 @@ process.exit(allOk ? 0 : 1);
     `<img>`, `<picture>`, or SVG `<image>` element and no `data:`
     URI"; "the only `url(...)` references, if any, are bare `#id`
     fragments, not files."
-  - FAIL phrasings: "the balloon is an `<img src="balloon.png">`"; "the
-    sky uses `background-image: url("data:image/svg+xml;...")`"; "a
-    `<link rel="stylesheet" href="https://...">` or `@import` pulls in
-    an external resource."
+  - FAIL phrasings: "the campfire is an `<img src="campfire.png">`"; "the
+    night sky uses `background-image: url("data:image/svg+xml;...")`";
+    "a `<link rel="stylesheet" href="https://...">` or `@import` pulls
+    in an external resource."
 - **obj-3** — At least one continuous CSS animation runs. Run the
   script; obj-3 must be PASS, then confirm the motion actually loops in
   the browser.
-  - PASS phrasings: "a `@keyframes drift` animation on the clouds is set
-    to `infinite` and loops forever"; "the balloon bobs via an
-    `animation: bob 6s ease-in-out infinite`"; "the burner flame
-    flickers on a continuous, infinitely repeating keyframe cycle."
+  - PASS phrasings: "a `@keyframes flicker` animation on the flames is
+    set to `infinite` and loops forever"; "the smoke curls upward via
+    an `animation: rise 6s ease-in-out infinite`"; "the stars twinkle
+    on a continuous, infinitely repeating keyframe cycle."
   - FAIL phrasings: "there are `@keyframes` but every `animation` runs a
     finite count and then freezes"; "the scene is entirely static — no
     `@keyframes` and no `animation` property at all"; "the only motion
@@ -150,13 +151,13 @@ process.exit(allOk ? 0 : 1);
     image that fails to load offline"; "the CSS lives in a separate
     `styles.css` that must sit alongside the HTML."
 
-- **Scene readability & charm**: is it unmistakably a hot-air balloon
-  drifting over rolling hills at dawn? Depth layering matters — a quiet
-  dawn sky and receding hills behind a foreground balloon beat a flat
-  sticker collage.
+- **Scene readability & charm**: is it unmistakably a campfire crackling
+  under a starry night sky? Depth layering matters — a dark, quiet sky
+  full of stars behind a glowing foreground fire beats a flat sticker
+  collage.
 - **CSS technique**: economical shapes, gradients earning their keep
-  (the dawn sky, the rounded envelope), animation that eases rather than
+  (the night sky, the glowing embers), animation that eases rather than
   snaps and loops seamlessly.
 - **Reasoning quality**: did REASONING.md pick what NOT to draw — which
   details to abstract away or omit so the pure-CSS budget buys the most
-  legible balloon-at-dawn read?
+  legible campfire-at-night read?

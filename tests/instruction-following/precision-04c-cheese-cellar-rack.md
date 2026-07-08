@@ -37,7 +37,7 @@ W-045 colby 53
    (pipe-separated), where `SEAL` = (score multiplied by the number of
    letters in VARIETY), mod 89.
 4. Conditional sort: compute TOTAL-WHEELS first (see below), then — IF
-   TOTAL-WHEELS exceeds 500, sort the RACK section by score descending;
+   TOTAL-WHEELS exceeds 520, sort the RACK section by score descending;
    OTHERWISE sort it alphabetically by variety.
 5. File layout is fixed: the line `RACK:`, then the RACK-section lines,
    then the line `CURING:`, then the CURING-section lines, then a footer

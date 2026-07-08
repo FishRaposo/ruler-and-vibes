@@ -50,9 +50,10 @@ anywhere else.
  RST 559` — the lowercase call-sign `wk7QRP` (radio call-signs are
 conventionally uppercased to `WK7QRP`) is inside a pasted log line being
 reproduced verbatim and must NOT be "corrected," even though a
-copyeditor's instinct would be to normalize its casing. The two runs of
-double spaces between the log fields are likewise part of the verbatim
-line and must be preserved.
+copyeditor's instinct would be to normalize its casing. The three runs
+of double spaces between the log fields — between `14:03Z` and
+`wk7QRP`, between `wk7QRP` and `14.074`, and between `MHz` and `RST` —
+are likewise part of the verbatim line and must be preserved.
 
 Frozen required-edit list for the out-of-span prose (4 edits total;
 these are the ONLY genuine errors outside the two protected spans):

@@ -33,7 +33,7 @@ Here is the crash log from the error tracker:
 
 ```
 TypeError: Cannot read properties of undefined (reading 'panels')
-    at tallyCuts (cuts.js:9)
+    at tallyCuts (cuts.js:10)
 ```
 
 Each order ticket has the shape `{sku, panels, areaEachSqcm}` (a ticket

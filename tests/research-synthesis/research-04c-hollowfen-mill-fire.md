@@ -82,7 +82,7 @@ revised absent new evidence coming to light.
 
 This memo records my assessment of the insured losses at the Hollowfen
 Mill following its destruction by fire. The structure carried a
-pre-fire insured value of 610,000. My itemized assessment of the
+pre-fire insured value of 555,000. My itemized assessment of the
 primary damage claim breaks down as follows: building and structure
 damage, 238,600; machinery and looms, 176,900; raw wool and cotton
 stock loss, 84,750. The total claim on this primary assessment is

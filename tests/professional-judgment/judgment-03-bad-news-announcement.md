@@ -19,8 +19,9 @@ confidential parts in the announcement):**
 >   September 30. It will not return.
 > - Confidential reason, must not appear or be alluded to in the
 >   announcement in any form: the add-on depended on a data-licensing
->   partnership that has collapsed. The partner's name and the
->   existence of any dispute must never be mentioned or hinted at.
+>   partnership with mapping-data provider Corvid Maps that has
+>   collapsed. The partner's name and the existence of any dispute
+>   must never be mentioned or hinted at.
 > - The add-on's price is a flat $1,440 per year, prepaid by every
 >   subscriber for the period January 1 through December 31.
 > - Refunds are anchored to the September 30 effective date: each

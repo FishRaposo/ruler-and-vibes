@@ -38,7 +38,7 @@ MICROCHIP: 985-1*24-7**9
 
 A single JSON object with EXACTLY these keys:
 
-- `clinic_name` — string, exactly as printed.
+- `clinic_name` — string, the clinic's name in standard capitalization (the printed header is in ALL CAPS as a stylistic banner — e.g. transcribe "BRIGHTPAW VETERINARY CLINIC" as "Brightpaw Veterinary Clinic").
 - `visit_date` — string, `YYYY-MM-DD`.
 - `treatments` — array of the three treatment description strings, in the
   order printed (descriptions only, not amounts).

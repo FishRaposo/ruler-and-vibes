@@ -8,9 +8,9 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "`node -e \"console.log(require('./clean.js').tag('cirrus'))\"` prints exactly `21809`"
+      check: "`node -e \"console.log(require('./clean.js').tag('cirrus'))\"` prints exactly `32799`"
     - id: obj-2
-      check: "Judge pastes the original q7 (below) beside clean.js and runs both on all 5 reference vectors — outputs are identical between q7 and clean.js on every vector: `''`->0, `'dew'`->843, `'cirrus'`->21809, `'Fog7'`->19526, `'The damp grey morning'`->10645"
+      check: "Judge pastes the original q7 (below) beside clean.js and runs both on all 5 reference vectors — outputs are identical between q7 and clean.js on every vector: `''`->0, `'dew'`->11706, `'cirrus'`->32799, `'Fog7'`->5565, `'The damp grey morning'`->7602"
     - id: obj-3
       check: "clean.js contains no double-minus token (neither `- -` nor `-  -` with any amount of inner whitespace) anywhere, and contains none of the literal substrings `_u(`, `_q[`, `tAedoCrahc`, `htgnel` (judge greps the file)"
     - id: obj-4
@@ -45,11 +45,11 @@ scores.
   var _q=['tAedoCrahc','htgnel'];
   function _u(x){return x.split('').reverse().join('')}
   function q7(s){
-    var b=0x2C;
+    var b=0x47;
     var h=b^b;
     for(var i=0;i<s[_u(_q[1])];i++){
       var c=s[_u(_q[0])](i);
-      h=((h<<4)- -c)^(c>>2);
+      h=((h<<5)- -c)^(c>>3);
       h=h&0x7FFF;
     }
     return h- -((s[_u(_q[1])]*11)|0);
@@ -60,7 +60,7 @@ scores.
   reversed spells `length` — the whole `_u(_q[...])` dance is just
   fetching those two property names indirectly. `b^b` is always 0 (a
   disguised zero-initialization of `h`). Each character's code `c` is
-  folded into `h` via `h = ((h << 4) + c) ^ (c >> 2)` (the `- -c` is
+  folded into `h` via `h = ((h << 5) + c) ^ (c >> 3)` (the `- -c` is
   addition — subtracting a negated operand — not subtraction), masked to
   15 bits (`& 0x7FFF`) every iteration, and the final return adds
   `11 * s.length` (again via `- -(...)`, disguised addition). A clean
@@ -71,7 +71,7 @@ scores.
     var h = 0;
     for (var i = 0; i < s.length; i++) {
       var c = s.charCodeAt(i);
-      h = ((h << 4) + c) ^ (c >> 2);
+      h = ((h << 5) + c) ^ (c >> 3);
       h = h & 0x7FFF;
     }
     return h + 11 * s.length;
@@ -79,10 +79,10 @@ scores.
   ```
 
 - Reference vectors (node v24.16.0-verified, q7 and the clean
-  reimplementation agree on all of them): `""` -> 0, `"dew"` -> 843,
-  `"cirrus"` -> 21809, `"Fog7"` -> 19526, `"The damp grey morning"` ->
-  10645. A spare held-back vector the rubric keeps in reserve:
-  `"zz"` -> 1722 (use it if you suspect a submission got lucky on the 5
+  reimplementation agree on all of them): `""` -> 0, `"dew"` -> 11706,
+  `"cirrus"` -> 32799, `"Fog7"` -> 5565, `"The damp grey morning"` ->
+  7602. A spare held-back vector the rubric keeps in reserve:
+  `"zz"` -> 3883 (use it if you suspect a submission got lucky on the 5
   published vectors — verified this always agrees with the correct
   reading; note it happens to coincide with the dropped-mask misreading,
   so it is not the vector to lean on for that specific variant — the
@@ -92,22 +92,22 @@ scores.
   non-empty vector (several are caught even by `"dew"` alone):
   - Misreading `- -c` as literal subtraction (`h - c` instead of
     `h + c`, and the final term as subtraction too) — wrong on every
-    non-empty vector (`"cirrus"` gives 10927, not 21809).
+    non-empty vector (`"cirrus"` gives 28641, not 32799).
   - Dropping the `& 0x7FFF` mask — wrong on every non-empty published
-    vector (`"cirrus"` gives 135025969, not 21809); the reserved `"zz"`
-    happens to still match at 1722 by coincidence for that short input,
+    vector (`"cirrus"` gives -461373409, not 32799); the reserved `"zz"`
+    happens to still match at 3883 by coincidence for that short input,
     which is why it is a spare rather than a discriminator here.
-  - Flipping `c >> 2` to `c << 2` — wrong on every non-empty vector
-    (`"cirrus"` gives 32145).
+  - Flipping `c >> 3` to `c << 3` — wrong on every non-empty vector
+    (`"cirrus"` gives 26573).
   - Dropping the `+ 11 * s.length` tail — wrong on every non-empty vector
-    (`"cirrus"` gives 21743, not 21809).
+    (`"cirrus"` gives 32733, not 32799).
   If a submission's `clean.js` matches `q7` on all 5 reference vectors,
   treat obj-2 as passed; if you want extra confidence, also try `"zz"`
-  (expect 1722).
+  (expect 3883).
 - Verify obj-1 and obj-2 by actually running both functions with `node`,
   e.g.:
-  `node -e "function _u(x){return x.split('').reverse().join('')} var _q=['tAedoCrahc','htgnel']; function q7(s){var b=0x2C;var h=b^b;for(var i=0;i<s[_u(_q[1])];i++){var c=s[_u(_q[0])](i);h=((h<<4)- -c)^(c>>2);h=h&0x7FFF;}return h- -((s[_u(_q[1])]*11)|0);} console.log(q7('dew'), q7('cirrus'), q7('Fog7'), q7('The damp grey morning'), q7(''))"`
-  should print `843 21809 19526 10645 0`; compare against
+  `node -e "function _u(x){return x.split('').reverse().join('')} var _q=['tAedoCrahc','htgnel']; function q7(s){var b=0x47;var h=b^b;for(var i=0;i<s[_u(_q[1])];i++){var c=s[_u(_q[0])](i);h=((h<<5)- -c)^(c>>3);h=h&0x7FFF;}return h- -((s[_u(_q[1])]*11)|0);} console.log(q7('dew'), q7('cirrus'), q7('Fog7'), q7('The damp grey morning'), q7(''))"`
+  should print `11706 32799 5565 7602 0`; compare against
   `require('./clean.js').tag` on the same inputs.
 - Readability of the reconstruction: reward clear naming (`tag`, `h`, `c`
   or better), no leftover indirection, straightforward control flow.

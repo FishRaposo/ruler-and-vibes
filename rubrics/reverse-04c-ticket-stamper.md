@@ -10,7 +10,7 @@ criteria:
     - id: obj-1
       check: "Judge runs transform.js on all 9 visible pairs from the test file — all 9 reproduce exactly"
     - id: obj-2
-      check: "Held-back single words: transform('spring') === 'gnirps' and transform('socket') === 'tekcos' (both fail under the 'rotate every word right by one' decoy rule)"
+      check: "Held-back single words: transform('spring') === 'gnirps' and transform('anchor') === 'rohcna' (both fail under the 'rotate every word right by one' decoy rule)"
     - id: obj-3
       check: "Held-back multi-word: transform('handle rivet') === 'eldnah trive' and transform('coil screw hinge') === 'lioc wscre ehing'"
     - id: obj-4
@@ -56,8 +56,8 @@ rest scores.
   implemented plain rotate-right-always.
 - Held-back vectors, added specifically to make the rule airtight (node
   v24.16.0-verified): `spring`(6)->`gnirps` (reverse; rotate-right would
-  give `gsprin`), `socket`(6)->`tekcos` (reverse; rotate-right would give
-  `tsocke`), `handle rivet`->`eldnah trive` (`handle`(6) even->reverse
+  give `gsprin`), `anchor`(6)->`rohcna` (reverse; rotate-right would give
+  `rancho`), `handle rivet`->`eldnah trive` (`handle`(6) even->reverse
   `eldnah`; `rivet`(5) odd->rotate-right `trive`), `coil screw hinge`->
   `lioc wscre ehing` (`coil`(4) even->reverse `lioc`; `screw`(5)
   odd->rotate-right `wscre`; `hinge`(5) odd->rotate-right `ehing`). Two
@@ -67,14 +67,14 @@ rest scores.
   correct rule and the "rotate every word right by one" decoy, since
   `keg` is odd and both rules agree on odd words) — so they do NOT
   discriminate; the decisive held-back checks (used in obj-2/obj-3) are
-  `spring`, `socket`, `handle rivet`, and `coil screw hinge`, all of
+  `spring`, `anchor`, `handle rivet`, and `coil screw hinge`, all of
   which defeat the decoy.
 - Uniqueness adversarially confirmed: parity (odd/even length) is the
   ONLY property that separates the "rotated" words from the "reversed"
   words across the full vector set — every rotated-class word (`cog`,
   `latch`, `crank`, `i`, `peg`, `rod`, `nut`, `rivet`, `screw`, `hinge`)
   is odd-length, and every reversed-class word (`in`, `up`, `on`, `if`,
-  `gear`, `spring`, `socket`, `handle`, `coil`) is even-length, with no
+  `gear`, `spring`, `anchor`, `handle`, `coil`) is even-length, with no
   exceptions. Standard competing hypotheses were tested and all fail
   somewhere in the full vector set: "always reverse" (fails on
   `cog`->`goc` instead of `gco` — caught by the very first visible
@@ -97,7 +97,7 @@ rest scores.
 - Verify obj-1 through obj-3 by actually running transform.js, e.g.
   `node -e "console.log(require('./transform.js').transform('gear peg'))"`
   should print `raeg gpe`; similarly check `spring` -> `gnirps`,
-  `socket` -> `tekcos`, `handle rivet` -> `eldnah trive`, `coil screw
+  `anchor` -> `rohcna`, `handle rivet` -> `eldnah trive`, `coil screw
   hinge` -> `lioc wscre ehing`. Do not accept a transform.js that
   special-cases these exact held-back strings — probe it with a fresh
   word of your own choosing (count its length first, then check its

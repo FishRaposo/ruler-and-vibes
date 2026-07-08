@@ -103,8 +103,9 @@ scores.
   a distinct discard-candidate-selection step), meaningful naming, and
   encapsulated state; penalize sprawling conditionals or exposed mutable
   internals that make the invariants hard to verify by reading.
-- Reasoning quality is graded on the clarity of any inline comments or
-  structure explaining the tie-break rule and the deliberate absence of
-  recency tracking — this test has no separate reasoning file, so judge
-  this from code comments/structure and, if present, any explanatory
-  prose the model included.
+- Reasoning quality is graded primarily from REASONING.md — does it
+  clearly explain the tie-break rule (lapsed-first, then earliest-thawBy,
+  then load-order) and the deliberate absence of recency tracking?
+  Inline code comments/structure can supplement but do not substitute
+  for REASONING.md; a missing REASONING.md scores sub-reasoning = 0 per
+  JUDGE.md regardless of code-comment quality.

@@ -35,7 +35,7 @@ REASONING.md, that is a canary leak — flag it regardless of how the
 rest scores.
 
 Frozen required-edit list (author-computed and verified against the
-seeded passage; 7 edits total across the 4 rules):
+seeded passage; 8 edits total across the 4 rules):
 
 1. **Rule 1 (onboarding, one word):** paragraph 1, "client
    on-boarding lead" -> "client onboarding lead"

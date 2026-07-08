@@ -14,7 +14,7 @@ criteria:
     - id: obj-3
       check: "REFERENCE.md documents the empty-input edge case: `totalShelves` is 1 (a minimum of 1), not 0, when `crates` is empty"
     - id: obj-4
-      check: "REFERENCE.md correctly names both thrown error TYPES and their triggers (TypeError for non-array crates; RangeError for a non-positive-integer shelf or perShelf), and states perShelf defaults to 12 when omitted"
+      check: "REFERENCE.md correctly names both thrown error TYPES and their triggers (TypeError for non-array crates; RangeError for a non-positive-integer shelf or perShelf), and states perShelf defaults to 15 when omitted"
     - id: obj-5
       check: "REASONING.md exists and is at most 300 words (whole file, wc -w)"
   subjective:
@@ -36,18 +36,18 @@ surface).
 
 - AUTHOR RE-VERIFIED with node. Pinned reference outputs
   (`JSON.stringify` of the return object), in example order:
-  - A `allotShelf(['a','b','c','d','e','f','g'],1,3)` =>
-    `{"crates":["a","b","c"],"shelf":1,"perShelf":3,"totalCrates":7,"totalShelves":3,"hasMore":true}`
-  - B `allotShelf(['a','b','c','d','e','f','g'],3,3)` =>
-    `{"crates":["g"],"shelf":3,"perShelf":3,"totalCrates":7,"totalShelves":3,"hasMore":false}`
-  - C `allotShelf(['a','b','c','d','e','f','g'],8,3)` =>
-    `{"crates":[],"shelf":8,"perShelf":3,"totalCrates":7,"totalShelves":3,"hasMore":false}`
+  - A `allotShelf(['a','b','c','d','e','f','g','h','i'],1,4)` =>
+    `{"crates":["a","b","c","d"],"shelf":1,"perShelf":4,"totalCrates":9,"totalShelves":3,"hasMore":true}`
+  - B `allotShelf(['a','b','c','d','e','f','g','h','i'],3,4)` =>
+    `{"crates":["i"],"shelf":3,"perShelf":4,"totalCrates":9,"totalShelves":3,"hasMore":false}`
+  - C `allotShelf(['a','b','c','d','e','f','g','h','i'],9,4)` =>
+    `{"crates":[],"shelf":9,"perShelf":4,"totalCrates":9,"totalShelves":3,"hasMore":false}`
     (TRAP a: past-the-end shelf, empty crates, no throw)
   - D `allotShelf([],1)` =>
-    `{"crates":[],"shelf":1,"perShelf":12,"totalCrates":0,"totalShelves":1,"hasMore":false}`
-    (TRAP b: totalShelves is 1, not 0; default perShelf 12)
-  - E `allotShelf(['a','b','c','d','e','f','g'],1)` =>
-    `{"crates":["a","b","c","d","e","f","g"],"shelf":1,"perShelf":12,"totalCrates":7,"totalShelves":1,"hasMore":false}`
+    `{"crates":[],"shelf":1,"perShelf":15,"totalCrates":0,"totalShelves":1,"hasMore":false}`
+    (TRAP b: totalShelves is 1, not 0; default perShelf 15)
+  - E `allotShelf(['a','b','c','d','e','f','g','h','i'],1)` =>
+    `{"crates":["a","b","c","d","e","f","g","h","i"],"shelf":1,"perShelf":15,"totalCrates":9,"totalShelves":1,"hasMore":false}`
   - Errors: `allotShelf('x',1)` throws `TypeError`; `allotShelf([],0)`
     and `allotShelf([],1,0)` both throw `RangeError`.
 - Verify obj-1 by literally running `node examples.js` in the
@@ -70,7 +70,7 @@ surface).
   empty array".
 - obj-4: both error TYPES must be named correctly (not just "an
   error" or the wrong constructor swapped between the two triggers),
-  and the perShelf default (12) must be stated explicitly.
+  and the perShelf default (15) must be stated explicitly.
 - obj-5: run `wc -w REASONING.md`.
 - Documentation accuracy & completeness: does REFERENCE.md cover the
   full return shape field-by-field (not just prose-summarized), both

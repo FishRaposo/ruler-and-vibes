@@ -10,7 +10,7 @@ criteria:
     - id: obj-1
       check: "`node fixed.js` runs and every self-test line prints PASS"
     - id: obj-2
-      check: "The five listed cases produce ROSE.BARWARE, DELUXE.BOXED, PRE.CODED, STEEL, CREME.STOR (verify independently)"
+      check: "The five listed cases produce ROSE.BARWARE, DELUXE.BOXED, PRE.CODED, STEEL, CREME.STORA (verify independently)"
     - id: obj-3
       check: "REGRESSION.md names BOTH regressions: accent normalization (NFD strip) dropped, and the trailing-dot strip reduced to leading-only"
     - id: obj-4
@@ -43,8 +43,8 @@ scores.
   `skuCode("Rosé Barware")` → `ROSE.BARWARE`;
   `skuCode("Deluxe, Boxed!")` → `DELUXE.BOXED`;
   `skuCode("..Pre..Coded..")` → `PRE.CODED`;
-  `skuCode("Steel Frame", 6)` → `STEEL`;
-  `skuCode("Crème Storage Bins", 10)` → `CREME.STOR`.
+  `skuCode("Steel Frame", 5)` → `STEEL`;
+  `skuCode("Crème Storage Bins", 11)` → `CREME.STORA`.
 - Regression isolation: the strongest answers read like a precise
   before/after diff — the two exact edits where v2 parted from v1, each
   tied to a broken behavior. Penalize vague "v2 handled accents worse"

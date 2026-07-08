@@ -15,19 +15,19 @@ apply the exact same rule to the four new items.
 ### Worked labels (item -> shelf code)
 
 ```
-nutmeg -> utmegn6
-sage -> ages4
-walnut -> alnutw6
-oat -> ato3
+thyme -> hymet5
+saffron -> affrons7
+chive -> hivec5
+bay -> ayb3
 ```
 
 ### New items to label
 
 ```
-apricot
-fig
-custard
-mint
+cinnamon
+dill
+turmeric
+clove
 ```
 
 ## Deliverables
@@ -40,7 +40,7 @@ mint
 
 - Exactly 4 data rows, no more, no fewer.
 - No commentary, explanation, or extra columns anywhere in the file.
-- None of the four worked-label items (nutmeg, sage, walnut, oat) may
+- None of the four worked-label items (thyme, saffron, chive, bay) may
   appear as a data row.
 - Apply the SAME rule used to produce all four worked labels — it is a
   single rule, not a per-item special case.

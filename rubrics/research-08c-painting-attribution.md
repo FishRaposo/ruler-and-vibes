@@ -17,6 +17,8 @@ criteria:
       check: "A first-appearance timeline orders all seven sources by their stated dates (S1: 3 June through S7: 30 June) and identifies S1 as the earliest / originating source for the attribution claim"
     - id: obj-5
       check: "The map does NOT count S3, S5, or S6 as independent corroboration of the attribution (their assertions are shown collapsing into S1's lineage)"
+    - id: obj-6
+      check: "S7 is classified as NOT asserting the attribution claim (it reports a separate custody-chain detail) and that specific detail — the estate -> auction house's storage vault -> university conservation lab custody chain — is named; the map does not count S7 among the attribution origins"
   subjective:
     - id: sub-quality
       name: "Independence reasoning"
@@ -131,6 +133,20 @@ don't address the attribution claim at all, not because they're
     independent confirmation)
   - FAIL: "Six of the seven sources corroborate the attribution."
     (implicitly counts derived sources as separate corroboration)
+- **obj-6**: S7's detail — the custody chain (estate -> auction house's
+  storage vault -> university conservation lab) — must be named
+  specifically, not just "S7 reports something else."
+  - PASS: "S7 does not address the attribution at all; it reports that
+    the sketch's custody chain ran from the estate to the auction
+    house's storage vault and then to the university conservation lab,
+    based on the liquidator's own inventory log."
+  - PASS: "S7 is excluded from the attribution count — its contribution
+    is the custody-chain detail (estate -> auction house storage vault
+    -> university conservation lab), an unrelated provenance fact."
+  - FAIL: "S7 reports a different topic entirely." (doesn't name the
+    specific custody chain)
+  - FAIL: "S7 also supports the Vasseur attribution from its own
+    interview." (misclassifies S7 as an attribution-asserter)
 
 ### Subjective guidance
 

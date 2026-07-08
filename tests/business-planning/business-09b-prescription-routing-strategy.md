@@ -22,7 +22,7 @@ board.
 - The team has no prior e-prescribing or clinical-compliance expertise.
 
 **Option 2 — Buy a vendor SaaS:**
-- A proven, already-certified vendor product. 10 weeks to integrate.
+- A proven, already-certified vendor product. 7 weeks to integrate.
 - Cost: 7,500/month.
 - Patient prescription data leaves Cadence's platform and is processed by
   the vendor.

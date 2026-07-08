@@ -50,7 +50,7 @@ rest scores.
 | P6 | Network connectivity standard | FOUND | Ethernet 100BASE-TX |
 | P7 | Final-rinse sensor accuracy | FOUND | +/-0.3 C |
 | P8 | Exact weight in kilograms | NOT STATED | — (decoy: the 6 mm panel thickness and the cabinet's 1120 x 760 x 1520 mm dimensions are present, but no weight figure in kilograms or any other unit appears anywhere) |
-| P9 | Number of exterior finish options | FOUND | 3 (Brushed Steel, Pearl White, Slate Charcoal) |
+| P9 | Number of exterior finish options | FOUND | 3 |
 | P10 | Named building-automation protocol (BACnet/Modbus/KNX) | NOT STATED | — (decoy: Ethernet 100BASE-TX connectivity and the Farrowgate Fleet cloud monitoring portal are both present, but neither is a named building-automation protocol like BACnet, Modbus, or KNX, and none of those three names appears anywhere in the document) |
 
 ### Objective check notes
@@ -65,7 +65,12 @@ rest scores.
 - **obj-3**: P1, P2, P4, P6, P7, P9 must each be `FOUND:` with the
   verbatim value from the table above (whitespace-trimmed string
   match). All 6 required to pass; a missing or wrong value on any one
-  fails this gate.
+  fails this gate. For P9, the required verbatim value is the bare
+  count '3'; the spec sheet never writes this as a numeral (it says
+  'three'), so a submission converting the spelled-out count to '3'
+  satisfies this check, and any additional mention of the finish names
+  (Brushed Steel, Pearl White, Slate Charcoal) is optional context, not
+  part of the required matched string.
 - **obj-4**: this is the skim-the-neighbor check, evaluated per line:
   - P3's line must not contain a specific warranty duration (there is
     none to report, so any duration figure here — 1 year, 90 days,

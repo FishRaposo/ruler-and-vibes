@@ -8,7 +8,7 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "labels.json parses as JSON and contains a non-empty string 'button' and 'toast' for all 6 embedded action keys (queueEpisode, shareClip, followShow, downloadEpisode, unfollowShow, clearHistory) — no missing keys"
+      check: "labels.json parses as JSON and contains a non-empty string 'button' and 'toast' for all 6 embedded action keys (queueEpisode, shareClip, followShow, downloadEpisode, unfollowShow, clearHistory), and the JSON object has exactly these 6 top-level keys — no missing or extra keys"
     - id: obj-2
       check: "Every 'button' value is 1-3 whitespace-delimited words and has no trailing '.', '!', or ellipsis (JS: w=v.trim().split(/\\s+/); 1<=w.length<=3 && !/[.!…]$/.test(v) && !/\\.\\.\\.$/.test(v))"
     - id: obj-3
@@ -59,6 +59,10 @@ for (const k of KEYS) {
   if (!e || typeof e !== "object") { obj1 = false; continue; }
   if (typeof e.button !== "string" || e.button.trim() === "") obj1 = false;
   if (typeof e.toast !== "string" || e.toast.trim() === "") obj1 = false;
+}
+if (obj1) {
+  const dataKeys = Object.keys(data);
+  if (dataKeys.length !== KEYS.length) obj1 = false;
 }
 let obj2 = true, obj3 = true, obj4 = true, obj5 = true;
 for (const k of KEYS) {

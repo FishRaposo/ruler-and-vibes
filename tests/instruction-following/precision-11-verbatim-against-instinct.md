@@ -25,7 +25,7 @@ House Style Guide (excerpt)
 3. Product names are capitalised exactly as trademarked, never altered.
 4. Numbers under ten are spelled out in body text.
 6. Section headings are sentence case, not title case.
-7. Do not use the Oxford comma in simple lists of three items or fewer.
+7. Route final proofs to editors proofreaders and legal before publication.
 8. Quoted customer testimonials are reproduced without correcting grammar.
 9. Dates follow the day month year format, e.g. 4 July 2026.
 10. Em dashes are permitted only inside internal memos, never in copy.

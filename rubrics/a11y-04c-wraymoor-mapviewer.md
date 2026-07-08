@@ -85,23 +85,6 @@ Both the starter (fails the four substantive checks) and this reference
 fix (passes all five) were confirmed against the checker before this
 rubric was finalized.
 
-### Checker command
-
-Run the standalone checker against a candidate `fixed.html`:
-
-```
-node check.js fixed.html
-```
-
-The script resolves all `id` values and `aria-labelledby`/`aria-describedby`
-idrefs, confirms the Measure element is a native `<button>` with no
-`role`/`aria-checked`/`aria-selected`, confirms the Bookmark control is
-either a native `<button>` or a `role="button"`+`tabindex="0"`+key-handler
-custom widget, rejects any `aria-*` attribute outside the real ARIA set
-(including `aria-scale-state`), and confirms self-containment with the
-inline script and click bindings intact. It prints `obj-1`..`obj-5`
-PASS/FAIL and an `N/5` tally.
-
 ### Trap
 
 "No ARIA is better than bad ARIA." A model that tries to fix defect 2 by

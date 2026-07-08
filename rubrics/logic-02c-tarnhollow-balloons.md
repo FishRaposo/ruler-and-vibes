@@ -8,9 +8,9 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "Solution table matches the answer key in all 15 cells: balloon 1 = Ondo/pears/jade, balloon 2 = Vesk/saffron/plum, balloon 3 = Garro/ferns/teal, balloon 4 = Juno/cocoa/ochre, balloon 5 = Yarl/quilts/dun"
+      check: "Solution table matches the answer key in all 15 cells: balloon 1 = Ondo/pears/jade, balloon 2 = Vesk/saffron/plum, balloon 3 = Garro/ferns/citron, balloon 4 = Juno/rhubarb/heather, balloon 5 = Yarl/tinsel/dun"
     - id: obj-2
-      check: "Bonus answer is Garro (balloon 3), correctly identified as strictly between the saffron carrier (balloon 2) and the cocoa carrier (balloon 4)"
+      check: "Bonus answer is Garro (balloon 3), correctly identified as strictly between the saffron carrier (balloon 2) and the rhubarb carrier (balloon 4)"
     - id: obj-3
       check: "Table is internally consistent: each of the 5 pilots, 5 cargo, and 5 colors appears exactly once across the five rows"
     - id: obj-4
@@ -48,10 +48,10 @@ uniqueness — check the table directly against the key.
 ```
 Balloon 1: Ondo  / pears   / jade
 Balloon 2: Vesk  / saffron / plum
-Balloon 3: Garro / ferns   / teal
-Balloon 4: Juno  / cocoa   / ochre
-Balloon 5: Yarl  / quilts  / dun
-Bonus: Garro (balloon 3, strictly between saffron at balloon 2 and cocoa at balloon 4)
+Balloon 3: Garro / ferns   / citron
+Balloon 4: Juno  / rhubarb / heather
+Balloon 5: Yarl  / tinsel  / dun
+Bonus: Garro (balloon 3, strictly between saffron at balloon 2 and rhubarb at balloon 4)
 ```
 
 ### Brute-force verification script
@@ -69,8 +69,8 @@ function permutations(arr) {
   return result;
 }
 const pilots = ['Garro','Juno','Ondo','Vesk','Yarl'];
-const cargo  = ['cocoa','ferns','pears','quilts','saffron'];
-const colors = ['teal','ochre','plum','jade','dun'];
+const cargo  = ['rhubarb','ferns','pears','tinsel','saffron'];
+const colors = ['citron','heather','plum','jade','dun'];
 let count = 0, solutions = [];
 for (const pp of permutations(pilots)) for (const gp of permutations(cargo)) for (const cp of permutations(colors)) {
   const P = {}; pp.forEach((v,i)=>P[v]=i+1);
@@ -79,12 +79,12 @@ for (const pp of permutations(pilots)) for (const gp of permutations(cargo)) for
   let ok = gp[0]==='pears'
     && P['Vesk']+1===G['ferns']
     && P['Garro']===G['ferns']
-    && C['ochre']===G['cocoa']
+    && C['heather']===G['rhubarb']
     && C['dun']===5
     && cp[P['Ondo']-1]==='jade'
-    && (()=>{const a=C['teal']; return a>1 && a<5 && cp[a-2]==='plum' && cp[a]==='ochre';})()
+    && (()=>{const a=C['citron']; return a>1 && a<5 && cp[a-2]==='plum' && cp[a]==='heather';})()
     && P['Juno']>C['plum']
-    && Math.abs(G['quilts']-G['cocoa'])===1
+    && Math.abs(G['tinsel']-G['rhubarb'])===1
     && cp[P['Yarl']-1]==='dun'
     && P['Ondo']<P['Vesk'];
   if (ok) { count++; solutions.push({pp,gp,cp}); }
@@ -101,19 +101,19 @@ answer key above. Run it once against the puzzle as stated (must print
 
 - **obj-1**: check every cell against the key; a single swapped cell
   fails this check. PASS example: a table reading exactly
-  Ondo/pears/jade, Vesk/saffron/plum, Garro/ferns/teal, Juno/cocoa/ochre,
-  Yarl/quilts/dun down the five balloons. PASS example: the same five
-  rows with colors written "Jade, Plum, Teal, Ochre, Dun" (case/format
+  Ondo/pears/jade, Vesk/saffron/plum, Garro/ferns/citron, Juno/rhubarb/heather,
+  Yarl/tinsel/dun down the five balloons. PASS example: the same five
+  rows with colors written "Jade, Plum, Citron, Heather, Dun" (case/format
   differences are fine so long as every cell's value matches). FAIL
-  example: balloons 2 and 3 show Garro/…/plum and Vesk/…/teal (pilots
-  swapped). FAIL example: balloon 4 shows Juno/cocoa/**teal** (one
+  example: balloons 2 and 3 show Garro/…/plum and Vesk/…/citron (pilots
+  swapped). FAIL example: balloon 4 shows Juno/rhubarb/**citron** (one
   wrong color cell). FAIL example: a table whose cargo column reads
-  pears, ferns, saffron, cocoa, quilts (ferns and saffron transposed).
+  pears, ferns, saffron, rhubarb, tinsel (ferns and saffron transposed).
 - **obj-2**: the bonus answer must name Garro and correctly locate the
-  saffron/cocoa balloons (2 and 4) that bracket it. PASS example:
-  "Garro (balloon 3), between saffron at 2 and cocoa at 4." PASS
+  saffron/rhubarb balloons (2 and 4) that bracket it. PASS example:
+  "Garro (balloon 3), between saffron at 2 and rhubarb at 4." PASS
   example: "The pilot strictly between is Garro — saffron sits at
-  balloon 2, cocoa at balloon 4, and Garro flies balloon 3." FAIL
+  balloon 2, rhubarb at balloon 4, and Garro flies balloon 3." FAIL
   example: "Vesk" (the balloon immediately east of the plum envelope —
   a trap misread). FAIL example: "Garro" with no mention of which
   balloons (2 and 4) bracket it. FAIL example: "Juno, balloon 4"
@@ -121,7 +121,7 @@ answer key above. Run it once against the puzzle as stated (must print
 - **obj-3**: scan for duplicate pilots/cargo/colors across rows — the
   table must be a genuine permutation in each column. PASS example:
   every pilot, cargo, and color name appears on exactly one row. FAIL
-  example: "ochre" appears on two rows while "jade" appears on none.
+  example: "heather" appears on two rows while "jade" appears on none.
   FAIL example: Juno is listed on both balloon 4 and balloon 5.
 - **obj-4**: count distinct clue numbers referenced in the numbered
   deduction chain (not just "the clues" in general) — at least 5 of the

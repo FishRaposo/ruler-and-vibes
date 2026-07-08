@@ -15,7 +15,7 @@ criteria:
     - id: obj-4
       check: "Line count equals the source excerpt's line count and no line appears that is absent from the source; no rule text is reworded, re-cased, re-punctuated, or added"
     - id: obj-5
-      check: "The endorsed Oxford-comma-omitted clause is reproduced without an inserted comma (the specific comma-free phrasing from the source still matches by substring)"
+      check: "The comma-omitted list in rule 7 is reproduced without an inserted comma (the specific comma-free phrasing from the source still matches by substring)"
   subjective:
     - id: sub-quality
       name: "Literal fidelity over correction instinct"
@@ -49,7 +49,7 @@ House Style Guide (excerpt)
 3. Product names are capitalised exactly as trademarked, never altered.
 4. Numbers under ten are spelled out in body text.
 6. Section headings are sentence case, not title case.
-7. Do not use the Oxford comma in simple lists of three items or fewer.
+7. Route final proofs to editors proofreaders and legal before publication.
 8. Quoted customer testimonials are reproduced without correcting grammar.
 9. Dates follow the day month year format, e.g. 4 July 2026.
 10. Em dashes are permitted only inside internal memos, never in copy.
@@ -68,9 +68,9 @@ Rule 11 contains a deliberate doubled space between "This" and
 2. **British spelling**: "colour" in rule 1, not "color".
 3. **Doubled space**: rule 11 has two spaces between "This" and
    "excerpt".
-4. **Oxford-comma omission**: rule 7's own text describes omitting the
-   Oxford comma in short lists; the rule's phrasing itself must not
-   gain an inserted comma.
+4. **Oxford-comma omission**: rule 7 lists "editors proofreaders and
+   legal" with no commas; the rule's phrasing itself must not gain an
+   inserted comma.
 5. **Endorsed convention many models resist**: rule 10 permits em
    dashes only in internal memos, never in copy — a convention some
    models reflexively want to soften or contradict when writing about
@@ -99,7 +99,7 @@ const srcLines = SOURCE.replace(/\n$/, '').split('\n');
 const rawLines = raw.replace(/\n$/, '').split('\n');
 console.log('obj-4 line count matches, no extra/missing lines:', srcLines.length === rawLines.length && srcLines.every((l,i) => l === rawLines[i]));
 
-console.log('obj-5 Oxford-comma-omitted clause reproduced without inserted comma:', raw.includes('in simple lists of three items or fewer'));
+console.log('obj-5 comma-omitted list clause reproduced without inserted comma:', raw.includes('to editors proofreaders and legal'));
 "
 ```
 
@@ -123,8 +123,8 @@ obj-4.
 - **obj-4**: catches a submission that reflows or re-wraps lines even
   if individual rule text is untouched.
 - **obj-5**: confirms the comma-omitted clause's exact wording is
-  intact — a model correcting "instinctively" would add a comma before
-  "or fewer" or between "three items" and "or fewer".
+  intact — a model correcting "instinctively" would add a comma after
+  "editors" and before "and legal".
 
 ### Subjective guidance
 

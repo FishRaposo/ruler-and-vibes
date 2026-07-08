@@ -9,18 +9,18 @@ deliverables:
 ## Task
 
 Gildmere Games is planning next season's print slate. The factory has a
-fixed capacity of **24 press-days** for the season — none can be added or
+fixed capacity of **25 press-days** for the season — none can be added or
 outsourced. Six candidate titles are under consideration, each with a
 projected margin score (higher is better) and a press-day cost:
 
 | Title | Margin | Press-days |
 |---|---|---|
-| Meadowloom | 12 | 5 |
-| Emberfall | 96 | 7 |
-| Copperline | 18 | 6 |
-| Latchkey | 66 | 6 |
-| Wraithwood | 48 | 5 |
-| Saltmarsh | 30 | 4 |
+| Meadowloom | 11 | 5 |
+| Emberfall | 88 | 8 |
+| Copperline | 20 | 7 |
+| Latchkey | 63 | 7 |
+| Wraithwood | 39 | 5 |
+| Saltmarsh | 22 | 3 |
 
 Two constraints apply:
 
@@ -33,7 +33,7 @@ Two constraints apply:
    game's components).
 
 Any other combination of titles may be printed or dropped freely, subject
-only to the 24 press-day capacity.
+only to the 25 press-day capacity.
 
 ## Deliverable
 
@@ -48,5 +48,5 @@ only to the 24 press-day capacity.
 
 ## Constraints
 
-- Total press-days for the selected set must not exceed 24.
+- Total press-days for the selected set must not exceed 25.
 - At most 500 words (whole file, `wc -w`).

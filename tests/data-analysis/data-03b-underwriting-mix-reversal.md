@@ -20,22 +20,22 @@ log.
 
 ```csv
 model,band,week,approved,current
-Argus,prime,1,25,23
-Argus,prime,2,25,23
-Argus,prime,3,25,23
-Argus,prime,4,25,23
-Argus,subprime,1,250,150
-Argus,subprime,2,250,150
-Argus,subprime,3,250,150
-Argus,subprime,4,250,150
-Vantage,prime,1,250,220
-Vantage,prime,2,250,220
-Vantage,prime,3,250,220
-Vantage,prime,4,250,220
-Vantage,subprime,1,25,13
-Vantage,subprime,2,25,13
-Vantage,subprime,3,25,13
-Vantage,subprime,4,25,13
+Argus,prime,1,75,69
+Argus,prime,2,75,69
+Argus,prime,3,75,69
+Argus,prime,4,75,69
+Argus,subprime,1,750,450
+Argus,subprime,2,750,450
+Argus,subprime,3,750,450
+Argus,subprime,4,750,450
+Vantage,prime,1,750,660
+Vantage,prime,2,750,660
+Vantage,prime,3,750,660
+Vantage,prime,4,750,660
+Vantage,subprime,1,75,39
+Vantage,subprime,2,75,39
+Vantage,subprime,3,75,39
+Vantage,subprime,4,75,39
 ```
 
 A quoted memo from the risk lead says: "Vantage keeps 84.7% of its

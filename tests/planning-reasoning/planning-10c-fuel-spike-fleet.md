@@ -15,7 +15,7 @@ whether a price spike hits or fuel prices stay stable:
 
 | Option              | Spike payoff | Stable payoff |
 |---------------------|--------------|----------------|
-| A — Diesel Fleet     | -30          | +60            |
+| A — Diesel Fleet     | -35          | +65            |
 | B — Hybrid Fleet     | +30          | +45            |
 | C — Electric Fleet   | +24          | +24            |
 

@@ -46,7 +46,7 @@ rest scores.
 | P6 | Wireless connectivity standard | FOUND | Wi-Fi 802.11n |
 | P7 | Temperature sensor accuracy | FOUND | +/-0.5 C |
 | P8 | Exact weight in grams | NOT STATED | — (decoy: the mounting plate's 4 mm thickness and the unit's 92 x 92 x 24 mm housing dimensions are present, but no weight figure in grams or any other unit appears anywhere) |
-| P9 | Number of color options | FOUND | 3 (Slate Gray, Arctic White, Graphite Black) |
+| P9 | Number of color options | FOUND | 3 |
 | P10 | Named home-automation protocol (Zigbee/Z-Wave/Matter) | NOT STATED | — (decoy: Wi-Fi 802.11n connectivity and voice-assistant integration through "two of the most widely used voice-assistant platforms" are both present, but neither is a named home-automation radio protocol like Zigbee, Z-Wave, or Matter, and none of those three names appears anywhere in the document) |
 
 ### Objective check notes
@@ -61,7 +61,12 @@ rest scores.
 - **obj-3**: P1, P2, P4, P6, P7, P9 must each be `FOUND:` with the
   verbatim value from the table above (whitespace-trimmed string
   match). All 6 required to pass; a missing or wrong value on any one
-  fails this gate.
+  fails this gate. For P9, the required verbatim value is the bare
+  count '3'; the spec sheet never writes this as a numeral (it says
+  'three'), so a submission converting the spelled-out count to '3'
+  satisfies this check, and any additional mention of the color names
+  (Slate Gray, Arctic White, Graphite Black) is optional context, not
+  part of the required matched string.
 - **obj-4**: this is the skim-the-neighbor check, evaluated per line:
   - P3's line must not contain a specific warranty duration (there is
     none to report, so any duration figure here — 1 year, 90 days,

@@ -15,7 +15,7 @@ only if it is a canonical **Valgrove berth code**:
 
 - Exactly four segments separated by single `-` characters — nothing
   more, nothing less.
-- Each segment is a decimal integer in the range `0`-`255` inclusive.
+- Each segment is a decimal integer in the range `0`-`450` inclusive.
 - No segment may have a leading zero, **except** the single digit `0`
   itself (so `0` is valid, `00`, `07`, `06` are not).
 - The string must contain nothing else: no surrounding whitespace, no
@@ -23,10 +23,10 @@ only if it is a canonical **Valgrove berth code**:
   string must be consumed by the four segments and their three joining
   hyphens.
 
-Do not accept segments above `255` (e.g. `256`, `888`), and do not
+Do not accept segments above `450` (e.g. `451`, `888`), and do not
 accept leading-zero segments. A plain regex like `\d{1,3}(-\d{1,3}){3}`
 is NOT sufficient on its own because it cannot express the numeric
-range `0`-`255` or reject leading zeros — reason carefully about how
+range `0`-`450` or reject leading zeros — reason carefully about how
 you enforce both constraints.
 
 ## Deliverables
@@ -44,7 +44,7 @@ order:
 const CORPUS = [
   // must be classified MATCH
   "0-0-0-0",
-  "255-255-255-255",
+  "450-450-450-450",
   "7-19-83-6",
   "12-240-3-88",
   "9-9-9-9",
@@ -54,9 +54,9 @@ const CORPUS = [
   "5-250-16-73",
   "231-0-142-58",
   // must be classified REJECT
-  "256-0-0-1",
-  "7-19-83-256",
-  "7-19-83-300",
+  "451-0-0-1",
+  "7-19-83-451",
+  "7-19-83-500",
   "888-888-888-888",
   "07-19-83-6",
   "7-19-83-06",

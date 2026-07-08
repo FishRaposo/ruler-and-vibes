@@ -12,7 +12,7 @@ criteria:
     - id: obj-2
       check: "The brief explicitly notes that S3's finding is withdrawn/corrected per S5 and excludes or heavily downweights it in the bottom line"
     - id: obj-3
-      check: "The 'Best supported estimate:' line states a small effect matching S4 (+9%, or the +3% to +15% CI range), and the brief explicitly rejects or disclaims the 'triples speeds' (+200%) claim"
+      check: "The 'Best supported estimate:' line states a small effect matching S4 (+11%, or the +5% to +17% CI range), and the brief explicitly rejects or disclaims the 'triples speeds' (+200%) claim"
     - id: obj-4
       check: "From the four printed circulating claims, the 'Claims no source supports' section includes the pacemaker/medical-device-safety claim and includes no claim the key marks as source-addressed"
     - id: obj-5
@@ -48,15 +48,15 @@ rest scores.
 - S3 (pilot study, n=10): +170% throughput — **withdrawn by S5** for a
   bandwidth-logging script that double-counted retransmitted packets;
   weight after withdrawal is effectively zero.
-- S4 (controlled multi-site trial, n=300): +9% throughput, 95% CI +3% to
-  +15% — the only surviving rigorous estimate, highest weight.
+- S4 (controlled multi-site trial, n=300): +11% throughput, 95% CI +5% to
+  +17% — the only surviving rigorous estimate, highest weight.
 - S5 (correction notice): names S3 by title and authors, states the
   logging script double-counted retransmits, withdraws the +170%
   estimate.
 - S6 (trade-magazine overview): neutral, moderate weight as context —
   states early dramatic claims "have not held up" under rigorous
   testing.
-- Defensible bottom line: a small positive effect, roughly 3%–15%
+- Defensible bottom line: a small positive effect, roughly 5%–17%
   throughput improvement, low-to-moderate confidence — following S4, not
   the "triples" figure from S1 (marketing) or the withdrawn +170% from
   S3.
@@ -84,7 +84,7 @@ rest scores.
 - **obj-2**: this is the retraction trap — a submission that treats S3's
   +170% as still-standing evidence (e.g., includes it in an average with
   S4) fails this check even if it separately mentions the correction.
-- **obj-3**: the unit trap — S1's "triples" (+200%) and S4's +9% describe
+- **obj-3**: the unit trap — S1's "triples" (+200%) and S4's +11% describe
   the *same* metric (home Wi-Fi throughput percentage increase), not
   different things; the brief must recognize this as a direct conflict
   it resolves in S4's favor, not two compatible claims.

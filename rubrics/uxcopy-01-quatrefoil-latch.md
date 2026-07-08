@@ -7,7 +7,7 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "labels.json parses as JSON and contains a non-empty string 'button' and 'toast' for all 6 embedded action keys (saveDraft, publishPost, inviteTeammate, archiveProject, removeTeammate, deleteDraft) — no missing keys"
+      check: "labels.json parses as JSON and contains a non-empty string 'button' and 'toast' for all 6 embedded action keys (saveDraft, publishPost, inviteTeammate, archiveProject, removeTeammate, deleteDraft), and the JSON object has exactly these 6 top-level keys — no missing or extra keys"
     - id: obj-2
       check: "Every 'button' value is 1-3 whitespace-delimited words and has no trailing '.', '!', or ellipsis (JS: w=v.trim().split(/\\s+/); 1<=w.length<=3 && !/[.!…]$/.test(v) && !/\\.\\.\\.$/.test(v))"
     - id: obj-3

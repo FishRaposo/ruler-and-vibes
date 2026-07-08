@@ -19,13 +19,13 @@ rescheduling its annual firing event. Rewrite it three times:
 > cracked flue liner requiring a full rebuild before the kiln can be
 > safely fired, the board has concluded that the annual open-studio
 > firing, which had originally been set for September 6th, will instead
-> be moved to November 22nd, and every member who had already reserved a
+> be moved to December 15th, and every member who had already reserved a
 > firing slot will receive two complimentary guest passes to make up for
 > the postponement.
 
 All four facts must survive every version: (a) the cause is a cracked
 flue liner in the salt kiln that needs a full rebuild, (b) the old date
-was September 6, (c) the new date is November 22, (d) members who
+was September 6, (c) the new date is December 15, (d) members who
 reserved a firing slot get two complimentary guest passes.
 
 ## Deliverables

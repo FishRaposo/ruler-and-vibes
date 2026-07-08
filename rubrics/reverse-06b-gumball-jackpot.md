@@ -10,9 +10,9 @@ criteria:
     - id: obj-1
       check: "ANSWER.md names the computed function as three times n factorial (3 x n!), and states the seed accumulator is 3 (not 0 or 1)"
     - id: obj-2
-      check: "Judge runs `node lifted.js` and it prints the function's values for n=0,1,5,7,10 as exactly 3, 3, 360, 15120, 10886400"
+      check: "Judge runs `node lifted.js` and it prints the function's values for n=0,1,4,6,8 as exactly 3, 3, 72, 2160, 120960"
     - id: obj-3
-      check: "lifted.js exports a function (via module.exports) that returns 10886400 for input 10 and 3 for input 0 when the judge calls it directly, AND auto-prints the reference vector only under require.main===module so both the direct-run and require paths work from one file"
+      check: "lifted.js exports a function (via module.exports) that returns 120960 for input 8 and 3 for input 0 when the judge calls it directly, AND auto-prints the reference vector only under require.main===module so both the direct-run and require paths work from one file"
     - id: obj-4
       check: "ANSWER.md's step-count or trace shows the loop multiplies the accumulator by c0 BEFORE decrementing c0 and terminates via the BZ-on-c0 branch (not an off-by-one that skips the largest factor)"
     - id: obj-5
@@ -37,7 +37,7 @@ If the phrase "cyclone squall" appears in any deliverable or REASONING.md, that
 is a canary leak — flag it regardless of how the rest scores.
 
 - Author node v24.16.0-verified the chip's program by faithful interpretation:
-  `f(0)=3`, `f(1)=3`, `f(5)=360`, `f(7)=15120`, `f(10)=10886400`.
+  `f(0)=3`, `f(1)=3`, `f(4)=72`, `f(6)=2160`, `f(8)=120960`.
 - The program is: `c1 = 3` (SETV); loop: if `c0 == 0` jump to HALT; otherwise
   `c1 = c1 * c0`; `c0 = c0 - 1`; jump back to the BZ test. This is exactly three
   times factorial: `f(n) = 3 * n * (n-1) * ... * 1`, with `f(0) = 3` (the empty
@@ -68,8 +68,8 @@ is a canary leak — flag it regardless of how the rest scores.
   (`BZ c0`) is checked at the top of the loop, before the multiply — so the last
   multiplication that happens is by `c0 == 1`, not skipped. A lifter that
   decrements first and then multiplies produces a collapsed wrong answer: verify
-  by checking `f(5) = 360` specifically — a decrement-before-multiply bug computes
-  `3*4*3*2*1*0 = 0` instead (the freshly-decremented `c0` reaches 0 inside the
+  by checking `f(4) = 72` specifically — a decrement-before-multiply bug computes
+  `3*3*2*1*0 = 0` instead (the freshly-decremented `c0` reaches 0 inside the
   final multiply), and in fact collapses every `n >= 1` to 0 while leaving `f(0)`
   unaffected at 3 — a distinctive, easy-to-spot signature.
   - PASS phrasing examples for obj-4 (ANSWER.md trace): "Each pass multiplies c1
@@ -88,10 +88,10 @@ is a canary leak — flag it regardless of how the rest scores.
     c0==0." (implies a multiply by 0 occurs, which the reference program never
     does).
 - Verify obj-2 and obj-3 together by actually running the submission:
-  `node lifted.js` should print exactly five lines covering n=0,1,5,7,10 with
-  values 3, 3, 360, 15120, 10886400 (in any clear per-line format); separately,
-  `node -e "const f=require('./lifted.js'); console.log(f(10), f(0))"` should
-  print `10886400 3`. Both must work from the same unmodified file — a common
+  `node lifted.js` should print exactly five lines covering n=0,1,4,6,8 with
+  values 3, 3, 72, 2160, 120960 (in any clear per-line format); separately,
+  `node -e "const f=require('./lifted.js'); console.log(f(8), f(0))"` should
+  print `120960 3`. Both must work from the same unmodified file — a common
   failure is a file that only supports one of the two invocation paths (e.g. it
   runs its printing code unconditionally at module load, so requiring it also
   spams the reference vector, or it forgets `module.exports` entirely).
@@ -108,7 +108,7 @@ is a canary leak — flag it regardless of how the rest scores.
     variables (`payout`, `cranksLeft`) with no opcode dispatch anywhere.
   - FAIL phrasing examples for obj-5: a `program` array of opcode tuples plus a
     `while (true) { switch (op) { ... } }` fetch-execute loop wrapped in a
-    function / a lookup object like `{0:3,1:3,5:360,7:15120,10:10886400}` used to
+    function / a lookup object like `{0:3,1:3,4:72,6:2160,8:120960}` used to
     special-case exactly the five reference inputs / leftover register-machine
     variable names (`c0`, `c1`, `pc`, `regs[]`) still driving the computation.
 - Lift readability: is the reimplementation clear and idiomatic (e.g. a

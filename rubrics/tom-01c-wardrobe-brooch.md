@@ -8,13 +8,13 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "beliefs.md reality answer is exactly WICKER_HAMPER and Ingrid-belief answer is exactly VELVET_TRUNK"
+      check: "beliefs.md reality answer is exactly SLATE_CREDENZA and Ondine-belief answer is exactly VELVET_TRUNK"
     - id: obj-2
-      check: "beliefs.md Teodora-belief answer is exactly WICKER_HAMPER"
+      check: "beliefs.md Teodora-belief answer is exactly SLATE_CREDENZA"
     - id: obj-3
-      check: "beliefs.md Ingrid-looks-first answer is exactly VELVET_TRUNK AND Teodora-thinks-Ingrid-looks answer is exactly VELVET_TRUNK"
+      check: "beliefs.md Ondine-looks-first answer is exactly VELVET_TRUNK AND Teodora-thinks-Ondine-looks answer is exactly VELVET_TRUNK"
     - id: obj-4
-      check: "every answer cell contains exactly one verbatim token from {VELVET_TRUNK, WICKER_HAMPER} and nothing else (no parentheticals, punctuation, or explanation in the answer column), and REASONING.md exists and is at most 300 words by wc -w"
+      check: "every answer cell contains exactly one verbatim token from {VELVET_TRUNK, SLATE_CREDENZA} and nothing else (no parentheticals, punctuation, or explanation in the answer column), and REASONING.md exists and is at most 300 words by wc -w"
   subjective:
     - id: sub-quality
       name: "Belief-state accuracy across the table"
@@ -39,32 +39,32 @@ scores.
 
 | # | Row | Answer |
 |---|---|---|
-| 1 | Reality | WICKER_HAMPER |
-| 2 | Ingrid's belief | VELVET_TRUNK |
-| 3 | Teodora's belief | WICKER_HAMPER |
-| 4 | Ingrid-looks-first | VELVET_TRUNK |
-| 5 | Teodora-thinks-Ingrid-looks | VELVET_TRUNK |
+| 1 | Reality | SLATE_CREDENZA |
+| 2 | Ondine's belief | VELVET_TRUNK |
+| 3 | Teodora's belief | SLATE_CREDENZA |
+| 4 | Ondine-looks-first | VELVET_TRUNK |
+| 5 | Teodora-thinks-Ondine-looks | VELVET_TRUNK |
 
 Hand-simulated timeline: t0 the jade_brooch is placed in VELVET_TRUNK
-while both agents watch; t1 Ingrid exits and from that point can observe
+while both agents watch; t1 Ondine exits and from that point can observe
 nothing inside the room; t2 Teodora, alone, moves the brooch
-VELVET_TRUNK -> WICKER_HAMPER; t3 Ingrid returns but does not look
+VELVET_TRUNK -> SLATE_CREDENZA; t3 Ondine returns but does not look
 inside either container and is told nothing. Reality is therefore
-WICKER_HAMPER. Ingrid last observed VELVET_TRUNK and receives no update
+SLATE_CREDENZA. Ondine last observed VELVET_TRUNK and receives no update
 before or after returning, so her belief and her first search target
 both stay VELVET_TRUNK. Teodora directly performed the move and is
-present throughout, so her belief is WICKER_HAMPER. Teodora also
-personally witnessed Ingrid leave *before* she moved the brooch, so
-Teodora can correctly model that Ingrid's belief is frozen at
-VELVET_TRUNK — Teodora-thinks-Ingrid-looks is VELVET_TRUNK, not
-WICKER_HAMPER.
+present throughout, so her belief is SLATE_CREDENZA. Teodora also
+personally witnessed Ondine leave *before* she moved the brooch, so
+Teodora can correctly model that Ondine's belief is frozen at
+VELVET_TRUNK — Teodora-thinks-Ondine-looks is VELVET_TRUNK, not
+SLATE_CREDENZA.
 
-The central trap is reality-bias: a reader who assumes Ingrid updates
+The central trap is reality-bias: a reader who assumes Ondine updates
 her belief simply because she is physically back in the room (or because
 the grader/reader knows the true location) will incorrectly mark her
-belief and first-look answer as WICKER_HAMPER. The narrative explicitly
-forecloses this by stating Ingrid observes nothing after exiting and
-does not look on return, so both of Ingrid's cells must stay
+belief and first-look answer as SLATE_CREDENZA. The narrative explicitly
+forecloses this by stating Ondine observes nothing after exiting and
+does not look on return, so both of Ondine's cells must stay
 VELVET_TRUNK.
 
 ### Objective check notes
@@ -76,7 +76,7 @@ VELVET_TRUNK.
   must independently read VELVET_TRUNK; a submission that gets one but
   not the other fails this check.
 - **obj-4**: scan every answer cell in `beliefs.md` for exactly one
-  token from `{VELVET_TRUNK, WICKER_HAMPER}` with no additional
+  token from `{VELVET_TRUNK, SLATE_CREDENZA}` with no additional
   characters in the answer column (parentheticals like "VELVET_TRUNK
   (she thinks)" fail this check even if the token itself is correct);
   separately confirm `REASONING.md` exists and run `wc -w` on it, must
@@ -100,7 +100,7 @@ verbatim string comparison, not a judgment call on wording.
   rows, no merged or reordered cells) that a mechanical checker could
   score without any interpretation?
 - **Reasoning quality**: does `REASONING.md` walk through the timeline
-  event-by-event (brooch placed, Ingrid exits, Teodora moves it, Ingrid
+  event-by-event (brooch placed, Ondine exits, Teodora moves it, Ondine
   returns without looking) and explicitly name the moment at which
-  Ingrid's belief becomes stale relative to reality, rather than merely
+  Ondine's belief becomes stale relative to reality, rather than merely
   asserting the five answers without justification?

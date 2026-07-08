@@ -20,20 +20,20 @@ A stage starts as soon as ALL of its predecessors have finished, and then
 runs uninterrupted for its full duration. A stage's start time equals the
 maximum of its predecessors' finish times (0 if it has no predecessors);
 its finish time equals its start time plus its duration. Worked example:
-stage P has no predecessors, so start = 0 and finish = 0 + 5 = 5.
+stage P has no predecessors, so start = 0 and finish = 0 + 6 = 6.
 
 Durations (hours):
 
 | Stage | Duration | Depends on |
 |-------|----------|------------|
-| P     | 5        | none       |
-| Q     | 2        | P          |
-| R     | 7        | P          |
-| S     | 3        | Q          |
-| T     | 6        | Q, R       |
-| U     | 2        | S          |
-| V     | 4        | T, U       |
-| W     | 3        | R          |
+| P     | 6        | none       |
+| Q     | 5        | P          |
+| R     | 8        | P          |
+| S     | 4        | Q          |
+| T     | 7        | Q, R       |
+| U     | 3        | S          |
+| V     | 6        | T, U       |
+| W     | 5        | R          |
 
 When a stage depends on more than one other stage, it cannot begin until
 **all** of them have finished — its start is the maximum, not the sum and

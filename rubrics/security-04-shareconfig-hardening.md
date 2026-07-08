@@ -7,7 +7,7 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "`node -e \"JSON.parse(require('fs').readFileSync('hardened-config.json'))\"` parses without error, AND cors.allowedOrigins is no longer wildcard-with-credentials, AND session.cookie has secure:true and httpOnly:true, AND auth.passwordHashAlgorithm is a modern KDF (bcrypt/scrypt/argon2/pbkdf2, case-insensitive), AND shareLinks token is >=16 chars of a high-entropy charset (or otherwise >=128-bit equivalent) with a finite (non-zero) expiry"
+      check: "`node -e \"JSON.parse(require('fs').readFileSync('hardened-config.json'))\"` parses without error, AND cors.allowedOrigins is no longer wildcard-with-credentials, AND session.cookie has secure:true and httpOnly:true, AND auth.passwordHashAlgorithm is a modern KDF (bcrypt/scrypt/argon2/pbkdf2, case-insensitive), AND shareLinks token has computed entropy (log2(charset size) * length) >=128 bits, with a finite (non-zero) expiry"
     - id: obj-2
       check: "Both decoys are unchanged in hardened-config.json (auth.passwordMinLength still 12, session.sessionIdleTimeoutMinutes still 15) AND neither is listed in HARDENING.md as a weakness requiring a fix; changing either value, or flagging either as needing remediation, fails this check (noting a value as already adequate in prose does not fail)"
     - id: obj-3
@@ -57,8 +57,8 @@ missing an actual weakness.
    mechanism, broken). Fix: bcrypt/scrypt/argon2/pbkdf2.
 4. **Share-link tokens**: `tokenLength:6` digits-only with
    `expiryDays:0` (never expires) is brute-forceable (10^6 space) and
-   permanent once guessed or leaked. Fix: >=16 chars of a high-entropy
-   charset (or equivalent bits) and a finite expiry.
+   permanent once guessed or leaked. Fix: >=128 bits of entropy (e.g.,
+   a 22+-char base62 token) and a finite expiry.
 5. **Debug endpoint**: a production endpoint dumping environment
    variables discloses secrets (DB credentials, API keys) to anyone
    who finds the path. Fix: disable/remove it in production.

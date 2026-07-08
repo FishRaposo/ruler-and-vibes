@@ -17,10 +17,10 @@ mining output):
 
 | Ship | Ore/scoop | Cycle (s) | Purity | Upkeep |
 |---|---|---|---|---|
-| Brackhaul | 22 | 2.4 | 0.90 | 140 |
-| Dustmaw | 9 | 0.9 | 0.80 | 110 |
+| Brackhaul | 22 | 2.4 | 0.85 | 140 |
+| Dustmaw | 9 | 0.9 | 0.75 | 110 |
 | Palerift | 34 | 3.0 | 0.65 | 120 |
-| Corehound | 8 | 0.5 | 0.80 | 115 |
+| Corehound | 8 | 0.6 | 0.80 | 115 |
 
 Effective yield (usable ore per second) for a ship is:
 
@@ -41,7 +41,7 @@ the roster and needs a balance patch.
   - A patch to that ship: change **at most two** of its stats, each
     changed stat differing from its original value by **at most 20%
     relative to the original**, such that the ship's recomputed
-    post-patch yield lands in the range **[8.2, 9.6]**.
+    post-patch yield lands in the range **[6.9, 8.0]**.
   - The post-patch yield arithmetic shown explicitly (state the patched
     stat values and the resulting yield number).
 
@@ -55,7 +55,7 @@ the roster and needs a balance patch.
 - Upkeep does not enter the yield formula, so an upkeep-only change
   cannot satisfy the yield band requirement.
 - The post-patch yield, recomputed from your stated patched stats using
-  the formula above, must fall in [8.2, 9.6].
+  the formula above, must fall in [6.9, 8.0].
 - `BALANCE.md` must be at most 500 words (whole file, `wc -w`).
 
 Note: `REASONING.md` is also required per the standard run protocol.

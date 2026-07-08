@@ -67,7 +67,7 @@ by-washes that made up most of his week.
 
 Before the boat had even entered the first chamber of the staircase,
 while it still sat in the tail lock waiting for the level to rise,
-Wystan chalked tally-board `b` to carry the value 6. This was the
+Wystan chalked tally-board `b` to carry the value 5. This was the
 passage's baseline reading — the number of paddle-gears he had already
 wound open at the tail lock and the first chamber's bottom gates to
 begin the ascent. He noted the figure aloud to Odella, who was less
@@ -76,8 +76,8 @@ but who nodded along out of long habit of humoring the keeper's counts.
 
 Shortly after, as the *Marigold Wren* rose into the first chamber of
 the staircase proper, Wystan set tally-board `k` to carry the value
-tally-board `b` carried at that point. Board `b` still carried 6, so
-board `k` now carried 6 as well — a snapshot, chalked and set aside, of
+tally-board `b` carried at that point. Board `b` still carried 5, so
+board `k` now carried 5 as well — a snapshot, chalked and set aside, of
 the paddle-gear count as it stood at that moment. Wystan explained,
 more to himself than to Odella, that this snapshot would let him
 compare the count at the first chamber against whatever the running
@@ -105,7 +105,7 @@ all the gears wound open at the lower and middle chambers together. This
 rewriting did not change what board `k` carried — `k` had already taken
 its snapshot of `b`'s earlier figure back at the first chamber, and a
 snapshot, once chalked and set aside, does not follow later changes to
-the board it was copied from. Board `k` therefore still carried 6, even
+the board it was copied from. Board `k` therefore still carried 5, even
 though `b` now carried 15.
 
 The boat paused here for the crew to catch their breath and for Wystan
@@ -121,8 +121,8 @@ company had commissioned over the decades having ever quite matched the
 others.
 
 At this same rest, Wystan set tally-board `g` to carry the value
-tally-board `k` carried at that point. Since `k` carried 6, board `g`
-now carried 6 as well — another snapshot, chalked at the mid-flight
+tally-board `k` carried at that point. Since `k` carried 5, board `g`
+now carried 5 as well — another snapshot, chalked at the mid-flight
 pause, of the paddle-gear count as `k` held it, which was itself a
 snapshot from lower down at the first chamber. Odella remarked, half in
 jest, that the tally-boards were starting to resemble a line of gossips
@@ -167,7 +167,7 @@ the time to re-stow a shifted stack of slate in the hold and to bail a
 few inches of water that had slopped over the gunwale in the lower
 chambers' turbulence. She also called out a separate, unrelated figure
 for Wystan to record when he returned: tally-board `j`, which he chalked
-to carry the value 8, standing for the number of empty coal sacks left
+to carry the value 11, standing for the number of empty coal sacks left
 over in the boat's fore-cabin from the previous cargo. Like board `w`
 earlier, this figure was never revisited again, and no later tally-board
 copies from `j` either. Wystan remarked, jotting it down, that boards
@@ -232,9 +232,9 @@ the conversation loosened along with the pace.
 It was during this stretch, well out onto the summit pound with the
 staircase now a receding step-ladder of chambers behind the boat, that
 Wystan set tally-board `h` to carry the value tally-board `g` carried at
-that point. Board `g` carried 6 — it had not been rewritten since the
+that point. Board `g` carried 5 — it had not been rewritten since the
 mid-flight rest, where it had taken its snapshot of `k`'s then-current
-value of 6. So board `h` now carried 6, a snapshot chalked at this point
+value of 5. So board `h` now carried 5, a snapshot chalked at this point
 in the cruise and never to be revisited by any later rewriting. Wystan
 noted it in the ledger simply as "h taken from g," without further
 comment, since by this point in the passage the paddle-gear chain had
@@ -283,7 +283,7 @@ not yet folded into the running count. To put it right, he set
 tally-board `k` to carry the value tally-board `d` carried at that
 point. Board `d` carried 15 — its snapshot of `b` taken at the sixth
 step — so board `k` was now rewritten to carry 15, replacing its earlier
-value of 6. This was a genuine rewriting of `k`, not a new board; Wystan
+value of 5. This was a genuine rewriting of `k`, not a new board; Wystan
 was explicit in the ledger that "k now carries what d carries, over the
 old k reading."
 
@@ -302,7 +302,7 @@ and the light returned ahead, Wystan made the final tally-board change of
 the passage. Tally-board `g` was rewritten to carry the value
 tally-board `k` carried at that point. Board `k` now carried 15 — its
 value after the correction made back at the entrance to the cutting — so
-board `g` was rewritten to carry 15, replacing its earlier value of 6.
+board `g` was rewritten to carry 15, replacing its earlier value of 5.
 Wystan's ledger entry read, in full: "g rewritten, now takes k's current
 reading of 15, over g's earlier value." No tally-board was touched again
 for the remainder of the passage.

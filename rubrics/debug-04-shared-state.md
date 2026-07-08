@@ -16,6 +16,8 @@ criteria:
       check: "The `applyDiscount` function body is textually unchanged from the original shown in the test file, including the percent-normalization line `rules.rate > 1 ? rules.rate / 100 : rules.rate` (judge diffs the function text against the original embedded in the test file)"
     - id: obj-5
       check: "REASONING.md (a) names getRules's mutation of the shared RULES object as the root cause, (b) explicitly states applyDiscount was not at fault despite the bug report, and (c) is 250 words or fewer (whole file, `wc -w`) — all three required to pass"
+    - id: obj-6
+      check: "pricing.js is at most 45 lines and is plain JavaScript with no external dependencies (no require/import of any non-builtin module)"
   subjective:
     - id: sub-quality
       name: "Root-cause depth"

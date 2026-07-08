@@ -12,7 +12,7 @@ criteria:
     - id: obj-2
       check: "Dedup correct: exactly 8 records; isbn 080905321x (Redgate Ledger) and isbn 9798612000421 (The Tide Clock) each appear once, merged"
     - id: obj-3
-      check: "Dates correct: ashfall 2023-03-02; o'dell 2023-11-19 (day-first); redgate 2023-02-08 (earliest kept); salt-and-cedar 2023-01-22; tide-clock 2023-05-30 (earliest kept); hollow-reed null; cinder-and-vane null (Feb 29 2023 does not exist — not a leap year); quiet-foundry 2023-06-03 OR 2023-03-06 — either accepted if the ambiguity is documented in NOTES.md"
+      check: "Dates correct: ashfall 2023-05-28 (5/28 read month-first, since 28 cannot be a month); o'dell 2023-11-19 (day-first); redgate 2023-02-08 (earliest kept); salt-and-cedar 2023-01-22; tide-clock 2023-05-30 (earliest kept); hollow-reed null; cinder-and-vane null (Feb 29 2023 does not exist — not a leap year); quiet-foundry 2023-06-03 OR 2023-03-06 — either accepted if the ambiguity is documented in NOTES.md"
     - id: obj-4
       check: "Normalization correct: isbn lowercase digits-only with hyphens/spaces stripped and X kept as x (080905321x, 9798612000421...); titles Title Case (The Tide Clock, Salt And Cedar, O'Dell Survey, Redgate Ledger...); pages integers (tide-clock 312; redgate 488 per earliest-record rule; o'dell 259)"
   subjective:
@@ -68,6 +68,9 @@ Parallel form of `precision-01-exact-format` (same construct, fresh surface).
 - PASS: `o'dell` = `2023-11-19` (19/11 read day-first, since 19 cannot be
   a month) and `cinder-and-vane` = `null` (Feb 29 2023 is not a real
   date; 2023 is not a leap year).
+- PASS: `ashfall` = `2023-05-28` (5/28 read month-first, since 28 cannot
+  be a valid month) — the source's forced-MM/DD counterpart to o'dell's
+  forced-DD/MM.
 - PASS: `redgate` = `2023-02-08` and `tide-clock` = `2023-05-30` — the
   earliest valid date of each merged pair is kept.
 - PASS: `quiet-foundry` = `2023-06-03` or `2023-03-06` (either reading of
@@ -79,6 +82,9 @@ Parallel form of `precision-01-exact-format` (same construct, fresh surface).
   (`2023-03-11`, `2023-09-09`) instead of the earliest.
 - FAIL: `o'dell` read as `2023-11-19`'s month/day swapped or dropped to
   null because `19` was treated as a month.
+- FAIL: `ashfall` left `null` or shifted to a different month/day because
+  `28` was mistakenly treated as a possible month, or the date rendered
+  non-existent (e.g. `2023-28-05`).
 
 ### obj-4 (normalization)
 - PASS: every `isbn` is lowercase, digits only plus a trailing `x` where
@@ -100,10 +106,11 @@ Parallel form of `precision-01-exact-format` (same construct, fresh surface).
 ### Subjective
 - Ambiguity handling: this schema is a gauge, and full marks means
   treating it as one — but the source is deliberately messy (day-first
-  19/11, ambiguous 06/03, impossible 02-29, merge precedence with a torn
-  slip). Reward calls that follow the stated rules exactly and flag what
-  the rules do not settle. Penalize silent guesses (especially coercing
-  Feb 29 or picking one reading of 06/03 without saying so).
+  19/11, month-first-forced 5/28, ambiguous 06/03, impossible 02-29,
+  merge precedence with a torn slip). Reward calls that follow the
+  stated rules exactly and flag what the rules do not settle. Penalize
+  silent guesses (especially coercing Feb 29 or picking one reading of
+  06/03 without saying so).
 - NOTES completeness: every judgment call from the deliverable should be
   traceable in NOTES.md — each merge, each date resolution, and the
   invalid date and why.

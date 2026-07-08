@@ -10,13 +10,13 @@ criteria:
     - id: obj-1
       check: "File has exactly 4 data rows (plus an optional single header row 'input\\toutput'); each data row is tab-separated with exactly two columns and no trailing whitespace"
     - id: obj-2
-      check: "Row for apricot outputs exactly 'pricota7' and row for custard outputs exactly 'ustardc7' (both length-7, exercising the length-digit rule)"
+      check: "Row for cinnamon outputs exactly 'innamonc8' and row for turmeric outputs exactly 'urmerict8' (both length-8, exercising the length-digit rule)"
     - id: obj-3
-      check: "Row for fig outputs exactly 'igf3' and row for mint outputs exactly 'intm4' (short words, disambiguating length from any constant, and fig disambiguating rotate 'igf' from swap 'gif')"
+      check: "Row for dill outputs exactly 'illd4' and row for clove outputs exactly 'lovec5' (short words, disambiguating length from any constant, and dill disambiguating rotate 'illd' from swap 'lild')"
     - id: obj-4
       check: "Every output equals first-letter-moved-to-end + remaining chars in order + n by the judge's independent node reimplementation of the induced rule, matching all 4 rows"
     - id: obj-5
-      check: "No extra data rows, no commentary lines, and none of the four EXAMPLE items (nutmeg, sage, walnut, oat) appears as a data row"
+      check: "No extra data rows, no commentary lines, and none of the four EXAMPLE items (thyme, saffron, chive, bay) appears as a data row"
   subjective:
     - id: sub-quality
       name: "Rule stated correctly and unambiguously"
@@ -48,14 +48,14 @@ mechanically recomputable; do not eyeball.
 
 ```
 input	output
-apricot	pricota7
-fig	igf3
-custard	ustardc7
-mint	intm4
+cinnamon	innamonc8
+dill	illd4
+turmeric	urmerict8
+clove	lovec5
 ```
 
-Worked-example check (must also hold, confirming the rule): nutmeg ->
-utmegn6, sage -> ages4, walnut -> alnutw6, oat -> ato3.
+Worked-example check (must also hold, confirming the rule): thyme ->
+hymet5, saffron -> affrons7, chive -> hivec5, bay -> ayb3.
 
 ### Check script
 
@@ -76,34 +76,34 @@ console.log('obj-1 exactly 4 data rows, 2 tab cols, no trailing ws:', lines.leng
 const map = {};
 lines.forEach(l => { const [i,o] = l.split('\t'); map[i]=o; });
 
-console.log('obj-2 apricot==pricota7:', map['apricot'] === 'pricota7');
-console.log('obj-2 custard==ustardc7:', map['custard'] === 'ustardc7');
-console.log('obj-3 fig==igf3:', map['fig'] === 'igf3');
-console.log('obj-3 mint==intm4:', map['mint'] === 'intm4');
+console.log('obj-2 cinnamon==innamonc8:', map['cinnamon'] === 'innamonc8');
+console.log('obj-2 turmeric==urmerict8:', map['turmeric'] === 'urmerict8');
+console.log('obj-3 dill==illd4:', map['dill'] === 'illd4');
+console.log('obj-3 clove==lovec5:', map['clove'] === 'lovec5');
 
 const rule = w => w.slice(1) + w[0] + w.length;
-const inputs = ['apricot','fig','custard','mint'];
+const inputs = ['cinnamon','dill','turmeric','clove'];
 console.log('obj-4 all match independent reimplementation:', inputs.every(w => map[w] === rule(w)));
 
-const exampleWords = ['nutmeg','sage','walnut','oat'];
+const exampleWords = ['thyme','saffron','chive','bay'];
 console.log('obj-5 no extra rows / no example words as data rows:', lines.length === 4 && !lines.some(l => exampleWords.includes(l.split('\t')[0])));
 "
 ```
 
 Run this against the answer key above and against a deliberately wrong
-submission (e.g. full reversal: apricot -> tocirpa, or swap-first-last:
-fig -> gif) before trusting the result — both wrong variants must fail
+submission (e.g. full reversal: cinnamon -> nomannic, or swap-first-last:
+dill -> lild) before trusting the result — both wrong variants must fail
 obj-2/obj-3/obj-4.
 
 - **obj-1**: structural — wrong column count or stray whitespace fails
   regardless of content correctness.
 - **obj-2 / obj-3**: these four values pin down the rule uniquely. A
-  constant-digit-append rule is refuted by varying lengths (6, 4, 6, 3
-  in the examples; 7, 3, 7, 4 in the new inputs). Full reversal matches
+  constant-digit-append rule is refuted by varying lengths (5, 7, 5, 3
+  in the examples; 8, 4, 8, 5 in the new items). Full reversal matches
   none of the four worked examples. Swap-first-and-last is refuted by
-  oat: rotate gives "ato", swap gives "tao" — the given example output
-  is "ato3", confirming rotate, not swap. fig disambiguates the same
-  way: rotate gives "igf" (correct), swap gives "gif" (wrong).
+  bay: rotate gives "ayb", swap gives "yab" — the given example output
+  is "ayb3", confirming rotate, not swap. dill disambiguates the same
+  way: rotate gives "illd" (correct), swap gives "lild" (wrong).
 - **obj-4**: the judge's script recomputes independently; do not trust
   a submission that merely echoes the answer key text without the
   underlying rule holding (verifies mechanically either way, but
@@ -125,9 +125,9 @@ FAIL (wrong or ambiguous rule statement):
 - "Append 5 to the end of a scrambled version of the word."
   (wrong: not a constant, and doesn't specify the rotation)
 - "Reverse the string and add its length."
-  (refuted: nutmeg reversed is "gemtun", not "utmegn")
+  (refuted: thyme reversed is "emyht", not "hymet")
 - "Swap the first and last letters, then add the length."
-  (refuted by oat: swap gives "tao3", not the correct "ato3")
+  (refuted by bay: swap gives "yab3", not the correct "ayb3")
 
 ### Subjective guidance
 

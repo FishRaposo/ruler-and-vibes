@@ -46,7 +46,7 @@ growth as a closed-form function of `n` plus its asymptotic class.
     `n`, including values not printed by the script.
   - When run with `node instrumented.js`, print **exactly 5 lines**, one
     per pinned input, in the exact form `n=<n> comparisons=<count>`, for
-    `n = 1, 5, 10, 50, 100` **in that order** — no header, no extra
+    `n = 3, 6, 15, 45, 90` **in that order** — no header, no extra
     lines, no trailing commentary.
 - `ANALYSIS.md` (max 200 words, whole file) — must state:
   - The exact closed-form comparison count as a function of `n` (not

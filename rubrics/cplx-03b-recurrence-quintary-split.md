@@ -14,7 +14,7 @@ criteria:
     - id: obj-3
       check: "module.exports.T is callable and returns 192032 for the judge-chosen unlisted input n=2187 via `node -e` (catches hardcoded printouts; ground truth is the judge's own fresh recompute of 5*T(729)+2187, regardless of any value stated elsewhere)"
     - id: obj-4
-      check: "ANALYSIS.md states the asymptotic class as Theta(n^log3(5)) (equivalently Theta(n^1.465...) or 'n raised to log base 3 of 5'); reporting Theta(n log n) or Theta(n^2) fails this check"
+      check: "ANALYSIS.md states the asymptotic class as Theta(n^log3(5)) (equivalently Theta(n^1.465...) or 'n raised to log base 3 of 5') AND states the exact value T(729)=37969; reporting Theta(n log n) or Theta(n^2) fails this check, and so does omitting the T(729) value"
     - id: obj-5
       check: "ANALYSIS.md is at most 250 words (whole file, `wc -w`)"
   subjective:
@@ -65,18 +65,24 @@ scores.
 - Verify obj-3 directly, e.g.:
   `node -e "console.log(require('./recurrence.js').T(2187))"` must
   print `192032`.
-- Verify obj-4 by reading ANALYSIS.md text directly.
+- Verify obj-4 by reading ANALYSIS.md text directly — two independent
+  requirements (the asymptotic class AND the exact T(729) value) must
+  both be present.
   - PASS phrasing examples: "By the Master Theorem with a=5, b=3,
     f(n)=n, this falls into Case 1 since n^log3(5) dominates f(n), so
-    T(n) = Θ(n^log3(5))."; "T(n) is Θ(n^1.465), because n^(log₃5)
-    grows faster than the linear combine step."; "Since a=5 and b=3,
-    n^log_3(5) beats the linear merge, so by Case 1 T(n)=Θ(n^log_3(5))."
+    T(n) = Θ(n^log3(5)). T(729) = 37969."; "T(n) is Θ(n^1.465), because
+    n^(log₃5) grows faster than the linear combine step; concretely
+    T(729)=37969."; "Since a=5 and b=3, n^log_3(5) beats the linear
+    merge, so by Case 1 T(n)=Θ(n^log_3(5)); T(729)=37969."
   - FAIL phrasing examples: "T(n) = Θ(n log n), since it's a
     divide-and-conquer recurrence with linear combine cost." (this is
     the balanced a=b answer misapplied — the seeded trap); "T(n) is
     roughly Θ(n²) given the recursive branching." (wrong class, no
     Master Theorem case identified); "T(n) = Θ(n^1.585)" (log₂3, the
-    wrong base — this is the source facet's exponent, not this one's).
+    wrong base — this is the source facet's exponent, not this one's);
+    "By the Master Theorem, T(n) = Θ(n^log3(5))." (correct class
+    stated, but never gives the required exact value of T(729) — fails
+    the 'both' requirement).
 - Recurrence-solving accuracy: does the model correctly apply Master
   Theorem Case 1 (recursive work dominates) rather than defaulting to
   the more commonly-seen balanced case (`a=b` giving `n log n`)? A model

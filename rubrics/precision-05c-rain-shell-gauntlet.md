@@ -10,7 +10,7 @@ criteria:
     - id: obj-1
       check: "Exactly 3 paragraphs separated by a single blank line; no headings, list markers, blockquote or emphasis markup anywhere (no line matching ^\\s*[-*#>] and no *, _, or backtick emphasis runs)"
     - id: obj-2
-      check: "No second-person pronoun (you, your, yours, you're — any casing), no exclamation mark, and zero digit characters 0-9 appear anywhere in the file"
+      check: "No third-person plural pronoun (they, them, their, theirs — any casing), no exclamation mark, and zero digit characters 0-9 appear anywhere in the file"
     - id: obj-3
       check: "No em-dash, en-dash, or semicolon CHARACTER appears; and no sentence begins with Plus, Also, or Then (case-insensitive, after splitting on . or ? boundaries)"
     - id: obj-4
@@ -82,7 +82,7 @@ const STOPLIST = new Set(['a','an','the','and','or','of','to','in','on','for','f
 console.log('obj-1 exactly 3 paragraphs:', paras.length === 3);
 console.log('obj-1 no markup lines:', !/^\s*[-*#>]/m.test(raw) && !/(\*\*?|__?|\`)[^\s*_\`][^*_\`]*\1/.test(raw));
 
-console.log('obj-2 no second-person:', !/\b(you|your|yours|you're)\b/i.test(raw));
+console.log('obj-2 no third-person-plural:', !/\b(they|them|their|theirs)\b/i.test(raw));
 console.log('obj-2 no exclamation:', !raw.includes('!'));
 console.log('obj-2 no digits:', !/[0-9]/.test(raw));
 
@@ -110,9 +110,11 @@ violating version must fail obj-2, obj-3, and obj-5 at minimum.
 
 - **obj-1**: catches stray markdown creeping into what must be plain
   prose.
-- **obj-2**: the three most tempting echoes of the brief's register —
-  second person, exclamation marks, and digits (e.g. "25,000 hikers",
-  "2018") all fail here.
+- **obj-2**: exclamation marks and digits (e.g. "25,000 hikers", "2018")
+  are the two tempting echoes of the brief's register; the third-person
+  plural pronoun ban is a fresh constraint not mirrored in the brief's
+  own wording, so a compliant draft must avoid "they/them/their/theirs"
+  on its own discipline rather than by simply avoiding the brief's tone.
 - **obj-3**: em-dash/en-dash/semicolon are common in natural copy, so
   this is where careless drafting slips hardest; the Plus/Also/Then
   sentence-opener check catches informal connective tics.
@@ -134,7 +136,7 @@ PASS (reads as genuine copy):
   never really an option."
 
 FAIL (checklist-fighting-itself or copied register):
-- "This blurb will not use exclamation marks or the word you at any
+- "This blurb will not use exclamation marks or the word they at any
   point in these three paragraphs." (meta-commentary about the
   constraints)
 - "Skarra keeps rain out fast dry warm quiet light tough reliable

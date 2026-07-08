@@ -17,6 +17,8 @@ criteria:
       check: "DECISION.md states that Max Roster (Option C) is never the optimal choice for any surge probability in [0,1] (it is dominated by Flex Pool throughout)"
     - id: obj-5
       check: "DECISION.md and REASONING.md both exist with exact filenames, and REASONING.md is at most 300 words (wc -w)"
+    - id: obj-6
+      check: "DECISION.md reports the value of perfect information as exactly 15 (EV with perfect info = 0.6*60 + 0.4*25 = 46, minus the best EV at r=0.40 of 31, i.e. VOI = 46 - 31 = 15; recomputed via the embedded node script), accepting equivalent exact forms (15, 15k, $15k, etc.)"
   subjective:
     - id: sub-quality
       name: "Decision-tree presentation clarity"
@@ -106,8 +108,9 @@ FAIL phrasings:
 
 Grading notes:
 
-- **obj-1 through obj-3** are mechanical: recompute each EV, the best
-  choice, and the flip-point against the script above.
+- **obj-1 through obj-3 and obj-6** are mechanical: recompute each EV,
+  the best choice, the flip-point, and the VOI against the script
+  above.
 - **obj-4** is prose-located; use the PASS/FAIL fragments to
   adjudicate. The seeded trap is Option C (Max Roster) looking like a
   safe, defensible choice because it is fully staffed no matter what

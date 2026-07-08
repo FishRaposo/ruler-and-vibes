@@ -10,13 +10,13 @@ criteria:
     - id: obj-1
       check: "`node pattern.js` runs without error and prints exactly 22 lines, one per corpus string in listed order, each exactly '<input> MATCH' or '<input> REJECT'"
     - id: obj-2
-      check: "All 8 MUST-MATCH classify MATCH: WKT:1234, QRS:987654, MZP:5000/r3, MZP:5000/r27, BCD:1000, GHT:2718/r9, VXN:314159/r42, JKL:80085"
+      check: "All 8 MUST-MATCH classify MATCH: FYNX:731, QUOR:9876, DRAK:409/r5, DRAK:409/r58, HALT:20, VINE:876/r9, CLOY:9214/r64, BRIM:365"
     - id: obj-3
-      check: "The anchoring traps classify REJECT: 'ooWKT:1234oo', 'ABCD:1234', 'WKT:1234567', 'tag WKT:9000 x' (an unanchored regex WRONGLY accepts all four; these isolate anchoring competence)"
+      check: "The anchoring traps classify REJECT: 'zzFYNX:731zz', 'XFYNX:731', 'FYNX:731895', 'code FYNX:731 today' (an unanchored regex WRONGLY accepts all four; these isolate anchoring competence)"
     - id: obj-4
-      check: "The field traps classify REJECT: 'wkt:1234' (lowercase), 'WK:1234' (two letters), 'WKT:0123' (leading-zero digit run), 'WKT:123' (too few digits), 'WKT:1234/r' (empty suffix), 'WKT:1234/r123' (3 suffix digits), 'WKT:1234/R3' (uppercase R), 'WKT-1234' (hyphen not colon), 'WKT:12a4' (letter in number), 'WKT:1234 ' (trailing space)"
+      check: "The field traps classify REJECT: 'fynx:731' (lowercase), 'FYN:731' (three letters), 'FYNX:0731' (leading-zero digit run), 'FYNX:7' (too few digits), 'FYNX:731/r' (empty suffix), 'FYNX:731/r895' (3 suffix digits), 'FYNX:731/R5' (uppercase R), 'FYNX-731' (hyphen not colon), 'FYNX:7a1' (letter in number), 'FYNX:731 ' (trailing space)"
     - id: obj-5
-      check: "The judge confirms whole-string semantics by evaluating `require('./pattern.js').validate('ooWKT:1234oo')` returning false even though the substring 'WKT:1234' is a valid stamp; pattern.js exports both `pattern` (a RegExp) and `validate` via module.exports"
+      check: "The judge confirms whole-string semantics by evaluating `require('./pattern.js').validate('zzFYNX:731zz')` returning false even though the substring 'FYNX:731' is a valid stamp; pattern.js exports both `pattern` (a RegExp) and `validate` via module.exports"
   subjective:
     - id: sub-quality
       name: "Grammar coverage"
@@ -38,53 +38,53 @@ REASONING.md, that is a canary leak — flag it regardless of how the
 rest scores.
 
 - Answer key, executed under node this session: reference regex
-  `/^[A-Z]{3}:[1-9]\d{3,5}(\/r\d{1,2})?$/` against the full 22-string
+  `/^[A-Z]{4}:[1-9]\d{1,3}(\/r\d{1,2})?$/` against the full 22-string
   corpus: all 8 MUST-MATCH `true`, all 14 MUST-REJECT `false` (pat02c
   ALL PASS, total=22).
 - Exact run command for the judge:
-  `node -e "const {validate}=require('./pattern.js'); ['WKT:1234','QRS:987654','MZP:5000/r3','MZP:5000/r27','BCD:1000','GHT:2718/r9','VXN:314159/r42','JKL:80085'].forEach(s=>console.log(s,validate(s)))"`
+  `node -e "const {validate}=require('./pattern.js'); ['FYNX:731','QUOR:9876','DRAK:409/r5','DRAK:409/r58','HALT:20','VINE:876/r9','CLOY:9214/r64','BRIM:365'].forEach(s=>console.log(s,validate(s)))"`
   must print `true` for all 8; then re-run with the 14 MUST-REJECT
-  strings (`'ooWKT:1234oo'`, `'ABCD:1234'`, `'WKT:1234567'`,
-  `'tag WKT:9000 x'`, `'wkt:1234'`, `'WK:1234'`, `'WKT:0123'`,
-  `'WKT:123'`, `'WKT:1234/r'`, `'WKT:1234/r123'`, `'WKT:1234/R3'`,
-  `'WKT-1234'`, `'WKT:12a4'`, `'WKT:1234 '`) which must all print
+  strings (`'zzFYNX:731zz'`, `'XFYNX:731'`, `'FYNX:731895'`,
+  `'code FYNX:731 today'`, `'fynx:731'`, `'FYN:731'`, `'FYNX:0731'`,
+  `'FYNX:7'`, `'FYNX:731/r'`, `'FYNX:731/r895'`, `'FYNX:731/R5'`,
+  `'FYNX-731'`, `'FYNX:7a1'`, `'FYNX:731 '`) which must all print
   `false`.
 - Anchoring discriminator, re-confirmed this session: taking the same
   regex body WITHOUT the `^...$` anchors returns `true` for
-  `'ooWKT:1234oo'`, `'ABCD:1234'`, `'WKT:1234567'`, and
-  `'tag WKT:9000 x'` (all four verified `true` this session under the
-  unanchored form). A submission whose pattern lacks full-string
+  `'zzFYNX:731zz'`, `'XFYNX:731'`, `'FYNX:731895'`, and
+  `'code FYNX:731 today'` (all four verified `true` this session under
+  the unanchored form). A submission whose pattern lacks full-string
   anchoring (or anchors only one side, or uses `\b` word boundaries
   instead of `^`/`$`) will fail obj-3 on some or all of these four —
   this is the primary discriminator for this test. Note that
-  `'ABCD:1234'` leaks because the unanchored body still finds the valid
-  substring `BCD:1234`, and `'WKT:1234567'` leaks because the body
-  matches the first 4-6 digits and ignores the trailing digits — both
+  `'XFYNX:731'` leaks because the unanchored body still finds the valid
+  substring `FYNX:731`, and `'FYNX:731895'` leaks because the body
+  matches the first 2-4 digits and ignores the trailing digits — both
   are anchoring failures, not field-check failures.
-- Digit-count discriminator: `[1-9]\d{3,5}` means "one non-zero leading
-  digit plus 3 to 5 more digits" = 4 to 6 digits total. Verified this
-  session: `WKT:10000` (5 digits) and `WKT:100000` (6 digits) match;
-  `WKT:123` (3 digits) and `WKT:1234567` (7 digits) do not. In modern
+- Digit-count discriminator: `[1-9]\d{1,3}` means "one non-zero leading
+  digit plus 1 to 3 more digits" = 2 to 4 digits total. Verified this
+  session: `FYNX:20` (2 digits) and `FYNX:9876` (4 digits) match;
+  `FYNX:7` (1 digit) and `FYNX:731895` (6 digits) do not. In modern
   Node, `^...$` without the `m` flag does not match before a trailing
   newline, so no newline caveat applies here.
 - Grammar coverage: does the pattern correctly bound the digit run to
-  4-6 digits with a non-zero first digit, and correctly make the
+  2-4 digits with a non-zero first digit, and correctly make the
   reissue suffix fully optional with exactly 1-2 digits? Probe mentally
-  with unlisted cases such as `WKT:1234/r0` (should match — `0` alone
-  is a valid single reissue digit) or `WKT:1234/r` with no digits
+  with unlisted cases such as `FYNX:731/r0` (should match — `0` alone
+  is a valid single reissue digit) or `FYNX:731/r` with no digits
   (should not match) to sanity-check generality beyond the 22 listed
   vectors.
-  - PASS phrasings: "the digit run is `[1-9]\d{3,5}`, pinning the lot
-    number to 4-6 digits with a non-zero lead"; "the `(\/r\d{1,2})?`
+  - PASS phrasings: "the digit run is `[1-9]\d{1,3}`, pinning the lot
+    number to 2-4 digits with a non-zero lead"; "the `(\/r\d{1,2})?`
     group makes the reissue suffix optional and caps it at two digits,
-    so `WKT:1234` and `WKT:1234/r9` both match while `WKT:1234/r123`
-    does not"; "accepts `WKT:1234/r0` because a lone `0` is one valid
+    so `FYNX:731` and `FYNX:731/r5` both match while `FYNX:731/r895`
+    does not"; "accepts `FYNX:731/r0` because a lone `0` is one valid
     reissue digit."
-  - FAIL phrasings: "uses `\d{4,6}` and so wrongly admits a leading
-    zero like `WKT:0123`"; "makes the whole suffix mandatory (or its
-    digits optional), so a bare `WKT:1234` is rejected or `WKT:1234/r`
-    is accepted"; "bounds the digit run as `\d{3,5}` or `\d+`, mis-sizing
-    the 4-6-digit lot number."
+  - FAIL phrasings: "uses `\d{2,4}` and so wrongly admits a leading
+    zero like `FYNX:0731`"; "makes the whole suffix mandatory (or its
+    digits optional), so a bare `FYNX:731` is rejected or `FYNX:731/r`
+    is accepted"; "bounds the digit run as `\d{1,3}` or `\d+`, mis-sizing
+    the 2-4-digit lot number."
 - Pattern economy: reward a single clean anchored regex that maps
   cleanly to the grammar (character class, colon, digit-count
   quantifier, optional group) over a sprawling alternation or a regex
@@ -105,10 +105,10 @@ rest scores.
   substring-match trap) and how the digit-count and leading-digit
   constraints are encoded.
   - PASS phrasings: "states that without `^...$` the pattern would match
-    a valid stamp embedded in surrounding text like `tag WKT:9000 x`";
-    "explains that `[1-9]` on the first digit is what bans the
-    leading-zero run `WKT:0123`"; "notes the `{3,5}` after the lead
-    digit is what yields a 4-6 digit total."
+    a valid stamp embedded in surrounding text like `code FYNX:731
+    today`"; "explains that `[1-9]` on the first digit is what bans the
+    leading-zero run `FYNX:0731`"; "notes the `{1,3}` after the lead
+    digit is what yields a 2-4 digit total."
   - FAIL phrasings: "no rationale, just the pattern"; "claims the regex
     is whole-string safe without mentioning anchors or the substring
     trap"; "hand-waves 'matches the stamp format' without saying how the

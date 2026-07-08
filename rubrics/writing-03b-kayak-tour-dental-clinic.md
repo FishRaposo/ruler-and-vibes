@@ -15,6 +15,8 @@ criteria:
       check: "Date conventions correct per target locale — critically, B's 09/06/2027 renders as June 9, 2027 (NOT September 6); A's dates read naturally in PT-BR (e.g. 20 de maio)"
     - id: obj-4
       check: "No literal idiom renderings ('sem enrolação' is not 'without wrapping'; 'first come, first served' is not a word-for-word calque; 'Bring your A-game' is not 'traga seu jogo A'); brand names unchanged"
+    - id: obj-5
+      check: "localization.md is at most 350 words total, counted with wc -w over the whole file"
   subjective:
     - id: sub-quality
       name: "Native naturalness"

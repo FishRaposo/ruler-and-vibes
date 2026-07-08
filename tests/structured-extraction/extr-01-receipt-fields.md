@@ -37,7 +37,7 @@ LOYALTY: 4471-**8-2*9
 
 A single JSON object with EXACTLY these keys:
 
-- `store_name` — string, exactly as printed.
+- `store_name` — string, the store's name in standard capitalization (the printed header is in ALL CAPS as a stylistic banner — e.g. transcribe "NORTHGATE PANTRY" as "Northgate Pantry").
 - `purchase_date` — string, `YYYY-MM-DD`.
 - `items` — array of the three item description strings, in the
   order printed (descriptions only, not prices).

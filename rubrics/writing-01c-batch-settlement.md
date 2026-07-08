@@ -15,6 +15,8 @@ criteria:
       check: "Exactly one extended analogy"
     - id: obj-4
       check: "Explicitly answers whether the money is safe"
+    - id: obj-5
+      check: "No unexplained jargon: every technical term used is explained in the same sentence, or is not used at all"
   subjective:
     - id: sub-quality
       name: "Technical accuracy"
@@ -119,3 +121,32 @@ or answers something else):
    (hedged, non-committal, dodges the question)
 3. "It's a totally normal part of how modern payment apps work."
    (describes the mechanism, never answers the safety question asked)
+
+### obj-5 — unexplained jargon
+
+Every technical term the piece uses must be explained in the same
+sentence it appears in; if a term can't be worked in with an
+in-sentence explanation, it should be dropped rather than left bare.
+
+**PASSING**:
+
+1. "the moment a customer taps their card, that's the authorization —
+   the bank's promise that the money is good and the sale is final"
+   ("authorization" defined in the same sentence).
+2. "your running total only updates after the nightly settlement,
+   which is simply the bookkeeping step where the day's approved sales
+   get added up and moved into your account" ("settlement" defined
+   immediately).
+3. "all of today's approved sales get grouped into one batch — a
+   single bundle the processor sends off together — instead of being
+   sent one at a time" ("batch" defined where used).
+
+**FAILING**:
+
+1. "the total lags because settlement hasn't cleared the batch yet"
+   ("settlement," "cleared," and "batch" all used with no in-sentence
+   explanation).
+2. "it's just normal clearing time" ("clearing" used as if
+   self-explanatory).
+3. "the acquirer hasn't posted the batch" ("acquirer," "posted," and
+   "batch" all dropped in as jargon with no definition).

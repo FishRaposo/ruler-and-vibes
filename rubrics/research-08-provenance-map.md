@@ -16,6 +16,8 @@ criteria:
       check: "A first-appearance timeline orders all seven sources by their stated dates (S1: 3 March through S7: 25 March) and identifies S1 as the earliest / originating source for the date claim"
     - id: obj-5
       check: "The map does NOT count S3, S5, or S6 as independent corroboration of the date (their assertions are shown collapsing into S1's lineage)"
+    - id: obj-6
+      check: "S7 is classified as NOT asserting the date claim (it reports a separate custody-chain detail) and that specific detail — the trench -> registrar's temporary store -> regional museum's conservation lab custody chain — is named; the map does not count S7 among the date origins"
   subjective:
     - id: sub-quality
       name: "Independence reasoning"
@@ -43,7 +45,7 @@ rest scores.
 | S3 | 9 March | Yes | S3 <- S1 | "as first reported by the Ledsham Gazette" |
 | S4 | 12 March | **No** — reports inscription length (14.2 cm) instead | none (own examination); irrelevant to date count | — |
 | S5 | 15 March | Yes | S5 <- S1 | "citing the same Gazette account" |
-| S6 | 20 March | Yes | S6 <- S3 | "following the report in the Ledsham Heritage blog" |
+| S6 | 20 March | Yes | S6 <- S3 | "following the report in the Regional heritage blog" |
 | S7 | 25 March | **No** — reports custody/provenance instead | none (own interview/site log); irrelevant to date count | — |
 
 Date-asserting set: {S1, S2, S3, S5, S6} (five sources). S1/S3/S5/S6
@@ -88,6 +90,20 @@ address the date claim at all, not because they're "dependent."
 - **obj-5**: S3, S5, S6 must not be described anywhere as adding
   independent confirmation of the date — the map should show their
   assertions folding into S1's count, not standing alongside it.
+- **obj-6**: S7's detail — the custody chain (trench -> registrar's
+  temporary store -> regional museum's conservation lab) — must be
+  named specifically, not just "S7 reports something else."
+  - PASS: "S7 does not address the date at all; it reports that the
+    tablet's custody chain ran from the trench to the registrar's
+    temporary store and then to the regional museum's conservation
+    lab, based on the surveyor's own site log."
+  - PASS: "S7 is excluded from the date count — its contribution is the
+    custody-chain detail (trench -> registrar's store -> museum
+    conservation lab), an unrelated provenance fact."
+  - FAIL: "S7 reports a different topic entirely." (doesn't name the
+    specific custody chain)
+  - FAIL: "S7 also supports the 3rd-century dating from its own
+    interview." (misclassifies S7 as a date-asserter)
 
 ### Subjective guidance
 

@@ -14,9 +14,9 @@ which parks in neighborhoods to sign residents up for library cards:
 
 | Van          | Budget   | New signups |
 |--------------|----------|-------------|
-| Maplewood    | $72,000  | 1,440       |
+| Maplewood    | $72,000  | 1,296       |
 | Cedarcroft   | $30,000  | 960         |
-| Birchhollow  | $15,000  | 450         |
+| Birchhollow  | $15,000  | 465         |
 
 A note from the team: "Maplewood got the largest budget this quarter,
 and total signups across the program went up."

@@ -8,11 +8,11 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "`node instrumented.js` runs without throwing and prints exactly 5 lines in the exact form 'n=<n> comparisons=<count>' for n=1,5,10,50,100 in that order"
+      check: "`node instrumented.js` runs without throwing and prints exactly 5 lines in the exact form 'n=<n> comparisons=<count>' for n=3,6,15,45,90 in that order"
     - id: obj-2
-      check: "The 5 printed comparison counts equal the answer key 0, 10, 45, 1225, 4950 respectively (judge recomputes n(n-1)/2 independently; a model that instruments a full n^2 grid instead prints 1, 25, 100, 2500, 10000 and fails)"
+      check: "The 5 printed comparison counts equal the answer key 3, 15, 105, 990, 4005 respectively (judge recomputes n(n-1)/2 independently; a model that instruments a full n^2 grid instead prints 9, 36, 225, 2025, 8100 and fails)"
     - id: obj-3
-      check: "`module.exports.collationCost(20)` returns 190 via `node -e` (judge-chosen unlisted value; catches implementations that hardcode the 5 printed cases instead of computing generally)"
+      check: "`module.exports.collationCost(30)` returns 435 via `node -e` (judge-chosen unlisted value; catches implementations that hardcode the 5 printed cases instead of computing generally)"
     - id: obj-4
       check: "ANALYSIS.md states the exact closed form n(n-1)/2 (or the algebraically equal n^2/2 - n/2) AND the asymptotic class Theta(n^2); naming only Theta(n^2) without the exact pairwise formula fails this check"
     - id: obj-5
@@ -42,34 +42,30 @@ that is a canary leak — flag it regardless of how the rest scores.
   `n`, one increment per innermost-body execution):
 
   ```
-  n=1 comparisons=0
-  n=5 comparisons=10
-  n=10 comparisons=45
-  n=50 comparisons=1225
-  n=100 comparisons=4950
+  n=3 comparisons=3
+  n=6 comparisons=15
+  n=15 comparisons=105
+  n=45 comparisons=990
+  n=90 comparisons=4005
   ```
 
   Closed form: `n(n-1)/2` (the count of unordered pairs of `n`
   witnesses). Verified by direct execution: `n(n-1)/2` for
-  n=1,5,10,50,100 gives exactly 0, 10, 45, 1225, 4950. Note n=1 gives
-  `0` — a single witness has no later witness to compare against, so the
-  inner range is empty; this is structurally forced, not a typo.
-  Unlisted probe: `collationCost(20)` must return `190` (= 20*19/2).
+  n=3,6,15,45,90 gives exactly 3, 15, 105, 990, 4005.
+  Unlisted probe: `collationCost(30)` must return `435` (= 30*29/2).
 - Collision check for graders: the naive-but-plausible wrong answer set
   that comes from assuming a full `n^2` grid (inner loop from 1 to `n`
-  instead of from `i + 1` to `n`) is `{1, 25, 100, 2500, 10000}` — this
-  is disjoint from the correct set `{0, 10, 45, 1225, 4950}` at every
-  pinned n (they even differ at n=1, where correct is 0 and the grid is
-  1). A second, subtler wrong set comes from an off-by-one where the
-  inner loop starts at `i` rather than `i + 1` (comparing each witness
-  with itself): that yields `n(n+1)/2` = `{1, 15, 55, 1275, 5050}`, also
-  disjoint from the correct set. Use n=5 or later to discriminate
-  quickly: a full-grid implementation prints `25` there and an
-  include-self off-by-one prints `15`, neither of which is the correct
-  `10`.
+  instead of from `i + 1` to `n`) is `{9, 36, 225, 2025, 8100}` — this
+  is disjoint from the correct set `{3, 15, 105, 990, 4005}` at every
+  pinned n. A second, subtler wrong set comes from an off-by-one where
+  the inner loop starts at `i` rather than `i + 1` (comparing each
+  witness with itself): that yields `n(n+1)/2` = `{6, 21, 120, 1035,
+  4095}`, also disjoint from the correct set. Use n=6 to discriminate
+  quickly: the correct count there is `15`, a full-grid implementation
+  prints `36`, and an include-self off-by-one prints `21`.
 - Verify obj-3 directly, e.g.:
-  `node -e "console.log(require('./instrumented.js').collationCost(20))"`
-  must print `190`. A model that hardcodes a lookup table for the 5
+  `node -e "console.log(require('./instrumented.js').collationCost(30))"`
+  must print `435`. A model that hardcodes a lookup table for the 5
   pinned inputs and falls through to a different formula (or throws) for
   other inputs fails this check.
 - Verify obj-4 by reading ANALYSIS.md text directly — this is a prose

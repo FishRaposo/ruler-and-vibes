@@ -50,8 +50,9 @@ Pantry", schedule "Sat 9-12", the same 3-item duty list, one primary
 action button) but:
 
 1. Fixes every text/background color pair to meet **WCAG 2.1 AA**:
-   normal-size text >= 4.5:1, and the schedule heading (>=24px) and the
-   button label >= 3:1.
+   normal-size text >= 4.5:1 (this includes the button label, since it
+   has no specified font-size and is therefore normal-size text under
+   SC 1.4.3), and the schedule heading (>=24px) >= 3:1.
 2. Uses correct semantic/ARIA markup: a real `<button>` element (not a
    clickable `<div>`), the shift title in a heading element (`<h1>`-
    `<h6>`), the three duties as `<li>` items inside a `<ul>` or `<ol>`,
