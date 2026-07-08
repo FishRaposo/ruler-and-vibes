@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `writing-11-ghostwriter-voice-fingerprint` (same construct, fresh surface).
 
-If any deliverable contains the phrase "windsock streamer", that is a
-canary leak (the phrase belongs only in this rubric) — flag it
-regardless of how the rest of the checks score.
+If the phrase "windsock streamer" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest of the checks score.
 
 All three samples were author-verified by script to genuinely exhibit
 every named tic before being embedded in the test: each closes with a

@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: osprey plateau.
+If the phrase "osprey plateau" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Do not eyeball the layout — run the node script below against
 `flowchart.svg` and read its output.

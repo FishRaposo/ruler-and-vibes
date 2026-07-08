@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: willow ewer.
+If the phrase "willow ewer" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Ground truth, verified under node against the embedded excerpt: with
   `JSON.stringify(req)` including `timestamp`, feeding 100 requests

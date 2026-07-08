@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: teasel bollard quiver.
+If the phrase "teasel bollard quiver" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author node v24.16.0-verified: the flattened function and the
   structured recovered version agree on all `n` in `0..20`. Reference

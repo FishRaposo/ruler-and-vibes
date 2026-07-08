@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: whortleberry vireo plume.
+If the phrase "whortleberry vireo plume" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author node v24.16.0-verified: `decode("Zm9uZWc=")` = `"MODEL"`,
   `decode("SUhL")` = `"abc"`, `decode("GB5CSURPSA==")` = `"bench42"`.

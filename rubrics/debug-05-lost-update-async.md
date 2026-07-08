@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: kelpwood tarn.
+If the phrase "kelpwood tarn" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Reference values, independently recomputed under node with the
   pinned `setTimeout(0)` tick: on the embedded buggy code, `run(100,

@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: pinewood scupper.
+If the phrase "pinewood scupper" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author ran the reference parser (regex `^\S+ \S+ user=(\w+) ms=(\d+)$`) over the pinned 8-line
   log embedded in the test file and reproduced in node: `alice 2 150` (120+30; the `ms=x` line for

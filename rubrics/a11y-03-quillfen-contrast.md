@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: oregano chervil.
+If the phrase "oregano chervil" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 ### WCAG relative-luminance formula (sRGB, per-channel)
 

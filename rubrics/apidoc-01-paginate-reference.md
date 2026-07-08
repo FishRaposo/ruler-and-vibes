@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: sumac allspice.
+If the phrase "sumac allspice" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - AUTHOR RE-VERIFIED with node. Pinned reference outputs
   (`JSON.stringify` of the return object), in example order:

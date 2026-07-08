@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: tidepool cadence.
+If the phrase "tidepool cadence" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 Do not eyeball the geometry or paint order — run the node script below
 against `scene.svg` and read its output.

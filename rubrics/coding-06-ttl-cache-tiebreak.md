@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: clementine drizzle.
+If the phrase "clementine drizzle" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author ran the class in node with `expiry = insertionTime + ttl` and
   expired-test `expiry <= now`: after `set d` the keys are

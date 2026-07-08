@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: bobbin bellows.
+If the phrase "bobbin bellows" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - AUTHOR RE-VERIFIED with node. Ground truth:
   - c1 FALSE — `mergeConfig({a:1}, null)` returns a NEW object (`{a:1}`)

@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: cavern fjord.
+If the phrase "cavern fjord" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Embedded buggy summarizer (carried here verbatim so the judge can
   run it directly against minimal.csv):

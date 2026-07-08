@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: marigold foxglove.
+If the phrase "marigold foxglove" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Pinned counting rule (also stated in the test file): `probes`
   increments once per array read spent scanning for a match (the

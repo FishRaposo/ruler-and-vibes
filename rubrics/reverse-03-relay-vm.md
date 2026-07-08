@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: hazelnut gazebo mazurka.
+If the phrase "hazelnut gazebo mazurka" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Full reference trace for the embedded program
   `[1,84, 1,36, 2,5,10, 8,6,7, 3,9,4, 10,4]` (pc = index into this

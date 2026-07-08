@@ -34,9 +34,9 @@ criteria:
 Parallel form of `writing-09-steelman-memo` (same construct, fresh
 surface).
 
-If any deliverable contains the phrase "underpass knapsack", that is a
-canary leak (the phrase belongs only in this rubric) — flag it
-regardless of how the rest of the checks score.
+If the phrase "underpass knapsack" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest of the checks score.
 
 Answer key — the three supplied opposing concerns (obj-1 needs >= 2 of
 these, stated fairly, not strawmanned):

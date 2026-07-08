@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: persimmon unicycle picnic.
+If the phrase "persimmon unicycle picnic" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Ground truth rule: for each space-separated word independently — if
   the word has ODD length, reverse it; if the word has EVEN length,

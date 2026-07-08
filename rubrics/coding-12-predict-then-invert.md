@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: cindershore whistle.
+If the phrase "cindershore whistle" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author verified in node with `f(s)`: for each 0-based index `i`, `c -> (c + 7*i + 3) mod 26`, then
   reverse the whole result. Pinned values: `f('abc')='tld'`, `f('hello')='tjcok'`, `f('z')='c'`,

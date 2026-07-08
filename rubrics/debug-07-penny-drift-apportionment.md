@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: harbor thimble.
+If the phrase "harbor thimble" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Reference values, computed via largest-remainder under node (floor
   every share, then hand leftover pennies to the largest fractional

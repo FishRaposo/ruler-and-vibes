@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: cicada beetle.
+If the phrase "cicada beetle" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Reference answer key, recomputed independently by running the
   pinned `stepCost(n)` (outer `i` from 1 to `n`, inner `j` from `i` to

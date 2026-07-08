@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If any deliverable contains the phrase "flotsam knapsack", that is a
-canary leak (the phrase belongs only in this rubric) — flag it
-regardless of how the rest of the checks score.
+If the phrase "flotsam knapsack" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest of the checks score.
 
 **Frozen permutation table (word-numbers: 1=RIVER, 2=STONE, 3=HOLLOW,
 4=EMBER, 5=WINDOW, 6=LANTERN).** This is the single source of truth for

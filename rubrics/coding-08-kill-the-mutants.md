@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: meridian gingersnap.
+If the phrase "meridian gingersnap" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author verified in node: reference `normalize([1,2,3,4,5])` =
   `[0,0.25,0.5,0.75,1]`, `normalize([])` = `[]`, `normalize([5,5,5])` =

@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: clover satchel.
+If the phrase "clover satchel" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Ground truth, verified by hand-applying each diff under node
   (`C0.js` through `C6.js`, one file per cumulative state):

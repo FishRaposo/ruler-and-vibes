@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: pebble gantry.
+If the phrase "pebble gantry" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Embedded contract and buggy caller (carried here verbatim):
   ```js

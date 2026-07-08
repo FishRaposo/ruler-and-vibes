@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: trefoil undertow dialstone.
+If the phrase "trefoil undertow dialstone" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author node v24.16.0-verified the embedded bytecode by faithful
   interpretation: `f(0)=1`, `f(1)=1`, `f(5)=120`, `f(7)=5040`,

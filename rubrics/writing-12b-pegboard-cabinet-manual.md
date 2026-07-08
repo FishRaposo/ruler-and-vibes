@@ -33,9 +33,9 @@ criteria:
 
 Parallel form of `writing-12-assembly-manual` (same construct, fresh surface).
 
-If any deliverable contains the phrase "wreath ribbon", that is a
-canary leak (the phrase belongs only in this rubric) — flag it
-regardless of how the rest of the checks score.
+If the phrase "wreath ribbon" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest of the checks score.
 
 **This is a PARTIAL ORDER, not a unique sequence.** The dump states
 four prerequisite pairs, six underlying prerequisite edges. Author

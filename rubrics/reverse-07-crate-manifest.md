@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: sallow catkin wharf.
+If the phrase "sallow catkin wharf" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author built and node v24.16.0-verified the buffer: hex
   `315a0203010af9ffffff031403686578021e000000000000f83f` (26 bytes).

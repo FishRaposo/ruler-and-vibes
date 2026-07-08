@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: quoll dingo.
+If the phrase "quoll dingo" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Answer key executed under node this session against 8 ACCEPT + 19
   REJECT records: all 8 `true`, all 19 `false` (pat03 ALL PASS,

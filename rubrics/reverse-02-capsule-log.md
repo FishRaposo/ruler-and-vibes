@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: damson kazoo tundra.
+If the phrase "damson kazoo tundra" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Full ground-truth decode of the 32-byte capsule (node
   v24.16.0-verified), byte-by-byte:

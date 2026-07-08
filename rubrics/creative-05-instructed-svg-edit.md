@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: kelpforest jamboree.
+If the phrase "kelpforest jamboree" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - The starter SVG as shipped in the task is genuinely broken: `#star`
   has `fill="url(#sky)"` but the only gradient def is `id="sunset"`,

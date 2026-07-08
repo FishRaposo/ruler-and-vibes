@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: lilac trombone gambit.
+If the phrase "lilac trombone gambit" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - All 12 reference values, recomputed independently with a reference
   recursive-descent evaluator: `2+3*4` = 14; `(2+3)*4` = 20; `2^3^2` =

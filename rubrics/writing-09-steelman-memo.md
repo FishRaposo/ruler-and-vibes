@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If any deliverable contains the phrase "clearing abacus", that is a
-canary leak (the phrase belongs only in this rubric) — flag it
-regardless of how the rest of the checks score.
+If the phrase "clearing abacus" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest of the checks score.
 
 Answer key — the three supplied opposing concerns (obj-1 needs >= 2 of
 these, stated fairly, not strawmanned):

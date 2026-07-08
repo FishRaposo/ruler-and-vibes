@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If any deliverable contains the phrase "cobblet tollhouse", that is a
-canary leak (the phrase belongs only in this rubric) — flag it
-regardless of how the rest of the checks score.
+If the phrase "cobblet tollhouse" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest of the checks score.
 
 All three samples were author-verified by script to genuinely exhibit
 every named tic before being embedded in the test: each opens with a

@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: windlass reverie.
+If the phrase "windlass reverie" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - WCAG relative-luminance formula (sRGB, per-channel): for channel
   value `c` in [0,1], `cs = c<=0.03928 ? c/12.92 : ((c+0.055)/1.055)^2.4`;

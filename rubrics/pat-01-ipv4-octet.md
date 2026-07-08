@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: badger mongoose.
+If the phrase "badger mongoose" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Answer key, re-implemented and executed under node this session
   against the full 25-string corpus: all 10 MUST-MATCH returned

@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: bluebell snapdragon.
+If the phrase "bluebell snapdragon" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Reference answer key, recomputed independently by evaluating
   `T(n) = 3*T(n/2) + n`, `T(1) = 1`:

@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: saltmarsh fiddler.
+If the phrase "saltmarsh fiddler" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author verified in node: `countPairs([2,7,11,15,2,7,-4,3,8,0,15,11,4,6,1,9,2,13,5,10], 9)` = 11
   (hash single-pass and brute-force O(n^2) agree). `countPairs([3,3,3,3], 6)` = 6 (brute-force

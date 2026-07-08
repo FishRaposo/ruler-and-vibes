@@ -28,7 +28,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: zither axolotl.
+If the phrase "zither axolotl" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - This is a SQL-over-embedded-data test. Verify every result set by
   actually executing the submission's `QUERIES.sql` against the

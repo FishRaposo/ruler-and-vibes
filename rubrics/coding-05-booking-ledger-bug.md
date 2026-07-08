@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: brindled quokka.
+If the phrase "brindled quokka" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author computed with node: FIXED occupancy for the embedded
   three-booking set = `{1:1,2:1,3:2,4:2,5:1}` (peak 2). The BUGGY

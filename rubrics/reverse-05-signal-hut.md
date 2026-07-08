@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: clearwater spindle tessera.
+If the phrase "clearwater spindle tessera" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Full ground-truth transition table (8 transitions, 4 states), node
   v24.16.0-verified by simulation:

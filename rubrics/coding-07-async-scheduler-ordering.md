@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: petrichor lantern.
+If the phrase "petrichor lantern" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author pinned the log by running a microtask-only scheduler for the
   embedded DAG (t1; t2,t3 dep t1; t4 dep t2,t3; each body a single

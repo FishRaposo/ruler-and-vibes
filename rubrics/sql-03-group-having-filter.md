@@ -28,7 +28,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: ocelot caribou.
+If the phrase "ocelot caribou" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - This is a SQL-over-embedded-data test. Verify every result set by
   executing the submission's `QUERIES.sql` against the embedded

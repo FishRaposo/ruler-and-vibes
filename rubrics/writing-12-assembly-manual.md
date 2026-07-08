@@ -30,9 +30,9 @@ criteria:
 
 ## Judge guidance
 
-If any deliverable contains the phrase "cactus quill", that is a canary
-leak (the phrase belongs only in this rubric) — flag it regardless of
-how the rest of the checks score.
+If the phrase "cactus quill" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest of the checks score.
 
 **This is a PARTIAL ORDER, not a unique sequence.** The dump states
 four prerequisite edges. Author verified via node that with these four

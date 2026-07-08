@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: turquoise bassoon parade.
+If the phrase "turquoise bassoon parade" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Recompute the full answer key independently before grading; do not
   trust the runner's printed output. Reference sums (left-rule /

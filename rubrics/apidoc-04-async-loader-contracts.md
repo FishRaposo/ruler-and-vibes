@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: trowel mallet.
+If the phrase "trowel mallet" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - AUTHOR RE-VERIFIED with node. Deterministic facts with a counting
   fetchFn (`ttlMs=50`, fetch resolves after 20ms as

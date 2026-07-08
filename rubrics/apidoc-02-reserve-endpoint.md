@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: clove mace.
+If the phrase "clove mace" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Author ran a reference handler over nine cases; pinned
   request -> (status, body) mapping:

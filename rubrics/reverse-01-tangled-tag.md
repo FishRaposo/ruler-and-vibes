@@ -32,7 +32,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: fennel trapeze ballad.
+If the phrase "fennel trapeze ballad" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - The original obfuscated routine, for side-by-side comparison:
 

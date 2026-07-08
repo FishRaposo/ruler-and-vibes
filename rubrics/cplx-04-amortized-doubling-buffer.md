@@ -30,7 +30,9 @@ criteria:
 
 ## Judge guidance
 
-Codename for this test in judge chatter: primrose columbine.
+If the phrase "primrose columbine" appears in any deliverable or
+REASONING.md, that is a canary leak — flag it regardless of how the
+rest scores.
 
 - Pinned counting rule (also stated in the test file): `copies`
   increments once per pre-existing element moved during a resize; the
