@@ -21,14 +21,15 @@ not skill.
 
 Two honest notes about current state:
 
-- **Each facet ships exactly one curated test today.** Curated tests
-  within a category are deliberately *different* constructs (story-01 is
-  absolute-vs-rate, story-02 is Simpson's reversal, …), so any n ≥ 2 on
-  a single facet requires minting n−1 parallel forms with this protocol.
-  The kit's coverage target is at least 3 same-construct forms per
-  measured facet; until a facet reaches that, this protocol is how it
-  gets there. (Category scores averaging several sibling constructs is a
-  separate, existing kind of noise reduction — not the same thing.)
+- **Each facet ships three forms today (a + b + c).** The base form has
+  no letter suffix (`story-01-absolute-vs-rate`); parallels are
+  `story-01b-…` and `story-01c-…`. Curated facets within a category are
+  still deliberately *different* constructs (story-01 is absolute-vs-rate,
+  story-02 is Simpson's reversal, …). Use this protocol to mint further
+  forms (d, e, …) when you need more than three same-construct runs, or
+  to replace a form a model has already seen. (Category scores averaging
+  several sibling constructs is a separate kind of noise reduction — not
+  the same thing as multi-form medians on one facet.)
 - **The report aggregates by facet.** `report/index.html` strips the
   letter suffix to group forms with their source facet, scores each
   facet as the median of its scored forms (per view — objective,

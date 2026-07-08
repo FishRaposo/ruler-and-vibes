@@ -23,8 +23,7 @@ from this dump.
 - Gross margin: 80%.
 - Monthly logo churn: 5%.
 
-## Deliverable
-
+## Deliverables
 `unit-economics.md` must compute and state, with the arithmetic shown:
 
 - **CAC** (customer acquisition cost per new customer).

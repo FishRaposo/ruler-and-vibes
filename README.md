@@ -2,23 +2,24 @@
 
 **Ruler & Vibes** is a zero-infrastructure benchmark kit for comparing AI
 models — every rubric mixes objective checks (the ruler) with judged
-criteria (the vibes). It spans **31 categories** and **214 curated
-tests** (plus reviewed parallel forms — see `AUTHOR.md`) on an
-easy→hard difficulty ladder, grouped roughly as: reasoning (math & logic,
-causal reasoning, reasoning audit, theory of mind, algorithmic complexity,
-formal/regex patterns, temporal scheduling); software (coding, debugging,
-reverse engineering, SQL reasoning, API documentation, accessibility);
-language & communication (writing, copyediting, UX copy, transcript
-synthesis, data storytelling); analysis & judgment (data analysis,
-research synthesis, professional judgment, calibration, structured
-extraction, long-context comprehension); planning, instruction following,
-creative visual, game design, and business planning; and safety
-(defensive cybersecurity and prompt-injection resistance). Everything is
-markdown plus one self-contained HTML report. No APIs, no scripts, no
-build step.
+criteria (the vibes). It spans **31 categories**, **214 facets**, and
+**642 test forms** (each facet ships three parallel forms a/b/c — see
+`AUTHOR.md`) on an easy→hard difficulty ladder, grouped roughly as:
+reasoning (math & logic, causal reasoning, reasoning audit, theory of
+mind, algorithmic complexity, formal/regex patterns, temporal
+scheduling); software (coding, debugging, reverse engineering, SQL
+reasoning, API documentation, accessibility); language & communication
+(writing, copyediting, UX copy, transcript synthesis, data storytelling);
+analysis & judgment (data analysis, research synthesis, professional
+judgment, calibration, structured extraction, long-context
+comprehension); planning, instruction following, creative visual, game
+design, and business planning; and safety (defensive cybersecurity and
+prompt-injection resistance). Everything is markdown plus one
+self-contained HTML report. No APIs, no build step. Optional local
+tools under `tools/` validate structure and canaries.
 
-Two suites: **Core** (one representative test per category — see
-RUN.md) for quick comparisons, **Full** for everything; arbitrary
+Two suites: **Core** (one representative test per category — 31 tests,
+see RUN.md) for quick comparisons, **Full** (all 642 forms); arbitrary
 subsets also work.
 
 ## How it works
@@ -109,6 +110,15 @@ cross-harness Agent Skills layout):
 
 Skill files are on the runner's reading allowlist; never put scoring
 information in them.
+
+## Health checks (optional)
+
+From the repo root:
+
+```
+node tools/validate.js      # structure, data.js, judgment orphans
+node tools/canary-audit.js  # canary uniqueness + leak invariant
+```
 
 ## Adding a test
 

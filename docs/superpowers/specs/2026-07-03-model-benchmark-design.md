@@ -68,23 +68,23 @@ model-benchmark/
 
 One markdown file per test: `tests/<category>/<test-id>.md`, where
 `<test-id>` = `<category-slug>-<nn>-<slug>` (e.g. `coding-01-edge-cases`).
-Current set: **214 tests across 31 categories on an easy→hard ladder**
-(2026-07-04 maximal expansion). Category counts are uneven by design:
-the original 15 categories were deepened (several to 10–12 tests each)
-and 16 new categories were added at 4 tests each — accessibility,
-algorithmic-complexity, api-documentation, calibration, causal-reasoning,
-copyediting, data-storytelling, formal-patterns, prompt-injection,
-reasoning-audit, sql-reasoning, structured-extraction, temporal-scheduling,
-theory-of-mind, transcript-synthesis, ux-copy. Every test's canary and the
-canary rules live in `2026-07-04-canary-registry.md` (regenerated from the
-shipped rubrics); the original 13-category expansion roster is preserved in
+Current set: **214 facets / 642 forms across 31 categories** on an
+easy→hard ladder (each facet ships three parallel forms a/b/c). Category
+counts are uneven by design: the original 15 categories were deepened
+(several to 10–12 facets each) and 16 new categories were added at 4
+facets each — accessibility, algorithmic-complexity, api-documentation,
+calibration, causal-reasoning, copyediting, data-storytelling,
+formal-patterns, prompt-injection, reasoning-audit, sql-reasoning,
+structured-extraction, temporal-scheduling, theory-of-mind,
+transcript-synthesis, ux-copy. Every form's canary and the canary rules
+live in `2026-07-04-canary-registry.md` (regenerated from the shipped
+rubrics); the original 13-category expansion roster is preserved in
 `2026-07-04-expansion-roster.md`. Two documented run suites: Core (one
-representative test per category — 31 tests, listed in RUN.md) and Full.
-Category scores are means over attempted facets (since 2026-07-04,
-parallel forms — ids like `story-01b-…` — collapse to their facet's
+representative test per category — 31 tests, listed in RUN.md) and Full
+(all 642 forms). Category scores are means over attempted facets
+(parallel forms — ids like `story-01b-…` — collapse to their facet's
 median first; see `AUTHOR.md`), so uneven per-category counts are safe
-by construction. New tests are
-just new files.
+by construction. New tests are just new files.
 
 Section weights are per rubric: most tests use objective 0.5 /
 subjective 0.5, but instruction-following tests weigh 0.7 / 0.3 —

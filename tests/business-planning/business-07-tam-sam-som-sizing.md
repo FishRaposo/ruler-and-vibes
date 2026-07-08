@@ -26,8 +26,7 @@ research the founder collected:
   **services** market (all patient spending on dental care nationally) is
   9,000,000,000/year.
 
-## Deliverable
-
+## Deliverables
 `market-sizing.md` must present:
 
 - **TAM** — the total addressable market for Cavallo's software, with the

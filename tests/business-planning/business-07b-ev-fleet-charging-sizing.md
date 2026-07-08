@@ -27,8 +27,7 @@ sizing for its seed deck. Here is the research the founder collected:
   **electricity** market (all electricity spending by the freight sector
   nationally) is 14,000,000,000/year.
 
-## Deliverable
-
+## Deliverables
 `market-sizing.md` must present:
 
 - **TAM** — the total addressable market for Voltbridge's software, with

@@ -34,8 +34,7 @@ together for the pessimistic/optimistic scenarios):
 | Monthly churn | 5% | 3% | 2% |
 | Annual ARPA | 1,080 | 1,200 | 1,320 |
 
-## Deliverable
-
+## Deliverables
 `forecast.md` must:
 
 - State full-year revenue for the **base case**, the **pessimistic case**

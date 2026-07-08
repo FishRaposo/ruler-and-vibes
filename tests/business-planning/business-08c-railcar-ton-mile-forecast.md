@@ -36,8 +36,7 @@ together for the pessimistic/optimistic scenarios):
 | Monthly withdrawal | 5.5% | 4% | 2.5% |
 | Annual ton-miles per car | 9,000 | 10,000 | 11,000 |
 
-## Deliverable
-
+## Deliverables
 `forecast.md` must:
 
 - State full-year ton-miles for the **base case**, the **pessimistic

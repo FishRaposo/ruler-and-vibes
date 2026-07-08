@@ -35,8 +35,7 @@ Two constraints apply:
 Any other combination of titles may be printed or dropped freely, subject
 only to the 25 press-day capacity.
 
-## Deliverable
-
+## Deliverables
 `roadmap.md` must:
 
 - State the selected set of titles for the season.

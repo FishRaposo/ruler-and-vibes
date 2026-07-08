@@ -23,8 +23,7 @@ Reconstruct the unit economics from this dump.
 - Gross margin: 75%.
 - Monthly subscriber churn: 5.5%.
 
-## Deliverable
-
+## Deliverables
 `unit-economics.md` must compute and state, with the arithmetic shown:
 
 - **CAC** (customer acquisition cost per new subscriber).

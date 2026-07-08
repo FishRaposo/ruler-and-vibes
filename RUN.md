@@ -77,6 +77,15 @@ You are being benchmarked. Follow these steps exactly.
       `REASONING.md` is itself graded — on honesty and depth, not
       length.
 
+## Optional: save your session transcript
+
+If your harness captures a full session transcript (everything you read,
+wrote, and were told), save it to
+`results/<run-id>/session-transcript.txt`. This is optional but strongly
+recommended — it lets the judge audit every file you actually opened,
+making the `## Files read` manifest independently verifiable. Without
+it, a runner who reads rubrics and lies in the manifest is undetectable.
+
 ## Checklist before you finish
 
 - [ ] `results/<run-id>/meta.json` exists and has a `model` value
@@ -84,3 +93,4 @@ You are being benchmarked. Follow these steps exactly.
 - [ ] Every test folder has `REASONING.md` ending with `## Files read`
 - [ ] You read nothing under `rubrics/`, `report/`, or other runs
 - [ ] You wrote nothing outside `results/<run-id>/`
+- [ ] (Recommended) `results/<run-id>/session-transcript.txt` saved

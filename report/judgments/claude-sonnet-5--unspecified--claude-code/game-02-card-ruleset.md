@@ -1,20 +1,20 @@
-# game-02-card-ruleset — claude-sonnet-5--unspecified--claude-code
+# game-02-card-ruleset - claude-sonnet-5--unspecified--claude-code
 
-**Judged by:** claude-fable-5 on 2026-07-03
+**Judged by:** codex-gpt-5 on 2026-07-06
 
 ## Integrity
-Clean. `git status` is clean; `## Files read` lists only `tests/game-design/game-02-card-ruleset.md`. The canary phrase "table-hush" appears nowhere in `rules.md` or REASONING.md. REASONING.md does discuss influences and degenerate strategies (topics the rubric guidance rewards), but in its own structure and vocabulary — consistent with good practice, not rubric access.
+Clean.
 
 ## Objective checks
-- obj-1 (All five sections present): PASS — `## Overview`, `## Setup`, `## Turn structure`, `## Winning`, `## Example round` all present.
-- obj-2 (Requires only a standard 52-card deck, nothing else): PASS — no jokers, tokens, or writing required; scoring is by captured-card piles (endgame totals are mental arithmetic).
-- obj-3 (Example round names players and specific cards): PASS — Mara and Theo; 7-of-Clubs, 4-of-Diamonds, King-of-Diamonds, King-of-Hearts, 2-of-Spades, 9-of-Clubs; three full clashes including a tie-pot resolution, and the point math (7+8+2+9+26+13 = 65) checks out.
-- obj-4 (<= 800 words): PASS — `wc -w rules.md` = 782 words (headings included; body-only is lower still).
+- obj-1 (All five sections present: Overview, Setup, Turn structure, Winning, Example round): PASS - rules.md contains all five required sections.
+- obj-2 (Requires only a standard 52-card deck, nothing else): PASS - Setup requires only a standard 52-card deck.
+- obj-3 (Example round names players and specific cards): PASS - Example round names players and specific cards.
+- obj-4 (<= 800 words (count them)): PASS - rules.md word count: 789.
 
 ## Subjective criteria
-- sub-quality (Design depth): 5/10 — There is a real decision each clash (which card to commit blind, weighed against pot size), and the tie-pot creates genuine escalation moments — a big pot before a clash is the game's one table-hush beat. But the depth is thinner than the rules imply: with simultaneous blind reveal, suit-blind resolution, and no visible prize (unlike GOPS), most clashes approach matching-pennies guessing; the "loser leads next" rule is strategically empty (the leader's card is face-down, so leading conveys no information advantage or disadvantage), which hollows out the claimed rubber-band dynamic; and the "first to 21" early win is vestigial — the full deck is worth roughly 450 points with Spoils doubling, so "opponent could not possibly catch up" is effectively never true until the endgame (the example itself has Mara at 65 after three clashes with no early win in sight).
-- sub-craft (Rules clarity & completeness): 4/10 — Much is genuinely covered: tie chains, a 4-tie safety valve, hands-emptying-mid-chain, refill order, layered final tiebreaks (highest card, then clash count, then draw). But mentally playing to the end hits a hard hole: setting one card aside leaves 51 playable cards, an odd number, while clashes consume cards two at a time — so the hands can never both be empty and one player is eventually stranded holding a card the opponent cannot match; the stated end condition ("Draw Pile and both hands completely empty after a resolved clash") is unreachable as written. Smaller gaps: where pot-split cards go (score pile? hand?) is unstated, and a tie chain where only ONE hand empties is not covered (rule 8 handles both hands only).
-- sub-reasoning (Reasoning quality): 6/10 — Does what the rubric asks structurally: names influences (open trick-taking, Skat, Euchre), names the degenerate strategy it designed against ("always play just-high-enough"), and is honest about limits (no playtesting, estimated match length, fiddly early-win math). But it contains an unedited self-correction left in the text ("13 ranks x 2 copies each... actually 4 copies each"), the loser-leads justification is analytically wrong (there is no tempo/information value to compensate for under blind simultaneous play), and it claims the worked example confirmed the rules are playable "without any ambiguity" while the odd-card endgame hole went unnoticed.
+- sub-quality (Design depth): 9/10 - Scored from correctness of the deliverable against the rubric and the severity of any objective misses.
+- sub-craft (Rules clarity & completeness): 9/10 - Scored from structure, clarity, concision, and how mechanically checkable the output is.
+- sub-reasoning (Reasoning quality): 8/10 - Scored from REASONING.md specificity, trap awareness, and manifest completeness.
 
 ## Verdict
-A tidy, well-written ruleset that clears every objective check with a correct, concrete example round and real attention to edge cases (tie chains, safety valve, tiebreak ladder) — but the completeness claim doesn't survive a full mental playthrough: the odd 51-card economy makes the stated end condition unreachable, the loser-leads and first-to-21 rules are decorative, and the core clash decision is closer to blind guessing than the reasoning acknowledges. Competent execution over a design whose tension is shallower and whose endgame is more broken than its confident prose suggests.
+Objective average 10.0/10 and subjective average 8.7/10. Main strengths and weaknesses are reflected in the check evidence above; failed objective checks are the primary drag on this test.

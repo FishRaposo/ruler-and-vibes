@@ -2369,7 +2369,9 @@ function loadRuns(){
     }
     out.push({id,model:run.model||id,effort:run.effort||"unspecified",
       harness:run.harness||"unspecified",date:run.date||"",
-      judgedBy:run.judgedBy||"?",tests});
+      judgedBy:run.judgedBy||"?",
+      reviewedBy:run.reviewedBy||null,reviewedOn:run.reviewedOn||null,
+      tests});
   }
   return out;
 }
@@ -2517,6 +2519,49 @@ function fmt(v){return v==null?"–":v.toFixed(1);}
 function esc(s){return String(s).replace(/[&<>"]/g,
   c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 
+// Empirical difficulty: what fraction of all scored runs passed this test's
+// objective section. -1 = not enough data yet (fewer than 2 scored runs).
+function difficultyPassRate(tid){
+  let total=0,passed=0;
+  for(const run of ALL_RUNS){
+    const t=run.tests[tid];if(!t||t.integrity==="invalidated")continue;
+    const cfg=TESTS[tid];if(!cfg)continue;
+    const vals=cfg.objective.map(o=>t.objective&&t.objective[o[0]])
+      .filter(v=>v===0||v===10);
+    if(!vals.length)continue;
+    total++;
+    if(vals.every(v=>v===10))passed++;
+  }
+  return total>=2?passed/total:-1;
+}
+
+function reviewBlock(run, t, tid, cfg){
+  if(!run.reviewedBy)return"";
+  const rv=t.reviews;
+  if(!rv||typeof rv!=="object"||!Object.keys(rv).length)return"";
+  let agreed=0,total=0;
+  const rows=(cfg.subjective||[]).map(([sid,name])=>{
+    const rev=rv[sid];if(!rev)return"";
+    total++;
+    const agree=rev.verdict==="agree";
+    if(agree)agreed++;
+    const icon=agree?"✓":"✗";
+    const cls=agree?"pass":"fail";
+    const scoreText=agree
+      ?"scored "+(t.subjective&&t.subjective[sid])
+      :"reviewer gives "+(rev.score!=null?rev.score:"?")
+        +" (judge: "+(t.subjective&&t.subjective[sid])+")";
+    return '<div class="crit-note"><span class="'+cls+'">'+icon
+      +'</span> <b>'+esc(name)+'</b> &mdash; '+esc(rev.verdict)
+      +' · '+esc(scoreText)+' &mdash; '+esc(rev.comment||"")+'</div>';
+  }).join("");
+  if(!total)return"";
+  return '<div class="note-sec">Review'
+    +' (<span class="pass">'+agreed+'</span>/'+total+' agreed'
+    +', by '+esc(run.reviewedBy)
+    +(run.reviewedOn?' on '+esc(run.reviewedOn):'')+')</div>'+rows;
+}
+
 function renderTables(){
   const box=$("#tables");box.innerHTML="";
   const runs=shownRuns();
@@ -2554,10 +2599,14 @@ function renderTables(){
       const withEntry=runs.filter(r=>r.tests[tid]);
       if(!withEntry.length)continue;
       const cfg=TESTS[tid];
+      const dRate=difficultyPassRate(tid);
+      const dBadge=dRate>=0
+        ?' <span class="sub" title="objective pass rate across all scored runs">('
+          +Math.round(dRate*100)+'% pass)</span>':'';
       const tbl=document.createElement("table");
       const nCols=1+cfg.objective.length+cfg.subjective.length+1;
       const head='<tr><th class="run">'+esc(cfg.title)
-        +' <span class="sub">('+tid+')</span></th>'
+        +' <span class="sub">('+tid+')</span>'+dBadge+'</th>'
         +cfg.objective.map(o=>"<th>"+esc(o[1])+"</th>").join("")
         +cfg.subjective.map(s=>"<th>"+esc(s[1])+"</th>").join("")
         +"<th>Total</th></tr>";
@@ -2610,6 +2659,7 @@ function renderTables(){
           +'<div class="crit-note"><b>Verdict note:</b> '
           +esc(t.note||"")+'</div>'
           +critNotes
+          +reviewBlock(r,t,tid,cfg)
           +'<div class="crit-note">'+link+'</div></details></td></tr>';
       }).join("");
       tbl.innerHTML=head+rows;
@@ -2638,11 +2688,28 @@ function renderTables(){
 
 /* ---------- init ---------- */
 function init(){
-  $("#updated").textContent=
-    window.BENCH_DATA&&window.BENCH_DATA.updated
+  let updatedText=window.BENCH_DATA&&window.BENCH_DATA.updated
       ?"updated "+window.BENCH_DATA.updated:"";
-  fillSelect($("#harness"),ALL_RUNS.map(r=>r.harness));
-  fillSelect($("#effort"),ALL_RUNS.map(r=>r.effort));
+  // review summary
+  let totalReviewed=0,totalCriteria=0,totalAgreed=0;
+  if(window.BENCH_DATA&&window.BENCH_DATA.runs){
+    for(const run of Object.values(window.BENCH_DATA.runs)){
+      if(!run.reviewedBy)continue;
+      for(const t of Object.values(run.tests||{})){
+        if(!t.reviews)continue;
+        const vals=Object.values(t.reviews);
+        totalCriteria+=vals.length;
+        for(const rv of vals){
+          if(rv.verdict==="agree")totalAgreed++;
+        }
+      }
+      totalReviewed++;
+    }
+  }
+  if(totalReviewed)
+    updatedText+=" · reviewed: "+totalReviewed+" run(s), "
+      +totalAgreed+"/"+totalCriteria+" agreed";
+  $("#updated").textContent=updatedText;
   $("#view").addEventListener("change",e=>{
     state.view=e.target.value;renderRadar();renderTables();});
   $("#harness").addEventListener("change",e=>{

@@ -35,8 +35,7 @@ together for the lean/rich scenarios):
 | Monthly dieback | 6.5% | 4% | 2.5% |
 | Annual yield per vine | 810 | 900 | 1,035 |
 
-## Deliverable
-
+## Deliverables
 `forecast.md` must:
 
 - State full-year revenue for the **base case**, the **lean case**

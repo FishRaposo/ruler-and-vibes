@@ -1,0 +1,6 @@
+1. User cannot reset their password because the password reset email never arrives despite multiple attempts.
+2. Customer's invoice #4471 shows a double charge for the same month of service.
+3. Order #8823 was supposed to arrive Tuesday but tracking still shows "label created" with no movement.
+4. Customer is still waiting on a refund for a duplicate invoice charge previously reported.
+5. Order #9012 hasn't moved in 5 days per tracking; customer requests an updated delivery estimate or refund.
+6. User can log in with their password but the two-factor SMS code never arrives despite multiple requests.

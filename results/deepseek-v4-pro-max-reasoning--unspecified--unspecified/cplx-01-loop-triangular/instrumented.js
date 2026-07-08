@@ -1,0 +1,17 @@
+function stepCost(n) {
+  let steps = 0;
+  for (let i = 1; i <= n; i++) {
+    for (let j = i; j <= n; j++) {
+      steps++;
+    }
+  }
+  return steps;
+}
+
+if (require.main === module) {
+  for (const n of [1, 5, 10, 50, 100]) {
+    console.log('n=' + n + ' steps=' + stepCost(n));
+  }
+}
+
+module.exports = { stepCost };

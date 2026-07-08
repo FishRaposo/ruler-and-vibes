@@ -37,8 +37,7 @@ Two constraints apply:
 Any other combination of projects may be funded or deferred freely,
 subject only to the 24 crew-month budget.
 
-## Deliverable
-
+## Deliverables
 `plan.md` must:
 
 - State the selected set of projects for the year.

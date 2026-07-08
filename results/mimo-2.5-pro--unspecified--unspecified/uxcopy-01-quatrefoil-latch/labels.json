@@ -1,0 +1,32 @@
+{
+  "saveDraft": {
+    "button": "Save draft",
+    "toast": "Draft saved.",
+    "undo": null
+  },
+  "publishPost": {
+    "button": "Publish post",
+    "toast": "Post published.",
+    "undo": null
+  },
+  "inviteTeammate": {
+    "button": "Invite teammate",
+    "toast": "Invite sent.",
+    "undo": null
+  },
+  "archiveProject": {
+    "button": "Archive project",
+    "toast": "Project archived.",
+    "undo": null
+  },
+  "removeTeammate": {
+    "button": "Remove teammate",
+    "toast": "Teammate removed.",
+    "undo": "Undo"
+  },
+  "deleteDraft": {
+    "button": "Delete draft",
+    "toast": "Draft deleted.",
+    "undo": "Undo"
+  }
+}

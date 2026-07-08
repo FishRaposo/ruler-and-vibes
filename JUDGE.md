@@ -21,6 +21,19 @@ rubric — nothing else.
    affected tests. If several uncommitted runs make attribution unclear,
    report the stray writes to the user instead of invalidating
    (committing between runs keeps this check sharp).
+3. **Integrity — transcript check (if available).** If
+   `results/<run-id>/session-transcript.txt` exists, audit it:
+   - Search for any file path outside the allowlist mentioned in the
+     transcript (e.g., `rubrics/`, `report/`, `docs/`, other runs).
+     Any found → HARD evidence against affected tests.
+   - Cross-reference the transcript's file opens against the runner's
+     `## Files read` manifest in each `REASONING.md`. Files opened in
+     the transcript but missing from the manifest → SOFT flag
+     ("incomplete manifest"). Files claimed in the manifest but never
+     opened in the transcript → SOFT flag ("inflated manifest").
+   - If the transcript exists but shows the runner reading this JUDGE.md
+     or any rubric file, all tests are INVALIDATED — the run is
+     compromised.
 
 ## Per test in the run
 
@@ -86,11 +99,78 @@ rubric — nothing else.
 - Re-judging a run replaces its previous `data.js` entry and judgment
   files.
 
+## Comment quality rules
+
+Boilerplate comments produce a flat report that fails to distinguish
+between models. Every comment and reasoning entry below must pass these
+checks — if it doesn't, rewrite it.
+
+### Subjective comments (`comments.sub-quality`, `.sub-craft`, `.sub-reasoning`)
+
+- Every comment MUST name **one concrete, test-specific detail** from
+  the deliverable — a specific variable name, a design choice, a phrase
+  the runner used, a particular edge case they handled or missed.
+- Generic descriptions like "reflects clarity and structure" or "scored
+  from correctness" are not acceptable. The report page has no other
+  way to show *why* a model got a 7 vs a 9 without your words.
+- Bad: "Clear structure and easy to verify." (applies to any test)
+- Good: "The deduction chain for logic-02 correctly resolves clue 7's
+  amber-blue-violet adjacency before placing Dima, avoiding a dead end
+  three runners walked into."
+- Bad: "Solution quality reflects rubric compliance." (circular)
+- Good: "Fixed the prototype pollution by rejecting `__proto__` keys;
+  the fix is concrete and one-line, but missed that `constructor` also
+  needs blocking — that's why it's an 8, not a 10."
+- If a model passed all objective checks with a clean deliverable, say
+  what specifically was clean about it. If a model failed checks, name
+  which check and what the model did wrong instead.
+
+### Reasoning summaries (`reasoning.decisions`, `reasoning.limitations`)
+
+- `decisions` must QUOTE or closely paraphrase **one specific decision**
+  the runner actually stated in their `REASONING.md`. Never use the
+  placeholder "The runner describes applying the task constraints…"
+- If the runner's `## Key decisions` section is missing or empty:
+  `"Runner stated no key decisions."`
+- `limitations` must name **a limitation the runner actually stated**
+  in their `## Trade-offs and limitations` section. If the runner stated
+  none: `"Runner stated no limitations."` Never invent one, and never
+  use the escape hatch "Limitations are only those explicitly present…"
+
+### Before you write each data.js entry
+
+Ask yourself: "Could this comment apply verbatim to a different test or
+a different model?" If yes, rewrite it until the answer is no.
+
+### Calibration check (after every 5 tests)
+
+Look at the subjective scores you've given so far. Are they all within
+2 points of each other (e.g., all 7–9)? A flat distribution means you
+are not differentiating. Push harder: an output that is noticeably
+worse than another should get a noticeably different score. Re-score
+any batch whose scores span less than 3 points.
+
+### Anti-duplicate scan (before writing data.js)
+
+Read through your completed `tests` block. If any two tests share
+identical comment text for the same criterion, re-judge one of them —
+the comments must be unique to be meaningful. Run
+`node tools/validate.js` when you finish to check this mechanically.
+
 ## When you finish
 
 Summarize per run: tests judged, soft flags, and any INVALIDATED tests —
 list those explicitly so the user can decide whether to re-run them. A
 re-run replaces the invalidated entry.
+
+## After judging: second-pass review (recommended)
+
+Your judgments are one model's perspective. For stronger reliability,
+have a different model follow `REVIEW.md` to corroborate or correct
+your subjective scores. The reviewer only re-examines subjective
+criteria — objective checks are mechanical and don't need a second pass.
+Run `node tools/validate.js` after the review to check for structural
+errors and boilerplate in review comments.
 
 ## data.js entry format
 

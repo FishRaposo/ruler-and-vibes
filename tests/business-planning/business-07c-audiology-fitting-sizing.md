@@ -28,8 +28,7 @@ collected:
   **services** market (all patient spending on exams, devices, and
   follow-up care nationally) is 11,000,000,000/year.
 
-## Deliverable
-
+## Deliverables
 `market-sizing.md` must present:
 
 - **TAM** — the total addressable market for Auricle's software, with

@@ -48,8 +48,7 @@ and needs a single recommendation for the board.
   registration** that takes significant time and specialized expertise to
   obtain and maintain.
 
-## Deliverable
-
+## Deliverables
 `decision.md` must:
 
 - Evaluate all three options, with at least one concrete pro and one concrete

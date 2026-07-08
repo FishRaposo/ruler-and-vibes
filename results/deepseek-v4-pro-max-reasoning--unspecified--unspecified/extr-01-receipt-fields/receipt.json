@@ -1,0 +1,13 @@
+{
+  "store_name": "NORTHGATE PANTRY",
+  "purchase_date": "2024-11-08",
+  "items": [
+    "Oat Milk 1L",
+    "Sourdough Loaf",
+    "Roasted Almonds 200g"
+  ],
+  "subtotal": 43.0,
+  "tax": 4.3,
+  "total": 47.3,
+  "loyalty_number": null
+}

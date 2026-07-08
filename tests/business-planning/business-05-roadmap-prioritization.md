@@ -34,8 +34,7 @@ Two constraints apply:
 Any other combination of features may be shipped or skipped freely,
 subject only to the 20 engineer-week budget.
 
-## Deliverable
-
+## Deliverables
 `roadmap.md` must:
 
 - State the selected set of features for the quarter.
