@@ -3,8 +3,9 @@
 **Ruler & Vibes** is a zero-infrastructure benchmark kit for comparing AI
 models — every rubric mixes objective checks (the ruler) with judged
 criteria (the vibes). It spans **31 categories**, **214 facets**, and
-**642 test forms** (each facet ships three parallel forms a/b/c — see
-`AUTHOR.md`) on an easy→hard difficulty ladder, grouped roughly as:
+**687+ test forms** (each facet ships three parallel forms a/b/c — see
+`AUTHOR.md`; plus agentic-coding, ops, safety, and product facets) on an
+easy→hard difficulty ladder, grouped roughly as:
 reasoning (math & logic, causal reasoning, reasoning audit, theory of
 mind, algorithmic complexity, formal/regex patterns, temporal
 scheduling); software (coding, debugging, reverse engineering, SQL
@@ -13,14 +14,17 @@ reasoning, API documentation, accessibility); language & communication
 analysis & judgment (data analysis, research synthesis, professional
 judgment, calibration, structured extraction, long-context
 comprehension); planning, instruction following, creative visual, game
-design, and business planning; and safety (defensive cybersecurity and
-prompt-injection resistance). Everything is markdown plus one
-self-contained HTML report. No APIs, no build step. Optional local
-tools under `tools/` validate structure and canaries.
+design, business planning, agentic coding, ops/tooling, and safety
+judgment); plus safety (defensive cybersecurity and prompt-injection
+resistance). Everything is markdown plus one self-contained HTML
+report. No APIs, no build step. Optional local tools under `tools/`
+validate structure and canaries.
 
-Two suites: **Core** (one representative test per category — 31 tests,
-see RUN.md) for quick comparisons, **Full** (all 642 forms); arbitrary
-subsets also work.
+Suites (see RUN.md): **Core** (31 overall snapshot), **Full** (all forms),
+plus use-case suites for personal model-picking — `coding-day`,
+`agent-day`, `writing-comms`, `analyst`, `product-day`, `safety-day`,
+`ops-day`, `support-day`, `critical-day` (also filterable in the report).
+Arbitrary subsets also work.
 
 ## How it works
 
@@ -36,6 +40,8 @@ subsets also work.
 
 A **run** = model + reasoning effort + harness, because the same model can
 score differently at different efforts or in different harnesses.
+Optional `meta.json` fields (`suite`, `wall_time_min`, `approx_cost_usd`,
+`notes`) help personal “daily driver” choices beyond raw scores.
 
 ## Layout
 

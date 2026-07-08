@@ -14,7 +14,11 @@ rubric — nothing else.
 
 1. Read `results/<run-id>/meta.json`. If missing or unreadable, ASK the
    user for the run's model/effort/harness — never guess — before
-   writing any scores.
+   writing any scores.    Optional fields (`suite`, `wall_time_min`,
+   `approx_cost_usd`, `notes`, `consistency_pair`) should be copied into
+   `report/data.js` when present so the report can show practical
+   cost/time context. Per-test `timing.json` files are informational
+   only — do not invent scores from them.
 2. **Integrity — write check.** Run `git status` (and `git diff` where
    needed). Runner changes outside `results/<run-id>/` — especially to
    `rubrics/`, `tests/`, or `report/` — are HARD evidence against the

@@ -68,23 +68,17 @@ model-benchmark/
 
 One markdown file per test: `tests/<category>/<test-id>.md`, where
 `<test-id>` = `<category-slug>-<nn>-<slug>` (e.g. `coding-01-edge-cases`).
-Current set: **214 facets / 642 forms across 31 categories** on an
-easy→hard ladder (each facet ships three parallel forms a/b/c). Category
-counts are uneven by design: the original 15 categories were deepened
-(several to 10–12 facets each) and 16 new categories were added at 4
-facets each — accessibility, algorithmic-complexity, api-documentation,
-calibration, causal-reasoning, copyediting, data-storytelling,
-formal-patterns, prompt-injection, reasoning-audit, sql-reasoning,
-structured-extraction, temporal-scheduling, theory-of-mind,
-transcript-synthesis, ux-copy. Every form's canary and the canary rules
-live in `2026-07-04-canary-registry.md` (regenerated from the shipped
-rubrics); the original 13-category expansion roster is preserved in
-`2026-07-04-expansion-roster.md`. Two documented run suites: Core (one
-representative test per category — 31 tests, listed in RUN.md) and Full
-(all 642 forms). Category scores are means over attempted facets
-(parallel forms — ids like `story-01b-…` — collapse to their facet's
-median first; see `AUTHOR.md`), so uneven per-category counts are safe
-by construction. New tests are just new files.
+Current set: **~229 facets / 687 forms across 34 categories** on an
+easy→hard ladder (most facets ship three parallel forms a/b/c). Category
+counts are uneven by design. Later expansion added agentic-coding, ops,
+and safety judgment, plus product/planning facets (vague brief, kill
+feature, metric-game). Every form's canary and the canary rules live in
+`2026-07-04-canary-registry.md`. Documented run suites: Core (31
+snapshot tests), Full (all forms), and use-case suites in RUN.md
+(coding-day, agent-day, writing-comms, analyst, product-day, safety-day,
+ops-day). Category scores are means over attempted facets (parallel
+forms collapse to median first; see `AUTHOR.md`). New tests are just new
+files.
 
 Section weights are per rubric: most tests use objective 0.5 /
 subjective 0.5, but instruction-following tests weigh 0.7 / 0.3 —

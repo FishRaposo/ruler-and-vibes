@@ -36,9 +36,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 642 canaries**.
+**0 issues across all 714 canaries**.
 
-## Canaries — all 642 tests
+## Canaries — all 714 tests
 
 | test | canary |
 |---|---|
@@ -54,6 +54,21 @@ counts, preserving the prose. Last run:
 | a11y-04-sedgemoor-widgets | borage lovage |
 | a11y-04b-harptide-playback-bar | lacebug blackcap |
 | a11y-04c-wraymoor-mapviewer | shieldbug whitethroat |
+| agent-01-multi-file-fix | thulium jaywalk |
+| agent-01b-split-shipping-bug | krypton lampwick |
+| agent-01c-discount-stack-bug | nympha mudflap |
+| agent-02-minimal-diff | pyrite oarlock |
+| agent-02b-minimal-pad-right | rhodium pegboard |
+| agent-02c-minimal-avg-skip | tamarind railhead |
+| agent-03-tests-until-green | xenon vane |
+| agent-03b-parity-flags-green | bismuth zigzag |
+| agent-03c-slugify-until-green | eucrite dogleg |
+| agent-04-pr-review | faience eyebrow |
+| agent-04b-pr-review-auth | heliotrope gangway |
+| agent-04c-pr-review-cache | indium hawse |
+| agent-05-yagni-fix | kaolin jibsheet |
+| agent-05b-yagni-trim | magnolia leeboard |
+| agent-05c-yagni-clamp | niobium masthead |
 | cplx-01-loop-triangular | cicada beetle |
 | cplx-01b-pairwise-collation | ibis vendace |
 | cplx-01c-warp-crossings | spoonbill powan |
@@ -105,6 +120,9 @@ counts, preserving the prose. Last run:
 | business-09-build-vs-buy-vs-partner | wren zephyr dell |
 | business-09b-prescription-routing-strategy | aspen denebola |
 | business-09c-identity-screening-strategy | sycamore alphard |
+| business-10-metric-game | rutile quarter |
+| business-10b-metric-game-traffic | vivianite underway |
+| business-10c-metric-game-tickets | wolfram vang |
 | calib-01-triage-dossier | chisel awl |
 | calib-01b-lot-intake-ledger | katydid morel |
 | calib-01c-launch-log-triage | lacewing truffle |
@@ -204,6 +222,18 @@ counts, preserving the prose. Last run:
 | creative-09-flowchart-nonoverlap | osprey plateau |
 | creative-09b-cider-press-pipeline | typhoon scoria |
 | creative-09c-papermaking-vat-sheet | mistral rhyolite |
+| critical-01-methods-limit | zeolite yardstick |
+| critical-01b-methods-limit-sleep | anatase zulu |
+| critical-01c-methods-limit-memory | brookite athwart |
+| critical-02-chart-lie | diopside clewline |
+| critical-02b-chart-lie-sales | epidote deadeye |
+| critical-02c-chart-lie-latency | grossular grommet |
+| critical-03-confound | xylitol netting |
+| critical-03b-confound-ice | yttrium handrail |
+| critical-03c-confound-hospital | yarrow kingpost |
+| critical-04-abs-vs-rel | celestine updraft |
+| critical-04b-abs-vs-rel-screen | ulexite quoin |
+| critical-04c-abs-vs-rel-spam | tourmaline sandbar |
 | security-01-guestbook-fix | sable harmonica bazaar |
 | security-01b-railway-volunteer-fix | levanter andesite |
 | security-01c-ferry-manifest-fix | harmattan peridotite |
@@ -438,6 +468,18 @@ counts, preserving the prose. Last run:
 | logic-09-relay-wager | saltbox obelisk |
 | logic-09b-lighthouse-flask-duel | bettong pademelon |
 | logic-09c-tray-pull-showdown | ocelot kodkod |
+| ops-01-git-conflict | cassia crucible |
+| ops-01b-git-conflict-ports | elderberry ellipses |
+| ops-01c-git-conflict-flag | guava gimbal |
+| ops-02-ci-log-triage | hibiscus helve |
+| ops-02b-ci-log-oom | ipecac inset |
+| ops-02c-ci-log-migrate | umbrawood upset |
+| ops-03-node-pipeline | vanilla vesica |
+| ops-03b-node-pipeline-max | wasabi wain |
+| ops-03c-node-pipeline-count | xinomavro xyst |
+| ops-04-env-config | yuzu yoke |
+| ops-04b-env-config-url | zatar zoccolo |
+| ops-04c-env-config-mode | almondine arris |
 | planning-01-tradeoff | equinox solstice |
 | planning-01b-coldchain-lastmile | paca gamboge |
 | planning-01c-canning-line | agouti fuchsine |
@@ -465,6 +507,12 @@ counts, preserving the prose. Last run:
 | planning-10-storm-option | meerkat sourdough |
 | planning-10b-flu-surge-staffing | saddleback stitchbird |
 | planning-10c-fuel-spike-fleet | kokako morepork |
+| planning-11-vague-brief | bergamot bevel |
+| planning-11b-vague-brief-search | durian dado |
+| planning-11c-vague-brief-notify | agarwood1 abacus1 |
+| planning-12-kill-feature | banyan1 bolster1 |
+| planning-12b-kill-feature-reports | cassia1 crucible1 |
+| planning-12c-kill-feature-points | damson1 dovetail1 |
 | judgment-01-client-reply | marzipan foghorn |
 | judgment-01b-tailoring-delay | ruru piopio |
 | judgment-01c-tradeshow-booth-delay | huia laughingkookaburra |
@@ -576,6 +624,18 @@ counts, preserving the prose. Last run:
 | reverse-09-braid-mill | whortleberry vireo plume |
 | reverse-09b-spool-cipher | supernova pulsar |
 | reverse-09c-scorecard-cipher | quasar blackhole |
+| safety-01-over-refusal | elderberry1 ellipses1 |
+| safety-01b-over-refusal-sql | fenugreek1 flange1 |
+| safety-01c-over-refusal-hash | guava1 gimbal1 |
+| safety-02-under-caution | hibiscus1 helve1 |
+| safety-02b-under-caution-phish | ipecac1 inset1 |
+| safety-02c-under-caution-ddos | jujube1 joist1 |
+| safety-03-sycophancy | kumquat1 knurl1 |
+| safety-03b-sycophancy-null | lemongrass1 lintel1 |
+| safety-03c-sycophancy-git | mulberry1 mortise1 |
+| safety-04-uncertain-api | nutmeg1 nock1 |
+| safety-04b-uncertain-api-cli | oregano1 ogee1 |
+| safety-04c-uncertain-api-webhook | paprika1 pawl1 |
 | sql-01-join-cardinality | zither axolotl |
 | sql-01b-sculptor-sale-rollup | plover chub |
 | sql-01c-apiary-tapping-rollup | lapwing barbel |
@@ -600,6 +660,18 @@ counts, preserving the prose. Last run:
 | extr-04-invoice-correction | daffodil orchid |
 | extr-04b-book-order-correction | towering whisper |
 | extr-04c-signage-order-correction | murmur rustle |
+| support-01-triage-batch | quince1 quill1 |
+| support-01b-triage-shop | rosemary1 rabbet1 |
+| support-01c-triage-saas | saffronwood1 spandrel1 |
+| support-02-policy-reply | tarragon1 tenon1 |
+| support-02b-policy-reply-ship | umbrawood1 upset1 |
+| support-02c-policy-reply-seat | vanilla1 vesica1 |
+| support-03-escalation-note | wasabi1 wain1 |
+| support-03b-escalation-security | xinomavro1 xyst1 |
+| support-03c-escalation-legal | yuzu1 yoke1 |
+| support-04-macro-edit | zatar1 zoccolo1 |
+| support-04b-macro-edit-delay | almondine1 arris1 |
+| support-04c-macro-edit-password | bergamot1 bevel1 |
 | sched-01-earliest-finish-dag | theremin bagpipe |
 | sched-01b-banquet-prep-critical-path | crossbill turbot |
 | sched-01c-chart-engraving-pipeline | waxwing megrim |

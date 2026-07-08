@@ -95,7 +95,8 @@ window.BENCH_DATA = {
             "limitations": "Formal is short for a real investor update; Friendly leans casual as a safe default absent a brand voice; the summary trades warmth for density."
           }
         }
-      }
+      },
+      "suite": "ad-hoc"
     },
     "deepseek-v4-pro-max-reasoning--unspecified--unspecified": {
       "model": "deepseek-v4-pro-max-reasoning",
@@ -1009,7 +1010,8 @@ window.BENCH_DATA = {
             "limitations": "Minimal toasts intentional under 60 chars; no entity names available for contextual toasts."
           }
         }
-      }
+      },
+      "suite": "core"
     },
     "mimo-2.5-pro--unspecified--unspecified": {
       "model": "mimo 2.5 pro",
@@ -1923,7 +1925,8 @@ window.BENCH_DATA = {
             "limitations": "Kept toasts minimal to stay well under 60 characters."
           }
         }
-      }
+      },
+      "suite": "core"
     }
   }
 };
