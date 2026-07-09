@@ -62,8 +62,10 @@ The slug must be fresh — never reuse the source's slug, because the slug
 describes the scenario and the scenario must change. Files go in the
 normal locations: `tests/<category>/<form-id>.md` and
 `rubrics/<form-id>.md`. Never edit or delete the curated test you are
-forking from. Forms are never added to the Core suite — Core stays one
-curated test per category.
+forking from. Forms are never added to Core or Extended — those tiers are fixed
+lists of **base** forms (see `TIERS.md` / `tiers.json`). Parallel
+forms are Full-only, for multi-run facet medians. New general-map
+depth usually enters **Extended** first; Core is promoted deliberately.
 
 ## The equivalence contract
 

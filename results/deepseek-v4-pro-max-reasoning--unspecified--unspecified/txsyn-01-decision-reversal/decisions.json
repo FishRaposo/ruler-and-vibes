@@ -1,9 +1,0 @@
-{
-  "final_decision": "Feature Atlas is deferred to next sprint pending data-migration validation. Only the config toggle ships this sprint.",
-  "action_items": [
-    { "owner": "Dana", "task": "Validate the data-migration script against a production-shaped dataset" },
-    { "owner": "Priya", "task": "Take the config toggle from final review to merged and ready to ship by Friday" },
-    { "owner": "Marcus", "task": "Update the sprint board: move Atlas to next sprint and show config toggle as shipping this sprint" },
-    { "owner": "Dana", "task": "Notify the support team that Atlas is deferred to next sprint" }
-  ]
-}

@@ -73,12 +73,14 @@ easy→hard ladder (most facets ship three parallel forms a/b/c). Category
 counts are uneven by design. Later expansion added agentic-coding, ops,
 and safety judgment, plus product/planning facets (vague brief, kill
 feature, metric-game). Every form's canary and the canary rules live in
-`2026-07-04-canary-registry.md`. Documented run suites: Core (31
-snapshot tests), Full (all forms), and use-case suites in RUN.md
-(coding-day, agent-day, writing-comms, analyst, product-day, safety-day,
-ops-day). Category scores are means over attempted facets (parallel
-forms collapse to median first; see `AUTHOR.md`). New tests are just new
-files.
+`2026-07-04-canary-registry.md`. Documented breadth tiers (nested): **Core ⊂ Extended ⊂ Full** —
+see `TIERS.md` / `tiers.json`. Core (34 base forms) is the fast
+general snapshot; Extended (89 base forms, includes Core) is the
+serious multi-field map; Full is every form under `tests/` including
+parallels. Incomplete Core/Extended runs are provisional. Use-case
+day suites in RUN.md remain orthogonal workflow pickers. Category
+scores are means over attempted facets (parallel forms collapse to
+median first; see `AUTHOR.md`). New tests are just new files.
 
 Section weights are per rubric: most tests use objective 0.5 /
 subjective 0.5, but instruction-following tests weigh 0.7 / 0.3 —
@@ -268,7 +270,8 @@ Outcomes:
 
 Known limits (documented in the README): a careful cheater who reads the
 rubric, paraphrases, and lies in the manifest evades all of the above.
-Optional hardening — harness-level read-deny rules for run sessions,
+Optional hardening (out of kit scope — needs per-harness setup):
+harness-level read-deny rules for run sessions,
 transcript audit by the judge — is mentioned in the README but is not part
 of the protocols.
 

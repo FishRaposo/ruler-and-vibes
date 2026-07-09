@@ -36,9 +36,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 714 canaries**.
+**0 issues across all 759 canaries**.
 
-## Canaries — all 714 tests
+## Canaries — all 759 tests
 
 | test | canary |
 |---|---|
@@ -69,6 +69,18 @@ counts, preserving the prose. Last run:
 | agent-05-yagni-fix | kaolin jibsheet |
 | agent-05b-yagni-trim | magnolia leeboard |
 | agent-05c-yagni-clamp | niobium masthead |
+| agent-06-repair-from-feedback | cinnabar dogtrot |
+| agent-06b-repair-trim | manatee hawse |
+| agent-06c-repair-titlecase | dugong bitts |
+| agent-07-fixture-tree-bug | jasper breezeway |
+| agent-07b-fixture-tree-greet | orca fairlead |
+| agent-07c-fixture-tree-scale | beluga snatchblock |
+| agent-08-pr-body-matches-diff | obsidian mudroom |
+| agent-08b-pr-body-slugify | cuttlefish deadeye |
+| agent-08c-pr-body-clampint | seal shackle |
+| agent-09-deprecate-api-call-sites | peridot stairwell |
+| agent-09b-deprecate-old-add | anemone grapnel |
+| agent-09c-deprecate-old-max | albatross winch |
 | cplx-01-loop-triangular | cicada beetle |
 | cplx-01b-pairwise-collation | ibis vendace |
 | cplx-01c-warp-crossings | spoonbill powan |
@@ -81,6 +93,12 @@ counts, preserving the prose. Last run:
 | cplx-04-amortized-doubling-buffer | primrose columbine |
 | cplx-04b-cylinder-cabinet-relocation | delphinium wigeon |
 | cplx-04c-granary-doubling-silo | campanula smew |
+| ambig-01-underspec-checkout | ferrite hatband |
+| ambig-01b-underspec-onboarding | minke capstan |
+| ambig-01c-underspec-search | kelp windlass |
+| ambig-02-scope-creep-pushback | spinel waistcoat |
+| ambig-02b-scope-creep-docs | porpoise bollard |
+| ambig-02c-scope-creep-api | narwhal cleat |
 | apidoc-01-paginate-reference | sumac allspice |
 | apidoc-01b-shelve-books-reference | courser gurnard |
 | apidoc-01c-shelf-allotment | weevil chanterelle |
@@ -195,6 +213,15 @@ counts, preserving the prose. Last run:
 | edit-04-scope-boundary | cello viola |
 | edit-04b-radio-fieldday-log | shawm remoulade |
 | edit-04c-trail-series-recap | crumhorn gribiche |
+| copy-01-homepage-from-brand-sheet | beryl scullery |
+| copy-01b-homepage-plantlog | shearwater cotter |
+| copy-01c-homepage-chorechip | fulmar dowel |
+| copy-02-ad-set-three-lengths | azurite rood |
+| copy-02b-ad-set-packmule | gannet toggle |
+| copy-02c-ad-set-tidekit | booby hitch |
+| copy-03-nurture-email | agate butterie |
+| copy-03b-nurture-sockpair | frigatebird clevis |
+| copy-03c-nurture-binnote | petrel turnbuckle |
 | creative-01-svg-poster | amber-grid composition |
 | creative-01b-tidewater-cartography | sackbut mirepoix |
 | creative-01c-windward-regatta | panpipe soffritto |
@@ -480,6 +507,9 @@ counts, preserving the prose. Last run:
 | ops-04-env-config | yuzu yoke |
 | ops-04b-env-config-url | zatar zoccolo |
 | ops-04c-env-config-mode | almondine arris |
+| ops-05-incident-narrative | quartz cloister |
+| ops-05b-incident-cache | kittiwake lanyard |
+| ops-05c-incident-queue | jaeger stem |
 | planning-01-tradeoff | equinox solstice |
 | planning-01b-coldchain-lastmile | paca gamboge |
 | planning-01c-canning-line | agouti fuchsine |
@@ -546,6 +576,9 @@ counts, preserving the prose. Last run:
 | judgment-11-hold-the-line | alderbark cudgel |
 | judgment-11b-wedding-package-floor | wrasse parrotfish |
 | judgment-11c-audiobook-narration-floor | surgeonfish tang |
+| judgment-12-llm-draft-landmines | garnet vestibule |
+| judgment-12b-llm-draft-shipping | guillemot fid |
+| judgment-12c-llm-draft-access | puffin marlinspike |
 | inj-01-ticket-summarizer-override | lute lyre |
 | inj-01b-listing-desk-override | bunting brill |
 | inj-01c-proposal-review-queue | siskin plaice |
@@ -597,6 +630,9 @@ counts, preserving the prose. Last run:
 | research-09-triangulation-matrix | gudgeon dowsing |
 | research-09b-rooftop-hive-triangulation | baobab banyan |
 | research-09c-sourdough-crust-matrix | turnip parsnip |
+| research-10-claims-from-sources-only | amber apse |
+| research-10b-claims-depot-pack | cormorant grommet |
+| research-10c-claims-lab-pack | petrel thimble |
 | reverse-01-tangled-tag | fennel trapeze ballad |
 | reverse-01b-gate-stamp | redshank rudd |
 | reverse-01c-station-digest | greenshank dace |
@@ -636,6 +672,9 @@ counts, preserving the prose. Last run:
 | safety-04-uncertain-api | nutmeg1 nock1 |
 | safety-04b-uncertain-api-cli | oregano1 ogee1 |
 | safety-04c-uncertain-api-webhook | paprika1 pawl1 |
+| safety-05-redact-support-packet | zircon mezzanine |
+| safety-05b-redact-hotel-packet | tern fishplate |
+| safety-05c-redact-clinic-packet | skua rivet |
 | sql-01-join-cardinality | zither axolotl |
 | sql-01b-sculptor-sale-rollup | plover chub |
 | sql-01c-apiary-tapping-rollup | lapwing barbel |
@@ -672,6 +711,9 @@ counts, preserving the prose. Last run:
 | support-04-macro-edit | zatar1 zoccolo1 |
 | support-04b-macro-edit-delay | almondine1 arris1 |
 | support-04c-macro-edit-password | bergamot1 bevel1 |
+| teach-01-junior-handoff | corundum narthex |
+| teach-01b-junior-cert-renew | murre thole |
+| teach-01c-junior-db-snapshot | guillemot belaying |
 | sched-01-earliest-finish-dag | theremin bagpipe |
 | sched-01b-banquet-prep-critical-path | crossbill turbot |
 | sched-01c-chart-engraving-pipeline | waxwing megrim |
@@ -720,6 +762,9 @@ counts, preserving the prose. Last run:
 | uxcopy-04-verdigris-awning | pulsar aurora |
 | uxcopy-04b-loam-canopy | bayleaf clovebud |
 | uxcopy-04c-driftline-nightcap | starnise juniperberry |
+| uxcrit-01-flow-critique | jade transept |
+| uxcrit-01b-flow-profile-save | skimmer gasket |
+| uxcrit-01c-flow-filter-sheet | aukslet cotterpin |
 | writing-01-explainer | vermillion sienna |
 | writing-01b-dns-propagation | mustardseed alcove |
 | writing-01c-batch-settlement | niche cranny |

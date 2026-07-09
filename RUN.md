@@ -11,12 +11,36 @@ You are being benchmarked. Follow these steps exactly.
 
 ## Suites
 
-Pick a suite that matches the decision you care about. Prefer suites over
-Full for personal model-picking.
+Two kinds of suite:
 
-- **Full** — every test in `tests/`.
-- **Core** — one representative test per *original* category (31 tests),
-  for a quick overall snapshot:
+1. **Breadth tiers** — nested general map: **Core ⊂ Extended ⊂ Full**
+   (lists below; evaluator-side canonical file is `tiers.json` — do
+   **not** read it during a scored run).
+2. **Day suites** — orthogonal workflow pickers (`coding-day`, …).
+
+**Prefer Core for personal model-picking.** Use Extended when the
+decision is expensive; a day suite when you care about one workflow;
+Full only for item-bank / multi-form reliability work. Record the suite
+name in `meta.json` (`core` | `extended` | `full` | day-suite | `ad-hoc`).
+
+### Breadth tiers (Core ⊂ Extended ⊂ Full)
+
+```
+  Core (34)  ⊂  Extended (123)  ⊂  Full (all forms)
+     │                │                    │
+     snapshot         serious map          item bank + parallels
+```
+
+Incomplete Core or Extended runs are **provisional** (flagged by
+`tools/validate.js` and the report). Parallel forms (`…-01b-…`) never
+join Core or Extended — only Full. **Canonical lists:** evaluator-side
+`tiers.json` (do not read during a scored run). Human overview:
+`TIERS.md`. Gap-closure history:
+`docs/superpowers/specs/2026-07-09-gap-closure-roster.md`.
+
+- **Core** — fast overall snapshot (34 base forms). Fields: software,
+  language, analysis, reasoning, planning, creative, integrity, agentic
+  edit, safety judgment, critical reading.
   coding-01-edge-cases, debug-01-root-cause, writing-02-registers,
   planning-01-tradeoff, data-02-decision-metrics, precision-01-exact-format,
   creative-02-css-scene, game-02-card-ruleset, business-02-pricing,
@@ -29,59 +53,43 @@ Full for personal model-picking.
   audit-01-aquifer-recharge-calculation, a11y-01-thornbury-signup,
   apidoc-01-paginate-reference, calib-01-triage-dossier,
   story-01-absolute-vs-rate, txsyn-01-decision-reversal,
-  uxcopy-01-quatrefoil-latch.
+  uxcopy-01-quatrefoil-latch, agent-02-minimal-diff,
+  safety-03-sycophancy, critical-01-methods-limit.
+
+- **Extended** — serious general map: **all of Core** plus 89 further
+  base forms (123 total). Includes second-wave depth, bank promotions
+  (calib/judgment/context/research/writing/agent/…), and gap-closure
+  facets (ambiguity, agent repair/archaeology/PR/migration, grounding,
+  AI-output review, privacy redaction, commercial copy, incident
+  narrative, UX critique, teaching handoff). Full id list:
+  `tiers.json` → `tiers.extended.tests`.
+
+- **Full** — every test form under `tests/` (including parallel forms
+  a/b/c). Research bank and multi-run facet medians. Default if the user
+  names no suite.
 
 ### Use-case suites (personal chooser)
 
-- **coding-day** — greenfield + debug coding:
-  coding-01-edge-cases, coding-02-refactor, debug-01-root-cause,
-  debug-02-regression, reverse-01-tangled-tag, sql-01-join-cardinality,
-  apidoc-01-paginate-reference, a11y-01-thornbury-signup, pat-01-ipv4-octet,
-  cplx-01-loop-triangular.
+Keep in sync with `report/index.html` `SUITES` (authoritative for the
+report filter). Summaries:
 
-- **agent-day** — repo/agent edit workflows (new agentic-coding + anchors):
-  agent-01-multi-file-fix, agent-02-minimal-diff, agent-03-tests-until-green,
-  agent-04-pr-review, agent-05-yagni-fix, debug-01-root-cause,
-  reverse-01-tangled-tag, precision-01-exact-format,
-  inj-01-ticket-summarizer-override.
-
-- **writing-comms** — docs, tone, UX, synthesis:
-  writing-02-registers, writing-01-explainer, edit-01-style-card,
-  uxcopy-01-quatrefoil-latch, story-01-absolute-vs-rate,
-  txsyn-01-decision-reversal, judgment-01-client-reply,
-  judgment-02-policy-conflict-memo.
-
-- **analyst** — careful analysis and epistemic restraint:
-  data-02-decision-metrics, research-02-conflict-brief, calib-01-triage-dossier,
-  audit-01-aquifer-recharge-calculation, causal-01-garden-dag,
-  context-02-changelog-tally, extr-01-receipt-fields, data-01-anomaly,
-  critical-01-methods-limit.
-
-- **product-day** — tradeoffs, pricing, kill/scope:
-  planning-01-tradeoff, business-02-pricing, judgment-02-policy-conflict-memo,
-  data-02-decision-metrics, story-01-absolute-vs-rate, planning-11-vague-brief,
-  planning-12-kill-feature, business-10-metric-game.
-
-- **safety-day** — injection, defensive triage, refusal calibration:
-  inj-01-ticket-summarizer-override, security-02-decoy-triage,
-  calib-01-triage-dossier, judgment-04-pushback-cherry-pick,
-  safety-01-over-refusal, safety-02-under-caution, safety-03-sycophancy,
-  safety-04-uncertain-api.
-
-- **ops-day** — git/CI/config/script workflows:
-  ops-01-git-conflict, ops-02-ci-log-triage, ops-03-node-pipeline,
-  ops-04-env-config, sched-01-earliest-finish-dag, reverse-01-tangled-tag,
-  precision-01-exact-format, security-02-decoy-triage.
-
-- **support-day** — support inbox workflows:
-  support-01-triage-batch, support-02-policy-reply,
-  support-03-escalation-note, support-04-macro-edit,
-  judgment-01-client-reply, uxcopy-01-quatrefoil-latch.
-
-- **critical-day** — critical reading / risk framing:
-  critical-01-methods-limit, critical-02-chart-lie, critical-03-confound,
-  critical-04-abs-vs-rel, story-01-absolute-vs-rate, calib-01-triage-dossier,
-  research-02-conflict-brief.
+- **coding-day** — greenfield + debug + migration/repro anchors.
+- **agent-day** — multi-file, minimal diff, tests-green, PR review, YAGNI,
+  repair, fixture-tree, PR-body match, deprecation, AI-draft review,
+  ambiguity.
+- **writing-comms** — registers, explainer, edit, UX, story, transcripts,
+  steelman, ghostwriter, localization, commercial copy (homepage/ads/email).
+- **analyst** — metrics, research, calib (incl. abstention/false premise),
+  grounding, absence, causal, extraction, critical reading.
+- **product-day** — tradeoffs, pricing, kill/vague briefs, plan repair,
+  decide-with-holes, ambiguity hold/clarify.
+- **safety-day** — injection (incl. multi-vector), security triage, safety
+  judgment, privacy redaction.
+- **ops-day** — git/CI/pipeline/env + incident narrative + anchors.
+- **support-day** — triage, policy reply, escalation, macro, privacy.
+- **copy-day** — homepage, ad set, nurture email + UX/registers/steelman.
+- **critical-day** — methods limits, chart lie, confound, abs-vs-rel,
+  grounded summary, insufficient evidence, claims-from-sources.
 
 - Any ad-hoc subset of tests or categories also works; coverage is
   reported honestly either way.
@@ -110,7 +118,7 @@ Full for personal model-picking.
      "effort": "<effort or 'unspecified'>",
      "harness": "<harness or 'unspecified'>",
      "date": "<YYYY-MM-DD>",
-     "suite": "<suite name or 'ad-hoc'>",
+     "suite": "<core|extended|full|day-suite name|ad-hoc>",
      "wall_time_min": null,
      "approx_cost_usd": null,
      "notes": "",

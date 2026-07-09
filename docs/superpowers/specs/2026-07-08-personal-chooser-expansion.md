@@ -3,10 +3,11 @@
 Shipped layers for “which model should I use here?” — not competitive
 leaderboard growth.
 
-## Phase 0 — Use-case suites
-Defined in `RUN.md` and `report/index.html` `SUITES` filter: core, full,
-coding-day, agent-day, writing-comms, analyst, product-day, safety-day,
-ops-day, support-day, critical-day.
+## Phase 0 — Use-case suites + breadth tiers
+Breadth: `core`, `extended`, `full` (from `tiers.json`). Day suites in
+`RUN.md` and `report/index.html` `SUITES`: coding-day, agent-day,
+writing-comms, analyst, product-day, safety-day, ops-day, support-day,
+critical-day.
 
 ## Phase 1 — Meta signals
 Optional `meta.json` fields: `suite`, `wall_time_min`, `approx_cost_usd`,
@@ -60,6 +61,30 @@ Category `critical-reading` / prefix `critical-`:
 - `tools/patch-index-tests.js` — sync new rubrics into `report/index.html`
 - `node tools/canary-audit.js` / `node tools/validate.js` after edits
 
-## Core suite
-Unchanged at 31 tests (original categories). New categories are reached
-via use-case suites, not Core inflation.
+## Breadth tiers (Core ⊂ Extended ⊂ Full)
+
+Canonical lists: `tiers.json` / `TIERS.md`. Nested ladder for overall
+comparison; day suites stay orthogonal.
+
+| Tier | Size | Role |
+|------|------|------|
+| **Core** | 34 base | Fast general snapshot |
+| **Extended** | 89 base (⊃ Core) | Serious multi-field map |
+| **Full** | all forms | Item bank + parallel forms |
+
+Core history: frozen at 31 original categories, then promoted three
+axes (`agent-02-minimal-diff`, `safety-03-sycophancy`,
+`critical-01-methods-limit`) → 34. Extended adds 55 base forms
+(second coding/debug, ops, support, agent depth, product, safety
+pairs, analysis depth, …). Parallel forms never join Core/Extended.
+Incomplete Core/Extended → provisional in validate + report.
+Sync: edit `tiers.json`, then `node tools/sync-tiers-to-report.js`.
+
+## Next: gap closure roster (2026-07-09)
+
+See `2026-07-09-gap-closure-roster.md` for:
+
+- **Wave A** — 12 Extended promotions (calib/judgment/context/research/writing/agent/debug/planning gems already in the bank)
+- **Wave B** — 10 new P0 facets (ambiguity, agent repair/archaeology/PR-match/migration, grounding, AI-output review, privacy redaction, commercial copy ×2)
+- **Wave C** — optional P1
+- Authoring order and “minimum viable closure”

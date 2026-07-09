@@ -150,9 +150,11 @@ recently in that batch.
 
 ### One model's run is incomplete
 
-If a run has 3/31 Core tests (the validator warns about this), that's
-not the judge's problem to fix. Judge what's there. The coverage gap
-will show honestly in the report.
+If a run has only a few of the Core (34) or Extended (89) tests, the
+validator warns PROVISIONAL — that's not the judge's problem to fix.
+Judge what's there. The coverage gap shows honestly in the report;
+incomplete Core/Extended must not be read as a finished general map
+(ladder: Core ⊂ Extended ⊂ Full; see TIERS.md).
 
 ### Format blind spot
 

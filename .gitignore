@@ -1,1 +1,11 @@
 .superpowers/
+.commandcode/
+.codex/
+.claude/
+*.log
+.DS_Store
+Thumbs.db
+
+# Local run outputs (optional; commit only if you intend to share a sample)
+# results/*
+# report/judgments/*

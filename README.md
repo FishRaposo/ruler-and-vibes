@@ -1,42 +1,50 @@
 # Ruler & Vibes
 
-**Ruler & Vibes** is a zero-infrastructure benchmark kit for comparing AI
-models — every rubric mixes objective checks (the ruler) with judged
-criteria (the vibes). It spans **31 categories**, **214 facets**, and
-**687+ test forms** (each facet ships three parallel forms a/b/c — see
-`AUTHOR.md`; plus agentic-coding, ops, safety, and product facets) on an
-easy→hard difficulty ladder, grouped roughly as:
-reasoning (math & logic, causal reasoning, reasoning audit, theory of
-mind, algorithmic complexity, formal/regex patterns, temporal
-scheduling); software (coding, debugging, reverse engineering, SQL
-reasoning, API documentation, accessibility); language & communication
-(writing, copyediting, UX copy, transcript synthesis, data storytelling);
-analysis & judgment (data analysis, research synthesis, professional
-judgment, calibration, structured extraction, long-context
-comprehension); planning, instruction following, creative visual, game
-design, business planning, agentic coding, ops/tooling, and safety
-judgment); plus safety (defensive cybersecurity and prompt-injection
-resistance). Everything is markdown plus one self-contained HTML
-report. No APIs, no build step. Optional local tools under `tools/`
-validate structure and canaries.
+**Ruler & Vibes** is a **zero-infrastructure, personal model-chooser
+kit** — not an official public leaderboard. There is **no maintained
+ranking** of models in this repo; you run models yourself, judge the
+outputs, and keep scores locally (or publish your own runs).
 
-Suites (see RUN.md): **Core** (31 overall snapshot), **Full** (all forms),
-plus use-case suites for personal model-picking — `coding-day`,
-`agent-day`, `writing-comms`, `analyst`, `product-day`, `safety-day`,
-`ops-day`, `support-day`, `critical-day` (also filterable in the report).
-Arbitrary subsets also work.
+Every rubric mixes objective checks (**the ruler**) with judged criteria
+(**the vibes**). The bank spans **40 categories** and **759 test forms**
+(most facets ship three parallel forms a/b/c — see `AUTHOR.md`), on an
+easy→hard ladder across reasoning, software, language, analysis &
+judgment, planning, creative work, agentic coding, ops, support, safety,
+and more. Everything is markdown plus one self-contained HTML report.
+No APIs, no build step. Optional tools under `tools/` validate structure
+and canaries.
+
+**License:** MIT (see `LICENSE`).
+
+**Breadth tiers** (nested; see `TIERS.md` / `tiers.json`):
+
+```
+Core (34)  ⊂  Extended (123)  ⊂  Full (759 forms)
+ snapshot      serious map       item bank + parallels
+```
+
+**Default for personal model-picking: Core.** Use Extended when the
+decision is expensive; Full and parallel forms (b/c) for reliability
+studies, not a first look. Incomplete Core or Extended runs are
+**provisional** — do not treat partial radars as finished overall
+scores. Parallel forms never join Core/Extended. **Day suites**
+(`coding-day`, `agent-day`, `writing-comms`, `analyst`, `product-day`,
+`safety-day`, `ops-day`, `support-day`, `copy-day`, `critical-day`) are
+orthogonal workflow pickers — not tiers. Arbitrary subsets also work
+(see RUN.md).
 
 ## How it works
 
 1. **Run.** Open any agent CLI in this repo with the model you want to
-   test and say: *"Follow RUN.md as `<run-id>`"* (see RUN.md for the
-   run-id format), optionally listing tests or categories. The model
-   writes its outputs to `results/<run-id>/`.
+   test and say: *"Follow RUN.md as `<run-id>` for suite Core"* (or
+   Extended / a day suite — see RUN.md). The model writes outputs to
+   `results/<run-id>/`.
 2. **Judge.** In a separate session — ideally with the strongest model
    available — say: *"Follow JUDGE.md"*. The judge scores every run
    against the rubrics and updates `report/data.js`.
 3. **View.** Double-click `report/index.html`: radar chart, score tables,
-   integrity badges.
+   integrity badges. Prefer the suite filter **core** for overall
+   snapshots; incomplete tiers show a **PROVISIONAL** banner.
 
 A **run** = model + reasoning effort + harness, because the same model can
 score differently at different efforts or in different harnesses.
@@ -46,6 +54,7 @@ Optional `meta.json` fields (`suite`, `wall_time_min`, `approx_cost_usd`,
 ## Layout
 
 ```
+TIERS.md / tiers.json           breadth ladder Core ⊂ Extended ⊂ Full
 tests/<category>/<test-id>.md   the tasks (runners read ONLY these)
 rubrics/<test-id>.md            scoring criteria (runners must never read)
 results/<run-id>/               one folder per run; meta.json + outputs
@@ -65,8 +74,10 @@ report/index.html               the report page
   (target n per facet: `RUNS_TARGET` in `report/index.html`, default 3).
 - Category = mean of attempted facets only; coverage is shown honestly
   (e.g. "1/2 tests run", or "1/4 facets run (2 runs incl. parallel
-  forms)"). The report can show combined, objective-only, or
-  subjective-only views.
+  forms)"). Incomplete **Core** or **Extended** runs are marked
+  **provisional** — do not read a partial tier radar as a finished
+  general map (Core ⊂ Extended ⊂ Full). The report can show combined,
+  objective-only, or subjective-only views.
 
 ## Cheating detection (best-effort)
 
@@ -79,27 +90,27 @@ rubric — flags it with a ⚠ badge but scores normally.
 **Known limits:** a careful cheater who reads a rubric, paraphrases, and
 lies in its manifest evades all of this. Design docs under `docs/` quote
 the rubrics, so the protocols treat reading anything outside `tests/`
-and the run's own results folder as a violation. Optional hardening if you want
-it: deny rubric reads at the harness level for run sessions (e.g. Claude
-Code permission deny rules), or save the run session's transcript and
-give it to the judge to audit.
+and the run's own results folder as a violation. This kit stays
+**zero-infra by design** — integrity is protocol + skills + canaries +
+optional session transcript for the judge, not harness-specific deny
+rules (those need extra setup per agent and are out of scope here).
+Saving `results/<run-id>/session-transcript.txt` when the harness can
+capture it is the main optional upgrade.
 
 ## Skills (optional, recommended)
 
 Three agent skills ship with the repo under `.agents/skills/` (the
 cross-harness Agent Skills layout):
 
-- **running-the-benchmark** — keeps the model under test inside its
-  reading allowlist (naive agents reliably wander into README/JUDGE.md
-  "for context", which taints the run).
-- **judging-benchmark-results** — scoring discipline: verify by
-  executing, score blind before reading any prior judgment, finish the
-  data.js paperwork.
-- **generating-parallel-tests** — evaluator-side: mint a fresh parallel
-  form of an existing test (same construct, new surface) so a model can
-  be scored across more distinct runs — see `AUTHOR.md` for the full
-  protocol, including the independent review gate every form must pass
-  before scored use.
+- **running-the-benchmark** — runner role: open `RUN.md` first; enforce
+  the reading allowlist (no README/JUDGE/rubrics/tiers); suite choice
+  (prefer Core for personal picks); meta.json + REASONING discipline.
+- **judging-benchmark-results** — judge role: open `JUDGE.md` first;
+  score blind on re-judge; execute objective checks; finish judgments +
+  `data.js` + `validate.js`; note provisional Core/Extended coverage.
+- **generating-parallel-tests** — author role only: open `AUTHOR.md`
+  first; key-before-prose; both-direction verify; canary-audit; parallels
+  stay Full-only (never Core/Extended); independent review gate.
 
 **Install:**
 
@@ -122,9 +133,19 @@ information in them.
 From the repo root:
 
 ```
-node tools/validate.js      # structure, data.js, judgment orphans
-node tools/canary-audit.js  # canary uniqueness + leak invariant
+node tools/validate.js              # structure, tiers, data.js, orphans
+node tools/canary-audit.js          # canary uniqueness + leak invariant
+node tools/sync-tiers-to-report.js  # after editing tiers.json
 ```
+
+Map design notes (gap-closure roster): see
+`docs/superpowers/specs/2026-07-09-gap-closure-roster.md` and `TIERS.md`.
+
+## Contributing
+
+See `CONTRIBUTING.md`. Short version: keep runner/judge/author roles
+separate, run `node tools/validate.js` and `node tools/canary-audit.js`
+before PRs, and prefer Extended over Core inflation for new depth.
 
 ## Adding a test
 

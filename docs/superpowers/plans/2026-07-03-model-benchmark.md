@@ -93,9 +93,8 @@ rubric — flags it with a ⚠ badge but scores normally.
 
 **Known limits:** a careful cheater who reads a rubric, paraphrases, and
 lies in its manifest evades all of this. Optional hardening if you want
-it: deny rubric reads at the harness level for run sessions (e.g. Claude
-Code permission deny rules), or save the run session's transcript and
-give it to the judge to audit.
+it: save the run session's transcript for the judge to audit. Harness
+deny rules are out of kit scope (per-agent setup).
 
 ## Adding a test
 

@@ -31,20 +31,38 @@ const BOILERPLATE = {
   limitations: 'Limitations are only those explicitly present in the runner\'s reasoning; no additional claims are inferred.',
 };
 
-// Core suite: 31 tests, one per category (from RUN.md).
-const CORE = new Set([
-  'coding-01-edge-cases', 'debug-01-root-cause', 'writing-02-registers',
-  'planning-01-tradeoff', 'data-02-decision-metrics', 'precision-01-exact-format',
-  'creative-02-css-scene', 'game-02-card-ruleset', 'business-02-pricing',
-  'logic-02-wrenmarket-stalls', 'context-02-changelog-tally', 'research-02-conflict-brief',
-  'judgment-02-policy-conflict-memo', 'security-02-decoy-triage', 'reverse-01-tangled-tag',
-  'sql-01-join-cardinality', 'pat-01-ipv4-octet', 'cplx-01-loop-triangular',
-  'extr-01-receipt-fields', 'edit-01-style-card', 'tom-01-sally-anne',
-  'inj-01-ticket-summarizer-override', 'sched-01-earliest-finish-dag',
-  'causal-01-garden-dag', 'audit-01-aquifer-recharge-calculation',
-  'a11y-01-thornbury-signup', 'apidoc-01-paginate-reference', 'calib-01-triage-dossier',
-  'story-01-absolute-vs-rate', 'txsyn-01-decision-reversal', 'uxcopy-01-quatrefoil-latch',
-]);
+// Breadth tiers from tiers.json (Core ⊂ Extended ⊂ Full). Source of truth.
+const tiersPath = path.join(REPO, 'tiers.json');
+let TIERS;
+try {
+  TIERS = JSON.parse(fs.readFileSync(tiersPath, 'utf8'));
+} catch (e) {
+  console.error('FATAL: cannot read tiers.json — ' + e.message);
+  process.exit(1);
+}
+const CORE = new Set(TIERS.tiers.core.tests);
+const EXTENDED = new Set(TIERS.tiers.extended.tests);
+const CORE_SIZE = CORE.size;
+const EXTENDED_SIZE = EXTENDED.size;
+// Nesting invariant: every Core test must be in Extended
+for (const id of CORE) {
+  if (!EXTENDED.has(id)) {
+    issues.push('TIERS: Core test "' + id + '" missing from Extended (Core ⊂ Extended broken)');
+  }
+}
+if (TIERS.tiers.core.size != null && TIERS.tiers.core.size !== CORE_SIZE) {
+  warnings.push('TIERS: tiers.core.size field (' + TIERS.tiers.core.size + ') != tests.length (' + CORE_SIZE + ')');
+}
+if (TIERS.tiers.extended.size != null && TIERS.tiers.extended.size !== EXTENDED_SIZE) {
+  warnings.push('TIERS: tiers.extended.size field (' + TIERS.tiers.extended.size + ') != tests.length (' + EXTENDED_SIZE + ')');
+}
+// Base-form only for Core/Extended (no parallel letter suffix after the number)
+const PARALLEL_RE = /^[a-z]+-\d+[b-z]-/;
+for (const id of [...CORE, ...EXTENDED]) {
+  if (PARALLEL_RE.test(id)) {
+    issues.push('TIERS: parallel form "' + id + '" must not appear in Core/Extended (Full only)');
+  }
+}
 
 // =========== parse rubrics ===========
 // rubrics[testId] = { path, objIds: [...], subIds: [...] }
@@ -109,6 +127,40 @@ if (testsStart === -1) {
   }
 }
 console.log('validate: ' + testIdsInHTML.length + ' TESTS entries in index.html');
+
+// =========== Check 0: SUITES.core / SUITES.extended match tiers.json ===========
+function extractSuiteArray(htmlSrc, key) {
+  // Match core:["..."] or "extended":["..."] or extended:["..."]
+  const re = new RegExp('(?:' + key + '|"' + key + '")\\s*:\\s*\\[([^\\]]*)\\]');
+  const m = htmlSrc.match(re);
+  if (!m) return null;
+  return [...m[1].matchAll(/"([^"]+)"/g)].map(x => x[1]);
+}
+const htmlCore = extractSuiteArray(html, 'core');
+const htmlExt = extractSuiteArray(html, 'extended');
+function sameList(a, b) {
+  if (!a || !b || a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+  return true;
+}
+if (!htmlCore) {
+  issues.push('TIERS: report/index.html missing SUITES.core array');
+} else if (!sameList(htmlCore, TIERS.tiers.core.tests)) {
+  issues.push('TIERS: SUITES.core in index.html does not match tiers.json (edit tiers.json then sync index.html)');
+}
+if (!htmlExt) {
+  issues.push('TIERS: report/index.html missing SUITES.extended array');
+} else if (!sameList(htmlExt, TIERS.tiers.extended.tests)) {
+  issues.push('TIERS: SUITES.extended in index.html does not match tiers.json');
+}
+// Full is the open set (null / all tests) — ensure a full key exists
+if (!/\bfull\s*:\s*null\b/.test(html) && !/["']full["']\s*:\s*null/.test(html)) {
+  warnings.push('TIERS: report/index.html SUITES should define full:null (all forms view)');
+}
+// Every Core/Extended id must exist as a rubric
+for (const id of [...CORE, ...EXTENDED]) {
+  if (!rubrics[id]) issues.push('TIERS: tier test "' + id + '" has no rubric');
+}
 
 // =========== parse data.js ===========
 let BENCH = { runs: {} };
@@ -249,22 +301,31 @@ for (const rid of runIds) {
   }
 }
 
-// =========== Check 5: Coverage gaps ===========
+// =========== Check 5: Coverage gaps (Core / Extended provisional) ===========
 for (const rid of runIds) {
   const run = BENCH.runs[rid];
   const testIds = Object.keys(run.tests || {});
   const coreRun = testIds.filter(id => CORE.has(id));
   const coreMissing = [...CORE].filter(id => !testIds.includes(id));
-  const nonCore = testIds.filter(id => !CORE.has(id));
+  const extRun = testIds.filter(id => EXTENDED.has(id));
+  const extMissing = [...EXTENDED].filter(id => !testIds.includes(id));
+  const declared = (run.suite || '').toLowerCase();
 
-  if (coreRun.length < 31) {
-    warnings.push('COVERAGE: ' + rid + ' has ' + coreRun.length + '/31 Core tests' +
-      (coreMissing.length > 0 && coreMissing.length <= 5 ? ' (missing: ' + coreMissing.join(', ') + ')' : '') +
-      (coreMissing.length > 5 ? ' (' + coreMissing.length + ' missing)' : ''));
+  if (coreRun.length > 0 && coreRun.length < CORE_SIZE) {
+    warnings.push('COVERAGE: ' + rid + ' has ' + coreRun.length + '/' + CORE_SIZE
+      + ' Core tests — PROVISIONAL (incomplete Core general map)'
+      + (coreMissing.length > 0 && coreMissing.length <= 5 ? ' (missing: ' + coreMissing.join(', ') + ')' : '')
+      + (coreMissing.length > 5 ? ' (' + coreMissing.length + ' missing)' : ''));
   }
-  if (coreRun.length > 0 && nonCore.length === 0 && coreRun.length >= 31) {
-    // Full Core but no Full suite — worth noting but not warning
-    // (many evaluations are Core-only on purpose)
+  // Extended provisional: declared suite is extended, or run already past Core
+  // into Extended-only tests but has not finished the Extended map.
+  const pastCore = extRun.length > coreRun.length;
+  const aimingExtended = declared === 'extended' || pastCore;
+  if (aimingExtended && extRun.length > 0 && extRun.length < EXTENDED_SIZE) {
+    warnings.push('COVERAGE: ' + rid + ' has ' + extRun.length + '/' + EXTENDED_SIZE
+      + ' Extended tests — PROVISIONAL (incomplete Extended general map)'
+      + (extMissing.length > 0 && extMissing.length <= 5 ? ' (missing: ' + extMissing.join(', ') + ')' : '')
+      + (extMissing.length > 5 ? ' (' + extMissing.length + ' missing)' : ''));
   }
   if (testIds.length === 0) {
     warnings.push('COVERAGE: ' + rid + ' has no tests');
