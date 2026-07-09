@@ -27,6 +27,20 @@ criteria:
     - id: sub-reasoning
       name: "Reasoning quality"
       weight: 0.3
+anchors:
+  - id: Depth of the design critique
+    0: Misattributes the cause or stops at the symptom.
+    5: Names the right area but misses a contributing root cause.
+    10: Names every distinct root cause precisely and proves each.
+  - id: Rigor of the degeneracy proof
+    0: Core requirement wrong or missing; many misses against the rubric.
+    5: Mostly correct with one or two real gaps or weak spots.
+    10: Fully correct on every load-bearing point; no meaningful gaps.
+  - id: Reasoning quality
+    0: REASONING.md missing, or restates the task with no real decisions/limitations.
+    5: States an approach and one decision, but limitations are vague or generic.
+    10: Names a concrete decision and a concrete limitation with honest trade-offs.
+
 ---
 
 ## Judge guidance

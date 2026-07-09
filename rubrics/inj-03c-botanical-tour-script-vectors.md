@@ -25,6 +25,20 @@ criteria:
     - id: sub-reasoning
       name: "Reasoning quality"
       weight: 0.3
+anchors:
+  - id: Completeness and fidelity of the extracted index against the reference titles
+    0: Core requirement wrong or missing; many misses against the rubric.
+    5: Mostly correct with one or two real gaps or weak spots.
+    10: Fully correct on every load-bearing point; no meaningful gaps.
+  - id: Precision of the vector taxonomy in the reasoning
+    0: REASONING.md missing, or restates the task with no real decisions/limitations.
+    5: States an approach and one decision, but limitations are vague or generic.
+    10: Names a concrete decision and a concrete limitation with honest trade-offs.
+  - id: Reasoning quality
+    0: REASONING.md missing, or restates the task with no real decisions/limitations.
+    5: States an approach and one decision, but limitations are vague or generic.
+    10: Names a concrete decision and a concrete limitation with honest trade-offs.
+
 ---
 
 ## Judge guidance

@@ -1179,52 +1179,12 @@ function testsEntry(id) {
   );
 }
 
-const insert = newIds.map(testsEntry).join('');
-if (!html.includes(newIds[0])) {
-  // insert before closing of TESTS object — find last entry pattern
-  const marker = '\n};\nconst COLORS=';
-  if (html.includes(marker)) {
-    html = html.replace(marker, '\n' + insert + '};\nconst COLORS=');
-  } else {
-    const m2 = '\n};\nconst WEIGHTS=';
-    // TESTS ends before WEIGHTS sometimes after SUITES - find const TESTS end
-    const tStart = html.indexOf('const TESTS={');
-    // brace match
-    let pos = tStart + 'const TESTS='.length;
-    let depth = 0;
-    let inS = false,
-      esc = false;
-    for (; pos < html.length; pos++) {
-      const ch = html[pos];
-      if (esc) {
-        esc = false;
-        continue;
-      }
-      if (ch === '\\\\' && inS) {
-        esc = true;
-        continue;
-      }
-      if (ch === '"' && !inS) {
-        inS = true;
-        continue;
-      }
-      if (ch === '"' && inS) {
-        inS = false;
-        continue;
-      }
-      if (inS) continue;
-      if (ch === '{') depth++;
-      else if (ch === '}') {
-        depth--;
-        if (depth === 0) {
-          pos++;
-          break;
-        }
-      }
-    }
-    html = html.slice(0, pos - 1) + '\n' + insert + html.slice(pos - 1);
-  }
-}
+// TESTS is generated from rubrics/ + tests/ by tools/gen-tests.js, so new
+// tests with rubrics are picked up automatically. Regenerate report/tests.js
+// after any new rubrics are written (SUITES edits below still live in index.html).
+delete require.cache[require.resolve('./gen-tests.js')];
+require('./gen-tests.js');
+console.log('regenerated report/tests.js from rubrics/ + tests/');
 
 // Day suite expansions
 function addToSuite(suiteKey, ids) {

@@ -28,6 +28,20 @@ criteria:
     - id: sub-reasoning
       name: "Reasoning quality"
       weight: 0.3
+anchors:
+  - id: Severity calibration and completeness
+    0: Over- or under-claims; asserts where the data is silent.
+    5: Mostly calibrated but hedges inconsistently or over-states one point.
+    10: States confidence honestly; abstains exactly where evidence is insufficient.
+  - id: Review usefulness
+    0: Fails the criterion: the relevant quality is absent or actively wrong.
+    5: Partially meets the criterion: present but inconsistent or weak.
+    10: Fully meets the criterion: strong and consistent throughout.
+  - id: Reasoning quality
+    0: REASONING.md missing, or restates the task with no real decisions/limitations.
+    5: States an approach and one decision, but limitations are vague or generic.
+    10: Names a concrete decision and a concrete limitation with honest trade-offs.
+
 ---
 
 ## Judge guidance

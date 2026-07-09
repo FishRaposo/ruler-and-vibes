@@ -79,7 +79,9 @@ for (const f of fs.readdirSync(path.join(REPO, 'rubrics'))) {
     const trimmed = line.trim();
     if (trimmed === 'objective:') { inObj = true; inSub = false; continue; }
     if (trimmed === 'subjective:') { inSub = true; inObj = false; continue; }
-    // exit criteria section once we hit the frontmatter closing --- or a new top-level key
+    // exit criteria section once we hit the frontmatter closing --- or a new
+    // top-level key (anchors:, canary_aliases:) that is not part of criteria
+    if (trimmed === 'anchors:' || trimmed === 'canary_aliases:') { inObj = false; inSub = false; continue; }
     if (trimmed === '---' && (inObj || inSub)) { inObj = false; inSub = false; continue; }
     if (inObj) {
       const m = line.match(/^\s*-?\s*id:\s*(\S+)/);
@@ -162,7 +164,7 @@ try {
 // =========== Check 1: Rubric ↔ TESTS alignment ===========
 for (const id of Object.keys(rubrics)) {
   if (!TESTS[id]) {
-    issues.push('ALIGN: rubric exists for "' + id + '" but no TESTS entry in index.html');
+    issues.push('ALIGN: rubric exists for "' + id + '" but no TESTS entry in report/tests.js');
     continue;
   }
   const rb = rubrics[id];
@@ -190,15 +192,34 @@ for (const id of testIdsInHTML) {
 }
 
 // =========== Check 1c: anchored rubric scales ===========
-// Subjective criteria are the unverifiable half of every score. Rubrics can
+// Subjective criteria are the unverifiable half of every score. Rubrics
 // declare an `anchors:` block (0 / 5 / 10 exemplar descriptions) so judges
-// calibrate against the same poles instead of their own taste. Absence is a
-// soft warning — it's an authoring-quality signal, not a structural error.
+// calibrate against the same poles instead of their own taste. Presence is
+// required; each subjective criterion must have all three poles.
 for (const id of Object.keys(rubrics)) {
   const rb = rubrics[id];
+  if (!rb.subIds.length) continue;
   const txt = fs.readFileSync(path.join(REPO, 'rubrics', rb.path), 'utf8');
-  if (!/^anchors:/m.test(txt) && rb.subIds.length)
+  if (!/^anchors:/m.test(txt)) {
     warnings.push('ANCHORS: rubric "' + id + '" has no `anchors:` block — subjective criteria uncalibrated across judges');
+    continue;
+  }
+  // Parse the anchors block: lines like "  - id: <name>" followed by
+  // "    0: ...", "    5: ...", "    10: ...".
+  const fm = txt.slice(0, txt.indexOf('\n---', 3));
+  const anchorIds = [];
+  const re = /^\s*-\s*id:\s*(.+?)\s*$/gm;
+  let m;
+  while ((m = re.exec(fm)) !== null) anchorIds.push(m[1]);
+  const haveSet = new Set(anchorIds);
+  // cross-check against subjective criterion names
+  for (const sid of rb.subIds) {
+    const name = (txt.match(new RegExp('id:\\s*' + sid + '[^\\n]*\\n\\s*name:\\s*"(.*?)"', 'm')) || [])[1];
+    if (name && !haveSet.has(name))
+      warnings.push('ANCHORS: rubric "' + id + '" criterion "' + name + '" has no anchor entry');
+  }
+  if (anchorIds.length && !/^\s*0:\s*\S/m.test(fm))
+    warnings.push('ANCHORS: rubric "' + id + '" anchors missing a 0 pole');
 }
 
 

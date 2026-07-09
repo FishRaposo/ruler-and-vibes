@@ -28,6 +28,7 @@ for (const f of fs.readdirSync(path.join(REPO, 'rubrics'))) {
     const t = line.trim();
     if (t === 'objective:') { inObj = true; inSub = false; continue; }
     if (t === 'subjective:') { inSub = true; inObj = false; continue; }
+    if (t === 'anchors:' || t === 'canary_aliases:') { inObj = false; inSub = false; continue; }
     if (t === '---' && (inObj || inSub)) { inObj = false; inSub = false; continue; }
     if (inObj) { const m = line.match(/^\s*-?\s*id:\s*(\S+)/); if (m) objIds.push(m[1]); }
     if (inSub) { const m = line.match(/^\s*-?\s*id:\s*(\S+)/); if (m) subIds.push(m[1]); }

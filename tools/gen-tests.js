@@ -50,6 +50,7 @@ function parseFrontmatter(txt) {
     const t = line.trim();
     if (t === 'objective:') { inObj = true; inSub = false; continue; }
     if (t === 'subjective:') { inSub = true; inObj = false; continue; }
+    if (t === 'anchors:' || t === 'canary_aliases:') { inSub = false; continue; }
     if (t === '---' && (inObj || inSub)) break;
     if (inObj) {
       const im = line.match(/^\s*-?\s*id:\s*(\S+)/);

@@ -1724,43 +1724,12 @@ function testsEntry(id) {
 const newIds = forms.map((f) => f.id);
 const missing = newIds.filter((id) => !html.includes('"' + id + '":{category:'));
 if (missing.length) {
-  const tStart = html.indexOf('const TESTS={');
-  let pos = tStart + 'const TESTS='.length;
-  let depth = 0,
-    inS = false,
-    esc = false;
-  for (; pos < html.length; pos++) {
-    const ch = html[pos];
-    if (esc) {
-      esc = false;
-      continue;
-    }
-    if (ch === '\\' && inS) {
-      esc = true;
-      continue;
-    }
-    if (ch === '"') {
-      inS = !inS;
-      continue;
-    }
-    if (inS) continue;
-    if (ch === '{') depth++;
-    else if (ch === '}') {
-      depth--;
-      if (depth === 0) break;
-    }
-  }
-  // ensure comma before insert
-  let before = html.slice(0, pos);
-  if (!before.trimEnd().endsWith(',')) {
-    // last entry ends with }
-    before = before.replace(/\}\s*$/, '},\n');
-    html = before + missing.map(testsEntry).join('') + html.slice(pos);
-  } else {
-    html = html.slice(0, pos) + '\n' + missing.map(testsEntry).join('') + html.slice(pos);
-  }
-  fs.writeFileSync(path.join(REPO, 'report', 'index.html'), html);
-  console.log('inserted TESTS', missing.length);
+  // TESTS is generated from rubrics/ + tests/ by tools/gen-tests.js, so new
+  // parallel forms with rubrics are picked up automatically. Regenerate
+  // report/tests.js after the new rubrics are written.
+  delete require.cache[require.resolve('./gen-tests.js')];
+  require('./gen-tests.js');
+  console.log('inserted TESTS', missing.length, '(regenerated report/tests.js)');
 } else {
   console.log('TESTS already present');
 }

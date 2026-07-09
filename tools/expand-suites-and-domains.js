@@ -1408,43 +1408,13 @@ function patchIndex(allCfg) {
     }
   }
 
-  // Append TESTS entries before the closing of TESTS object
-  // Find "const TESTS={" ... ends at "};\n/* Runs" or similar
-  const marker = '\n/* Runs (distinct parallel forms';
-  // Actually TESTS ends with }; before load or comments
-  // Look for last entry pattern - insert before `};\nconst WEIGHTS` no WEIGHTS is before TESTS
-
-  // TESTS is: const TESTS={ ... };
-  // Find end: after last test, there's `};\n` then maybe more
-  const testsStart = html.indexOf('const TESTS={');
-  if (testsStart < 0) throw new Error('TESTS not found');
-  // brace match
-  let pos = testsStart + 'const TESTS='.length;
-  let depth = 0, inS = false, esc = false;
-  for (; pos < html.length; pos++) {
-    const ch = html[pos];
-    if (esc) { esc = false; continue; }
-    if (ch === '\\' && inS) { esc = true; continue; }
-    if (ch === '"' && !inS) { inS = true; continue; }
-    if (ch === '"' && inS) { inS = false; continue; }
-    if (inS) continue;
-    if (ch === '{') depth++;
-    else if (ch === '}') {
-      depth--;
-      if (depth === 0) { break; }
-    }
-  }
-  // pos at closing }
-  let block = '';
-  for (const t of allCfg) {
-    if (html.includes(`"${t.id}":{category:`)) continue;
-    const obj = t.objective.map(([id, lab]) => `["${id}",${JSON.stringify(lab)}]`).join(',');
-    const sub = t.subjective.map(([id, name, w]) => `["${id}",${JSON.stringify(name)},${w}]`).join(',');
-    block += `"${t.id}":{category:${JSON.stringify(t.category)},title:${JSON.stringify(t.title)},\n objective:[${obj}],\n subjective:[${sub}]},\n`;
-  }
-  html = html.slice(0, pos) + (block ? '\n' + block : '') + html.slice(pos);
-  fs.writeFileSync(htmlPath, html);
-  console.log('patched report/index.html with', allCfg.length, 'TESTS entries (skipped existing)');
+  // TESTS is generated from rubrics/ + tests/ by tools/gen-tests.js, so new
+  // tests with rubrics are picked up automatically. Regenerate report/tests.js
+  // after any new rubrics are written (CATEGORIES/SUITES edits above still live
+  // in index.html).
+  delete require.cache[require.resolve('./gen-tests.js')];
+  require('./gen-tests.js');
+  console.log('patched report/index.html; regenerated report/tests.js from rubrics/ + tests/');
 }
 
 function patchValidateCore() {

@@ -25,6 +25,20 @@ criteria:
     - id: sub-reasoning
       name: "Reasoning quality"
       weight: 0.3
+anchors:
+  - id: Calibration and abstention judgment
+    0: Over- or under-claims; asserts where the data is silent.
+    5: Mostly calibrated but hedges inconsistently or over-states one point.
+    10: States confidence honestly; abstains exactly where evidence is insufficient.
+  - id: Confidence coherence and format discipline
+    0: Over- or under-claims; asserts where the data is silent.
+    5: Mostly calibrated but hedges inconsistently or over-states one point.
+    10: States confidence honestly; abstains exactly where evidence is insufficient.
+  - id: Reasoning quality
+    0: REASONING.md missing, or restates the task with no real decisions/limitations.
+    5: States an approach and one decision, but limitations are vague or generic.
+    10: Names a concrete decision and a concrete limitation with honest trade-offs.
+
 ---
 
 ## Judge guidance

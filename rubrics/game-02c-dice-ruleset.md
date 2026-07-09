@@ -24,6 +24,20 @@ criteria:
     - id: sub-reasoning
       name: "Reasoning quality"
       weight: 0.3
+anchors:
+  - id: Design depth
+    0: Misattributes the cause or stops at the symptom.
+    5: Names the right area but misses a contributing root cause.
+    10: Names every distinct root cause precisely and proves each.
+  - id: Rules clarity & completeness
+    0: Hard to follow: inconsistent structure, obscure naming, or noise that hides the answer.
+    5: Understandable but verbose or uneven; some naming/structure could be tighter.
+    10: Clear, well-structured, minimal — a reader extracts the answer immediately.
+  - id: Reasoning quality
+    0: REASONING.md missing, or restates the task with no real decisions/limitations.
+    5: States an approach and one decision, but limitations are vague or generic.
+    10: Names a concrete decision and a concrete limitation with honest trade-offs.
+
 ---
 
 ## Judge guidance

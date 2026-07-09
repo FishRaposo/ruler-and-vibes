@@ -25,6 +25,20 @@ criteria:
     - id: sub-reasoning
       name: "Reasoning quality"
       weight: 0.3
+anchors:
+  - id: Cross-document reconciliation accuracy
+    0: Fails the criterion: the relevant quality is absent or actively wrong.
+    5: Partially meets the criterion: present but inconsistent or weak.
+    10: Fully meets the criterion: strong and consistent throughout.
+  - id: Override ordering & schema authority
+    0: Fails the criterion: the relevant quality is absent or actively wrong.
+    5: Partially meets the criterion: present but inconsistent or weak.
+    10: Fully meets the criterion: strong and consistent throughout.
+  - id: Reasoning quality
+    0: REASONING.md missing, or restates the task with no real decisions/limitations.
+    5: States an approach and one decision, but limitations are vague or generic.
+    10: Names a concrete decision and a concrete limitation with honest trade-offs.
+
 ---
 
 ## Judge guidance
