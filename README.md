@@ -46,6 +46,13 @@ orthogonal workflow pickers — not tiers. Arbitrary subsets also work
    integrity badges. Prefer the suite filter **core** for overall
    snapshots; incomplete tiers show a **PROVISIONAL** banner.
 
+**Fast mode.** For iterative model comparison, set the **View** dropdown to
+**Objective only** — it scores just the mechanically-verifiable checks
+(`node`/`wc -w`/recompute), skipping the subjective half entirely. This is
+judge-cheap and good enough to rank models on correctness without a full
+subjective pass. Toggle **Category weight** to *Weighted (÷ facet count)*
+so small categories don't dominate the radar.
+
 A **run** = model + reasoning effort + harness, because the same model can
 score differently at different efforts or in different harnesses.
 Optional `meta.json` fields (`suite`, `wall_time_min`, `approx_cost_usd`,

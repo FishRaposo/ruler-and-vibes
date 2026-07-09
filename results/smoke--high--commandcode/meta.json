@@ -1,0 +1,11 @@
+{
+  "model": "commandcode (smoke)",
+  "effort": "high",
+  "harness": "commandcode",
+  "date": "2026-07-09",
+  "suite": "core",
+  "wall_time_min": null,
+  "approx_cost_usd": null,
+  "notes": "Smoke run to validate the end-to-end pipeline after fixes.",
+  "consistency_pair": null
+}

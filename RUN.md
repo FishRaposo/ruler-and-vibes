@@ -166,14 +166,19 @@ report filter). Summaries:
    `{ "minutes": <number> }`. Useful when one suite mixes fast and slow
    tasks; omit freely.
 
-## Optional: save your session transcript
+## Required: save your session transcript
 
-If your harness captures a full session transcript (everything you read,
-wrote, and were told), save it to
-`results/<run-id>/session-transcript.txt`. This is optional but strongly
-recommended — it lets the judge audit every file you actually opened,
-making the `## Files read` manifest independently verifiable. Without
-it, a runner who reads rubrics and lies in the manifest is undetectable.
+Your harness MUST save a full session transcript (everything you read,
+wrote, and were told during this run) to
+`results/<run-id>/session-transcript.txt`. This is **required, not
+optional** — the judge uses it to audit every file you actually opened,
+which independently verifies the `## Files read` manifest. A run without
+a transcript is recorded as `flagged` (SOFT integrity) by default, because
+a runner who reads rubrics and lies in the manifest is otherwise
+undetectable. If your harness cannot emit a transcript, write a one-line
+`results/<run-id>/session-transcript.txt` containing
+`transcript-unavailable: <reason>` so the judge can note the gap rather
+than assume integrity.
 
 ## Checklist before you finish
 
@@ -183,4 +188,5 @@ it, a runner who reads rubrics and lies in the manifest is undetectable.
 - [ ] Every test folder has `REASONING.md` ending with `## Files read`
 - [ ] You read nothing under `rubrics/`, `report/`, or other runs
 - [ ] You wrote nothing outside `results/<run-id>/`
-- [ ] (Recommended) `results/<run-id>/session-transcript.txt` saved
+- [ ] (Required) `results/<run-id>/session-transcript.txt` saved (or a
+  `transcript-unavailable: <reason>` stub)

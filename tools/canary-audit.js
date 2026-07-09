@@ -6,10 +6,16 @@
 //   - every test has a rubric canary, every canary phrase is unique
 //   - no phrase is a substring of another
 //   - no content word appears in more than 2 canaries
-//   - no canary phrase appears in ANY test file (leak invariant)
-//   - no canary phrase appears in another rubric (cross-contamination)
+//   - no canary phrase (or its registered aliases) appears in ANY test
+//     file (leak invariant)
+//   - no canary phrase (or alias) appears in another rubric (cross-contam)
 //   - each canary appears >=2x in its own rubric (frontmatter + woven
 //     mention), matched with whitespace normalized so line wraps count
+//
+// Aliases: a rubric may declare `canary_aliases: [...]` — synonymous or
+// reworded forms of the canary. They receive the SAME leak/cross-contam
+// checks as the canary itself, catching "rubric-shaped but reworded"
+// leakage that a naive string match would miss.
 //
 // On success it refreshes the registry table and counts in
 // docs/superpowers/specs/2026-07-04-canary-registry.md, preserving all
@@ -40,6 +46,7 @@ for (const d of fs.readdirSync(path.join(REPO, 'tests'))) {
 
 // --- collect rubrics ---
 const canary = {}; // id -> phrase
+const aliases = {}; // id -> [alias phrases]
 const rubricText = {}; // id -> raw text
 const rubricFile = {};
 for (const f of fs.readdirSync(path.join(REPO, 'rubrics'))) {
@@ -47,10 +54,13 @@ for (const f of fs.readdirSync(path.join(REPO, 'rubrics'))) {
   const txt = fs.readFileSync(path.join(REPO, 'rubrics', f), 'utf8');
   const id = (txt.match(/^test:\s*(.+?)\s*$/m) || [])[1];
   const c = (txt.match(/^canary:\s*"?(.+?)"?\s*$/m) || [])[1];
+  const aRaw = (txt.match(/^canary_aliases:\s*\[(.+?)\]\s*$/m) || [])[1] || '';
+  const aList = aRaw.split(',').map(s => s.trim().replace(/^["']|["']$/g, '')).filter(Boolean);
   if (!id) continue;
   rubricText[id] = txt;
   rubricFile[id] = f;
   if (c) canary[id] = c.replace(/^["']|["']$/g, '').trim();
+  aliases[id] = aList.map(a => a.trim());
 }
 
 const issues = [];
@@ -58,14 +68,19 @@ const ids = Object.keys(canary).sort();
 
 for (const id of Object.keys(testMeta)) if (!canary[id]) issues.push('MISSING: no canary for test ' + id);
 
+// All guarded phrases (canary + its aliases) for leak/cross-contam checks
+const guarded = id => [canary[id], ...(aliases[id] || [])].map(norm).filter(Boolean);
+
 for (const id of ids) {
-  const phrase = norm(canary[id]);
-  for (const [p, txt] of Object.entries(testTexts))
-    if (txt.includes(phrase)) issues.push('LEAK: "' + canary[id] + '" (' + id + ') appears in ' + p);
-  for (const other of ids)
-    if (other !== id && norm(rubricText[other]).includes(phrase))
-      issues.push('CROSS-RUBRIC: "' + canary[id] + '" (' + id + ') appears in rubrics/' + rubricFile[other]);
+  for (const phrase of guarded(id)) {
+    for (const [p, txt] of Object.entries(testTexts))
+      if (txt.includes(phrase)) issues.push('LEAK: "' + phrase + '" (' + id + ') appears in ' + p);
+    for (const other of ids)
+      if (other !== id && norm(rubricText[other]).includes(phrase))
+        issues.push('CROSS-RUBRIC: "' + phrase + '" (' + id + ') appears in rubrics/' + rubricFile[other]);
+  }
   const hay = norm(rubricText[id]);
+  const phrase = norm(canary[id]);
   let n = 0, i = 0;
   while ((i = hay.indexOf(phrase, i)) !== -1) { n++; i += phrase.length; }
   if (n < 2) issues.push('NOT WOVEN: "' + canary[id] + '" (' + id + ') appears ' + n + 'x in its own rubric (need exactly 2)');
@@ -123,7 +138,7 @@ for (const cat of Object.keys(grouped).sort()) {
     if (kx[1] !== ky[1]) return kx[1] - ky[1];
     return kx[2] < ky[2] ? -1 : kx[2] > ky[2] ? 1 : 0;
   });
-  for (const id of sorted) rows += '| ' + id + ' | ' + canary[id] + ' |\n';
+  for (const id of sorted) rows += '| ' + id + ' | ' + canary[id] + (aliases[id] && aliases[id].length ? ' (aliases: ' + aliases[id].join(', ') + ')' : '') + ' |\n';
 }
 doc = doc.replace(/## Canaries — all \d+ tests/, '## Canaries — all ' + ids.length + ' tests');
 doc = doc.replace(/\*\*\d+ issues across all \d+ canaries\*\*/, '**0 issues across all ' + ids.length + ' canaries**');

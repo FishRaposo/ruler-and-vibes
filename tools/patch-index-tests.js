@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 'use strict';
+// This tool now appends new TESTS entries directly into report/tests.js
+// (the generated source of truth owned by gen-tests.js). We append only
+// entries that don't already exist there, then re-run gen-tests.js to keep
+// the file canonically formatted and ordered.
 const fs = require('fs');
 const path = require('path');
 const REPO = path.resolve(__dirname, '..');
@@ -49,95 +53,29 @@ for (const f of fs.readdirSync(path.join(REPO, 'rubrics')).filter(x => x.endsWit
   entries.push({ id, category, title, objMeta, subMeta });
 }
 
-const htmlPath = path.join(REPO, 'report', 'index.html');
-let html = fs.readFileSync(htmlPath, 'utf8');
-
-for (const c of [
-  { id: 'agentic-coding', label: 'Agentic Coding' },
-  { id: 'ops', label: 'Ops & Tooling' },
-  { id: 'safety', label: 'Safety Judgment' },
-  { id: 'support-inbox', label: 'Support Inbox' },
-  { id: 'critical-reading', label: 'Critical Reading' },
-]) {
-  if (!html.includes('id:"' + c.id + '"')) {
-    // append before ]; of CATEGORIES — try several anchors
-    if (html.includes('id:"safety"')) {
-      html = html.replace(
-        /\{id:"safety",label:"[^"]*"\},/,
-        (m) => m + '\n  {id:"' + c.id + '",label:"' + c.label + '"},'
-      );
-      // only first missing — if already added via safety replace wrongly, check
-      if (!html.includes('id:"' + c.id + '"')) {
-        html = html.replace(
-          '  {id:"ux-copy",label:"UX Copy"},\n];',
-          '  {id:"ux-copy",label:"UX Copy"},\n  {id:"' + c.id + '",label:"' + c.label + '"},\n];'
-        );
-      }
-    } else {
-      html = html.replace(
-        '  {id:"ux-copy",label:"UX Copy"},\n];',
-        '  {id:"ux-copy",label:"UX Copy"},\n  {id:"' + c.id + '",label:"' + c.label + '"},\n];'
-      );
-    }
-  }
+// Parse current tests.js entries to avoid duplicates
+const testsJsPath = path.join(REPO, 'report', 'tests.js');
+let existing = new Set();
+if (fs.existsSync(testsJsPath)) {
+  const ts = fs.readFileSync(testsJsPath, 'utf8');
+  const m = ts.match(/const TESTS\s*=\s*(\{[\s\S]*\});\s*$/);
+  if (m) existing = new Set(Object.keys(eval('(' + m[1] + ')')));
 }
 
-const ai = html.search(/\r?\n\};\r?\nconst COLORS=/);
-if (ai < 0) {
-  console.error('anchor not found');
-  process.exit(1);
-}
-const m = html.slice(ai).match(/^(\r?\n)\};(\r?\n)const COLORS=/);
-const nl = m[1];
-
-let block = ',\n';
+let added = 0;
 for (const e of entries) {
-  if (html.includes('"' + e.id + '":{category:')) continue;
+  if (existing.has(e.id)) continue;
   const obj = e.objMeta.map(o => '["' + o.id + '",' + JSON.stringify(o.check) + ']').join(',');
   const sub = e.subMeta.map(s => '["' + s.id + '",' + JSON.stringify(s.name) + ',' + s.w + ']').join(',');
-  block += '"' + e.id + '":{category:' + JSON.stringify(e.category) + ',title:' + JSON.stringify(e.title) + ',\n' +
-    ' objective:[' + obj + '],\n' +
-    ' subjective:[' + sub + ']}';
-  block += ',\n';
+  fs.appendFileSync(testsJsPath,
+    '  ' + JSON.stringify(e.id) + ':{category:' + JSON.stringify(e.category)
+    + ',title:' + JSON.stringify(e.title)
+    + ',objective:[' + obj + ']'
+    + ',subjective:[' + sub + ']},\n');
+  added++;
 }
-// remove trailing comma before };
-block = block.replace(/,\n$/, '\n');
 
-// Last existing entry ends with `}` without trailing comma sometimes - need comma before new entries
-// The structure is: ...lastentry}\n};
-// We insert ,\n newentries before };
-const before = html.slice(0, ai); // ends with last `}` of last test
-// before currently ends with `}\n` of last test - wait ai points to \n};\nconst COLORS
-// html[ai] is newline before };
-// Actually anchor is `\n};\nconst COLORS=` so before ends with last test's closing `}`
+// Re-normalize the whole file via gen-tests.js so ordering/format is canonical
+require('./gen-tests.js');
 
-// before ends mid-file at start of `\n};\nconst COLORS`
-// Replace that `};` with `block + };`
-html = before + block + nl + '};' + html.slice(ai + m[0].indexOf('};') + 2);
-fs.writeFileSync(htmlPath, html);
-
-// verify
-const start = html.indexOf('const TESTS=');
-let pos = start + 'const TESTS='.length;
-let depth = 0, inS = false, esc = false, inC = false;
-for (; pos < html.length; pos++) {
-  const ch = html[pos];
-  if (esc) { esc = false; continue; }
-  if (ch === '\\' && inS) { esc = true; continue; }
-  if (ch === '/' && !inS && !inC && html[pos + 1] === '/') { inC = true; pos++; continue; }
-  if (ch === '\n' && inC) { inC = false; continue; }
-  if (ch === '"' && !inC) { inS = !inS; continue; }
-  if (inS || inC) continue;
-  if (ch === '{') depth++;
-  else if (ch === '}') { depth--; if (depth === 0) { pos++; break; } }
-}
-try {
-  const TESTS = eval('(' + html.slice(start + 'const TESTS='.length, pos) + ')');
-  console.log('OK', Object.keys(TESTS).length, 'tests; agent-01?', !!TESTS['agent-01-multi-file-fix']);
-} catch (e) {
-  console.error('FAIL', e.message);
-  // show around insertion
-  const j = html.indexOf('"agent-01-multi-file-fix"');
-  console.log(html.slice(j - 80, j + 120));
-  process.exit(1);
-}
+console.log('patch-index-tests: added ' + added + ' new entries; report/tests.js regenerated');

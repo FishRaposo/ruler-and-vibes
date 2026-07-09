@@ -25,11 +25,12 @@ rubric — nothing else.
    affected tests. If several uncommitted runs make attribution unclear,
    report the stray writes to the user instead of invalidating
    (committing between runs keeps this check sharp).
-3. **Integrity — transcript check (if available).** If
-   `results/<run-id>/session-transcript.txt` exists, audit it:
-   - Search for any file path outside the allowlist mentioned in the
-     transcript (e.g., `rubrics/`, `report/`, `docs/`, other runs).
-     Any found → HARD evidence against affected tests.
+3. **Integrity — transcript check.** The runner is expected to save
+   `results/<run-id>/session-transcript.txt` (required by RUN.md). Audit it:
+   - If the file exists and is a real transcript: search for any file path
+     outside the allowlist mentioned in the transcript (e.g., `rubrics/`,
+     `report/`, `docs/`, other runs). Any found → HARD evidence against
+     affected tests.
    - Cross-reference the transcript's file opens against the runner's
      `## Files read` manifest in each `REASONING.md`. Files opened in
      the transcript but missing from the manifest → SOFT flag
@@ -38,6 +39,12 @@ rubric — nothing else.
    - If the transcript exists but shows the runner reading this JUDGE.md
      or any rubric file, all tests are INVALIDATED — the run is
      compromised.
+   - If the transcript is **absent** or contains only a
+     `transcript-unavailable: <reason>` stub, you cannot independently
+     verify the `## Files read` manifest. Record the run as **SOFT
+     flagged** ("no transcript — manifest unverifiable") and score normally.
+     Do not upgrade to HARD on this basis alone; note it in the finish
+     summary so the user can decide whether to re-run with a transcript.
 
 ## Per test in the run
 

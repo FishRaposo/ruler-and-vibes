@@ -1,6 +1,7 @@
 ---
 test: coding-01-edge-cases
 canary: "sentinel sweep"
+canary_aliases: ["sentinel passes", "sweep of sentinels"]
 weights:
   objective: 0.5
   subjective: 0.5

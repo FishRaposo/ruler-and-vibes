@@ -165,7 +165,7 @@ counts, preserving the prose. Last run:
 | causal-04-hydroyield-counterfactual | tanzanite malachite |
 | causal-04b-sappledon-boil-counterfactual | spindletree bolero |
 | causal-04c-lumacal-frame | wayfaring polonaise |
-| coding-01-edge-cases | sentinel sweep |
+| coding-01-edge-cases | sentinel sweep (aliases: sentinel passes, sweep of sentinels) |
 | coding-01b-siding-blocks | aardvark hippogriff |
 | coding-01c-waveform-highlights | okapi salamander |
 | coding-02-refactor | ledger-thin naming |

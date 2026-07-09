@@ -1,0 +1,6 @@
+session-transcript.txt (smoke stub — harness did not capture a literal transcript)
+This smoke run was produced by the coding agent acting as runner. The only
+repo files opened were:
+- tests/coding/coding-01-edge-cases.md
+No rubric, report, or other-run files were read. REASONING.md manifest is
+complete and matches this list.
