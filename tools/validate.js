@@ -204,13 +204,14 @@ for (const id of Object.keys(rubrics)) {
     warnings.push('ANCHORS: rubric "' + id + '" has no `anchors:` block — subjective criteria uncalibrated across judges');
     continue;
   }
-  // Parse the anchors block: lines like "  - id: <name>" followed by
-  // "    0: ...", "    5: ...", "    10: ...".
+  // Parse the anchors block: each entry is "  - id: <name>" followed by
+  // "    0: ...", "    5: ...", "    10: ..." — every pole must be present.
   const fm = txt.slice(0, txt.indexOf('\n---', 3));
+  const anchorBlock = fm.slice(fm.indexOf('anchors:'));
   const anchorIds = [];
   const re = /^\s*-\s*id:\s*(.+?)\s*$/gm;
   let m;
-  while ((m = re.exec(fm)) !== null) anchorIds.push(m[1]);
+  while ((m = re.exec(anchorBlock)) !== null) anchorIds.push(m[1]);
   const haveSet = new Set(anchorIds);
   // cross-check against subjective criterion names
   for (const sid of rb.subIds) {
@@ -218,8 +219,16 @@ for (const id of Object.keys(rubrics)) {
     if (name && !haveSet.has(name))
       warnings.push('ANCHORS: rubric "' + id + '" criterion "' + name + '" has no anchor entry');
   }
-  if (anchorIds.length && !/^\s*0:\s*\S/m.test(fm))
-    warnings.push('ANCHORS: rubric "' + id + '" anchors missing a 0 pole');
+  // Validate every anchor has all three poles.
+  for (const aid of anchorIds) {
+    const start = anchorBlock.indexOf('- id: ' + aid);
+    const next = anchorBlock.indexOf('\n  - id:', start + 1);
+    const block = next < 0 ? anchorBlock.slice(start) : anchorBlock.slice(start, next);
+    for (const pole of ['0', '5', '10']) {
+      if (!new RegExp('^\\s*' + pole + ':\\s*\\S', 'm').test(block))
+        warnings.push('ANCHORS: rubric "' + id + '" anchor "' + aid + '" missing the ' + pole + ' pole');
+    }
+  }
 }
 
 

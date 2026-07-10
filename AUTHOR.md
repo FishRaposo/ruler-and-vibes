@@ -161,17 +161,20 @@ Answer key first, prose second — always.
      kit-wide, including yours, and refreshes the registry table);
    - re-read the test file once, cold, asking only "does anything here
      tell the model where the trap is?"
-7. **Register.** Two entries:
-   - **Report config:** in `report/index.html`, find the `const TESTS={`
-     block and insert your form's entry adjacent to its source's entry,
-     using the source as the template. Rules: the `obj-*` ids must match
-     your rubric's frontmatter ids exactly, same count (judgments in
-     `data.js` key on them); labels are short truncations of each
-     check's text (~first 6 words, sentence-cased); keep the same
-     subjective names/weights and any `weights:` override your rubric
-     declares. Done-check: open `report/index.html` in a browser — the
-     page must load with no console errors (the form has no scores yet,
-     so it won't render as a row, but a malformed entry breaks the whole
+7. **Register.** The report's `TESTS` config is **generated**, not
+   hand-edited. After writing the test file and rubric (whose
+   `obj-*`/`sub-*` ids and `weights:` must match exactly — judgments in
+   `data.js` key on them), run:
+   - `node tools/gen-tests.js` — rebuilds `report/tests.js` from
+     `rubrics/` + `tests/` (criterion ids, labels, weights, canary
+     aliases, anchors). Add a `canary_aliases:` line to your rubric for
+     any reworded forms of your canary, and an `anchors:` block with
+     0/5/10 exemplars per subjective criterion so judges calibrate.
+   - `node tools/canary-audit.js` — checks every canary rule kit-wide
+     (including yours) and refreshes the registry table.
+   - Done-check: open `report/index.html` in a browser — the page must
+     load with no console errors (the form has no scores yet, so it
+     won't render as a row, but a malformed entry breaks the whole
      config block).
    - **Canary registry:** add your row next to the source's category
      group (the table is grouped by category) — or simply run
