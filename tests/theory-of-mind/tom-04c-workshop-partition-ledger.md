@@ -4,6 +4,7 @@ category: theory-of-mind
 title: Two-workshop chisel and ladle epistemic ledger
 deliverables:
   - beliefs.md
+  - REASONING.md
 ---
 
 ## Task

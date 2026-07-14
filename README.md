@@ -1,177 +1,150 @@
 # Ruler & Vibes
 
-**Ruler & Vibes** is a **zero-infrastructure, personal model-chooser
-kit** — not an official public leaderboard. There is **no maintained
-ranking** of models in this repo; you run models yourself, judge the
-outputs, and keep scores locally (or publish your own runs).
+**Ruler & Vibes** is a zero-infrastructure, personal model-chooser kit, not an
+official public leaderboard. You run models yourself, judge their outputs, and
+keep or publish your own results.
 
-Every rubric mixes objective checks (**the ruler**) with judged criteria
-(**the vibes**). The bank spans **40 categories** and **759 test forms**
-(most facets ship three parallel forms a/b/c — see `AUTHOR.md`), on an
-easy→hard ladder across reasoning, software, language, analysis &
-judgment, planning, creative work, agentic coding, ops, support, safety,
-and more. Everything is markdown plus one self-contained HTML report.
-No APIs, no build step. Optional tools under `tools/` validate structure
-and canaries.
+Every rubric combines objective checks (the ruler) with judged criteria (the
+vibes). The bank spans 40 categories and 759 test forms, usually three parallel
+forms per facet. The kit uses plain Markdown, JSON, JavaScript, Node built-ins,
+and a zero-build static report bundle. It has no package manager, framework,
+CDN, API, hosted service, or build step.
 
 **License:** MIT (see `LICENSE`).
 
-**Breadth tiers** (nested; see `TIERS.md` / `tiers.json`):
+## Breadth and workflow suites
 
-```
-Core (34)  ⊂  Extended (123)  ⊂  Full (759 forms)
- snapshot      serious map       item bank + parallels
+The nested breadth ladder is canonical in `tiers.json`:
+
+```text
+Core (34)  subset  Extended (123)  subset  Full (759 forms)
+ snapshot              serious map             item bank + parallels
 ```
 
-**Default for personal model-picking: Core.** Use Extended when the
-decision is expensive; Full and parallel forms (b/c) for reliability
-studies, not a first look. Incomplete Core or Extended runs are
-**provisional** — do not treat partial radars as finished overall
-scores. Parallel forms never join Core/Extended. **Day suites**
-(`coding-day`, `agent-day`, `writing-comms`, `analyst`, `product-day`,
-`safety-day`, `ops-day`, `support-day`, `copy-day`, `critical-day`) are
-orthogonal workflow pickers — not tiers. Arbitrary subsets also work
-(see RUN.md).
+**Core is the execution and report default.** Full must always be named
+explicitly. Parallel forms never enter Core or Extended. Day suites are
+workflow views rather than breadth tiers; arbitrary explicit test/category
+subsets use `ad-hoc`. Category labels, the eight-domain taxonomy, day suites,
+and `defaultSuite` are canonical in `benchmark.json`.
 
 ## How it works
 
-1. **Run.** Open any agent CLI in this repo with the model you want to
-   test and say: *"Follow RUN.md as `<run-id>` for suite Core"* (or
-   Extended / a day suite — see RUN.md). The model writes outputs to
-   `results/<run-id>/`.
-2. **Judge.** In a separate session — ideally with the strongest model
-   available — say: *"Follow JUDGE.md"*. The judge scores every run
-   against the rubrics and updates `report/data.js`.
-3. **View.** Double-click `report/index.html`: radar chart, score tables,
-   integrity badges. Prefer the suite filter **core** for overall
-   snapshots; incomplete tiers show a **PROVISIONAL** banner.
-
-**Fast mode.** For iterative model comparison, set the **View** dropdown to
-**Objective only** — it scores just the mechanically-verifiable checks
-(`node`/`wc -w`/recompute), skipping the subjective half entirely. This is
-judge-cheap and good enough to rank models on correctness without a full
-subjective pass. Toggle **Category weight** to *Weighted (÷ facet count)*
-so small categories don't dominate the radar.
-
-A **run** = model + reasoning effort + harness, because the same model can
-score differently at different efforts or in different harnesses.
-Optional `meta.json` fields (`suite`, `wall_time_min`, `approx_cost_usd`,
-`notes`) help personal “daily driver” choices beyond raw scores.
-
-## Layout
-
-```
-TIERS.md / tiers.json           breadth ladder Core ⊂ Extended ⊂ Full
-tests/<category>/<test-id>.md   the tasks (runners read ONLY these)
-rubrics/<test-id>.md            scoring criteria (runners must never read)
-results/<run-id>/               one folder per run; meta.json + outputs
-report/judgments/<run-id>/      the judge's full written reasoning
-report/data.js                  raw scores (window.BENCH_DATA)
-report/index.html               the report page
-```
+1. **Run.** In a fresh model session, say: `Follow RUN.md as <run-id>`.
+   Omitted suite resolves to Core. The runner writes only to
+   `results/<run-id>/` and records the resolved suite in `meta.json`.
+2. **Judge.** In a separate evaluator session, say: `Follow JUDGE.md`.
+   The judge writes evidence and raw criterion scores to `report/data.js`.
+3. **Review when useful.** A second judge follows `REVIEW.md`. Agreement is
+   corroborating evidence; a material disagreement is resolved by a fresh
+   adjudicator following `ADJUDICATE.md`.
+4. **View.** Open `report/index.html`. The report leads with a run comparison,
+   eight-domain dots, and a numeric category heatmap, followed by criterion
+   evidence and a bounded workflow profile.
 
 ## Scoring
 
-- Objective checks: binary, pass = 10 / fail = 0; section score = mean.
-- Subjective criteria: 0–10 with mandatory written justification; every
-  rubric grades **Reasoning quality** from the run's `REASONING.md`.
-- Test total = 0.5 × objective + 0.5 × subjective.
-- Parallel forms (ids like `story-01b-…`, see `AUTHOR.md`) collapse to
-  their facet's **median** — n distinct forms = n runs of one construct
-  (target n per facet: `RUNS_TARGET` in `report/index.html`, default 3).
-- Category = mean of attempted facets only; coverage is shown honestly
-  (e.g. "1/2 tests run", or "1/4 facets run (2 runs incl. parallel
-  forms)"). Incomplete **Core** or **Extended** runs are marked
-  **provisional** — do not read a partial tier radar as a finished
-  general map (Core ⊂ Extended ⊂ Full). The report can show combined,
-  objective-only, or subjective-only views.
+- Objective section: mean of valid binary criterion scores (10 pass, 0 fail).
+- Subjective ability: weighted mean of subjective criteria other than
+  `sub-reasoning`; remaining weights are renormalized.
+- Worklog quality: the raw `sub-reasoning` score, reported separately and never
+  included in ability.
+- Test ability: the rubric's objective/subjective section weights applied to
+  objective and non-reasoning subjective ability.
+- Facet: median of scored parallel forms.
+- Category: equal mean of attempted facet scores.
+- Domain: equal mean of represented category scores.
+- Suite: equal mean of represented category scores. Domains explain the map;
+  they are not another weighting layer.
 
-## Cheating detection (best-effort)
+There is no weighted-performance mode. Coverage, parallel depth, integrity,
+and judgment status are separate evidence. The report shows exact expected and
+scored counts, observed ranges when possible, and status rather than sampling
+confidence intervals.
 
-Tiered. **Hard evidence** — a rubric canary phrase leaking into output,
-forbidden paths confessed in the run's `## Files read` manifest, or writes
-outside the run's folder — invalidates the test (re-run at your
-discretion). **Soft evidence** — output suspiciously shaped like the
-rubric — flags it with a ⚠ badge but scores normally.
+A Core, Extended, or day-suite result is officially complete only when every
+required test is scored and non-invalidated. Full requires every form. Ad-hoc
+runs receive scores but never an official-complete label. A complete run with
+only its primary judgment remains valid; review is optional.
 
-**Known limits:** a careful cheater who reads a rubric, paraphrases, and
-lies in its manifest evades all of this. Design docs under `docs/` quote
-the rubrics, so the protocols treat reading anything outside `tests/`
-and the run's own results folder as a violation. This kit stays
-**zero-infra by design** — integrity is protocol + skills + canaries +
-optional session transcript for the judge, not harness-specific deny
-rules (those need extra setup per agent and are out of scope here).
-Saving `results/<run-id>/session-transcript.txt` when the harness can
-capture it is the main optional upgrade.
+## Review and adjudication
 
-## Skills (optional, recommended)
+Reviewer scores never replace or average with primary scores. `agree` means the
+primary score is within a reasonable one-point calibration band. `disagree`
+requires specific evidence and a proposed score at least two points away.
 
-Three agent skills ship with the repo under `.agents/skills/` (the
-cross-harness Agent Skills layout):
+Effective score precedence is adjudication, then primary. Unresolved
+non-reasoning disputes make ability provisional; a reasoning-only dispute makes
+only Worklog quality provisional. Every review preserves an independent
+reviewer score for reliability analysis. The report preserves primary, reviewer,
+adjudicator, and effective values. Metajudging diagnoses patterns but never
+changes a score.
 
-- **running-the-benchmark** — runner role: open `RUN.md` first; enforce
-  the reading allowlist (no README/JUDGE/rubrics/tiers); suite choice
-  (prefer Core for personal picks); meta.json + REASONING discipline.
-- **judging-benchmark-results** — judge role: open `JUDGE.md` first;
-  score blind on re-judge; execute objective checks; finish judgments +
-  `data.js` + `validate.js`; note provisional Core/Extended coverage.
-- **generating-parallel-tests** — author role only: open `AUTHOR.md`
-  first; key-before-prose; both-direction verify; canary-audit; parallels
-  stay Full-only (never Core/Extended); independent review gate.
+## Data and layout
 
-**Install:**
+`report/data.js` uses `window.BENCH_DATA` schema version 2. It persists only raw
+scores, comments, reasoning summaries, integrity fields, reviews,
+adjudications, and run metadata. Totals, statuses, coverage, domains, and
+aggregates are always derived.
 
-- **Harnesses that support Agent Skills** (`.agents/skills/` project
-  discovery): nothing to do when working inside this repo.
-- **Claude Code:** recent versions discover `.agents/skills/`
-  automatically; if yours doesn't, copy into the Claude layout —
-  project: `cp -r .agents/skills/* .claude/skills/`, or global:
-  `cp -r .agents/skills/running-the-benchmark ~/.claude/skills/`.
-- **Anything else:** paste the relevant SKILL.md body into the
-  session's context before starting; the protocols also work bare
-  (RUN.md / JUDGE.md are self-contained), the skills just make role
-  hygiene automatic.
-
-Skill files are on the runner's reading allowlist; never put scoring
-information in them.
-
-## Health checks (optional)
-
-From the repo root:
-
-```
-node tools/validate.js              # structure, tiers, data.js, orphans
-node tools/canary-audit.js          # canary uniqueness + leak invariant
-node tools/sync-tiers-to-report.js  # after editing tiers.json
+```text
+benchmark.json                   labels, domains, day suites, default suite
+tiers.json / TIERS.md            Core subset Extended subset Full ladder
+tests/<category>/<test-id>.md    runner-visible tasks
+rubrics/<test-id>.md             evaluator-only scoring criteria
+results/<run-id>/                runner outputs and required meta.json
+report/data.js                   schema-v2 raw evidence
+report/config.js                 generated benchmark configuration
+report/tests.js                  generated rubric/test metadata
+report/scoring.js                shared pure scoring implementation
+report/app.js / styles.css       static report rendering and presentation
+report/index.html                report markup and script loading
+report/judgments/<run-id>/       primary written judgments
+report/reviews/<run-id>/         optional second-pass evidence
+report/adjudications/<run-id>/   disputed-criterion resolutions
 ```
 
-Map design notes (gap-closure roster): see
-`docs/superpowers/specs/2026-07-09-gap-closure-roster.md` and `TIERS.md`.
+## Integrity
 
-## Contributing
+Hard evidence such as a leaked rubric canary, forbidden files in the runner's
+manifest, or writes outside the run folder invalidates the affected test. Soft
+evidence flags a result but does not silently alter its score. Runners must save
+the harness transcript when available, or an explicit unavailable stub when it
+is not; this is required audit evidence, not an optional extra.
 
-See `CONTRIBUTING.md`. Short version: keep runner/judge/author roles
-separate, run `node tools/validate.js` and `node tools/canary-audit.js`
-before PRs, and prefer Extended over Core inflation for new depth.
+## Project skills
 
-## Adding a test
+Skills under `.agents/skills/` cover running, judging, reviewing through the
+protocol, adjudicating disputes, and minting parallel forms. Runner sessions
+must never read evaluator protocols, rubrics, reports, or design docs.
 
-1. Add `tests/<category>/<test-id>.md` (frontmatter: id, category, title,
-   deliverables; body: Task / Deliverables / Constraints).
-2. Add `rubrics/<test-id>.md` with a fresh unique canary phrase —
-   consult and update the canary registry in
-   `docs/superpowers/specs/2026-07-04-canary-registry.md` first.
-3. Mirror the criteria in the `TESTS` config block at the top of the
-   script in `report/index.html`.
+## Health and calibration
 
-House-style note: several tests deliberately reuse trap motifs (a
-superseded item that must be excluded, a decoy that must NOT be
-flagged, a stated total contradicting its own components). When adding
-tests, vary or invert these motifs occasionally so a kit-aware model
-can't game the pattern.
+Run from the repository root:
 
-To add a *parallel form* of an existing test (same construct, fresh
-surface — used for multi-run evaluation of a single facet), follow
-`AUTHOR.md` instead: it covers the form-id convention (`story-01b-…`),
-the equivalence contract, canary minting (`node tools/canary-audit.js`
-verifies), and the independent review gate.
+```text
+node tools/sync-config.js         # regenerate RUN.md suite block + report/config.js
+node --test                       # dependency-free test suite
+node tools/validate.js            # structure, config, schema, coverage, reviews
+node tools/canary-audit.js        # canary uniqueness and leak invariant
+node tools/calibrate.js           # read-only empirical diagnostics
+node tools/browser-qa.js          # responsive/static browser matrix + screenshots
+```
+
+`node tools/sync-tiers-to-report.js` remains a compatibility wrapper around
+`sync-config.js`. Calibration defaults to all valid data, writes nothing, and
+reports insufficient evidence until at least five comparable runs exist. It
+only recommends `keep`, `review`, or `harden`; it never edits tests, rubrics,
+tiers, or canaries.
+
+## Contributing and adding tests
+
+See `CONTRIBUTING.md` and `AUTHOR.md`. For a new base test:
+
+1. Add `tests/<category>/<test-id>.md` and `rubrics/<test-id>.md` with a unique
+   canary registered in the canary registry.
+2. Run `node tools/gen-tests.js`; never hand-edit generated report metadata.
+3. If configuration changed, edit `benchmark.json` or `tiers.json` as
+   appropriate and run `node tools/sync-config.js`.
+4. Run the full health checks above.
+
+Map design notes: `docs/superpowers/specs/2026-07-09-gap-closure-roster.md`.

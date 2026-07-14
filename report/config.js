@@ -1,0 +1,608 @@
+window.BENCH_CONFIG = {
+  "schemaVersion": 1,
+  "defaultSuite": "core",
+  "categories": [
+    {
+      "id": "coding",
+      "label": "Coding"
+    },
+    {
+      "id": "debugging",
+      "label": "Debugging"
+    },
+    {
+      "id": "writing",
+      "label": "Writing"
+    },
+    {
+      "id": "planning-reasoning",
+      "label": "Planning & Reasoning"
+    },
+    {
+      "id": "data-analysis",
+      "label": "Data Analysis"
+    },
+    {
+      "id": "instruction-following",
+      "label": "Instruction Following"
+    },
+    {
+      "id": "creative-visual",
+      "label": "Creative Visual"
+    },
+    {
+      "id": "game-design",
+      "label": "Game Design"
+    },
+    {
+      "id": "business-planning",
+      "label": "Business Planning"
+    },
+    {
+      "id": "math-logic",
+      "label": "Math & Logic"
+    },
+    {
+      "id": "long-context",
+      "label": "Long Context"
+    },
+    {
+      "id": "research-synthesis",
+      "label": "Research Synthesis"
+    },
+    {
+      "id": "professional-judgment",
+      "label": "Professional Judgment"
+    },
+    {
+      "id": "cybersecurity",
+      "label": "Cybersecurity"
+    },
+    {
+      "id": "reverse-engineering",
+      "label": "Reverse Engineering"
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility"
+    },
+    {
+      "id": "algorithmic-complexity",
+      "label": "Algorithmic Complexity"
+    },
+    {
+      "id": "api-documentation",
+      "label": "API Documentation"
+    },
+    {
+      "id": "calibration",
+      "label": "Calibration"
+    },
+    {
+      "id": "causal-reasoning",
+      "label": "Causal Reasoning"
+    },
+    {
+      "id": "copyediting",
+      "label": "Copyediting"
+    },
+    {
+      "id": "data-storytelling",
+      "label": "Data Storytelling"
+    },
+    {
+      "id": "formal-patterns",
+      "label": "Formal Patterns"
+    },
+    {
+      "id": "prompt-injection",
+      "label": "Prompt Injection"
+    },
+    {
+      "id": "reasoning-audit",
+      "label": "Reasoning Audit"
+    },
+    {
+      "id": "sql-reasoning",
+      "label": "SQL Reasoning"
+    },
+    {
+      "id": "structured-extraction",
+      "label": "Structured Extraction"
+    },
+    {
+      "id": "temporal-scheduling",
+      "label": "Temporal Scheduling"
+    },
+    {
+      "id": "theory-of-mind",
+      "label": "Theory of Mind"
+    },
+    {
+      "id": "transcript-synthesis",
+      "label": "Transcript Synthesis"
+    },
+    {
+      "id": "ux-copy",
+      "label": "UX Copy"
+    },
+    {
+      "id": "agentic-coding",
+      "label": "Agentic Coding"
+    },
+    {
+      "id": "ops",
+      "label": "Ops & Tooling"
+    },
+    {
+      "id": "safety",
+      "label": "Safety Judgment"
+    },
+    {
+      "id": "support-inbox",
+      "label": "Support Inbox"
+    },
+    {
+      "id": "critical-reading",
+      "label": "Critical Reading"
+    },
+    {
+      "id": "teaching",
+      "label": "Teaching & Handoff"
+    },
+    {
+      "id": "ux-critique",
+      "label": "UX Critique"
+    },
+    {
+      "id": "copywriting",
+      "label": "Copywriting"
+    },
+    {
+      "id": "ambiguity",
+      "label": "Ambiguity Discipline"
+    }
+  ],
+  "domains": [
+    {
+      "id": "software-agents",
+      "label": "Software & Agents",
+      "categories": [
+        "coding",
+        "debugging",
+        "agentic-coding",
+        "reverse-engineering",
+        "algorithmic-complexity",
+        "sql-reasoning",
+        "api-documentation"
+      ]
+    },
+    {
+      "id": "reasoning-analysis",
+      "label": "Reasoning & Analysis",
+      "categories": [
+        "math-logic",
+        "formal-patterns",
+        "causal-reasoning",
+        "reasoning-audit",
+        "temporal-scheduling",
+        "theory-of-mind",
+        "structured-extraction",
+        "critical-reading"
+      ]
+    },
+    {
+      "id": "data-research",
+      "label": "Data & Research",
+      "categories": [
+        "data-analysis",
+        "data-storytelling",
+        "long-context",
+        "research-synthesis",
+        "transcript-synthesis",
+        "calibration"
+      ]
+    },
+    {
+      "id": "writing-communication",
+      "label": "Writing & Communication",
+      "categories": [
+        "writing",
+        "copyediting",
+        "ux-copy",
+        "copywriting",
+        "teaching",
+        "support-inbox"
+      ]
+    },
+    {
+      "id": "product-business",
+      "label": "Product & Business",
+      "categories": [
+        "planning-reasoning",
+        "business-planning",
+        "professional-judgment",
+        "ambiguity",
+        "ux-critique"
+      ]
+    },
+    {
+      "id": "creative-experience",
+      "label": "Creative & Experience",
+      "categories": [
+        "creative-visual",
+        "game-design",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "safety-security",
+      "label": "Safety & Security",
+      "categories": [
+        "safety",
+        "cybersecurity",
+        "prompt-injection"
+      ]
+    },
+    {
+      "id": "operations-precision",
+      "label": "Operations & Precision",
+      "categories": [
+        "ops",
+        "instruction-following"
+      ]
+    }
+  ],
+  "suites": {
+    "core": [
+      "coding-01-edge-cases",
+      "debug-01-root-cause",
+      "writing-02-registers",
+      "planning-01-tradeoff",
+      "data-02-decision-metrics",
+      "precision-01-exact-format",
+      "creative-02-css-scene",
+      "game-02-card-ruleset",
+      "business-02-pricing",
+      "logic-02-wrenmarket-stalls",
+      "context-02-changelog-tally",
+      "research-02-conflict-brief",
+      "judgment-02-policy-conflict-memo",
+      "security-02-decoy-triage",
+      "reverse-01-tangled-tag",
+      "sql-01-join-cardinality",
+      "pat-01-ipv4-octet",
+      "cplx-01-loop-triangular",
+      "extr-01-receipt-fields",
+      "edit-01-style-card",
+      "tom-01-sally-anne",
+      "inj-01-ticket-summarizer-override",
+      "sched-01-earliest-finish-dag",
+      "causal-01-garden-dag",
+      "audit-01-aquifer-recharge-calculation",
+      "a11y-01-thornbury-signup",
+      "agent-02-minimal-diff",
+      "ambig-01-underspec-checkout",
+      "apidoc-01-paginate-reference",
+      "calib-01-triage-dossier",
+      "copy-01-homepage-from-brand-sheet",
+      "ops-01-git-conflict",
+      "story-01-absolute-vs-rate",
+      "support-01-triage-batch",
+      "teach-01-junior-handoff",
+      "txsyn-01-decision-reversal",
+      "uxcopy-01-quatrefoil-latch",
+      "uxcrit-01-flow-critique",
+      "safety-03-sycophancy",
+      "critical-01-methods-limit"
+    ],
+    "extended": [
+      "coding-01-edge-cases",
+      "debug-01-root-cause",
+      "writing-02-registers",
+      "planning-01-tradeoff",
+      "data-02-decision-metrics",
+      "precision-01-exact-format",
+      "creative-02-css-scene",
+      "game-02-card-ruleset",
+      "business-02-pricing",
+      "logic-02-wrenmarket-stalls",
+      "context-02-changelog-tally",
+      "research-02-conflict-brief",
+      "judgment-02-policy-conflict-memo",
+      "security-02-decoy-triage",
+      "reverse-01-tangled-tag",
+      "sql-01-join-cardinality",
+      "pat-01-ipv4-octet",
+      "cplx-01-loop-triangular",
+      "extr-01-receipt-fields",
+      "edit-01-style-card",
+      "tom-01-sally-anne",
+      "inj-01-ticket-summarizer-override",
+      "sched-01-earliest-finish-dag",
+      "causal-01-garden-dag",
+      "audit-01-aquifer-recharge-calculation",
+      "a11y-01-thornbury-signup",
+      "agent-02-minimal-diff",
+      "ambig-01-underspec-checkout",
+      "apidoc-01-paginate-reference",
+      "calib-01-triage-dossier",
+      "copy-01-homepage-from-brand-sheet",
+      "ops-01-git-conflict",
+      "story-01-absolute-vs-rate",
+      "support-01-triage-batch",
+      "teach-01-junior-handoff",
+      "txsyn-01-decision-reversal",
+      "uxcopy-01-quatrefoil-latch",
+      "uxcrit-01-flow-critique",
+      "safety-03-sycophancy",
+      "critical-01-methods-limit",
+      "coding-02-refactor",
+      "coding-03-checksum-spec",
+      "debug-02-regression",
+      "debug-03-stack-trace",
+      "reverse-02-capsule-log",
+      "sql-02-null-three-valued",
+      "sql-03-group-having-filter",
+      "apidoc-02-reserve-endpoint",
+      "a11y-02-mossgill-report",
+      "pat-02-sable-tag-regex",
+      "cplx-02-linear-dedupe",
+      "security-01-guestbook-fix",
+      "security-03-authlog-stuffing",
+      "agent-01-multi-file-fix",
+      "agent-03-tests-until-green",
+      "agent-04-pr-review",
+      "ops-02-ci-log-triage",
+      "ops-03-node-pipeline",
+      "support-02-policy-reply",
+      "writing-01-explainer",
+      "edit-02-consistency-pass",
+      "uxcopy-02-saltire-pennant",
+      "txsyn-02-commitment-discrimination",
+      "story-02-simpsons-reversal",
+      "precision-02-constrained-piece",
+      "data-01-anomaly",
+      "data-03-segment-paradox",
+      "research-01-attribution",
+      "research-03-evidence-grading",
+      "judgment-01-client-reply",
+      "judgment-04-pushback-cherry-pick",
+      "calib-02-computable-or-missing",
+      "extr-02-invoice-nested",
+      "context-03-contradictions",
+      "critical-02-chart-lie",
+      "critical-03-confound",
+      "logic-03-token-pouch",
+      "tom-02-asymmetry-nest",
+      "causal-02-berkson-admissions",
+      "sched-02-cross-zone-meeting-window",
+      "audit-03-syllogistic-deduction-validity",
+      "planning-02-estimate",
+      "planning-11-vague-brief",
+      "planning-12-kill-feature",
+      "business-03-runway",
+      "business-10-metric-game",
+      "creative-01-svg-poster",
+      "game-01-microgame",
+      "game-03-balance-patch",
+      "safety-01-over-refusal",
+      "safety-02-under-caution",
+      "safety-04-uncertain-api",
+      "inj-02-triage-queue-over-refusal-trap",
+      "calib-03-confidence-abstention",
+      "calib-04-false-premise",
+      "judgment-08-find-the-landmine",
+      "judgment-09-decide-with-holes",
+      "context-05-grounded-summary",
+      "context-08-absence-check",
+      "research-05-insufficient-evidence",
+      "writing-11-ghostwriter-voice-fingerprint",
+      "writing-09-steelman-memo",
+      "agent-05-yagni-fix",
+      "debug-09-reproduce-then-fix",
+      "planning-04-plan-repair",
+      "a11y-03-quillfen-contrast",
+      "a11y-04-sedgemoor-widgets",
+      "support-03-escalation-note",
+      "support-04-macro-edit",
+      "ops-04-env-config",
+      "writing-03-localization",
+      "inj-03-obfuscated-multi-vector-payloads",
+      "ambig-02-scope-creep-pushback",
+      "agent-06-repair-from-feedback",
+      "agent-07-fixture-tree-bug",
+      "agent-08-pr-body-matches-diff",
+      "agent-09-deprecate-api-call-sites",
+      "research-10-claims-from-sources-only",
+      "judgment-12-llm-draft-landmines",
+      "safety-05-redact-support-packet",
+      "copy-02-ad-set-three-lengths",
+      "copy-03-nurture-email",
+      "critical-04-abs-vs-rel",
+      "ops-05-incident-narrative"
+    ],
+    "full": null,
+    "coding-day": [
+      "coding-01-edge-cases",
+      "coding-02-refactor",
+      "debug-01-root-cause",
+      "debug-02-regression",
+      "reverse-01-tangled-tag",
+      "sql-01-join-cardinality",
+      "apidoc-01-paginate-reference",
+      "a11y-01-thornbury-signup",
+      "pat-01-ipv4-octet",
+      "cplx-01-loop-triangular",
+      "agent-09-deprecate-api-call-sites",
+      "debug-09-reproduce-then-fix"
+    ],
+    "agent-day": [
+      "agent-01-multi-file-fix",
+      "agent-02-minimal-diff",
+      "agent-03-tests-until-green",
+      "agent-04-pr-review",
+      "agent-05-yagni-fix",
+      "debug-01-root-cause",
+      "reverse-01-tangled-tag",
+      "precision-01-exact-format",
+      "inj-01-ticket-summarizer-override",
+      "debug-09-reproduce-then-fix",
+      "agent-06-repair-from-feedback",
+      "agent-07-fixture-tree-bug",
+      "agent-08-pr-body-matches-diff",
+      "agent-09-deprecate-api-call-sites",
+      "judgment-12-llm-draft-landmines",
+      "ambig-01-underspec-checkout"
+    ],
+    "writing-comms": [
+      "writing-02-registers",
+      "writing-01-explainer",
+      "edit-01-style-card",
+      "uxcopy-01-quatrefoil-latch",
+      "story-01-absolute-vs-rate",
+      "txsyn-01-decision-reversal",
+      "judgment-01-client-reply",
+      "judgment-02-policy-conflict-memo",
+      "writing-09-steelman-memo",
+      "writing-11-ghostwriter-voice-fingerprint",
+      "writing-03-localization",
+      "copy-01-homepage-from-brand-sheet",
+      "copy-02-ad-set-three-lengths",
+      "copy-03-nurture-email"
+    ],
+    "analyst": [
+      "data-02-decision-metrics",
+      "research-02-conflict-brief",
+      "calib-01-triage-dossier",
+      "audit-01-aquifer-recharge-calculation",
+      "causal-01-garden-dag",
+      "context-02-changelog-tally",
+      "extr-01-receipt-fields",
+      "data-01-anomaly",
+      "critical-01-methods-limit",
+      "calib-03-confidence-abstention",
+      "calib-04-false-premise",
+      "research-05-insufficient-evidence",
+      "context-05-grounded-summary",
+      "context-08-absence-check",
+      "research-10-claims-from-sources-only"
+    ],
+    "product-day": [
+      "planning-01-tradeoff",
+      "business-02-pricing",
+      "judgment-02-policy-conflict-memo",
+      "data-02-decision-metrics",
+      "story-01-absolute-vs-rate",
+      "planning-11-vague-brief",
+      "planning-12-kill-feature",
+      "business-10-metric-game",
+      "planning-04-plan-repair",
+      "judgment-09-decide-with-holes",
+      "ambig-01-underspec-checkout",
+      "ambig-02-scope-creep-pushback"
+    ],
+    "safety-day": [
+      "inj-01-ticket-summarizer-override",
+      "security-02-decoy-triage",
+      "calib-01-triage-dossier",
+      "judgment-04-pushback-cherry-pick",
+      "safety-01-over-refusal",
+      "safety-02-under-caution",
+      "safety-03-sycophancy",
+      "safety-04-uncertain-api",
+      "safety-05-redact-support-packet",
+      "inj-03-obfuscated-multi-vector-payloads"
+    ],
+    "ops-day": [
+      "ops-01-git-conflict",
+      "ops-02-ci-log-triage",
+      "ops-03-node-pipeline",
+      "ops-04-env-config",
+      "sched-01-earliest-finish-dag",
+      "reverse-01-tangled-tag",
+      "precision-01-exact-format",
+      "security-02-decoy-triage",
+      "ops-05-incident-narrative"
+    ],
+    "support-day": [
+      "support-01-triage-batch",
+      "support-02-policy-reply",
+      "support-03-escalation-note",
+      "support-04-macro-edit",
+      "judgment-01-client-reply",
+      "uxcopy-01-quatrefoil-latch",
+      "safety-05-redact-support-packet"
+    ],
+    "copy-day": [
+      "copy-01-homepage-from-brand-sheet",
+      "copy-02-ad-set-three-lengths",
+      "copy-03-nurture-email",
+      "uxcopy-01-quatrefoil-latch",
+      "uxcopy-02-saltire-pennant",
+      "writing-02-registers",
+      "writing-09-steelman-memo",
+      "edit-01-style-card",
+      "edit-02-consistency-pass",
+      "a11y-01-thornbury-signup",
+      "uxcrit-01-flow-critique"
+    ],
+    "critical-day": [
+      "critical-01-methods-limit",
+      "critical-02-chart-lie",
+      "critical-03-confound",
+      "critical-04-abs-vs-rel",
+      "story-01-absolute-vs-rate",
+      "calib-01-triage-dossier",
+      "research-02-conflict-brief",
+      "context-05-grounded-summary",
+      "research-05-insufficient-evidence",
+      "research-10-claims-from-sources-only"
+    ],
+    "designer-day": [
+      "creative-01-svg-poster",
+      "creative-02-css-scene",
+      "creative-04-data-infographic",
+      "creative-07-compositional-scene",
+      "game-01-microgame",
+      "game-02-card-ruleset",
+      "uxcopy-01-quatrefoil-latch",
+      "uxcopy-02-saltire-pennant",
+      "uxcrit-01-flow-critique",
+      "a11y-01-thornbury-signup",
+      "a11y-02-mossgill-report",
+      "edit-01-style-card",
+      "edit-02-consistency-pass"
+    ],
+    "research-day": [
+      "critical-01-methods-limit",
+      "critical-02-chart-lie",
+      "critical-03-confound",
+      "critical-04-abs-vs-rel",
+      "calib-01-triage-dossier",
+      "calib-03-confidence-abstention",
+      "calib-04-false-premise",
+      "causal-01-garden-dag",
+      "causal-02-berkson-admissions",
+      "research-02-conflict-brief",
+      "research-05-insufficient-evidence",
+      "research-10-claims-from-sources-only",
+      "audit-01-aquifer-recharge-calculation",
+      "audit-03-syllogistic-deduction-validity"
+    ],
+    "policy-day": [
+      "judgment-01-client-reply",
+      "judgment-02-policy-conflict-memo",
+      "judgment-04-pushback-cherry-pick",
+      "judgment-08-find-the-landmine",
+      "judgment-09-decide-with-holes",
+      "judgment-12-llm-draft-landmines",
+      "ambig-01-underspec-checkout",
+      "ambig-02-scope-creep-pushback",
+      "safety-01-over-refusal",
+      "safety-02-under-caution",
+      "safety-03-sycophancy",
+      "critical-01-methods-limit"
+    ]
+  }
+};

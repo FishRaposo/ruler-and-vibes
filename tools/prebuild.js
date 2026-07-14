@@ -7,10 +7,21 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const { CURRENT_SCHEMA_VERSION, parseDataSource, resolveSuite, initialRunMap } = require('./lib/bench-data.js');
 
 const REPO = path.resolve(__dirname, '..');
 const DATA_PATH = path.join(REPO, 'report', 'data.js');
 const RESULTS_DIR = path.join(REPO, 'results');
+const benchmarkConfig = JSON.parse(fs.readFileSync(path.join(REPO, 'benchmark.json'), 'utf8'));
+const suiteConfig = {
+  defaultSuite: benchmarkConfig.defaultSuite,
+  suites: {
+    core: true,
+    extended: true,
+    full: null,
+    ...benchmarkConfig.daySuites,
+  },
+};
 
 // =========== parse rubrics ===========
 // rubrics[testId] = { objIds: [id,...], subIds: [id,...], weights, canary }
@@ -38,12 +49,14 @@ for (const f of fs.readdirSync(path.join(REPO, 'rubrics'))) {
 console.log('prebuild: ' + Object.keys(rubrics).length + ' rubrics parsed');
 
 // =========== load existing data.js ===========
-let existing = { updated: new Date().toISOString().slice(0, 10), runs: {} };
+let existing = { schemaVersion: CURRENT_SCHEMA_VERSION, updated: new Date().toISOString().slice(0, 10), runs: {} };
 try {
   const raw = fs.readFileSync(DATA_PATH, 'utf8');
-  const m = raw.match(/window\.BENCH_DATA\s*=\s*([\s\S]*?);?\s*$/);
-  if (m) try { existing = eval('(' + m[1] + ')'); } catch (e) { console.warn('prebuild: could not parse existing data.js — starting fresh'); }
-} catch (e) { console.warn('prebuild: no existing data.js — starting fresh'); }
+  existing = parseDataSource(raw);
+} catch (e) {
+  if (e.code === 'ENOENT') console.warn('prebuild: no existing data.js — starting fresh');
+  else throw new Error(`prebuild: existing data.js is invalid; refusing to overwrite (${e.message})`);
+}
 
 // =========== discover runs from results/ ===========
 const argsRuns = process.argv.includes('--runs');
@@ -56,8 +69,19 @@ if (fs.existsSync(RESULTS_DIR)) {
     if (fs.existsSync(mp)) {
       try {
         const meta = JSON.parse(fs.readFileSync(mp, 'utf8'));
-        discoveredRuns.push({ id: d, model: meta.model || null, effort: meta.effort || 'unspecified', harness: meta.harness || 'unspecified', date: meta.date || '' });
-      } catch (e) { console.warn('prebuild: bad meta.json in ' + d); }
+        discoveredRuns.push({
+          id: d,
+          model: meta.model || null,
+          effort: meta.effort || 'unspecified',
+          harness: meta.harness || 'unspecified',
+          date: meta.date || '',
+          suite: resolveSuite(meta.suite, suiteConfig),
+          wall_time_min: typeof meta.wall_time_min === 'number' ? meta.wall_time_min : null,
+          approx_cost_usd: typeof meta.approx_cost_usd === 'number' ? meta.approx_cost_usd : null,
+          notes: typeof meta.notes === 'string' ? meta.notes : '',
+          consistency_pair: meta.consistency_pair || null,
+        });
+      } catch (e) { throw new Error('prebuild: bad meta.json in ' + d + ' (' + e.message + ')'); }
     }
   }
 }
@@ -148,6 +172,7 @@ function mergeSkeleton(tid, existingTest) {
 
   // Keep reviews if present
   if (existingTest.reviews) skel.reviews = existingTest.reviews;
+  if (existingTest.adjudications) skel.adjudications = existingTest.adjudications;
 
   return skel;
 }
@@ -176,7 +201,11 @@ function runAttemptedTests(runId) {
 }
 
 // =========== build the output ===========
-const output = { updated: existing.updated || new Date().toISOString().slice(0, 10), runs: {} };
+const output = {
+  schemaVersion: CURRENT_SCHEMA_VERSION,
+  updated: existing.updated || new Date().toISOString().slice(0, 10),
+  runs: initialRunMap(existing.runs, requestedRuns),
+};
 
 for (const dr of includeRuns) {
   const existingRun = existing.runs?.[dr.id] || {};
@@ -186,10 +215,17 @@ for (const dr of includeRuns) {
     effort: dr.effort || existingRun.effort || 'unspecified',
     harness: dr.harness || existingRun.harness || 'unspecified',
     date: dr.date || existingRun.date || '',
+    suite: dr.suite || existingRun.suite || 'core',
+    wall_time_min: dr.wall_time_min ?? existingRun.wall_time_min ?? null,
+    approx_cost_usd: dr.approx_cost_usd ?? existingRun.approx_cost_usd ?? null,
+    notes: dr.notes || existingRun.notes || '',
+    consistency_pair: dr.consistency_pair || existingRun.consistency_pair || null,
     judgedBy: existingRun.judgedBy || null,
     judgedOn: existingRun.judgedOn || null,
     reviewedBy: existingRun.reviewedBy || null,
     reviewedOn: existingRun.reviewedOn || null,
+    metajudgedBy: existingRun.metajudgedBy || null,
+    metajudgedOn: existingRun.metajudgedOn || null,
     tests: {},
   };
 

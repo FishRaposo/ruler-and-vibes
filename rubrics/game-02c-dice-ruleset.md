@@ -26,9 +26,9 @@ criteria:
       weight: 0.3
 anchors:
   - id: Design depth
-    0: Misattributes the cause or stops at the symptom.
-    5: Names the right area but misses a contributing root cause.
-    10: Names every distinct root cause precisely and proves each.
+    0: Purely procedural or solved-solution; no real player decisions with tension or trade-offs.
+    5: Has one or two interesting decision points, but other aspects are trivial or deterministic.
+    10: Every phase of play creates real, tense decisions; multiple viable strategies co-exist.
   - id: Rules clarity & completeness
     0: Hard to follow: inconsistent structure, obscure naming, or noise that hides the answer.
     5: Understandable but verbose or uneven; some naming/structure could be tighter.

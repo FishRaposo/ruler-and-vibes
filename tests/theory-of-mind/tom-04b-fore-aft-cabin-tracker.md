@@ -4,6 +4,7 @@ category: theory-of-mind
 title: Fore-and-aft cabin instrument epistemic tracker
 deliverables:
   - beliefs.md
+  - REASONING.md
 ---
 
 ## Task

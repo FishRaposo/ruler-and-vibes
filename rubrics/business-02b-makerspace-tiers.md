@@ -119,7 +119,7 @@ collapsing them into a single "the market," fails.
 
 ### obj-4 — Word count
 
-Count the words in `membership.md`. PASS if ≤ 700. FAIL if > 700.
+Count the words in `pricing.md`. PASS if ≤ 700. FAIL if > 700.
 
 ### Subjective criteria
 

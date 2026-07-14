@@ -2,8 +2,8 @@
 test: copy-02b-ad-set-packmule
 canary: "gannet toggle"
 weights:
-  objective: 0.6
-  subjective: 0.4
+  objective: 0.5
+  subjective: 0.5
 criteria:
   objective:
     - id: obj-1

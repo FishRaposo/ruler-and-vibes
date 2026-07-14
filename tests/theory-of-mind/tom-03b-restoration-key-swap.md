@@ -4,6 +4,7 @@ category: theory-of-mind
 title: Copper key deception belief divergence
 deliverables:
   - beliefs.md
+  - REASONING.md
 ---
 
 ## Task

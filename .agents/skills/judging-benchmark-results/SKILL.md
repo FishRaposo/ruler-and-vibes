@@ -20,6 +20,8 @@ the protocol cannot enforce by itself.
 - If asked for a **second-pass subjective review** only, that is
   `REVIEW.md` — different protocol; do not re-score objectives from
   scratch unless the user wants a full re-judge.
+- If asked to resolve an existing material disagreement, follow
+  `ADJUDICATE.md` and the `adjudicating-benchmark-results` skill instead.
 
 ## Score blind, then compare
 
@@ -42,7 +44,7 @@ Objective checks are **executed**, not eyeballed:
 
 ## Meta and suites
 
-- Missing/unreadable `meta.json` model/effort/harness: **ask the user**;
+- Missing/unreadable `meta.json` model/suite/effort/harness: **ask the user**;
   never guess before writing scores.
 - Copy optional `suite`, `wall_time_min`, `approx_cost_usd`, `notes`,
   `consistency_pair` into `report/data.js` when present.
@@ -54,14 +56,20 @@ Objective checks are **executed**, not eyeballed:
 
 A judgment is not done until:
 
-1. `report/judgments/<run-id>/<test-id>.md` exists per scored test  
-2. `report/data.js` updated: raw criterion scores only (no computed
+1. `report/judgments/<run-id>/<test-id>.md` exists per scored test
+2. `report/data.js` remains schema version 2 and is updated with raw
+   criterion scores only (no computed
    totals), one-line `note`, per-criterion `comments`, faithful
    `reasoning` condensation of the **runner's** REASONING.md (not your
-   evaluation), integrity fields, top-level `updated` date  
-3. `node tools/validate.js` run; fix any issues you introduced  
+   evaluation), integrity fields, top-level `updated` date. Raw
+   `sub-reasoning` is reported as Worklog quality, separate from ability.
+3. `node tools/validate.js` run; fix any issues you introduced
 4. Final summary lists soft flags and every **INVALIDATED** test so the
-   user can re-run  
+   user can re-run
+
+Second-pass reviews follow `REVIEW.md` and always preserve the reviewer's
+independent 0–10 score for every verdict. Reviewer values are reliability
+evidence; they do not replace or average the primary score.
 
 Comment quality: every subjective comment names a **concrete,
 test-specific** detail. No boilerplate. No identical comments across

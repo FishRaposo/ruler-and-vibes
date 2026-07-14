@@ -35,8 +35,8 @@ skill only adds discipline the protocol cannot enforce alone.
   it) re-derives the key and signs off per AUTHOR.md. Do not use drafts
   in scored evaluation.
 - After authoring: unique canary, `tests/` + `rubrics/` files, registry
-  via `node tools/canary-audit.js`, `TESTS` entry in `report/index.html`
-  (mirror source structure). Run `node tools/validate.js` clean.
+  via `node tools/canary-audit.js`, then regenerate `report/tests.js` with
+  `node tools/gen-tests.js`. Run `node tools/validate.js` clean.
 - Target multi-run depth is `RUNS_TARGET` (default 3) — a + b + c is the
   usual set; mint d+ only when needed.
 
@@ -56,8 +56,9 @@ cannot catch its violator is decoration — fix it before shipping.
 
 New domain, proper nouns, numbers, and canary. Zero reuse of the
 source's scenario vocabulary. Same construct, shape, weights, and
-**identical** subjective criterion names (including `Reasoning quality`)
-so facet medians stay meaningful.
+**identical** raw subjective criterion names (including `Reasoning quality`)
+so facet medians stay meaningful. The report exposes that raw criterion as
+Worklog quality and keeps it separate from ability.
 
 ## You don't review your own form
 

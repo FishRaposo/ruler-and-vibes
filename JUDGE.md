@@ -14,7 +14,7 @@ rubric — nothing else.
 
 1. Read `results/<run-id>/meta.json`. If missing or unreadable, ASK the
    user for the run's model/effort/harness — never guess — before
-   writing any scores.    Optional fields (`suite`, `wall_time_min`,
+   writing any scores. Copy required `suite` and optional fields (`wall_time_min`,
    `approx_cost_usd`, `notes`, `consistency_pair`) should be copied into
    `report/data.js` when present so the report can show practical
    cost/time context. Per-test `timing.json` files are informational
@@ -48,10 +48,10 @@ rubric — nothing else.
 
 ## Per test in the run
 
-3. Read the test file (`tests/*/<test-id>.md`), the deliverables,
+4. Read the test file (`tests/*/<test-id>.md`), the deliverables,
    `REASONING.md`, and `rubrics/<test-id>.md` — some rubric checks
    reference facts or numbers defined only in the test file.
-4. **Integrity check**, before scoring:
+5. **Integrity check**, before scoring:
    - **Manifest:** the `## Files read` section lists anything outside
      `RUN.md`, `tests/`, the run's own `results/<run-id>/` folder, and
      skill folders (`.agents/skills/`, `.claude/skills/`) — including
@@ -66,11 +66,11 @@ rubric — nothing else.
      is organized around criterion names, or the manifest is implausibly
      clean for the work shown.
    - Missing `## Files read` section entirely → SOFT flag
-     ("unverifiable"), and count it against the Reasoning quality
-     criterion.
+     ("unverifiable"), and count it against `sub-reasoning` (reported
+     separately as **Worklog quality**).
    - HARD → record the test as invalidated with the evidence; do not
      score it. SOFT → note it; score normally.
-5. **Score** (skip if invalidated):
+6. **Score** (skip if invalidated):
    - Each objective check: pass = 10 / fail = 0, with one line of
      evidence. Actually verify — run JS files with `node`, open HTML/SVG
      files, count words when a rubric sets a limit. Word counts are
@@ -83,10 +83,10 @@ rubric — nothing else.
      becomes 0).
    - Missing `REASONING.md` → `sub-reasoning` = 0; score the rest
      normally.
-6. Write the full judgment to `report/judgments/<run-id>/<test-id>.md`
+7. Write the full judgment to `report/judgments/<run-id>/<test-id>.md`
    using the template at the bottom of this file.
-7. Update `report/data.js` (format below): add or replace this run's
-   entry, and set the top-level `updated` field to today's date. Store
+8. Update `report/data.js` (format below): add or replace this run's
+   entry, keep top-level `schemaVersion: 2`, and set `updated` to today's date. Store
    only raw criterion scores, notes, per-criterion comments, and
    integrity fields — never computed totals; the report page does that
    math. Every scored test gets a one-line `note` and a `comments` map
@@ -100,6 +100,10 @@ rubric — nothing else.
    voice. Do NOT evaluate there — your judgment belongs in `comments`;
    `reasoning` is a faithful summary of what the model said about its
    own work, so the report can show both sides.
+
+   Keep scoring `sub-reasoning` exactly as the rubric requires. The report
+   aggregates it separately as **Worklog quality** and excludes it from
+   objective/subjective ability totals.
 
 ## Anti-bias rules
 
@@ -185,14 +189,15 @@ errors and boilerplate in review comments.
 
 ## data.js entry format
 
-`report/data.js` is a plain JS file defining `window.BENCH_DATA`. Add or
+`report/data.js` is a plain JS file defining `window.BENCH_DATA` with
+`schemaVersion: 2`. Add or
 replace `runs["<run-id>"]` like this (criterion ids come from the
 rubric):
 
 ```js
 "<run-id>": {
   model: "deepseek-v4", effort: "high", harness: "claude-code",
-  date: "2026-07-03",
+  date: "2026-07-03", suite: "core",
   judgedBy: "claude-fable-5", judgedOn: "2026-07-03",
   tests: {
     "coding-01-edge-cases": {
@@ -238,7 +243,7 @@ rubric):
 ## Subjective criteria
 - sub-quality (<name>): <n>/10 — <justification citing concrete evidence>
 - sub-craft (<name>): <n>/10 — <justification>
-- sub-reasoning (Reasoning quality): <n>/10 — <justification>
+- sub-reasoning (Reasoning quality / report-facing Worklog quality): <n>/10 — <justification>
 
 ## Verdict
 <one paragraph: overall quality, standout strengths, main weaknesses>

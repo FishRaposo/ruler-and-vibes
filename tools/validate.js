@@ -9,6 +9,12 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const {
+  CURRENT_SCHEMA_VERSION,
+  parseDataSource,
+  validScore,
+  validateReviewAdjudication,
+} = require('./lib/bench-data.js');
 
 const REPO = path.resolve(__dirname, '..');
 const strict = process.argv.includes('--strict');
@@ -112,36 +118,46 @@ testIdsInHTML = Object.keys(TESTS);
 console.log('validate: ' + testIdsInHTML.length + ' TESTS entries in report/tests.js');
 
 // =========== Check 0: SUITES.core / SUITES.extended match tiers.json ===========
-function extractSuiteArray(htmlSrc, key) {
-  // Match core:["..."] or "extended":["..."] or extended:["..."]
-  const re = new RegExp('(?:' + key + '|"' + key + '")\\s*:\\s*\\[([^\\]]*)\\]');
-  const m = htmlSrc.match(re);
-  if (!m) return null;
-  return [...m[1].matchAll(/"([^"]+)"/g)].map(x => x[1]);
-}
-// SUITES still live in index.html (sync-tiers-to-report.js keeps them in sync)
-const htmlPath = path.join(REPO, 'report', 'index.html');
-const html = fs.readFileSync(htmlPath, 'utf8');
-const htmlCore = extractSuiteArray(html, 'core');
-const htmlExt = extractSuiteArray(html, 'extended');
 function sameList(a, b) {
   if (!a || !b || a.length !== b.length) return false;
   for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
   return true;
 }
-if (!htmlCore) {
-  issues.push('TIERS: report/index.html missing SUITES.core array');
-} else if (!sameList(htmlCore, TIERS.tiers.core.tests)) {
-  issues.push('TIERS: SUITES.core in index.html does not match tiers.json (edit tiers.json then sync index.html)');
+let BENCHMARK = {};
+let REPORT_CONFIG = {};
+try {
+  BENCHMARK = JSON.parse(fs.readFileSync(path.join(REPO, 'benchmark.json'), 'utf8'));
+  const configRaw = fs.readFileSync(path.join(REPO, 'report', 'config.js'), 'utf8');
+  const match = configRaw.match(/window\.BENCH_CONFIG\s*=\s*([\s\S]*?);?\s*$/);
+  if (!match) throw new Error('window.BENCH_CONFIG assignment not found');
+  REPORT_CONFIG = eval('(' + match[1] + ')');
+} catch (e) {
+  issues.push('CONFIG: cannot parse benchmark.json/report/config.js — ' + e.message);
 }
-if (!htmlExt) {
-  issues.push('TIERS: report/index.html missing SUITES.extended array');
-} else if (!sameList(htmlExt, TIERS.tiers.extended.tests)) {
-  issues.push('TIERS: SUITES.extended in index.html does not match tiers.json');
+if (BENCHMARK.defaultSuite !== 'core' || REPORT_CONFIG.defaultSuite !== 'core') {
+  issues.push('CONFIG: default suite must be core');
+}
+if (!sameList(REPORT_CONFIG.suites && REPORT_CONFIG.suites.core, TIERS.tiers.core.tests)) {
+  issues.push('TIERS: report/config.js core suite does not match tiers.json (run tools/sync-config.js)');
+}
+if (!sameList(REPORT_CONFIG.suites && REPORT_CONFIG.suites.extended, TIERS.tiers.extended.tests)) {
+  issues.push('TIERS: report/config.js extended suite does not match tiers.json');
 }
 // Full is the open set (null / all tests) — ensure a full key exists
-if (!/\bfull\s*:\s*null\b/.test(html) && !/["']full["']\s*:\s*null/.test(html)) {
-  warnings.push('TIERS: report/index.html SUITES should define full:null (all forms view)');
+if (!REPORT_CONFIG.suites || REPORT_CONFIG.suites.full !== null) {
+  issues.push('TIERS: report/config.js full suite must be null (all forms)');
+}
+for (const [suite, ids] of Object.entries(BENCHMARK.daySuites || {})) {
+  if (!sameList(REPORT_CONFIG.suites && REPORT_CONFIG.suites[suite], ids)) {
+    issues.push('CONFIG: report/config.js ' + suite + ' suite does not match benchmark.json');
+  }
+}
+const configuredCategories = (BENCHMARK.categories || []).map(c => c.id).sort();
+const domainCategories = (BENCHMARK.domains || []).flatMap(d => d.categories || []).sort();
+if (configuredCategories.length !== new Set(configuredCategories).size
+  || domainCategories.length !== new Set(domainCategories).size
+  || !sameList(configuredCategories, domainCategories)) {
+  issues.push('CONFIG: every category must belong to exactly one domain');
 }
 // Every Core/Extended id must exist as a rubric
 for (const id of [...CORE, ...EXTENDED]) {
@@ -154,9 +170,10 @@ let dataRaw;
 try {
   const dataPath = path.join(REPO, 'report', 'data.js');
   dataRaw = fs.readFileSync(dataPath, 'utf8');
-  const match = dataRaw.match(/window\.BENCH_DATA\s*=\s*([\s\S]*?);?\s*$/);
-  if (match) BENCH = eval('(' + match[1] + ')');
-  else issues.push('DATA.JS: cannot parse window.BENCH_DATA');
+  BENCH = parseDataSource(dataRaw);
+  if (BENCH.schemaVersion !== CURRENT_SCHEMA_VERSION) {
+    issues.push('DATA.JS: schemaVersion must be ' + CURRENT_SCHEMA_VERSION);
+  }
 } catch (e) {
   issues.push('DATA.JS: syntax error — ' + e.message);
 }
@@ -255,6 +272,10 @@ for (const rid of runIds) {
   if (run.effort === undefined) issues.push('STRUCT: run "' + rid + '" missing "effort"');
   if (run.harness === undefined) issues.push('STRUCT: run "' + rid + '" missing "harness"');
   if (!run.date) issues.push('STRUCT: run "' + rid + '" missing "date"');
+  if (!run.suite) issues.push('STRUCT: run "' + rid + '" missing "suite"');
+  else if (run.suite !== 'ad-hoc' && !Object.prototype.hasOwnProperty.call(REPORT_CONFIG.suites || {}, run.suite)) {
+    issues.push('STRUCT: run "' + rid + '" has unknown suite "' + run.suite + '"');
+  }
   if (run.judgedBy === undefined) issues.push('STRUCT: run "' + rid + '" missing "judgedBy"');
   if (run.judgedOn === undefined) issues.push('STRUCT: run "' + rid + '" missing "judgedOn"');
   if (!run.tests || typeof run.tests !== 'object')
@@ -276,6 +297,17 @@ for (const rid of runIds) {
       issues.push('STRUCT: ' + rid + '/' + tid + ' missing "reasoning"');
     if (!t.reasoning || !("approach" in t.reasoning) || !('decisions' in t.reasoning) || !('limitations' in t.reasoning))
       issues.push('STRUCT: ' + rid + '/' + tid + ' "reasoning" missing approach/decisions/limitations');
+
+    for (const [criterionId, value] of Object.entries(t.objective || {})) {
+      if (!isSentinel(value) && value !== 0 && value !== 10) {
+        issues.push('STRUCT: ' + rid + '/' + tid + ' objective.' + criterionId + ' must be 0, 10, null, or "TODO"');
+      }
+    }
+    for (const [criterionId, value] of Object.entries(t.subjective || {})) {
+      if (!isSentinel(value) && !validScore(value)) {
+        issues.push('STRUCT: ' + rid + '/' + tid + ' subjective.' + criterionId + ' must be a score from 0 to 10, null, or "TODO"');
+      }
+    }
 
     // check criterion ids match rubric
     if (rubrics[tid] && t.objective) {
@@ -481,6 +513,15 @@ for (const rid of runIds) {
     const t = run.tests[tid];
     if (t.integrity === 'invalidated') continue;
     const reviews = t.reviews;
+    if (rubrics[tid] && (reviews || t.adjudications)) {
+      const adjudicationValidation = validateReviewAdjudication(
+        rid + '/' + tid,
+        t,
+        rubrics[tid].subIds,
+      );
+      issues.push(...adjudicationValidation.issues.map(message => 'ADJUDICATION: ' + message));
+      warnings.push(...adjudicationValidation.warnings.map(message => 'ADJUDICATION: ' + message));
+    }
     if (!reviews && hasReview) {
       warnings.push('REVIEW-GAP: ' + rid + '/' + tid + ' has run-level review but no test-level reviews');
       continue;
@@ -499,10 +540,8 @@ for (const rid of runIds) {
           issues.push('REVIEW: ' + rid + '/' + tid + '/' + subId + ' verdict must be "agree" or "disagree"');
         if (!rv.comment || typeof rv.comment !== 'string')
           issues.push('REVIEW: ' + rid + '/' + tid + '/' + subId + ' missing or empty "comment"');
-        if (rv.verdict === 'disagree' && (rv.score === undefined || typeof rv.score !== 'number'))
-          issues.push('REVIEW: ' + rid + '/' + tid + '/' + subId + ' disagree verdict must include numeric "score"');
-        if (rv.verdict === 'agree' && rv.score !== undefined)
-          warnings.push('REVIEW: ' + rid + '/' + tid + '/' + subId + ' agree verdict should not include "score" field');
+        if (!validScore(rv.score))
+          issues.push('REVIEW: ' + rid + '/' + tid + '/' + subId + ' verdict must include numeric "score" from 0 to 10');
       }
     }
   }
@@ -665,8 +704,7 @@ for (const rid of irrRuns) {
       const rv = t.reviews && t.reviews[sid];
       if (!rv) continue;
       const original = t.subjective && t.subjective[sid];
-      const reviewScore = rv.verdict === 'disagree' && typeof rv.score === 'number'
-        ? rv.score : original;
+      const reviewScore = rv.score;
       if (typeof original === 'number' && typeof reviewScore === 'number') {
         j1.push(original); j2.push(reviewScore);
       }

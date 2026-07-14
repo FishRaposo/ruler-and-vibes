@@ -35,10 +35,10 @@ works for your role.** That is not a license to explore the repo.
   open `tiers.json`).
 - If they name specific tests/categories, run only those; set
   `meta.json` `"suite"` to `ad-hoc` (or the name they gave).
-- If they say "benchmark me" / "run the kit" with no suite: **ask**
-  whether they want **Core** (default for personal picking), Extended,
-  Full, or a day suite. Do not silently start Full unless they clearly
-  want everything.
+- If they name an unknown suite, stop before creating `results/<run-id>/`.
+  Do not silently reinterpret an unknown suite as `ad-hoc`.
+- If they say "benchmark me" / "run the kit" with no suite, resolve it to
+  **Core**. Never infer Full; Full must be named explicitly.
 - Prefer **Core** for overall snapshot; Extended for a deeper map; Full
   only for item-bank / multi-form work. Day suites = one workflow.
 
@@ -48,16 +48,17 @@ works for your role.** That is not a license to explore the repo.
   `<model>--<effort>--<harness>`.
 - Write **only** under `results/<run-id>/`. Never touch `tests/`,
   `rubrics/`, `report/`, or other runs.
-- Write `meta.json` **first** (required `model`; suite/effort/harness
-  as known; optional cost/time/notes later).
+- Write `meta.json` **first** (required `model` and resolved `suite`;
+  effort/harness as known; optional cost/time/notes later).
 - Per test: exact deliverable filenames from the test file; plus
   `REASONING.md` with `## Approach`, `## Key decisions`,
   `## Trade-offs and limitations`, `## Files read` (every repo path
   you opened for that test, one per line).
 - `## Files read` honesty is graded. **Omission is worse than confession.**
 - Do **not** self-grade, guess rubrics, or speculate about scoring.
-- Optional but recommended: save `session-transcript.txt` in the run
-  folder if the harness can capture it.
+- Save `session-transcript.txt` when the harness can capture it. Otherwise
+  save an explicit unavailable stub in that file; the audit artifact is
+  required either way.
 - When finished: update `meta.json` wall time / cost if known; run the
   checklist at the bottom of `RUN.md`.
 
@@ -75,5 +76,6 @@ works for your role.** That is not a license to explore the repo.
 ## Done when
 
 Every assigned test has its deliverables + `REASONING.md` with a complete
-`## Files read`, `meta.json` is filled, and you stayed on the allowlist.
+`## Files read`, `meta.json` includes the resolved suite, the transcript or
+unavailable stub exists, and you stayed on the allowlist.
 Do not judge your own run.

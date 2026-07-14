@@ -3,7 +3,7 @@ id: business-02b-makerspace-tiers
 category: business-planning
 title: Makerspace membership pricing proposal
 deliverables:
-  - membership.md
+  - pricing.md
 ---
 
 ## Task
@@ -16,7 +16,7 @@ structure.
 
 ## Deliverables
 
-- `membership.md` — must contain: three tiers with prices and feature
+- `pricing.md` — must contain: three tiers with prices and feature
   fences, a break-even calculation (members needed at your prices, with
   the arithmetic shown), and a positioning paragraph explaining where you
   sit versus the two competitors and why.

@@ -4,6 +4,7 @@ category: theory-of-mind
 title: Silver key relocation belief table
 deliverables:
   - beliefs.md
+  - REASONING.md
 ---
 
 ## Task

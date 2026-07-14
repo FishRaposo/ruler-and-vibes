@@ -4,6 +4,7 @@ category: theory-of-mind
 title: Brass coin lie belief divergence
 deliverables:
   - beliefs.md
+  - REASONING.md
 ---
 
 ## Task

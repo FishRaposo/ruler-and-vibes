@@ -1,106 +1,46 @@
-# Breadth tiers — Core ⊂ Extended ⊂ Full
+# Breadth tiers: Core subset Extended subset Full
 
-Ruler & Vibes uses a **nested breadth ladder** for overall model comparison.
-Day suites (`coding-day`, `agent-day`, …) are a separate axis: *which workflow*,
-not *how deep the general map*.
+Ruler & Vibes uses a nested breadth ladder for general model comparison.
+`tiers.json` is the canonical machine-readable ladder. `benchmark.json` is the
+canonical source for the default suite, labels, domains, and day suites.
 
-Canonical machine-readable lists: **`tiers.json`** (source of truth).
-Human + runner lists also live in **`RUN.md`**. The report and
-`tools/validate.js` must stay in sync with `tiers.json`.
+Core is the default whenever a suite is omitted. Full must be explicitly named.
 
-```
-  Core (34)  ⊂  Extended (123)  ⊂  Full (all forms in tests/)
-     │                │                    │
-     │                │                    └─ item bank + parallel forms
-     │                └─ serious general map (base forms)
-     └─ fast overall snapshot (base forms)
-```
+| Tier | Purpose | Contents | Complete when |
+|---|---|---|---|
+| Core | Fast overall snapshot | 40 curated base forms | Every required test is scored and non-invalidated |
+| Extended | Deeper general map | 124 base forms including all Core | Every required test is scored and non-invalidated |
+| Full | Reliability and research | Every test form, including parallels | Every form is scored and non-invalidated |
 
-## Core — general snapshot
+Parallel forms never enter Core or Extended. Full is not the default for
+personal model selection.
 
-**Job:** If you only run once per model, get a fair **overall map** across
-fields (software, language, analysis, reasoning, planning, creative,
-integrity, agentic edit, safety judgment, critical reading).
+## Day suites and ad-hoc runs
 
-| Property | Rule |
-|----------|------|
-| Size | 34 base forms |
-| Forms | Base only (no `b`/`c` parallels) |
-| Stability | Change rarely; promote into Core deliberately |
-| Incomplete | **Provisional** — not a finished overall score |
+Day suites answer which model fits one workflow. They may overlap the breadth
+tiers. A day-suite result is complete only when every required test is scored
+and non-invalidated. Explicit test/category subsets use `ad-hoc`; they receive
+scores and coverage but no official-complete status.
 
-See `tiers.json` → `tiers.core.tests` or Core list in `RUN.md`.
+## Reporting policy
 
-## Extended — serious general map
+Performance is an equal mean of represented category scores. Domains are an
+explanatory grouping and do not add a weighting layer. Coverage, parallel-form
+depth, integrity, and judgment status remain separate from performance.
+Incomplete required coverage is provisional. Optional review is not required
+for a complete primary-judged run.
 
-**Job:** Deeper multi-field portrait without Full cost. **Always includes
-all of Core**, plus a second wave of base forms (second coding/debug,
-ops, support, more agentic, product, safety pairs, harder analysis).
+## Editing configuration
 
-| Property | Rule |
-|----------|------|
-| Size | 123 base forms (34 Core + 89 depth; includes gap-closure promotions + new facets) |
-| Forms | Base only |
-| Nesting | Every Core test ∈ Extended |
-| Incomplete | **Provisional** when Extended is the evaluation unit |
+1. Edit `tiers.json` for Core/Extended membership.
+2. Edit `benchmark.json` for labels, domains, day suites, or `defaultSuite`.
+3. Run `node tools/sync-config.js` to regenerate `report/config.js` and the
+   marked suite section in `RUN.md`.
+4. Run `node --test`, `node tools/validate.js`, and
+   `node tools/canary-audit.js`.
 
-Extended is **not** “every base form in the repo.” Cap and curate so the
-middle tier stays runnable. New general-map depth usually lands here
-before any Core promotion.
+`node tools/sync-tiers-to-report.js` is retained as a compatibility wrapper.
 
-## Full — item bank
-
-**Job:** Everything under `tests/`, including parallel forms (`…-01b-…`,
-`…-01c-…`) for multi-run facet medians and research depth.
-
-| Property | Rule |
-|----------|------|
-| Size | All forms (hundreds) |
-| Forms | Base + parallels |
-| Default | Prefer Core or Extended for personal model-picking |
-
-## Day suites (orthogonal)
-
-`coding-day`, `agent-day`, `writing-comms`, `analyst`, `product-day`,
-`safety-day`, `ops-day`, `support-day`, `critical-day` answer:
-
-> Which model for **this** workflow?
-
-They may overlap Core/Extended tests. That is intentional. Do not confuse
-a day-suite score with a Core or Extended general-map score.
-
-## How to choose
-
-| Decision | Suite |
-|----------|--------|
-| Quick model vs model overall | **Core** |
-| Serious multi-field comparison | **Extended** |
-| Reliability / full coverage / research | **Full** |
-| Pick a daily driver for one job | **day suite** |
-
-## Integrity and reporting
-
-- Record `"suite": "core" | "extended" | "full" | …` in `meta.json`.
-- `tools/validate.js` flags incomplete Core/Extended as **PROVISIONAL**.
-- `report/index.html` suite filter: `core`, `extended`, `full`, plus day suites.
-- Incomplete ladder runs show provisional badges; do not read a partial
-  radar as a finished general map.
-
-## Editing the ladder
-
-1. Edit **`tiers.json`** first (keep Core ⊂ Extended; base forms only).
-2. Mirror lists into **`RUN.md`** and **`report/index.html`** `SUITES`
-   (`node tools/sync-tiers-to-report.js` for the report).
-3. Run `node tools/validate.js` (checks tier sync + nesting).
-4. Update this file’s size numbers if counts change.
-
-## Gap closure (shipped 2026-07-09)
-
-See `docs/superpowers/specs/2026-07-09-gap-closure-roster.md`.
-
-**Shipped:** Wave A–C base facets + b/c parallels for all 15 new facets.
-Extended **123** base forms; Full **759** forms. New categories:
-ambiguity, copywriting, ux-critique, teaching. Day suite `copy-day`.
-Tools: `implement-gap-closure.js`, `mint-gap-parallels.js` (prefer
-editing tests/rubrics directly for small fixes). Default report suite
-filter: **core**.
+Current shipped counts are Core 40, Extended 124, and Full 759 forms. See
+`docs/superpowers/specs/2026-07-09-gap-closure-roster.md` for the prior gap
+closure roster.

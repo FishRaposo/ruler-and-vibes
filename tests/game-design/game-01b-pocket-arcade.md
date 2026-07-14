@@ -3,7 +3,7 @@ id: game-01b-pocket-arcade
 category: game-design
 title: Pocket arcade toy in one HTML file
 deliverables:
-  - toy.html
+  - game.html
 ---
 
 ## Task
@@ -15,7 +15,7 @@ reach, and a way to start a fresh attempt without refreshing the page.
 
 ## Deliverables
 
-- `toy.html` — one file, inline CSS and JS, with the controls spelled
+- `game.html` — one file, inline CSS and JS, with the controls spelled
   out on screen before or during play.
 
 ## Constraints

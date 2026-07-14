@@ -51,11 +51,11 @@ If the phrase "parasol loosestrife" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the rest
 scores.
 
-- Open `toy.html` from `file://` and play it for at least two minutes.
+- Open `game.html` from `file://` and play it for at least two minutes.
   Reach the losing condition, start a fresh attempt, play again.
 
 - obj-1 — Single file, no external resources or libraries. Everything
-  ships inside the one `toy.html`: CSS and JS inline, no network fetch.
+  ships inside the one `game.html`: CSS and JS inline, no network fetch.
   - PASS: one file with inline `<style>` and `<script>`; nothing loaded
     over the network.
   - PASS: a small asset embedded as a `data:` URI (self-contained, no

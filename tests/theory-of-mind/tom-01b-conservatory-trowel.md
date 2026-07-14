@@ -4,6 +4,7 @@ category: theory-of-mind
 title: Amber trowel relocation belief table
 deliverables:
   - beliefs.md
+  - REASONING.md
 ---
 
 ## Task

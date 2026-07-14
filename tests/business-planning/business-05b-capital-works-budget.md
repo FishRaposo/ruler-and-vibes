@@ -3,7 +3,7 @@ id: business-05b-capital-works-budget
 category: business-planning
 title: Capital works selection under a fixed crew-month budget
 deliverables:
-  - plan.md
+  - roadmap.md
 ---
 
 ## Task
@@ -38,7 +38,7 @@ Any other combination of projects may be funded or deferred freely,
 subject only to the 24 crew-month budget.
 
 ## Deliverables
-`plan.md` must:
+`roadmap.md` must:
 
 - State the selected set of projects for the year.
 - State the total benefit value and total crew-month cost of the

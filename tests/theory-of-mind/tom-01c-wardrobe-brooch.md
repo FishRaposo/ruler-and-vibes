@@ -4,6 +4,7 @@ category: theory-of-mind
 title: Jade brooch relocation belief table
 deliverables:
   - beliefs.md
+  - REASONING.md
 ---
 
 ## Task

@@ -8,15 +8,15 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "plan.md selects exactly the set {StormMain, Pumphouse, Wellfield, Greenway} and no other projects"
+      check: "roadmap.md selects exactly the set {StormMain, Pumphouse, Wellfield, Greenway} and no other projects"
     - id: obj-2
-      check: "plan.md states total benefit value = 192 and total cost = 24 crew-months (both exact)"
+      check: "roadmap.md states total benefit value = 192 and total cost = 24 crew-months (both exact)"
     - id: obj-3
-      check: "plan.md includes StormMain (the mandatory item) AND does not include Pumphouse without also including Wellfield"
+      check: "roadmap.md includes StormMain (the mandatory item) AND does not include Pumphouse without also including Wellfield"
     - id: obj-4
       check: "The selected projects' crew-month costs, re-summed by the judge from the embedded table, total <= 24"
     - id: obj-5
-      check: "plan.md is 500 words or fewer (whole file, wc -w)"
+      check: "roadmap.md is 500 words or fewer (whole file, wc -w)"
   subjective:
     - id: sub-quality
       name: "Prioritization rationale"
@@ -158,10 +158,10 @@ StormMain-present and the Pumphouse-implies-Wellfield checks.
   - FAIL: submitted set re-sums to 25 or more by the judge's own count.
   - FAIL: memo claims cost 24 but the judge's re-sum of its named set is 26.
 - **obj-5**: whole-file `wc -w` for the 500-word cap.
-  - PASS: `wc -w plan.md` reports 500 or fewer.
+  - PASS: `wc -w roadmap.md` reports 500 or fewer.
   - PASS: file is 375 words.
   - PASS: file is exactly 500 words.
-  - FAIL: `wc -w plan.md` reports 501 or more.
+  - FAIL: `wc -w roadmap.md` reports 501 or more.
   - FAIL: file is 640 words.
   - FAIL: file is 512 words.
 

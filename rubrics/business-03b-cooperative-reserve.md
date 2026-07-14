@@ -8,15 +8,15 @@ weights:
 criteria:
   objective:
     - id: obj-1
-      check: "RESERVE.md states baseline forward net monthly burn of 27,500 (revenue 27,000 minus expenses 54,500, grant excluded)"
+      check: "RUNWAY.md states baseline forward net monthly burn of 27,500 (revenue 27,000 minus expenses 54,500, grant excluded)"
     - id: obj-2
-      check: "RESERVE.md states baseline runway of approximately 7.8 months (accept 7.8-7.9, 'about 8 months', or 'reserve lasts 7 full months / runs out during month 8')"
+      check: "RUNWAY.md states baseline runway of approximately 7.8 months (accept 7.8-7.9, 'about 8 months', or 'reserve lasts 7 full months / runs out during month 8')"
     - id: obj-3
-      check: "RESERVE.md states post-hire burn of 40,000/month and post-hire runway of approximately 5.4 months (accept 5.3-5.4, 'about 5 months', or 'reserve runs out during month 6')"
+      check: "RUNWAY.md states post-hire burn of 40,000/month and post-hire runway of approximately 5.4 months (accept 5.3-5.4, 'about 5 months', or 'reserve runs out during month 6')"
     - id: obj-4
-      check: "RESERVE.md explicitly identifies the 40,000 grant as one-time and excludes it from the run-rate calculation"
+      check: "RUNWAY.md explicitly identifies the 40,000 grant as one-time and excludes it from the run-rate calculation"
     - id: obj-5
-      check: "RESERVE.md is 350 words or fewer (whole file, wc -w)"
+      check: "RUNWAY.md is 350 words or fewer (whole file, wc -w)"
   subjective:
     - id: sub-quality
       name: "Recommendation clarity"
@@ -85,10 +85,10 @@ console.log('postBurn', postBurn, 'postRunway', postRunway.toFixed(3));
 ```
 
 Expect `burn 27500 runway 7.818` and `postBurn 40000 postRunway 5.375`.
-Cross-check the submitted RESERVE.md's stated numbers against this output
+Cross-check the submitted RUNWAY.md's stated numbers against this output
 rather than trusting prose framing.
 
-Count words with `wc -w RESERVE.md` (whole file) for obj-5.
+Count words with `wc -w RUNWAY.md` (whole file) for obj-5.
 
 - **obj-1 / obj-3 (burn figures)**: exact numbers, not approximations —
   27,500 and 40,000 are both derived from fixed inputs with no legitimate

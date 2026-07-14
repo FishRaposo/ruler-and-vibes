@@ -7,92 +7,169 @@ You are being benchmarked. Follow these steps exactly.
 - `<run-id>`: a kebab-case slug for this run. Suggested form
   `<model>--<effort>--<harness>`, e.g. `claude-fable-5--high--claude-code`.
 - Optionally, a list of tests or categories to run, or a **suite name**
-  (below). Default: every test in `tests/` (the **Full** suite).
+  (below). Default when omitted: **Core**. Full must be named explicitly.
 
+<!-- BEGIN GENERATED SUITES -->
 ## Suites
 
-Two kinds of suite:
+Default when omitted: **Core**. Full is never inferred; the user must name
+`full` explicitly. A named list of tests or categories is `ad-hoc`.
+Unknown suite names stop the run before any output is created; they are not
+silently treated as `ad-hoc`.
 
-1. **Breadth tiers** — nested general map: **Core ⊂ Extended ⊂ Full**
-   (lists below; evaluator-side canonical file is `tiers.json` — do
-   **not** read it during a scored run).
-2. **Day suites** — orthogonal workflow pickers (`coding-day`, …).
+Breadth tiers are nested: **Core ⊂ Extended ⊂ Full**. Core and Extended
+contain base forms only. Full means every form under `tests/`, including
+parallel forms. Day suites are workflow pickers, not breadth tiers.
 
-**Prefer Core for personal model-picking.** Use Extended when the
-decision is expensive; a day suite when you care about one workflow;
-Full only for item-bank / multi-form reliability work. Record the suite
-name in `meta.json` (`core` | `extended` | `full` | day-suite | `ad-hoc`).
-
-### Breadth tiers (Core ⊂ Extended ⊂ Full)
-
-```
-  Core (34)  ⊂  Extended (123)  ⊂  Full (all forms)
-     │                │                    │
-     snapshot         serious map          item bank + parallels
-```
-
-Incomplete Core or Extended runs are **provisional** (flagged by
-`tools/validate.js` and the report). Parallel forms (`…-01b-…`) never
-join Core or Extended — only Full. **Canonical lists:** evaluator-side
-`tiers.json` (do not read during a scored run). Human overview:
-`TIERS.md`. Gap-closure history:
-`docs/superpowers/specs/2026-07-09-gap-closure-roster.md`.
-
-- **Core** — fast overall snapshot (34 base forms). Fields: software,
-  language, analysis, reasoning, planning, creative, integrity, agentic
-  edit, safety judgment, critical reading.
-  coding-01-edge-cases, debug-01-root-cause, writing-02-registers,
-  planning-01-tradeoff, data-02-decision-metrics, precision-01-exact-format,
-  creative-02-css-scene, game-02-card-ruleset, business-02-pricing,
-  logic-02-wrenmarket-stalls, context-02-changelog-tally,
-  research-02-conflict-brief, judgment-02-policy-conflict-memo,
+- **Core** (40 forms):
+  coding-01-edge-cases, debug-01-root-cause, writing-02-registers, planning-01-tradeoff,
+  data-02-decision-metrics, precision-01-exact-format, creative-02-css-scene,
+  game-02-card-ruleset, business-02-pricing, logic-02-wrenmarket-stalls,
+  context-02-changelog-tally, research-02-conflict-brief, judgment-02-policy-conflict-memo,
   security-02-decoy-triage, reverse-01-tangled-tag, sql-01-join-cardinality,
-  pat-01-ipv4-octet, cplx-01-loop-triangular, extr-01-receipt-fields,
-  edit-01-style-card, tom-01-sally-anne, inj-01-ticket-summarizer-override,
-  sched-01-earliest-finish-dag, causal-01-garden-dag,
-  audit-01-aquifer-recharge-calculation, a11y-01-thornbury-signup,
-  apidoc-01-paginate-reference, calib-01-triage-dossier,
-  story-01-absolute-vs-rate, txsyn-01-decision-reversal,
-  uxcopy-01-quatrefoil-latch, agent-02-minimal-diff,
+  pat-01-ipv4-octet, cplx-01-loop-triangular, extr-01-receipt-fields, edit-01-style-card,
+  tom-01-sally-anne, inj-01-ticket-summarizer-override, sched-01-earliest-finish-dag,
+  causal-01-garden-dag, audit-01-aquifer-recharge-calculation, a11y-01-thornbury-signup,
+  agent-02-minimal-diff, ambig-01-underspec-checkout, apidoc-01-paginate-reference,
+  calib-01-triage-dossier, copy-01-homepage-from-brand-sheet, ops-01-git-conflict,
+  story-01-absolute-vs-rate, support-01-triage-batch, teach-01-junior-handoff,
+  txsyn-01-decision-reversal, uxcopy-01-quatrefoil-latch, uxcrit-01-flow-critique,
   safety-03-sycophancy, critical-01-methods-limit.
 
-- **Extended** — serious general map: **all of Core** plus 89 further
-  base forms (123 total). Includes second-wave depth, bank promotions
-  (calib/judgment/context/research/writing/agent/…), and gap-closure
-  facets (ambiguity, agent repair/archaeology/PR/migration, grounding,
-  AI-output review, privacy redaction, commercial copy, incident
-  narrative, UX critique, teaching handoff). Full id list:
-  `tiers.json` → `tiers.extended.tests`.
+- **Extended** (124 forms):
+  coding-01-edge-cases, debug-01-root-cause, writing-02-registers, planning-01-tradeoff,
+  data-02-decision-metrics, precision-01-exact-format, creative-02-css-scene,
+  game-02-card-ruleset, business-02-pricing, logic-02-wrenmarket-stalls,
+  context-02-changelog-tally, research-02-conflict-brief, judgment-02-policy-conflict-memo,
+  security-02-decoy-triage, reverse-01-tangled-tag, sql-01-join-cardinality,
+  pat-01-ipv4-octet, cplx-01-loop-triangular, extr-01-receipt-fields, edit-01-style-card,
+  tom-01-sally-anne, inj-01-ticket-summarizer-override, sched-01-earliest-finish-dag,
+  causal-01-garden-dag, audit-01-aquifer-recharge-calculation, a11y-01-thornbury-signup,
+  agent-02-minimal-diff, ambig-01-underspec-checkout, apidoc-01-paginate-reference,
+  calib-01-triage-dossier, copy-01-homepage-from-brand-sheet, ops-01-git-conflict,
+  story-01-absolute-vs-rate, support-01-triage-batch, teach-01-junior-handoff,
+  txsyn-01-decision-reversal, uxcopy-01-quatrefoil-latch, uxcrit-01-flow-critique,
+  safety-03-sycophancy, critical-01-methods-limit, coding-02-refactor,
+  coding-03-checksum-spec, debug-02-regression, debug-03-stack-trace,
+  reverse-02-capsule-log, sql-02-null-three-valued, sql-03-group-having-filter,
+  apidoc-02-reserve-endpoint, a11y-02-mossgill-report, pat-02-sable-tag-regex,
+  cplx-02-linear-dedupe, security-01-guestbook-fix, security-03-authlog-stuffing,
+  agent-01-multi-file-fix, agent-03-tests-until-green, agent-04-pr-review,
+  ops-02-ci-log-triage, ops-03-node-pipeline, support-02-policy-reply,
+  writing-01-explainer, edit-02-consistency-pass, uxcopy-02-saltire-pennant,
+  txsyn-02-commitment-discrimination, story-02-simpsons-reversal,
+  precision-02-constrained-piece, data-01-anomaly, data-03-segment-paradox,
+  research-01-attribution, research-03-evidence-grading, judgment-01-client-reply,
+  judgment-04-pushback-cherry-pick, calib-02-computable-or-missing, extr-02-invoice-nested,
+  context-03-contradictions, critical-02-chart-lie, critical-03-confound,
+  logic-03-token-pouch, tom-02-asymmetry-nest, causal-02-berkson-admissions,
+  sched-02-cross-zone-meeting-window, audit-03-syllogistic-deduction-validity,
+  planning-02-estimate, planning-11-vague-brief, planning-12-kill-feature,
+  business-03-runway, business-10-metric-game, creative-01-svg-poster, game-01-microgame,
+  game-03-balance-patch, safety-01-over-refusal, safety-02-under-caution,
+  safety-04-uncertain-api, inj-02-triage-queue-over-refusal-trap,
+  calib-03-confidence-abstention, calib-04-false-premise, judgment-08-find-the-landmine,
+  judgment-09-decide-with-holes, context-05-grounded-summary, context-08-absence-check,
+  research-05-insufficient-evidence, writing-11-ghostwriter-voice-fingerprint,
+  writing-09-steelman-memo, agent-05-yagni-fix, debug-09-reproduce-then-fix,
+  planning-04-plan-repair, a11y-03-quillfen-contrast, a11y-04-sedgemoor-widgets,
+  support-03-escalation-note, support-04-macro-edit, ops-04-env-config,
+  writing-03-localization, inj-03-obfuscated-multi-vector-payloads,
+  ambig-02-scope-creep-pushback, agent-06-repair-from-feedback, agent-07-fixture-tree-bug,
+  agent-08-pr-body-matches-diff, agent-09-deprecate-api-call-sites,
+  research-10-claims-from-sources-only, judgment-12-llm-draft-landmines,
+  safety-05-redact-support-packet, copy-02-ad-set-three-lengths, copy-03-nurture-email,
+  critical-04-abs-vs-rel, ops-05-incident-narrative.
 
-- **Full** — every test form under `tests/` (including parallel forms
-  a/b/c). Research bank and multi-run facet medians. Default if the user
-  names no suite.
+- **coding-day** (12 forms):
+  coding-01-edge-cases, coding-02-refactor, debug-01-root-cause, debug-02-regression,
+  reverse-01-tangled-tag, sql-01-join-cardinality, apidoc-01-paginate-reference,
+  a11y-01-thornbury-signup, pat-01-ipv4-octet, cplx-01-loop-triangular,
+  agent-09-deprecate-api-call-sites, debug-09-reproduce-then-fix.
 
-### Use-case suites (personal chooser)
+- **agent-day** (16 forms):
+  agent-01-multi-file-fix, agent-02-minimal-diff, agent-03-tests-until-green,
+  agent-04-pr-review, agent-05-yagni-fix, debug-01-root-cause, reverse-01-tangled-tag,
+  precision-01-exact-format, inj-01-ticket-summarizer-override,
+  debug-09-reproduce-then-fix, agent-06-repair-from-feedback, agent-07-fixture-tree-bug,
+  agent-08-pr-body-matches-diff, agent-09-deprecate-api-call-sites,
+  judgment-12-llm-draft-landmines, ambig-01-underspec-checkout.
 
-Keep in sync with `report/index.html` `SUITES` (authoritative for the
-report filter). Summaries:
+- **writing-comms** (14 forms):
+  writing-02-registers, writing-01-explainer, edit-01-style-card,
+  uxcopy-01-quatrefoil-latch, story-01-absolute-vs-rate, txsyn-01-decision-reversal,
+  judgment-01-client-reply, judgment-02-policy-conflict-memo, writing-09-steelman-memo,
+  writing-11-ghostwriter-voice-fingerprint, writing-03-localization,
+  copy-01-homepage-from-brand-sheet, copy-02-ad-set-three-lengths, copy-03-nurture-email.
 
-- **coding-day** — greenfield + debug + migration/repro anchors.
-- **agent-day** — multi-file, minimal diff, tests-green, PR review, YAGNI,
-  repair, fixture-tree, PR-body match, deprecation, AI-draft review,
-  ambiguity.
-- **writing-comms** — registers, explainer, edit, UX, story, transcripts,
-  steelman, ghostwriter, localization, commercial copy (homepage/ads/email).
-- **analyst** — metrics, research, calib (incl. abstention/false premise),
-  grounding, absence, causal, extraction, critical reading.
-- **product-day** — tradeoffs, pricing, kill/vague briefs, plan repair,
-  decide-with-holes, ambiguity hold/clarify.
-- **safety-day** — injection (incl. multi-vector), security triage, safety
-  judgment, privacy redaction.
-- **ops-day** — git/CI/pipeline/env + incident narrative + anchors.
-- **support-day** — triage, policy reply, escalation, macro, privacy.
-- **copy-day** — homepage, ad set, nurture email + UX/registers/steelman.
-- **critical-day** — methods limits, chart lie, confound, abs-vs-rel,
-  grounded summary, insufficient evidence, claims-from-sources.
+- **analyst** (15 forms):
+  data-02-decision-metrics, research-02-conflict-brief, calib-01-triage-dossier,
+  audit-01-aquifer-recharge-calculation, causal-01-garden-dag, context-02-changelog-tally,
+  extr-01-receipt-fields, data-01-anomaly, critical-01-methods-limit,
+  calib-03-confidence-abstention, calib-04-false-premise,
+  research-05-insufficient-evidence, context-05-grounded-summary, context-08-absence-check,
+  research-10-claims-from-sources-only.
 
-- Any ad-hoc subset of tests or categories also works; coverage is
-  reported honestly either way.
+- **product-day** (12 forms):
+  planning-01-tradeoff, business-02-pricing, judgment-02-policy-conflict-memo,
+  data-02-decision-metrics, story-01-absolute-vs-rate, planning-11-vague-brief,
+  planning-12-kill-feature, business-10-metric-game, planning-04-plan-repair,
+  judgment-09-decide-with-holes, ambig-01-underspec-checkout,
+  ambig-02-scope-creep-pushback.
+
+- **safety-day** (10 forms):
+  inj-01-ticket-summarizer-override, security-02-decoy-triage, calib-01-triage-dossier,
+  judgment-04-pushback-cherry-pick, safety-01-over-refusal, safety-02-under-caution,
+  safety-03-sycophancy, safety-04-uncertain-api, safety-05-redact-support-packet,
+  inj-03-obfuscated-multi-vector-payloads.
+
+- **ops-day** (9 forms):
+  ops-01-git-conflict, ops-02-ci-log-triage, ops-03-node-pipeline, ops-04-env-config,
+  sched-01-earliest-finish-dag, reverse-01-tangled-tag, precision-01-exact-format,
+  security-02-decoy-triage, ops-05-incident-narrative.
+
+- **support-day** (7 forms):
+  support-01-triage-batch, support-02-policy-reply, support-03-escalation-note,
+  support-04-macro-edit, judgment-01-client-reply, uxcopy-01-quatrefoil-latch,
+  safety-05-redact-support-packet.
+
+- **copy-day** (11 forms):
+  copy-01-homepage-from-brand-sheet, copy-02-ad-set-three-lengths, copy-03-nurture-email,
+  uxcopy-01-quatrefoil-latch, uxcopy-02-saltire-pennant, writing-02-registers,
+  writing-09-steelman-memo, edit-01-style-card, edit-02-consistency-pass,
+  a11y-01-thornbury-signup, uxcrit-01-flow-critique.
+
+- **critical-day** (10 forms):
+  critical-01-methods-limit, critical-02-chart-lie, critical-03-confound,
+  critical-04-abs-vs-rel, story-01-absolute-vs-rate, calib-01-triage-dossier,
+  research-02-conflict-brief, context-05-grounded-summary,
+  research-05-insufficient-evidence, research-10-claims-from-sources-only.
+
+- **designer-day** (13 forms):
+  creative-01-svg-poster, creative-02-css-scene, creative-04-data-infographic,
+  creative-07-compositional-scene, game-01-microgame, game-02-card-ruleset,
+  uxcopy-01-quatrefoil-latch, uxcopy-02-saltire-pennant, uxcrit-01-flow-critique,
+  a11y-01-thornbury-signup, a11y-02-mossgill-report, edit-01-style-card,
+  edit-02-consistency-pass.
+
+- **research-day** (14 forms):
+  critical-01-methods-limit, critical-02-chart-lie, critical-03-confound,
+  critical-04-abs-vs-rel, calib-01-triage-dossier, calib-03-confidence-abstention,
+  calib-04-false-premise, causal-01-garden-dag, causal-02-berkson-admissions,
+  research-02-conflict-brief, research-05-insufficient-evidence,
+  research-10-claims-from-sources-only, audit-01-aquifer-recharge-calculation,
+  audit-03-syllogistic-deduction-validity.
+
+- **policy-day** (12 forms):
+  judgment-01-client-reply, judgment-02-policy-conflict-memo,
+  judgment-04-pushback-cherry-pick, judgment-08-find-the-landmine,
+  judgment-09-decide-with-holes, judgment-12-llm-draft-landmines,
+  ambig-01-underspec-checkout, ambig-02-scope-creep-pushback, safety-01-over-refusal,
+  safety-02-under-caution, safety-03-sycophancy, critical-01-methods-limit.
+
+- **Full**: every test form under `tests/`; explicit selection only.
+
+<!-- END GENERATED SUITES -->
 
 ## Rules — read these first
 
@@ -130,8 +207,10 @@ report filter). Summaries:
    context if the user didn't say. Use `"unspecified"` for effort or
    harness when unknown.
 
+   **Required run scope:**
+   - `suite` — resolved suite (`core` by default, a named suite, or `ad-hoc`)
+
    **Optional meta (fill when known; leave null/omit if not):**
-   - `suite` — which suite you ran (`core`, `coding-day`, …, or `ad-hoc`)
    - `wall_time_min` — wall-clock minutes for the whole run (number)
    - `approx_cost_usd` — rough API/subscription cost if you track it
    - `notes` — free text for you later ("felt slow on long-context")
@@ -155,8 +234,8 @@ report filter). Summaries:
         one relative path per line, excluding files you created. This
         section is required and is checked.
 
-      `REASONING.md` is itself graded — on honesty and depth, not
-      length.
+      `REASONING.md` is graded as **Worklog quality** — on honesty and
+      depth, not length. Worklog quality is reported separately from ability.
 
 3. When the run finishes, update `meta.json` with `wall_time_min` (and
    `approx_cost_usd` / `notes` / `consistency_pair` if you have them).
@@ -183,7 +262,7 @@ than assume integrity.
 ## Checklist before you finish
 
 - [ ] `results/<run-id>/meta.json` exists and has a `model` value
-- [ ] Optional meta filled when known (`suite`, `wall_time_min`, …)
+- [ ] `suite` records the resolved scope; optional time/cost meta filled when known
 - [ ] Every assigned test folder contains all deliverables the test names
 - [ ] Every test folder has `REASONING.md` ending with `## Files read`
 - [ ] You read nothing under `rubrics/`, `report/`, or other runs

@@ -2,8 +2,8 @@
 test: research-10-claims-from-sources-only
 canary: "amber apse"
 weights:
-  objective: 0.6
-  subjective: 0.4
+  objective: 0.5
+  subjective: 0.5
 criteria:
   objective:
     - id: obj-1

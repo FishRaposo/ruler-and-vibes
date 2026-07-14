@@ -3,7 +3,7 @@ id: business-03b-cooperative-reserve
 category: business-planning
 title: Cooperative reserve runway memo
 deliverables:
-  - RESERVE.md
+  - RUNWAY.md
 ---
 
 ## Task
@@ -25,7 +25,7 @@ Going forward, monthly revenue (dues + workshop fees) and monthly operating
 costs (staff + rent + parts) are expected to hold steady at the levels shown
 above. The grant will not recur.
 
-Write `RESERVE.md` covering:
+Write `RUNWAY.md` covering:
 
 (a) the forward monthly net burn rate,
 (b) the runway in months and the month the reserve runs out,
@@ -35,7 +35,7 @@ Write `RESERVE.md` covering:
 
 ## Deliverables
 
-- `RESERVE.md` — at most 350 words, covering (a)-(d) above.
+- `RUNWAY.md` — at most 350 words, covering (a)-(d) above.
 
 ## Constraints
 

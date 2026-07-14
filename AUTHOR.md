@@ -30,12 +30,12 @@ Two honest notes about current state:
   to replace a form a model has already seen. (Category scores averaging
   several sibling constructs is a separate kind of noise reduction — not
   the same thing as multi-form medians on one facet.)
-- **The report aggregates by facet.** `report/index.html` strips the
+- **The shared scoring module aggregates by facet.** `report/scoring.js` strips the
   letter suffix to group forms with their source facet, scores each
   facet as the median of its scored forms (per view — objective,
   subjective, combined), and averages facets into the category score.
-  The target runs-per-facet parameter is `RUNS_TARGET` near the top of
-  the report's config (default 3); facet summaries in the tables (shown
+  The target runs-per-facet parameter is `RUNS_TARGET` in the scoring
+  module (default 3); facet summaries in the report (shown
   once ≥2 forms of a facet are scored) show "median X across k runs"
   and note when k is under target.
 
@@ -76,8 +76,10 @@ A valid parallel form satisfies ALL of the following against its source:
    Write this mapping down before authoring (see the loop below).
 2. **Same shape.** Same number and kind of deliverables, same number of
    objective checks, same section weights (`objective`/`subjective`),
-   and the **identical** three subjective criteria — same names, same
-   0.4/0.3/0.3 weights, third named exactly `Reasoning quality`.
+   and the **identical** three raw subjective criteria — same names, same
+   0.4/0.3/0.3 weights, third named exactly `Reasoning quality` for raw-id
+   compatibility. The report exposes that third criterion as Worklog quality
+   and excludes it from subjective ability.
    Identical names are what make per-criterion aggregation across forms
    meaningful.
 3. **Same difficulty.** The same solution method applies with a
@@ -172,7 +174,8 @@ Answer key first, prose second — always.
      0/5/10 exemplars per subjective criterion so judges calibrate.
    - `node tools/canary-audit.js` — checks every canary rule kit-wide
      (including yours) and refreshes the registry table.
-   - Done-check: open `report/index.html` in a browser — the page must
+   - Done-check: run `node tools/gen-tests.js`, then open
+     `report/index.html` in a browser — the page must
      load with no console errors (the form has no scores yet, so it
      won't render as a row, but a malformed entry breaks the whole
      config block).

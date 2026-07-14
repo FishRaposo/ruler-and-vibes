@@ -1,4 +1,5 @@
 window.BENCH_DATA = {
+  "schemaVersion": 2,
   "updated": "2026-07-09",
   "runs": {
     "smoke--high--commandcode": {
@@ -6,6 +7,11 @@ window.BENCH_DATA = {
       "effort": "high",
       "harness": "commandcode",
       "date": "2026-07-09",
+      "suite": "core",
+      "wall_time_min": null,
+      "approx_cost_usd": null,
+      "notes": "Smoke run to validate the end-to-end pipeline after fixes.",
+      "consistency_pair": null,
       "judgedBy": "commandcode-judge",
       "judgedOn": "2026-07-09",
       "tests": {

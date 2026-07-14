@@ -4,6 +4,7 @@ category: theory-of-mind
 title: Cobalt seal three-agent knowledge grid
 deliverables:
   - beliefs.md
+  - REASONING.md
 ---
 
 ## Task
