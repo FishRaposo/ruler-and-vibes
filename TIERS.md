@@ -41,6 +41,6 @@ for a complete primary-judged run.
 
 `node tools/sync-tiers-to-report.js` is retained as a compatibility wrapper.
 
-Current shipped counts are Core 40, Extended 124, and Full 759 forms. See
+Current shipped counts are Core 40, Extended 124, and Full 774 forms. See
 `docs/superpowers/specs/2026-07-09-gap-closure-roster.md` for the prior gap
 closure roster.

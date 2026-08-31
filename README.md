@@ -5,7 +5,7 @@ official public leaderboard. You run models yourself, judge their outputs, and
 keep or publish your own results.
 
 Every rubric combines objective checks (the ruler) with judged criteria (the
-vibes). The bank spans 40 categories and 759 test forms, usually three parallel
+vibes). The bank spans 40 categories and 774 test forms, usually three parallel
 forms per facet. The kit uses plain Markdown, JSON, JavaScript, Node built-ins,
 and a zero-build static report bundle. It has no package manager, framework,
 CDN, API, hosted service, or build step.
@@ -17,7 +17,7 @@ CDN, API, hosted service, or build step.
 The nested breadth ladder is canonical in `tiers.json`:
 
 ```text
-Core (34)  subset  Extended (123)  subset  Full (759 forms)
+Core (40)  subset  Extended (124)  subset  Full (774 forms)
  snapshot              serious map             item bank + parallels
 ```
 
