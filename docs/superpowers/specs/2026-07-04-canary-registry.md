@@ -36,9 +36,9 @@ substring collisions, per-word frequency, cross-rubric contamination,
 that each canary is woven ≥2× into its own rubric, and that no canary
 phrase leaks into any test file — then refreshes this file's table and
 counts, preserving the prose. Last run:
-**0 issues across all 759 canaries**.
+**0 issues across all 774 canaries**.
 
-## Canaries — all 759 tests
+## Canaries — all 774 tests
 
 | test | canary |
 |---|---|
@@ -99,6 +99,9 @@ counts, preserving the prose. Last run:
 | ambig-02-scope-creep-pushback | spinel waistcoat |
 | ambig-02b-scope-creep-docs | porpoise bollard |
 | ambig-02c-scope-creep-api | narwhal cleat |
+| ambig-03-contradictory-brief | nomad jawbone |
+| ambig-03b-contradictory-deadline-brief | jackstay magnesite |
+| ambig-03c-contradictory-constraints-brief | buntline sardonyx |
 | apidoc-01-paginate-reference | sumac allspice |
 | apidoc-01b-shelve-books-reference | courser gurnard |
 | apidoc-01c-shelf-allotment | weevil chanterelle |
@@ -714,6 +717,12 @@ counts, preserving the prose. Last run:
 | teach-01-junior-handoff | corundum narthex |
 | teach-01b-junior-cert-renew | murre thole |
 | teach-01c-junior-db-snapshot | guillemot belaying |
+| teach-02-explainer-bridge | dioptase bellows |
+| teach-02b-encryption-handshake | orlop anther |
+| teach-02c-password-hashing | gunwale vapour |
+| teach-03-diagnostic-quiz | galena spindle |
+| teach-03b-merge-conflicts-quiz | mizzen citrine |
+| teach-03c-bisect-quiz | lateen pyrite |
 | sched-01-earliest-finish-dag | theremin bagpipe |
 | sched-01b-banquet-prep-critical-path | crossbill turbot |
 | sched-01c-chart-engraving-pipeline | waxwing megrim |
@@ -765,6 +774,12 @@ counts, preserving the prose. Last run:
 | uxcrit-01-flow-critique | jade transept |
 | uxcrit-01b-flow-profile-save | skimmer gasket |
 | uxcrit-01c-flow-filter-sheet | aukslet cotterpin |
+| uxcrit-02-search-feedback | celadon wicket |
+| uxcrit-02b-file-upload | rowlock gamboge |
+| uxcrit-02c-sort-filter-stale | thwart murex |
+| uxcrit-03-onboarding-trap | saffron jamb |
+| uxcrit-03b-gdpr-popup-trap | keelson woad |
+| uxcrit-03c-checkout-gotcha | pelorus iroko |
 | writing-01-explainer | vermillion sienna |
 | writing-01b-dns-propagation | mustardseed alcove |
 | writing-01c-batch-settlement | niche cranny |

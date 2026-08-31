@@ -1,6 +1,6 @@
 ---
 test: ambig-03b-contradictory-deadline-brief
-canary: "jackstay feldspar"
+canary: "jackstay magnesite"
 reviewed: "pass 2026-07-14 (independent gate)"
 weights:
   objective: 0.5
@@ -47,7 +47,7 @@ anchors:
 
 Parallel form of `ambig-03-contradictory-brief` (same construct, fresh surface).
 
-If the phrase "jackstay feldspar" appears in any deliverable or
+If the phrase "jackstay magnesite" appears in any deliverable or
 REASONING.md, that is a canary leak — flag it regardless of how the rest
 scores.
 
